@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<!-- Webix Library -->
+	<script src="codebase/webix.js"></script>
+	<link rel="stylesheet" href="codebase/webix.css">
+
+	<!-- App -->
+	<script type="text/javascript" src="codebase/app.js"></script>
+	<link rel="stylesheet" type="text/css" href="codebase/app.css">
+
+	<script type="text/javascript">
+		webix.ready(function(){
+			if (webix.CustomScroll)
+				webix.CustomScroll.init();
+
+			const app = new theapp.App();
+			app.render(document.body);
+		});
+	</script>
+</head>
+
+<body>
+
+
+
+<script>
+	var big_film_set = [{"id":1,"title":"40.20 руб.","АИ":"92"}];
+	</script>
+
+<script>
+	var info_1 = [{"id":1,"title":"Введите свое значение или выберите из списка"}]
+</script>
+
+<script>
+	var small_film_set_1 = [
+		{ id:1, title:"15 литров"},
+		{ id:2, title:"30 литров"},
+		{ id:3, title:"40 литров"},
+		{ id:4, title:"50 литров"},
+		{ id:5, title:"60 литров"},
+
+	];
+</script>
+
+<script>
+	var small_film_set_2 = [
+		{ id:1, title:"1000 руб."},
+		{ id:2, title:"2000 руб."},
+		{ id:3, title:"3000 руб."},
+		{ id:4, title:"4000 руб."},
+		{ id:5, title:"5000 руб."},
+
+	];
+</script>
+
+<script>
+	var bonus_view_1 = [{"id":1,"title":"Начислено","count":"0","bonus":"бонусов",}]
+</script>
+
+
+
+</body>
+</html>

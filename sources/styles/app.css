@@ -2,24 +2,44 @@
 
 .webix_view div, .webix_view span, .webix_list_item, .webix_view.webix_window{
 border: none;
+
 }
 
 
 
 .style_body{
-    background-color: var(--white-color-background);
-
+    background-color: var(--c-white-color-background);
 }
+
+.style_body_dark{
+    background-color: var(--c-white-color-background-dark);
+}
+
 
 :root{
 
-    --white-color-background: #f3f3f3;
+    /*light*/
+    --c-white-color-background: #f3f3f3;
     --shadow-element: 0 0 2px 2px rgba(122,122,122,0.2);
     --white-bacground-central-menu: #f9f9f9;
     --white-style-text-color: #000;
     --font-size: 18px;
     --font-weight: 100;
+    --c-color-text-light: #000;
+
+
+    /*dark*/
+    --c-white-color-background-dark: #424242;
+    --c-white-color-background-dark_left_menu: #2c2c2c;
+    --c-white-color-background-dark_general_rows: #424242;
+    --c-white-color-background-dark_general_windows: #4d4d4d;
+    --c-white-color-background-dark_left_menu_button: rgba(111, 111, 111, 0.0);
+    --c-white-color-background-dark_left_menu_button_hover: #545454;
+    --c-color-text-dark: #fff;
+
+
 }
+
 
 
 
@@ -117,6 +137,7 @@ border: none;
     box-shadow: rgb(190, 192, 195) 0.9px 0.9px 4px, rgb(255, 255, 255) -1.9px -1.9px 4px;
 }
 
+
 .button_4 .webix_image{
     width: 20%;
     position: relative;
@@ -148,8 +169,15 @@ border: none;
 
 
 .style_left_cols{
-    background-color: var(--white-color-background);
+    background-color: var(--c-white-color-background);
     box-shadow: var(--shadow-element);
+
+}
+
+.style_left_cols_dark{
+    background-color: var(--c-white-color-background-dark_left_menu);
+    box-shadow: var(--shadow-element);
+    z-index: 100;
 
 }
 
@@ -163,19 +191,43 @@ border: none;
     box-shadow: var(--shadow-element);
 }
 
+.style_general_rows_dark{
+    background-color: var(--c-white-color-background-dark_general_rows);
+    border-top-left-radius: 8px;
+    box-shadow: var(--shadow-element);
 
-.rows_level_min_max{
+}
+
+
+.rows_level_min_max {
 
     width: 90%;
     height: 90%;
 
 }
 
-.window_type_1 .webix_el_box{
-    background-color: #fff;
-    border-radius: 10px;
-    position: relative;
+.window_type_1 p{
+    color: #000;
 }
+
+
+.window_type_1_dark p{
+    color: #fff;
+}
+
+.window_type_1{
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+
+.window_type_1_dark{
+    background-color: var(--c-white-color-background-dark_general_windows);
+    border-radius: 10px;
+    color: var(--c-color-text-dark);
+}
+
+
 
 .window_type_1  input {
     color: var(--white-style-text-color);
@@ -191,9 +243,37 @@ border: none;
     right: 20px;
 }
 
-.window_type_2 .webix_el_box{
-    box-shadow: var(--shadow-element);
+.window_type_1_dark  input {
+    color: #c1c4c6;
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    height: 60%;
+    width: 50%;
+    background-color: var(--c-white-color-background-dark_general_windows);
+    border: 1px solid var(--c-white-color-background-dark_general_rows);
+    border-radius: 10px;
+    position: relative;
+    top: 20%;
+    right: 20px;
+    box-shadow: inset 1px 1px 1px #212121;
+}
+.window_type_2 p{
+    color: #000;
+
+}
+
+.window_type_2_dark p{
+    color: #fff;
+
+}
+
+.window_type_2 {
     background-color: #fff;
+}
+
+.window_type_2_dark {
+    background-color: var(--c-white-color-background-dark_general_windows);
+    color: var(--c-color-text-dark);
 }
 
 
@@ -205,12 +285,24 @@ border: none;
     width: 50%;
     background-color: #fff;
     border: 1px solid #ececec;
-    border-radius: 10px;
     position: relative;
     top: 20%;
     right: 20px;
 }
 
+.window_type_2_dark  input {
+    color: #c1c4c6;
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    height: 60%;
+    width: 50%;
+    background-color: var(--c-white-color-background-dark_general_windows);
+    border: 1px solid var(--c-white-color-background-dark_general_rows);
+    position: relative;
+    top: 20%;
+    right: 20px;
+    box-shadow: inset 1px 1px 1px #212121;
+}
 
 
 @media screen and (max-width: 1641px){
@@ -234,9 +326,52 @@ border: none;
 /*///////////------------------------------------------------------------------*/
 
 
+/*Поле правого меню------------------------------------------------*/
+.rows_style_right_menu{
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: var(--shadow-element);
 
 
+}
 
+.rows_level_right_menu_info .webix_el_box{
+    color: #000;
+    font-size: 20px;
+    font-weight: 100;
+
+}
+
+.rows_level_right_menu_info_dark .webix_el_box{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 100;
+
+}
+/*/////------------------------------------------------------------*/
+
+.right_menu_status{
+    background-color: var(--white-bacground-central-menu);
+    border-radius: 8px;
+    /*box-shadow: var(--shadow-element);*/
+
+}
+
+.right_menu_status_dark{
+    background-color: var(--c-white-color-background-dark_general_rows);
+    border-radius: 8px;
+    /*box-shadow: var(--shadow-element);*/
+
+}
+
+.rows_right{
+    background-color: #f3f3f3;
+}
+
+.rows_right_dark{
+    background-color: var(--c-white-color-background-dark_left_menu);
+
+}
 
 
 
@@ -315,38 +450,58 @@ border: none;
     border-left: 8px solid #fff;
 }
 
-.left_menu_button_3 .webix_button{
-    background-color: #f3f3f3;
+.left_menu_button_dark .webix_button{
+    background-color: var(--c-white-color-background-dark_left_menu_button);
     border-right: 0 solid #fff;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    border-left: 8px solid #fff;
+    border-left: 8px solid var(--c-white-color-background-dark_left_menu_button);
 }
+
+.left_menu_button_dark .webix_image{
+    width: 80%;
+    position: relative;
+}
+
+.left_menu_button .webix_image{
+    width: 80%;
+    position: relative;
+}
+
 
 .left_menu_button .webix_button:hover{
     background-color: #fff;
+    border-right: 2px solid rgba(255, 255, 255, 0);
+    border-top: 2px solid rgba(255, 255, 255, 0);
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
 }
-.left_menu_button_3 .webix_button:hover{
-    background-color: #fff;
+
+.left_menu_button_dark .webix_button:hover{
+    background-color: var(--c-white-color-background-dark_left_menu_button_hover);
+    border-left: 8px solid #fff;
+    border-right: 2px solid #fff;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
 }
-.left_menu_button .webix_image{
-    width: 50%;
-    position: relative;
-    left: 25px;
-}
-.left_menu_button_3 .webix_image{
-    width: 40%;
-    position: relative;
-    left: 40px;
-}
+
+
 .left_menu_button .webix_button:focus{
     background-color: #fff;
-    border-left: 8px solid #628cbb;
+    border-right: 2px solid rgba(255, 255, 255, 0);
+    border-top: 2px solid rgba(255, 255, 255, 0);
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
 }
-.left_menu_button_3 .webix_button:focus{
-    background-color: #fff;
+
+.left_menu_button_dark .webix_button:focus{
+    background-color: var(--c-white-color-background-dark_left_menu_button_hover);
     border-left: 8px solid #628cbb;
+    border-right: 2px solid #fff;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
 }
+
+
+
 .left_menu_button_setup .webix_button{
     background-color: #f3f3f3;
 }
@@ -362,34 +517,56 @@ border: none;
     position: relative;
     left: 60px;
 }
+
+
+
 .left_menu_button_reference .webix_button{
     background-color: #f3f3f3;
+}
+
+.left_menu_button_reference_dark .webix_button{
+    background-color: var(--c-white-color-background-dark_left_menu);
 }
 .left_menu_button_reference .webix_button:hover{
     background-color: #f3f3f3;
 }
-.left_menu_button_reference .webix_button:active{
+
+.left_menu_button_reference_dark .webix_button:hover{
+    background-color: var(--c-white-color-background-dark_left_menu);
+}
+.left_menu_button_reference .webix_button:focus{
     background-color: #f3f3f3;
+}
+
+.left_menu_button_reference_dark .webix_button:focus{
+    background-color: var(--c-white-color-background-dark_left_menu);
 }
 .left_menu_button_reference .webix_image{
-    width: 20%;
+    width: 80%;
     position: relative;
-    left: 5px;
+
 }
-.left_menu_button_reference_3 .webix_button{
-    background-color: #f3f3f3;
-}
-.left_menu_button_reference_3 .webix_button:hover{
-    background-color: #f3f3f3;
-}
-.left_menu_button_reference_3 .webix_button:active{
-    background-color: #f3f3f3;
-}
-.left_menu_button_reference_3 .webix_image {
-    width: 20%;
+.left_menu_button_reference_dark .webix_image{
+    width: 80%;
     position: relative;
-    left: 14px;
+
 }
+
+.webix_view .webix_control > .webix_disabled{
+    background-color: #fff;
+    opacity: 0.4;
+
+}
+
+.webix_view .webix_control > .webix_disabled_dark{
+    background-color: var(--c-white-color-background-dark_left_menu);
+    opacity: 0.4;
+
+}
+
+
+
+
 /*/////------------------------------------------------------------*/
 
 
@@ -405,16 +582,47 @@ border: none;
     left: -4px;
     z-index: 200;
 }
+
+.button_central_menu_dark .webix_button {
+    background-color: rgba(255, 255, 255, 0);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 100;
+    width: 103%;
+    height: 110%;
+    position: relative;
+    left: -4px;
+    z-index: 200;
+}
+
+
+/*background-color: var(--c-white-color-background-dark_general_rows);*/
+
 .button_central_menu .webix_button:hover{
     background-color: rgba(255, 255, 255, 0);
     color: #fff;
+}
+.button_central_menu_dark .webix_button:hover{
+    background-color: var(--c-white-color-background-dark_general_rows);
+    color: #fff;
+
 }
 .button_central_menu .webix_button:focus{
     background-color: #f9f9f9;
     color: #000;
 }
+
+.button_central_menu_dark .webix_button:focus{
+    background-color: var(--c-white-color-background-dark_general_rows);
+    color: #fff;
+}
+
 .central_cols_button {
     background: linear-gradient(45deg, #628cbb, #b7c7dd) ;
+}
+
+.central_cols_button_dark {
+    background: linear-gradient(45deg, #414e72, #628cbb) ;
 }
 /*/////------------------------------------------------------------*/
 
@@ -460,19 +668,8 @@ border: none;
 /*///////////*/
 
 
-.central_cols_setup{
-    background-color: #f9f9f9;
-    box-shadow:  0 0 5px rgba(122,122,122,0.5);
-    border-top-left-radius: 10px;
-}
-
 /*/////------------------------------------------------------------*/
 
-
-/*Правое меню -----------------------------------------------------*/
-.right_menu{
-    background-color: #f3f3f3;
-}
 
 .button_right_menu_top_1 .webix_button{
     background-color: #f3f3f3;
@@ -483,45 +680,33 @@ border: none;
     box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.1);
 }
 
+.button_right_menu_top_1_dark .webix_button{
+    background-color: var(--c-white-color-background-dark_left_menu);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 100;
+    /*box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.1);*/
+}
+
 .button_right_menu_top_1 .webix_button:hover{
     background-color: #f8f8f8;
 }
+
+.button_right_menu_top_1_dark .webix_button:hover{
+    background-color: var(--c-white-color-background-dark_general_windows);
+}
+
 .button_right_menu_top_1 .webix_button:focus{
     background-color: #f8f8f8;
 }
-.button_right_menu_top_2 .webix_button{
-    background-color: #f3f3f3;
-    color: #000;
-    border-radius: 8px;
-    font-size: 20px;
-    font-weight: 100;
-    box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.1);
+
+.button_right_menu_top_1_dark .webix_button:focus{
+    background-color: var(--c-white-color-background-dark_general_windows);
 }
-.button_right_menu_top_2 .webix_button:hover{
-    background-color: #f8f8f8;
-}
-.button_right_menu_top_2 .webix_button:focus{
-    background-color: #b6c7dd;
-}
+
 /*/////------------------------------------------------------------*/
 
-
-/*Поле правого меню------------------------------------------------*/
-.rows_level_right_menu{
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.2);
-    position: relative;
-    width: 95%;
-    height: 95%;
-}
-
-.rows_level_right_menu_info .webix_el_box{
-    color: #000;
-    font-size: 20px;
-    font-weight: 100;
-}
-/*/////------------------------------------------------------------*/
 
 
 /*Зеленая лампа параметров настройки--------------------------------*/
@@ -569,10 +754,10 @@ border: none;
     color: #000;
     font-size: 20px;
     border:none;
-    background-color: #f8f8f8;
+    background-color: rgba(0, 0, 0, 0);
 }
 .thermometer_image .webix_button{
-    background-color: #f8f8f8;
+    background-color: rgba(0, 0, 0, 0);
     cursor: default;
 }
 .thermometer_image .webix_button:hover {
@@ -608,16 +793,16 @@ border: none;
 }
 
 .edit_values .webix_button{
-    background-color: #f9f9f9;
+    background-color: rgba(0, 0, 0, 0);
     border-radius: 5px;
-    border: 2px solid #414e72;
+    border: 3px solid #414e72;
     color: #000;
     font-size: 18px;
     font-weight: 100;
     width: 98%;
     height: 98%;
 }
-
+/*----------------------------------------------------------*/
 .full_window_text .webix_el_box input{
     background-color: #f3f3f3;
     border-radius: 5px;
@@ -625,8 +810,31 @@ border: none;
     inset -2px -2px 4px #ffffff;
     color: #000;
     font-size: 18px;
+    height: 42px;
 }
 
+.full_window_text_dark .webix_el_box input{
+    background-color: var(--c-white-color-background-dark_left_menu);
+    border-radius: 5px;
+    /*box-shadow: inset 2px 2px 4px #c5c5c5,*/
+    /*inset -2px -2px 4px #ffffff;*/
+    color: #fff;
+    font-size: 18px;
+    height: 42px;
+    border: 1px solid #2c2c2c;
+    box-shadow: inset 5px 5px 5px #212121,
+    inset -5px -5px 5px #373737;
+}
+
+.right_menu_status_text p{
+    color: #000;
+}
+
+.right_menu_status_text_dark p{
+    color: #fff;
+}
+
+/*------------------------------------------------------*/
 .empty_window_text .webix_el_box input{
     background-color: #f3f3f3;
     border-radius: 5px;
@@ -637,12 +845,16 @@ border: none;
 }
 
 .progress_bar.webix_view.progress_bar{
-    background-color: #f9f9f9;
+    background-color: rgba(0, 0, 0, 0);
     border: none;
 }
 
 .progress_bar .webix_bullet_scale{
     visibility: hidden;
+}
+
+.test345{
+    background: linear-gradient(to top, #fefcea, #f1da36);
 }
 
 .progress_bar.webix_view .webix_bullet_value{
@@ -783,8 +995,29 @@ border: none;
 
 }
 
+.rows_right_menu_calibration_1_dark{
+    background-color: var(--c-white-color-background-dark_general_rows);
+    box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.2);
+    position: relative;
+    width: 95%;
+    height: 95%;
+    border-top-left-radius: 8px;
+    border-bottom: none;
+
+}
+
 
 .rows_right_menu_calibration_2{
+    background-color: var(--c-white-color-background-dark_general_rows);
+    box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.2);
+    position: relative;
+    width: 95%;
+    height: 95%;
+    border-top: none;
+
+}
+
+.rows_right_menu_calibration_2_dark{
     background-color: #f9f9f9;
     box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.2);
     position: relative;
@@ -794,7 +1027,7 @@ border: none;
 
 }
 
-
+/*-Меню тарировка слив/залив------------------------------------------------------------------*/
 
 .button_type_calibration_1 .webix_button{
     background-color: rgba(243, 243, 243, 0.0);
@@ -809,15 +1042,35 @@ border: none;
     z-index: 100;
 }
 
+.button_type_calibration_1_dark .webix_button{
+    background-color: var(--c-white-color-background-dark_left_menu);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 100;
+    position: relative;
+    border-top-left-radius: 8px;
+    right: 2px;
+    width: 105%;
+    height: 105%;
+    z-index: 100;
+}
+
 .button_type_calibration_1 .webix_button:hover{
     background-color: rgba(243, 243, 243, 0.0);
+}
+
+.button_type_calibration_1_dark .webix_button:hover{
+    background-color: var(--c-white-color-background-dark_general_rows);
+
 }
 
 .button_type_calibration_1 .webix_button:focus{
     background-color: #f9f9f9;
 }
 
-
+.button_type_calibration_1_dark .webix_button:focus{
+    background-color: var(--c-white-color-background-dark_general_rows);
+}
 
 .button_type_calibration_2 .webix_button{
     background-color: rgba(243, 243, 243, 0.0);
@@ -832,13 +1085,36 @@ border: none;
     border-radius: 0;
 }
 
+.button_type_calibration_2_dark .webix_button{
+    background-color: var(--c-white-color-background-dark_left_menu);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 100;
+    position: relative;
+    right: 2px;
+    width: 105%;
+    height: 105%;
+    z-index: 100;
+    border-radius: 0;
+}
+
 .button_type_calibration_2 .webix_button:hover{
     background-color: rgba(243, 243, 243, 0.0);
+}
+
+.button_type_calibration_2_dark .webix_button:hover{
+    background-color: var(--c-white-color-background-dark_general_rows);
 }
 
 .button_type_calibration_2 .webix_button:focus{
     background-color: #f9f9f9;
 }
+
+.button_type_calibration_2_dark .webix_button:focus{
+    background-color: var(--c-white-color-background-dark_general_rows);
+}
+
+
 
 
 /*//////-------------------------------------------------------*/

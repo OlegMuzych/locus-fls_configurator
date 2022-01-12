@@ -7,7 +7,7 @@ export default class App extends JetApp{
 			id 		: APPNAME,
 			version : VERSION,
 			debug 	: !PRODUCTION,
-			start 	: "/1page"
+			start 	: "/win"
 		};
 
 		super({ ...defaults, ...config });

@@ -11,43 +11,34 @@ export default class Page9View extends JetView {
         maxHeight: 970,
         id:"1",
         body: {
+            id:"style_left_cols",
             css:"style_left_cols",
             rows:[
-                {view: "button", type:"image", image:"../sources/models/image/model101.png", label:'</span>'+
-                        '<span style="position: relative; top:60px; left:-55px; color: #000; font-weight: 100;">model101</span>', width: 200, height: 200, css:"left_menu_button"},
-                {view: "button", type:"image", image:"../sources/models/image/model201.png", width: 200, height: 200, label:'</span>'+
-                        '<span style="position: relative; top:60px; left:-55px; color: #000; font-weight: 100;">model201</span>', css:"left_menu_button"},
-                {view: "button", type:"image", image:"../sources/models/image/model301_ble.png", width: 200, height: 210, label:'</span>'+
-                        '<span style="position: relative; top:70px; left:-55px; color: #000; font-weight: 100;">model301 BLE</span>', css:"left_menu_button_3"},
+
+                {view: "button", type:"image", image:"../sources/models/image/model_101.svg", width: 180, height: 200, css:"left_menu_button", id:"left_menu_button_1"},
+                {view: "button", type:"image", image:"../sources/models/image/model_201.svg", width: 180, height: 200, css:"left_menu_button", id:"left_menu_button_2"},
+                {view: "button", type:"image", image:"../sources/models/image/model_301_BLE.svg", width: 180, height: 200, css:"left_menu_button", id:"left_menu_button_3"},
                 {
-                    height: 1,
+                    height: 120,
                 },
 
-                {view: "button", type:"image", image:"../sources/models/image/back.png", width: 200, height: 120, id:"button_back", label:'</span>'+
-                        '<span style="position: relative; top:40px; left: -35px; color: #000; font-weight: 100; font-size: 13px;">Назад</span>', css:"left_menu_button_reference", },
+                {view: "button", type:"image", image:"../sources/models/image/Back.svg", width: 180, height: 120, id:"button_back", css:"left_menu_button_reference",},
                 {
                     height: 1,
                 },
-
-                {view: "button", type:"image", image:"../sources/models/image/konfig_small.png", width: 200, height: 120, label:'</span>'+
-                        '<span style="position: relative; top:40px; left: 5px; color: #000; font-weight: 100; font-size: 13px;">Настройки</span>'+'<span style="position: relative; top:55px; left: -68px; color: #000; font-weight: 100; font-size: 13px;"> приложения</span>', css:"left_menu_button_setup",},
-                {
-                    height: 1,
-                },
-                {view: "button", type:"image",  image:"../sources/models/image/info_small.png", width: 200, height: 120, label:'</span>'+
-                        '<span style="position: relative; top:40px; left: -36px; color: #000; font-weight: 100; font-size: 13px;">Справка</span>', css:"left_menu_button_reference_3", },
+                {view: "button", type:"image",  image:"../sources/models/image/info.svg", width: 180, height: 120, id:"button_reference", css:"left_menu_button_reference", },
             ]
         }
  };
 
         var central_menu_button={
             paddingY: 0,
-            css:"central_cols_setup",
             minWidth: 500,
             maxWidth: 890,
             rows:[
                 {
                     css:"central_cols_button",
+                    id:"central_cols_button",
                     cols:[
                         {view:"button", label:"Основные настройки", maxWidth: 300, minWidth: 120, height: 100, css:"button_central_menu", id:"general", value:"Save"},
                         {view:"button", label:"Тарировка", maxWidth: 300, minWidth: 120, height: 100, css:"button_central_menu", id:"calibration", value:"Save"},
@@ -63,7 +54,6 @@ export default class Page9View extends JetView {
             // maxHeight: 860,
             // body: {
             id: "central_menu_button_1",
-            // css: "style_general_rows",
                     rows: [
                         {
                             cols:[
@@ -76,24 +66,25 @@ export default class Page9View extends JetView {
                                         {
 
                                             rows:[
-                                                {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -23px; left: 54px; font-size: 18px; font-weight: 100; ">Серийный номер</p>', labelWidth: 400, css: "window_type_1", inputAlign: "left", readonly: true},
+                                                {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -20px; left: 54px; font-size: 18px; font-weight: 100; ">Серийный номер</p>', labelWidth: 400, css: "window_type_1", id:"window_type_1",inputAlign: "center", readonly: true},
 
                                             ]
                                         },
 
                                         {height: 20,},
-                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -23px; left: 64px; font-size: 18px; font-weight: 100; ">Сетевой адрес</p>', labelWidth: 400, css: "window_type_2", inputAlign: "left"},
+                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -20px; left: 64px; font-size: 18px; font-weight: 100; ">Сетевой адрес</p>', labelWidth: 400, css: "window_type_2", inputAlign:"center", id:"window_type_2_1"},
                                         {height: 20},
-                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -23px; left: 30px; font-size: 18px; font-weight: 100; ">Минимальный уровень</p>', labelWidth: 400, css: "window_type_2", inputAlign: "left"},
-                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -23px; left: 30px; font-size: 18px; font-weight: 100; ">Максимальный уровень</p>', labelWidth: 400, css: "window_type_2", inputAlign: "left"},
+                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Минимальный уровень</p>', labelWidth: 400, css: "window_type_2", inputAlign:"center", id:"window_type_2_2"},
+                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Максимальный уровень</p>', labelWidth: 400, css: "window_type_2", inputAlign:"center", id:"window_type_2_3"},
                                         {height: 20},
-                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -23px; left: 30px; font-size: 18px; font-weight: 100; ">Скорость подключения</p>', labelWidth: 400, css: "window_type_2", inputAlign: "left"},
+                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Скорость подключения</p>', labelWidth: 400, css: "window_type_2", inputAlign:"center",id:"window_type_2_4"},
                                         {height: 20},
-                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -23px; left: -10px; font-size: 18px; font-weight: 100; ">Автоматическая выдача данных</p>', labelWidth: 400, css: "window_type_2 ", inputAlign: "left"},
+                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -20px; left: -10px; font-size: 18px; font-weight: 100; ">Автоматическая выдача данных</p>', labelWidth: 400, css: "window_type_2 ", inputAlign:"center",id:"window_type_2_5"},
                                         {height: 20,},
                                         {
                                             width: 900,
                                             css: "window_type_2",
+                                            id:"window_type_2_6",
                                             rows:[
                                                 {
                                                     cols: [
@@ -104,15 +95,11 @@ export default class Page9View extends JetView {
                                                             width: 400,
                                                             height: 100,
                                                         },
-
-                                                        {
-                                                            view: "switch",
-                                                            value: 1,
-                                                            id: "temp_compensation",
-
-                                                        }
+                                                        {view: "switch", value: 0, id: "temp_compensation",},
+                                                        {view: "switch", value: 0, id: "temp_compensation_2"}
                                                     ]
-                                                }
+                                                },
+
                                             ]
 
                                                 },
@@ -401,18 +388,23 @@ export default class Page9View extends JetView {
 
 
         var right_menu_button={
-            maxWidth: 500,
-            css:"right_menu",
+            height: 95,
             rows:[
                 {
-                    //Кнопки сверху в правом менб-----------------------//
+                    //Кнопки сверху в правом меню-----------------------//
                     paddingY: 20,
                     cols: [
-                        {view: "button", width: 250, height: 70, label: "Сервис", css: "button_right_menu_top_1",},
+                        {
+
+                        },
+                        {view: "button", width: 250, height: 70, label: "Сервис", css: "button_right_menu_top_1", id:"button_right_menu_top_1"},
                         {
                             width: 10,
                         },
-                        {view: "button", width: 250, height: 70, label: "Пароль", css: "button_right_menu_top_2",}
+                        {view: "button", width: 250, height: 70, label: "Пароль", css: "button_right_menu_top_1", id:"button_right_menu_top_2"},
+                        {
+
+                        }
                     ]
                   }
                 ]
@@ -421,24 +413,20 @@ export default class Page9View extends JetView {
 
 
         var right_menu_status={
-            cols:[
-                {
-                    maxWidth:550,
-                    minWidth: 500,
-                    css:"rows_level_right_menu",
-                    height: 190,
+            css:"right_menu_status",
+            id:"right_menu_status",
                     rows:[
                         {
                             height: 20,
+
                         },
                         {
-
                             cols:[
                                 {width: 70,},
                                 {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_1"},
                                 {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_1",},
                                 {width: 20,},
-                                {view:"label", label:"Датчик подключен", height: 30, css:"rows_level_right_menu_info",}
+                                {view:"label", label:"Датчик подключен", height: 30, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_1"}
                             ]
                         },
                         {
@@ -450,7 +438,7 @@ export default class Page9View extends JetView {
                                 {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_2",},
                                 {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_2",},
                                 {width: 20,},
-                                {view:"label", label:"Топливо стабильно", height: 30, css:"rows_level_right_menu_info",}
+                                {view:"label", label:"Топливо стабильно", height: 30, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_2"}
                             ]
                         },
                         {
@@ -462,7 +450,7 @@ export default class Page9View extends JetView {
                                 {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_3"},
                                 {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_3",},
                                 {width: 20,},
-                                {view:"label", label:"Калибровка не требуется", height: 30, css:"rows_level_right_menu_info",}
+                                {view:"label", label:"Калибровка не требуется", height: 30, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_3"}
                             ]
                         },
                         {
@@ -474,39 +462,36 @@ export default class Page9View extends JetView {
                                 {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_4_base", },
                                 {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_4",},
                                 {width: 20,},
-                                {view:"label", label:"Термокомпенсация", height: 30, width:200, css:"rows_level_right_menu_info",},
+                                {view:"label", label:"Термокомпенсация", height: 30, width:200, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_4"},
                                 {
                                     width:50,
                                 },
                                 {view:"button", type:"image", image:"../sources/models/image/temperature.png", width:30, height:30, css:"thermometer_image",},
                                 {view:"text", width: 60, height:30, css:"window_temp", id:"window_temp", readonly:true, value:"25°"},
-                                {
-                                    width: 0,
-                                }
+
                             ]
+                        },
+                        {
+                            height: 20,
                         }
                     ]
-                }
-            ]
+
         };
 
 
 
 
         var right_menu_setup={
+            css:"right_menu_status",
             id:"right_menu_setup",
-            cols:[
-                {
-                    css:"rows_level_right_menu",
-                    height: 650,
-                    width: 550,
+            height: 650,
                     rows:[
                         {
                             cols:[
                                 {
                                     width: 50,
                                 },
-                                {view:"label", label:"<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 30px;'>Колибровка с топливом</p>", width: 300, height:100,},
+                                {view:"label", label:"<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 30px; '>Колибровка с топливом</p>", width: 300, height:100, css:"right_menu_status_text", id:"right_menu_status_text"},
                                 {
                                     width: 50,
                                 },
@@ -541,9 +526,8 @@ export default class Page9View extends JetView {
                                         template: "#value#%"
                                     },
                                     bands:[
-                                        { value:120, color:"#b6c7dd"},
-                                        { value:80, color:"#b6c7dd"},
-                                        { value:60, color:"#b6c7dd"},
+                                        { value:10, color:"#628cbb", css:"test345"},
+                                        // { value:0, color:"#628cbb"},
                                     ],
                                     color:"#f8f8f8",
                                 },
@@ -562,7 +546,7 @@ export default class Page9View extends JetView {
                                                         {
                                                             height: 130,
                                                         },
-                                                        {view:"text", width: 200, height: 50, css:"empty_window_text", readonly:false, id:"auto_calibration_set_2"},
+                                                        {view:"text", width: 200, height: 50, css:"full_window_text", readonly:false, id:"auto_calibration_set_2"},
                                                         {view:"button", type:"label", label:"Пустой", width: 200, height: 50, css:"auto_calibration", id:"auto_calibration_2"},
                                                     ]
                                                 }
@@ -589,102 +573,91 @@ export default class Page9View extends JetView {
                             ]
                         }
                     ]
-                }
-            ]
+
 
         };
 
         var right_menu_filter={
+            // css:"right_menu_status",
+            css:"right_menu_status",
             id:"right_menu_filter",
-            cols:[
+            height: 650,
+            rows:[
                 {
-                    css:"rows_level_right_menu",
-                    height: 650,
-                    width: 550,
+                    cols:[
+                        {
+                            height: 100,
+                        }
+                    ],
+
+                },
+                {
                     rows:[
                         {
                             cols:[
                                 {
-                                    width: 50,
-                                },
-                                {width: 300, height:100,},
-                                {
-                                    width: 50,
-                                },
-                                {height: 100,},
-                            ],
+                                    height: 20,
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    height: 50,
+                },
+                {
 
+                    cols:[
+                        {
+                            width: 30,
+                        },
+                        {view:"bullet", layout:"y", id:"progress_bar", css:"progress_bar", value:0, labelHeight:30, width: 120,  minRange:0, maxRange:10, stroke:40,
+                            scale: {
+                                step: 10,
+                                template: "#value#%"
+                            },
+                            bands:[
+                                { value:120, color:"#b6c7dd"},
+                                { value:80, color:"#b6c7dd"},
+                                { value:60, color:"#b6c7dd"},
+                            ],
+                            color:"#f8f8f8",
+                        },
+                        {
+                            width: 150,
                         },
                         {
                             rows:[
                                 {
                                     cols:[
                                         {
-                                            width: 40,
-                                        },
-                                        {width: 460, height: 50,}
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            height: 50,
-                        },
-                        {
 
-                            cols:[
-                                {
-                                    width: 30,
-                                },
-                                {view:"bullet", layout:"y", id:"progress_bar", css:"progress_bar", value:0, labelHeight:30, width: 120,  minRange:0, maxRange:10, stroke:40,
-                                    scale: {
-                                        step: 10,
-                                        template: "#value#%"
-                                    },
-                                    bands:[
-                                        { value:120, color:"#b6c7dd"},
-                                        { value:80, color:"#b6c7dd"},
-                                        { value:60, color:"#b6c7dd"},
-                                    ],
-                                    color:"#f8f8f8",
-                                },
-                                {
-                                    width: 150,
-                                },
-                                {
-                                    rows:[
-                                        {
-                                            cols:[
+                                            rows:[
+                                                {view:"text", width: 200, height: 50, css:"full_window_text", readonly:false, id:"auto_calibration_set_3"},
+                                                {view:"button", type:"label", label:"Полный", width: 200, height: 50, css:"auto_calibration", id:"auto_calibration_3"},
                                                 {
-                                                    rows:[
-                                                        {view:"text", width: 200, height: 50, css:"full_window_text",readonly:true},
-                                                        {view:"button", type:"label", label:"Полный", width: 200, height: 50, css:"auto_calibration", id:"auto_calibration_3", disabled:true},
-                                                        {
-                                                            height: 130,
-                                                        },
-                                                        {view:"text", width: 200, height: 50,  css:"empty_window_text",readonly:true},
-                                                        {view:"button", type:"label", label:"Пустой", width: 200, height: 50, css:"auto_calibration", id:"auto_calibration_4", disabled:true},
-                                                    ]
-                                                }
+                                                    height: 130,
+                                                },
+                                                {view:"text", width: 200, height: 50, css:"full_window_text", readonly:false, id:"auto_calibration_set_4"},
+                                                {view:"button", type:"label", label:"Пустой", width: 200, height: 50, css:"auto_calibration", id:"auto_calibration_4"},
                                             ]
                                         }
                                     ]
                                 }
                             ]
-                        },
-                        {
-                            height: 50,
-                        },
-                        {
+                        }
+                    ]
+                },
+                {
+                    height: 50,
+                },
+                {
 
-                            rows:[
+                    rows:[
+                        {
+                            cols:[
                                 {
-                                    cols:[
-                                        {
-                                            width: 40,
-                                        },
-                                        {width: 460, height: 50,}
-                                    ]
+                                    height:20,
                                 }
                             ]
                         }
@@ -694,16 +667,13 @@ export default class Page9View extends JetView {
         }
 
         var right_menu_calibration = {
-
             id:"right_menu_calibration_button",
-            // css:"rows_right_menu_calibration_1",
-            width: 550,
             cols: [
                 {
 
                 },
-                {view: "button", width: 279, height: 70, label: "Слив", css: "button_type_calibration_1", id:"button_type_calibration_1" },
-                {view: "button", width: 279, height: 70, label: "Залив", css: "button_type_calibration_2", id:"button_type_calibration_2"},
+                {view: "button", width: 254, height: 70, label: "Слив", css: "button_type_calibration_1", id:"button_type_calibration_1" },
+                {view: "button", width: 254, height: 70, label: "Залив", css: "button_type_calibration_2", id:"button_type_calibration_2"},
                 {
 
                 }
@@ -714,14 +684,8 @@ export default class Page9View extends JetView {
         var right_menu_calibration_setup={
             id:"right_menu_calibration_setup",
             css:"rows_right_menu_calibration_2",
-            height: 650,
-            width: 550,
-            rows:[
-                {
+            height: 570,
                     rows:[
-
-                    ]
-                },
                 {
                     height: 50,
                 },
@@ -785,20 +749,14 @@ export default class Page9View extends JetView {
                         }
                     ]
                 }
-            ]
+             ]
         };
 
         var right_menu_calibration_drain_2={
             id:"right_menu_calibration_drain_2",
             css:"rows_right_menu_calibration_2",
-            height: 650,
-            width: 550,
-            rows:[
-                {
+            height: 570,
                     rows:[
-
-                    ]
-                },
                 {
                     height: 50,
                 },
@@ -929,7 +887,7 @@ export default class Page9View extends JetView {
 
 
             ]
-        }
+        };
 
 
 
@@ -966,8 +924,8 @@ export default class Page9View extends JetView {
             scroll: "y",
             maxHeight: 1000,
             css:"style_body",
+            id:"dark",
             body: {
-
                 cols: [
                     {
                         rows: [
@@ -975,20 +933,21 @@ export default class Page9View extends JetView {
                         ]
                     },
                     {
+                        id:"style_left_cols_2",
+                        css:"style_left_cols",
                         width: 20,
                     },
                     {
                         minWidth: 500,
                         maxWidth: 880,
+                        id:"style_general_rows_1",
                         css:"style_general_rows",
                         rows: [
                             central_menu_button,
                             {
-                                height: 2,
+                                height: 40,
                             },
-                            {
-                                height: 20,
-                            },
+
                             {
                                 rows:[
                                    general_config
@@ -1004,23 +963,34 @@ export default class Page9View extends JetView {
                                     calibration
                                 ]
                             }
-
-
                         ]
 
                     },
                     {
-                        width: 20,
+                        css:"rows_right",
+                        id:"rows_right_1",
+                        width: 50,
                     },
                     {
+                        // width: 550,
+                        css:"rows_right",
+                        id:"rows_right_2",
                         rows: [
-                            right_menu_button,
                             {
-                                height: 10,
+                                rows:[
+                                    right_menu_button,
+                                ]
                             },
-                            right_menu_status,
                             {
-                                height: 10,
+                                height: 20,
+                            },
+                            {
+                                rows:[
+                                    right_menu_status,
+                                ]
+                            },
+                            {
+                                height: 20,
                             },
                             {
                                 rows:[
@@ -1028,36 +998,30 @@ export default class Page9View extends JetView {
                                 ]
                             },
                             {
+                                height: 1,
+                            },
+                            {
                                 rows:[
                                     right_menu_filter
                                 ]
                             },
                             {
+
                                 rows:[
                                     right_menu_calibration,
                                     right_menu_calibration_setup,
                                     right_menu_calibration_drain_2
                                 ]
                             }
-
-
-
                         ]
+                    },
+                    {
+                        css:"rows_right",
+                        id:"rows_right_3",
+                        width: 50,
                     }
-
-
                 ]
             }
-
-
-
-            // left_menu
-            // central_menu_button,
-            // general_config
-
-
-
-
 
 
         }
@@ -1077,6 +1041,10 @@ export default class Page9View extends JetView {
         $$("button_define_4").hide()
         $$("button_define_define_1").hide()
         $$("button_define_define_3").hide()
+        $$("auto_calibration_3").disable()
+        $$("auto_calibration_4").disable()
+        $$("auto_calibration_set_3").disable()
+        $$("auto_calibration_set_4").disable()
 
 
         //Дефолтные значения при загрузке стр на главном меню------------------//
@@ -1170,14 +1138,18 @@ export default class Page9View extends JetView {
 
 
 
-
-
-        $$("filtering_switch_top").attachEvent("onItemClick", function(){
-            $$("degree_of_filtration").disable()
-            $$("degree_of_filtration_2").disable()
-            $$("degree_of_filtration_3").disable()
-            $$("degree_of_filtration_4").disable()
-        });
+        //
+        // $$("degree_of_filtration").enable()
+        // $$("degree_of_filtration_2").enable()
+        // $$("degree_of_filtration_3").enable()
+        // $$("degree_of_filtration_4").enable()
+        //
+        // $$("filtering_switch_top").attachEvent("onItemClick", function(){
+        //     $$("degree_of_filtration").disable()
+        //     $$("degree_of_filtration_2").disable()
+        //     $$("degree_of_filtration_3").disable()
+        //     $$("degree_of_filtration_4").disable()
+        // });
 
         $$("temp_compensation").attachEvent("onItemClick", function(){
             $$("button_define_4_base").hide()
@@ -1196,16 +1168,6 @@ export default class Page9View extends JetView {
         });
 
 
-
-
-
-
-
-
-
-
-
-
         setInterval(function(){
             var value = Math.floor(Math.random()*10);
             $$("progress_bar").setValue(value);
@@ -1214,6 +1176,262 @@ export default class Page9View extends JetView {
 
 
 
+        // var light = $$("temp_compensation").attachEvent("onItemClick", function() {
+        //     console.log($$("temp_compensation").getValue());
+        //
+        //     if ($$("temp_compensation").getValue()== 1) {
+        //
+        //         setColor("button_define_4","red");
+        //     } else {
+        //         setColor("button_define_4","green");
+        //     }
+        //
+        // });
+        //
+        // function setColor(id, color) {
+        //     webix.html.removeCss($$("button_define_4").getNode(), "rows_level_right_menu_switch");
+        //
+        //     if (color == "red") {
+        //         webix.html.addCss($$("button_define_4").getNode(), "rows_level_right_menu_switch_define");
+        //     }
+        //     if (color == "green") {
+        //         webix.html.addCss($$("button_define_4").getNode(), "rows_level_right_menu_switch");
+        //     }
+        // }
+
+
+
+
+        var color = $$("temp_compensation_2").attachEvent("onItemClick", function() {
+            console.log($$("temp_compensation_2").getValue());
+
+            if ($$("temp_compensation_2").getValue()== 1) {
+
+                setColor("dark","white");
+                setColor("style_left_cols","white");
+                setColor("style_left_cols_2","white");
+                setColor("style_general_rows_1","white");
+                setColor("left_menu_button_1","white");
+                setColor("left_menu_button_2","white");
+                setColor("left_menu_button_3","white");
+                setColor("general","white");
+                setColor("calibration","white");
+                setColor("filtering","white");
+                setColor("button_reference","white");
+                setColor("button_back","white");
+                setColor("window_type_1","white");
+                setColor("window_type_2_1","white");
+                setColor("window_type_2_2","white");
+                setColor("window_type_2_3","white");
+                setColor("window_type_2_4","white");
+                setColor("window_type_2_5","white");
+                setColor("window_type_2_6","white");
+                setColor("right_menu_status","white");
+                setColor("right_menu_setup","white");
+                setColor("rows_right_1","white");
+                setColor("rows_right_2","white");
+                setColor("rows_right_3","white");
+                setColor("rows_level_right_menu_info_1","white");
+                setColor("rows_level_right_menu_info_2","white");
+                setColor("rows_level_right_menu_info_3","white");
+                setColor("rows_level_right_menu_info_4","white");
+                setColor("button_right_menu_top_1","white");
+                setColor("button_right_menu_top_2","white");
+                setColor("auto_calibration_set_1","white");
+                setColor("auto_calibration_set_2","white");
+                setColor("auto_calibration_set_3","white");
+                // setColor("auto_calibration_set_4","white");
+                // setColor("right_menu_status_text","white");
+                // setColor("central_cols_button","white");
+                // setColor("right_menu_filter","white");
+                // setColor("button_type_calibration_1","white");
+                // setColor("button_type_calibration_2","white");
+
+
+            } else {
+                setColor("dark","black");
+                setColor("style_left_cols","black");
+                setColor("style_left_cols_2","black");
+                setColor("style_general_rows_1","black");
+                setColor("left_menu_button_1","black");
+                setColor("left_menu_button_2","black");
+                setColor("left_menu_button_3","black");
+                setColor("general","black");
+                setColor("calibration","black");
+                setColor("filtering","black");
+                setColor("button_reference","black");
+                setColor("button_back","black");
+                setColor("window_type_1","black");
+                setColor("window_type_2_1","black");
+                setColor("window_type_2_2","black");
+                setColor("window_type_2_3","black");
+                setColor("window_type_2_4","black");
+                setColor("window_type_2_5","black");
+                setColor("window_type_2_6","black");
+                setColor("right_menu_status","black");
+                setColor("right_menu_setup","black");
+                setColor("rows_right_1","black");
+                setColor("rows_right_2","black");
+                setColor("rows_level_right_menu_info_1","black");
+                setColor("rows_level_right_menu_info_2","black");
+                setColor("rows_level_right_menu_info_3","black");
+                setColor("rows_level_right_menu_info_4","black");
+                setColor("button_right_menu_top_1","black");
+                setColor("button_right_menu_top_2","black");
+                setColor("auto_calibration_set_1","black");
+                setColor("auto_calibration_set_2","black");
+                setColor("auto_calibration_set_3","black");
+                setColor("auto_calibration_set_4","black");
+                setColor("right_menu_status_text","black");
+                setColor("central_cols_button","black");
+                setColor("right_menu_filter","black");
+                setColor("button_type_calibration_1","black");
+                setColor("button_type_calibration_2","black");
+
+
+
+
+            }
+
+        });
+        function setColor(id, color)
+        {
+            webix.html.removeCss( $$("dark").getNode(), "style_body");
+            webix.html.removeCss( $$("style_left_cols").getNode(), "style_left_cols");
+            webix.html.removeCss( $$("style_left_cols_2").getNode(), "style_left_cols");
+            webix.html.removeCss( $$("style_general_rows_1").getNode(), "style_general_rows");
+            webix.html.removeCss( $$("left_menu_button_1").getNode(), "left_menu_button");
+            webix.html.removeCss( $$("left_menu_button_2").getNode(), "left_menu_button");
+            webix.html.removeCss( $$("left_menu_button_3").getNode(), "left_menu_button");
+            webix.html.removeCss( $$("general").getNode(), "button_central_menu");
+            webix.html.removeCss( $$("calibration").getNode(), "button_central_menu");
+            webix.html.removeCss( $$("filtering").getNode(), "button_central_menu");
+            webix.html.removeCss( $$("button_reference").getNode(), "left_menu_button_reference");
+            webix.html.removeCss( $$("button_back").getNode(), "left_menu_button_reference");
+            webix.html.removeCss( $$("window_type_1").getNode(), "window_type_1");
+            webix.html.removeCss( $$("window_type_2_1").getNode(), "window_type_2");
+            webix.html.removeCss( $$("window_type_2_2").getNode(), "window_type_2");
+            webix.html.removeCss( $$("window_type_2_3").getNode(), "window_type_2");
+            webix.html.removeCss( $$("window_type_2_4").getNode(), "window_type_2");
+            webix.html.removeCss( $$("window_type_2_5").getNode(), "window_type_2");
+            webix.html.removeCss( $$("window_type_2_6").getNode(), "window_type_2");
+            webix.html.removeCss( $$("right_menu_status").getNode(), "right_menu_status");
+            webix.html.removeCss( $$("right_menu_setup").getNode(), "right_menu_status");
+            webix.html.removeCss( $$("rows_right_1").getNode(), "rows_right");
+            webix.html.removeCss( $$("rows_right_2").getNode(), "rows_right");
+            webix.html.removeCss( $$("rows_right_3").getNode(), "rows_right");
+            webix.html.removeCss( $$("rows_level_right_menu_info_1").getNode(), "rows_level_right_menu_info");
+            webix.html.removeCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info");
+            webix.html.removeCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info");
+            webix.html.removeCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info");
+            webix.html.removeCss( $$("button_right_menu_top_1").getNode(), "button_right_menu_top_1");
+            webix.html.removeCss( $$("button_right_menu_top_2").getNode(), "button_right_menu_top_1");
+            webix.html.removeCss( $$("auto_calibration_set_1").getNode(), "full_window_text");
+            webix.html.removeCss( $$("auto_calibration_set_2").getNode(), "full_window_text");
+            webix.html.removeCss( $$("auto_calibration_set_3").getNode(), "full_window_text");
+            webix.html.removeCss( $$("auto_calibration_set_4").getNode(), "full_window_text");
+            webix.html.removeCss( $$("right_menu_status_text").getNode(), "right_menu_status_text");
+            webix.html.removeCss( $$("central_cols_button").getNode(), "central_cols_button");
+            webix.html.removeCss( $$("right_menu_filter").getNode(), "right_menu_status");
+            webix.html.removeCss( $$("button_type_calibration_1").getNode(), "button_type_calibration_1");
+            webix.html.removeCss( $$("button_type_calibration_2").getNode(), "button_type_calibration_2");
+
+
+
+
+
+            if (color == "white") {
+                webix.html.addCss( $$("dark").getNode(), "style_body_dark");
+                webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols_dark");
+                webix.html.addCss( $$("style_left_cols_2").getNode(), "style_left_cols_dark");
+                webix.html.addCss( $$("style_general_rows_1").getNode(), "style_general_rows_dark");
+                webix.html.addCss( $$("left_menu_button_1").getNode(), "left_menu_button_dark");
+                webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_dark");
+                webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button_dark");
+                webix.html.addCss( $$("general").getNode(), "button_central_menu_dark");
+                webix.html.addCss( $$("calibration").getNode(), "button_central_menu_dark");
+                webix.html.addCss( $$("filtering").getNode(), "button_central_menu_dark");
+                webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference_dark");
+                webix.html.addCss( $$("button_back").getNode(), "left_menu_button_reference_dark");
+                webix.html.addCss( $$("window_type_1").getNode(), "window_type_1_dark");
+                webix.html.addCss( $$("window_type_2_1").getNode(), "window_type_2_dark");
+                webix.html.addCss( $$("window_type_2_2").getNode(), "window_type_2_dark");
+                webix.html.addCss( $$("window_type_2_3").getNode(), "window_type_2_dark");
+                webix.html.addCss( $$("window_type_2_4").getNode(), "window_type_2_dark");
+                webix.html.addCss( $$("window_type_2_5").getNode(), "window_type_2_dark");
+                webix.html.addCss( $$("window_type_2_6").getNode(), "window_type_2_dark");
+                webix.html.addCss( $$("right_menu_status").getNode(), "right_menu_status_dark");
+                webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status_dark");
+                webix.html.addCss( $$("rows_right_1").getNode(), "rows_right_dark");
+                webix.html.addCss( $$("rows_right_2").getNode(), "rows_right_dark");
+                webix.html.addCss( $$("rows_right_3").getNode(), "rows_right_dark");
+                webix.html.addCss( $$("rows_level_right_menu_info_1").getNode(), "rows_level_right_menu_info_dark");
+                webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info_dark");
+                webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info_dark");
+                webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info_dark");
+                webix.html.addCss( $$("button_right_menu_top_1").getNode(), "button_right_menu_top_1_dark");
+                webix.html.addCss( $$("button_right_menu_top_2").getNode(), "button_right_menu_top_1_dark");
+                webix.html.addCss( $$("auto_calibration_set_1").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("auto_calibration_set_2").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("auto_calibration_set_3").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("auto_calibration_set_4").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("right_menu_status_text").getNode(), "right_menu_status_text_dark");
+                webix.html.addCss( $$("central_cols_button").getNode(), "central_cols_button_dark");
+                webix.html.addCss( $$("right_menu_filter").getNode(), "right_menu_status_dark");
+                webix.html.addCss( $$("button_type_calibration_1").getNode(), "button_type_calibration_1_dark");
+                webix.html.addCss( $$("button_type_calibration_2").getNode(), "button_type_calibration_2_dark");
+
+
+
+
+            }
+            if (color == "black") {
+                webix.html.addCss( $$("dark").getNode(), "style_body");
+                webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols");
+                webix.html.addCss( $$("style_left_cols_2").getNode(), "style_left_cols");
+                webix.html.addCss( $$("style_general_rows_1").getNode(), "style_general_rows");
+                webix.html.addCss( $$("left_menu_button_1").getNode(), "left_menu_button");
+                webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button");
+                webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button");
+                webix.html.addCss( $$("general").getNode(), "button_central_menu");
+                webix.html.addCss( $$("calibration").getNode(), "button_central_menu");
+                webix.html.addCss( $$("filtering").getNode(), "button_central_menu");
+                webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference");
+                webix.html.addCss( $$("button_back").getNode(), "left_menu_button_reference");
+                webix.html.addCss( $$("window_type_1").getNode(), "window_type_1");
+                webix.html.addCss( $$("window_type_2_1").getNode(), "window_type_2");
+                webix.html.addCss( $$("window_type_2_2").getNode(), "window_type_2");
+                webix.html.addCss( $$("window_type_2_3").getNode(), "window_type_2");
+                webix.html.addCss( $$("window_type_2_4").getNode(), "window_type_2");
+                webix.html.addCss( $$("window_type_2_5").getNode(), "window_type_2");
+                webix.html.addCss( $$("window_type_2_6").getNode(), "window_type_2");
+                webix.html.addCss( $$("right_menu_status").getNode(), "right_menu_status");
+                webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status");
+                webix.html.addCss( $$("rows_right_1").getNode(), "rows_right");
+                webix.html.addCss( $$("rows_right_2").getNode(), "rows_right");
+                webix.html.addCss( $$("rows_right_3").getNode(), "rows_right");
+                webix.html.addCss( $$("rows_level_right_menu_info_1").getNode(), "rows_level_right_menu_info");
+                webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info");
+                webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info");
+                webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info");
+                webix.html.addCss( $$("button_right_menu_top_1").getNode(), "button_right_menu_top_1");
+                webix.html.addCss( $$("button_right_menu_top_2").getNode(), "button_right_menu_top_1");
+                webix.html.addCss( $$("auto_calibration_set_1").getNode(), "full_window_text");
+                webix.html.addCss( $$("auto_calibration_set_2").getNode(), "full_window_text");
+                webix.html.addCss( $$("auto_calibration_set_3").getNode(), "full_window_text");
+                webix.html.addCss( $$("auto_calibration_set_4").getNode(), "full_window_text");
+                webix.html.addCss( $$("right_menu_status_text").getNode(), "right_menu_status_text");
+                webix.html.addCss( $$("central_cols_button").getNode(), "central_cols_button");
+                webix.html.addCss( $$("right_menu_filter").getNode(), "right_menu_status");
+                webix.html.addCss( $$("button_type_calibration_1").getNode(), "button_type_calibration_1");
+                webix.html.addCss( $$("button_type_calibration_2").getNode(), "button_type_calibration_2");
+
+
+
+
+            }
+
+        }
 
 
 
@@ -1221,7 +1439,11 @@ export default class Page9View extends JetView {
 
 
 
-    }
+
+
+
+
+         }
     }
 
 

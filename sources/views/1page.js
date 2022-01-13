@@ -346,7 +346,7 @@ export default class Page9View extends JetView {
                         ]
                     },
                     {
-                        height: 20,
+                        height: 0,
                     },
                     {
                         height: 320,
@@ -357,6 +357,7 @@ export default class Page9View extends JetView {
                                 rows: [
                                     {
                                         width:100,
+                                        height: 20,
                                     },
                                     {
                                             cols: [
@@ -408,19 +409,18 @@ export default class Page9View extends JetView {
                                 ]
                             },
                             {
-                                    height: 10,
+                                    height: 30,
                             },
                             {
                                 id: "degree_of_filtration_3",
-                                width: 846,
                                 rows: [
                                     {
+                                        height: 100,
                                         cols: [
                                             {
                                                 view: "label",
                                                 label: "<p style='font-size: 18px; font-weight: 100; position: relative; left: 30px;'>Время усреднения (0...21) с</p>",
                                                 width: 300,
-                                                height: 100,
                                                 css:"text_color_filter",
                                                 id:"text_color_filter_2",
                                             },
@@ -435,20 +435,25 @@ export default class Page9View extends JetView {
                                                 min: 0,
                                                 max: 21,
                                                 css: "slider_1",
-                                                id: "slider_1",
-                                                title: webix.template("#value#")
+                                                id: "slider_filter_1",
+                                                title: webix.template("#value#"),
                                             },
                                             {
-                                                view: "text",
-                                                value: "0",
-                                                name: "s1",
-                                                width: 50,
-                                                height: 100,
-                                                inputAlign: "center",
-                                                inputHeight: 50,
-                                                css: "slider_text_window_1",
-                                                id: "window_slide_1",
-                                                readonly: true,
+                                                paddingY: 45,
+                                                rows:[
+                                                    {
+                                                        view: "text",
+                                                        value: "0",
+                                                        name: "s1",
+                                                        width: 50,
+                                                        inputAlign: "center",
+                                                        inputHeight: 50,
+                                                        css: "full_window_text",
+                                                        id: "window_text_time",
+                                                        readonly: true,
+                                                        height:50,
+                                                    },
+                                                ]
                                             },
                                             {
                                                 width: 30,
@@ -458,9 +463,11 @@ export default class Page9View extends JetView {
                                                 type: "label",
                                                 label: "Применить",
                                                 width: 150,
-                                                height: 12,
                                                 id: "button_slider_gen_value_1",
                                                 css: "button_slider_gen_value"
+                                            },
+                                            {
+
                                             }
 
 
@@ -470,15 +477,14 @@ export default class Page9View extends JetView {
                             },
                             {
                                 id: "degree_of_filtration_4",
-                                height: 120,
                                 rows: [
                                     {
+                                        height: 100,
                                         cols: [
                                             {
                                                 view: "label",
                                                 label: "<p style='font-size: 18px; font-weight: 100; position: relative; left: 78px;'>Длина медианы (0...7) </p>",
                                                 width: 300,
-                                                height: 100,
                                                 css:"text_color_filter",
                                                 id:"text_color_filter_3",
                                             },
@@ -490,22 +496,28 @@ export default class Page9View extends JetView {
                                                 value: "0",
                                                 name: "s2",
                                                 width: 300,
-                                                height: 10,
                                                 min: 0,
                                                 max: 7,
-                                                css: "slider_2",
-                                                title: webix.template("#value#")
+                                                css: "slider_1",
+                                                title: webix.template("#value#"),
+                                                id:"slider_filter_2",
                                             },
                                             {
-                                                view: "text",
-                                                value: "0",
-                                                name: "s1",
-                                                width: 50,
-                                                height: 100,
-                                                inputAlign: "center",
-                                                inputHeight: 50,
-                                                css: "slider_text_window_1",
-                                                readonly: true,
+                                                paddingY: 45,
+                                                rows:[
+                                                    {
+                                                        view: "text",
+                                                        value: "0",
+                                                        name: "s1",
+                                                        width: 50,
+                                                        inputAlign: "center",
+                                                        inputHeight: 50,
+                                                        css: "full_window_text",
+                                                        id:"window_text_mediana",
+                                                        readonly: true,
+                                                        height:50,
+                                                    },
+                                                ]
                                             },
                                             {
                                                 width: 30,
@@ -515,10 +527,12 @@ export default class Page9View extends JetView {
                                                 type: "label",
                                                 label: "Применить",
                                                 width: 150,
-                                                height: 20,
                                                 id: "button_slider_gen_value_2",
                                                 css: "button_slider_gen_value"
                                             },
+                                            {
+
+                                            }
 
                                         ]
                                     }
@@ -1281,30 +1295,55 @@ export default class Page9View extends JetView {
         });
 
 
-
-
-
         $$("filtering_switch_top").attachEvent("onItemClick", function(){
-            $$("degree_of_filtration").disable()
-            $$("degree_of_filtration_2").disable()
-            $$("degree_of_filtration_3").disable()
-            $$("degree_of_filtration_4").disable()
-        });
+            if ($$("filtering_switch_top").getValue()== 1) {
+
+                $$("degree_of_filtration").enable()
+                $$("degree_of_filtration_2").enable()
+                $$("degree_of_filtration_3").enable()
+                $$("degree_of_filtration_4").enable()
+
+                    } else {
+
+                $$("degree_of_filtration").disable()
+                $$("degree_of_filtration_2").disable()
+                $$("degree_of_filtration_3").disable()
+                $$("degree_of_filtration_4").disable()
+
+                    }
+
+                });
 
         $$("temp_compensation").attachEvent("onItemClick", function(){
-            $$("button_define_4_base").hide()
-            $$("button_define_4").show()
+            if ($$("temp_compensation").getValue()== 1) {
+                $$("button_define_4_base").hide()
+                $$("button_define_4").show()
+
+            } else{
+                $$("button_define_4").hide()
+                $$("button_define_4_base").show()
+            }
         });
+
 
 
 
         $$("auto_calibration").disable()
         $$("calibration_fuel").attachEvent("onItemClick", function(){
-            $$("auto_calibration").enable()
-            $$("auto_calibration_1").disable()
-            $$("auto_calibration_2").disable()
-            $$("auto_calibration_set_1").disable()
-            $$("auto_calibration_set_2").disable()
+            if ($$("calibration_fuel").getValue()== 1) {
+
+                $$("auto_calibration_set_2").enable()
+                $$("auto_calibration_set_1").enable()
+                $$("auto_calibration_2").enable()
+                $$("auto_calibration_1").enable()
+                $$("auto_calibration").disable()
+            } else {
+                $$("auto_calibration_set_2").disable()
+                $$("auto_calibration_set_1").disable()
+                $$("auto_calibration_2").disable()
+                $$("auto_calibration_1").disable()
+                $$("auto_calibration").enable()
+            }
         });
 
 
@@ -1486,6 +1525,12 @@ export default class Page9View extends JetView {
             webix.html.removeCss( $$("text_color_filter_3").getNode(), "text_color_filter");
             webix.html.removeCss( $$("text_color_filter_1_0").getNode(), "text_color_filter");
             webix.html.removeCss( $$("text_color_filter_1_1").getNode(), "text_color_filter");
+            webix.html.removeCss( $$("window_text_time").getNode(), "full_window_text");
+            webix.html.removeCss( $$("window_text_mediana").getNode(), "full_window_text");
+            webix.html.removeCss( $$("slider_filter_1").getNode(), "slider_1");
+            webix.html.removeCss( $$("slider_filter_2").getNode(), "slider_1");
+
+
 
 
 
@@ -1498,6 +1543,9 @@ export default class Page9View extends JetView {
             // filter_open_windows
             // degree_of_filtration_2
             // text_color_filter_1
+            // window_text_time
+            // window_text_mediana
+            // slider_filter_1
 
 
 
@@ -1552,6 +1600,12 @@ export default class Page9View extends JetView {
                 webix.html.addCss( $$("text_color_filter_3").getNode(), "text_color_filter_dark");
                 webix.html.addCss( $$("text_color_filter_1_0").getNode(), "text_color_filter_dark");
                 webix.html.addCss( $$("text_color_filter_1_1").getNode(), "text_color_filter_dark");
+                webix.html.addCss( $$("window_text_time").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("window_text_mediana").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("slider_filter_1").getNode(), "slider_1_dark");
+                webix.html.addCss( $$("slider_filter_2").getNode(), "slider_1_dark");
+
+
 
 
 
@@ -1617,6 +1671,11 @@ export default class Page9View extends JetView {
                 webix.html.addCss( $$("text_color_filter_3").getNode(), "text_color_filter");
                 webix.html.addCss( $$("text_color_filter_1_0").getNode(), "text_color_filter");
                 webix.html.addCss( $$("text_color_filter_1_1").getNode(), "text_color_filter");
+                webix.html.addCss( $$("window_text_time").getNode(), "full_window_text");
+                webix.html.addCss( $$("window_text_mediana").getNode(), "full_window_text");
+                webix.html.addCss( $$("slider_filter_1").getNode(), "slider_1");
+                webix.html.addCss( $$("slider_filter_2").getNode(), "slider_1");
+
 
 
 

@@ -25,7 +25,7 @@ border: none;
     --white-style-text-color: #000;
     --font-size: 18px;
     --font-weight: 100;
-    --c-color-text-light: #000;
+    --c-color-text-light: #141414;
 
 
     /*dark*/
@@ -888,8 +888,13 @@ border: none;
 
 .filters_rows{
     background-color: #f0f0f0;
+    border-radius: 8px;
 }
 
+.filter_rows_dark{
+    background-color: var(--c-white-color-background-dark_general_rows);
+    border-radius: 8px;
+}
 /*Кнопка быврать фильтр-----------------------------------------*/
 .button_slider_gen_value .webix_button{
     position: relative;
@@ -961,8 +966,8 @@ border: none;
 /*Кнопка быврать фильтр-----------------------------------------*/
 .button_filter_set .webix_button{
     position: relative;
-    top: 40px;
-    height: 50%;
+    /*top: 40px;*/
+    /*height: 50%;*/
     border-radius: 4px;
     background-color: #414e72;
     color: #fff;
@@ -979,6 +984,22 @@ border: none;
 .toolbar_button_filter_set .webix_button:focus{
     background-color: #b7c5e2;
 }
+
+.toolbar_button.webix_view{
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.slider_text_window_filter input{
+    background-color: #f3f3f3;
+    box-shadow:inset 2px 2px 4px #c5c5c5,
+    inset -2px -2px 4px #ffffff;
+    border-radius: 5px;
+    color: #000;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+
 /*//////-------------------------------------------------------*/
 
 
@@ -1008,7 +1029,7 @@ border: none;
 
 
 .rows_right_menu_calibration_2{
-    background-color: var(--c-white-color-background-dark_general_rows);
+    background-color: var(--white-bacground-central-menu);
     box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.2);
     position: relative;
     width: 95%;
@@ -1018,7 +1039,7 @@ border: none;
 }
 
 .rows_right_menu_calibration_2_dark{
-    background-color: #f9f9f9;
+    background-color: var(--c-white-color-background-dark_general_rows);
     box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.2);
     position: relative;
     width: 95%;
@@ -1157,6 +1178,19 @@ border: none;
     height: 98%;
 }
 
+.set_step_drain_button_2_dark .webix_button{
+    background-color: var(--c-white-color-background-dark);
+    color: #d3d1d1;
+    font-weight: 100;
+    font-size: 18px;
+    border-radius: 4px;
+    border: 0.7px solid var(--c-white-color-background-dark_left_menu);
+    box-shadow:  0.1em 0.1em 1px #2a2a2a;
+
+    width: 98%;
+    height: 98%;
+}
+
 .set_step_drain_button_2 .webix_button:hover{
     background-color: #fff;
 }
@@ -1185,3 +1219,10 @@ border: none;
     background-color: #a3575f;
 }
 
+.text_color_filter p{
+    color: var(--c-color-text-light);
+}
+
+.text_color_filter_dark p{
+    color: var(--c-color-text-dark);
+}

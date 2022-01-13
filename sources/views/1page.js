@@ -5,129 +5,250 @@ export default class Page9View extends JetView {
     config() {
 
 
-    var left_menu= {
-        view:"scrollview",
-        scroll: "y",
-        maxHeight: 970,
-        id:"1",
-        body: {
-            id:"style_left_cols",
-            css:"style_left_cols",
-            rows:[
+        var left_menu = {
+            view: "scrollview",
+            scroll: "y",
+            maxHeight: 970,
+            id: "1",
+            body: {
+                id: "style_left_cols",
+                css: "style_left_cols",
+                rows: [
 
-                {view: "button", type:"image", image:"../sources/models/image/model_101.svg", width: 180, height: 200, css:"left_menu_button", id:"left_menu_button_1"},
-                {view: "button", type:"image", image:"../sources/models/image/model_201.svg", width: 180, height: 200, css:"left_menu_button", id:"left_menu_button_2"},
-                {view: "button", type:"image", image:"../sources/models/image/model_301_BLE.svg", width: 180, height: 200, css:"left_menu_button", id:"left_menu_button_3"},
-                {
-                    height: 120,
-                },
+                    {
+                        view: "button",
+                        type: "image",
+                        image: "../sources/models/image/model_101.svg",
+                        width: 180,
+                        height: 200,
+                        css: "left_menu_button",
+                        id: "left_menu_button_1"
+                    },
+                    {
+                        view: "button",
+                        type: "image",
+                        image: "../sources/models/image/model_201.svg",
+                        width: 180,
+                        height: 200,
+                        css: "left_menu_button",
+                        id: "left_menu_button_2"
+                    },
+                    {
+                        view: "button",
+                        type: "image",
+                        image: "../sources/models/image/model_301_BLE.svg",
+                        width: 180,
+                        height: 200,
+                        css: "left_menu_button",
+                        id: "left_menu_button_3"
+                    },
+                    {
+                        height: 120,
+                    },
 
-                {view: "button", type:"image", image:"../sources/models/image/Back.svg", width: 180, height: 120, id:"button_back", css:"left_menu_button_reference",},
-                {
-                    height: 1,
-                },
-                {view: "button", type:"image",  image:"../sources/models/image/info.svg", width: 180, height: 120, id:"button_reference", css:"left_menu_button_reference", },
-            ]
-        }
- };
+                    {
+                        view: "button",
+                        type: "image",
+                        image: "../sources/models/image/Back.svg",
+                        width: 180,
+                        height: 120,
+                        id: "button_back",
+                        css: "left_menu_button_reference",
+                    },
+                    {
+                        height: 1,
+                    },
+                    {
+                        view: "button",
+                        type: "image",
+                        image: "../sources/models/image/info.svg",
+                        width: 180,
+                        height: 120,
+                        id: "button_reference",
+                        css: "left_menu_button_reference",
+                    },
+                ]
+            }
+        };
 
-        var central_menu_button={
+        var central_menu_button = {
             paddingY: 0,
             minWidth: 500,
             maxWidth: 890,
-            rows:[
+            rows: [
                 {
-                    css:"central_cols_button",
-                    id:"central_cols_button",
-                    cols:[
-                        {view:"button", label:"Основные настройки", maxWidth: 300, minWidth: 120, height: 100, css:"button_central_menu", id:"general", value:"Save"},
-                        {view:"button", label:"Тарировка", maxWidth: 300, minWidth: 120, height: 100, css:"button_central_menu", id:"calibration", value:"Save"},
-                        {view:"button", label:"Фильтрация", maxWidth: 300, minWidth: 120, height: 100, css:"button_central_menu", id:"filtering", value:"Save"},
+                    css: "central_cols_button",
+                    id: "central_cols_button",
+                    cols: [
+                        {
+                            view: "button",
+                            label: "Основные настройки",
+                            maxWidth: 300,
+                            minWidth: 120,
+                            height: 100,
+                            css: "button_central_menu",
+                            id: "general",
+                            value: "Save"
+                        },
+                        {
+                            view: "button",
+                            label: "Тарировка",
+                            maxWidth: 300,
+                            minWidth: 120,
+                            height: 100,
+                            css: "button_central_menu",
+                            id: "calibration",
+                            value: "Save"
+                        },
+                        {
+                            view: "button",
+                            label: "Фильтрация",
+                            maxWidth: 300,
+                            minWidth: 120,
+                            height: 100,
+                            css: "button_central_menu",
+                            id: "filtering",
+                            value: "Save"
+                        },
                     ]
                 },
             ]
         };
 
-        var general_config ={
+        var general_config = {
             // view:"scrollview",
             // scroll: "y",
             // maxHeight: 860,
             // body: {
             id: "central_menu_button_1",
-                    rows: [
+            rows: [
+                {
+                    cols: [
+                        {},
                         {
-                            cols:[
+                            width: 800,
+                            rows: [
                                 {
 
-                                },
-                                {
-                                    width:800,
                                     rows: [
                                         {
+                                            view: "text",
+                                            width: 850,
+                                            height: 100,
+                                            label: '<p style="text-align: center; position: relative; top: -20px; left: 54px; font-size: 18px; font-weight: 100; ">Серийный номер</p>',
+                                            labelWidth: 400,
+                                            css: "window_type_1",
+                                            id: "window_type_1",
+                                            inputAlign: "center",
+                                            readonly: true
+                                        },
 
-                                            rows:[
-                                                {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -20px; left: 54px; font-size: 18px; font-weight: 100; ">Серийный номер</p>', labelWidth: 400, css: "window_type_1", id:"window_type_1",inputAlign: "center", readonly: true},
+                                    ]
+                                },
 
+                                {height: 20,},
+                                {
+                                    view: "text",
+                                    width: 850,
+                                    height: 100,
+                                    label: '<p style="text-align: center; position: relative; top: -20px; left: 64px; font-size: 18px; font-weight: 100; ">Сетевой адрес</p>',
+                                    labelWidth: 400,
+                                    css: "window_type_2",
+                                    inputAlign: "center",
+                                    id: "window_type_2_1"
+                                },
+                                {height: 20},
+                                {
+                                    view: "text",
+                                    width: 850,
+                                    height: 100,
+                                    label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Минимальный уровень</p>',
+                                    labelWidth: 400,
+                                    css: "window_type_2",
+                                    inputAlign: "center",
+                                    id: "window_type_2_2"
+                                },
+                                {
+                                    view: "text",
+                                    width: 850,
+                                    height: 100,
+                                    label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Максимальный уровень</p>',
+                                    labelWidth: 400,
+                                    css: "window_type_2",
+                                    inputAlign: "center",
+                                    id: "window_type_2_3"
+                                },
+                                {height: 20},
+                                {
+                                    view: "text",
+                                    width: 850,
+                                    height: 100,
+                                    label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Скорость подключения</p>',
+                                    labelWidth: 400,
+                                    css: "window_type_2",
+                                    inputAlign: "center",
+                                    id: "window_type_2_4"
+                                },
+                                {height: 20},
+                                {
+                                    view: "text",
+                                    width: 850,
+                                    height: 100,
+                                    label: '<p style="text-align: center; position: relative; top: -20px; left: -10px; font-size: 18px; font-weight: 100; ">Автоматическая выдача данных</p>',
+                                    labelWidth: 400,
+                                    css: "window_type_2 ",
+                                    inputAlign: "center",
+                                    id: "window_type_2_5"
+                                },
+                                {height: 20,},
+                                {
+                                    // width: 900,
+                                    css: "window_type_2",
+                                    id: "window_type_2_6",
+                                    rows: [
+                                        {
+                                            cols: [
+
+                                                {
+                                                    view: "label",
+                                                    label: "<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 75px;'>Температурная компенсация</p>",
+                                                    width: 400,
+                                                    height: 100,
+                                                },
+                                                {view: "switch", value: 0, id: "temp_compensation", width: 68,},
+                                                {
+                                                    width: 100,
+                                                },
+                                                {view: "switch", value: 0, id: "temp_compensation_2", width: 68,}
                                             ]
                                         },
 
-                                        {height: 20,},
-                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -20px; left: 64px; font-size: 18px; font-weight: 100; ">Сетевой адрес</p>', labelWidth: 400, css: "window_type_2", inputAlign:"center", id:"window_type_2_1"},
-                                        {height: 20},
-                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Минимальный уровень</p>', labelWidth: 400, css: "window_type_2", inputAlign:"center", id:"window_type_2_2"},
-                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Максимальный уровень</p>', labelWidth: 400, css: "window_type_2", inputAlign:"center", id:"window_type_2_3"},
-                                        {height: 20},
-                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Скорость подключения</p>', labelWidth: 400, css: "window_type_2", inputAlign:"center",id:"window_type_2_4"},
-                                        {height: 20},
-                                        {view: "text", width: 850, height: 100, label: '<p style="text-align: center; position: relative; top: -20px; left: -10px; font-size: 18px; font-weight: 100; ">Автоматическая выдача данных</p>', labelWidth: 400, css: "window_type_2 ", inputAlign:"center",id:"window_type_2_5"},
-                                        {height: 20,},
-                                        {
-                                            width: 900,
-                                            css: "window_type_2",
-                                            id:"window_type_2_6",
-                                            rows:[
-                                                {
-                                                    cols: [
+                                    ]
 
-                                                        {
-                                                            view: "label",
-                                                            label: "<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 75px;'>Температурная компенсация</p>",
-                                                            width: 400,
-                                                            height: 100,
-                                                        },
-                                                        {view: "switch", value: 0, id: "temp_compensation",},
-                                                        {view: "switch", value: 0, id: "temp_compensation_2"}
-                                                    ]
-                                                },
-
-                                            ]
-
-                                                },
-                                              ]
-                                           },
-                                           {
-
-                                           }
-                                        ]
-                                     },
-                                  ]
+                                },
+                            ]
+                        },
+                        {}
+                    ]
+                },
+            ]
         };
 
-        var calibration ={
-            id:"central_menu_button_2",
-            cols:[
+        var calibration = {
+            id: "central_menu_button_2",
+            cols: [
                 {
                     width: 20,
                 },
                 {
-                    rows:[
+                    rows: [
                         {
-                            rows:[
+                            rows: [
                                 {
-                                    view:"multitext",
+                                    view: "multitext",
                                     inputWidth: 200,
-                                    value:"Susan Way, Dirk Gently, Clark Kent",
-                                    tooltip:function(obj){
+                                    value: "Susan Way, Dirk Gently, Clark Kent",
+                                    tooltip: function (obj) {
                                         return "Guests: " + $$(obj.id).getValueHere();
                                     }
                                 }
@@ -138,252 +259,277 @@ export default class Page9View extends JetView {
             ]
         }
 
-        var filtering={
-            id: "central_menu_button_3",
-            cols: [
-                {
-                    width: 20,
-                },
-                {
-                    rows: [
-                        {
-                            height: 100,
-                            cols: [
+        var filtering = {
+                id: "central_menu_button_3",
+                rows: [
+                    {
+                        height: 100,
+                        cols: [
+                            {
+                                view: "label",
+                                label: "<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 105px;'>Фильтрация</p>",
+                                css:"text_color_filter",
+                                id:"text_color_filter_1_0",
+                            },
+                            {
+                                width: 30,
+                            },
+                            {
+                                view: "switch",
+                                value: 1,
+                                css: "filter_toggle",
+                                id: "filtering_switch_top",
+                                width: 70,
+                            },
+                            {
 
-                                {
-                                    view: "label",
-                                    label: "<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 105px;'>Фильтрация</p>",
-                                    Width: 300,
-                                    height: 100,
-                                },
-                                {
-                                    width: 1,
-                                },
-                                {
-                                    view: "switch",
-                                    value: 1,
-                                    css: "filter_toggle",
-                                    id: "filtering_switch_top",
-                                    height: 200,
-                                }
-                            ]
-                        },
-                        {
-                            height: 10,
-                        },
-                        {
-                            id: "degree of filtration",
-                            rows: [
-                                {
-                                    cols: [
-                                        {
-                                            view: "label",
-                                            label: "<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 30px;'>Степень фильтрации</p>",
-                                            width: 300,
-                                            height: 50,
-                                        },
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            id: "degree_of_filtration",
-                            rows: [
-                                {
-                                    cols: [
-                                        {width: 35,},
-                                        {
-                                            view: "button",
-                                            type: "image",
-                                            image: "../sources/models/image/career equipment.png",
-                                            width: 240,
-                                            label: "Карьерная техника",
-                                            css: "image_button_filter"
-                                        },
-                                        {width: 35,},
-                                        {
-                                            view: "button",
-                                            type: "image",
-                                            image: "../sources/models/image/construction equipment.png",
-                                            width: 240,
-                                            height: 300,
-                                        },
-                                        {width: 35,},
-                                        {
-                                            view: "button",
-                                            type: "image",
-                                            image: "../sources/models/image/smooth road.png",
-                                            width: 240,
-                                            height: 300,
-                                        },
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            height: 20,
-                        },
-                        {
-                            id: "degree_of_filtration_2",
-                            css: "filters_rows",
-                            rows: [
-                                {
+                            }
+                        ]
+                    },
+                    {
+                        height: 20,
+                    },
+                    {
+                        id: "degree of filtration",
+                        rows: [
+                            {
+                                cols: [
+                                    {
+                                        view: "label",
+                                        label: "<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 30px;'>Степень фильтрации</p>",
+                                        width: 300,
+                                        height: 50,
+                                        css:"text_color_filter",
+                                        id:"text_color_filter_1_1",
+                                    },
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        id: "degree_of_filtration",
+                        rows: [
+                            {
+                                cols: [
+                                    {
 
-                                    cols: [
-                                        {
-                                            view: "label",
-                                            label: "<p style='font-size: 18px; font-weight: 100; position: relative;  left: 124px;'>Тип фильтрации</p>",
-                                            width: 300,
-                                            height: 100,
-                                        },
-                                        {
-                                            width: 70,
-                                        },
-                                        {
-                                            view: "text",
-                                            value: "Квадратичная",
-                                            width: 200,
-                                            height: 100,
-                                            inputAlign: "center",
-                                            inputHeight: 50,
-                                            css: "slider_text_window_1",
-                                            readonly: true,
-                                        },
-                                        {},
-                                        {
-                                            view: "toolbar",
-                                            css: "toolbar_button_filter_set",
-                                            elements: [{
+                                    },
+                                    {
+                                        view: "button",
+                                        type: "image",
+                                        image: "../sources/models/image/filtr_Karier.svg",
+                                        width: 240,
+                                        label: "Карьерная техника",
+                                        css: "image_button_filter"
+                                    },
+                                    {width: 35,},
+                                    {
+                                        view: "button",
+                                        type: "image",
+                                        image: "../sources/models/image/filtr_Stroit.svg",
+                                        width: 240,
+                                        height: 300,
+                                    },
+                                    {width: 35,},
+                                    {
+                                        view: "button",
+                                        type: "image",
+                                        image: "../sources/models/image/filtr_Rovn.svg",
+                                        width: 240,
+                                        height: 300,
+                                    },
+                                    {
+
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        height: 20,
+                    },
+                    {
+                        height: 320,
+                        css: "filters_rows",
+                        id: "degree_of_filtration_2",
+                        rows: [
+                            {
+                                rows: [
+                                    {
+                                        width:100,
+                                    },
+                                    {
+                                            cols: [
+                                            {
+                                                width: 124,
+                                            },
+                                            {
+                                                view: "label",
+                                                label: "<p style='font-size: 18px; font-weight: 100; position: relative; top:-20px;'>Тип фильтрации</p>",
+                                                width: 250,
+                                                css:"text_color_filter",
+                                                id:"text_color_filter_1",
+                                            },
+                                            {
+                                                width: 1,
+                                            },
+                                            {
+                                                view: "text",
+                                                value: "Квадратичная",
+                                                width: 200,
+                                                inputAlign: "center",
+                                                inputHeight: 54,
+                                                css: "full_window_text",
+                                                readonly: true,
+                                                id:"filter_open_windows"
+                                            },
+                                            {
+                                                width: 114,
+                                            },
+                                            {
+                                                view: "toolbar",
+                                                css:"toolbar_button",
+                                                elements: [{
+                                                    view: "button",
+                                                    css: "button_filter_set",
+                                                    label: 'Выбрать',
+                                                    popup: "my_pop",
+                                                    width:150,
+                                                    height:54,
+
+                                                }]
+                                            },
+                                            {
+                                                width: 10,
+                                            }
+                                        ]
+                                    },
+
+                                ]
+                            },
+                            {
+                                    height: 10,
+                            },
+                            {
+                                id: "degree_of_filtration_3",
+                                width: 846,
+                                rows: [
+                                    {
+                                        cols: [
+                                            {
+                                                view: "label",
+                                                label: "<p style='font-size: 18px; font-weight: 100; position: relative; left: 30px;'>Время усреднения (0...21) с</p>",
+                                                width: 300,
+                                                height: 100,
+                                                css:"text_color_filter",
+                                                id:"text_color_filter_2",
+                                            },
+                                            {
+                                                width: 10,
+                                            },
+                                            {
+                                                view: "slider",
+                                                value: "0",
+                                                name: "s1",
+                                                width: 300,
+                                                min: 0,
+                                                max: 21,
+                                                css: "slider_1",
+                                                id: "slider_1",
+                                                title: webix.template("#value#")
+                                            },
+                                            {
+                                                view: "text",
+                                                value: "0",
+                                                name: "s1",
+                                                width: 50,
+                                                height: 100,
+                                                inputAlign: "center",
+                                                inputHeight: 50,
+                                                css: "slider_text_window_1",
+                                                id: "window_slide_1",
+                                                readonly: true,
+                                            },
+                                            {
+                                                width: 30,
+                                            },
+                                            {
                                                 view: "button",
+                                                type: "label",
+                                                label: "Применить",
                                                 width: 150,
-                                                css: "button_filter_set",
-                                                label: 'Выбрать',
-                                                popup: "my_pop"
-                                            }]
-                                        },
-                                        {
-                                            width: 10,
-                                        }
-                                    ]
-                                },
-
-                            ]
-                        },
-                        {
-                            id: "degree_of_filtration_3",
-                            width: 846,
-                            css: "filters_rows",
-                            rows: [
-                                {
-                                    cols: [
-                                        {
-                                            view: "label",
-                                            label: "<p style='font-size: 18px; font-weight: 100; position: relative; left: 30px;'>Время усреднения (0...21) с</p>",
-                                            width: 300,
-                                            height: 100,
-                                        },
-                                        {
-                                            width: 10,
-                                        },
-                                        {
-                                            view: "slider",
-                                            value: "0",
-                                            name: "s1",
-                                            width: 300,
-                                            min: 0,
-                                            max: 21,
-                                            css: "slider_1",
-                                            id: "slider_1",
-                                            title: webix.template("#value#")
-                                        },
-                                        {
-                                            view: "text",
-                                            value: "0",
-                                            name: "s1",
-                                            width: 50,
-                                            height: 100,
-                                            inputAlign: "center",
-                                            inputHeight: 50,
-                                            css: "slider_text_window_1",
-                                            id: "window_slide_1",
-                                            readonly: true,
-                                        },
-                                        {
-                                            width: 30,
-                                        },
-                                        {
-                                            view: "button",
-                                            type: "label",
-                                            label: "Применить",
-                                            width: 150,
-                                            height: 12,
-                                            id: "button_slider_gen_value_1",
-                                            css: "button_slider_gen_value"
-                                        }
+                                                height: 12,
+                                                id: "button_slider_gen_value_1",
+                                                css: "button_slider_gen_value"
+                                            }
 
 
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            id: "degree_of_filtration_4",
-                            css: "filters_rows",
-                            height: 120,
-                            rows: [
-                                {
-                                    cols: [
-                                        {
-                                            view: "label",
-                                            label: "<p style='font-size: 18px; font-weight: 100; position: relative; left: 78px;'>Длина медианы (0...7) </p>",
-                                            width: 300,
-                                            height: 100,
-                                        },
-                                        {
-                                            width: 10,
-                                        },
-                                        {
-                                            view: "slider",
-                                            value: "0",
-                                            name: "s2",
-                                            width: 300,
-                                            height: 10,
-                                            min: 0,
-                                            max: 7,
-                                            css: "slider_2",
-                                            title: webix.template("#value#")
-                                        },
-                                        {
-                                            view: "text",
-                                            value: "0",
-                                            name: "s1",
-                                            width: 50,
-                                            height: 100,
-                                            inputAlign: "center",
-                                            inputHeight: 50,
-                                            css: "slider_text_window_1",
-                                            readonly: true,
-                                        },
-                                        {
-                                            width: 30,
-                                        },
-                                        {
-                                            view: "button",
-                                            type: "label",
-                                            label: "Применить",
-                                            width: 150,
-                                            height: 20,
-                                            id: "button_slider_gen_value_2",
-                                            css: "button_slider_gen_value"
-                                        },
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                id: "degree_of_filtration_4",
+                                height: 120,
+                                rows: [
+                                    {
+                                        cols: [
+                                            {
+                                                view: "label",
+                                                label: "<p style='font-size: 18px; font-weight: 100; position: relative; left: 78px;'>Длина медианы (0...7) </p>",
+                                                width: 300,
+                                                height: 100,
+                                                css:"text_color_filter",
+                                                id:"text_color_filter_3",
+                                            },
+                                            {
+                                                width: 10,
+                                            },
+                                            {
+                                                view: "slider",
+                                                value: "0",
+                                                name: "s2",
+                                                width: 300,
+                                                height: 10,
+                                                min: 0,
+                                                max: 7,
+                                                css: "slider_2",
+                                                title: webix.template("#value#")
+                                            },
+                                            {
+                                                view: "text",
+                                                value: "0",
+                                                name: "s1",
+                                                width: 50,
+                                                height: 100,
+                                                inputAlign: "center",
+                                                inputHeight: 50,
+                                                css: "slider_text_window_1",
+                                                readonly: true,
+                                            },
+                                            {
+                                                width: 30,
+                                            },
+                                            {
+                                                view: "button",
+                                                type: "label",
+                                                label: "Применить",
+                                                width: 150,
+                                                height: 20,
+                                                id: "button_slider_gen_value_2",
+                                                css: "button_slider_gen_value"
+                                            },
 
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+
+
+
         };
 
 
@@ -578,7 +724,6 @@ export default class Page9View extends JetView {
         };
 
         var right_menu_filter={
-            // css:"right_menu_status",
             css:"right_menu_status",
             id:"right_menu_filter",
             height: 650,
@@ -632,13 +777,14 @@ export default class Page9View extends JetView {
                                     cols:[
                                         {
 
+                                            id:"right_menu_setup_disabled",
                                             rows:[
-                                                {view:"text", width: 200, height: 50, css:"full_window_text", readonly:false, id:"auto_calibration_set_3"},
-                                                {view:"button", type:"label", label:"Полный", width: 200, height: 50, css:"auto_calibration", id:"auto_calibration_3"},
+                                                {view:"text", width: 200, height: 50, css:"full_window_text", readonly:true, inputAlign:"center", id:"auto_calibration_set_3"},
+                                                {view:"button", type:"label", label:"Полный", width: 200, height: 50, css:"auto_calibration", id:"auto_calibration_3",},
                                                 {
                                                     height: 130,
                                                 },
-                                                {view:"text", width: 200, height: 50, css:"full_window_text", readonly:false, id:"auto_calibration_set_4"},
+                                                {view:"text", width: 200, height: 50, css:"full_window_text", readonly:true, inputAlign:"center",id:"auto_calibration_set_4"},
                                                 {view:"button", type:"label", label:"Пустой", width: 200, height: 50, css:"auto_calibration", id:"auto_calibration_4"},
                                             ]
                                         }
@@ -832,7 +978,7 @@ export default class Page9View extends JetView {
                         {
 
                         },
-                        {view: "button", label:"Добавить шаг", width: 480, height: 50, css:"set_step_drain_button_2"},
+                        {view: "button", label:"Добавить шаг", width: 480, height: 50, css:"set_step_drain_button_2", id:"button_add_step_1"},
                         {
 
                         }
@@ -847,7 +993,7 @@ export default class Page9View extends JetView {
                         {
 
                         },
-                        {view: "button", label:"Удалить шаг", width: 480, height: 50, css:"set_step_drain_button_2"},
+                        {view: "button", label:"Удалить шаг", width: 480, height: 50, css:"set_step_drain_button_2", id:"button_add_step_2"},
                         {
 
                         }
@@ -1043,8 +1189,7 @@ export default class Page9View extends JetView {
         $$("button_define_define_3").hide()
         $$("auto_calibration_3").disable()
         $$("auto_calibration_4").disable()
-        $$("auto_calibration_set_3").disable()
-        $$("auto_calibration_set_4").disable()
+
 
 
         //Дефолтные значения при загрузке стр на главном меню------------------//
@@ -1138,18 +1283,13 @@ export default class Page9View extends JetView {
 
 
 
-        //
-        // $$("degree_of_filtration").enable()
-        // $$("degree_of_filtration_2").enable()
-        // $$("degree_of_filtration_3").enable()
-        // $$("degree_of_filtration_4").enable()
-        //
-        // $$("filtering_switch_top").attachEvent("onItemClick", function(){
-        //     $$("degree_of_filtration").disable()
-        //     $$("degree_of_filtration_2").disable()
-        //     $$("degree_of_filtration_3").disable()
-        //     $$("degree_of_filtration_4").disable()
-        // });
+
+        $$("filtering_switch_top").attachEvent("onItemClick", function(){
+            $$("degree_of_filtration").disable()
+            $$("degree_of_filtration_2").disable()
+            $$("degree_of_filtration_3").disable()
+            $$("degree_of_filtration_4").disable()
+        });
 
         $$("temp_compensation").attachEvent("onItemClick", function(){
             $$("button_define_4_base").hide()
@@ -1208,38 +1348,38 @@ export default class Page9View extends JetView {
             if ($$("temp_compensation_2").getValue()== 1) {
 
                 setColor("dark","white");
-                setColor("style_left_cols","white");
-                setColor("style_left_cols_2","white");
-                setColor("style_general_rows_1","white");
-                setColor("left_menu_button_1","white");
-                setColor("left_menu_button_2","white");
-                setColor("left_menu_button_3","white");
-                setColor("general","white");
-                setColor("calibration","white");
-                setColor("filtering","white");
-                setColor("button_reference","white");
-                setColor("button_back","white");
-                setColor("window_type_1","white");
-                setColor("window_type_2_1","white");
-                setColor("window_type_2_2","white");
-                setColor("window_type_2_3","white");
-                setColor("window_type_2_4","white");
-                setColor("window_type_2_5","white");
-                setColor("window_type_2_6","white");
-                setColor("right_menu_status","white");
-                setColor("right_menu_setup","white");
-                setColor("rows_right_1","white");
-                setColor("rows_right_2","white");
-                setColor("rows_right_3","white");
-                setColor("rows_level_right_menu_info_1","white");
-                setColor("rows_level_right_menu_info_2","white");
-                setColor("rows_level_right_menu_info_3","white");
-                setColor("rows_level_right_menu_info_4","white");
-                setColor("button_right_menu_top_1","white");
-                setColor("button_right_menu_top_2","white");
-                setColor("auto_calibration_set_1","white");
-                setColor("auto_calibration_set_2","white");
-                setColor("auto_calibration_set_3","white");
+                // setColor("style_left_cols","white");
+                // setColor("style_left_cols_2","white");
+                // setColor("style_general_rows_1","white");
+                // setColor("left_menu_button_1","white");
+                // setColor("left_menu_button_2","white");
+                // setColor("left_menu_button_3","white");
+                // setColor("general","white");
+                // setColor("calibration","white");
+                // setColor("filtering","white");
+                // setColor("button_reference","white");
+                // setColor("button_back","white");
+                // setColor("window_type_1","white");
+                // setColor("window_type_2_1","white");
+                // setColor("window_type_2_2","white");
+                // setColor("window_type_2_3","white");
+                // setColor("window_type_2_4","white");
+                // setColor("window_type_2_5","white");
+                // setColor("window_type_2_6","white");
+                // setColor("right_menu_status","white");
+                // setColor("right_menu_setup","white");
+                // setColor("rows_right_1","white");
+                // setColor("rows_right_2","white");
+                // setColor("rows_right_3","white");
+                // setColor("rows_level_right_menu_info_1","white");
+                // setColor("rows_level_right_menu_info_2","white");
+                // setColor("rows_level_right_menu_info_3","white");
+                // setColor("rows_level_right_menu_info_4","white");
+                // setColor("button_right_menu_top_1","white");
+                // setColor("button_right_menu_top_2","white");
+                // setColor("auto_calibration_set_1","white");
+                // setColor("auto_calibration_set_2","white");
+                // setColor("auto_calibration_set_3","white");
                 // setColor("auto_calibration_set_4","white");
                 // setColor("right_menu_status_text","white");
                 // setColor("central_cols_button","white");
@@ -1250,43 +1390,43 @@ export default class Page9View extends JetView {
 
             } else {
                 setColor("dark","black");
-                setColor("style_left_cols","black");
-                setColor("style_left_cols_2","black");
-                setColor("style_general_rows_1","black");
-                setColor("left_menu_button_1","black");
-                setColor("left_menu_button_2","black");
-                setColor("left_menu_button_3","black");
-                setColor("general","black");
-                setColor("calibration","black");
-                setColor("filtering","black");
-                setColor("button_reference","black");
-                setColor("button_back","black");
-                setColor("window_type_1","black");
-                setColor("window_type_2_1","black");
-                setColor("window_type_2_2","black");
-                setColor("window_type_2_3","black");
-                setColor("window_type_2_4","black");
-                setColor("window_type_2_5","black");
-                setColor("window_type_2_6","black");
-                setColor("right_menu_status","black");
-                setColor("right_menu_setup","black");
-                setColor("rows_right_1","black");
-                setColor("rows_right_2","black");
-                setColor("rows_level_right_menu_info_1","black");
-                setColor("rows_level_right_menu_info_2","black");
-                setColor("rows_level_right_menu_info_3","black");
-                setColor("rows_level_right_menu_info_4","black");
-                setColor("button_right_menu_top_1","black");
-                setColor("button_right_menu_top_2","black");
-                setColor("auto_calibration_set_1","black");
-                setColor("auto_calibration_set_2","black");
-                setColor("auto_calibration_set_3","black");
-                setColor("auto_calibration_set_4","black");
-                setColor("right_menu_status_text","black");
-                setColor("central_cols_button","black");
-                setColor("right_menu_filter","black");
-                setColor("button_type_calibration_1","black");
-                setColor("button_type_calibration_2","black");
+                // setColor("style_left_cols","black");
+                // setColor("style_left_cols_2","black");
+                // setColor("style_general_rows_1","black");
+                // setColor("left_menu_button_1","black");
+                // setColor("left_menu_button_2","black");
+                // setColor("left_menu_button_3","black");
+                // setColor("general","black");
+                // setColor("calibration","black");
+                // setColor("filtering","black");
+                // setColor("button_reference","black");
+                // setColor("button_back","black");
+                // setColor("window_type_1","black");
+                // setColor("window_type_2_1","black");
+                // setColor("window_type_2_2","black");
+                // setColor("window_type_2_3","black");
+                // setColor("window_type_2_4","black");
+                // setColor("window_type_2_5","black");
+                // setColor("window_type_2_6","black");
+                // setColor("right_menu_status","black");
+                // setColor("right_menu_setup","black");
+                // setColor("rows_right_1","black");
+                // setColor("rows_right_2","black");
+                // setColor("rows_level_right_menu_info_1","black");
+                // setColor("rows_level_right_menu_info_2","black");
+                // setColor("rows_level_right_menu_info_3","black");
+                // setColor("rows_level_right_menu_info_4","black");
+                // setColor("button_right_menu_top_1","black");
+                // setColor("button_right_menu_top_2","black");
+                // setColor("auto_calibration_set_1","black");
+                // setColor("auto_calibration_set_2","black");
+                // setColor("auto_calibration_set_3","black");
+                // setColor("auto_calibration_set_4","black");
+                // setColor("right_menu_status_text","black");
+                // setColor("central_cols_button","black");
+                // setColor("right_menu_filter","black");
+                // setColor("button_type_calibration_1","black");
+                // setColor("button_type_calibration_2","black");
 
 
 
@@ -1335,8 +1475,29 @@ export default class Page9View extends JetView {
             webix.html.removeCss( $$("right_menu_filter").getNode(), "right_menu_status");
             webix.html.removeCss( $$("button_type_calibration_1").getNode(), "button_type_calibration_1");
             webix.html.removeCss( $$("button_type_calibration_2").getNode(), "button_type_calibration_2");
+            webix.html.removeCss( $$("right_menu_calibration_setup").getNode(), "rows_right_menu_calibration_2");
+            webix.html.removeCss( $$("right_menu_calibration_drain_2").getNode(), "rows_right_menu_calibration_2");
+            webix.html.removeCss( $$("button_add_step_1").getNode(), "set_step_drain_button_2");
+            webix.html.removeCss( $$("button_add_step_2").getNode(), "set_step_drain_button_2");
+            webix.html.removeCss( $$("filter_open_windows").getNode(), "full_window_text");
+            webix.html.removeCss( $$("degree_of_filtration_2").getNode(), "filter_rows");
+            webix.html.removeCss( $$("text_color_filter_1").getNode(), "text_color_filter");
+            webix.html.removeCss( $$("text_color_filter_2").getNode(), "text_color_filter");
+            webix.html.removeCss( $$("text_color_filter_3").getNode(), "text_color_filter");
+            webix.html.removeCss( $$("text_color_filter_1_0").getNode(), "text_color_filter");
+            webix.html.removeCss( $$("text_color_filter_1_1").getNode(), "text_color_filter");
 
 
+
+
+
+
+
+
+
+            // filter_open_windows
+            // degree_of_filtration_2
+            // text_color_filter_1
 
 
 
@@ -1380,6 +1541,26 @@ export default class Page9View extends JetView {
                 webix.html.addCss( $$("right_menu_filter").getNode(), "right_menu_status_dark");
                 webix.html.addCss( $$("button_type_calibration_1").getNode(), "button_type_calibration_1_dark");
                 webix.html.addCss( $$("button_type_calibration_2").getNode(), "button_type_calibration_2_dark");
+                webix.html.addCss( $$("right_menu_calibration_setup").getNode(), "rows_right_menu_calibration_2_dark");
+                webix.html.addCss( $$("right_menu_calibration_drain_2").getNode(), "rows_right_menu_calibration_2_dark");
+                webix.html.addCss( $$("button_add_step_1").getNode(), "set_step_drain_button_2_dark");
+                webix.html.addCss( $$("button_add_step_2").getNode(), "set_step_drain_button_2_dark");
+                webix.html.addCss( $$("filter_open_windows").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("degree_of_filtration_2").getNode(), "filter_rows_dark");
+                webix.html.addCss( $$("text_color_filter_1").getNode(), "text_color_filter_dark");
+                webix.html.addCss( $$("text_color_filter_2").getNode(), "text_color_filter_dark");
+                webix.html.addCss( $$("text_color_filter_3").getNode(), "text_color_filter_dark");
+                webix.html.addCss( $$("text_color_filter_1_0").getNode(), "text_color_filter_dark");
+                webix.html.addCss( $$("text_color_filter_1_1").getNode(), "text_color_filter_dark");
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1425,6 +1606,26 @@ export default class Page9View extends JetView {
                 webix.html.addCss( $$("right_menu_filter").getNode(), "right_menu_status");
                 webix.html.addCss( $$("button_type_calibration_1").getNode(), "button_type_calibration_1");
                 webix.html.addCss( $$("button_type_calibration_2").getNode(), "button_type_calibration_2");
+                webix.html.addCss( $$("right_menu_calibration_setup").getNode(), "rows_right_menu_calibration_2");
+                webix.html.addCss( $$("right_menu_calibration_drain_2").getNode(), "rows_right_menu_calibration_2");
+                webix.html.addCss( $$("button_add_step_1").getNode(), "set_step_drain_button_2");
+                webix.html.addCss( $$("button_add_step_2").getNode(), "set_step_drain_button_2");
+                webix.html.addCss( $$("filter_open_windows").getNode(), "full_window_text");
+                webix.html.addCss( $$("degree_of_filtration_2").getNode(), "filter_rows");
+                webix.html.addCss( $$("text_color_filter_1").getNode(), "text_color_filter");
+                webix.html.addCss( $$("text_color_filter_2").getNode(), "text_color_filter");
+                webix.html.addCss( $$("text_color_filter_3").getNode(), "text_color_filter");
+                webix.html.addCss( $$("text_color_filter_1_0").getNode(), "text_color_filter");
+                webix.html.addCss( $$("text_color_filter_1_1").getNode(), "text_color_filter");
+
+
+
+
+
+
+
+
+
 
 
 

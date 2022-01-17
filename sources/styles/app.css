@@ -26,6 +26,7 @@ border: none;
     --font-size: 18px;
     --font-weight: 100;
     --c-color-text-light: #141414;
+    --c-white-color-background-light_general_windows: #f0f0f0;
 
 
     /*dark*/
@@ -309,6 +310,9 @@ border: none;
     .window_type_1  .webix_el_box{
         right: 160px;
     }
+
+
+
 }
 
 @media screen and (max-width: 1500px){
@@ -317,6 +321,7 @@ border: none;
         right: 45%;
         height: 43%;
     }
+
     .window_type_1  .webix_el_box{
         bottom: 20%;
         left: 0;
@@ -372,17 +377,6 @@ border: none;
     background-color: var(--c-white-color-background-dark_left_menu);
 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*------------------------------------------------*/
@@ -460,12 +454,10 @@ border: none;
 
 .left_menu_button_dark .webix_image{
     width: 80%;
-    position: relative;
 }
 
 .left_menu_button .webix_image{
     width: 80%;
-    position: relative;
 }
 
 
@@ -474,6 +466,10 @@ border: none;
     border-right: 2px solid rgba(255, 255, 255, 0);
     border-top: 2px solid rgba(255, 255, 255, 0);
     border-bottom: 2px solid rgba(255, 255, 255, 0);
+    border-left: 8px solid #fff;
+    position: relative;
+    top: -2px;
+    width: 101%;
 }
 
 .left_menu_button_dark .webix_button:hover{
@@ -482,6 +478,10 @@ border: none;
     border-right: 2px solid #fff;
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;
+    position: relative;
+    top: -2px;
+    width: 101%;
+
 }
 
 
@@ -490,6 +490,11 @@ border: none;
     border-right: 2px solid rgba(255, 255, 255, 0);
     border-top: 2px solid rgba(255, 255, 255, 0);
     border-bottom: 2px solid rgba(255, 255, 255, 0);
+    border-left: 8px solid #628cbb;
+    position: relative;
+    top: -2px;
+    width: 101%;
+
 }
 
 .left_menu_button_dark .webix_button:focus{
@@ -498,6 +503,15 @@ border: none;
     border-right: 2px solid #fff;
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;
+    position: relative;
+    top: -2px;
+    width: 101%;
+}
+
+.left_menu_button_dark .webix_button:active{
+    position: relative;
+    top: -2px;
+    width: 101%;
 }
 
 
@@ -553,8 +567,9 @@ border: none;
 }
 
 .webix_view .webix_control > .webix_disabled{
-    background-color: #fff;
+    background-color: #6a6a6a00;
     opacity: 0.4;
+    color: #cccccc;
 
 }
 
@@ -579,8 +594,10 @@ border: none;
     width: 103%;
     height: 110%;
     position: relative;
-    left: -4px;
-    z-index: 200;
+    left: -8px;
+    top: -5px;
+
+
 }
 
 .button_central_menu_dark .webix_button {
@@ -591,8 +608,9 @@ border: none;
     width: 103%;
     height: 110%;
     position: relative;
-    left: -4px;
-    z-index: 200;
+    left: -8px;
+    top: -5px;
+
 }
 
 
@@ -686,7 +704,8 @@ border: none;
     border-radius: 8px;
     font-size: 20px;
     font-weight: 100;
-    /*box-shadow: 0.1em 0.1em 5px rgba(122,122,122,0.1);*/
+    box-shadow: 0.1em 0.1em 3px rgba(66, 66, 66, 0.3);
+
 }
 
 .button_right_menu_top_1 .webix_button:hover{
@@ -812,6 +831,8 @@ border: none;
     inset -2px -2px 4px #ffffff;
     color: #000;
     font-size: 18px;
+    height: 100%;
+    border: 1px solid #fff;
 }
 
 .full_window_text_dark .webix_el_box input{
@@ -819,9 +840,10 @@ border: none;
     border-radius: 5px;
     color: #fff;
     font-size: 18px;
-    border: 1px solid #2c2c2c;
-    box-shadow: inset 5px 5px 5px #212121,
-    inset -5px -5px 5px #373737;
+    border: none;
+    box-shadow: inset 2px 2px 5px #212121,
+    inset -2px -2px 5px #373737;
+    height: 100%;
 }
 
 .right_menu_status_text p{
@@ -862,19 +884,20 @@ border: none;
 
 .slider_1.webix_view.webix_control.webix_el_slider{
     position: relative;
-    top: 41px;
     color: var(--white-style-text-color);
 
 
 }
 
 .slider_1_dark .webix_slider_box .webix_slider_right{
+
     background-color: #2c2c2c;
+
 }
 
 .slider_1_dark.webix_view.webix_control.webix_el_slider{
     position: relative;
-    top: 41px;
+
     color: var(--c-color-text-dark);
 
 
@@ -1205,7 +1228,6 @@ border: none;
     border-radius: 4px;
     border: 0.7px solid var(--c-white-color-background-dark_left_menu);
     box-shadow:  0.1em 0.1em 1px #2a2a2a;
-
     width: 98%;
     height: 98%;
 }
@@ -1218,7 +1240,20 @@ border: none;
     background-color: #fff;
     box-shadow: 0.1em 0.1em 1px rgba(122,122,122,0.0);
     position: relative;
-    top: 1px;
+    top: 2px;
+    right: 2px;
+}
+
+.set_step_drain_button_2_dark .webix_button:hover{
+    background-color: #515151;
+}
+
+.set_step_drain_button_2_dark .webix_button:focus {
+    background-color: #515151;
+    box-shadow: 0.1em 0.1em 1px rgba(122, 122, 122, 0.0);
+    position: relative;
+    top: 2px;
+    right: 2px;
 }
 
 .clear_table_drain_button_2 .webix_button{
@@ -1244,4 +1279,58 @@ border: none;
 
 .text_color_filter_dark p{
     color: var(--c-color-text-dark);
+}
+
+/*--c-white-color-background-light_general_windows*/
+/*#8795b2*/
+/*rgba(44, 44, 44, 1);*/
+
+.image_button_filter .webix_button{
+    background-color: var(--c-white-color-background-light_general_windows);
+    box-shadow: 0.2em 0.2em 5px rgba(122,122,122,0.2);
+}
+
+.image_button_filter .webix_button:hover{
+    background-color: #8795b2;
+    position: relative;
+
+}
+
+.image_button_filter .webix_button:focus{
+    background-color: #8795b2;
+    position: relative;
+    top: 2px;
+    left: 2px;
+}
+
+.image_button_filter .webix_button:active{
+    background-color: #8795b2;
+    position: relative;
+    top: 2px;
+    left: 2px;
+}
+
+.image_button_filter_dark .webix_button{
+    background-color: var(--c-white-color-background-dark_left_menu);
+    box-shadow: 0.4em 0.4em 5px rgba(44, 44, 44, 0.8);
+}
+
+.image_button_filter_dark .webix_button:hover{
+    background-color: #414e72;
+    position: relative;
+
+}
+
+.image_button_filter_dark .webix_button:focus{
+    background-color: #414e72;
+    position: relative;
+    top: 2px;
+    left: 2px;
+}
+
+.image_button_filter_dark .webix_button:active{
+    background-color: #414e72;
+    position: relative;
+    top: 2px;
+    left: 2px;
 }

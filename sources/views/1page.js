@@ -1,14 +1,15 @@
 webix.ui.fullScreen();
 import {JetView} from "webix-jet";
 
+
 export default class Page9View extends JetView {
     config() {
 
+        // return screen > 1210 ? "wide" : (screen > 1060 ? "mid" : "small");
 
         var left_menu = {
             view: "scrollview",
             scroll: "y",
-            maxHeight: 970,
             id: "1",
             body: {
                 id: "style_left_cols",
@@ -72,6 +73,8 @@ export default class Page9View extends JetView {
         };
 
         var central_menu_button = {
+
+
             paddingY: 0,
             minWidth: 500,
             maxWidth: 890,
@@ -98,7 +101,8 @@ export default class Page9View extends JetView {
                             height: 100,
                             css: "button_central_menu",
                             id: "calibration",
-                            value: "Save"
+                            value: "Save",
+
                         },
                         {
                             view: "button",
@@ -116,6 +120,8 @@ export default class Page9View extends JetView {
         };
 
         var general_config = {
+            minWidth: 500,
+            maxWidth: 890,
             // view:"scrollview",
             // scroll: "y",
             // maxHeight: 860,
@@ -124,16 +130,15 @@ export default class Page9View extends JetView {
             rows: [
                 {
                     cols: [
-                        {},
                         {
-                            width: 800,
+
+                        },
+                        {
                             rows: [
                                 {
-
                                     rows: [
                                         {
                                             view: "text",
-                                            width: 850,
                                             height: 100,
                                             label: '<p style="text-align: center; position: relative; top: -20px; left: 54px; font-size: 18px; font-weight: 100; ">Серийный номер</p>',
                                             labelWidth: 400,
@@ -260,6 +265,8 @@ export default class Page9View extends JetView {
         }
 
         var filtering = {
+            minWidth: 500,
+            maxWidth: 890,
                 id: "central_menu_button_3",
                 rows: [
                     {
@@ -320,7 +327,8 @@ export default class Page9View extends JetView {
                                         image: "../sources/models/image/filtr_Karier.svg",
                                         width: 240,
                                         label: "Карьерная техника",
-                                        css: "image_button_filter"
+                                        css: "image_button_filter",
+                                        id:"image_button_filter_1"
                                     },
                                     {width: 35,},
                                     {
@@ -329,6 +337,8 @@ export default class Page9View extends JetView {
                                         image: "../sources/models/image/filtr_Stroit.svg",
                                         width: 240,
                                         height: 300,
+                                        css: "image_button_filter",
+                                        id:"image_button_filter_2"
                                     },
                                     {width: 35,},
                                     {
@@ -337,6 +347,8 @@ export default class Page9View extends JetView {
                                         image: "../sources/models/image/filtr_Rovn.svg",
                                         width: 240,
                                         height: 300,
+                                        css: "image_button_filter",
+                                        id:"image_button_filter_3"
                                     },
                                     {
 
@@ -409,7 +421,7 @@ export default class Page9View extends JetView {
                                 ]
                             },
                             {
-                                    height: 30,
+                                    height: 2,
                             },
                             {
                                 id: "degree_of_filtration_3",
@@ -428,15 +440,21 @@ export default class Page9View extends JetView {
                                                 width: 10,
                                             },
                                             {
-                                                view: "slider",
-                                                value: "0",
-                                                name: "s1",
-                                                width: 300,
-                                                min: 0,
-                                                max: 21,
-                                                css: "slider_1",
-                                                id: "slider_filter_1",
-                                                title: webix.template("#value#"),
+                                                paddingY: 41,
+                                                rows:[
+                                                    {
+                                                        view: "slider",
+                                                        value: "0",
+                                                        name: "s1",
+                                                        width: 300,
+                                                        min: 0,
+                                                        max: 21,
+                                                        css: "slider_1",
+                                                        id: "slider_filter_1",
+                                                        title: webix.template("#value#"),
+                                                    }
+                                                ]
+
                                             },
                                             {
                                                 paddingY: 45,
@@ -492,15 +510,21 @@ export default class Page9View extends JetView {
                                                 width: 10,
                                             },
                                             {
-                                                view: "slider",
-                                                value: "0",
-                                                name: "s2",
-                                                width: 300,
-                                                min: 0,
-                                                max: 7,
-                                                css: "slider_1",
-                                                title: webix.template("#value#"),
-                                                id:"slider_filter_2",
+                                                paddingY: 41,
+                                                rows:[
+                                                    {
+                                                        view: "slider",
+                                                        value: "0",
+                                                        name: "s2",
+                                                        width: 300,
+                                                        min: 0,
+                                                        max: 7,
+                                                        css: "slider_1",
+                                                        title: webix.template("#value#"),
+                                                        id:"slider_filter_2",
+                                                    }
+                                                ]
+
                                             },
                                             {
                                                 paddingY: 45,
@@ -858,7 +882,7 @@ export default class Page9View extends JetView {
                         {
 
                         },
-                        {view:"text", css:"drain_button_widow_1", width: 200,},
+                        {view:"text", css:"full_window_text", width: 200, id:"manual_volume_fuel_1"},
                         {
 
                         }
@@ -873,7 +897,7 @@ export default class Page9View extends JetView {
                         {
 
                         },
-                        {view:"text", css:"drain_button_widow_1", width: 200,},
+                        {view:"text", css:"full_window_text", width: 200, id:"initial_volume_fuel_1"},
                         {
 
                         }
@@ -889,7 +913,7 @@ export default class Page9View extends JetView {
                         {
 
                         },
-                        {view:"text", css:"drain_button_widow_1", width: 200, },
+                        {view:"text", css:"full_window_text", width: 200, id:"step_liters_1"},
                         {
 
                         }
@@ -929,7 +953,7 @@ export default class Page9View extends JetView {
                         {
 
                         },
-                        {view:"text", width: 200, css:"drain_button_widow_1"},
+                        {view:"text", width: 200, css:"full_window_text", readonly:true, id:"manual_volume_fuel_2" },
                         {
 
                         }
@@ -944,7 +968,7 @@ export default class Page9View extends JetView {
                         {
 
                         },
-                        {view:"text", width: 200, css:"drain_button_widow_1"},
+                        {view:"text", width: 200, css:"full_window_text", readonly:true, id:"initial_volume_fuel_2"},
                         {
 
                         }
@@ -960,7 +984,7 @@ export default class Page9View extends JetView {
                         {
 
                         },
-                        {view:"text", width: 200, css:"drain_button_widow_1"},
+                        {view:"text", width: 200, css:"full_window_text", readonly:true, id:"step_liters_2"},
                         {
 
                         }
@@ -978,7 +1002,7 @@ export default class Page9View extends JetView {
                         {
 
                         },
-                        {view:"text", width: 200, css:"drain_button_widow_1", readonly:true},
+                        {view:"text", width: 200, css:"full_window_text", readonly:true, id:"counts_step"},
                         {
 
                         }
@@ -1050,6 +1074,181 @@ export default class Page9View extends JetView {
         };
 
 
+        var fuel_filling ={
+            id:"fuel_filling",
+            css:"rows_right_menu_calibration_2",
+            height: 570,
+            rows:[
+                {
+                    height: 50,
+                },
+                {
+                    cols:[
+                        {
+
+                        },
+                        {view:"label", label:"<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Паспортный объем бака, л</p>", width: 190, height: 50,},
+                        {
+
+                        },
+                        {view:"text", css:"full_window_text", width: 200, id:"manual_volume_fuel_fuel_filling_1"},
+                        {
+
+                        }
+                    ]
+                },
+                {
+                    cols:[
+                        {
+
+                        },
+                        {view: "label", label:"<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Шаг, л</p>", width: 190, height: 50,},
+                        {
+
+                        },
+                        {view:"text", css:"full_window_text", width: 200, id:"step_liters_fuel_filling_1"},
+                        {
+
+                        }
+                    ]
+                },
+                {
+                    height: 149,
+                },
+                {
+                    cols:[
+                        {
+
+                        },
+                        {view: "button", label:"Продолжить", width: 480, height:50, id:"fuel_filling_button_next", css:"button_next_drain_window_1_2"},
+                        {
+
+                        }
+                    ]
+                }
+            ]
+        };
+
+        var fuel_filling_2 ={
+            id:"fuel_filling_2",
+            css:"rows_right_menu_calibration_2",
+            height: 570,
+            rows:[
+                {
+                    height: 50,
+                },
+                {
+                    cols:[
+                        {
+
+                        },
+                        {view:"label", label:"<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Паспортный объем бака, л</p>", width: 190, height: 50,},
+                        {
+
+                        },
+                        {view:"text", width: 200, css:"full_window_text", readonly:true, id:"manual_volume_fuel_fuel_filling_2" },
+                        {
+
+                        }
+                    ]
+                },
+                {
+                    cols:[
+                        {
+
+                        },
+                        {view: "label", label:"<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Шаг, л</p>", width: 190, height: 50,},
+                        {
+
+                        },
+                        {view:"text", width: 200, css:"full_window_text", readonly:true, id:"step_liters_fuel_filling_2"},
+                        {
+
+                        }
+                    ]
+                },
+                {
+                    height: 30,
+                },
+                {
+                    cols:[
+                        {
+
+                        },
+                        {view: "label", label:"<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Количество шагов</p>", width: 190, height: 50, },
+                        {
+
+                        },
+                        {view:"text", width: 200, css:"full_window_text", readonly:true, id:"counts_step_fuel_filling"},
+                        {
+
+                        }
+                    ]
+                },
+                {
+                    height: 70,
+                },
+                {
+                    cols:[
+                        {
+
+                        },
+                        {view: "button", label:"Добавить шаг", width: 480, height: 50, css:"set_step_drain_button_2", id:"button_add_step_3"},
+                        {
+
+                        }
+
+                    ]
+                },
+                {
+                    height: 10,
+                },
+                {
+                    cols:[
+                        {
+
+                        },
+                        {view: "button", label:"Удалить шаг", width: 480, height: 50, css:"set_step_drain_button_2", id:"button_add_step_4"},
+                        {
+
+                        }
+
+                    ]
+                },
+                {
+                    height: 60,
+                },
+                {
+                    cols:[
+                        {
+
+                        },
+                        {view: "button", label:"Очистить таблицу", width: 480, height: 50, css:"clear_table_drain_button_2"},
+                        {
+
+                        }
+
+                    ]
+                },
+                {
+                    height: 10,
+                },
+                {
+                    cols:[
+                        {
+
+                        },
+                        {view: "button", label:"Завершить тарировку", width: 480, height: 50, id:"fuel_filling_2_button_closed", css:"button_next_drain_window_1_2"},
+                        {
+
+                        }
+
+                    ]
+                }
+
+
+            ]
+        };
 
 
 
@@ -1080,6 +1279,7 @@ export default class Page9View extends JetView {
 
 
         return{
+
             view:"scrollview",
             scroll: "y",
             maxHeight: 1000,
@@ -1095,15 +1295,13 @@ export default class Page9View extends JetView {
                     {
                         id:"style_left_cols_2",
                         css:"style_left_cols",
-                        width: 20,
+                        width: 10,
                     },
                     {
-                        minWidth: 500,
-                        maxWidth: 880,
                         id:"style_general_rows_1",
                         css:"style_general_rows",
                         rows: [
-                            central_menu_button,
+                                 central_menu_button,
                             {
                                 height: 40,
                             },
@@ -1132,7 +1330,6 @@ export default class Page9View extends JetView {
                         width: 50,
                     },
                     {
-                        // width: 550,
                         css:"rows_right",
                         id:"rows_right_2",
                         rows: [
@@ -1170,7 +1367,9 @@ export default class Page9View extends JetView {
                                 rows:[
                                     right_menu_calibration,
                                     right_menu_calibration_setup,
-                                    right_menu_calibration_drain_2
+                                    right_menu_calibration_drain_2,
+                                    fuel_filling,
+                                    fuel_filling_2,
                                 ]
                             }
                         ]
@@ -1193,6 +1392,23 @@ export default class Page9View extends JetView {
         $$("button_back").attachEvent("onItemClick", (id, e)=>{
             this.show("win");
         });
+
+
+
+        // $$('central_menu_button_2').bind($$('calibration'));
+        //
+        // gridb.bind(grida, function(slave, master){
+        //     if (!master) return false;
+        //     return master.id == slave.movie;
+        // });
+
+
+        // $$("calibration").attachEvent("onAfterSelect", function(id){
+        //     var item = this.getItem(id);
+        //     $$("central_menu_button_2").setValues(item);
+        // });
+
+
 
         //Кнопки в правом меню статус ( красные/зеленые )------------------------//
         $$("button_define_1").show()
@@ -1229,6 +1445,8 @@ export default class Page9View extends JetView {
             $$("right_menu_calibration_button").hide()
             $$("right_menu_calibration_setup").hide()
             $$("right_menu_calibration_drain_2").hide()
+            $$("fuel_filling").hide()
+            $$("fuel_filling_2").hide()
 
         });
 
@@ -1243,6 +1461,8 @@ export default class Page9View extends JetView {
             $$("right_menu_calibration_button").show()
             $$("right_menu_calibration_setup").show()
             $$("right_menu_calibration_drain_2").hide()
+            $$("fuel_filling").hide()
+            $$("fuel_filling_2").hide()
             $$("calibration").focus()
 
         });
@@ -1258,11 +1478,46 @@ export default class Page9View extends JetView {
             $$("right_menu_calibration_button").hide()
             $$("right_menu_calibration_setup").hide()
             $$("right_menu_calibration_drain_2").hide()
+            $$("fuel_filling").hide()
+            $$("fuel_filling_2").hide()
 
         });
 
 
-        //Правое меню Тарировки-----------------------------------------------//
+
+        //Правое меню Тарировки "ЗАЛИВ" -----------------------------------------------//
+        $$("fuel_filling").hide()
+        $$("fuel_filling_2").hide()
+        $$("button_type_calibration_2").attachEvent("onItemClick", (id, e)=>{
+            $$("fuel_filling").show()
+            $$("button_type_calibration_2").focus()
+
+        });
+
+        $$("fuel_filling_button_next").attachEvent("onItemClick", (id, e)=>{
+            $$("fuel_filling").hide()
+            $$("fuel_filling_2").show()
+            $$("general").disable()
+            $$("filtering").disable()
+            $$("calibration").disable()
+            $$("button_type_calibration_1").disable()
+            $$("button_type_calibration_2").focus()
+
+        });
+
+        $$("fuel_filling_2_button_closed").attachEvent("onItemClick", (id, e)=>{
+            $$("fuel_filling_2").hide()
+            $$("fuel_filling").show()
+            $$("general").enable()
+            $$("filtering").enable()
+            $$("calibration").enable()
+            $$("button_type_calibration_1").enable()
+            $$("button_type_calibration_2").focus()
+        });
+
+
+
+        //Правое меню Тарировки "СЛИВ"-----------------------------------------------//
 
         $$("central_menu_and_right_menu_calibration_next_window_button").attachEvent("onItemClick", (id, e)=>{
             $$("right_menu_calibration_setup").hide()
@@ -1287,10 +1542,14 @@ export default class Page9View extends JetView {
         $$("button_type_calibration_2").attachEvent("onItemClick", (id, e)=>{
             $$("right_menu_calibration_setup").hide()
 
+
         });
 
         $$("button_type_calibration_1").attachEvent("onItemClick", (id, e)=>{
             $$("right_menu_calibration_setup").show()
+            $$("fuel_filling").hide()
+            $$("fuel_filling_2").hide()
+
 
         });
 
@@ -1318,7 +1577,6 @@ export default class Page9View extends JetView {
             if ($$("temp_compensation").getValue()== 1) {
                 $$("button_define_4_base").hide()
                 $$("button_define_4").show()
-
             } else{
                 $$("button_define_4").hide()
                 $$("button_define_4_base").show()
@@ -1355,29 +1613,36 @@ export default class Page9View extends JetView {
 
 
 
-        // var light = $$("temp_compensation").attachEvent("onItemClick", function() {
-        //     console.log($$("temp_compensation").getValue());
-        //
-        //     if ($$("temp_compensation").getValue()== 1) {
-        //
-        //         setColor("button_define_4","red");
-        //     } else {
-        //         setColor("button_define_4","green");
-        //     }
-        //
-        // });
-        //
-        // function setColor(id, color) {
-        //     webix.html.removeCss($$("button_define_4").getNode(), "rows_level_right_menu_switch");
-        //
-        //     if (color == "red") {
-        //         webix.html.addCss($$("button_define_4").getNode(), "rows_level_right_menu_switch_define");
-        //     }
-        //     if (color == "green") {
-        //         webix.html.addCss($$("button_define_4").getNode(), "rows_level_right_menu_switch");
-        //     }
-        // }
 
+        var image = $$("temp_compensation_2").attachEvent("onItemClick", function() {
+            console.log($$("temp_compensation_2").getValue());
+
+            if ($$("temp_compensation_2").getValue() == 0) {
+
+                $$("left_menu_button_1").define("image", "../sources/models/image/MODEL_101.svg")
+                $$("left_menu_button_2").define("image", "../sources/models/image/MODEL_201.svg")
+                $$("left_menu_button_3").define("image", "../sources/models/image/MODEL_301_BLE.svg")
+                $$("button_back").define("image", "../sources/models/image/back.svg")
+                $$("button_reference").define("image", "../sources/models/image/info.svg")
+                $$("left_menu_button_1").refresh();
+                $$("left_menu_button_2").refresh();
+                $$("left_menu_button_3").refresh();
+                $$("button_back").refresh();
+                $$("button_reference").refresh();
+            }
+         else {
+                $$("left_menu_button_1").define("image", "../sources/models/image/MODEL_101_inverse.svg")
+                $$("left_menu_button_2").define("image", "../sources/models/image/MODEL_201_inverse.svg")
+                $$("left_menu_button_3").define("image", "../sources/models/image/MODEL_301_BLE_inverse.svg")
+                $$("button_back").define("image", "../sources/models/image/back_inverse.svg")
+                $$("button_reference").define("image", "../sources/models/image/info_inverse.svg")
+                $$("left_menu_button_1").refresh();
+                $$("left_menu_button_2").refresh();
+                $$("left_menu_button_3").refresh();
+                $$("button_back").refresh();
+                $$("button_reference").refresh();
+            }
+        });
 
 
 
@@ -1387,85 +1652,11 @@ export default class Page9View extends JetView {
             if ($$("temp_compensation_2").getValue()== 1) {
 
                 setColor("dark","white");
-                // setColor("style_left_cols","white");
-                // setColor("style_left_cols_2","white");
-                // setColor("style_general_rows_1","white");
-                // setColor("left_menu_button_1","white");
-                // setColor("left_menu_button_2","white");
-                // setColor("left_menu_button_3","white");
-                // setColor("general","white");
-                // setColor("calibration","white");
-                // setColor("filtering","white");
-                // setColor("button_reference","white");
-                // setColor("button_back","white");
-                // setColor("window_type_1","white");
-                // setColor("window_type_2_1","white");
-                // setColor("window_type_2_2","white");
-                // setColor("window_type_2_3","white");
-                // setColor("window_type_2_4","white");
-                // setColor("window_type_2_5","white");
-                // setColor("window_type_2_6","white");
-                // setColor("right_menu_status","white");
-                // setColor("right_menu_setup","white");
-                // setColor("rows_right_1","white");
-                // setColor("rows_right_2","white");
-                // setColor("rows_right_3","white");
-                // setColor("rows_level_right_menu_info_1","white");
-                // setColor("rows_level_right_menu_info_2","white");
-                // setColor("rows_level_right_menu_info_3","white");
-                // setColor("rows_level_right_menu_info_4","white");
-                // setColor("button_right_menu_top_1","white");
-                // setColor("button_right_menu_top_2","white");
-                // setColor("auto_calibration_set_1","white");
-                // setColor("auto_calibration_set_2","white");
-                // setColor("auto_calibration_set_3","white");
-                // setColor("auto_calibration_set_4","white");
-                // setColor("right_menu_status_text","white");
-                // setColor("central_cols_button","white");
-                // setColor("right_menu_filter","white");
-                // setColor("button_type_calibration_1","white");
-                // setColor("button_type_calibration_2","white");
+
 
 
             } else {
                 setColor("dark","black");
-                // setColor("style_left_cols","black");
-                // setColor("style_left_cols_2","black");
-                // setColor("style_general_rows_1","black");
-                // setColor("left_menu_button_1","black");
-                // setColor("left_menu_button_2","black");
-                // setColor("left_menu_button_3","black");
-                // setColor("general","black");
-                // setColor("calibration","black");
-                // setColor("filtering","black");
-                // setColor("button_reference","black");
-                // setColor("button_back","black");
-                // setColor("window_type_1","black");
-                // setColor("window_type_2_1","black");
-                // setColor("window_type_2_2","black");
-                // setColor("window_type_2_3","black");
-                // setColor("window_type_2_4","black");
-                // setColor("window_type_2_5","black");
-                // setColor("window_type_2_6","black");
-                // setColor("right_menu_status","black");
-                // setColor("right_menu_setup","black");
-                // setColor("rows_right_1","black");
-                // setColor("rows_right_2","black");
-                // setColor("rows_level_right_menu_info_1","black");
-                // setColor("rows_level_right_menu_info_2","black");
-                // setColor("rows_level_right_menu_info_3","black");
-                // setColor("rows_level_right_menu_info_4","black");
-                // setColor("button_right_menu_top_1","black");
-                // setColor("button_right_menu_top_2","black");
-                // setColor("auto_calibration_set_1","black");
-                // setColor("auto_calibration_set_2","black");
-                // setColor("auto_calibration_set_3","black");
-                // setColor("auto_calibration_set_4","black");
-                // setColor("right_menu_status_text","black");
-                // setColor("central_cols_button","black");
-                // setColor("right_menu_filter","black");
-                // setColor("button_type_calibration_1","black");
-                // setColor("button_type_calibration_2","black");
 
 
 
@@ -1518,6 +1709,8 @@ export default class Page9View extends JetView {
             webix.html.removeCss( $$("right_menu_calibration_drain_2").getNode(), "rows_right_menu_calibration_2");
             webix.html.removeCss( $$("button_add_step_1").getNode(), "set_step_drain_button_2");
             webix.html.removeCss( $$("button_add_step_2").getNode(), "set_step_drain_button_2");
+            webix.html.removeCss( $$("button_add_step_3").getNode(), "set_step_drain_button_2");
+            webix.html.removeCss( $$("button_add_step_4").getNode(), "set_step_drain_button_2");
             webix.html.removeCss( $$("filter_open_windows").getNode(), "full_window_text");
             webix.html.removeCss( $$("degree_of_filtration_2").getNode(), "filter_rows");
             webix.html.removeCss( $$("text_color_filter_1").getNode(), "text_color_filter");
@@ -1529,6 +1722,23 @@ export default class Page9View extends JetView {
             webix.html.removeCss( $$("window_text_mediana").getNode(), "full_window_text");
             webix.html.removeCss( $$("slider_filter_1").getNode(), "slider_1");
             webix.html.removeCss( $$("slider_filter_2").getNode(), "slider_1");
+            webix.html.removeCss( $$("image_button_filter_1").getNode(), "image_button_filter");
+            webix.html.removeCss( $$("image_button_filter_2").getNode(), "image_button_filter");
+            webix.html.removeCss( $$("image_button_filter_3").getNode(), "image_button_filter");
+            webix.html.removeCss( $$("manual_volume_fuel_1").getNode(), "full_window_text");
+            webix.html.removeCss( $$("step_liters_1").getNode(), "full_window_text");
+            webix.html.removeCss( $$("initial_volume_fuel_1").getNode(), "full_window_text");
+            webix.html.removeCss( $$("counts_step").getNode(), "full_window_text");
+            webix.html.removeCss( $$("manual_volume_fuel_2").getNode(), "full_window_text");
+            webix.html.removeCss( $$("step_liters_2").getNode(), "full_window_text");
+            webix.html.removeCss( $$("initial_volume_fuel_2").getNode(), "full_window_text");
+            webix.html.removeCss( $$("fuel_filling").getNode(), "rows_right_menu_calibration_2");
+            webix.html.removeCss( $$("fuel_filling_2").getNode(), "rows_right_menu_calibration_2");
+            webix.html.removeCss( $$("manual_volume_fuel_fuel_filling_1").getNode(), "full_window_text");
+            webix.html.removeCss( $$("manual_volume_fuel_fuel_filling_2").getNode(), "full_window_text");
+            webix.html.removeCss( $$("step_liters_fuel_filling_2").getNode(), "full_window_text");
+            webix.html.removeCss( $$("counts_step_fuel_filling").getNode(), "full_window_text");
+            webix.html.removeCss( $$("step_liters_fuel_filling_1").getNode(), "full_window_text");
 
 
 
@@ -1536,16 +1746,6 @@ export default class Page9View extends JetView {
 
 
 
-
-
-
-
-            // filter_open_windows
-            // degree_of_filtration_2
-            // text_color_filter_1
-            // window_text_time
-            // window_text_mediana
-            // slider_filter_1
 
 
 
@@ -1593,6 +1793,8 @@ export default class Page9View extends JetView {
                 webix.html.addCss( $$("right_menu_calibration_drain_2").getNode(), "rows_right_menu_calibration_2_dark");
                 webix.html.addCss( $$("button_add_step_1").getNode(), "set_step_drain_button_2_dark");
                 webix.html.addCss( $$("button_add_step_2").getNode(), "set_step_drain_button_2_dark");
+                webix.html.addCss( $$("button_add_step_3").getNode(), "set_step_drain_button_2_dark");
+                webix.html.addCss( $$("button_add_step_4").getNode(), "set_step_drain_button_2_dark");
                 webix.html.addCss( $$("filter_open_windows").getNode(), "full_window_text_dark");
                 webix.html.addCss( $$("degree_of_filtration_2").getNode(), "filter_rows_dark");
                 webix.html.addCss( $$("text_color_filter_1").getNode(), "text_color_filter_dark");
@@ -1604,11 +1806,23 @@ export default class Page9View extends JetView {
                 webix.html.addCss( $$("window_text_mediana").getNode(), "full_window_text_dark");
                 webix.html.addCss( $$("slider_filter_1").getNode(), "slider_1_dark");
                 webix.html.addCss( $$("slider_filter_2").getNode(), "slider_1_dark");
-
-
-
-
-
+                webix.html.addCss( $$("image_button_filter_1").getNode(), "image_button_filter_dark");
+                webix.html.addCss( $$("image_button_filter_2").getNode(), "image_button_filter_dark");
+                webix.html.addCss( $$("image_button_filter_3").getNode(), "image_button_filter_dark");
+                webix.html.addCss( $$("manual_volume_fuel_1").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("step_liters_1").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("initial_volume_fuel_1").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("counts_step").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("manual_volume_fuel_2").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("step_liters_2").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("initial_volume_fuel_2").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("fuel_filling").getNode(), "rows_right_menu_calibration_2_dark");
+                webix.html.addCss( $$("fuel_filling_2").getNode(), "rows_right_menu_calibration_2_dark");
+                webix.html.addCss( $$("manual_volume_fuel_fuel_filling_1").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("manual_volume_fuel_fuel_filling_2").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("step_liters_fuel_filling_2").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("counts_step_fuel_filling").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("step_liters_fuel_filling_1").getNode(), "full_window_text_dark");
 
 
 
@@ -1664,6 +1878,8 @@ export default class Page9View extends JetView {
                 webix.html.addCss( $$("right_menu_calibration_drain_2").getNode(), "rows_right_menu_calibration_2");
                 webix.html.addCss( $$("button_add_step_1").getNode(), "set_step_drain_button_2");
                 webix.html.addCss( $$("button_add_step_2").getNode(), "set_step_drain_button_2");
+                webix.html.addCss( $$("button_add_step_3").getNode(), "set_step_drain_button_2");
+                webix.html.addCss( $$("button_add_step_4").getNode(), "set_step_drain_button_2");
                 webix.html.addCss( $$("filter_open_windows").getNode(), "full_window_text");
                 webix.html.addCss( $$("degree_of_filtration_2").getNode(), "filter_rows");
                 webix.html.addCss( $$("text_color_filter_1").getNode(), "text_color_filter");
@@ -1675,6 +1891,32 @@ export default class Page9View extends JetView {
                 webix.html.addCss( $$("window_text_mediana").getNode(), "full_window_text");
                 webix.html.addCss( $$("slider_filter_1").getNode(), "slider_1");
                 webix.html.addCss( $$("slider_filter_2").getNode(), "slider_1");
+                webix.html.addCss( $$("image_button_filter_1").getNode(), "image_button_filter");
+                webix.html.addCss( $$("image_button_filter_2").getNode(), "image_button_filter");
+                webix.html.addCss( $$("image_button_filter_3").getNode(), "image_button_filter");
+                webix.html.addCss( $$("manual_volume_fuel_1").getNode(), "full_window_text");
+                webix.html.addCss( $$("step_liters_1").getNode(), "full_window_text");
+                webix.html.addCss( $$("initial_volume_fuel_1").getNode(), "full_window_text");
+                webix.html.addCss( $$("counts_step").getNode(), "full_window_text");
+                webix.html.addCss( $$("manual_volume_fuel_2").getNode(), "full_window_text");
+                webix.html.addCss( $$("step_liters_2").getNode(), "full_window_text");
+                webix.html.addCss( $$("initial_volume_fuel_2").getNode(), "full_window_text");
+                webix.html.addCss( $$("fuel_filling").getNode(), "rows_right_menu_calibration_2");
+                webix.html.addCss( $$("fuel_filling_2").getNode(), "rows_right_menu_calibration_2");
+                webix.html.addCss( $$("manual_volume_fuel_fuel_filling_1").getNode(), "full_window_text");
+                webix.html.addCss( $$("manual_volume_fuel_fuel_filling_2").getNode(), "full_window_text");
+                webix.html.addCss( $$("step_liters_fuel_filling_2").getNode(), "full_window_text");
+                webix.html.addCss( $$("counts_step_fuel_filling").getNode(), "full_window_text");
+                webix.html.addCss( $$("step_liters_fuel_filling_1").getNode(), "full_window_text");
+
+
+
+
+
+
+
+
+
 
 
 

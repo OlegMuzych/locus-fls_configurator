@@ -709,7 +709,10 @@ border: none;
 }
 
 .button_right_menu_top_1 .webix_button:hover{
-    background-color: #f8f8f8;
+    background-color: #dcdcdc;
+    /*background-color: #f8f8f8;*/
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .button_right_menu_top_1_dark .webix_button:hover{
@@ -717,12 +720,17 @@ border: none;
 }
 
 .button_right_menu_top_1 .webix_button:focus{
-    background-color: #f8f8f8;
+    background-color: #dcdcdc;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .button_right_menu_top_1_dark .webix_button:focus{
     background-color: var(--c-white-color-background-dark_general_windows);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
+
 
 /*/////------------------------------------------------------------*/
 
@@ -1031,6 +1039,8 @@ border: none;
     background-color: rgba(255, 255, 255, 0);
 }
 
+
+
 .slider_text_window_filter input{
     background-color: #f3f3f3;
     box-shadow:inset 2px 2px 4px #c5c5c5,
@@ -1333,4 +1343,22 @@ border: none;
     position: relative;
     top: 2px;
     left: 2px;
+}
+
+.service_button.webix_view .webix_list{
+  font-size: 18px;
+   color: var(--c-color-text-light);
+
+}
+
+.service_button .webix_view{
+    background-color: #dcdcdc;
+    border-radius: 8px;
+}
+
+.webix_view.webix_window.webix_popup.service_button{
+    background-color: #dcdcdc;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
 }

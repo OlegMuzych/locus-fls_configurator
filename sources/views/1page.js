@@ -15,7 +15,6 @@ export default class Page9View extends JetView {
                 id: "style_left_cols",
                 css: "style_left_cols",
                 rows: [
-
                     {
                         view: "button",
                         type: "image",
@@ -72,8 +71,8 @@ export default class Page9View extends JetView {
             }
         };
 
-        var central_menu_button = {
 
+        var central_menu_button = {
 
             paddingY: 0,
             minWidth: 500,
@@ -262,7 +261,7 @@ export default class Page9View extends JetView {
                     ]
                 }
             ]
-        }
+        };
 
         var filtering = {
             minWidth: 500,
@@ -417,7 +416,6 @@ export default class Page9View extends JetView {
                                             }
                                         ]
                                     },
-
                                 ]
                             },
                             {
@@ -454,7 +452,6 @@ export default class Page9View extends JetView {
                                                         title: webix.template("#value#"),
                                                     }
                                                 ]
-
                                             },
                                             {
                                                 paddingY: 45,
@@ -487,8 +484,6 @@ export default class Page9View extends JetView {
                                             {
 
                                             }
-
-
                                         ]
                                     }
                                 ]
@@ -524,7 +519,6 @@ export default class Page9View extends JetView {
                                                         id:"slider_filter_2",
                                                     }
                                                 ]
-
                                             },
                                             {
                                                 paddingY: 45,
@@ -557,7 +551,6 @@ export default class Page9View extends JetView {
                                             {
 
                                             }
-
                                         ]
                                     }
                                 ]
@@ -565,32 +558,30 @@ export default class Page9View extends JetView {
                         ]
                     }
                 ]
-
-
-
         };
 
 
         var right_menu_button={
             height: 95,
             rows:[
-                {
-                    //Кнопки сверху в правом меню-----------------------//
-                    paddingY: 20,
-                    cols: [
-                        {
 
-                        },
-                        {view: "button", width: 250, height: 70, label: "Сервис", css: "button_right_menu_top_1", id:"button_right_menu_top_1"},
-                        {
-                            width: 10,
-                        },
-                        {view: "button", width: 250, height: 70, label: "Пароль", css: "button_right_menu_top_1", id:"button_right_menu_top_2"},
-                        {
+                 {
+                     //Кнопки сверху в правом меню-----------------------//
+                     paddingY: 20,
+                     cols: [
+                         {
+
+                         },
+                         {view: "button", width: 250, height: 70, label: "Сервис",  popup: "my_pop_2", css: "button_right_menu_top_1", id:"button_right_menu_top_1"},
+                         {
+                             width: 10,
+                         },
+                          {view: "button", width: 250, height: 70, label: "Пароль", css: "button_right_menu_top_1", id:"button_right_menu_top_2"},
+                       {
 
                         }
-                    ]
-                  }
+                       ]
+                    }
                 ]
         };
 
@@ -1252,18 +1243,18 @@ export default class Page9View extends JetView {
 
 
 
-
+// Кнопка Сервис -------------------------------//
         webix.ui({
             view:"popup",
-            id:"my_pop",
-            width:200,
-            height: 200,
+            id:"my_pop_2",
+            css:"service_button",
+            width:245,
+            height: 400,
             body:{
                 view:"list",
                 data:[
-                    {id:"1",  location: "Квадратичная", name:"1"},
-                    {id:"2",  location:"Усреднение", name:"2"},
-                    {id:"3",  location:"хз", name:"3"}
+                    {id:"11",  location: "Обновить прошивку", name:""},
+                    {id:"22",  location:"Сброс всех настроек", name:""},
                 ],
                 template:"#name# - #location#",
                 autoheight:true,
@@ -1272,6 +1263,27 @@ export default class Page9View extends JetView {
         });
 
 
+
+// Кнопка выбрать в окне фильтрация -------------------------------//
+        webix.ui({
+            view:"popup",
+            multi:true,
+            id:"my_pop",
+            css:"service_button",
+            width:300,
+            height: 400,
+            body:{
+                view:"list",
+                data:[
+                    {id:"1",  location: "Квадратичная", name:"1"},
+                    {id:"2",  location:"Усреднение", name:"2"},
+                    {id:"3",  location:"Интерполяция", name:"3"},
+                ],
+                template:"#name# - #location#",
+                autoheight:true,
+                select:true
+            }
+        });
 
 
 
@@ -1423,7 +1435,7 @@ export default class Page9View extends JetView {
 
 
         //Дефолтные значения при загрузке стр на главном меню------------------//
-        $$("general").focus()
+        // $$("general").focus()
         $$("central_menu_button_1").show()
         $$("right_menu_setup").show()
         $$("central_menu_button_2").hide()
@@ -1447,7 +1459,6 @@ export default class Page9View extends JetView {
             $$("right_menu_calibration_drain_2").hide()
             $$("fuel_filling").hide()
             $$("fuel_filling_2").hide()
-
         });
 
 
@@ -1501,7 +1512,7 @@ export default class Page9View extends JetView {
             $$("filtering").disable()
             $$("calibration").disable()
             $$("button_type_calibration_1").disable()
-            $$("button_type_calibration_2").focus()
+            $$("button_type_calibration_2").disable()
 
         });
 
@@ -1512,6 +1523,7 @@ export default class Page9View extends JetView {
             $$("filtering").enable()
             $$("calibration").enable()
             $$("button_type_calibration_1").enable()
+            $$("button_type_calibration_2").enable()
             $$("button_type_calibration_2").focus()
         });
 
@@ -1526,7 +1538,8 @@ export default class Page9View extends JetView {
             $$("filtering").disable()
             $$("calibration").disable()
             $$("button_type_calibration_2").disable()
-            $$("button_type_calibration_1").focus()
+            $$("button_type_calibration_1").disable()
+
 
             $$("closed_calibration_button_window_2").attachEvent("onItemClick", (id, e)=>{
                 $$("right_menu_calibration_setup").show()
@@ -1535,6 +1548,7 @@ export default class Page9View extends JetView {
                 $$("filtering").enable()
                 $$("calibration").enable()
                 $$("button_type_calibration_2").enable()
+                $$("button_type_calibration_1").enable()
                 $$("button_type_calibration_1").focus()
             });
         });
@@ -1542,16 +1556,32 @@ export default class Page9View extends JetView {
         $$("button_type_calibration_2").attachEvent("onItemClick", (id, e)=>{
             $$("right_menu_calibration_setup").hide()
 
-
         });
+
 
         $$("button_type_calibration_1").attachEvent("onItemClick", (id, e)=>{
             $$("right_menu_calibration_setup").show()
             $$("fuel_filling").hide()
             $$("fuel_filling_2").hide()
-
-
         });
+
+
+
+        // button_right_menu_top_1
+
+        $$("button_right_menu_top_1").attachEvent("onItemClick", (id, e)=>{
+            if ($$("button_right_menu_top_1").getValue()== 0) {
+                $$("button_right_menu_top_1").focus()
+            } else {if
+                ($$("11").getValue()== 0) {
+                    $$("button_right_menu_top_1").focus()
+                }
+
+
+
+            }
+        });
+
 
 
         $$("filtering_switch_top").attachEvent("onItemClick", function(){

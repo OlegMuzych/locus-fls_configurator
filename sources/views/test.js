@@ -83,10 +83,11 @@ export default class Page9View extends JetView {
                     id: 'tabbar',
                     multiview: true,
                     options: [
-                        {value: 'Основные настройки', id: 'central_setup_rows',},
+                        {value: 'Основные настройки', id: 'central_setup_rows',click:function(id,event){$$("right_menu_setup").show()} },
                         {value: 'Тарировка', id: 'calibration_setup_rows'},
                         {value: 'Фильтрация', id: 'page3'}
                     ],
+
                     on: {
                         onChange: function (nextId, prevId) {
                             webix.animate($$(prevId).$view, {type: "fade", duration: 250});
@@ -98,9 +99,12 @@ export default class Page9View extends JetView {
                     on: {
                         onViewChange: function (prevId, nextId) {
                             webix.html.addCss($$(nextId).$view, "animated fadeIn");
+
+
                             webix.delay(function () {
                                 webix.html.removeCss(this.$view, "animated fadeIn");
                             }, $$(nextId), null, 200);
+
                         }
                     },
 
@@ -614,8 +618,11 @@ export default class Page9View extends JetView {
                 },
                 {
                     height: 20,
-                }
+                },
+
+
             ]
+
 
         };
 
@@ -781,10 +788,10 @@ export default class Page9View extends JetView {
 
 
 
-        // $$("right_menu_setup").hide()
+        $$("right_menu_setup").hide()
         //
-        // $$("tabbar").attachEvent("onItemClick", function() {
-        //     this.select(1);
+        // $$("central_setup_rows").attachEvent("onItemClick", function() {
+        //
         //         $$("right_menu_setup").show()
         //
         //

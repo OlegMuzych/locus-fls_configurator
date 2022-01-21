@@ -72,8 +72,8 @@ export default class Page9View extends JetView {
         };
 
 
-        var central_menu_button = {
 
+        var central_menu_button = {
             paddingY: 0,
             minWidth: 500,
             maxWidth: 890,
@@ -83,6 +83,7 @@ export default class Page9View extends JetView {
                     id: "central_cols_button",
                     cols: [
                         {
+
                             view: "button",
                             label: "Основные настройки",
                             maxWidth: 300,
@@ -90,7 +91,7 @@ export default class Page9View extends JetView {
                             height: 100,
                             css: "button_central_menu",
                             id: "general",
-                            value: "Save"
+                            value: "Save",
                         },
                         {
                             view: "button",
@@ -101,7 +102,6 @@ export default class Page9View extends JetView {
                             css: "button_central_menu",
                             id: "calibration",
                             value: "Save",
-
                         },
                         {
                             view: "button",
@@ -111,11 +111,14 @@ export default class Page9View extends JetView {
                             height: 100,
                             css: "button_central_menu",
                             id: "filtering",
-                            value: "Save"
+                            value: "Save",
                         },
                     ]
                 },
+
             ]
+
+
         };
 
         var general_config = {
@@ -226,13 +229,13 @@ export default class Page9View extends JetView {
                                                 {view: "switch", value: 0, id: "temp_compensation_2", width: 68,}
                                             ]
                                         },
-
                                     ]
-
                                 },
                             ]
                         },
-                        {}
+                        {
+
+                        }
                     ]
                 },
             ]
@@ -1287,11 +1290,7 @@ export default class Page9View extends JetView {
 
 
 
-
-
-
-        return{
-
+        return {
             view:"scrollview",
             scroll: "y",
             maxHeight: 1000,
@@ -1406,20 +1405,10 @@ export default class Page9View extends JetView {
         });
 
 
-
-        // $$('central_menu_button_2').bind($$('calibration'));
-        //
-        // gridb.bind(grida, function(slave, master){
-        //     if (!master) return false;
-        //     return master.id == slave.movie;
-        // });
-
-
-        // $$("calibration").attachEvent("onAfterSelect", function(id){
-        //     var item = this.getItem(id);
-        //     $$("central_menu_button_2").setValues(item);
-        // });
-
+        $$("general").attachEvent("onAfterSelect", function(id){
+            var item = this.getItem(id);
+            $$("central_menu_button_1").setValues(item);
+        });
 
 
         //Кнопки в правом меню статус ( красные/зеленые )------------------------//
@@ -1553,6 +1542,8 @@ export default class Page9View extends JetView {
             });
         });
 
+
+
         $$("button_type_calibration_2").attachEvent("onItemClick", (id, e)=>{
             $$("right_menu_calibration_setup").hide()
 
@@ -1676,24 +1667,36 @@ export default class Page9View extends JetView {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         var color = $$("temp_compensation_2").attachEvent("onItemClick", function() {
             console.log($$("temp_compensation_2").getValue());
 
             if ($$("temp_compensation_2").getValue()== 1) {
 
-                setColor("dark","white");
-
-
+                setColor("white","white");
 
             } else {
                 setColor("dark","black");
 
-
-
-
             }
-
         });
+
+
         function setColor(id, color)
         {
             webix.html.removeCss( $$("dark").getNode(), "style_body");

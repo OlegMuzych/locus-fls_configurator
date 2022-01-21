@@ -74,40 +74,39 @@ export default class Page9View extends JetView {
 
 
 
-
         var central_button = {
             rows: [
-                {
+                  {
                     height: 100,
                     view: "segmented",
                     id: 'tabbar',
                     multiview: true,
+                    value: 'Основные настройки',
                     options: [
-                        {value: 'Основные настройки', id: 'central_setup_rows',click:function(id,event){$$("right_menu_setup").show()} },
+                        {value: 'Основные настройки', id: 'central_setup_rows', type:"button"},
                         {value: 'Тарировка', id: 'calibration_setup_rows'},
-                        {value: 'Фильтрация', id: 'page3'}
+                        {value: 'Фильтрация', id: 'page3'},
                     ],
 
                     on: {
                         onChange: function (nextId, prevId) {
-                            webix.animate($$(prevId).$view, {type: "fade", duration: 250});
-                        }
-                    }
+                            webix.animate($$(prevId).$view, {type: "fade", duration: 0});
+                        }}
+
                 },
                 {
+
                     animate: {type: "show", delay: 200},
                     on: {
                         onViewChange: function (prevId, nextId) {
                             webix.html.addCss($$(nextId).$view, "animated fadeIn");
 
-
                             webix.delay(function () {
                                 webix.html.removeCss(this.$view, "animated fadeIn");
-                            }, $$(nextId), null, 200);
+                            }, $$(nextId), null, 0);
 
                         }
                     },
-
 
                     width: 900,
                     cells: [
@@ -524,13 +523,10 @@ export default class Page9View extends JetView {
                                 }
                             ]
                         }
-
-
-
                     ]
-
                 }
             ]
+
         };
 
         var right_menu_button={
@@ -623,109 +619,426 @@ export default class Page9View extends JetView {
 
             ]
 
-
         };
 
-        var right_menu_setup={
-            css:"right_menu_status",
-            id:"right_menu_setup",
-            height: 650,
-            rows:[
+        // var right_menu_setup={
+        //     css:"right_menu_status",
+        //     id:"right_menu_setup",
+        //     height: 650,
+        //     rows:[
+        //         {
+        //             cols:[
+        //                 {
+        //                     width: 50,
+        //                 },
+        //                 {view:"label", label:"<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 30px; '>Колибровка с топливом</p>", width: 300, height:100, css:"right_menu_status_text", id:"right_menu_status_text"},
+        //                 {
+        //                     width: 50,
+        //                 },
+        //                 {view: "switch", value: "1", css:"filter_toggle", id:"calibration_fuel", height: 100,},
+        //             ],
+        //
+        //         },
+        //         {
+        //             rows:[
+        //                 {
+        //                     cols:[
+        //                         {
+        //                             width: 40,
+        //                         },
+        //                         {view:"button", type:"label", label:"Откалибровать", width: 460, height: 50, css:"auto_calibration", id:"auto_calibration"}
+        //                     ]
+        //                 }
+        //             ]
+        //         },
+        //         {
+        //             height: 50,
+        //         },
+        //         {
+        //
+        //             cols:[
+        //                 {
+        //                     width: 30,
+        //                 },
+        //                 {view:"bullet", layout:"y", id:"progress_bar", css:"progress_bar", value:0, labelHeight:30, width: 120,  minRange:0, maxRange:10, stroke:40,
+        //                     scale: {
+        //                         step: 10,
+        //                         template: "#value#%"
+        //                     },
+        //                     bands:[
+        //                         { value:10, color:"#628cbb", css:"test345"},
+        //                         // { value:0, color:"#628cbb"},
+        //                     ],
+        //                     color:"#f8f8f8",
+        //                 },
+        //                 {
+        //                     width: 150,
+        //                 },
+        //                 {
+        //                     rows:[
+        //                         {
+        //                             cols:[
+        //                                 {
+        //
+        //                                     rows:[
+        //                                         {view:"text", width: 200, height: 50, css:"full_window_text", readonly:false, id:"auto_calibration_set_1"},
+        //                                         {view:"button", type:"label", label:"Полный", width: 200, height: 50, css:"auto_calibration", id:"auto_calibration_1"},
+        //                                         {
+        //                                             height: 130,
+        //                                         },
+        //                                         {view:"text", width: 200, height: 50, css:"full_window_text", readonly:false, id:"auto_calibration_set_2"},
+        //                                         {view:"button", type:"label", label:"Пустой", width: 200, height: 50, css:"auto_calibration", id:"auto_calibration_2"},
+        //                                     ]
+        //                                 }
+        //                             ]
+        //                         }
+        //                     ]
+        //                 }
+        //             ]
+        //         },
+        //         {
+        //             height: 50,
+        //         },
+        //         {
+        //
+        //             rows:[
+        //                 {
+        //                     cols:[
+        //                         {
+        //                             width: 40,
+        //                         },
+        //                         {view:"button", type:"label", label:"Редактировать значения", width: 460, height: 50, css:"edit_values"}
+        //                     ]
+        //                 }
+        //             ]
+        //         }
+        //     ]
+        //
+        //
+        // };
+
+        // view: "segmented",
+        // id: '325',
+        // multiview: true,
+        // value: '2',
+        // options: [
+        //
+        //     {value: 'Слив', id: 'right_menu_calibration_setup'},
+        //     {value: 'Залив', id: '123'},
+
+        var right_menu_ver_2 = {
+            rows: [
                 {
-                    cols:[
-                        {
-                            width: 50,
-                        },
-                        {view:"label", label:"<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 30px; '>Колибровка с топливом</p>", width: 300, height:100, css:"right_menu_status_text", id:"right_menu_status_text"},
-                        {
-                            width: 50,
-                        },
-                        {view: "switch", value: "1", css:"filter_toggle", id:"calibration_fuel", height: 100,},
+                    height: 60,
+                    view: "segmented",
+                    id: 'tabbar_2',
+                    multiview: true,
+                    value: 'Тарировка',
+                    options: [
+                        {value: 'Слив', id: 'right_menu_calibration_setup'},
+                        {value: 'Залив', id: 'fuel_filling'},
+                        {value: "Слив", id:'right_menu_calibration_drain_2'}
+
                     ],
 
+                    on: {
+                        onChange: function (nextId, prevId) {
+                            webix.animate($$(prevId).$view, {type: "fade", duration: 250});
+                        }}
                 },
                 {
-                    rows:[
-                        {
-                            cols:[
-                                {
-                                    width: 40,
-                                },
-                                {view:"button", type:"label", label:"Откалибровать", width: 460, height: 50, css:"auto_calibration", id:"auto_calibration"}
-                            ]
-                        }
-                    ]
-                },
-                {
-                    height: 50,
-                },
-                {
+                    animate: {type: "show", delay: 200},
+                    on: {
+                        onViewChange: function (prevId, nextId) {
+                            webix.html.addCss($$(nextId).$view, "animated fadeIn");
 
-                    cols:[
+                            webix.delay(function () {
+                                webix.html.removeCss(this.$view, "animated fadeIn");
+                            }, $$(nextId), null, 200);
+                        }
+                    },
+
+                    cells: [
                         {
-                            width: 30,
-                        },
-                        {view:"bullet", layout:"y", id:"progress_bar", css:"progress_bar", value:0, labelHeight:30, width: 120,  minRange:0, maxRange:10, stroke:40,
-                            scale: {
-                                step: 10,
-                                template: "#value#%"
-                            },
-                            bands:[
-                                { value:10, color:"#628cbb", css:"test345"},
-                                // { value:0, color:"#628cbb"},
-                            ],
-                            color:"#f8f8f8",
-                        },
-                        {
-                            width: 150,
-                        },
-                        {
+
+                            id:"right_menu_calibration_setup",
+                            css:"rows_right_menu_calibration_2",
+                            height: 570,
                             rows:[
+                                {
+                                    height: 50,
+                                },
                                 {
                                     cols:[
                                         {
 
-                                            rows:[
-                                                {view:"text", width: 200, height: 50, css:"full_window_text", readonly:false, id:"auto_calibration_set_1"},
-                                                {view:"button", type:"label", label:"Полный", width: 200, height: 50, css:"auto_calibration", id:"auto_calibration_1"},
-                                                {
-                                                    height: 130,
-                                                },
-                                                {view:"text", width: 200, height: 50, css:"full_window_text", readonly:false, id:"auto_calibration_set_2"},
-                                                {view:"button", type:"label", label:"Пустой", width: 200, height: 50, css:"auto_calibration", id:"auto_calibration_2"},
-                                            ]
+                                        },
+                                        {view:"label", label:"<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Паспортный объем бака, л</p>", width: 190, height: 50,},
+                                        {
+
+                                        },
+                                        {view:"text", css:"full_window_text", width: 200, id:"manual_volume_fuel_1"},
+                                        {
+
+                                        }
+                                    ]
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        {view: "label", label:"<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Начальный объем, л</p>",width: 190, height: 50, },
+                                        {
+
+                                        },
+                                        {view:"text", css:"full_window_text", width: 200, id:"initial_volume_fuel_1"},
+                                        {
+
+                                        }
+                                    ]
+
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        {view: "label", label:"<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Шаг, л</p>", width: 190, height: 50,},
+                                        {
+
+                                        },
+                                        {view:"text", css:"full_window_text", width: 200, id:"step_liters_1"},
+                                        {
+
+                                        }
+                                    ]
+                                },
+                                {
+                                    height: 100,
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        {view: "button", label:"Продолжить", width: 480, height:50, id:"central_menu_and_right_menu_calibration_next_window_button", css:"button_next_drain_window_1_2"},
+                                        {
+
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+
+                        {
+                            id:"fuel_filling",
+                            css:"rows_right_menu_calibration_2",
+                            height: 570,
+                            rows:[
+                                {
+                                    height: 50,
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        {view:"label", label:"<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Паспортный объем бака, л</p>", width: 190, height: 50,},
+                                        {
+
+                                        },
+                                        {view:"text", css:"full_window_text", width: 200, id:"manual_volume_fuel_fuel_filling_1"},
+                                        {
+
+                                        }
+                                    ]
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        {view: "label", label:"<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Шаг, л</p>", width: 190, height: 50,},
+                                        {
+
+                                        },
+                                        {view:"text", css:"full_window_text", width: 200, id:"step_liters_fuel_filling_1"},
+                                        {
+
+                                        }
+                                    ]
+                                },
+                                {
+                                    height: 149,
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        {view: "button", label:"Продолжить", width: 480, height:50, id:"fuel_filling_button_next", css:"button_next_drain_window_1_2"},
+                                        {
+
+                                        },
+
+                                    ]
+                                }
+                            ]
+                        },
+
+
+                        {
+                            id:"right_menu_calibration_drain_2",
+                            css:"rows_right_menu_calibration_2",
+                            height: 570,
+                            rows:[
+                                {
+                                    height: 50,
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        {view:"label", label:"<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Паспортный объем бака, л</p>", width: 190, height: 50,},
+                                        {
+
+                                        },
+                                        {view:"text", width: 200, css:"full_window_text", readonly:true, id:"manual_volume_fuel_2" },
+                                        {
+
+                                        }
+                                    ]
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        {view: "label", label:"<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Начальный объем, л</p>",width: 190, height: 50, },
+                                        {
+
+                                        },
+                                        {view:"text", width: 200, css:"full_window_text", readonly:true, id:"initial_volume_fuel_2"},
+                                        {
+
+                                        }
+                                    ]
+
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        {view: "label", label:"<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Шаг, л</p>", width: 190, height: 50,},
+                                        {
+
+                                        },
+                                        {view:"text", width: 200, css:"full_window_text", readonly:true, id:"step_liters_2"},
+                                        {
+
+                                        }
+                                    ]
+                                },
+                                {
+                                    height: 30,
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        {view: "label", label:"<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Количество шагов</p>", width: 190, height: 50, },
+                                        {
+
+                                        },
+                                        {view:"text", width: 200, css:"full_window_text", readonly:true, id:"counts_step"},
+                                        {
+
+                                        }
+                                    ]
+                                },
+                                {
+                                    height: 20,
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        {view: "button", label:"Добавить шаг", width: 480, height: 50, css:"set_step_drain_button_2", id:"button_add_step_1"},
+                                        {
+
+                                        }
+
+                                    ]
+                                },
+                                {
+                                    height: 10,
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        {view: "button", label:"Удалить шаг", width: 480, height: 50, css:"set_step_drain_button_2", id:"button_add_step_2"},
+                                        {
+
+                                        }
+
+                                    ]
+                                },
+                                {
+                                    height: 60,
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        {view: "button", label:"Очистить таблицу", width: 480, height: 50, css:"clear_table_drain_button_2"},
+                                        {
+
+                                        }
+
+                                    ]
+                                },
+                                {
+                                    height: 10,
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        {view: "button", label:"Завершить тарировку", width: 480, height: 50, id:"closed_calibration_button_window_2", css:"button_next_drain_window_1_2"},
+                                        {
+
                                         }
                                     ]
                                 }
                             ]
                         }
-                    ]
-                },
-                {
-                    height: 50,
-                },
-                {
 
-                    rows:[
-                        {
-                            cols:[
-                                {
-                                    width: 40,
-                                },
-                                {view:"button", type:"label", label:"Редактировать значения", width: 460, height: 50, css:"edit_values"}
-                            ]
-                        }
+
+
+
+
+
+
                     ]
                 }
             ]
-
 
         };
 
 
 
-        return {
 
+
+        return {
             view: "scrollview",
             scroll: "y",
             maxHeight: 1000,
@@ -765,7 +1078,8 @@ export default class Page9View extends JetView {
                             {
                                 height: 20,
                             },
-                            right_menu_setup
+                            right_menu_ver_2,
+                            // right_menu_setup
                         ]
                     },
                     {
@@ -773,11 +1087,7 @@ export default class Page9View extends JetView {
                     }
                 ]
             }
-
-        }
-
-
-
+          }
         }
 
 
@@ -787,26 +1097,19 @@ export default class Page9View extends JetView {
     init(view){
 
 
+        $$("tabbar_2").hideOption("right_menu_calibration_drain_2");
 
-        $$("right_menu_setup").hide()
-        //
-        // $$("central_setup_rows").attachEvent("onItemClick", function() {
-        //
-        //         $$("right_menu_setup").show()
-        //
-        //
-        // });
+        $$("fuel_filling_button_next").attachEvent("onItemClick", function() {
+            $$("tabbar_2").showOption("right_menu_calibration_drain_2");
+            $$("tabbar_2").hideOption("fuel_filling");
+        });
 
+        // $$("right_menu_calibration_setup").show()
 
 
-
-
-
-
+        fuel_filling
 
     }
-
-
 
 }
 

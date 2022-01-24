@@ -1,36 +1,94 @@
 {
-  "name": "the-app",
+  "name": "electron-webpack",
+  "productName": "electron-webpack",
   "version": "1.0.0",
-  "description": "The App!",
-  "main": "sources/app.js",
+  "description": "My Electron application description",
+  "main": ".webpack/main",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint sources/",
-    "build": "webpack --env.production true",
-    "watch": "webpack --watch",
-    "start": "webpack-dev-server --open"
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\"",
+    "serial-port-1": "npm install --save-dev electron-rebuild",
+    "serial-port-2": "electron-rebuild"
   },
-  "keywords": [
-    "webix",
-    "jet"
-  ],
+  "keywords": [],
+  "author": {
+    "name": "muz_ol",
+    "email": "olegMuzych@yandex.ru"
+  },
   "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "electron_webpack"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/index.html",
+                  "js-my": "./src/test/myapp.js",
+                  "js": "./src/renderer.js",
+                  "name": "main_window"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    }
+  },
+  "buildDependenciesFromSource": false,
+  "npmRebuild": false,
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "babel-loader": "^8.0.5",
-    "css-loader": "^2.1.1",
-    "eslint": "^5.16.0",
-    "file-loader": "^3.0.1",
-    "mini-css-extract-plugin": "^0.6.0",
-    "text-loader": "^0.0.1",
-    "url-loader": "^1.1.2",
-    "webpack": "^4.31.0",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.3.1"
+    "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.11",
+    "@electron-forge/cli": "^6.0.0-beta.63",
+    "@electron-forge/maker-deb": "^6.0.0-beta.63",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
+    "@electron-forge/maker-zip": "^6.0.0-beta.63",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.63",
+    "@vercel/webpack-asset-relocator-loader": "1.7.0",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.0.0",
+    "electron": "16.0.7",
+    "electron-rebuild": "^3.2.7",
+    "html-loader": "^3.1.0",
+    "mini-css-extract-plugin": "^2.5.2",
+    "node-loader": "^2.0.0",
+    "serialport": "^9.2.8",
+    "style-loader": "^3.0.0"
   },
   "dependencies": {
-    "webix": "^6.3.0",
-    "webix-jet": "^2.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "webix-jet": "^2.1.3"
   }
 }

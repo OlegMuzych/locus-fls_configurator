@@ -18,7 +18,7 @@ export default class Page9View extends JetView {
                     {
                         view: "button",
                         type: "image",
-                        image: "../sources/models/image/model_101.svg",
+                        image: "assets/images/model_101.svg",
                         width: 180,
                         height: 200,
                         css: "left_menu_button",
@@ -27,7 +27,7 @@ export default class Page9View extends JetView {
                     {
                         view: "button",
                         type: "image",
-                        image: "../sources/models/image/model_201.svg",
+                        image: "assets/images/model_201.svg",
                         width: 180,
                         height: 200,
                         css: "left_menu_button",
@@ -36,7 +36,7 @@ export default class Page9View extends JetView {
                     {
                         view: "button",
                         type: "image",
-                        image: "../sources/models/image/model_301_BLE.svg",
+                        image: "assets/images/model_301_BLE.svg",
                         width: 180,
                         height: 200,
                         css: "left_menu_button",
@@ -49,7 +49,7 @@ export default class Page9View extends JetView {
                     {
                         view: "button",
                         type: "image",
-                        image: "../sources/models/image/Back.svg",
+                        image: "assets/images/Back.svg",
                         width: 180,
                         height: 120,
                         id: "button_back",
@@ -61,7 +61,7 @@ export default class Page9View extends JetView {
                     {
                         view: "button",
                         type: "image",
-                        image: "../sources/models/image/info.svg",
+                        image: "assets/images/info.svg",
                         width: 180,
                         height: 120,
                         id: "button_reference",
@@ -326,7 +326,7 @@ export default class Page9View extends JetView {
                                     {
                                         view: "button",
                                         type: "image",
-                                        image: "../sources/models/image/filtr_Karier.svg",
+                                        image: "assets/images/filtr_Karier.svg",
                                         width: 240,
                                         label: "Карьерная техника",
                                         css: "image_button_filter",
@@ -336,7 +336,7 @@ export default class Page9View extends JetView {
                                     {
                                         view: "button",
                                         type: "image",
-                                        image: "../sources/models/image/filtr_Stroit.svg",
+                                        image: "assets/images/filtr_Stroit.svg",
                                         width: 240,
                                         height: 300,
                                         css: "image_button_filter",
@@ -346,7 +346,7 @@ export default class Page9View extends JetView {
                                     {
                                         view: "button",
                                         type: "image",
-                                        image: "../sources/models/image/filtr_Rovn.svg",
+                                        image: "assets/images/filtr_Rovn.svg",
                                         width: 240,
                                         height: 300,
                                         css: "image_button_filter",
@@ -644,7 +644,7 @@ export default class Page9View extends JetView {
                                 {
                                     width:50,
                                 },
-                                {view:"button", type:"image", image:"../sources/models/image/temperature.png", width:30, height:30, css:"thermometer_image",},
+                                {view:"button", type:"image", image:"assets/images/temperature.png", width:30, height:30, css:"thermometer_image",},
                                 {view:"text", width: 60, height:30, css:"window_temp", id:"window_temp", readonly:true, value:"25°"},
 
                             ]

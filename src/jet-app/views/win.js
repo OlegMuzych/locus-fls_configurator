@@ -57,14 +57,14 @@ export default class Page9View extends JetView {
             rows:[
                 {
                     cols: [
-                        { view: "button", type: "image", image: "../sources/models/image/master.png", label: "<span style='color:#000; font-size:26px; position: relative; top:70px; left: -40px;'>Мастер Настройки</span>", maxWidth: 480, minWidth: 400, height: 300, css: "button_1", id: "master_setup"},
-                        { view: "button", type: "image", image: "../sources/models/image/engineer.png", label: "<span style='color:#000; font-size:26px; position: relative; top:70px; left: -40px;'>Инженерное меню</span>", maxWidth: 480, minWidth: 400, height: 300, css: "button_2", id: "engineering_setup"}
+                        { view: "button", type: "image", image: "assets/images/master.png", label: "<span style='color:#000; font-size:26px; position: relative; top:70px; left: -40px;'>Мастер Настройки</span>", maxWidth: 480, minWidth: 400, height: 300, css: "button_1", id: "master_setup"},
+                        { view: "button", type: "image", image: "assets/images/engineer.png", label: "<span style='color:#000; font-size:26px; position: relative; top:70px; left: -40px;'>Инженерное меню</span>", maxWidth: 480, minWidth: 400, height: 300, css: "button_2", id: "engineering_setup"}
                     ]
                 },
                 {
                     cols:[
-                        { view: "button", type: "image", image: "../sources/models/image/info.png", label: "<span style='color:#000; font-size:26px; position: relative; top:70px; left: -40px;'>Справка</span>", maxWidth: 480, minWidth: 400, height: 300, css: "button_3", id: "reference"},
-                        { view: "button", type: "image", image: "../sources/models/image/konfig.png", label: "<span style='color:#000; font-size:26px; position: relative; top:70px; left: -40px;'>Настройки приложения</span>", align: "center", maxWidth: 480, minWidth: 400, height: 300, css: "button_4", id: "application_menu"},
+                        { view: "button", type: "image", image: "assets/images/info.png", label: "<span style='color:#000; font-size:26px; position: relative; top:70px; left: -40px;'>Справка</span>", maxWidth: 480, minWidth: 400, height: 300, css: "button_3", id: "reference"},
+                        { view: "button", type: "image", image: "assets/images/konfig.png", label: "<span style='color:#000; font-size:26px; position: relative; top:70px; left: -40px;'>Настройки приложения</span>", align: "center", maxWidth: 480, minWidth: 400, height: 300, css: "button_4", id: "application_menu"},
                     ]
                 },
 

@@ -43,7 +43,7 @@ export default class Page9View extends JetView {
                         id: "left_menu_button_3"
                     },
                     {
-                        height: 120,
+                        height: 55,
                     },
 
                     {
@@ -63,10 +63,14 @@ export default class Page9View extends JetView {
                         type: "image",
                         image: "../sources/models/image/info.svg",
                         width: 180,
-                        height: 120,
+                        height: 200,
                         id: "button_reference",
                         css: "left_menu_button_reference",
                     },
+                    {
+
+                    }
+
                 ]
             }
         };

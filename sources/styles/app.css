@@ -26,6 +26,8 @@ border: none;
     --font-weight: 100;
     --c-color-text-light: #141414;
     --c-white-color-background-light_general_windows: #f0f0f0;
+    --modal_windows: 0.4em 0.4em 5px rgba(122,122,122,0.5);
+    --modal_windows_background: #f3f3f3;
 
 
     /*dark*/
@@ -36,6 +38,7 @@ border: none;
     --c-white-color-background-dark_left_menu_button: rgba(111, 111, 111, 0.0);
     --c-white-color-background-dark_left_menu_button_hover: #545454;
     --c-color-text-dark: #fff;
+    --modal_windows_dark: 0.4em 0.4em 5px rgba(38, 38, 38, 0.8);
 
 
 }
@@ -45,18 +48,50 @@ border: none;
 
 
 /*Оформление стр. №1 --------------------------------------------------------------------- */
+
+.color_rows_star_pages{
+    background-color: var(--white-bacground-central-menu);
+}
+
+.color_rows_star_pages_dark{
+    background-color: var(--c-white-color-background-dark_left_menu);
+}
+
+
+
 .color_rows_page1{
     background-color:#fff;
 }
 
 .logo_1 .webix_button{
-    background-color: #fff;
+    background-color: var(--white-bacground-central-menu);
 }
 
 .logo_1 .webix_button:hover{
     cursor: default;
-    background-color: #fff;
+    background-color: var(--white-bacground-central-menu);
 }
+
+.logo_1 .webix_button:focus{
+    cursor: default;
+    background-color: var(--white-bacground-central-menu);
+}
+
+.logo_1_dark .webix_button{
+    background-color: var(--c-white-color-background-dark_left_menu);
+}
+
+.logo_1_dark .webix_button:hover{
+    cursor: default;
+    background-color: var(--c-white-color-background-dark_left_menu);
+}
+
+.logo_1_dark .webix_button:focus{
+    cursor: default;
+    background-color: var(--c-white-color-background-dark_left_menu);
+}
+
+
 
 .logo_1 .webix_image {
     width: 100%;
@@ -164,7 +199,76 @@ border: none;
     left: 125px;
     bottom: 40px;
 }
-/*//////---------------------------------------------------------------------------------*/
+
+
+
+
+
+.window_show .webix_header{
+    background-color: #f3f3f3;
+    font-size: 20px;
+}
+
+.window_show {
+    border-radius: 8px;
+    background-color: var(--modal_windows_background);
+    box-shadow: var(--modal_windows);
+
+}
+
+.window_show:focus{
+    border: none;
+}
+
+.window_show_dark{
+    border-radius: 8px;
+    background-color: var(--c-white-color-background-dark_general_rows);
+    box-shadow: var(--modal_windows);
+}
+
+.window_show_dark .webix_header {
+    background-color: #f3f3f3;
+    font-size: 20px;
+    color: var(--c-color-text-dark);
+}
+
+.window_show_dark .webix_header{
+    background-color: var(--c-white-color-background-dark_general_rows);
+    font-size: 20px;
+}
+
+.language_windows_modal p{
+    color: var(--c-color-text-light);
+    font-size: 16px;
+    position: relative;
+    top: -16px;
+
+}
+
+.language_windows_modal_dark p{
+    color: var(--c-color-text-dark);
+    font-size: 16px;
+    position: relative;
+    top: -16px;
+
+}
+
+
+.label_status_gage_windows_start .webix_el_box{
+    color: #000;
+    font-size: 20px;
+    font-weight: 100;
+
+}
+
+.label_status_gage_windows_start_dark .webix_el_box{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 100;
+
+}
+
+    /*//////---------------------------------------------------------------------------------*/
 
 
 

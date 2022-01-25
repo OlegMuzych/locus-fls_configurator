@@ -38,7 +38,8 @@ border: none;
     --c-white-color-background-dark_left_menu_button: rgba(111, 111, 111, 0.0);
     --c-white-color-background-dark_left_menu_button_hover: #545454;
     --c-color-text-dark: #fff;
-    --modal_windows_dark: 0.4em 0.4em 5px rgba(38, 38, 38, 0.8);
+    --modal_windows_dark: 0.4em 0.4em 6px rgba(13, 13, 13, 0.6);
+    --button_shodow_dark: 0.2em 0.2em 2px rgba(13, 13, 13, 2.8);
 
 
 }
@@ -101,103 +102,68 @@ border: none;
     background-color: #f3f3f3;
 }
 
+
+
 .button_1 .webix_button{
     border-radius: 10px;
-    border: 2px solid rgba(243, 243, 243, 9);
+    border: 1px solid rgba(243, 243, 243, 7);
     background-color: #fff;
-    color: #000;
+    color: var(--c-color-text-light);
     font-size: 20px;
-    box-shadow: rgb(190, 192, 195) 2.9px 2.9px 4px, rgb(255, 255, 255) -4.9px -4.9px 4px;
+    box-shadow: rgb(190, 192, 195) 2.9px 2.9px 4px, rgb(255, 255, 255) -0.9px -0.9px 2px;
     width: 98%;
     height: 98%;
 }
 
-.button_2 .webix_button{
+
+.button_1 .webix_button:hover{
+    position: relative;
+    /*box-shadow: rgb(190, 192, 195) 0.9px 0.9px 4px, rgb(255, 255, 255) -1.9px -1.9px 4px;*/
+}
+
+.button_1 .webix_button:focus{
+    position: relative;
+    top: 2px;
+    left: 2px;
+    box-shadow: none;
+    /*box-shadow: rgb(190, 192, 195) 0.9px 0.9px 4px, rgb(255, 255, 255) -1.9px -1.9px 4px;*/
+}
+
+.button_1_dark .webix_button{
     border-radius: 10px;
-    border: 2px solid rgba(243, 243, 243, 9);
-    background-color: #fff;
-    color: #000;
+    border: 1px solid rgba(243, 243, 243, 0.1);
+    background-color: var(--c-white-color-background-dark_general_rows);
+    color: var(--c-color-text-dark);
     font-size: 20px;
-    box-shadow: rgb(190, 192, 195) 2.9px 2.9px 4px, rgb(255, 255, 255) -4.9px -4.9px 4px;
+    box-shadow: var(--button_shodow_dark);
     width: 98%;
     height: 98%;
 }
 
-.button_3 .webix_button{
-    border-radius: 10px;
-    border: 2px solid rgba(243, 243, 243, 9);
-    background-color: #fff;
-    color: #000;
-    font-size: 20px;
-    box-shadow: rgb(190, 192, 195) 2.9px 2.9px 4px, rgb(255, 255, 255) -4.9px -4.9px 4px;
-    width: 98%;
-    height: 98%;
-}
 
-.button_4 .webix_button{
-    border-radius: 10px;
-    border: 2px solid rgba(243, 243, 243, 9);
-    background-color: #fff;
-    color: #000;
-    font-size: 20px;
-    box-shadow: rgb(190, 192, 195) 2.9px 2.9px 4px, rgb(255, 255, 255) -4.9px -4.9px 4px;
-    width: 98%;
-    height: 98%;
-}
-.button_1 .webix_button:active{
+.button_1_dark .webix_button:hover{
     position: relative;
-    top: -2px;
-    left: -2px;
-    box-shadow: rgb(190, 192, 195) 0.9px 0.9px 4px, rgb(255, 255, 255) -1.9px -1.9px 4px;
-}
-
-.button_2 .webix_button:active{
-    position: relative;
-    top: -2px;
-    left: -2px;
-    box-shadow: rgb(190, 192, 195) 0.9px 0.9px 4px, rgb(255, 255, 255) -1.9px -1.9px 4px;
-}
-
-.button_3 .webix_button:active{
-    position: relative;
-    top: -2px;
-    left: -2px;
-    box-shadow: rgb(190, 192, 195) 0.9px 0.9px 4px, rgb(255, 255, 255) -1.9px -1.9px 4px;
-}
-
-.button_4 .webix_button:active{
-    position: relative;
-    top: -2px;
-    left: -2px;
-    box-shadow: rgb(190, 192, 195) 0.9px 0.9px 4px, rgb(255, 255, 255) -1.9px -1.9px 4px;
+    background-color: var(--c-white-color-background-dark_general_rows);
+    /*box-shadow: rgb(190, 192, 195) 0.9px 0.9px 4px, rgb(255, 255, 255) -1.9px -1.9px 4px;*/
 }
 
 
-.button_4 .webix_image{
-    width: 20%;
+.button_1_dark .webix_button:focus{
+    background-color: var(--c-white-color-background-dark_general_rows);
     position: relative;
-    left: 140px;
-    bottom: 40px;
-}
-.button_3 .webix_image{
-    width: 20%;
-    position: relative;
-    left: 62px;
-    bottom: 40px;
+    top: 2px;
+    left: 2px;
+    box-shadow: none;
+    /*box-shadow: rgb(190, 192, 195) 0.9px 0.9px 4px, rgb(255, 255, 255) -1.9px -1.9px 4px;*/
 }
 
-.button_2 .webix_image{
-    width: 20%;
-    position: relative;
-    left: 110px;
-    bottom: 40px;
-}
+
+
+
 
 .button_1 .webix_image{
-    width: 20%;
-    position: relative;
-    left: 125px;
-    bottom: 40px;
+
+
 }
 
 
@@ -223,7 +189,8 @@ border: none;
 .window_show_dark{
     border-radius: 8px;
     background-color: var(--c-white-color-background-dark_general_rows);
-    box-shadow: var(--modal_windows);
+    box-shadow: var(--modal_windows_dark);
+    border: none;
 }
 
 .window_show_dark .webix_header {
@@ -235,6 +202,13 @@ border: none;
 .window_show_dark .webix_header{
     background-color: var(--c-white-color-background-dark_general_rows);
     font-size: 20px;
+}
+
+.window_show_dark:focus{
+    border-radius: 8px;
+    background-color: var(--c-white-color-background-dark_general_rows);
+    box-shadow: var(--modal_windows);
+    border: none;
 }
 
 .language_windows_modal p{
@@ -266,6 +240,14 @@ border: none;
     font-size: 20px;
     font-weight: 100;
 
+}
+
+.ver_soft .webix_el_box{
+    color: var(--c-color-text-light);
+}
+
+.ver_soft_dark .webix_el_box{
+    color: var(--c-color-text-dark);
 }
 
     /*//////---------------------------------------------------------------------------------*/
@@ -658,16 +640,7 @@ border: none;
 .left_menu_button_reference_dark .webix_button:focus{
     background-color: var(--c-white-color-background-dark_left_menu);
 }
-.left_menu_button_reference .webix_image{
-    width: 80%;
-    position: relative;
 
-}
-.left_menu_button_reference_dark .webix_image{
-    width: 80%;
-    position: relative;
-
-}
 
 .webix_view .webix_control > .webix_disabled{
     background-color: #6a6a6a00;

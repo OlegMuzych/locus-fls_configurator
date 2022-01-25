@@ -36,14 +36,14 @@ export default class Page9View extends JetView {
                     {
                         view: "button",
                         type: "image",
-                        image: "assets/images/model_301_BLE.svg",
+                        image: "assets/images/MODEL_301_BLE.svg",
                         width: 180,
                         height: 200,
                         css: "left_menu_button",
                         id: "left_menu_button_3"
                     },
                     {
-                        height: 120,
+                        height: 55,
                     },
 
                     {
@@ -63,10 +63,14 @@ export default class Page9View extends JetView {
                         type: "image",
                         image: "assets/images/info.svg",
                         width: 180,
-                        height: 120,
+                        height: 200,
                         id: "button_reference",
                         css: "left_menu_button_reference",
                     },
+                    {
+
+                    }
+
                 ]
             }
         };
@@ -1640,11 +1644,11 @@ export default class Page9View extends JetView {
 
             if ($$("temp_compensation_2").getValue() == 0) {
 
-                $$("left_menu_button_1").define("image", "../sources/models/image/MODEL_101.svg")
-                $$("left_menu_button_2").define("image", "../sources/models/image/MODEL_201.svg")
-                $$("left_menu_button_3").define("image", "../sources/models/image/MODEL_301_BLE.svg")
-                $$("button_back").define("image", "../sources/models/image/back.svg")
-                $$("button_reference").define("image", "../sources/models/image/info.svg")
+                $$("left_menu_button_1").define("image", "assets/images//MODEL_101.svg")
+                $$("left_menu_button_2").define("image", "assets/images//MODEL_201.svg")
+                $$("left_menu_button_3").define("image", "assets/images//MODEL_301_BLE.svg")
+                $$("button_back").define("image", "assets/images//back.svg")
+                $$("button_reference").define("image", "assets/images//info.svg")
                 $$("left_menu_button_1").refresh();
                 $$("left_menu_button_2").refresh();
                 $$("left_menu_button_3").refresh();
@@ -1652,11 +1656,11 @@ export default class Page9View extends JetView {
                 $$("button_reference").refresh();
             }
          else {
-                $$("left_menu_button_1").define("image", "../sources/models/image/MODEL_101_inverse.svg")
-                $$("left_menu_button_2").define("image", "../sources/models/image/MODEL_201_inverse.svg")
-                $$("left_menu_button_3").define("image", "../sources/models/image/MODEL_301_BLE_inverse.svg")
-                $$("button_back").define("image", "../sources/models/image/back_inverse.svg")
-                $$("button_reference").define("image", "../sources/models/image/info_inverse.svg")
+                $$("left_menu_button_1").define("image", "assets/images/MODEL_101_inverse.svg")
+                $$("left_menu_button_2").define("image", "assets/images/MODEL_201_inverse.svg")
+                $$("left_menu_button_3").define("image", "assets/images/MODEL_301_BLE_inverse.svg")
+                $$("button_back").define("image", "assets/images//back_inverse.svg")
+                $$("button_reference").define("image", "assets/images/info_inverse.svg")
                 $$("left_menu_button_1").refresh();
                 $$("left_menu_button_2").refresh();
                 $$("left_menu_button_3").refresh();

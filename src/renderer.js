@@ -29,8 +29,8 @@
 // import './index.css';
 //
 //
-//import './codebase/webix.js';
-import './jet-app/assets/codebase/webix.css';
+//import './webix/webix.js';
+import './jet-app/assets/libraries/webix/webix.css';
 
 
 // import './test/myapp.js';

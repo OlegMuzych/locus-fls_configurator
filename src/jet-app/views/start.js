@@ -1,3 +1,13 @@
-export default {
-	template:"Start page2333", css:"webix_shadow_medium app_start"
-};
+import {JetView} from "webix-jet";
+
+export default class StartView extends JetView{
+	config(){
+		return {
+			rows:[
+				{ type:"header", template:"Dashboard"},
+				/*wjet::Settings*/
+				{ template:"Place main app's stats here", borderless:true }
+			]
+		}
+	}
+}

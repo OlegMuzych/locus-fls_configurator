@@ -3,6 +3,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 let pack = require("./package.json");
+const CopyPlugin = require("copy-webpack-plugin");
 
 rules.push({
   test: /\.css$/,
@@ -35,7 +36,13 @@ module.exports = {
       APPNAME: `"${pack.name}"`,
       PRODUCTION: false,//production,
       BUILD_AS_MODULE: false,//(asmodule || standalone)
-    })
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: "src/jet-app/assets/images", to: "assets/images" },
+
+      ],
+    }),
   ],
 
   module: {

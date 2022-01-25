@@ -19,7 +19,7 @@ export default class Page9View extends JetView {
         var logo = {
             view: "button",
             type: "image",
-            image: "../sources/models/image/Logo_1.svg",
+            image: "assets/images/Logo_1.svg",
             width: 500,
             height: 300,
             css: "logo_1",

@@ -9,9 +9,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\"",
-    "serial-port-1": "npm install --save-dev electron-rebuild",
-    "serial-port-2": "electron-rebuild"
+    "lint": "echo \"No linting configured\""
   },
   "keywords": [],
   "author": {
@@ -21,6 +19,7 @@
   "license": "MIT",
   "config": {
     "forge": {
+      "electronRebuildConfig": {},
       "packagerConfig": {},
       "makers": [
         {
@@ -65,7 +64,7 @@
       ]
     }
   },
-  "buildDependenciesFromSource": false,
+  "buildDependenciesFromSource": true,
   "npmRebuild": false,
   "devDependencies": {
     "@babel/core": "^7.16.12",
@@ -81,15 +80,15 @@
     "copy-webpack-plugin": "^10.2.1",
     "css-loader": "^6.0.0",
     "electron": "16.0.7",
-    "electron-rebuild": "^3.2.7",
     "html-loader": "^3.1.0",
     "mini-css-extract-plugin": "^2.5.2",
     "node-loader": "^2.0.0",
-    "serialport": "^9.2.8",
+    "serialport": "^10.0.0",
     "style-loader": "^3.0.0"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
+    "util": "^0.12.4",
     "webix-jet": "^2.1.3"
   }
 }

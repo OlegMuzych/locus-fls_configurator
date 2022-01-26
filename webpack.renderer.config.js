@@ -56,6 +56,13 @@ module.exports = {
       "jet-views": path.resolve(__dirname, "src/jet-app/views"),
       "jet-locales": path.resolve(__dirname, "src/jet-app/locales")
     },
-    fallback: { "util": false },
+    fallback: {
+        "util": false ,
+        "util": false,
+        "path": false,
+        "stream": false,
+        "fs": false,
+        "os": false,
+        "child_process": false,},
   },
 };

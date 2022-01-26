@@ -1,5 +1,6 @@
 webix.ui.fullScreen();
 import {JetView} from "webix-jet";
+const SerialPort = eval(`require('serialport')`);
 
 export default class Page9View extends JetView {
     config() {
@@ -255,8 +256,11 @@ export default class Page9View extends JetView {
 
 
     init(view){
-
-
+        console.log("test console.log()");
+        SerialPort.list().then((ports, err) => {
+            console.log(ports);
+            console.log(err);
+        });
 
         $$("master_setup").attachEvent("onItemClick", (id, e)=>{
             $$("color_rows_page22").define(color)

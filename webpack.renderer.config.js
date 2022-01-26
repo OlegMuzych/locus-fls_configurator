@@ -57,11 +57,11 @@ module.exports = {
       "jet-locales": path.resolve(__dirname, "src/jet-app/locales")
     },
     fallback: {
-        "util": false,
-        "path": false,
-        "stream": false,
-        "fs": false,
-        "os": false,
-        "child_process": false,},
+      "util": false,
+      "path": false,
+      "stream": false,
+      "fs": false,
+      "os": false,
+      "child_process": false,},
   },
 };

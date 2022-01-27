@@ -5,7 +5,7 @@ import {JetView} from "webix-jet";
 export default class Page9View extends JetView {
     config() {
 
-        // return screen > 1210 ? "wide" : (screen > 1060 ? "mid" : "small");
+
 
         var left_menu = {
             view: "scrollview",
@@ -19,7 +19,7 @@ export default class Page9View extends JetView {
                         view: "button",
                         type: "image",
                         image: "assets/images/model_101.svg",
-                        width: 180,
+                        width: 160,
                         height: 200,
                         css: "left_menu_button",
                         id: "left_menu_button_1"
@@ -28,7 +28,7 @@ export default class Page9View extends JetView {
                         view: "button",
                         type: "image",
                         image: "assets/images/model_201.svg",
-                        width: 180,
+                        width: 160,
                         height: 200,
                         css: "left_menu_button",
                         id: "left_menu_button_2"
@@ -37,20 +37,21 @@ export default class Page9View extends JetView {
                         view: "button",
                         type: "image",
                         image: "assets/images/MODEL_301_BLE.svg",
-                        width: 180,
+                        width: 160,
                         height: 200,
                         css: "left_menu_button",
                         id: "left_menu_button_3"
                     },
                     {
-                        height: 55,
+                        height: 115,
                     },
 
                     {
+
                         view: "button",
                         type: "image",
                         image: "assets/images/Back.svg",
-                        width: 180,
+                        width: 160,
                         height: 120,
                         id: "button_back",
                         css: "left_menu_button_reference",
@@ -62,7 +63,7 @@ export default class Page9View extends JetView {
                         view: "button",
                         type: "image",
                         image: "assets/images/info.svg",
-                        width: 180,
+                        width: 160,
                         height: 200,
                         id: "button_reference",
                         css: "left_menu_button_reference",
@@ -80,7 +81,6 @@ export default class Page9View extends JetView {
         var central_menu_button = {
             paddingY: 0,
             minWidth: 500,
-            maxWidth: 890,
             rows: [
                 {
                     css: "central_cols_button",
@@ -126,8 +126,8 @@ export default class Page9View extends JetView {
         };
 
         var general_config = {
-            minWidth: 500,
-            maxWidth: 890,
+            minWidth: 600,
+            maxWidth: 850,
             // view:"scrollview",
             // scroll: "y",
             // maxHeight: 860,
@@ -135,23 +135,17 @@ export default class Page9View extends JetView {
             id: "central_menu_button_1",
             rows: [
                 {
-                    cols: [
-                        {
-
-                        },
-                        {
-                            rows: [
-                                {
                                     rows: [
                                         {
                                             view: "text",
+                                            width: 850,
                                             height: 100,
-                                            label: '<p style="text-align: center; position: relative; top: -20px; left: 54px; font-size: 18px; font-weight: 100; ">Серийный номер</p>',
+                                            label: '<p>Серийный номер</p>',
                                             labelWidth: 400,
                                             css: "window_type_1",
-                                            id: "window_type_1",
                                             inputAlign: "center",
-                                            readonly: true
+                                            readonly: true,
+                                            id: "window_type_1",
                                         },
 
                                     ]
@@ -162,7 +156,7 @@ export default class Page9View extends JetView {
                                     view: "text",
                                     width: 850,
                                     height: 100,
-                                    label: '<p style="text-align: center; position: relative; top: -20px; left: 64px; font-size: 18px; font-weight: 100; ">Сетевой адрес</p>',
+                                    label: '<p>Сетевой адрес</p>',
                                     labelWidth: 400,
                                     css: "window_type_2",
                                     inputAlign: "center",
@@ -173,7 +167,7 @@ export default class Page9View extends JetView {
                                     view: "text",
                                     width: 850,
                                     height: 100,
-                                    label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Минимальный уровень</p>',
+                                    label: '<p>Минимальный уровень</p>',
                                     labelWidth: 400,
                                     css: "window_type_2",
                                     inputAlign: "center",
@@ -183,7 +177,7 @@ export default class Page9View extends JetView {
                                     view: "text",
                                     width: 850,
                                     height: 100,
-                                    label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Максимальный уровень</p>',
+                                    label: '<p>Максимальный уровень</p>',
                                     labelWidth: 400,
                                     css: "window_type_2",
                                     inputAlign: "center",
@@ -194,7 +188,7 @@ export default class Page9View extends JetView {
                                     view: "text",
                                     width: 850,
                                     height: 100,
-                                    label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Скорость подключения</p>',
+                                    label: '<p>Скорость подключения</p>',
                                     labelWidth: 400,
                                     css: "window_type_2",
                                     inputAlign: "center",
@@ -205,7 +199,7 @@ export default class Page9View extends JetView {
                                     view: "text",
                                     width: 850,
                                     height: 100,
-                                    label: '<p style="text-align: center; position: relative; top: -20px; left: -10px; font-size: 18px; font-weight: 100; ">Автоматическая выдача данных</p>',
+                                    label: '<p>Автоматическая выдача данных</p>',
                                     labelWidth: 400,
                                     css: "window_type_2 ",
                                     inputAlign: "center",
@@ -213,7 +207,6 @@ export default class Page9View extends JetView {
                                 },
                                 {height: 20,},
                                 {
-                                    // width: 900,
                                     css: "window_type_2",
                                     id: "window_type_2_6",
                                     rows: [
@@ -222,7 +215,7 @@ export default class Page9View extends JetView {
 
                                                 {
                                                     view: "label",
-                                                    label: "<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 75px;'>Температурная компенсация</p>",
+                                                    label: "<p>Температурная компенсация</p>",
                                                     width: 400,
                                                     height: 100,
                                                 },
@@ -234,18 +227,15 @@ export default class Page9View extends JetView {
                                             ]
                                         },
                                     ]
-                                },
-                            ]
                         },
                         {
-
-                        }
-                    ]
                 },
             ]
         };
 
         var calibration = {
+            minWidth: 600,
+            maxWidth: 850,
             id: "central_menu_button_2",
             cols: [
                 {
@@ -271,8 +261,8 @@ export default class Page9View extends JetView {
         };
 
         var filtering = {
-            minWidth: 500,
-            maxWidth: 890,
+            minWidth: 600,
+            maxWidth: 850,
                 id: "central_menu_button_3",
                 rows: [
                     {
@@ -320,9 +310,14 @@ export default class Page9View extends JetView {
                         ]
                     },
                     {
+
                         id: "degree_of_filtration",
                         rows: [
                             {
+
+
+                                height: 300,
+                                css:"degree_of_filtration",
                                 cols: [
                                     {
 
@@ -331,30 +326,33 @@ export default class Page9View extends JetView {
                                         view: "button",
                                         type: "image",
                                         image: "assets/images/filtr_Karier.svg",
-                                        width: 240,
                                         label: "Карьерная техника",
                                         css: "image_button_filter",
-                                        id:"image_button_filter_1"
+                                        id:"image_button_filter_1",
+                                        minWidth: 195,
                                     },
-                                    {width: 35,},
+                                    {
+                                        // view: "button",  minWidth: 10,
+                                    },
                                     {
                                         view: "button",
                                         type: "image",
                                         image: "assets/images/filtr_Stroit.svg",
-                                        width: 240,
-                                        height: 300,
                                         css: "image_button_filter",
-                                        id:"image_button_filter_2"
+                                        id:"image_button_filter_2",
+                                        minWidth: 195,
                                     },
-                                    {width: 35,},
+                                    {
+                                        // view: "button",  minWidth: 10,
+
+                                    },
                                     {
                                         view: "button",
                                         type: "image",
                                         image: "assets/images/filtr_Rovn.svg",
-                                        width: 240,
-                                        height: 300,
                                         css: "image_button_filter",
-                                        id:"image_button_filter_3"
+                                        id:"image_button_filter_3",
+                                        minWidth: 195,
                                     },
                                     {
 
@@ -364,7 +362,8 @@ export default class Page9View extends JetView {
                         ]
                     },
                     {
-                        height: 0,
+                        minHeight: 10,
+
                     },
                     {
                         height: 320,
@@ -372,30 +371,30 @@ export default class Page9View extends JetView {
                         id: "degree_of_filtration_2",
                         rows: [
                             {
+
                                 rows: [
                                     {
-                                        width:100,
                                         height: 20,
                                     },
                                     {
                                             cols: [
                                             {
-                                                width: 124,
+
                                             },
                                             {
                                                 view: "label",
-                                                label: "<p style='font-size: 18px; font-weight: 100; position: relative; top:-20px;'>Тип фильтрации</p>",
-                                                width: 250,
+                                                label: "<p style='position: relative; top: -20px;'>Тип фильтрации</p>",
+                                                width: 240,
                                                 css:"text_color_filter",
                                                 id:"text_color_filter_1",
                                             },
                                             {
-                                                width: 1,
+
                                             },
                                             {
                                                 view: "text",
                                                 value: "Квадратичная",
-                                                width: 200,
+                                                width: 210,
                                                 inputAlign: "center",
                                                 inputHeight: 54,
                                                 css: "full_window_text",
@@ -403,7 +402,7 @@ export default class Page9View extends JetView {
                                                 id:"filter_open_windows"
                                             },
                                             {
-                                                width: 114,
+                                                //
                                             },
                                             {
                                                 view: "toolbar",
@@ -413,13 +412,13 @@ export default class Page9View extends JetView {
                                                     css: "button_filter_set",
                                                     label: 'Выбрать',
                                                     popup: "my_pop",
-                                                    width:150,
                                                     height:54,
+                                                    width: 150,
 
                                                 }]
                                             },
                                             {
-                                                width: 10,
+
                                             }
                                         ]
                                     },
@@ -429,29 +428,35 @@ export default class Page9View extends JetView {
                                     height: 2,
                             },
                             {
+
                                 id: "degree_of_filtration_3",
                                 rows: [
                                     {
                                         height: 100,
+                                        minWidth: 100,
                                         cols: [
                                             {
+
+                                            },
+                                            {
                                                 view: "label",
-                                                label: "<p style='font-size: 18px; font-weight: 100; position: relative; left: 30px;'>Время усреднения (0...21) с</p>",
-                                                width: 300,
+                                                label: "<p>Время усреднения (0...21) с</p>",
+                                               width: 280,
                                                 css:"text_color_filter",
                                                 id:"text_color_filter_2",
                                             },
                                             {
-                                                width: 10,
+
                                             },
                                             {
                                                 paddingY: 41,
+
                                                 rows:[
                                                     {
                                                         view: "slider",
                                                         value: "0",
                                                         name: "s1",
-                                                        width: 300,
+                                                        minWidth: 120,
                                                         min: 0,
                                                         max: 21,
                                                         css: "slider_1",
@@ -461,7 +466,7 @@ export default class Page9View extends JetView {
                                                 ]
                                             },
                                             {
-                                                paddingY: 45,
+                                                paddingY: 40,
                                                 rows:[
                                                     {
                                                         view: "text",
@@ -472,13 +477,13 @@ export default class Page9View extends JetView {
                                                         inputHeight: 50,
                                                         css: "full_window_text",
                                                         id: "window_text_time",
-                                                        readonly: true,
+                                                        // readonly: true,
                                                         height:50,
                                                     },
                                                 ]
                                             },
                                             {
-                                                width: 30,
+                                                // width: 30,
                                             },
                                             {
                                                 view: "button",
@@ -499,17 +504,22 @@ export default class Page9View extends JetView {
                                 id: "degree_of_filtration_4",
                                 rows: [
                                     {
+
                                         height: 100,
                                         cols: [
                                             {
+                                                minWidth: 10,
+                                            },
+                                            {
+
                                                 view: "label",
-                                                label: "<p style='font-size: 18px; font-weight: 100; position: relative; left: 78px;'>Длина медианы (0...7) </p>",
-                                                width: 300,
+                                                label: "<p>Длина медианы (0...7)</p>",
+                                                width: 280,
                                                 css:"text_color_filter",
                                                 id:"text_color_filter_3",
                                             },
                                             {
-                                                width: 10,
+                                                // width: 30,
                                             },
                                             {
                                                 paddingY: 41,
@@ -518,7 +528,7 @@ export default class Page9View extends JetView {
                                                         view: "slider",
                                                         value: "0",
                                                         name: "s2",
-                                                        width: 300,
+                                                        minWidth: 120,
                                                         min: 0,
                                                         max: 7,
                                                         css: "slider_1",
@@ -528,7 +538,7 @@ export default class Page9View extends JetView {
                                                 ]
                                             },
                                             {
-                                                paddingY: 45,
+                                                paddingY: 40,
                                                 rows:[
                                                     {
                                                         view: "text",
@@ -539,13 +549,13 @@ export default class Page9View extends JetView {
                                                         inputHeight: 50,
                                                         css: "full_window_text",
                                                         id:"window_text_mediana",
-                                                        readonly: true,
+                                                        // readonly: true,
                                                         height:50,
                                                     },
                                                 ]
                                             },
                                             {
-                                                width: 30,
+                                                // width: 30,
                                             },
                                             {
                                                 view: "button",
@@ -1293,8 +1303,112 @@ export default class Page9View extends JetView {
         });
 
 
+        var win_3 = webix.ui({
+            view:"window",
+            position:"center",
+            width: 600,
+            height: 300,
+            id:"window_show_3",
+            modal:true,
+            css:"window_show",
+            head:{
+                rows:[
+                    {
+                        cols:[
+                            {
+                                rows:[
+                                    {
+                                        cols:[
+                                            {view:"button", label:"Ввести", id:"password_button_1"},
+                                            {view:"button", label:"Задать новый", id:"password_button_2"}
+                                        ]
+                                    }
+
+                                ]
+                            },
+                            // {template:"Пароль", type:"header", borderless:true,},
+                            {view:"icon", icon:"wxi-close", tooltip:"Close window", click: function(){
+                                    $$("window_show_3").hide()
+                                }}
+                        ]
+                    },
+                    {
+                        height: 10,
+
+                    },
+                    {
+                        id:"input_password",
+                        cols: [
+                            {
+
+                            },
+                            {
+
+                                id:"input_password",
+                                height: 200,
+                                rows:[
+                                    {
+
+                                    },
+                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Торговая марка: 'Точка Мониторинга'</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_2"},
+                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Версия программного обеспечения 1.1.1</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_3"},
+                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Производитель: ООО 'Новотек'</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_4"},
+                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>www.point-monitoring.ru</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_5"},
+
+
+                                    {
+
+                                    },
+                                ]
+                            },
+                            {
+
+                            },
+                            {
+                                id:"re_input_password",
+                                cols:[
+                                    {
+
+                                    },
+                                    {
+
+
+                                        height: 200,
+                                        rows:[
+                                            {
+
+                                            },
+                                            {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Торговая марка: 'Точка Мониторинга'</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_2"},
+
+
+
+                                            {
+
+                                            },
+                                        ]
+                                    },
+                                    {
+
+                                    }
+                                ]
+                            }
+                        ]
+
+
+
+                    }
+                ]
+            },
+
+        });
+        win_3.hide();
+
+
+
+
 
         return {
+
             view:"scrollview",
             scroll: "y",
             maxHeight: 1000,
@@ -1303,6 +1417,7 @@ export default class Page9View extends JetView {
             body: {
                 cols: [
                     {
+                        width: 170,
                         rows: [
                             left_menu
                         ]
@@ -1342,7 +1457,7 @@ export default class Page9View extends JetView {
                     {
                         css:"rows_right",
                         id:"rows_right_1",
-                        width: 50,
+                        width: 20,
                     },
                     {
                         css:"rows_right",
@@ -1392,7 +1507,7 @@ export default class Page9View extends JetView {
                     {
                         css:"rows_right",
                         id:"rows_right_3",
-                        width: 50,
+                        width: 20,
                     }
                 ]
             }
@@ -1413,6 +1528,33 @@ export default class Page9View extends JetView {
             var item = this.getItem(id);
             $$("central_menu_button_1").setValues(item);
         });
+
+
+        $$("button_right_menu_top_2").attachEvent("onItemClick", (id, e)=> {
+            $$("window_show_3").show()
+        });
+
+
+        // $$("re_input_password").hide()
+        // $$("input_password").show()
+
+        $$("re_input_password").hide()
+        $$("password_button_1").attachEvent("onItemClick", (id, e)=> {
+            $$("re_input_password").hide()
+            $$("input_password").show()
+
+
+        });
+
+        $$("password_button_2").attachEvent("onItemClick", (id, e)=> {
+            $$("re_input_password").show()
+            $$("input_password").hide()
+
+
+        });
+
+
+
 
 
         //Кнопки в правом меню статус ( красные/зеленые )------------------------//

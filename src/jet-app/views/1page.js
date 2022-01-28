@@ -1304,103 +1304,182 @@ export default class Page9View extends JetView {
 
 
         var win_3 = webix.ui({
-            view:"window",
-            position:"center",
-            width: 600,
-            height: 300,
-            id:"window_show_3",
-            modal:true,
-            css:"window_show",
-            head:{
+            view: "window",
+            position: "center",
+            width: 650,
+            height: 400,
+            id: "window_show_3",
+            modal: true,
+            css: "window_show_password",
+            head: {
+
+        // {view: "icon", icon: "wxi-close", tooltip: "Close window", click: function () {
+        //     $$("window_show_3").hide()
+        // }}
+
                 rows:[
                     {
-                        cols:[
-                            {
-                                rows:[
-                                    {
-                                        cols:[
-                                            {view:"button", label:"Ввести", id:"password_button_1"},
-                                            {view:"button", label:"Задать новый", id:"password_button_2"}
-                                        ]
-                                    }
+                        view:"segmented",
+                        id:'tabbar_windows_password',
+                        css:"tabbar_windows_password",
+                        multiview:true,
+                        height: 80,
+                        options: [
+                                    { value: 'Ввести', id: 'rows_11'},
+                                    { value: 'Задать новый', id: 'rows_21'},
 
-                                ]
-                            },
-                            // {template:"Пароль", type:"header", borderless:true,},
-                            {view:"icon", icon:"wxi-close", tooltip:"Close window", click: function(){
-                                    $$("window_show_3").hide()
-                                }}
-                        ]
-                    },
-                    {
-                        height: 10,
-
-                    },
-                    {
-                        id:"input_password",
-                        cols: [
-                            {
-
-                            },
-                            {
-
-                                id:"input_password",
-                                height: 200,
-                                rows:[
-                                    {
-
-                                    },
-                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Торговая марка: 'Точка Мониторинга'</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_2"},
-                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Версия программного обеспечения 1.1.1</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_3"},
-                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Производитель: ООО 'Новотек'</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_4"},
-                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>www.point-monitoring.ru</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_5"},
+                        ],
 
 
-                                    {
-
-                                    },
-                                ]
-                            },
-                            {
-
-                            },
-                            {
-                                id:"re_input_password",
-                                cols:[
-                                    {
-
-                                    },
-                                    {
-
-
-                                        height: 200,
-                                        rows:[
-                                            {
-
-                                            },
-                                            {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Торговая марка: 'Точка Мониторинга'</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_2"},
-
-
-
-                                            {
-
-                                            },
-                                        ]
-                                    },
-                                    {
-
-                                    }
-                                ]
+                        on:{
+                            onChange:function(nextId, prevId){
+                                webix.animate($$(prevId).$view, { type:"fade", duration:250 });
                             }
+                        }
+
+
+                    },
+                    {
+                        cols:[
+                            {view: "icon", icon: "wxi-close", tooltip: "Close window", click: function () {
+                                    $$("window_show_3").hide()
+                                }},
                         ]
+                    },
 
 
+                    {
+                        animate:{ type:"show", delay:300 },
+                        on:{
+                            onViewChange:function(prevId, nextId){
+                                webix.html.addCss( $$(nextId).$view, "animated fadeIn");
+                                webix.delay(function(){
+                                    webix.html.removeCss( this.$view, "animated fadeIn");
+                                }, $$(nextId), null, 500);
+                            }
+                        },
+                        cells:[
+                                {
+                                    id: "rows_11",
+                                    rows: [
+                                        {
+                                            height: 30,
+                                        },
+                                        {
+                                            height: 70,
+                                            cols:[
+                                                {
+                                                    width: 18,
+                                                },
+                                                {view:"button", type:"image", image:"assets/images/info_small.png", id: "closed_1", css: "set_password_button", width: 100,},
+                                                {
+                                                    width: 14,
+                                                },
+                                                {view: "label", label:"<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Введите пароль для изменения настроек</p>", width: 420, },
+                                                {
 
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            height: 15,
+                                        },
+                                        {
+                                            cols:[
+                                                {
+
+                                                },
+                                                {view:"text", width: 300, height: 50, id:"password_windows_set", css:"password_windows_set", inputAlign:"center", pattern:{ mask:"####", allow:/[0-9]/g} },
+                                                {
+
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            height: 25,
+                                        },
+                                        {
+                                            cols:[
+                                                {
+
+                                                },
+                                                {view:"button", label:"OK", id:"set_password_button", css:"set_password_button"},
+                                                {
+
+                                                }
+                                            ]
+                                        },
+                                    ]
+                                },
+                                {
+                                },
+
+
+                                {
+                                    id: "rows_21",
+                                    cols: [
+                                        {
+                                            rows: [
+                                                {
+                                                    height: 20,
+                                                },
+                                                {
+                                                    cols: [
+                                                        {
+
+                                                        },
+                                                        {view: "label", label: "<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Старый пароль</p>", width: 200,},
+                                                        {view: "text", width: 300, height: 50, id: "password_windows_set_2page", css: "password_windows_set", inputAlign: "center", pattern: {mask: "####", allow: /[0-9]/g},
+                                                        },
+                                                        {
+
+                                                        },
+                                                    ]
+                                                },
+                                                {
+                                                    height: 25,
+                                                },
+                                                {
+                                                    cols:[
+                                                        {
+
+                                                        },
+                                                        {view: "label", label:"<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Новый пароль</p>", width: 200, },
+                                                        {view:"text", width: 300, height: 50, id:"password_windows_set_2page_2", css:"password_windows_set", inputAlign:"center", pattern:{ mask:"####", allow:/[0-9]/g} },
+                                                        {
+
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    height: 45,
+                                                },
+                                                {
+                                                    cols:[
+                                                        {
+
+                                                        },
+                                                        {view:"button", label:"Изменить", id:"set_password_button_2", css:"set_password_button"},
+                                                        {
+
+                                                        },
+                                                        {view:"button", label:"Отмена", id:"set_password_button_3", css:"set_password_button"},
+                                                        {
+
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                 }
+                              ]
                     }
                 ]
-            },
-
+              },
         });
+
+
         win_3.hide();
 
 
@@ -1535,25 +1614,9 @@ export default class Page9View extends JetView {
         });
 
 
-        // $$("re_input_password").hide()
-        // $$("input_password").show()
-
-        $$("re_input_password").hide()
-        $$("password_button_1").attachEvent("onItemClick", (id, e)=> {
-            $$("re_input_password").hide()
-            $$("input_password").show()
-
-
+        $$("set_password_button_3").attachEvent("onItemClick", (id, e)=> {
+            $$("window_show_3").hide()
         });
-
-        $$("password_button_2").attachEvent("onItemClick", (id, e)=> {
-            $$("re_input_password").show()
-            $$("input_password").hide()
-
-
-        });
-
-
 
 
 

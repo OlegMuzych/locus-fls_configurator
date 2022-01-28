@@ -37,8 +37,6 @@ export default class Page9View extends JetView {
             height: 600,
             css: "logo_1",
             id:"logo_1",
-
-
         };
 
 
@@ -239,7 +237,6 @@ export default class Page9View extends JetView {
 
 
         return {
-
             view: "scrollview",
             scroll: "y",
             body: {

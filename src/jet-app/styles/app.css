@@ -1562,3 +1562,82 @@ border: none;
     border-bottom-right-radius: 8px;
 
 }
+
+
+/* f3f3f3 */
+/*Окно пароль*/
+
+
+.window_show_password{
+    background-color: #f9f9f9;
+    border-radius: 6px;
+
+}
+.tabbar_windows_password .webix_segment_N{
+    background-color: #f3f3f3;
+    position: relative;
+    top: -5px;
+    color: var(--white-style-text-color);
+    font-weight: 100;
+    font-size: 20px;
+    border-bottom: 2px solid rgba(143, 140, 140, 0.1);
+    /*border-right: 1px solid rgba(143, 140, 140, 0.1);*/
+}
+
+
+.tabbar_windows_password .webix_segment_0{
+    background-color: #f3f3f3;
+    position: relative;
+    top: -5px;
+    color: var(--white-style-text-color);
+    font-weight: 100;
+    font-size: 20px;
+    border-bottom: 2px solid rgba(143, 140, 140, 0.1);
+    /*border-right: 1px solid rgba(143, 140, 140, 0.1);*/
+}
+
+
+.tabbar_windows_password .webix_segment_0.webix_selected{
+    background-color: rgba(255,255,255, 0.0);
+    color: #000;
+    border-top-left-radius: 6px;
+    border-bottom: 2px solid rgba(143, 140, 140, 0.0);
+    border-right: 2px solid rgba(143, 140, 140, 0.1);
+
+}
+
+.tabbar_windows_password .webix_segment_N.webix_selected{
+    background-color: rgba(255,255,255, 0.0);
+    color: #000;
+    border-top-left-radius: 6px;
+    border-bottom: 2px solid rgba(143, 140, 140, 0.0);
+    border-left: 2px solid rgba(143, 140, 140, 0.1);
+
+}
+
+
+
+.set_password_button .webix_button{
+    background-color: rgba(255,255,255, 0.0);
+    color: var(--white-style-text-color);
+    font-size: 20px;
+}
+
+.set_password_button .webix_button:hover{
+    background-color: rgba(255,255,255, 0.0);
+    color: var(--white-style-text-color);
+    font-size: 20px;
+}
+
+.set_password_button .webix_button:focus{
+    background-color: rgba(255,255,255, 0.0);
+    color: var(--white-style-text-color);
+    font-size: 20px;
+}
+
+.password_windows_set .webix_el_box input{
+    border-radius: 6px;
+    border: 1px solid #cccccc;
+    font-size: 20px;
+    color: var(--white-style-text-color);
+}

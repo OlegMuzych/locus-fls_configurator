@@ -1,6 +1,8 @@
 webix.ui.fullScreen();
 import {JetView} from "webix-jet";
-const SerialPort = eval(`require('serialport')`);
+//const SerialPort = eval(`require('serialport')`);
+import findPort from "../models/lls/findPort";
+// const findPort = require("../models/lls/findPort");
 
 export default class Page9View extends JetView {
     config() {
@@ -256,11 +258,9 @@ export default class Page9View extends JetView {
 
 
     init(view){
-        console.log("test console.log()");
-        SerialPort.list().then((ports, err) => {
-            console.log(ports);
-            console.log(err);
-        });
+
+        findPort.list().then(value => {console.log(value)});
+        findPort.findLls232();
 
         $$("master_setup").attachEvent("onItemClick", (id, e)=>{
             $$("color_rows_page22").define(color)

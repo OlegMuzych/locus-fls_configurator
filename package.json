@@ -87,6 +87,7 @@
     "style-loader": "^3.0.0"
   },
   "dependencies": {
+    "easy-crc": "^1.0.0",
     "electron-squirrel-startup": "^1.0.0",
     "webix-jet": "^2.1.3"
   }

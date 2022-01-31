@@ -19,7 +19,10 @@ rules.push({
       "presets": [
         ["@babel/preset-env", {
           // "useBuiltIns": "entry"
-        }]
+          "targets": {
+            "electron": "16",
+          }
+        }],
       ]
     }
   }

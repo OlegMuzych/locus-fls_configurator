@@ -260,7 +260,7 @@ export default class Page9View extends JetView {
     init(view){
 
         findPort.list().then(value => {console.log(value)});
-        findPort.findLls232();
+        findPort.find();
 
         $$("master_setup").attachEvent("onItemClick", (id, e)=>{
             $$("color_rows_page22").define(color)

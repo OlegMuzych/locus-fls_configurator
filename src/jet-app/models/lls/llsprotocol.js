@@ -17,7 +17,8 @@ export default class LlsProtocol {
         llsAdr: null,
         name: null,
     };
-
+    smallSettingStruct = {};
+    password = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00];
     settingStruct = {
         llsAdr: null,
         fuelType: null,
@@ -55,15 +56,48 @@ export default class LlsProtocol {
 
     // async commandSend(command, data){
     // };
-    commandSend(command, data){
-        let pass = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00];
-        let dataBuffer = new Uint8Array([0x31, 0xFF, 0x74, ...pass,]);
-        let checksum = crc8('MAXIM', dataBuffer);
-        console.log(checksum.toString(16));
-        let buffer = new Uint8Array([...dataBuffer, checksum]);
-        console.log(buffer);
-        this.port.write(buffer);
-    };
+    // commandSend(command, data){
+    //     let pass = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00];
+    //     let dataBuffer = new Uint8Array([0x31, 0xFF, 0x74, ...pass,]);
+    //     let checksum = crc8('MAXIM', dataBuffer);
+    //     console.log(checksum.toString(16));
+    //     let buffer = new Uint8Array([...dataBuffer, checksum]);
+    //     console.log(buffer);
+    //     this.port.write(buffer);
+    // };
+    send(command){
+        let dataBuffer = this.commandCreate(command, 1);
+        this.port.write(dataBuffer);
+    }
+
+    commandCreate(command, llsAdr){
+        let dataBuffer = [0x31, llsAdr];
+        switch(command){
+            case "find232":{ //для поиска по rs232
+                dataBuffer.splice(1, 1); //удалим llsAdr
+                dataBuffer.push(0xFF);
+                dataBuffer.push(0x74);
+                dataBuffer.push(...this.password);
+                break;
+            }
+            case 0x74:{ //проверить правильность пароля
+                dataBuffer.push(command);
+                dataBuffer.push(this.password);
+                break;
+            }
+            default: break;
+        }
+
+        dataBuffer = new Uint8Array(dataBuffer);
+        return new Uint8Array([...dataBuffer, this.getCRC8(dataBuffer)]);
+    }
+
+
+    getCRC8(buffer){
+        let checksum = crc8('MAXIM', buffer);
+        console.log("CRC8: " + checksum.toString(16));
+        return checksum;
+    }
 
     // async open(){
     //     this.port.open(function (err) {
@@ -94,7 +128,7 @@ export default class LlsProtocol {
             console.log('Error: ', err.message);
         })
 
-        this.port.on('data', function (data) {
+        this.port.on('readable', function (data) {
             console.log('Data:', data);
         })
     }

@@ -1573,6 +1573,14 @@ border: none;
     border-radius: 6px;
 
 }
+
+.window_show_password_dark{
+    background-color: var(--c-white-color-background-dark);
+    border-radius: 6px;
+}
+
+
+
 .tabbar_windows_password .webix_segment_N{
     background-color: #f3f3f3;
     position: relative;
@@ -1585,6 +1593,7 @@ border: none;
 }
 
 
+
 .tabbar_windows_password .webix_segment_0{
     background-color: #f3f3f3;
     position: relative;
@@ -1595,6 +1604,31 @@ border: none;
     border-bottom: 2px solid rgba(143, 140, 140, 0.1);
     /*border-right: 1px solid rgba(143, 140, 140, 0.1);*/
 }
+
+
+
+.tabbar_windows_password_dark .webix_segment_N{
+    background-color: var(--c-white-color-background-dark_left_menu);
+    position: relative;
+    top: -5px;
+    color: var(--c-color-text-dark);
+    font-weight: 100;
+    font-size: 20px;
+    border-bottom: 2px solid rgba(143, 140, 140, 0.1);
+    /*border-right: 1px solid rgba(143, 140, 140, 0.1);*/
+
+}.tabbar_windows_password_dark .webix_segment_0{
+     background-color: var(--c-white-color-background-dark_left_menu);
+     position: relative;
+     top: -5px;
+     color: var(--c-color-text-dark);
+     font-weight: 100;
+     font-size: 20px;
+     border-bottom: 2px solid rgba(143, 140, 140, 0.1);
+     /*border-right: 1px solid rgba(143, 140, 140, 0.1);*/
+ }
+
+
 
 
 .tabbar_windows_password .webix_segment_0.webix_selected{
@@ -1615,6 +1649,24 @@ border: none;
 
 }
 
+.tabbar_windows_password_dark .webix_segment_0.webix_selected{
+    background-color: var(--c-white-color-background-dark);
+    color: var(--c-color-text-dark);
+    border-top-left-radius: 6px;
+    border-bottom: 2px solid rgba(143, 140, 140, 0.0);
+    border-right: 2px solid rgba(143, 140, 140, 0.1);
+
+}
+
+.tabbar_windows_password_dark .webix_segment_N.webix_selected{
+    background-color: var(--c-white-color-background-dark);
+    color: var(--c-color-text-dark);
+    border-top-left-radius: 6px;
+    border-bottom: 2px solid rgba(143, 140, 140, 0.0);
+    border-left: 2px solid rgba(143, 140, 140, 0.1);
+
+}
+
 
 
 .set_password_button .webix_button{
@@ -1622,6 +1674,25 @@ border: none;
     color: var(--white-style-text-color);
     font-size: 20px;
 }
+
+.set_password_button_dark .webix_button{
+    background-color: rgba(255,255,255, 0.0);
+    color: var(--c-color-text-dark);
+    font-size: 20px;
+}
+
+.set_password_button_dark .webix_button:hover{
+    background-color: rgba(255,255,255, 0.0);
+    color: var(--c-color-text-dark);
+    font-size: 20px;
+}
+
+.set_password_button_dark .webix_button:focus{
+    background-color: rgba(255,255,255, 0.0);
+    color: var(--c-color-text-dark);
+    font-size: 20px;
+}
+
 
 .set_password_button .webix_button:hover{
     background-color: rgba(255,255,255, 0.0);
@@ -1636,8 +1707,32 @@ border: none;
 }
 
 .password_windows_set .webix_el_box input{
-    border-radius: 6px;
-    border: 1px solid #cccccc;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 4px #c5c5c5,
+    inset -2px -2px 4px #ffffff;
+    color: #000;
     font-size: 20px;
-    color: var(--white-style-text-color);
+    height: 100%;
+    border: 1px solid #fff;
+}
+
+.password_windows_set_dark .webix_el_box input{
+    background-color: var(--c-white-color-background-dark_left_menu);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+    box-shadow: inset 2px 2px 5px #212121,
+    inset -2px -2px 5px #373737;
+    height: 100%;
+}
+
+
+.windows_password_label p{
+    color: var(--c-color-text-light)
+}
+
+.windows_password_label_dark p{
+    color: var(--c-color-text-dark)
 }

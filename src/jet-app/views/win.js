@@ -134,7 +134,7 @@ export default class Page9View extends JetView {
                                     },
                                     {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px;'>Выбор темы</p>", width: 130, id:"light_theme_label"},
                                     {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; color: #fff;'>Выбор темы</p>", width: 130, id:"dark_theme_label"},
-                                    {view: "switch", value: 0, id: "temp_compensation_22", width: 68,},
+                                    {view: "switch", value: 0, id: "dark_light_theme", width: 70,},
                                     {
 
                                     },
@@ -211,12 +211,7 @@ export default class Page9View extends JetView {
                                     {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Торговая марка: 'Точка Мониторинга'</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_2"},
                                     {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Версия программного обеспечения 1.1.1</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_3"},
                                     {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Производитель: ООО 'Новотек'</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_4"},
-                                    {
-
-                                    },
                                     {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>www.point-monitoring.ru</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_5"},
-
-
                                     {
 
                                     },
@@ -341,8 +336,8 @@ export default class Page9View extends JetView {
 
 
         $$("dark_theme_label").hide()
-        $$("temp_compensation_22").attachEvent("onItemClick", (id, e )=>{
-            if ($$("temp_compensation_22").getValue()== 1) {
+        $$("dark_light_theme").attachEvent("onItemClick", (id, e )=>{
+            if ($$("dark_light_theme").getValue()== 1) {
                 $$("light_theme_label").hide()
                 $$("dark_theme_label").show()
                 $$("logo_1").define("image", "assets/images/Logo_2.svg")

@@ -1327,10 +1327,7 @@ export default class Page9View extends JetView {
                         options: [
                                     { value: 'Ввести', id: 'rows_11'},
                                     { value: 'Задать новый', id: 'rows_21'},
-
                         ],
-
-
                         on:{
                             onChange:function(nextId, prevId){
                                 webix.animate($$(prevId).$view, { type:"fade", duration:250 });
@@ -1338,15 +1335,8 @@ export default class Page9View extends JetView {
                         }
 
 
-                    },
-                    {
-                        cols:[
-                            {view: "icon", icon: "wxi-close", tooltip: "Close window", click: function () {
-                                    $$("window_show_3").hide()
-                                }},
-                        ]
-                    },
 
+                    },
 
                     {
                         animate:{ type:"show", delay:300 },
@@ -1375,7 +1365,7 @@ export default class Page9View extends JetView {
                                                 {
                                                     width: 14,
                                                 },
-                                                {view: "label", label:"<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Введите пароль для изменения настроек</p>", width: 420, },
+                                                {view: "label", label:"<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Введите пароль для изменения настроек</p>", width: 420, id:"windows_password_label", css:"windows_password_label"},
                                                 {
 
                                                 }
@@ -1389,14 +1379,14 @@ export default class Page9View extends JetView {
                                                 {
 
                                                 },
-                                                {view:"text", width: 300, height: 50, id:"password_windows_set", css:"password_windows_set", inputAlign:"center", pattern:{ mask:"####", allow:/[0-9]/g} },
+                                                {view:"text",  height: 50, id:"password_windows_set", css:"password_windows_set", inputAlign:"center", pattern:{ mask:"####", allow:/[0-9]/g} },
                                                 {
 
                                                 }
                                             ]
                                         },
                                         {
-                                            height: 25,
+                                            height: 65,
                                         },
                                         {
                                             cols:[
@@ -1404,6 +1394,10 @@ export default class Page9View extends JetView {
 
                                                 },
                                                 {view:"button", label:"OK", id:"set_password_button", css:"set_password_button"},
+                                                {
+
+                                                },
+                                                {view:"button", label:"Отмена", id:"set_password_button_4", css:"set_password_button"},
                                                 {
 
                                                 }
@@ -1428,8 +1422,8 @@ export default class Page9View extends JetView {
                                                         {
 
                                                         },
-                                                        {view: "label", label: "<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Старый пароль</p>", width: 200,},
-                                                        {view: "text", width: 300, height: 50, id: "password_windows_set_2page", css: "password_windows_set", inputAlign: "center", pattern: {mask: "####", allow: /[0-9]/g},
+                                                        {view: "label", label: "<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Старый пароль</p>", width: 200, id:"windows_password_label_2", css:"windows_password_label"},
+                                                        {view: "text",  height: 50, id: "password_windows_set_2page", css: "password_windows_set", inputAlign: "center", pattern: {mask: "####", allow: /[0-9]/g},
                                                         },
                                                         {
 
@@ -1444,15 +1438,15 @@ export default class Page9View extends JetView {
                                                         {
 
                                                         },
-                                                        {view: "label", label:"<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Новый пароль</p>", width: 200, },
-                                                        {view:"text", width: 300, height: 50, id:"password_windows_set_2page_2", css:"password_windows_set", inputAlign:"center", pattern:{ mask:"####", allow:/[0-9]/g} },
+                                                        {view: "label", label:"<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Новый пароль</p>", width: 200, id:"windows_password_label_3", css:"windows_password_label" },
+                                                        {view:"text",  height: 50, id:"password_windows_set_2page_2", css:"password_windows_set", inputAlign:"center", pattern:{ mask:"####", allow:/[0-9]/g} },
                                                         {
 
                                                         }
                                                     ]
                                                 },
                                                 {
-                                                    height: 45,
+                                                    height: 85,
                                                 },
                                                 {
                                                     cols:[
@@ -1618,6 +1612,9 @@ export default class Page9View extends JetView {
             $$("window_show_3").hide()
         });
 
+        $$("set_password_button_4").attachEvent("onItemClick", (id, e)=> {
+            $$("window_show_3").hide()
+        });
 
 
         //Кнопки в правом меню статус ( красные/зеленые )------------------------//
@@ -1854,11 +1851,14 @@ export default class Page9View extends JetView {
                 $$("left_menu_button_3").define("image", "assets/images//MODEL_301_BLE.svg")
                 $$("button_back").define("image", "assets/images//back.svg")
                 $$("button_reference").define("image", "assets/images//info.svg")
+                $$("closed_1").define("image", "assets/images/info.svg")
+
                 $$("left_menu_button_1").refresh();
                 $$("left_menu_button_2").refresh();
                 $$("left_menu_button_3").refresh();
                 $$("button_back").refresh();
                 $$("button_reference").refresh();
+                $$("closed_1").refresh();
             }
          else {
                 $$("left_menu_button_1").define("image", "assets/images/MODEL_101_inverse.svg")
@@ -1866,11 +1866,14 @@ export default class Page9View extends JetView {
                 $$("left_menu_button_3").define("image", "assets/images/MODEL_301_BLE_inverse.svg")
                 $$("button_back").define("image", "assets/images//back_inverse.svg")
                 $$("button_reference").define("image", "assets/images/info_inverse.svg")
+                $$("closed_1").define("image", "assets/images/info_inverse_2.svg")
+
                 $$("left_menu_button_1").refresh();
                 $$("left_menu_button_2").refresh();
                 $$("left_menu_button_3").refresh();
                 $$("button_back").refresh();
                 $$("button_reference").refresh();
+                $$("closed_1").refresh();
             }
         });
 
@@ -1981,6 +1984,18 @@ export default class Page9View extends JetView {
             webix.html.removeCss( $$("step_liters_fuel_filling_2").getNode(), "full_window_text");
             webix.html.removeCss( $$("counts_step_fuel_filling").getNode(), "full_window_text");
             webix.html.removeCss( $$("step_liters_fuel_filling_1").getNode(), "full_window_text");
+            webix.html.removeCss( $$("window_show_3").getNode(), "window_show_password");
+            webix.html.removeCss( $$("tabbar_windows_password").getNode(), "tabbar_windows_password");
+            webix.html.removeCss( $$("set_password_button").getNode(), "set_password_button");
+            webix.html.removeCss( $$("set_password_button_2").getNode(), "set_password_button");
+            webix.html.removeCss( $$("set_password_button_3").getNode(), "set_password_button");
+            webix.html.removeCss( $$("set_password_button_4").getNode(), "set_password_button");
+            webix.html.removeCss( $$("windows_password_label").getNode(), "windows_password_label");
+            webix.html.removeCss( $$("windows_password_label_2").getNode(), "windows_password_label");
+            webix.html.removeCss( $$("windows_password_label_3").getNode(), "windows_password_label");
+            webix.html.removeCss( $$("password_windows_set").getNode(), "password_windows_set");
+            webix.html.removeCss( $$("password_windows_set_2page").getNode(), "password_windows_set");
+            webix.html.removeCss( $$("password_windows_set_2page_2").getNode(), "password_windows_set");
 
 
 
@@ -2065,6 +2080,18 @@ export default class Page9View extends JetView {
                 webix.html.addCss( $$("step_liters_fuel_filling_2").getNode(), "full_window_text_dark");
                 webix.html.addCss( $$("counts_step_fuel_filling").getNode(), "full_window_text_dark");
                 webix.html.addCss( $$("step_liters_fuel_filling_1").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("window_show_3").getNode(), "window_show_password_dark");
+                webix.html.addCss( $$("tabbar_windows_password").getNode(), "tabbar_windows_password_dark");
+                webix.html.addCss( $$("set_password_button").getNode(), "set_password_button_dark");
+                webix.html.addCss( $$("set_password_button_2").getNode(), "set_password_button_dark");
+                webix.html.addCss( $$("set_password_button_3").getNode(), "set_password_button_dark");
+                webix.html.addCss( $$("set_password_button_4").getNode(), "set_password_button_dark");
+                webix.html.addCss( $$("windows_password_label").getNode(), "windows_password_label_dark");
+                webix.html.addCss( $$("windows_password_label_2").getNode(), "windows_password_label_dark");
+                webix.html.addCss( $$("windows_password_label_3").getNode(), "windows_password_label_dark");
+                webix.html.addCss( $$("password_windows_set").getNode(), "password_windows_set_dark");
+                webix.html.addCss( $$("password_windows_set_2page").getNode(), "password_windows_set_dark");
+                webix.html.addCss( $$("password_windows_set_2page_2").getNode(), "password_windows_set_dark");
 
 
 
@@ -2150,6 +2177,18 @@ export default class Page9View extends JetView {
                 webix.html.addCss( $$("step_liters_fuel_filling_2").getNode(), "full_window_text");
                 webix.html.addCss( $$("counts_step_fuel_filling").getNode(), "full_window_text");
                 webix.html.addCss( $$("step_liters_fuel_filling_1").getNode(), "full_window_text");
+                webix.html.addCss( $$("window_show_3").getNode(), "window_show_password");
+                webix.html.addCss( $$("tabbar_windows_password").getNode(), "tabbar_windows_password");
+                webix.html.addCss( $$("set_password_button").getNode(), "set_password_button");
+                webix.html.addCss( $$("set_password_button_2").getNode(), "set_password_button");
+                webix.html.addCss( $$("set_password_button_3").getNode(), "set_password_button");
+                webix.html.addCss( $$("set_password_button_4").getNode(), "set_password_button");
+                webix.html.addCss( $$("windows_password_label").getNode(), "windows_password_label");
+                webix.html.addCss( $$("windows_password_label_2").getNode(), "windows_password_label");
+                webix.html.addCss( $$("windows_password_label_3").getNode(), "windows_password_label");
+                webix.html.addCss( $$("password_windows_set").getNode(), "password_windows_set");
+                webix.html.addCss( $$("password_windows_set_2page").getNode(), "password_windows_set");
+                webix.html.addCss( $$("password_windows_set_2page_2").getNode(), "password_windows_set");
 
 
 

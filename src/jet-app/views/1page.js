@@ -1312,11 +1312,6 @@ export default class Page9View extends JetView {
             modal: true,
             css: "window_show_password",
             head: {
-
-        // {view: "icon", icon: "wxi-close", tooltip: "Close window", click: function () {
-        //     $$("window_show_3").hide()
-        // }}
-
                 rows:[
                     {
                         view:"segmented",
@@ -1361,7 +1356,7 @@ export default class Page9View extends JetView {
                                                 {
                                                     width: 18,
                                                 },
-                                                {view:"button", type:"image", image:"assets/images/info_small.png", id: "closed_1", css: "set_password_button", width: 100,},
+                                                {view:"button", type:"image", image:"assets/images/info_black.svg", id: "closed_1", css: "set_password_button", width: 100, height: 100,},
                                                 {
                                                     width: 14,
                                                 },
@@ -1472,12 +1467,64 @@ export default class Page9View extends JetView {
                 ]
               },
         });
-
-
         win_3.hide();
 
 
+        var win_4 = webix.ui({
+            view:"window",
+            position:"center",
+            width: 650,
+            height: 400,
+            id:"window_show_4",
+            modal:true,
+            css:"window_show",
+            head:{
 
+                                height: 400,
+                                rows:[
+                                    {
+
+
+                                    },
+                                    {
+                                        cols:[
+                                            {
+
+                                            },
+                                            {view:"button", type:"image", image:"assets/images/Warning.png", id: "closed_2", css: "set_password_button", height: 100,},
+                                            {view: "label", label:"<p style='font-size: 20px; position: relative; top: -10px; text-align: center;'>Все настройки датчика будут сброшенны</p>", css:"language_windows_modal", id:"language_windows_modal_2", height: 100, width: 350,},
+                                            {
+
+                                            }
+                                        ]
+                                    },
+                                    {
+                                      height: 65,
+                                    },
+                                    {
+                                        cols:[
+                                            {
+
+                                            },
+                                            {view:"button", label:"OK", id:"set_password_button_5", css:"set_password_button"},
+                                            {
+
+                                            },
+                                            {view:"button", label:"Отмена", id:"set_password_button_6", css:"set_password_button"},
+                                            {
+
+                                            }
+                                        ]
+                                    },
+                                    {
+
+                                    }
+
+                ]
+            },
+
+        });
+        win_4.hide();
 
 
         return {
@@ -1616,6 +1663,14 @@ export default class Page9View extends JetView {
             $$("window_show_3").hide()
         });
 
+            $$("button_right_menu_top_1").attachEvent("onItemClick", (id, e)=> {
+                $$("window_show_4").show()
+            });
+
+            $$("set_password_button_6").attachEvent("onItemClick", (id, e)=> {
+                $$("window_show_4").hide()
+            });
+        // $$("window_show_3").show()
 
         //Кнопки в правом меню статус ( красные/зеленые )------------------------//
         $$("button_define_1").show()
@@ -1851,7 +1906,7 @@ export default class Page9View extends JetView {
                 $$("left_menu_button_3").define("image", "assets/images//MODEL_301_BLE.svg")
                 $$("button_back").define("image", "assets/images//back.svg")
                 $$("button_reference").define("image", "assets/images//info.svg")
-                $$("closed_1").define("image", "assets/images/info.svg")
+                $$("closed_1").define("image", "assets/images/info_black.svg")
 
                 $$("left_menu_button_1").refresh();
                 $$("left_menu_button_2").refresh();
@@ -1866,7 +1921,7 @@ export default class Page9View extends JetView {
                 $$("left_menu_button_3").define("image", "assets/images/MODEL_301_BLE_inverse.svg")
                 $$("button_back").define("image", "assets/images//back_inverse.svg")
                 $$("button_reference").define("image", "assets/images/info_inverse.svg")
-                $$("closed_1").define("image", "assets/images/info_inverse_2.svg")
+                $$("closed_1").define("image", "assets/images/info_white.svg")
 
                 $$("left_menu_button_1").refresh();
                 $$("left_menu_button_2").refresh();

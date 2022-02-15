@@ -1,4 +1,4 @@
-const SerialPort = eval(`require('serialport')`);
+const {SerialPort} = eval(`require('serialport')`);
 import LlsProtocol from "./llsprotocol";
 import config from "../../config-app";
 
@@ -26,13 +26,17 @@ class FindPort {
         this.testLls = new LlsProtocol(port, baudRate, llsAdr, "test DUT");
         this.testLls.open(); //todo : convert to promise
         this.testLls.send("find232");//todo : convert to promise
+
     }
+
 
     async list(){
         try {
             let portList =  await SerialPort.list();
             console.log(portList);
-            return portList;
+            return portList.map((item)=>{
+                return item.path;
+            });
         } catch (error) {
             console.log(error);
         }

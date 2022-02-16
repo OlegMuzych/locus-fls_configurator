@@ -3,10 +3,42 @@ export default class llsData{
     password = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00];
 
     shortSetting = {
-        llsAdr: null,
-        temperature: null,
-        level: null,
-        cnt: null
+        _llsAdr: null,
+        _temperature: null,
+        _level: null,
+        _cnt: null,
+        get llsAdr(){
+            return this._llsAdr;
+        },
+        set llsAdr(value){
+          this._llsAdr = value;
+        },
+
+        get temperature(){
+            return this._temperature;
+        },
+        set temperature(value){
+            this._temperature = value;
+        },
+
+        get level(){
+            return this._level;
+        },
+        set level(arr){
+            let uint8Arr = new Uint8Array(arr);
+            let uint16Arr = new Uint16Array(uint8Arr);
+            this._level = uint16Arr[0];
+        },
+
+        get cnt(){
+            return this._cnt;
+        },
+        set cnt(arr){
+            let uint8Arr = new Uint8Array(arr);
+            let uint16Arr = new Uint16Array(uint8Arr);
+            this._cnt = uint16Arr[0];
+        },
+
     };
 
     constructor(llsProtocol){
@@ -14,8 +46,10 @@ export default class llsData{
     };
 
     async getShort(){
-        this._llsProtocol.send(0x06);
+        let shortSettingBuffer = await this._llsProtocol.send(0x06);
+        console.log(shortSettingBuffer);
         // let shortSetting = await this._llsProtocol.send(0x06);
+        console.log(this.shortSetting);
         return this.shortSetting;
     };
 }

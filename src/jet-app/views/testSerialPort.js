@@ -1,6 +1,7 @@
 import {JetView} from "webix-jet";
 import findPort from "../models/lls/findPort";
 import Lls from "../models/lls/lls";
+import DataView from "./data";
 
 export default class StartView extends JetView {
     config() {
@@ -59,6 +60,10 @@ export default class StartView extends JetView {
         });
 
         this.$$('buttonShortData').attachEvent("onItemClick", async (id, e) => {
+            // let buffer = new Uint8Array([255, 255, 255, 255]).buffer;
+            // let dataView = new DataView(buffer);
+            // let a = dataView.getUint16(1);
+
             console.log('click');
             this.lls.data.getShort().then();
         });

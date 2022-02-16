@@ -3,18 +3,12 @@ const {SerialPort} = eval(`require('serialport')`);
 const EventEmitter = require('events');
 
 class MyEmitter extends EventEmitter {}
-
 const myEmitter = new MyEmitter();
-// myEmitter.on('event', () => {
-//     console.log('an event occurred!');
-// });
-// myEmitter.emit('event');
 
 export default class llsProtocol{
 
      PR_RECEIVE = 0x3E;
      PR_TRANSMIT =  0x31;
-
 
     _settingPort = {
         portName: null,
@@ -36,8 +30,8 @@ export default class llsProtocol{
     async send(command, data = null){
         let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
         this.port.write(dataBuffer);
-        let buff = await this._parseData(command);
-        console.log(buff);
+        let dataParse = await this._eventDataParse(command);
+        return dataParse;
     };
 
     open(){
@@ -57,21 +51,21 @@ export default class llsProtocol{
             console.log('Error: ', err.message);
         })
 
-        this.port.on('data', function (data) {
+        this.port.on('data',  (data) =>{
             console.log('Data:', data);
-            myEmitter.emit('data',data);
+            let dataPars = this._parseData(data);
+            myEmitter.emit(`data:${dataPars.command}`, dataPars);
         })
     }
 
-
-
     async close(){
         return new Promise((resolve, reject) => {
-            if(port.iss){}
-            this.port.close(error => {
-                console.log(error);
-                resolve(error);
-            })
+            if(this.port.isOpen){
+                this.port.close(error => {
+                    console.log(error);
+                    resolve(error);
+                })
+            }
         });
         // return await this.port.close();
     }
@@ -108,35 +102,36 @@ export default class llsProtocol{
         return checksum;
     };
 
-    async _parseData(commandPrev){
-        let data = await this._eventData();
+    _parseData(data){
         let [prefix, llsAdr, command, ...buff] = data;
         if(prefix == this.PR_RECEIVE){
-            if(command == commandPrev){
-                return data;
-            }else{
-                console.log('command receive: ', command);
+            let buffer = new Uint8Array(data).buffer;
+            let dataView = new DataView(buffer);
+
+            switch(command){
+                case 0x06:{
+                    let shortDataResp = {prefix: null};
+                    shortDataResp.prefix = dataView.getUint8(0);
+                    shortDataResp.llsAdr = dataView.getUint8(1);
+                    shortDataResp.command = dataView.getUint8(2)
+                    shortDataResp.temperature = dataView.getUint8(3);
+                    shortDataResp.level = dataView.getUint16(4);
+                    shortDataResp.cnt = dataView.getUint16(6);
+                    return shortDataResp;
+                    break;
+                }
+                default: break;
             }
         }
     }
 
-
-    _eventData() {
+    _eventDataParse(command) {
         return new Promise((resolve, reject) => {
-            myEmitter.once('data', (data) => {
-                console.log(data);
-                resolve(data);
+            myEmitter.once(`data:${command}`, (data) => {
+                // console.log(data);
+                 resolve(data);
             });
         });
     }
-    
-
-    // _parseData(buffer){
-    //     let arr = new Uint8Array(buffer);
-    //     if(arr[0] == this.PR_RECEIVE){
-    //         console.log(arr);
-    //         //todo: add check crc and other
-    //     }else(console.log('ERROR: 0x3E not found !'));
-    // }
 
 }

@@ -1,5 +1,6 @@
 webix.ui.fullScreen();
 import {JetView} from "webix-jet";
+import llsModel from "../models/lls-model";
 
 
 export default class Page9View extends JetView {
@@ -166,7 +167,7 @@ export default class Page9View extends JetView {
                                     labelWidth: 400,
                                     css: "window_type_2",
                                     inputAlign: "center",
-                                    id: "window_type_2_1"
+                                    id: "window_type_2_1",
                                 },
                                 {height: 20},
                                 {
@@ -1401,8 +1402,21 @@ export default class Page9View extends JetView {
         }
     }
 
+    destroy() {
+        super.destroy();
+        llsModel.clearOnShortData(this.listener1)
+    }
+
+    listener1 = (shortData)=>{
+        console.log(shortData);
+        $$("window_temp").setValue(shortData.temperature.toString());
+        $$("window_type_2_1").setValue(shortData.llsAdr.toString());
+
+    }
 
     init(view){
+
+        llsModel.onShortData(this.listener1);
 
         $$("button_back").attachEvent("onItemClick", (id, e)=>{
             this.show("win");

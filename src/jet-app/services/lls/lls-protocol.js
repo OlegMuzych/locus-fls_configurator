@@ -27,10 +27,14 @@ export default class llsProtocol{
         this.open();
     };
 
-    async send(command, data = null){
+    async send(command, data = null, timeout = 1000){
+        function timeoutHandler(){
+
+        }
         let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
         this.port.write(dataBuffer);
         let dataParse = await this._eventDataParse(command);
+
         return dataParse;
     };
 
@@ -54,7 +58,9 @@ export default class llsProtocol{
         this.port.on('data',  (data) =>{
             console.log('Data:', data);
             let dataPars = this._parseData(data);
-            myEmitter.emit(`data:${dataPars.command}`, dataPars);
+            if(dataPars){
+                myEmitter.emit(`data:${dataPars.command}`, dataPars);
+            }
         })
     }
 
@@ -98,7 +104,7 @@ export default class llsProtocol{
 
     _getCRC8(buffer){
         let checksum = crc8('MAXIM', buffer);
-        console.log("CRC8: " + checksum.toString(16));
+        // console.log("CRC8: " + checksum.toString(16));
         return checksum;
     };
 
@@ -123,6 +129,7 @@ export default class llsProtocol{
                 default: break;
             }
         }
+        return null;
     }
 
     _eventDataParse(command) {

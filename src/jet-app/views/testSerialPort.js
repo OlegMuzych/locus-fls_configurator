@@ -1,7 +1,7 @@
 import {JetView} from "webix-jet";
-import findPort from "../models/lls/findPort";
-import Lls from "../models/lls/lls";
-import DataView from "./data";
+import findPort from "../services/lls/findPort";
+import Lls from "../services/lls/lls";
+import llsModel from '../models/lls-model';
 
 export default class StartView extends JetView {
     config() {
@@ -23,6 +23,12 @@ export default class StartView extends JetView {
             value: "Short Data",
             inputWidth: 100
         };
+        let buttonLlsModel = {
+            view: "button",
+            localId: "buttonLlsModel",
+            value: "llsModel",
+            inputWidth: 100
+        };
         return {
             rows: [
                 {type: "header", template: "Dashboard"},
@@ -30,7 +36,7 @@ export default class StartView extends JetView {
                 comboSerial,
                 {
                     cols:[
-                        buttonInitPort,buttonShortData
+                        buttonInitPort,buttonShortData,buttonLlsModel
                     ]
                 }
             ]
@@ -56,7 +62,7 @@ export default class StartView extends JetView {
             if(this.lls){
                 this.lls.close().then();
             }
-            this.lls = new Lls(this.$$('comboSerial').getValue().toString());
+            this.lls = new Lls({portName: this.$$('comboSerial').getValue().toString()});
         });
 
         this.$$('buttonShortData').attachEvent("onItemClick", async (id, e) => {
@@ -65,7 +71,16 @@ export default class StartView extends JetView {
             // let a = dataView.getUint16(1);
 
             console.log('click');
-            this.lls.data.getShort().then();
+            await this.lls.data.getShort();
+            await this.lls.close();
+        });
+
+        this.$$('buttonLlsModel').attachEvent("onItemClick", async (id, e) => {
+            console.log('click');
+            llsModel.onShortData((shortData)=>{
+                console.log(shortData);
+            });
+
         });
     }
 

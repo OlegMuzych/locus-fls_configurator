@@ -9,8 +9,8 @@ export default class Lls{
     table = {};
     actions = {};
 
-    constructor(portName, baudRate = 19200, llsAdr = 1, name = "test") {
-        this._settingPort.portName = portName;
+    constructor({portName: path, baudRate = 19200, llsAdr = 1, name = "test"}) {
+        this._settingPort.portName = path;
         this._settingPort.baudRate = baudRate;
         this._settingPort.llsAdr = llsAdr;
         this._settingPort.name = name;

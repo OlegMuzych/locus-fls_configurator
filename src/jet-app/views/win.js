@@ -1,7 +1,7 @@
 webix.ui.fullScreen();
 import {JetView} from "webix-jet";
 //const SerialPort = eval(`require('serialport')`);
-import findPort from "../models/lls/findPort";
+import findPort from "../services/lls/findPort";
 // const findPort = require("../models/lls/findPort");
 
 export default class Page9View extends JetView {
@@ -258,6 +258,16 @@ export default class Page9View extends JetView {
 
 
     init(view){
+
+        let goEngineering = (code, e)=> {
+            console.log(e);
+            if (e.altKey && e.ctrlKey && e.code == "KeyT") {
+                console.log("OPEN ENGINEERING MENU");
+                webix.message("OPEN ENGINEERING MENU");
+                this.app.show("/testSerialPort");
+            }
+        }
+        $$("logo_1").attachEvent("onKeyPress", goEngineering);
 
         findPort.list().then(value => {console.log(value)});
         findPort.find();

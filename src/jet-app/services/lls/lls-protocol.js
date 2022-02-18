@@ -27,15 +27,46 @@ export default class llsProtocol{
         this.open();
     };
 
+    // async send(command, data = null, timeout = 1000){
+    //     // let timer = null;
+    //     let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
+    //     this.port.write(dataBuffer);
+    //     let dataParse = await this._eventDataParse(command);
+    //
+    //     return dataParse;
+    //
+    //     // return new Promise((resolve, reject) => {
+    //     //     resolve(dataParse);
+    //     //     timer = setTimeout(()=>{
+    //     //         reject("Error: timeout response message!")
+    //     //     }, 1000);
+    //     // });
+    // };
     async send(command, data = null, timeout = 1000){
-        function timeoutHandler(){
-
-        }
+        let timerId = null;
+        return new Promise(async (resolve, reject)=>{
+            timerId = setTimeout(()=>{
+                        reject("Error: timeout response message!")
+                    }, 1000);
+            let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
+            this.port.write(dataBuffer);
+            let dataParse = await this._eventDataParse(command);
+            clearInterval(timerId);
+            return dataParse;
+        });
+        // let timer = null;
         let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
         this.port.write(dataBuffer);
         let dataParse = await this._eventDataParse(command);
 
         return dataParse;
+
+        // return new Promise((resolve, reject) => {
+        //     resolve(dataParse);
+        //     timer = setTimeout(()=>{
+        //         reject("Error: timeout response message!")
+        //     }, 1000);
+        // });
     };
 
     open(){
@@ -86,7 +117,7 @@ export default class llsProtocol{
                 dataBuffer.push(...this.password);
                 break;
             }
-            case 0x74:{ //проверить правильность пароля
+            case 0x74:{ //проверить правильность пароля и адреса ДУТ
                 dataBuffer.push(command);
                 dataBuffer.push(this.password);
                 break;
@@ -116,7 +147,7 @@ export default class llsProtocol{
 
             switch(command){
                 case 0x06:{
-                    let shortDataResp = {prefix: null};
+                    let shortDataResp = {};
                     shortDataResp.prefix = dataView.getUint8(0);
                     shortDataResp.llsAdr = dataView.getUint8(1);
                     shortDataResp.command = dataView.getUint8(2)
@@ -124,6 +155,15 @@ export default class llsProtocol{
                     shortDataResp.level = dataView.getUint16(4);
                     shortDataResp.cnt = dataView.getUint16(6);
                     return shortDataResp;
+                    break;
+                }
+                case 0x74:{
+                    let checkPassword = {};
+                    checkPassword.prefix = dataView.getUint8(0);
+                    checkPassword.llsAdr = dataView.getUint8(0);
+                    checkPassword.command = dataView.getUint8(0);
+                    checkPassword.code = dataView.getUint8(0);
+                    return checkPassword;
                     break;
                 }
                 default: break;

@@ -1,8 +1,10 @@
+import llsProtocol from "./lls-protocol";
+
 const {SerialPort} = eval(`require('serialport')`);
-import LlsProtocol from "./llsprotocol";
+import LlsProtocol from "./lls-protocol";
 import config from "../../config-app";
 
-class FindPort {
+class FindLls {
     testLls = null;
     async find(){
         let list = await this.list();
@@ -14,16 +16,16 @@ class FindPort {
     async enumerationBaudRate(path){
         let baudRateArr = [...config.serialPort.baudRateArr];
         baudRateArr.forEach((value, index, array) => {
-            this.findLls232(path,value,1);
+            this.findLls232(path,value);
         });
     }
 
-    async findLls232(port, baudRate, llsAdr){
+    async findLls232(path, baudRate, llsAdr = 0xFF){
         if (this.testLls) {
             await this.testLls.close();
             this.testLls = null;
         }
-        this.testLls = new LlsProtocol(port, baudRate, llsAdr, "test DUT");
+        this.testLls = new llsProtocol(path, baudRate , llsAdr);
         this.testLls.open(); //todo : convert to promise
         this.testLls.send("find232");//todo : convert to promise
 

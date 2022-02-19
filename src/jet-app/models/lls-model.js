@@ -1,5 +1,6 @@
 import EventEmitter from "events"
 import Lls from "../services/lls/lls";
+import findPort from "../services/lls/findPort";
 
 class MyEmitter extends EventEmitter {}
 
@@ -30,10 +31,19 @@ class LlsModel {
     async _loop(){
         switch (this._statusLlsIsFind){
             case false:{
-                await this._findLls();
+                for(;;){
+                    let settings = await this.#findLls();
+                    if(settings != undefined){
+                        this._llsConnectSettings = settings;
+                        this._statusLlsIsFind = true;
+                        break;
+                    }
+                }
                 break;
             }
             case true:{
+                console.log("Lls is find!");
+                console.log(this._llsConnectSettings);
                 break;
             }
             default: break;
@@ -41,17 +51,24 @@ class LlsModel {
     }
 
     async _init(timeout){
-        this._lls = await this._findLls();
-        this._intervalShortDataId = setInterval(async () => {
-            let dataShort = await this._lls.data.getShort();
-            this._myEmitter.emit('shortData', dataShort);
-        }, timeout);
+        await this._loop();
+        // this._lls = await this._findLls();
+        // this._intervalShortDataId = setInterval(async () => {
+        //     let dataShort = await this._lls.data.getShort();
+        //     this._myEmitter.emit('shortData', dataShort);
+        // }, timeout);
     }
 
-    async _findLls(){
+    async #findLls(){
+        try{
+            let settings = await findPort.findLls232();
+            console.log(settings);
+            return settings;
+        }catch(e){
+            console.log(e);
+        }
+    }
 
-        return new Lls({portName:"/dev/tty.usbserial-1430"}); ///dev/tty.usbserial-0001"});
-    };
 }
 
 const llsModel = new LlsModel();

@@ -1,42 +1,56 @@
 import llsProtocol from "./lls-protocol";
 
 const {SerialPort} = eval(`require('serialport')`);
-import LlsProtocol from "./lls-protocol";
 import config from "../../config-app";
+import Lls from "./lls";
 
 class FindLls {
     testLls = null;
-    async find(){
-        let list = await this.list();
-        list.forEach((item, i, arr)=>{
-            this.enumerationBaudRate(item.path);
-        });
+
+    async findLls232() {
+        let listPath = await this.listPath();
+        return await this.sortingPath(listPath);
     }
 
-    async enumerationBaudRate(path){
+    async sortingPath(listPath) {
+        for(let i = 0; i < listPath.length; i++){
+            let data = await this.sortingBaudrate(listPath[i]);
+            if(data) return data;
+        }
+    }
+
+    async sortingBaudrate(path) {
         let baudRateArr = [...config.serialPort.baudRateArr];
-        baudRateArr.forEach((value, index, array) => {
-            this.findLls232(path,value);
-        });
+        for(let i = 0; i < baudRateArr.length; i++){
+           let data = await this.checkCommand(path,baudRateArr[i]);
+           if(data) return data;
+        }
     }
 
-    async findLls232(path, baudRate, llsAdr = 0xFF){
+    async checkCommand(path, baudRate) {
         if (this.testLls) {
             await this.testLls.close();
             this.testLls = null;
         }
-        this.testLls = new llsProtocol(path, baudRate , llsAdr);
-        this.testLls.open(); //todo : convert to promise
-        this.testLls.send("find232");//todo : convert to promise
-
+        try {
+            this.testLls = await new Lls({portName: path, baudRate: baudRate, llsData: 0xFF});
+            let data = await this.testLls.actions.checkPassword();
+            let settingPort = {
+                llsAdr: data.llsAdr,
+                path: path,
+                baudRate: baudRate
+            }
+            return settingPort;
+        } catch (e) {
+            console.log(e);
+        }
     }
 
-
-    async list(){
+    async listPath() {
         try {
-            let portList =  await SerialPort.list();
+            let portList = await SerialPort.list();
             console.log(portList);
-            return portList.map((item)=>{
+            return portList.map((item) => {
                 return item.path;
             });
         } catch (error) {
@@ -45,9 +59,7 @@ class FindLls {
     }
 }
 
-
-
-let findPort = new FindPort();
+let findPort = new FindLls();
 export default findPort;
 
 

@@ -24,8 +24,16 @@ export default class llsProtocol{
         this._settingPort.name = name;
 
         this.port = new SerialPort({path: portName, baudRate: baudRate});
-        this.open();
-    };
+        return new Promise(async (resolve, reject) => {
+            this.open().then(() => {
+                resolve(this);
+            }).catch((e) => {
+                delete this.port;
+                reject(e);
+            })
+        });
+    }
+
 
     // async send(command, data = null, timeout = 1000){
     //     // let timer = null;
@@ -45,47 +53,17 @@ export default class llsProtocol{
     async send(command, data = null, timeout = 1000){
         let timerId = null;
         return new Promise(async (resolve, reject)=>{
-            timerId = setTimeout(()=>{
-                        reject("Error: timeout response message!")
-                    }, 1000);
             let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
             this.port.write(dataBuffer);
+            timerId = setTimeout(()=>{
+                reject("Error: timeout response message!")
+            }, 1000);
             let dataParse = await this._eventDataParse(command);
             clearInterval(timerId);
-            return dataParse;
+            resolve(dataParse);
         });
-        // let timer = null;
-        let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
-        this.port.write(dataBuffer);
-        let dataParse = await this._eventDataParse(command);
-
-        return dataParse;
-
-        // return new Promise((resolve, reject) => {
-        //     resolve(dataParse);
-        //     timer = setTimeout(()=>{
-        //         reject("Error: timeout response message!")
-        //     }, 1000);
-        // });
     };
-
-    open(){
-
-        this.port.open(function (err) {
-            if (err) {
-                return console.log(err.message);
-            }
-        })
-
-        this.port.on('open', function () {
-            // open logic
-            console.log("serialPort is Open");
-        })
-
-        this.port.on('error', function(err) {
-            console.log('Error: ', err.message);
-        })
-
+    _listenerResponseData(){
         this.port.on('data',  (data) =>{
             console.log('Data:', data);
             let dataPars = this._parseData(data);
@@ -93,6 +71,43 @@ export default class llsProtocol{
                 myEmitter.emit(`data:${dataPars.command}`, dataPars);
             }
         })
+    }
+    open(){
+        return new Promise(((resolve, reject) => {
+            this.port.on('error', function(err) {
+                console.log('Error: ', err.message);
+                reject(err.message);
+            });
+            this.port.on('open',  ()=>{
+                // open logic
+                console.log("serialPort is Open");
+                this._listenerResponseData();
+                resolve();
+            });
+
+        }));
+        // this.port.on('error', function(err) {
+        //     console.log('Error: ', err.message);
+        // })
+
+        // this.port.open(function (err) {
+        //     if (err) {
+        //         console.log(err.message);
+        //     }
+        // })
+
+        // this.port.on('open', function () {
+        //     // open logic
+        //     console.log("serialPort is Open");
+        // })
+
+        // this.port.on('data',  (data) =>{
+        //     console.log('Data:', data);
+        //     let dataPars = this._parseData(data);
+        //     if(dataPars){
+        //         myEmitter.emit(`data:${dataPars.command}`, dataPars);
+        //     }
+        // })
     }
 
     async close(){
@@ -160,9 +175,9 @@ export default class llsProtocol{
                 case 0x74:{
                     let checkPassword = {};
                     checkPassword.prefix = dataView.getUint8(0);
-                    checkPassword.llsAdr = dataView.getUint8(0);
-                    checkPassword.command = dataView.getUint8(0);
-                    checkPassword.code = dataView.getUint8(0);
+                    checkPassword.llsAdr = dataView.getUint8(1);
+                    checkPassword.command = dataView.getUint8(2);
+                    checkPassword.code = dataView.getUint8(3);
                     return checkPassword;
                     break;
                 }

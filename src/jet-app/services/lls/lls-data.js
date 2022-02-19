@@ -34,7 +34,6 @@ export default class llsData{
         set cnt(value){
             this._cnt = value;
         },
-
     };
 
     constructor(llsProtocol){
@@ -54,10 +53,11 @@ export default class llsData{
         this._shortSetting.temperature = temperature;
         this._shortSetting.level = level;
         this._shortSetting.cnt = cnt;
-    }
+    };
+
     get shortSetting(){
         return this._shortSetting;
-    }
+    };
 }
 
 // Object.defineProperties(llsData.prototype.shortSetting, {

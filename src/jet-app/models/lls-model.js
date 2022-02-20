@@ -29,6 +29,10 @@ class LlsModel {
         this._myEmitter.removeListener('shortData', listener);
     }
 
+    addListenerIsConnect(listener){
+        this._myEmitter.on("isConnect", )
+    }
+
     async _loop() {
         for (; ;) {
             switch (this._statusLlsIsFind) {
@@ -62,6 +66,7 @@ class LlsModel {
                     }catch (e) {
                         console.log(e);
                         this._statusLlsIsFind = 'noConnect';
+                        await this._lls.close();
                         break;
                     }
                 }

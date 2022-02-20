@@ -34,22 +34,6 @@ export default class llsProtocol{
         });
     }
 
-
-    // async send(command, data = null, timeout = 1000){
-    //     // let timer = null;
-    //     let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
-    //     this.port.write(dataBuffer);
-    //     let dataParse = await this._eventDataParse(command);
-    //
-    //     return dataParse;
-    //
-    //     // return new Promise((resolve, reject) => {
-    //     //     resolve(dataParse);
-    //     //     timer = setTimeout(()=>{
-    //     //         reject("Error: timeout response message!")
-    //     //     }, 1000);
-    //     // });
-    // };
     async send(command, data = null, timeout = 1000){
         let timerId = null;
         return new Promise(async (resolve, reject)=>{
@@ -86,28 +70,6 @@ export default class llsProtocol{
             });
 
         }));
-        // this.port.on('error', function(err) {
-        //     console.log('Error: ', err.message);
-        // })
-
-        // this.port.open(function (err) {
-        //     if (err) {
-        //         console.log(err.message);
-        //     }
-        // })
-
-        // this.port.on('open', function () {
-        //     // open logic
-        //     console.log("serialPort is Open");
-        // })
-
-        // this.port.on('data',  (data) =>{
-        //     console.log('Data:', data);
-        //     let dataPars = this._parseData(data);
-        //     if(dataPars){
-        //         myEmitter.emit(`data:${dataPars.command}`, dataPars);
-        //     }
-        // })
     }
 
     async close(){
@@ -117,9 +79,10 @@ export default class llsProtocol{
                     console.log(error);
                     resolve(error);
                 })
+            }else{
+                resolve();
             }
         });
-        // return await this.port.close();
     }
 
     _commandCreate(command, llsAdr, data){
@@ -167,8 +130,8 @@ export default class llsProtocol{
                     shortDataResp.llsAdr = dataView.getUint8(1);
                     shortDataResp.command = dataView.getUint8(2)
                     shortDataResp.temperature = dataView.getUint8(3);
-                    shortDataResp.level = dataView.getUint16(4);
-                    shortDataResp.cnt = dataView.getUint16(6);
+                    shortDataResp.level = dataView.getUint16(4, true);
+                    shortDataResp.cnt = dataView.getUint16(6, true);
                     return shortDataResp;
                     break;
                 }

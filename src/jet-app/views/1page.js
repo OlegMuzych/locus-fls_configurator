@@ -703,14 +703,14 @@ export default class Page9View extends JetView {
                                 {
                                     width: 30,
                                 },
-                                {view:"bullet", layout:"y", id:"progress_bar", css:"progress_bar", value:0, labelHeight:30, width: 120,  minRange:0, maxRange:10, stroke:40,
+                                {view:"bullet", layout:"y", id:"progress_bar", css:"progress_bar", value:3000, labelHeight:30, width: 120,  minRange:0, maxRange:4095, stroke:40,
                                     scale: {
-                                        step: 10,
+                                        step: 400,
                                         template: "#value#%"
                                     },
                                     bands:[
-                                        { value:10, color:"#628cbb", css:"test345"},
-                                        // { value:0, color:"#628cbb"},
+                                        { value:4095, color:"#628cbb", css:"test345"},
+                                        //{ value:0, color:"#628cbb"},
                                     ],
                                     color:"#f8f8f8",
                                 },
@@ -793,7 +793,7 @@ export default class Page9View extends JetView {
                         {
                             width: 30,
                         },
-                        {view:"bullet", layout:"y", id:"progress_bar", css:"progress_bar", value:0, labelHeight:30, width: 120,  minRange:0, maxRange:10, stroke:40,
+                        {view:"bullet", layout:"y", id:"progress_bar_1", css:"progress_bar", value:1000, labelHeight:30, width: 120,  minRange:0, maxRange:4095, stroke:40,
                             scale: {
                                 step: 10,
                                 template: "#value#%"
@@ -1411,11 +1411,12 @@ export default class Page9View extends JetView {
         console.log(shortData);
         $$("window_temp").setValue(shortData.temperature.toString());
         $$("window_type_2_1").setValue(shortData.llsAdr.toString());
+        $$("progress_bar").setValue(shortData.level);
+
 
     }
 
     init(view){
-
         llsModel.onShortData(this.listener1);
 
         $$("button_back").attachEvent("onItemClick", (id, e)=>{
@@ -1644,11 +1645,11 @@ export default class Page9View extends JetView {
         });
 
 
-        setInterval(function(){
-            var value = Math.floor(Math.random()*10);
-            $$("progress_bar").setValue(value);
-            $$("progress_bar").setValue(10-value);
-        }, 2000)
+        // setInterval(function(){
+        //     var value = Math.floor(Math.random()*10);
+        //     $$("progress_bar").setValue(value);
+        //     $$("progress_bar").setValue(10-value);
+        // }, 2000)
 
 
 

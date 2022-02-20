@@ -21,17 +21,30 @@ class LlsModel {
         this._init(timeout).then().catch();
     }
 
+    /* Event Short Data */
     onShortData(listener) {
         this._myEmitter.on('shortData', listener);
     }
-
     clearOnShortData(listener) {
         this._myEmitter.removeListener('shortData', listener);
     }
 
+    /* Event is Connect */
     addListenerIsConnect(listener){
-        this._myEmitter.on("isConnect", )
+        this._myEmitter.on("isConnect", listener );
     }
+    clearListenerIsConnect(listener) {
+        this._myEmitter.removeListener('isConnect', listener);
+    }
+
+    /* Event is Disconnect */
+    addListenerIsDisconnect(listener){
+        this._myEmitter.on("isDisconnect", listener );
+    }
+    clearListenerIsDisconnect(listener) {
+        this._myEmitter.removeListener('isDisconnect', listener);
+    }
+
 
     async _loop() {
         for (; ;) {
@@ -50,10 +63,12 @@ class LlsModel {
                     try {
                         this._lls = await new Lls(this._llsConnectSettings);
                         this._statusLlsIsFind = 'connect';
+                        this._myEmitter.emit('isConnect');
                         break;
                     } catch (e) {
                         console.log(e);
                         this._statusLlsIsFind = 'noConnect';
+                        this._myEmitter.emit('isDisconnect');
                         break;
                     }
                 }
@@ -66,6 +81,7 @@ class LlsModel {
                     }catch (e) {
                         console.log(e);
                         this._statusLlsIsFind = 'noConnect';
+                        this._myEmitter.emit('isDisconnect');
                         await this._lls.close();
                         break;
                     }

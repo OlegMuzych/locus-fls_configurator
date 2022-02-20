@@ -1404,20 +1404,33 @@ export default class Page9View extends JetView {
 
     destroy() {
         super.destroy();
-        llsModel.clearOnShortData(this.listener1)
+        llsModel.clearOnShortData(this.listenerShortData);
+        llsModel.clearListenerIsConnect(this.listenerConnect);
+        llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
     }
 
-    listener1 = (shortData)=>{
+    listenerShortData = (shortData)=>{
         console.log(shortData);
         $$("window_temp").setValue(shortData.temperature.toString());
         $$("window_type_2_1").setValue(shortData.llsAdr.toString());
         $$("progress_bar").setValue(shortData.level);
+    }
 
+    listenerConnect = ()=>{
+        $$("button_define_define_1").show();
+        $$("button_define_1").hide();
 
     }
 
+    listenerDisconnect = ()=>{
+        $$("button_define_define_1").hide();
+        $$("button_define_1").show();
+    }
+
     init(view){
-        llsModel.onShortData(this.listener1);
+        llsModel.onShortData(this.listenerShortData);
+        llsModel.addListenerIsConnect(this.listenerConnect);
+        llsModel.addListenerIsDisconnect(this.listenerDisconnect);
 
         $$("button_back").attachEvent("onItemClick", (id, e)=>{
             this.show("win");

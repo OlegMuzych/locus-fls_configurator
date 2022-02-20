@@ -10,7 +10,7 @@ export default class Lls{
     table = {};
     actions = {};
 
-    constructor({portName: path, baudRate = 19200, llsAdr = 1, name = "test"}) {
+    constructor({path, baudRate = 19200, llsAdr = 1, name = "test"}) {
         this._settingPort.portName = path;
         this._settingPort.baudRate = baudRate;
         this._settingPort.llsAdr = llsAdr;

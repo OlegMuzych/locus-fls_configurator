@@ -2,11 +2,12 @@ import EventEmitter from "events"
 import Lls from "../services/lls/lls";
 import findPort from "../services/lls/findPort";
 
-class MyEmitter extends EventEmitter {}
+class MyEmitter extends EventEmitter {
+}
 
 
 class LlsModel {
-    _statusLlsIsFind = false;
+    _statusLlsIsFind = "noConnect"; //"findConnect", "connect"
     _llsConnectSettings = {
         path: null,
         baudRate: null,
@@ -20,51 +21,76 @@ class LlsModel {
         this._init(timeout).then().catch();
     }
 
-    onShortData(listener){
+    onShortData(listener) {
         this._myEmitter.on('shortData', listener);
     }
 
-    clearOnShortData(listener){
+    clearOnShortData(listener) {
         this._myEmitter.removeListener('shortData', listener);
     }
 
-    async _loop(){
-        switch (this._statusLlsIsFind){
-            case false:{
-                for(;;){
+    async _loop() {
+        for (; ;) {
+            switch (this._statusLlsIsFind) {
+                case 'noConnect': {
                     let settings = await this.#findLls();
-                    if(settings != undefined){
+                    if (settings != undefined) {
                         this._llsConnectSettings = settings;
-                        this._statusLlsIsFind = true;
+                        this._statusLlsIsFind = 'findConnect';
+                    }
+                    break;
+                }
+                case 'findConnect': {
+                    console.log("Lls is find!");
+                    console.log(this._llsConnectSettings);
+                    try {
+                        this._lls = await new Lls(this._llsConnectSettings);
+                        this._statusLlsIsFind = 'connect';
+                        break;
+                    } catch (e) {
+                        console.log(e);
+                        this._statusLlsIsFind = 'noConnect';
                         break;
                     }
                 }
-                break;
+                case 'connect': {
+                    await this.#delay();
+                    console.log('Connect to LLS');
+                    try{
+                        let dataShort = await this._lls.data.getShort();
+                        this._myEmitter.emit('shortData', dataShort);
+                    }catch (e) {
+                        console.log(e);
+                        this._statusLlsIsFind = 'noConnect';
+                        break;
+                    }
+                }
+                default:
+                    break;
             }
-            case true:{
-                console.log("Lls is find!");
-                console.log(this._llsConnectSettings);
-                break;
-            }
-            default: break;
         }
+
     }
 
-    async _init(timeout){
+    async _init(timeout) {
         await this._loop();
-        // this._lls = await this._findLls();
-        // this._intervalShortDataId = setInterval(async () => {
-        //     let dataShort = await this._lls.data.getShort();
-        //     this._myEmitter.emit('shortData', dataShort);
-        // }, timeout);
     }
 
-    async #findLls(){
-        try{
+    #delay(timeout = 1000) {
+        return new Promise(((resolve, reject) => {
+            setTimeout(() => {
+                resolve();
+            }, timeout);
+        }));
+    }
+
+
+    async #findLls() {
+        try {
             let settings = await findPort.findLls232();
             console.log(settings);
             return settings;
-        }catch(e){
+        } catch (e) {
             console.log(e);
         }
     }

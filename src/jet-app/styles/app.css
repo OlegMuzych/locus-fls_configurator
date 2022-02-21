@@ -15,6 +15,10 @@ border: none;
 }
 
 
+.webix_modal{
+    opacity: 0.6;
+}
+
 :root{
 
     /*light*/
@@ -195,6 +199,8 @@ border: none;
 
 }
 
+
+
 /*////*/
 
 
@@ -245,6 +251,9 @@ border: none;
     top: -16px;
 
 }
+
+
+
 
 
 .label_status_gage_windows_start .webix_el_box{
@@ -1668,31 +1677,52 @@ border: none;
     border-left: 2px solid rgba(143, 140, 140, 0.1);
 
 }
+.set_password_button_icon .webix_button{
+    background-color: rgba(255,255,255, 0.0);
+    color: var(--white-style-text-color);
+    font-size: 20px;
+    cursor: default;
+}
+.set_password_button_icon .webix_button:hover{
+    background-color: rgba(255,255,255, 0.0);
+    color: var(--white-style-text-color);
+    font-size: 20px;
+    cursor: default;
+}
 
-
+.set_password_button_icon .webix_button:focus{
+    background-color: rgba(255,255,255, 0.0);
+    color: var(--white-style-text-color);
+    font-size: 20px;
+    cursor: default;
+}
 
 .set_password_button .webix_button{
     background-color: rgba(255,255,255, 0.0);
     color: var(--white-style-text-color);
     font-size: 20px;
+
 }
 
 .set_password_button_dark .webix_button{
     background-color: rgba(255,255,255, 0.0);
     color: var(--c-color-text-dark);
     font-size: 20px;
+
 }
 
 .set_password_button_dark .webix_button:hover{
     background-color: rgba(255,255,255, 0.0);
     color: var(--c-color-text-dark);
     font-size: 20px;
+
 }
 
 .set_password_button_dark .webix_button:focus{
     background-color: rgba(255,255,255, 0.0);
     color: var(--c-color-text-dark);
     font-size: 20px;
+
 }
 
 

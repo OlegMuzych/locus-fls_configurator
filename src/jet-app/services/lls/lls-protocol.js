@@ -40,7 +40,7 @@ export default class llsProtocol{
             let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
             this.port.write(dataBuffer);
             timerId = setTimeout(()=>{
-                reject("Error: timeout response message!")
+                reject("Error: timeout response message!");
             }, 1000);
             let dataParse = await this._eventDataParse(command);
             clearInterval(timerId);
@@ -48,13 +48,28 @@ export default class llsProtocol{
         });
     };
     _listenerResponseData(){
-        this.port.on('data',  (data) =>{
-            console.log('Data:', data);
-            let dataPars = this._parseData(data);
-            if(dataPars){
-                myEmitter.emit(`data:${dataPars.command}`, dataPars);
-            }
+        this.port.on('readable', ()=> {
+            this.port.pause();
+            setTimeout(()=>{
+                let data = this.port.read();
+                if(!data) return;
+                console.log('Data:', data);
+                let dataPars = this._parseData(data);
+                if(dataPars){
+                    myEmitter.emit(`data:${dataPars.command}`, dataPars);
+                }
+                this.port.resume();
+            }, 100);
         })
+
+        // this.port.on('data',  (data) =>{
+        //     console.log('Data:', data);
+        //     // this._checkCrc8(data);
+        //     let dataPars = this._parseData(data);
+        //     if(dataPars){
+        //         myEmitter.emit(`data:${dataPars.command}`, dataPars);
+        //     }
+        // })
     }
     open(){
         return new Promise(((resolve, reject) => {
@@ -116,6 +131,17 @@ export default class llsProtocol{
         // console.log("CRC8: " + checksum.toString(16));
         return checksum;
     };
+
+    _checkCRC8(data){
+        let arr = [...data];
+        let crc8 = arr.pop();
+
+        if(crc8 == this._getCRC8(arr)){
+            return true;
+        }else{
+            return false;
+        };
+    }
 
     _parseData(data){
         let [prefix, llsAdr, command, ...buff] = data;

@@ -721,14 +721,18 @@ export default class Page9View extends JetView {
                                     value: 0,
                                     width: 120,
                                     minRange:0,
-                                    maxRange:10,
+                                    maxRange:4095,
                                     bands:[
                                         { value: 100, color:"#f0f0f0"},
                                     ],
+                                    scale: {
+                                        step: 400,
+                                        // template: "#value#%"
+                                    },
                                     stroke:40,
-                                    // color:"#628cbb",
+                                    color:"#628cbb",
                                     // color: "linear-gradient(to top, #628cbb, #b6c7dd)",
-                                    gradientColor: ("#628cbb", "#b6c7dd", 6),
+                                    // gradientColor: ("#628cbb", "#b6c7dd", 6),
 
                                 },
                                 {
@@ -810,9 +814,9 @@ export default class Page9View extends JetView {
                         {
                             width: 30,
                         },
-                        {view:"bullet", layout:"y", id:"progress_bar", css:"progress_bar", value:0, labelHeight:30, width: 120,  minRange:0, maxRange:10, stroke:40,
+                        {view:"bullet", layout:"y", id:"progress_bar_1", css:"progress_bar_1", value:0, labelHeight:30, width: 120,  minRange:0, maxRange:4095, stroke:40,
                             scale: {
-                                step: 10,
+                                step: 400,
                                 template: "#value#%"
                             },
                             bands:[

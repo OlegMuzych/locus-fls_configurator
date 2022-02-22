@@ -161,7 +161,7 @@ export default class Page9View extends JetView {
                                     labelWidth: 400,
                                     css: "window_type_2",
                                     inputAlign: "center",
-                                    id: "window_type_2_1",
+                                    id: "window_type_2_1"
                                 },
                                 {height: 20},
                                 {
@@ -713,16 +713,23 @@ export default class Page9View extends JetView {
                                 {
                                     width: 30,
                                 },
-                                {view:"bullet", layout:"y", id:"progress_bar", css:"progress_bar", value:3000, labelHeight:30, width: 120,  minRange:0, maxRange:4095, stroke:40,
-                                    scale: {
-                                        step: 400,
-                                        template: "#value#%"
-                                    },
+                                {
+                                    view:"bullet",
+                                    layout:"y",
+                                    id:"progress_bar",
+                                    css:"progress_bar",
+                                    value: 0,
+                                    width: 120,
+                                    minRange:0,
+                                    maxRange:10,
                                     bands:[
-                                        { value:4095, color:"#628cbb", css:"test345"},
-                                        //{ value:0, color:"#628cbb"},
+                                        { value: 100, color:"#f0f0f0"},
                                     ],
-                                    color:"#f8f8f8",
+                                    stroke:40,
+                                    // color:"#628cbb",
+                                    // color: "linear-gradient(to top, #628cbb, #b6c7dd)",
+                                    gradientColor: ("#628cbb", "#b6c7dd", 6),
+
                                 },
                                 {
                                     width: 150,
@@ -803,7 +810,7 @@ export default class Page9View extends JetView {
                         {
                             width: 30,
                         },
-                        {view:"bullet", layout:"y", id:"progress_bar_1", css:"progress_bar", value:1000, labelHeight:30, width: 120,  minRange:0, maxRange:4095, stroke:40,
+                        {view:"bullet", layout:"y", id:"progress_bar", css:"progress_bar", value:0, labelHeight:30, width: 120,  minRange:0, maxRange:10, stroke:40,
                             scale: {
                                 step: 10,
                                 template: "#value#%"
@@ -1271,7 +1278,7 @@ export default class Page9View extends JetView {
             body:{
                 view:"list",
                 data:[
-                    {id:"11",  location: "Обновить прошивку", name:""},
+                    {view:"button", id:"install",  location: "Обновить прошивку", name:""},
                     {id:"22",  location:"Сброс всех настроек", name:""},
                 ],
                 template:"#name# - #location#",
@@ -1357,7 +1364,7 @@ export default class Page9View extends JetView {
                                                 {
                                                     width: 18,
                                                 },
-                                                {view:"button", type:"image", image:"assets/images/info_black.svg", id: "closed_1", css: "set_password_button", width: 100, height: 100,},
+                                                {view:"button", type:"image", image:"assets/images/info_black.svg", id: "closed_1", css: "set_password_button_icon", width: 100, height: 100,},
                                                 {
                                                     width: 14,
                                                 },
@@ -1490,10 +1497,10 @@ export default class Page9View extends JetView {
                                     {
                                         cols:[
                                             {
-
+                                                width: 50,
                                             },
-                                            {view:"button", type:"image", image:"assets/images/Warning.png", id: "closed_2", css: "set_password_button", height: 100,},
-                                            {view: "label", label:"<p style='font-size: 20px; position: relative; top: -10px; text-align: center;'>Все настройки датчика будут сброшенны</p>", css:"language_windows_modal", id:"language_windows_modal_2", height: 100, width: 350,},
+                                            {view:"button", type:"image", image:"assets/images/Warning.png", id: "closed_2", css: "set_password_button_icon", height: 100,},
+                                            {view: "label", label:"<p style='font-size: 20px; position: relative; top: -10px; text-align: center;'>Все настройки датчика будут сброшенны</p>", css:"language_windows_modal", id:"language_windows_modal_2", height: 100, width: 420,},
                                             {
 
                                             }
@@ -2079,6 +2086,10 @@ export default class Page9View extends JetView {
             webix.html.removeCss( $$("password_windows_set").getNode(), "password_windows_set");
             webix.html.removeCss( $$("password_windows_set_2page").getNode(), "password_windows_set");
             webix.html.removeCss( $$("password_windows_set_2page_2").getNode(), "password_windows_set");
+            webix.html.removeCss( $$("window_show_4").getNode(), "window_show");
+            webix.html.removeCss( $$("language_windows_modal_2").getNode(), "language_windows_modal");
+            webix.html.removeCss( $$("set_password_button_5").getNode(), "set_password_button");
+            webix.html.removeCss( $$("set_password_button_6").getNode(), "set_password_button");
 
 
 
@@ -2175,6 +2186,10 @@ export default class Page9View extends JetView {
                 webix.html.addCss( $$("password_windows_set").getNode(), "password_windows_set_dark");
                 webix.html.addCss( $$("password_windows_set_2page").getNode(), "password_windows_set_dark");
                 webix.html.addCss( $$("password_windows_set_2page_2").getNode(), "password_windows_set_dark");
+                webix.html.addCss( $$("window_show_4").getNode(), "window_show_dark");
+                webix.html.addCss( $$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
+                webix.html.addCss( $$("set_password_button_5").getNode(), "set_password_button_dark");
+                webix.html.addCss( $$("set_password_button_6").getNode(), "set_password_button_dark");
 
 
 
@@ -2272,6 +2287,10 @@ export default class Page9View extends JetView {
                 webix.html.addCss( $$("password_windows_set").getNode(), "password_windows_set");
                 webix.html.addCss( $$("password_windows_set_2page").getNode(), "password_windows_set");
                 webix.html.addCss( $$("password_windows_set_2page_2").getNode(), "password_windows_set");
+                webix.html.addCss( $$("window_show_4").getNode(), "window_show");
+                webix.html.addCss( $$("language_windows_modal_2").getNode(), "language_windows_modal");
+                webix.html.addCss( $$("set_password_button_5").getNode(), "set_password_button");
+                webix.html.addCss( $$("set_password_button_6").getNode(), "set_password_button");
 
 
 

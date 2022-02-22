@@ -6,7 +6,7 @@ import llsModel from "../models/lls-model";
 export default class Page9View extends JetView {
     config() {
 
-        // return screen > 1210 ? "wide" : (screen > 1060 ? "mid" : "small");
+
 
         var left_menu = {
             view: "scrollview",
@@ -20,7 +20,7 @@ export default class Page9View extends JetView {
                         view: "button",
                         type: "image",
                         image: "assets/images/model_101.svg",
-                        width: 180,
+                        width: 160,
                         height: 200,
                         css: "left_menu_button",
                         id: "left_menu_button_1"
@@ -29,7 +29,7 @@ export default class Page9View extends JetView {
                         view: "button",
                         type: "image",
                         image: "assets/images/model_201.svg",
-                        width: 180,
+                        width: 160,
                         height: 200,
                         css: "left_menu_button",
                         id: "left_menu_button_2"
@@ -38,20 +38,21 @@ export default class Page9View extends JetView {
                         view: "button",
                         type: "image",
                         image: "assets/images/MODEL_301_BLE.svg",
-                        width: 180,
+                        width: 160,
                         height: 200,
                         css: "left_menu_button",
                         id: "left_menu_button_3"
                     },
                     {
-                        height: 55,
+                        height: 115,
                     },
 
                     {
+
                         view: "button",
                         type: "image",
                         image: "assets/images/Back.svg",
-                        width: 180,
+                        width: 160,
                         height: 120,
                         id: "button_back",
                         css: "left_menu_button_reference",
@@ -63,7 +64,7 @@ export default class Page9View extends JetView {
                         view: "button",
                         type: "image",
                         image: "assets/images/info.svg",
-                        width: 180,
+                        width: 160,
                         height: 200,
                         id: "button_reference",
                         css: "left_menu_button_reference",
@@ -81,7 +82,6 @@ export default class Page9View extends JetView {
         var central_menu_button = {
             paddingY: 0,
             minWidth: 500,
-            maxWidth: 890,
             rows: [
                 {
                     css: "central_cols_button",
@@ -127,8 +127,8 @@ export default class Page9View extends JetView {
         };
 
         var general_config = {
-            minWidth: 500,
-            maxWidth: 890,
+            minWidth: 600,
+            maxWidth: 850,
             // view:"scrollview",
             // scroll: "y",
             // maxHeight: 860,
@@ -136,23 +136,17 @@ export default class Page9View extends JetView {
             id: "central_menu_button_1",
             rows: [
                 {
-                    cols: [
-                        {
-
-                        },
-                        {
-                            rows: [
-                                {
                                     rows: [
                                         {
                                             view: "text",
+                                            width: 850,
                                             height: 100,
-                                            label: '<p style="text-align: center; position: relative; top: -20px; left: 54px; font-size: 18px; font-weight: 100; ">Серийный номер</p>',
+                                            label: '<p>Серийный номер</p>',
                                             labelWidth: 400,
                                             css: "window_type_1",
-                                            id: "window_type_1",
                                             inputAlign: "center",
-                                            readonly: true
+                                            readonly: true,
+                                            id: "window_type_1",
                                         },
 
                                     ]
@@ -163,7 +157,7 @@ export default class Page9View extends JetView {
                                     view: "text",
                                     width: 850,
                                     height: 100,
-                                    label: '<p style="text-align: center; position: relative; top: -20px; left: 64px; font-size: 18px; font-weight: 100; ">Сетевой адрес</p>',
+                                    label: '<p>Сетевой адрес</p>',
                                     labelWidth: 400,
                                     css: "window_type_2",
                                     inputAlign: "center",
@@ -174,7 +168,7 @@ export default class Page9View extends JetView {
                                     view: "text",
                                     width: 850,
                                     height: 100,
-                                    label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Минимальный уровень</p>',
+                                    label: '<p>Минимальный уровень</p>',
                                     labelWidth: 400,
                                     css: "window_type_2",
                                     inputAlign: "center",
@@ -184,7 +178,7 @@ export default class Page9View extends JetView {
                                     view: "text",
                                     width: 850,
                                     height: 100,
-                                    label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Максимальный уровень</p>',
+                                    label: '<p>Максимальный уровень</p>',
                                     labelWidth: 400,
                                     css: "window_type_2",
                                     inputAlign: "center",
@@ -195,7 +189,7 @@ export default class Page9View extends JetView {
                                     view: "text",
                                     width: 850,
                                     height: 100,
-                                    label: '<p style="text-align: center; position: relative; top: -20px; left: 30px; font-size: 18px; font-weight: 100; ">Скорость подключения</p>',
+                                    label: '<p>Скорость подключения</p>',
                                     labelWidth: 400,
                                     css: "window_type_2",
                                     inputAlign: "center",
@@ -206,7 +200,7 @@ export default class Page9View extends JetView {
                                     view: "text",
                                     width: 850,
                                     height: 100,
-                                    label: '<p style="text-align: center; position: relative; top: -20px; left: -10px; font-size: 18px; font-weight: 100; ">Автоматическая выдача данных</p>',
+                                    label: '<p>Автоматическая выдача данных</p>',
                                     labelWidth: 400,
                                     css: "window_type_2 ",
                                     inputAlign: "center",
@@ -214,7 +208,6 @@ export default class Page9View extends JetView {
                                 },
                                 {height: 20,},
                                 {
-                                    // width: 900,
                                     css: "window_type_2",
                                     id: "window_type_2_6",
                                     rows: [
@@ -223,7 +216,7 @@ export default class Page9View extends JetView {
 
                                                 {
                                                     view: "label",
-                                                    label: "<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 75px;'>Температурная компенсация</p>",
+                                                    label: "<p>Температурная компенсация</p>",
                                                     width: 400,
                                                     height: 100,
                                                 },
@@ -235,18 +228,15 @@ export default class Page9View extends JetView {
                                             ]
                                         },
                                     ]
-                                },
-                            ]
                         },
                         {
-
-                        }
-                    ]
                 },
             ]
         };
 
         var calibration = {
+            minWidth: 600,
+            maxWidth: 850,
             id: "central_menu_button_2",
             cols: [
                 {
@@ -272,8 +262,8 @@ export default class Page9View extends JetView {
         };
 
         var filtering = {
-            minWidth: 500,
-            maxWidth: 890,
+            minWidth: 600,
+            maxWidth: 850,
                 id: "central_menu_button_3",
                 rows: [
                     {
@@ -321,9 +311,14 @@ export default class Page9View extends JetView {
                         ]
                     },
                     {
+
                         id: "degree_of_filtration",
                         rows: [
                             {
+
+
+                                height: 300,
+                                css:"degree_of_filtration",
                                 cols: [
                                     {
 
@@ -332,30 +327,33 @@ export default class Page9View extends JetView {
                                         view: "button",
                                         type: "image",
                                         image: "assets/images/filtr_Karier.svg",
-                                        width: 240,
                                         label: "Карьерная техника",
                                         css: "image_button_filter",
-                                        id:"image_button_filter_1"
+                                        id:"image_button_filter_1",
+                                        minWidth: 195,
                                     },
-                                    {width: 35,},
+                                    {
+                                        // view: "button",  minWidth: 10,
+                                    },
                                     {
                                         view: "button",
                                         type: "image",
                                         image: "assets/images/filtr_Stroit.svg",
-                                        width: 240,
-                                        height: 300,
                                         css: "image_button_filter",
-                                        id:"image_button_filter_2"
+                                        id:"image_button_filter_2",
+                                        minWidth: 195,
                                     },
-                                    {width: 35,},
+                                    {
+                                        // view: "button",  minWidth: 10,
+
+                                    },
                                     {
                                         view: "button",
                                         type: "image",
                                         image: "assets/images/filtr_Rovn.svg",
-                                        width: 240,
-                                        height: 300,
                                         css: "image_button_filter",
-                                        id:"image_button_filter_3"
+                                        id:"image_button_filter_3",
+                                        minWidth: 195,
                                     },
                                     {
 
@@ -365,7 +363,8 @@ export default class Page9View extends JetView {
                         ]
                     },
                     {
-                        height: 0,
+                        minHeight: 10,
+
                     },
                     {
                         height: 320,
@@ -373,30 +372,30 @@ export default class Page9View extends JetView {
                         id: "degree_of_filtration_2",
                         rows: [
                             {
+
                                 rows: [
                                     {
-                                        width:100,
                                         height: 20,
                                     },
                                     {
                                             cols: [
                                             {
-                                                width: 124,
+
                                             },
                                             {
                                                 view: "label",
-                                                label: "<p style='font-size: 18px; font-weight: 100; position: relative; top:-20px;'>Тип фильтрации</p>",
-                                                width: 250,
+                                                label: "<p style='position: relative; top: -20px;'>Тип фильтрации</p>",
+                                                width: 240,
                                                 css:"text_color_filter",
                                                 id:"text_color_filter_1",
                                             },
                                             {
-                                                width: 1,
+
                                             },
                                             {
                                                 view: "text",
                                                 value: "Квадратичная",
-                                                width: 200,
+                                                width: 210,
                                                 inputAlign: "center",
                                                 inputHeight: 54,
                                                 css: "full_window_text",
@@ -404,7 +403,7 @@ export default class Page9View extends JetView {
                                                 id:"filter_open_windows"
                                             },
                                             {
-                                                width: 114,
+                                                //
                                             },
                                             {
                                                 view: "toolbar",
@@ -414,13 +413,13 @@ export default class Page9View extends JetView {
                                                     css: "button_filter_set",
                                                     label: 'Выбрать',
                                                     popup: "my_pop",
-                                                    width:150,
                                                     height:54,
+                                                    width: 150,
 
                                                 }]
                                             },
                                             {
-                                                width: 10,
+
                                             }
                                         ]
                                     },
@@ -430,29 +429,35 @@ export default class Page9View extends JetView {
                                     height: 2,
                             },
                             {
+
                                 id: "degree_of_filtration_3",
                                 rows: [
                                     {
                                         height: 100,
+                                        minWidth: 100,
                                         cols: [
                                             {
+
+                                            },
+                                            {
                                                 view: "label",
-                                                label: "<p style='font-size: 18px; font-weight: 100; position: relative; left: 30px;'>Время усреднения (0...21) с</p>",
-                                                width: 300,
+                                                label: "<p>Время усреднения (0...21) с</p>",
+                                               width: 280,
                                                 css:"text_color_filter",
                                                 id:"text_color_filter_2",
                                             },
                                             {
-                                                width: 10,
+
                                             },
                                             {
                                                 paddingY: 41,
+
                                                 rows:[
                                                     {
                                                         view: "slider",
                                                         value: "0",
                                                         name: "s1",
-                                                        width: 300,
+                                                        minWidth: 120,
                                                         min: 0,
                                                         max: 21,
                                                         css: "slider_1",
@@ -462,7 +467,7 @@ export default class Page9View extends JetView {
                                                 ]
                                             },
                                             {
-                                                paddingY: 45,
+                                                paddingY: 40,
                                                 rows:[
                                                     {
                                                         view: "text",
@@ -473,13 +478,13 @@ export default class Page9View extends JetView {
                                                         inputHeight: 50,
                                                         css: "full_window_text",
                                                         id: "window_text_time",
-                                                        readonly: true,
+                                                        // readonly: true,
                                                         height:50,
                                                     },
                                                 ]
                                             },
                                             {
-                                                width: 30,
+                                                // width: 30,
                                             },
                                             {
                                                 view: "button",
@@ -500,17 +505,22 @@ export default class Page9View extends JetView {
                                 id: "degree_of_filtration_4",
                                 rows: [
                                     {
+
                                         height: 100,
                                         cols: [
                                             {
+                                                minWidth: 10,
+                                            },
+                                            {
+
                                                 view: "label",
-                                                label: "<p style='font-size: 18px; font-weight: 100; position: relative; left: 78px;'>Длина медианы (0...7) </p>",
-                                                width: 300,
+                                                label: "<p>Длина медианы (0...7)</p>",
+                                                width: 280,
                                                 css:"text_color_filter",
                                                 id:"text_color_filter_3",
                                             },
                                             {
-                                                width: 10,
+                                                // width: 30,
                                             },
                                             {
                                                 paddingY: 41,
@@ -519,7 +529,7 @@ export default class Page9View extends JetView {
                                                         view: "slider",
                                                         value: "0",
                                                         name: "s2",
-                                                        width: 300,
+                                                        minWidth: 120,
                                                         min: 0,
                                                         max: 7,
                                                         css: "slider_1",
@@ -529,7 +539,7 @@ export default class Page9View extends JetView {
                                                 ]
                                             },
                                             {
-                                                paddingY: 45,
+                                                paddingY: 40,
                                                 rows:[
                                                     {
                                                         view: "text",
@@ -540,13 +550,13 @@ export default class Page9View extends JetView {
                                                         inputHeight: 50,
                                                         css: "full_window_text",
                                                         id:"window_text_mediana",
-                                                        readonly: true,
+                                                        // readonly: true,
                                                         height:50,
                                                     },
                                                 ]
                                             },
                                             {
-                                                width: 30,
+                                                // width: 30,
                                             },
                                             {
                                                 view: "button",
@@ -1294,8 +1304,232 @@ export default class Page9View extends JetView {
         });
 
 
+        var win_3 = webix.ui({
+            view: "window",
+            position: "center",
+            width: 650,
+            height: 400,
+            id: "window_show_3",
+            modal: true,
+            css: "window_show_password",
+            head: {
+                rows:[
+                    {
+                        view:"segmented",
+                        id:'tabbar_windows_password',
+                        css:"tabbar_windows_password",
+                        multiview:true,
+                        height: 80,
+                        options: [
+                                    { value: 'Ввести', id: 'rows_11'},
+                                    { value: 'Задать новый', id: 'rows_21'},
+                        ],
+                        on:{
+                            onChange:function(nextId, prevId){
+                                webix.animate($$(prevId).$view, { type:"fade", duration:250 });
+                            }
+                        }
+
+
+
+                    },
+
+                    {
+                        animate:{ type:"show", delay:300 },
+                        on:{
+                            onViewChange:function(prevId, nextId){
+                                webix.html.addCss( $$(nextId).$view, "animated fadeIn");
+                                webix.delay(function(){
+                                    webix.html.removeCss( this.$view, "animated fadeIn");
+                                }, $$(nextId), null, 500);
+                            }
+                        },
+                        cells:[
+                                {
+                                    id: "rows_11",
+                                    rows: [
+                                        {
+                                            height: 30,
+                                        },
+                                        {
+                                            height: 70,
+                                            cols:[
+                                                {
+                                                    width: 18,
+                                                },
+                                                {view:"button", type:"image", image:"assets/images/info_black.svg", id: "closed_1", css: "set_password_button", width: 100, height: 100,},
+                                                {
+                                                    width: 14,
+                                                },
+                                                {view: "label", label:"<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Введите пароль для изменения настроек</p>", width: 420, id:"windows_password_label", css:"windows_password_label"},
+                                                {
+
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            height: 15,
+                                        },
+                                        {
+                                            cols:[
+                                                {
+
+                                                },
+                                                {view:"text",  height: 50, id:"password_windows_set", css:"password_windows_set", inputAlign:"center", pattern:{ mask:"####", allow:/[0-9]/g} },
+                                                {
+
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            height: 65,
+                                        },
+                                        {
+                                            cols:[
+                                                {
+
+                                                },
+                                                {view:"button", label:"OK", id:"set_password_button", css:"set_password_button"},
+                                                {
+
+                                                },
+                                                {view:"button", label:"Отмена", id:"set_password_button_4", css:"set_password_button"},
+                                                {
+
+                                                }
+                                            ]
+                                        },
+                                    ]
+                                },
+                                {
+                                },
+
+
+                                {
+                                    id: "rows_21",
+                                    cols: [
+                                        {
+                                            rows: [
+                                                {
+                                                    height: 20,
+                                                },
+                                                {
+                                                    cols: [
+                                                        {
+
+                                                        },
+                                                        {view: "label", label: "<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Старый пароль</p>", width: 200, id:"windows_password_label_2", css:"windows_password_label"},
+                                                        {view: "text",  height: 50, id: "password_windows_set_2page", css: "password_windows_set", inputAlign: "center", pattern: {mask: "####", allow: /[0-9]/g},
+                                                        },
+                                                        {
+
+                                                        },
+                                                    ]
+                                                },
+                                                {
+                                                    height: 25,
+                                                },
+                                                {
+                                                    cols:[
+                                                        {
+
+                                                        },
+                                                        {view: "label", label:"<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Новый пароль</p>", width: 200, id:"windows_password_label_3", css:"windows_password_label" },
+                                                        {view:"text",  height: 50, id:"password_windows_set_2page_2", css:"password_windows_set", inputAlign:"center", pattern:{ mask:"####", allow:/[0-9]/g} },
+                                                        {
+
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    height: 85,
+                                                },
+                                                {
+                                                    cols:[
+                                                        {
+
+                                                        },
+                                                        {view:"button", label:"Изменить", id:"set_password_button_2", css:"set_password_button"},
+                                                        {
+
+                                                        },
+                                                        {view:"button", label:"Отмена", id:"set_password_button_3", css:"set_password_button"},
+                                                        {
+
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                 }
+                              ]
+                    }
+                ]
+              },
+        });
+        win_3.hide();
+
+
+        var win_4 = webix.ui({
+            view:"window",
+            position:"center",
+            width: 650,
+            height: 400,
+            id:"window_show_4",
+            modal:true,
+            css:"window_show",
+            head:{
+
+                                height: 400,
+                                rows:[
+                                    {
+
+
+                                    },
+                                    {
+                                        cols:[
+                                            {
+
+                                            },
+                                            {view:"button", type:"image", image:"assets/images/Warning.png", id: "closed_2", css: "set_password_button", height: 100,},
+                                            {view: "label", label:"<p style='font-size: 20px; position: relative; top: -10px; text-align: center;'>Все настройки датчика будут сброшенны</p>", css:"language_windows_modal", id:"language_windows_modal_2", height: 100, width: 350,},
+                                            {
+
+                                            }
+                                        ]
+                                    },
+                                    {
+                                      height: 65,
+                                    },
+                                    {
+                                        cols:[
+                                            {
+
+                                            },
+                                            {view:"button", label:"OK", id:"set_password_button_5", css:"set_password_button"},
+                                            {
+
+                                            },
+                                            {view:"button", label:"Отмена", id:"set_password_button_6", css:"set_password_button"},
+                                            {
+
+                                            }
+                                        ]
+                                    },
+                                    {
+
+                                    }
+
+                ]
+            },
+
+        });
+        win_4.hide();
+
 
         return {
+
             view:"scrollview",
             scroll: "y",
             maxHeight: 1000,
@@ -1304,6 +1538,7 @@ export default class Page9View extends JetView {
             body: {
                 cols: [
                     {
+                        width: 170,
                         rows: [
                             left_menu
                         ]
@@ -1343,7 +1578,7 @@ export default class Page9View extends JetView {
                     {
                         css:"rows_right",
                         id:"rows_right_1",
-                        width: 50,
+                        width: 20,
                     },
                     {
                         css:"rows_right",
@@ -1393,7 +1628,7 @@ export default class Page9View extends JetView {
                     {
                         css:"rows_right",
                         id:"rows_right_3",
-                        width: 50,
+                        width: 20,
                     }
                 ]
             }
@@ -1442,6 +1677,28 @@ export default class Page9View extends JetView {
             $$("central_menu_button_1").setValues(item);
         });
 
+
+        $$("button_right_menu_top_2").attachEvent("onItemClick", (id, e)=> {
+            $$("window_show_3").show()
+        });
+
+
+        $$("set_password_button_3").attachEvent("onItemClick", (id, e)=> {
+            $$("window_show_3").hide()
+        });
+
+        $$("set_password_button_4").attachEvent("onItemClick", (id, e)=> {
+            $$("window_show_3").hide()
+        });
+
+            $$("button_right_menu_top_1").attachEvent("onItemClick", (id, e)=> {
+                $$("window_show_4").show()
+            });
+
+            $$("set_password_button_6").attachEvent("onItemClick", (id, e)=> {
+                $$("window_show_4").hide()
+            });
+        // $$("window_show_3").show()
 
         //Кнопки в правом меню статус ( красные/зеленые )------------------------//
         $$("button_define_1").show()
@@ -1677,11 +1934,14 @@ export default class Page9View extends JetView {
                 $$("left_menu_button_3").define("image", "assets/images//MODEL_301_BLE.svg")
                 $$("button_back").define("image", "assets/images//back.svg")
                 $$("button_reference").define("image", "assets/images//info.svg")
+                $$("closed_1").define("image", "assets/images/info_black.svg")
+
                 $$("left_menu_button_1").refresh();
                 $$("left_menu_button_2").refresh();
                 $$("left_menu_button_3").refresh();
                 $$("button_back").refresh();
                 $$("button_reference").refresh();
+                $$("closed_1").refresh();
             }
          else {
                 $$("left_menu_button_1").define("image", "assets/images/MODEL_101_inverse.svg")
@@ -1689,11 +1949,14 @@ export default class Page9View extends JetView {
                 $$("left_menu_button_3").define("image", "assets/images/MODEL_301_BLE_inverse.svg")
                 $$("button_back").define("image", "assets/images//back_inverse.svg")
                 $$("button_reference").define("image", "assets/images/info_inverse.svg")
+                $$("closed_1").define("image", "assets/images/info_white.svg")
+
                 $$("left_menu_button_1").refresh();
                 $$("left_menu_button_2").refresh();
                 $$("left_menu_button_3").refresh();
                 $$("button_back").refresh();
                 $$("button_reference").refresh();
+                $$("closed_1").refresh();
             }
         });
 
@@ -1804,6 +2067,18 @@ export default class Page9View extends JetView {
             webix.html.removeCss( $$("step_liters_fuel_filling_2").getNode(), "full_window_text");
             webix.html.removeCss( $$("counts_step_fuel_filling").getNode(), "full_window_text");
             webix.html.removeCss( $$("step_liters_fuel_filling_1").getNode(), "full_window_text");
+            webix.html.removeCss( $$("window_show_3").getNode(), "window_show_password");
+            webix.html.removeCss( $$("tabbar_windows_password").getNode(), "tabbar_windows_password");
+            webix.html.removeCss( $$("set_password_button").getNode(), "set_password_button");
+            webix.html.removeCss( $$("set_password_button_2").getNode(), "set_password_button");
+            webix.html.removeCss( $$("set_password_button_3").getNode(), "set_password_button");
+            webix.html.removeCss( $$("set_password_button_4").getNode(), "set_password_button");
+            webix.html.removeCss( $$("windows_password_label").getNode(), "windows_password_label");
+            webix.html.removeCss( $$("windows_password_label_2").getNode(), "windows_password_label");
+            webix.html.removeCss( $$("windows_password_label_3").getNode(), "windows_password_label");
+            webix.html.removeCss( $$("password_windows_set").getNode(), "password_windows_set");
+            webix.html.removeCss( $$("password_windows_set_2page").getNode(), "password_windows_set");
+            webix.html.removeCss( $$("password_windows_set_2page_2").getNode(), "password_windows_set");
 
 
 
@@ -1888,6 +2163,18 @@ export default class Page9View extends JetView {
                 webix.html.addCss( $$("step_liters_fuel_filling_2").getNode(), "full_window_text_dark");
                 webix.html.addCss( $$("counts_step_fuel_filling").getNode(), "full_window_text_dark");
                 webix.html.addCss( $$("step_liters_fuel_filling_1").getNode(), "full_window_text_dark");
+                webix.html.addCss( $$("window_show_3").getNode(), "window_show_password_dark");
+                webix.html.addCss( $$("tabbar_windows_password").getNode(), "tabbar_windows_password_dark");
+                webix.html.addCss( $$("set_password_button").getNode(), "set_password_button_dark");
+                webix.html.addCss( $$("set_password_button_2").getNode(), "set_password_button_dark");
+                webix.html.addCss( $$("set_password_button_3").getNode(), "set_password_button_dark");
+                webix.html.addCss( $$("set_password_button_4").getNode(), "set_password_button_dark");
+                webix.html.addCss( $$("windows_password_label").getNode(), "windows_password_label_dark");
+                webix.html.addCss( $$("windows_password_label_2").getNode(), "windows_password_label_dark");
+                webix.html.addCss( $$("windows_password_label_3").getNode(), "windows_password_label_dark");
+                webix.html.addCss( $$("password_windows_set").getNode(), "password_windows_set_dark");
+                webix.html.addCss( $$("password_windows_set_2page").getNode(), "password_windows_set_dark");
+                webix.html.addCss( $$("password_windows_set_2page_2").getNode(), "password_windows_set_dark");
 
 
 
@@ -1973,6 +2260,18 @@ export default class Page9View extends JetView {
                 webix.html.addCss( $$("step_liters_fuel_filling_2").getNode(), "full_window_text");
                 webix.html.addCss( $$("counts_step_fuel_filling").getNode(), "full_window_text");
                 webix.html.addCss( $$("step_liters_fuel_filling_1").getNode(), "full_window_text");
+                webix.html.addCss( $$("window_show_3").getNode(), "window_show_password");
+                webix.html.addCss( $$("tabbar_windows_password").getNode(), "tabbar_windows_password");
+                webix.html.addCss( $$("set_password_button").getNode(), "set_password_button");
+                webix.html.addCss( $$("set_password_button_2").getNode(), "set_password_button");
+                webix.html.addCss( $$("set_password_button_3").getNode(), "set_password_button");
+                webix.html.addCss( $$("set_password_button_4").getNode(), "set_password_button");
+                webix.html.addCss( $$("windows_password_label").getNode(), "windows_password_label");
+                webix.html.addCss( $$("windows_password_label_2").getNode(), "windows_password_label");
+                webix.html.addCss( $$("windows_password_label_3").getNode(), "windows_password_label");
+                webix.html.addCss( $$("password_windows_set").getNode(), "password_windows_set");
+                webix.html.addCss( $$("password_windows_set_2page").getNode(), "password_windows_set");
+                webix.html.addCss( $$("password_windows_set_2page_2").getNode(), "password_windows_set");
 
 
 

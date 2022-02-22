@@ -96,7 +96,7 @@ export default class llsData {
     };
 
     get shortSetting() {
-        return this.#longSettings;
+        return this._shortSetting;
     };
 
     set longSettings(value){};

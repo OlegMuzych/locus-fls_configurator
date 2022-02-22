@@ -138,6 +138,10 @@ export default class Page9View extends JetView {
                 {
                                     rows: [
                                         {
+                                            view: 'button',
+                                            id:"test_button_1"
+                                        },
+                                        {
                                             view: "text",
                                             width: 850,
                                             height: 100,
@@ -148,7 +152,6 @@ export default class Page9View extends JetView {
                                             readonly: true,
                                             id: "window_type_1",
                                         },
-
                                     ]
                                 },
 
@@ -726,7 +729,7 @@ export default class Page9View extends JetView {
                                         { value: 100, color:"#f0f0f0"},
                                     ],
                                     scale: {
-                                        step: 400,
+                                        step: 450,
                                         // template: "#value#%"
                                     },
                                     stroke:40,
@@ -1677,6 +1680,13 @@ export default class Page9View extends JetView {
         llsModel.onShortData(this.listenerShortData);
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerIsDisconnect(this.listenerDisconnect);
+
+        /* Test */
+        $$("test_button_1").attachEvent("onItemClick", (id, e)=>{
+            console.log('click');
+            llsModel._lls.data.getLong().then();
+        });
+        /* endTest*/
 
         $$("button_back").attachEvent("onItemClick", (id, e)=>{
             this.show("win");

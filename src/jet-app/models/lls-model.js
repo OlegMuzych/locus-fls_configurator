@@ -75,8 +75,8 @@ class LlsModel {
                     await this.#delay();
                     console.log('Connect to LLS');
                     try{
-                        let dataShort = await this._lls.data.getShort();
-                        this._myEmitter.emit('shortData', dataShort);
+                        // let dataShort = await this._lls.data.getShort();
+                        // this._myEmitter.emit('shortData', dataShort);
                     }catch (e) {
                         console.log(e);
                         this._statusLlsIsFind = 'noConnect';

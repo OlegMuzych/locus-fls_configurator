@@ -41,7 +41,7 @@ export default class llsProtocol{
             this.port.write(dataBuffer);
             timerId = setTimeout(()=>{
                 reject("Error: timeout response message!");
-            }, 1000);
+            }, timeout);
             let dataParse = await this._eventDataParse(command);
             clearInterval(timerId);
             resolve(dataParse);
@@ -115,12 +115,11 @@ export default class llsProtocol{
                 dataBuffer.push(this.password);
                 break;
             }
-            case 0x47:{
+            case 0x47:{ //читать все настройки
                 dataBuffer.push(command);
-                dataBuffer.push(this.password);
                 break;
             }
-            case 0x06:{
+            case 0x06:{ //читать однократные данные
                 dataBuffer.push(command);
                 break;
             }
@@ -166,6 +165,45 @@ export default class llsProtocol{
                     return shortDataResp;
                     break;
                 }
+                case 0x47:{
+                    let longDataResp = {};
+                    longDataResp.prefix = dataView.getUint8(0);
+                    longDataResp.llsAdr = dataView.getUint8(1);
+                    longDataResp.command = dataView.getUint8(2);
+                    longDataResp.typeLls = dataView.getUint8(3);
+                    longDataResp.serialNumber = this._createArr(dataView,4,12);
+                    longDataResp.softwareVersion = this._createArr(dataView,16,8);
+                    longDataResp.bootVersion = this._createArr(dataView, 24,8);
+                    longDataResp.sizeOfSettings = dataView.getUint16(32,true);
+                    longDataResp.emptyTank = dataView.getUint32(34, true);
+                    longDataResp.fullTank = dataView.getUint32(38, true);
+                    longDataResp.llsAdr = dataView.getUint8(42);
+                    longDataResp.autoGetData = dataView.getUint8(43);
+                    longDataResp.periodOfDataIssuance = dataView.getUint8(44);
+                    longDataResp.minLevel = dataView.getUint16(45, true);
+                    longDataResp.maxLevel = dataView.getUint16(47, true);
+                    longDataResp.outputParametersOfSensor = dataView.getUint16(49, true);
+                    longDataResp.filtrationType = dataView.getUint8(50);
+                    longDataResp.averagingLength = dataView.getUint8(51);
+                    longDataResp.medianLength = dataView.getUint8(52);
+                    longDataResp.coefficientQ = dataView.getUint32(53, true);
+                    longDataResp.coefficientR = dataView.getUint32(57, true);
+                    longDataResp.thermalCompensationType = dataView.getUint8(61);
+                    longDataResp.coefficientK1 = dataView.getUint32(62, true);
+                    longDataResp.coefficientK2 = dataView.getUint32(66, true);
+                    longDataResp.interpolationType = dataView.getUint8(70);
+                    longDataResp.baudRate232 = dataView.getUint8(71);
+                    longDataResp.baudRate485 = dataView.getUint8(72);
+                    longDataResp.slaveMasterMode = dataView.getUint8(73);
+                    longDataResp.countSlave = dataView.getUint8(74);
+                    longDataResp.llsAdrSlave1 = dataView.getUint8(75);
+                    longDataResp.llsAdrSlave2 = dataView.getUint8(76);
+                    longDataResp.llsAdrSlave3 = dataView.getUint8(77);
+                    longDataResp.llsAdrSlave4 = dataView.getUint8(78);
+                    longDataResp.fuelWaterMode = dataView.getInt8(79);
+                    return longDataResp;
+                    break;
+                }
                 case 0x74:{
                     let checkPassword = {};
                     checkPassword.prefix = dataView.getUint8(0);
@@ -179,6 +217,14 @@ export default class llsProtocol{
             }
         }
         return null;
+    }
+
+    _createArr(dataView,byteOffset, length){
+        let arr = [];
+        for(let i = 0; i<length; i++ ){
+            arr.push(dataView.getUint8((byteOffset + i)));
+        }
+        return arr;
     }
 
     _eventDataParse(command) {

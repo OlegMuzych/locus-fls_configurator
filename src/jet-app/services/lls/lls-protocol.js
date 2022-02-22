@@ -115,6 +115,11 @@ export default class llsProtocol{
                 dataBuffer.push(this.password);
                 break;
             }
+            case 0x47:{
+                dataBuffer.push(command);
+                dataBuffer.push(this.password);
+                break;
+            }
             case 0x06:{
                 dataBuffer.push(command);
                 break;

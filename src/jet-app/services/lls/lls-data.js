@@ -1,46 +1,81 @@
-export default class llsData{
+export default class llsData {
     _llsProtocol = {};
     password = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00];
+
+    #longSettings = {
+        llsAdr: null,
+        fuelType: null,
+        serialNumber: [12],
+        SoftwareVersion: [8],
+        bootVersion: [8],
+        sizeSettings: null,
+        /* */
+        emptyTank: null,
+        fullTank: null,
+        outputType: null,
+        periodOfDataIssuance: null,
+        minValue: null,
+        maxValue: null,
+        outputParametersOfSensor: null,
+        filtrationType: null,
+        averagingLength: null,
+        medianLength: null,
+        coefficientQ: null,
+        coefficientR: null,
+        thermalCompensationType: null,
+        coefficientK1: null,
+        coefficientK2: null,
+        interpolationType: null,
+        baudRate232: null,
+        baudRate585: null,
+        slaveMasterMode: null,
+        countSlave: null,
+        llsAdrSlave1: null,
+        llsAdrSlave2: null,
+        llsAdrSlave3: null,
+        llsAdrSlave4: null,
+        fuelWaterMode: null,
+    }
 
     _shortSetting = {
         _llsAdr: null,
         _temperature: null,
         _level: null,
         _cnt: null,
-        get llsAdr(){
+        get llsAdr() {
             return this._llsAdr;
         },
-        set llsAdr(value){
-          this._llsAdr = value;
+        set llsAdr(value) {
+            this._llsAdr = value;
         },
 
-        get temperature(){
+        get temperature() {
             return this._temperature;
         },
-        set temperature(value){
+        set temperature(value) {
             this._temperature = value;
         },
 
-        get level(){
+        get level() {
             return this._level;
         },
-        set level(value){
+        set level(value) {
             this._level = value;
         },
 
-        get cnt(){
+        get cnt() {
             return this._cnt;
         },
-        set cnt(value){
+        set cnt(value) {
             this._cnt = value;
         },
     };
 
-    constructor(llsProtocol){
+    constructor(llsProtocol) {
         this._llsProtocol = llsProtocol;
     };
 
-    async getShort(){
+    async getShort() {
         let shortSettingResponse = await this._llsProtocol.send(0x06);
         console.log(shortSettingResponse);
         this.shortSetting = shortSettingResponse;
@@ -48,16 +83,24 @@ export default class llsData{
         return this.shortSetting;
     };
 
-    set shortSetting({llsAdr, temperature, level, cnt}){
+    async getLong(){
+        let longSettingResponse = await this._llsProtocol.send(0x47);
+        console.log(longSettingResponse);
+    };
+
+    set shortSetting({llsAdr, temperature, level, cnt}) {
         this._shortSetting.llsAdr = llsAdr;
         this._shortSetting.temperature = temperature;
         this._shortSetting.level = level;
         this._shortSetting.cnt = cnt;
     };
 
-    get shortSetting(){
-        return this._shortSetting;
+    get shortSetting() {
+        return this.#longSettings;
     };
+
+    set longSettings(value){};
+
 }
 
 // Object.defineProperties(llsData.prototype.shortSetting, {

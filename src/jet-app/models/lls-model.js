@@ -45,7 +45,6 @@ class LlsModel {
         this._myEmitter.removeListener('isDisconnect', listener);
     }
 
-
     async _loop() {
         for (; ;) {
             switch (this._statusLlsIsFind) {
@@ -90,7 +89,6 @@ class LlsModel {
                     break;
             }
         }
-
     }
 
     async _init(timeout) {
@@ -105,7 +103,6 @@ class LlsModel {
         }));
     }
 
-
     async #findLls() {
         try {
             let settings = await findPort.findLls232();
@@ -115,7 +112,6 @@ class LlsModel {
             console.log(e);
         }
     }
-
 }
 
 const llsModel = new LlsModel();

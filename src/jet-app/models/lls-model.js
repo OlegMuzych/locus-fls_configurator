@@ -7,7 +7,7 @@ class MyEmitter extends EventEmitter {
 
 
 class LlsModel {
-    _statusLlsIsFind = "noConnect"; //"findConnect", "connect"
+    #statusLls = "noConnect"; //"findConnect", "connect"
     _llsConnectSettings = {
         path: null,
         baudRate: null,
@@ -18,7 +18,7 @@ class LlsModel {
     _intervalShortDataId = null;
 
     constructor(timeout = 1000) {
-        this._init(timeout).then().catch();
+        this.#init(timeout).then().catch();
     }
 
     /* Event Short Data */
@@ -45,14 +45,31 @@ class LlsModel {
         this._myEmitter.removeListener('isDisconnect', listener);
     }
 
-    async _loop() {
+    /* Event Long Data */
+    addListenerLongData(listener){
+        this._myEmitter.on("longData", listener );
+    }
+    clearListenerLongData(listener) {
+        this._myEmitter.removeListener('longData', listener);
+    }
+
+    async getLongData(){
+        if(this.#statusLls = 'connect'){
+            let dataLong = await this._lls.data.getLong();
+            this._myEmitter.emit('longData', dataLong);
+        }else{
+            return 'LLS not connect';
+        }
+    }
+
+    async #loop() {
         for (; ;) {
-            switch (this._statusLlsIsFind) {
+            switch (this.#statusLls) {
                 case 'noConnect': {
                     let settings = await this.#findLls();
                     if (settings != undefined) {
                         this._llsConnectSettings = settings;
-                        this._statusLlsIsFind = 'findConnect';
+                        this.#statusLls = 'findConnect';
                     }
                     break;
                 }
@@ -61,12 +78,12 @@ class LlsModel {
                     console.log(this._llsConnectSettings);
                     try {
                         this._lls = await new Lls(this._llsConnectSettings);
-                        this._statusLlsIsFind = 'connect';
+                        this.#statusLls = 'connect';
                         this._myEmitter.emit('isConnect');
                         break;
                     } catch (e) {
                         console.log(e);
-                        this._statusLlsIsFind = 'noConnect';
+                        this.#statusLls = 'noConnect';
                         this._myEmitter.emit('isDisconnect');
                         break;
                     }
@@ -79,7 +96,7 @@ class LlsModel {
                         // this._myEmitter.emit('shortData', dataShort);
                     }catch (e) {
                         console.log(e);
-                        this._statusLlsIsFind = 'noConnect';
+                        this.#statusLls = 'noConnect';
                         this._myEmitter.emit('isDisconnect');
                         await this._lls.close();
                         break;
@@ -91,8 +108,8 @@ class LlsModel {
         }
     }
 
-    async _init(timeout) {
-        await this._loop();
+    async #init(timeout) {
+        await this.#loop();
     }
 
     #delay(timeout = 1000) {

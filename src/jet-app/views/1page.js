@@ -1656,6 +1656,7 @@ export default class Page9View extends JetView {
         llsModel.clearOnShortData(this.listenerShortData);
         llsModel.clearListenerIsConnect(this.listenerConnect);
         llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
+        llsModel.clearListenerLongData(this.listenerLongData());
     }
 
     listenerShortData = (shortData)=>{
@@ -1665,9 +1666,13 @@ export default class Page9View extends JetView {
         $$("progress_bar").setValue(shortData.level);
     }
 
+    listenerLongData = (longData) => {
+        console.log(longData);
+    }
     listenerConnect = ()=>{
         $$("button_define_define_1").show();
         $$("button_define_1").hide();
+        llsModel.getLongData();
 
     }
 
@@ -1680,6 +1685,7 @@ export default class Page9View extends JetView {
         llsModel.onShortData(this.listenerShortData);
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerIsDisconnect(this.listenerDisconnect);
+        llsModel.addListenerLongData(this.listenerLongData);
 
         /* Test */
         $$("test_button_1").attachEvent("onItemClick", (id, e)=>{

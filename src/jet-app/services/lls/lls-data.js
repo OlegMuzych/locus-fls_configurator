@@ -2,39 +2,39 @@ export default class llsData {
     _llsProtocol = {};
     password = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00];
 
-    #longSettings = {
-        llsAdr: null,
-        fuelType: null,
-        serialNumber: [12],
-        softwareVersion: [8],
-        bootVersion: [8],
-        sizeOfSettings: null,
-        /* */
-        emptyTank: null,
-        fullTank: null,
-        autoGetData: null,
-        periodOfDataIssuance: null,
-        minValue: null,
-        maxValue: null,
-        outputParametersOfSensor: null,
-        filtrationType: null,
-        averagingLength: null,
-        medianLength: null,
-        coefficientQ: null,
-        coefficientR: null,
-        thermalCompensationType: null,
-        coefficientK1: null,
-        coefficientK2: null,
-        interpolationType: null,
-        baudRate232: null,
-        baudRate585: null,
-        slaveMasterMode: null,
-        countSlave: null,
-        llsAdrSlave1: null,
-        llsAdrSlave2: null,
-        llsAdrSlave3: null,
-        llsAdrSlave4: null,
-        fuelWaterMode: null,
+    #longSettingsReceive = {
+        // llsAdr: null,
+        // fuelType: null,
+        // serialNumber: [12],
+        // softwareVersion: [8],
+        // bootVersion: [8],
+        // sizeOfSettings: null,
+        // /* */
+        // emptyTank: null,
+        // fullTank: null,
+        // autoGetData: null,
+        // periodOfDataIssuance: null,
+        // minValue: null,
+        // maxValue: null,
+        // outputParametersOfSensor: null,
+        // filtrationType: null,
+        // averagingLength: null,
+        // medianLength: null,
+        // coefficientQ: null,
+        // coefficientR: null,
+        // thermalCompensationType: null,
+        // coefficientK1: null,
+        // coefficientK2: null,
+        // interpolationType: null,
+        // baudRate232: null,
+        // baudRate585: null,
+        // slaveMasterMode: null,
+        // countSlave: null,
+        // llsAdrSlave1: null,
+        // llsAdrSlave2: null,
+        // llsAdrSlave3: null,
+        // llsAdrSlave4: null,
+        // fuelWaterMode: null,
     }
 
     _shortSetting = {
@@ -99,8 +99,57 @@ export default class llsData {
         return this._shortSetting;
     };
 
-    set longSettings(value){};
-
+    set longSettings({
+                             llsAdr,
+                             fuelType,
+                             serialNumber,
+                             softwareVersion,
+                             bootVersion,
+                             emptyTank,
+                             fullTank,
+                             autoGetData,
+                             periodOfDataIssuance,
+                             minValue,
+                             maxValue,
+                             outputParametersOfSensor,
+                             filtrationType,
+                             averagingLength,
+                             medianLength,
+                             coefficientQ,
+                             coefficientR,
+                             thermalCompensationType,
+                             coefficientK1,
+                             coefficientK2,
+                             interpolationType,
+                             baudRate232,
+                             baudRate585,
+                             fuelWaterMode,
+                     }){
+        this.#longSettingsReceive.llsAdr   = llsAdr;
+        this.#longSettingsReceive.fuelType = fuelType;
+        this.#longSettingsReceive.serialNumber = serialNumber;
+        this.#longSettingsReceive.softwareVersion = softwareVersion;
+        this.#longSettingsReceive.bootVersion = bootVersion;
+        this.#longSettingsReceive.emptyTank = emptyTank;
+        this.#longSettingsReceive.fullTank = fullTank;
+        this.#longSettingsReceive.autoGetData = autoGetData;
+        this.#longSettingsReceive.periodOfDataIssuance  = periodOfDataIssuance;
+        this.#longSettingsReceive.minValue = minValue;
+        this.#longSettingsReceive.maxValue = maxValue;
+        this.#longSettingsReceive.outputParametersOfSensor = outputParametersOfSensor;
+        this.#longSettingsReceive.filtrationType = filtrationType;
+        this.#longSettingsReceive.averagingLength = averagingLength;
+        this.#longSettingsReceive.medianLength = medianLength;
+        this.#longSettingsReceive.coefficientQ = coefficientQ;
+        this.#longSettingsReceive.coefficientR = coefficientR;
+        this.#longSettingsReceive.thermalCompensationType = thermalCompensationType;
+        this.#longSettingsReceive.coefficientK1 = coefficientK1;
+        this.#longSettingsReceive.coefficientK2 = coefficientK2;
+        this.#longSettingsReceive.interpolationType = interpolationType;
+        this.#longSettingsReceive.baudRate232 = baudRate232;
+        this.#longSettingsReceive.baudRate585 = baudRate585;
+        this.#longSettingsReceive.fuelWaterMode = fuelWaterMode;
+    };
 }
 
 // Object.defineProperties(llsData.prototype.shortSetting, {

@@ -1667,7 +1667,17 @@ export default class Page9View extends JetView {
     }
 
     listenerLongData = (longData) => {
+        /*
+        * window_type_1
+        * */
         console.log(longData);
+        // $$('window_type_1').setValue(longData.serialNumber.toString());
+        $$('window_type_2_1').setValue(longData.llsAdr.toString());
+        $$('window_type_2_2').setValue(longData.emptyTank.toString());
+        $$('window_type_2_3').setValue(longData.fullTank.toString());
+        $$('window_type_2_4').setValue(longData.baudRate232.toString());
+        $$('window_type_2_5').setValue(longData.autoGetData.toString());
+        // $$('window_type_2_3').setValue(longData.llsAdr.fullTank);
     }
     listenerConnect = ()=>{
         $$("button_define_define_1").show();

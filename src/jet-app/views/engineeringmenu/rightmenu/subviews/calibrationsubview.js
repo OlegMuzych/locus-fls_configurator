@@ -1,6 +1,4 @@
 import {JetView} from "webix-jet";
-import GeneralSettings from "../../centralmenu/generalsettings";
-import CalibrationSettings from "../../centralmenu/calibrationSettings";
 
 export default class CalibrationSubView extends JetView {
     config() {

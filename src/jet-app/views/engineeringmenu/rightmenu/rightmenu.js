@@ -1,9 +1,8 @@
 import {JetView} from "webix-jet";
-import CentralMenu from "../centralmenu/centralmenu";
 import StatusMenu from "./statusmenu";
 import ServiceMenu from "./servicemenu";
-import CalibrationSettings from "../centralmenu/calibrationSettings";
 import CalibrationSubView from "./subviews/calibrationsubview";
+import FullEmptySubView from "./subviews/fullemptysubview";
 
 export default class RightMenu extends JetView{
     config(){
@@ -13,9 +12,9 @@ export default class RightMenu extends JetView{
                 {
                     id: 'calibrationSubView', rows: [CalibrationSubView],
                 },
-                // {
-                //     id: "fuelFill", rows: [CalibrationSettings],
-                // },
+                {
+                    id: 'fullEmptySubView', rows: [FullEmptySubView],
+                },
             ],
             animate: false,
         }
@@ -65,7 +64,25 @@ export default class RightMenu extends JetView{
             ]
         }
 
-
         return body;
+    }
+    init(){
+        this.on(this.app, "app:setting:general", ()=>{
+                console.log('Click');
+                $$('fullEmptySubView').show();
+            }
+        );
+
+        this.on(this.app, "app:setting:filtering", ()=>{
+                $$('fullEmptySubView').show();
+            }
+        );
+
+        this.on(this.app, "app:setting:calibration", ()=>{
+                $$('calibrationSubView').show();
+            }
+        );
+
+        $$('fullEmptySubView').show();
     }
 }

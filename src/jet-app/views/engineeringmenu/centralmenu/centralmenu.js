@@ -79,16 +79,20 @@ export default class CentralMenu extends JetView{
     }
 
     init(){
-        $$("general").attachEvent("onItemClick", function(id){
+        $$("general").attachEvent("onItemClick", (id)=>{
             $$('generalSettings').show();
+            this.app.callEvent("app:setting:general",[]);
         });
 
-        $$("calibration").attachEvent("onItemClick", function(id){
+        $$("calibration").attachEvent("onItemClick", (id)=>{
             $$('calibrationSettings').show();
+            this.app.callEvent("app:setting:calibration", []);
+
         });
 
-        $$("filtering").attachEvent("onItemClick", function(id){
+        $$("filtering").attachEvent("onItemClick", (id)=>{
             $$('filteringSettings').show();
+            this.app.callEvent("app:setting:filtering", []);
         });
     }
 

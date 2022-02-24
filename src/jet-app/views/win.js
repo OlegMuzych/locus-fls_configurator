@@ -313,7 +313,8 @@ export default class Page9View extends JetView {
         $$("logo_1").attachEvent("onKeyPress", goEngineering);
 
         $$("master_setup").attachEvent("onItemClick", (id, e)=>{
-            $$("color_rows_page22").define(color)
+            this.show("./engineeringmenu/engineeringmenu");
+            // $$("color_rows_page22").define(color)
         });
 
 

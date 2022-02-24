@@ -1,0 +1,95 @@
+import {JetView} from "webix-jet";
+import GeneralSettings from "./generalsettings";
+import CalibrationSettings from "./calibrationSettings";
+import FiltrationSettings from "./filtaringSettings";
+export default class CentralMenu extends JetView{
+    config(){
+        let central_menu_button = {
+            paddingY: 0,
+            minWidth: 500,
+            rows: [
+                {
+                    css: "central_cols_button",
+                    id: "central_cols_button",
+                    cols: [
+                        {
+                            view: "button",
+                            label: "Основные настройки",
+                            maxWidth: 300,
+                            minWidth: 120,
+                            height: 100,
+                            css: "button_central_menu",
+                            id: "general",
+                            value: "Save",
+                        },
+                        {
+                            view: "button",
+                            label: "Тарировка",
+                            maxWidth: 300,
+                            minWidth: 120,
+                            height: 100,
+                            css: "button_central_menu",
+                            id: "calibration",
+                            value: "Save",
+                        },
+                        {
+                            view: "button",
+                            label: "Фильтрация",
+                            maxWidth: 300,
+                            minWidth: 120,
+                            height: 100,
+                            css: "button_central_menu",
+                            id: "filtering",
+                            value: "Save",
+                        },
+                    ]
+                },
+            ]
+        };
+
+        // let generalSettings = {
+        //     id: 'generalSettings',
+        //     rows: [GeneralSettings],
+        // }
+
+
+        let myMultiview = {
+            view: "multiview",
+            cells: [
+                {
+                    id: 'generalSettings', rows: [GeneralSettings],
+                },
+                {
+                    id:"calibrationSettings", rows: [CalibrationSettings],
+                },
+                {
+                    id:"filteringSettings", rows: [FiltrationSettings],
+                },
+            ],
+            animate: false,
+        }
+
+        let body = {
+            rows: [
+                central_menu_button, myMultiview
+            ],
+        }
+
+        return body;
+    }
+
+    init(){
+        $$("general").attachEvent("onItemClick", function(id){
+            $$('generalSettings').show();
+        });
+
+        $$("calibration").attachEvent("onItemClick", function(id){
+            $$('calibrationSettings').show();
+        });
+
+        $$("filtering").attachEvent("onItemClick", function(id){
+            $$('filteringSettings').show();
+        });
+    }
+
+}

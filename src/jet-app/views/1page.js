@@ -88,7 +88,6 @@ export default class Page9View extends JetView {
                     id: "central_cols_button",
                     cols: [
                         {
-
                             view: "button",
                             label: "Основные настройки",
                             maxWidth: 300,
@@ -120,10 +119,7 @@ export default class Page9View extends JetView {
                         },
                     ]
                 },
-
             ]
-
-
         };
 
         var general_config = {

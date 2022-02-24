@@ -9,6 +9,9 @@ export default class MyApp extends JetApp{
 			router 	: BUILD_AS_MODULE ? EmptyRouter : HashRouter,
 			debug 	: !PRODUCTION,
 			start 	: 'win',//"testSerialPort"//"/win"
+			views: {
+				"engineeringmenu" : "engineeringmenu.engineeringmenu" // load /views/area/list.js
+			}
 		};
 
 		super({ ...defaults, ...config });

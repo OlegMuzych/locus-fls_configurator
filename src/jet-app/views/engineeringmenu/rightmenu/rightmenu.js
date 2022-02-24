@@ -1,5 +1,5 @@
 import {JetView} from "webix-jet";
-import CentralMenu from "./centralmenu";
+import CentralMenu from "../centralmenu/centralmenu";
 import StatusMenu from "./statusmenu";
 
 export default class RightMenu extends JetView{

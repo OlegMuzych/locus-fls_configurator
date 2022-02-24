@@ -1,7 +1,7 @@
 import {JetView} from "webix-jet";
-import CentralMenu from "./centralmenu";
-import RightMenu from "./rightmenu";
-import LeftMenu from "./leftmenu";
+import CentralMenu from "./centralmenu/centralmenu";
+import RightMenu from "./rightmenu/rightmenu";
+import LeftMenu from "./leftmenu/leftmenu";
 
 export default class EngineeringMenu extends JetView{
     config(){

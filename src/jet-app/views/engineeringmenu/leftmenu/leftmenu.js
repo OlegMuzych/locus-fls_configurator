@@ -1,6 +1,6 @@
 import {JetView} from "webix-jet";
-import CentralMenu from "../centralmenu/centralmenu";
-import RightMenu from "../rightmenu/rightmenu";
+import GeneralSettings from "../centralmenu/generalsettings";
+import CalibrationSettings from "../centralmenu/calibrationSettings";
 export default class LeftMenu extends JetView{
     config(){
         let left_menu = {

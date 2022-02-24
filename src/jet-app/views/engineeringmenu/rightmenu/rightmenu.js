@@ -1,31 +1,24 @@
 import {JetView} from "webix-jet";
 import CentralMenu from "../centralmenu/centralmenu";
 import StatusMenu from "./statusmenu";
+import ServiceMenu from "./servicemenu";
+import CalibrationSettings from "../centralmenu/calibrationSettings";
+import CalibrationSubView from "./subviews/calibrationsubview";
 
 export default class RightMenu extends JetView{
     config(){
-        let right_menu_button={
-            height: 95,
-            rows:[
+        let myMultiview = {
+            view: "multiview",
+            cells: [
                 {
-                    //Кнопки сверху в правом меню-----------------------//
-                    paddingY: 20,
-                    cols: [
-                        {
-
-                        },
-                        {view: "button", width: 250, height: 70, label: "Сервис",  popup: "my_pop_2", css: "button_right_menu_top_1", id:"button_right_menu_top_1"},
-                        {
-                            width: 10,
-                        },
-                        {view: "button", width: 250, height: 70, label: "Пароль", css: "button_right_menu_top_1", id:"button_right_menu_top_2"},
-                        {
-
-                        }
-                    ]
-                }
-            ]
-        };
+                    id: 'calibrationSubView', rows: [CalibrationSubView],
+                },
+                // {
+                //     id: "fuelFill", rows: [CalibrationSettings],
+                // },
+            ],
+            animate: false,
+        }
 
         let body = {
             css: "rows_right",
@@ -33,7 +26,7 @@ export default class RightMenu extends JetView{
             rows: [
                 {
                     rows: [
-                        right_menu_button,
+                        ServiceMenu,
                     ]
                 },
                 {
@@ -49,7 +42,7 @@ export default class RightMenu extends JetView{
                 },
                 {
                     rows: [
-                        //right_menu_setup
+                        myMultiview,
                     ]
                 },
                 {
@@ -71,6 +64,8 @@ export default class RightMenu extends JetView{
                 }
             ]
         }
+
+
         return body;
     }
 }

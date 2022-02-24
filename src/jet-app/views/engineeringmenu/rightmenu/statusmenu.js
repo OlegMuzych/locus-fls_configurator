@@ -65,8 +65,8 @@ export default class StatusMenu extends JetView{
                     height: 20,
                 }
             ]
-
         };
+
         return right_menu_status;
     }
 }

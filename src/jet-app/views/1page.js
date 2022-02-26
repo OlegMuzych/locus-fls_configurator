@@ -1649,7 +1649,7 @@ export default class Page9View extends JetView {
 
     destroy() {
         super.destroy();
-        llsModel.clearOnShortData(this.listenerShortData);
+        llsModel.clearListenerShortData(this.listenerShortData);
         llsModel.clearListenerIsConnect(this.listenerConnect);
         llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
         llsModel.clearListenerLongData(this.listenerLongData());
@@ -1675,11 +1675,11 @@ export default class Page9View extends JetView {
         $$('window_type_2_5').setValue(longData.autoGetData.toString());
         // $$('window_type_2_3').setValue(longData.llsAdr.fullTank);
     }
+
     listenerConnect = ()=>{
         $$("button_define_define_1").show();
         $$("button_define_1").hide();
         llsModel.getLongData();
-
     }
 
     listenerDisconnect = ()=>{
@@ -1688,7 +1688,7 @@ export default class Page9View extends JetView {
     }
 
     init(view){
-        llsModel.onShortData(this.listenerShortData);
+        llsModel.addListenerShortData(this.listenerShortData);
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerIsDisconnect(this.listenerDisconnect);
         llsModel.addListenerLongData(this.listenerLongData);

@@ -1,4 +1,5 @@
 import {JetView} from "webix-jet";
+import llsModel from "../../../models/lls-model";
 
 export default class GeneralSettings extends JetView {
     config() {
@@ -74,6 +75,16 @@ export default class GeneralSettings extends JetView {
                     inputAlign: "center",
                     id: "window_type_2_4"
                 },
+                {
+                    view: "text",
+                    width: 850,
+                    height: 100,
+                    label: '<p>Скорость подключения</p>',
+                    labelWidth: 400,
+                    css: "window_type_2",
+                    inputAlign: "center",
+                    id: "window_type_2_4"
+                },
                 {height: 20},
                 {
                     view: "text",
@@ -98,7 +109,7 @@ export default class GeneralSettings extends JetView {
                                     width: 400,
                                     height: 100,
                                 },
-                                {view: "switch", value: 0, id: "temp_compensation", width: 68,},
+                                {view: "switch", value: 0, id: "switch_temp_compensation", width: 68,},
                                 {
                                     width: 100,
                                 },
@@ -112,5 +123,35 @@ export default class GeneralSettings extends JetView {
             ]
         };
         return general_config;
+    }
+
+    listenerLongData = (longData) => {
+        $$('window_type_1').setValue(longData.serialNumber.toString());
+        $$('window_type_2_1').setValue(longData.llsAdr.toString());
+        $$('window_type_2_2').setValue(longData.emptyTank.toString());
+        $$('window_type_2_3').setValue(longData.fullTank.toString());
+        $$('window_type_2_4').setValue(longData.baudRate232.toString());
+        $$('window_type_2_5').setValue(longData.autoGetData.toString());
+        $$("switch_temp_compensation").setValue(longData.te);
+    }
+
+    listenerConnect = ()=>{
+        llsModel.getLongData();
+    }
+
+    listenerDisconnect = ()=>{
+    }
+
+    destroy() {
+        super.destroy();
+        llsModel.clearListenerIsConnect(this.listenerConnect);
+        llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
+        llsModel.clearListenerLongData(this.listenerLongData);
+    }
+
+
+    init(){
+        llsModel.addListenerIsConnect(this.listenerConnect);
+        llsModel.addListenerLongData(this.listenerLongData);
     }
 }

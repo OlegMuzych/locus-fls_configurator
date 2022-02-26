@@ -13,7 +13,14 @@ export default class llsAction{
         return this.shortSetting;
     };
 
-    async setMaximum(){};
+    async setMaximum(){
+        let {llsAdr, code: status} = await this._llsProtocol.send(0x06);
+        return {
+            llsAdr: llsAdr,
+            status: status,
+        }
+    };
+
     async setMinimum(){};
 
 
@@ -24,11 +31,7 @@ export default class llsAction{
 
 
     async checkPassword(){
-        // this._llsProtocol.send(0x74)
-        //     .then((dataResponse)=>{
-        //     return dataResponse;
-        // })
-        let{llsAdr, code:status} =  await this._llsProtocol.send(0x74);
+        let{llsAdr, code: status} =  await this._llsProtocol.send(0x74);
         return {
             llsAdr: llsAdr,
             status: status

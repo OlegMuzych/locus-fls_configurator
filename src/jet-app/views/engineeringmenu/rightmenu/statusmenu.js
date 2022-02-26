@@ -1,4 +1,5 @@
 import {JetView} from "webix-jet";
+import llsModel from "../../../models/lls-model";
 
 export default class StatusMenu extends JetView{
     config(){
@@ -69,4 +70,78 @@ export default class StatusMenu extends JetView{
 
         return right_menu_status;
     }
+
+    destroy() {
+        super.destroy();
+        llsModel.clearListenerIsConnect(this.listenerConnect);
+        llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
+        llsModel.clearListenerShortData(this.listenerDisconnect);
+    }
+
+    listenerShortData = (shortData)=>{
+        console.log(shortData);
+        $$("window_temp").setValue(shortData.temperature.toString());
+    }
+
+    listenerConnect = ()=>{
+        setStatusConnect(true);
+        llsModel.getLongData();
+    }
+
+    listenerDisconnect = ()=>{
+        setStatusConnect(false);
+    }
+
+    init(){
+        llsModel.addListenerIsConnect(this.listenerConnect);
+        llsModel.addListenerIsDisconnect(this.listenerDisconnect);
+        llsModel.addListenerShortData(this.listenerShortData);
+        llsModel.getStatusConnect();
+
+        setStatusConnect(false);
+        setFuelState(false);
+        setCalibrateState(false);
+        setTermoState(false);
+    }
 }
+
+function setStatusConnect(status){
+    if(status){
+        $$("button_define_define_1").show();
+        $$("button_define_1").hide();
+    }else{
+        $$("button_define_define_1").hide();
+        $$("button_define_1").show();
+    }
+};
+
+function setFuelState(status){
+    if(status){
+        $$("button_define_define_2").show();
+        $$("button_define_2").hide();
+    }else{
+        $$("button_define_define_2").hide();
+        $$("button_define_2").show();
+    }
+};
+
+function setCalibrateState(status){
+    if(status){
+        $$("button_define_define_3").show();
+        $$("button_define_3").hide();
+    }else{
+        $$("button_define_define_3").hide();
+        $$("button_define_3").show();
+    }
+};
+
+
+function setTermoState(status){
+    if(status){
+        $$("button_define_4_base").show();
+        $$("button_define_4").hide();
+    }else{
+        $$("button_define_4_base").hide();
+        $$("button_define_4").show();
+    }
+};

@@ -106,7 +106,7 @@ export default class StartView extends JetView {
 
             try{
                 this.lls = await new Lls({portName: this.$$('comboSerial').getValue().toString()});
-                let data = await this.lls.actions.checkPassword();
+                let data = await this.lls.actions.getShort();
                 console.log(data);
             }catch(e){
                 console.log(e);

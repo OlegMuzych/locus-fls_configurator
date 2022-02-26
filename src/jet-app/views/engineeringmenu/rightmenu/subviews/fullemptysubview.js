@@ -1,4 +1,5 @@
 import {JetView} from "webix-jet";
+import llsModel from "../../../../models/lls-model";
 
 export default class FullEmptySubView extends JetView {
     config(){
@@ -137,7 +138,6 @@ export default class FullEmptySubView extends JetView {
                     height: 50,
                 },
                 {
-
                     rows: [
                         {
                             cols: [
@@ -161,8 +161,22 @@ export default class FullEmptySubView extends JetView {
         return right_menu_setup;
     }
 
-    init(){
+    destroy() {
+        super.destroy();
+        llsModel.clearListenerShortData(this.listenerShortData);
+    }
 
+    listenerShortData = (shortData)=>{
+        $$("progress_bar").setValue(shortData.level);
+    }
+
+    init(){
+        llsModel.addListenerShortData(this.listenerShortData);
+
+        $$('auto_calibration_1').attachEvent("onItemClick", (id, e)=>{
+            console.log('click');
+            llsModel.setMaximum().then();
+        });
     }
 
 }

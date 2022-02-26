@@ -1,5 +1,6 @@
 // webix.ui.fullScreen();
 import {JetView} from "webix-jet";
+import llsModel from "../models/lls-model";
 //const SerialPort = eval(`require('serialport')`);
 // const findPort = require("../models/lls/findPort");
 
@@ -298,9 +299,26 @@ export default class Page9View extends JetView {
         }
     }
 
+    listenerConnect = ()=>{
+        $$("button_define_define_1").show();
+        $$("button_define_1").hide();
+    }
 
+    listenerDisconnect = ()=>{
+        $$("button_define_define_1").hide();
+        $$("button_define_1").show();
+    }
+
+    destroy() {
+        super.destroy();
+        llsModel.clearListenerIsConnect(this.listenerConnect);
+    }
 
     init(view){
+
+        llsModel.addListenerIsConnect(this.listenerConnect);
+        llsModel.addListenerIsDisconnect(this.listenerDisconnect);
+        llsModel.getStatusConnect();
 
         let goEngineering = (code, e)=> {
             console.log(e);
@@ -310,6 +328,7 @@ export default class Page9View extends JetView {
                 this.app.show("/testSerialPort");
             }
         }
+
         $$("logo_1").attachEvent("onKeyPress", goEngineering);
 
         $$("master_setup").attachEvent("onItemClick", (id, e)=>{

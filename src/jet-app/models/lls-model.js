@@ -22,10 +22,10 @@ class LlsModel {
     }
 
     /* Event Short Data */
-    onShortData(listener) {
+    addListenerShortData(listener) {
         this._myEmitter.on('shortData', listener);
     }
-    clearOnShortData(listener) {
+    clearListenerShortData(listener) {
         this._myEmitter.removeListener('shortData', listener);
     }
 
@@ -53,10 +53,31 @@ class LlsModel {
         this._myEmitter.removeListener('longData', listener);
     }
 
+    getStatusConnect(){
+        if(this.#statusLls = "connect"){ //Для момента инициализации
+            this._myEmitter.emit('isConnect');
+        }
+    }
+
     async getLongData(){
         if(this.#statusLls = 'connect'){
             let dataLong = await this._lls.data.getLong();
             this._myEmitter.emit('longData', dataLong);
+        }else{
+            return 'LLS not connect';
+        }
+    }
+
+    async setMaximum(){
+        if(this.#statusLls = 'connect'){
+            let resp = await this._lls.actions.setMaximum();
+            if (resp.status == 0x00){
+                this.getLongData().then();
+            }else if (resp.status == 0x01){
+                console.log('Lls response error!');
+            }else if (resp.status == 0x02){
+                console.log("Lls password error!");
+            }
         }else{
             return 'LLS not connect';
         }
@@ -92,13 +113,15 @@ class LlsModel {
                     await this.#delay();
                     console.log('Connect to LLS');
                     try{
-                        // let dataShort = await this._lls.data.getShort();
-                        // this._myEmitter.emit('shortData', dataShort);
+                        let dataShort = await this._lls.data.getShort();
+                        this._myEmitter.emit('shortData', dataShort);
                     }catch (e) {
                         console.log(e);
                         this.#statusLls = 'noConnect';
                         this._myEmitter.emit('isDisconnect');
-                        await this._lls.close();
+                        try{
+                            await this._lls.close();
+                        }catch (e){close()};
                         break;
                     }
                 }

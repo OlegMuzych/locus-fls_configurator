@@ -1,6 +1,6 @@
 import {JetView} from "webix-jet";
 
-export default class CalibrationSettings extends JetView {
+export default class Calibrationsettings extends JetView {
     config() {
 
         let calibration = {

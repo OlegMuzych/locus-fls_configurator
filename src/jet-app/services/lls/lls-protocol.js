@@ -48,28 +48,28 @@ export default class llsProtocol{
         });
     };
     _listenerResponseData(){
-        this.port.on('readable', ()=> {
-            this.port.pause();
-            setTimeout(()=>{
-                let data = this.port.read();
-                if(!data) return;
-                console.log('Data:', data);
-                let dataPars = this._parseData(data);
-                if(dataPars){
-                    myEmitter.emit(`data:${dataPars.command}`, dataPars);
-                }
-                this.port.resume();
-            }, 100);
-        })
-
-        // this.port.on('data',  (data) =>{
-        //     console.log('Data:', data);
-        //     // this._checkCrc8(data);
-        //     let dataPars = this._parseData(data);
-        //     if(dataPars){
-        //         myEmitter.emit(`data:${dataPars.command}`, dataPars);
-        //     }
+        // this.port.on('readable', ()=> {
+        //     this.port.pause();
+        //     setTimeout(()=>{
+        //         let data = this.port.read();
+        //         if(!data) return;
+        //         console.log('Data:', data);
+        //         let dataPars = this._parseData(data);
+        //         if(dataPars){
+        //             myEmitter.emit(`data:${dataPars.command}`, dataPars);
+        //         }
+        //         this.port.resume();
+        //     }, 100);
         // })
+
+        this.port.on('data',  (data) =>{
+            console.log('Data:', data);
+            // this._checkCrc8(data);
+            let dataPars = this._parseData(data);
+            if(dataPars){
+                myEmitter.emit(`data:${dataPars.command}`, dataPars);
+            }
+        })
     }
     open(){
         return new Promise(((resolve, reject) => {
@@ -120,6 +120,11 @@ export default class llsProtocol{
                 break;
             }
             case 0x06:{ //читать однократные данные
+                dataBuffer.push(command);
+                dataBuffer.push(this.password);
+                break;
+            }
+            case 0x08:{ //читать однократные данные
                 dataBuffer.push(command);
                 break;
             }
@@ -211,6 +216,15 @@ export default class llsProtocol{
                     checkPassword.command = dataView.getUint8(2);
                     checkPassword.code = dataView.getUint8(3);
                     return checkPassword;
+                    break;
+                }
+                case 0x08:{
+                    let setMinimum = {};
+                    setMinimum.prefix = dataView.getUint8(0);
+                    setMinimum.llsAdr = dataView.getUint8(1);
+                    setMinimum.command = dataView.getUint8(2);
+                    setMinimum.code = dataView.getUint8(3);
+                    return setMinimum;
                     break;
                 }
                 default: break;

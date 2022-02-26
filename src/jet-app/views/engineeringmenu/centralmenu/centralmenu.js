@@ -1,6 +1,6 @@
 import {JetView} from "webix-jet";
 import GeneralSettings from "./generalsettings";
-import CalibrationSettings from "./calibrationSettings";
+import Calibrationsettings from "./calibrationsettings";
 import FiltrationSettings from "./filtaringSettings";
 export default class CentralMenu extends JetView{
     config(){
@@ -60,7 +60,7 @@ export default class CentralMenu extends JetView{
                     id: 'generalSettings', rows: [GeneralSettings],
                 },
                 {
-                    id:"calibrationSettings", rows: [CalibrationSettings],
+                    id:"calibrationSettings", rows: [Calibrationsettings],
                 },
                 {
                     id:"filteringSettings", rows: [FiltrationSettings],

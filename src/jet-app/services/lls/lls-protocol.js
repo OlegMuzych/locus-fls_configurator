@@ -10,6 +10,8 @@ export default class llsProtocol{
      PR_RECEIVE = 0x3E;
      PR_TRANSMIT =  0x31;
 
+     #password = [0,0,0,0,0,0,0,0];
+
     _settingPort = {
         portName: null,
         baudRate: null,
@@ -123,9 +125,14 @@ export default class llsProtocol{
                 dataBuffer.push(command);
                 break;
             }
-            case 0x08:{ //каибровка на минимум
+            case 0x08:{ //калибровка на минимум
                 dataBuffer.push(command);
-                dataBuffer.push(this.password);
+                dataBuffer.push(...this.#password);
+                break;
+            }
+            case 0x09:{ //калибровка на максимум
+                dataBuffer.push(command);
+                dataBuffer.push(...this.#password);
                 break;
             }
             default: break;
@@ -225,6 +232,16 @@ export default class llsProtocol{
                     setMinimum.command = dataView.getUint8(2);
                     setMinimum.code = dataView.getUint8(3);
                     return setMinimum;
+                    break;
+                }
+
+                case 0x09:{
+                    let setMaximum = {};
+                    setMaximum.prefix = dataView.getUint8(0);
+                    setMaximum.llsAdr = dataView.getUint8(1);
+                    setMaximum.command = dataView.getUint8(2);
+                    setMaximum.code = dataView.getUint8(3);
+                    return setMaximum;
                     break;
                 }
                 default: break;

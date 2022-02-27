@@ -164,18 +164,30 @@ export default class FullEmptySubView extends JetView {
     destroy() {
         super.destroy();
         llsModel.clearListenerShortData(this.listenerShortData);
+        llsModel.clearListenerLongData(this.listenerLongData);
     }
 
     listenerShortData = (shortData)=>{
         $$("progress_bar").setValue(shortData.level);
     }
 
+    listenerLongData = (longData) => {
+        $$('auto_calibration_set_2').setValue(longData.emptyTank.toString());
+        $$('auto_calibration_set_1').setValue(longData.fullTank.toString());
+    }
+
     init(){
         llsModel.addListenerShortData(this.listenerShortData);
+        llsModel.addListenerLongData(this.listenerLongData);
 
         $$('auto_calibration_1').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             llsModel.setMaximum().then();
+        });
+
+        $$('auto_calibration_2').attachEvent("onItemClick", (id, e)=>{
+            console.log('click');
+            llsModel.setMinimum().then();
         });
     }
 

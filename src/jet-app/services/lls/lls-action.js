@@ -14,14 +14,20 @@ export default class llsAction{
     };
 
     async setMaximum(){
-        let {llsAdr, code: status} = await this._llsProtocol.send(0x06);
+        let {llsAdr, code: status} = await this._llsProtocol.send(0x09);
         return {
             llsAdr: llsAdr,
             status: status,
         }
     };
 
-    async setMinimum(){};
+    async setMinimum(){
+        let {llsAdr, code: status} = await this._llsProtocol.send(0x08);
+        return {
+            llsAdr: llsAdr,
+            status: status,
+        }
+    };
 
 
     async setOnPeriodicData(){};

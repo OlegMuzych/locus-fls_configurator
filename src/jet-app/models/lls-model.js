@@ -82,6 +82,20 @@ class LlsModel {
             return 'LLS not connect';
         }
     }
+    async setMinimum(){
+        if(this.#statusLls = 'connect'){
+            let resp = await this._lls.actions.setMinimum();
+            if (resp.status == 0x00){
+                this.getLongData().then();
+            }else if (resp.status == 0x01){
+                console.log('Lls response error!');
+            }else if (resp.status == 0x02){
+                console.log("Lls password error!");
+            }
+        }else{
+            return 'LLS not connect';
+        }
+    }
 
     async #loop() {
         for (; ;) {

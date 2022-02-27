@@ -54,7 +54,7 @@ class LlsModel {
     }
 
     getStatusConnect(){
-        if(this.#statusLls = "connect"){ //Для момента инициализации
+        if(this.#statusLls == "connect"){ //Для момента инициализации
             this._myEmitter.emit('isConnect');
         }
     }

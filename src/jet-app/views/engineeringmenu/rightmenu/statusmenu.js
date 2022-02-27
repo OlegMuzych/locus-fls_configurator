@@ -75,7 +75,7 @@ export default class StatusMenu extends JetView{
         super.destroy();
         llsModel.clearListenerIsConnect(this.listenerConnect);
         llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
-        llsModel.clearListenerShortData(this.listenerDisconnect);
+        llsModel.clearListenerShortData(this.listenerShortData);
     }
 
     listenerShortData = (shortData)=>{
@@ -93,15 +93,16 @@ export default class StatusMenu extends JetView{
     }
 
     init(){
+        setStatusConnect(false);
+        setFuelState(false);
+        setCalibrateState(false);
+        setTermoState(false);
+
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerIsDisconnect(this.listenerDisconnect);
         llsModel.addListenerShortData(this.listenerShortData);
         llsModel.getStatusConnect();
 
-        setStatusConnect(false);
-        setFuelState(false);
-        setCalibrateState(false);
-        setTermoState(false);
     }
 }
 

@@ -51,7 +51,7 @@ export default class Page9View extends JetView {
                             width: 170,
                         },
                         {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_1"},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_1",},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_1"},
                         {width: 20,},
                         {view:"label", label:"Датчик подключен", height: 30, width: 300, css:"label_status_gage_windows_start", id:"label_status_gage_windows_start_1",},
                         {view:"label", label:"Датчик не подключен", height: 30, width: 300, css:"label_status_gage_windows_start", id:"label_status_gage_windows_start_2"},
@@ -300,21 +300,35 @@ export default class Page9View extends JetView {
     }
 
     listenerConnect = ()=>{
-        $$("button_define_define_1").show();
-        $$("button_define_1").hide();
+        this.setStatusConnect(true);
     }
 
     listenerDisconnect = ()=>{
-        $$("button_define_define_1").hide();
-        $$("button_define_1").show();
+        this.setStatusConnect(false);
     }
 
     destroy() {
         super.destroy();
         llsModel.clearListenerIsConnect(this.listenerConnect);
+        llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
     }
 
+    setStatusConnect(status){
+        if(status){
+            $$("button_define_define_1").show();
+            $$("label_status_gage_windows_start_1").show();
+            $$("button_define_1").hide();
+            $$("label_status_gage_windows_start_2").hide();
+        }else{
+            $$("button_define_define_1").hide();
+            $$("label_status_gage_windows_start_1").hide();
+            $$("button_define_1").show();
+            $$("label_status_gage_windows_start_2").show();
+        }
+    };
+
     init(view){
+        this.setStatusConnect(false);
 
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerIsDisconnect(this.listenerDisconnect);
@@ -343,8 +357,8 @@ export default class Page9View extends JetView {
 
 
 
-        $$("button_define_define_1").hide()
-        $$("label_status_gage_windows_start_1").hide()
+        // $$("button_define_define_1").hide()
+        // $$("label_status_gage_windows_start_1").hide()
 
 
 

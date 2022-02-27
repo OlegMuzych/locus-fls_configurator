@@ -48,28 +48,28 @@ export default class llsProtocol{
         });
     };
     _listenerResponseData(){
-        // this.port.on('readable', ()=> {
-        //     this.port.pause();
-        //     setTimeout(()=>{
-        //         let data = this.port.read();
-        //         if(!data) return;
-        //         console.log('Data:', data);
-        //         let dataPars = this._parseData(data);
-        //         if(dataPars){
-        //             myEmitter.emit(`data:${dataPars.command}`, dataPars);
-        //         }
-        //         this.port.resume();
-        //     }, 100);
-        // })
-
-        this.port.on('data',  (data) =>{
-            console.log('Data:', data);
-            // this._checkCrc8(data);
-            let dataPars = this._parseData(data);
-            if(dataPars){
-                myEmitter.emit(`data:${dataPars.command}`, dataPars);
-            }
+        this.port.on('readable', ()=> {
+            this.port.pause();
+            setTimeout(()=>{
+                let data = this.port.read();
+                if(!data) return;
+                console.log('Data:', data);
+                let dataPars = this._parseData(data);
+                if(dataPars){
+                    myEmitter.emit(`data:${dataPars.command}`, dataPars);
+                }
+                this.port.resume();
+            }, 100);
         })
+
+        // this.port.on('data',  (data) =>{
+        //     console.log('Data:', data);
+        //     // this._checkCrc8(data);
+        //     let dataPars = this._parseData(data);
+        //     if(dataPars){
+        //         myEmitter.emit(`data:${dataPars.command}`, dataPars);
+        //     }
+        // })
     }
     open(){
         return new Promise(((resolve, reject) => {
@@ -121,11 +121,11 @@ export default class llsProtocol{
             }
             case 0x06:{ //читать однократные данные
                 dataBuffer.push(command);
-                dataBuffer.push(this.password);
                 break;
             }
-            case 0x08:{ //читать однократные данные
+            case 0x08:{ //каибровка на минимум
                 dataBuffer.push(command);
+                dataBuffer.push(this.password);
                 break;
             }
             default: break;

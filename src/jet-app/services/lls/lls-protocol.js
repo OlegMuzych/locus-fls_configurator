@@ -49,6 +49,7 @@ export default class llsProtocol{
             resolve(dataParse);
         });
     };
+
     _listenerResponseData(){
         this.port.on('readable', ()=> {
             this.port.pause();
@@ -114,11 +115,47 @@ export default class llsProtocol{
             }
             case 0x74:{ //проверить правильность пароля и адреса ДУТ
                 dataBuffer.push(command);
-                dataBuffer.push(this.password);
+                dataBuffer.push(...this.#password);
                 break;
             }
             case 0x47:{ //читать все настройки
                 dataBuffer.push(command);
+                break;
+            }
+            case 0x48:{
+                dataBuffer.push(command);
+                dataBuffer.push(...this.#password);
+                dataBuffer.push(0xff);
+                dataBuffer.push(0xff);
+                dataBuffer.push(...this.#getValue32(data.emptyTank));
+                dataBuffer.push(...this.#getValue32(data.fullTank));
+                dataBuffer.push(data.llsAdr);
+                dataBuffer.push(data.autoGetData);
+                dataBuffer.push(data.periodOfDataIssuance);
+                dataBuffer.push(...this.#getValue16(data.minValue));
+                dataBuffer.push(...this.#getValue16(data.maxValue));
+                dataBuffer.push(data.outputParametersOfSensor);
+                dataBuffer.push(data.filtrationType);
+                dataBuffer.push(data.averagingLength);
+                dataBuffer.push(data.medianLength);
+                dataBuffer.push(...this.#getValue32(data.coefficientQ));
+                dataBuffer.push(...this.#getValue32(data.coefficientR));
+                dataBuffer.push(data.thermalCompensationType);
+                dataBuffer.push(...this.#getValue32(data.coefficientK1));
+                dataBuffer.push(...this.#getValue32(data.coefficientK2));
+                dataBuffer.push(data.interpolationType);
+                dataBuffer.push(data.baudRate232);
+                dataBuffer.push(data.baudRate485);
+                dataBuffer.push(data.slaveMasterMode);
+                dataBuffer.push(data.countSlave);
+                dataBuffer.push(data.llsAdrSlave1);
+                dataBuffer.push(data.llsAdrSlave2);
+                dataBuffer.push(data.llsAdrSlave3);
+                dataBuffer.push(data.llsAdrSlave4);
+                dataBuffer.push(data.fuelWaterMode);
+                dataBuffer.push(0x00);
+                dataBuffer.push(0xff);
+                dataBuffer.push(0xff);
                 break;
             }
             case 0x06:{ //читать однократные данные
@@ -216,6 +253,15 @@ export default class llsProtocol{
                     return longDataResp;
                     break;
                 }
+                case 0x48:{
+                    let setLongData = {};
+                    setLongData.prefix = dataView.getUint8(0);
+                    setLongData.llsAdr = dataView.getUint8(1);
+                    setLongData.command = dataView.getUint8(2);
+                    setLongData.code = dataView.getUint8(3);
+                    return setLongData;
+                    break;
+                }
                 case 0x74:{
                     let checkPassword = {};
                     checkPassword.prefix = dataView.getUint8(0);
@@ -258,6 +304,30 @@ export default class llsProtocol{
         return arr;
     }
 
+    #getValue16(value16){
+        let data = value16;
+        let arrData = [];
+        for(let i = 0; i < 2; i++){
+            let byte = data & 0b11111111;
+            arrData.push(byte);
+            data = data >>> 8;
+        }
+        console.log(arrData[0], arrData[1]);
+        return arrData;
+    }
+
+    #getValue32(value32){
+        let data = value32;
+        let arrData = [];
+        for(let i = 0; i < 4; i++){
+            let byte = data & 0b11111111;
+            arrData.push(byte);
+            data = data >>> 8;
+        }
+        console.log(arrData[0], arrData[1], arrData[2], arrData[3]);
+        return arrData;
+    }
+    
     _eventDataParse(command) {
         return new Promise((resolve, reject) => {
             myEmitter.once(`data:${command}`, (data) => {

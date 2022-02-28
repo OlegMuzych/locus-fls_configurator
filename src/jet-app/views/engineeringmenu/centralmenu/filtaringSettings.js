@@ -1,4 +1,5 @@
 import {JetView} from "webix-jet";
+import llsModel from "../../../models/lls-model";
 
 export default class FiltrationSettings extends JetView {
     config() {
@@ -319,5 +320,25 @@ export default class FiltrationSettings extends JetView {
             ]
         };
         return filtering;
+    }
+    listenerLongData = (longData) => {
+        $$('slider_filter_1').setValue(longData.averagingLength.toString());
+        $$('window_text_time').setValue(longData.averagingLength.toString());
+        $$('slider_filter_2').setValue(longData.medianLength.toString());
+        $$('window_text_mediana').setValue(longData.medianLength.toString());
+    }
+    destroy() {
+        super.destroy();
+        llsModel.clearListenerLongData(this.listenerLongData);
+    }
+    init(){
+        llsModel.addListenerLongData(this.listenerLongData);
+
+        $$('button_slider_gen_value_1').attachEvent("onItemClick", (id, e)=>{
+            llsModel.setLongData({averagingLength:$$('slider_filter_1').getValue()});
+            // code
+        });
+
+
     }
 }

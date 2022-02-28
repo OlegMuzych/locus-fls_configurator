@@ -83,12 +83,85 @@ export default class llsData {
         return this.shortSetting;
     };
 
-    async getLong(){
+    async getLong() {
         let longSettingResponse = await this._llsProtocol.send(0x47);
         console.log(longSettingResponse);
         this.longSettings = longSettingResponse;
         return this.longSettings;
     };
+
+    async setLong(longData) {
+        let {
+            llsAdr = this.#longSettingsReceive.llsAdr,
+            fuelType = this.#longSettingsReceive.fuelType,
+            serialNumber = this.#longSettingsReceive.serialNumber,
+            softwareVersion = this.#longSettingsReceive.softwareVersion,
+            bootVersion = this.#longSettingsReceive.bootVersion,
+            emptyTank = this.#longSettingsReceive.emptyTank,
+            fullTank = this.#longSettingsReceive.fullTank,
+            autoGetData = this.#longSettingsReceive.autoGetData,
+            periodOfDataIssuance = this.#longSettingsReceive.periodOfDataIssuance,
+            minValue = this.#longSettingsReceive.minValue,
+            maxValue = this.#longSettingsReceive.maxValue,
+            outputParametersOfSensor = this.#longSettingsReceive.outputParametersOfSensor,
+            filtrationType = this.#longSettingsReceive.filtrationType,
+            averagingLength = this.#longSettingsReceive.averagingLength,
+            medianLength = this.#longSettingsReceive.medianLength,
+            coefficientQ = this.#longSettingsReceive.coefficientQ,
+            coefficientR = this.#longSettingsReceive.coefficientR,
+            thermalCompensationType = this.#longSettingsReceive.thermalCompensationType,
+            coefficientK1 = this.#longSettingsReceive.coefficientK1,
+            coefficientK2 = this.#longSettingsReceive.coefficientK2,
+            interpolationType = this.#longSettingsReceive.interpolationType,
+            baudRate232 = this.#longSettingsReceive.baudRate232,
+            baudRate585 = this.#longSettingsReceive.baudRate585,
+            slaveMasterMode = this.#longSettingsReceive.slaveMasterMode,
+            countSlave = this.#longSettingsReceive.countSlave,
+            llsAdrSlave1 = this.#longSettingsReceive.llsAdrSlave1,
+            llsAdrSlave2 = this.#longSettingsReceive.llsAdrSlave2,
+            llsAdrSlave3 = this.#longSettingsReceive.llsAdrSlave3,
+            llsAdrSlave4 = this.#longSettingsReceive.llsAdrSlave4,
+            fuelWaterMode = this.#longSettingsReceive.fuelWaterMode,
+        } = longData;
+
+        let newLongData = {
+            llsAdr: llsAdr,
+            fuelType: fuelType,
+            serialNumber: serialNumber,
+            softwareVersion: softwareVersion,
+            bootVersion: bootVersion,
+            emptyTank: emptyTank,
+            fullTank: fullTank,
+            autoGetData: autoGetData,
+            periodOfDataIssuance: periodOfDataIssuance,
+            minValue: minValue,
+            maxValue: maxValue,
+            outputParametersOfSensor: outputParametersOfSensor,
+            filtrationType: filtrationType,
+            averagingLength: averagingLength,
+            medianLength: medianLength,
+            coefficientQ: coefficientQ,
+            coefficientR: coefficientR,
+            thermalCompensationType: thermalCompensationType,
+            coefficientK1: coefficientK1,
+            coefficientK2: coefficientK2,
+            interpolationType: interpolationType,
+            baudRate232: baudRate232,
+            baudRate585: baudRate585,
+            slaveMasterMode: slaveMasterMode,
+            countSlave: countSlave,
+            llsAdrSlave1: llsAdrSlave1,
+            llsAdrSlave2: llsAdrSlave2,
+            llsAdrSlave3: llsAdrSlave3,
+            llsAdrSlave4: llsAdrSlave4,
+            fuelWaterMode: fuelWaterMode,
+        }
+
+        let {code: status} = await this._llsProtocol.send(0x48, newLongData);
+        return {
+            status: status,
+        }
+    }
 
     set shortSetting({llsAdr, temperature, level, cnt}) {
         this._shortSetting.llsAdr = llsAdr;
@@ -125,9 +198,15 @@ export default class llsData {
                          interpolationType,
                          baudRate232,
                          baudRate585,
+                         slaveMasterMode,
+                         countSlave,
+                         llsAdrSlave1,
+                         llsAdrSlave2,
+                         llsAdrSlave3,
+                         llsAdrSlave4,
                          fuelWaterMode,
-                     }){
-        this.#longSettingsReceive.llsAdr   = llsAdr;
+                     }) {
+        this.#longSettingsReceive.llsAdr = llsAdr;
         this.#longSettingsReceive.fuelType = fuelType;
         this.#longSettingsReceive.serialNumber = serialNumber;
         this.#longSettingsReceive.softwareVersion = softwareVersion;
@@ -135,7 +214,7 @@ export default class llsData {
         this.#longSettingsReceive.emptyTank = emptyTank;
         this.#longSettingsReceive.fullTank = fullTank;
         this.#longSettingsReceive.autoGetData = autoGetData;
-        this.#longSettingsReceive.periodOfDataIssuance  = periodOfDataIssuance;
+        this.#longSettingsReceive.periodOfDataIssuance = periodOfDataIssuance;
         this.#longSettingsReceive.minValue = minValue;
         this.#longSettingsReceive.maxValue = maxValue;
         this.#longSettingsReceive.outputParametersOfSensor = outputParametersOfSensor;
@@ -150,10 +229,16 @@ export default class llsData {
         this.#longSettingsReceive.interpolationType = interpolationType;
         this.#longSettingsReceive.baudRate232 = baudRate232;
         this.#longSettingsReceive.baudRate585 = baudRate585;
+        this.#longSettingsReceive.slaveMasterMode = slaveMasterMode;
+        this.#longSettingsReceive.countSlave = countSlave;
+        this.#longSettingsReceive.llsAdrSlave1 = llsAdrSlave1;
+        this.#longSettingsReceive.llsAdrSlave2 = llsAdrSlave2;
+        this.#longSettingsReceive.llsAdrSlave3 = llsAdrSlave3;
+        this.#longSettingsReceive.llsAdrSlave4 = llsAdrSlave4;
         this.#longSettingsReceive.fuelWaterMode = fuelWaterMode;
     };
 
-    get longSettings(){
+    get longSettings() {
         return this.#longSettingsReceive;
     }
 }

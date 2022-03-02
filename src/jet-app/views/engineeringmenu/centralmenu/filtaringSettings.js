@@ -152,9 +152,10 @@ export default class FiltrationSettings extends JetView {
                                             css:"toolbar_button",
                                             elements: [{
                                                 view: "button",
+                                                localId:'buttonFilterType',
                                                 css: "button_filter_set",
                                                 label: 'Выбрать',
-                                                popup: "my_pop",
+                                                // popup: "my_pop",
                                                 height:54,
                                                 width: 150,
 
@@ -310,13 +311,14 @@ export default class FiltrationSettings extends JetView {
                                         },
                                         {
 
-                                        }
+                                        },
                                     ]
                                 }
                             ]
-                        }
+                        },
                     ]
-                }
+                },
+                // {popup:true },
             ]
         };
         return filtering;
@@ -326,6 +328,7 @@ export default class FiltrationSettings extends JetView {
         $$('window_text_time').setValue(longData.averagingLength.toString());
         $$('slider_filter_2').setValue(longData.medianLength.toString());
         $$('window_text_mediana').setValue(longData.medianLength.toString());
+        this.setFiltrationType(longData.filtrationType);
     }
     destroy() {
         super.destroy();
@@ -336,9 +339,66 @@ export default class FiltrationSettings extends JetView {
 
         $$('button_slider_gen_value_1').attachEvent("onItemClick", (id, e)=>{
             llsModel.setLongData({averagingLength:$$('slider_filter_1').getValue()});
-            // code
         });
 
+        $$('button_slider_gen_value_2').attachEvent("onItemClick", (id, e)=>{
+            llsModel.setLongData({medianLength:$$('slider_filter_2').getValue()});
+        });
 
+        const popupFilterType = {
+            // Кнопка выбрать в окне фильтрация -------------------------------//
+            view: "popup",
+            multi: true,
+            id: "my_pop",
+            css: "service_button",
+            width: 300,
+            height: 400,
+            // data:['123','123','123'],
+            body: {
+                view: "list",
+                data: [
+                    {id: "0", location: "Выключена", name: "0", value: 0},
+                    {id: "1", location: "Усреднение", name: "1", value: 1},
+                    {id: "2", location: "Медиана", name: "2", value: 2},
+                    {id: "3", location: "Адаптивный", name: "3", value: 3},
+                ],
+                template: "#name# - #location#",
+                autoheight: true,
+                id: 'listFilterType',
+                select: true
+            }
+        }
+        this.pop = this.ui(popupFilterType);
+        this.$$('buttonFilterType').attachEvent("onItemClick", (id, e)=>{
+            console.log('click');
+            this.pop.show($$(id).getNode());
+        });
+
+        $$("listFilterType").attachEvent("onItemClick", (id,name, e)=>{
+            console.log("click");
+            let obj = $$("listFilterType").getItem(id);
+            console.log(obj);
+            llsModel.setLongData({filtrationType:obj.value});
+        });
+    }
+
+    setFiltrationType(number){
+        switch(number){
+            case 0:{
+                $$("filter_open_windows").setValue("Выключена");
+                break;}
+            case 1:{
+                $$("filter_open_windows").setValue("Усреднение");
+                break;}
+            case 2:{
+                $$("filter_open_windows").setValue("Медиана");
+                break;}
+            case 3:{
+                $$("filter_open_windows").setValue("Адаптивный");
+                break;}
+            default:{
+                $$("filter_open_windows").setValue("ВЫКЛЮЧЕНА");
+                break;}
+        }
     }
 }

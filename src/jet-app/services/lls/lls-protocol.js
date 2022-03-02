@@ -132,8 +132,8 @@ export default class llsProtocol{
                 dataBuffer.push(data.llsAdr);
                 dataBuffer.push(data.autoGetData);
                 dataBuffer.push(data.periodOfDataIssuance);
-                dataBuffer.push(...this.#getValue16(data.minValue));
-                dataBuffer.push(...this.#getValue16(data.maxValue));
+                dataBuffer.push(...this.#getValue16(data.minLevel));
+                dataBuffer.push(...this.#getValue16(data.maxLevel));
                 dataBuffer.push(data.outputParametersOfSensor);
                 dataBuffer.push(data.filtrationType);
                 dataBuffer.push(data.averagingLength);
@@ -156,6 +156,7 @@ export default class llsProtocol{
                 dataBuffer.push(0x00);
                 dataBuffer.push(0xff);
                 dataBuffer.push(0xff);
+                console.log(dataBuffer);
                 break;
             }
             case 0x06:{ //читать однократные данные

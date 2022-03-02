@@ -414,7 +414,6 @@ export default class Page9View extends JetView {
                                                     popup: "my_pop",
                                                     height:54,
                                                     width: 150,
-
                                                 }]
                                             },
                                             {

@@ -93,7 +93,7 @@ export default class llsData {
     async setLong(longData) {
         let {
             llsAdr = this.#longSettingsReceive.llsAdr,
-            fuelType = this.#longSettingsReceive.fuelType,
+            typeLls = this.#longSettingsReceive.typeLls,
             serialNumber = this.#longSettingsReceive.serialNumber,
             softwareVersion = this.#longSettingsReceive.softwareVersion,
             bootVersion = this.#longSettingsReceive.bootVersion,
@@ -101,8 +101,8 @@ export default class llsData {
             fullTank = this.#longSettingsReceive.fullTank,
             autoGetData = this.#longSettingsReceive.autoGetData,
             periodOfDataIssuance = this.#longSettingsReceive.periodOfDataIssuance,
-            minValue = this.#longSettingsReceive.minValue,
-            maxValue = this.#longSettingsReceive.maxValue,
+            minLevel = this.#longSettingsReceive.minLevel,
+            maxLevel = this.#longSettingsReceive.maxLevel,
             outputParametersOfSensor = this.#longSettingsReceive.outputParametersOfSensor,
             filtrationType = this.#longSettingsReceive.filtrationType,
             averagingLength = this.#longSettingsReceive.averagingLength,
@@ -114,7 +114,7 @@ export default class llsData {
             coefficientK2 = this.#longSettingsReceive.coefficientK2,
             interpolationType = this.#longSettingsReceive.interpolationType,
             baudRate232 = this.#longSettingsReceive.baudRate232,
-            baudRate585 = this.#longSettingsReceive.baudRate585,
+            baudRate485 = this.#longSettingsReceive.baudRate485,
             slaveMasterMode = this.#longSettingsReceive.slaveMasterMode,
             countSlave = this.#longSettingsReceive.countSlave,
             llsAdrSlave1 = this.#longSettingsReceive.llsAdrSlave1,
@@ -126,7 +126,7 @@ export default class llsData {
 
         let newLongData = {
             llsAdr: llsAdr,
-            fuelType: fuelType,
+            typeLls: typeLls,
             serialNumber: serialNumber,
             softwareVersion: softwareVersion,
             bootVersion: bootVersion,
@@ -134,8 +134,8 @@ export default class llsData {
             fullTank: fullTank,
             autoGetData: autoGetData,
             periodOfDataIssuance: periodOfDataIssuance,
-            minValue: minValue,
-            maxValue: maxValue,
+            minLevel: minLevel,
+            maxLevel: maxLevel,
             outputParametersOfSensor: outputParametersOfSensor,
             filtrationType: filtrationType,
             averagingLength: averagingLength,
@@ -147,7 +147,7 @@ export default class llsData {
             coefficientK2: coefficientK2,
             interpolationType: interpolationType,
             baudRate232: baudRate232,
-            baudRate585: baudRate585,
+            baudRate485: baudRate485,
             slaveMasterMode: slaveMasterMode,
             countSlave: countSlave,
             llsAdrSlave1: llsAdrSlave1,
@@ -176,7 +176,7 @@ export default class llsData {
 
     set longSettings({
                          llsAdr,
-                         fuelType,
+                         typeLls,
                          serialNumber,
                          softwareVersion,
                          bootVersion,
@@ -184,8 +184,8 @@ export default class llsData {
                          fullTank,
                          autoGetData,
                          periodOfDataIssuance,
-                         minValue,
-                         maxValue,
+                         minLevel,
+                         maxLevel,
                          outputParametersOfSensor,
                          filtrationType,
                          averagingLength,
@@ -197,7 +197,7 @@ export default class llsData {
                          coefficientK2,
                          interpolationType,
                          baudRate232,
-                         baudRate585,
+                         baudRate485,
                          slaveMasterMode,
                          countSlave,
                          llsAdrSlave1,
@@ -207,7 +207,7 @@ export default class llsData {
                          fuelWaterMode,
                      }) {
         this.#longSettingsReceive.llsAdr = llsAdr;
-        this.#longSettingsReceive.fuelType = fuelType;
+        this.#longSettingsReceive.typeLls = typeLls;
         this.#longSettingsReceive.serialNumber = serialNumber;
         this.#longSettingsReceive.softwareVersion = softwareVersion;
         this.#longSettingsReceive.bootVersion = bootVersion;
@@ -215,8 +215,8 @@ export default class llsData {
         this.#longSettingsReceive.fullTank = fullTank;
         this.#longSettingsReceive.autoGetData = autoGetData;
         this.#longSettingsReceive.periodOfDataIssuance = periodOfDataIssuance;
-        this.#longSettingsReceive.minValue = minValue;
-        this.#longSettingsReceive.maxValue = maxValue;
+        this.#longSettingsReceive.minLevel = minLevel;
+        this.#longSettingsReceive.maxLevel = maxLevel;
         this.#longSettingsReceive.outputParametersOfSensor = outputParametersOfSensor;
         this.#longSettingsReceive.filtrationType = filtrationType;
         this.#longSettingsReceive.averagingLength = averagingLength;
@@ -228,7 +228,7 @@ export default class llsData {
         this.#longSettingsReceive.coefficientK2 = coefficientK2;
         this.#longSettingsReceive.interpolationType = interpolationType;
         this.#longSettingsReceive.baudRate232 = baudRate232;
-        this.#longSettingsReceive.baudRate585 = baudRate585;
+        this.#longSettingsReceive.baudRate485 = baudRate485;
         this.#longSettingsReceive.slaveMasterMode = slaveMasterMode;
         this.#longSettingsReceive.countSlave = countSlave;
         this.#longSettingsReceive.llsAdrSlave1 = llsAdrSlave1;

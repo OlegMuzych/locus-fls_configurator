@@ -65,15 +65,32 @@ export default class GeneralSettings extends JetView {
                     id: "window_type_2_3"
                 },
                 {height: 20},
+                // {
+                //     view: "text",
+                //     width: 850,
+                //     height: 100,
+                //     label: '<p>Скорость подключения</p>',
+                //     labelWidth: 400,
+                //     css: "window_type_2",
+                //     inputAlign: "center",
+                //     id: "window_type_2_4"
+                // },
                 {
-                    view: "text",
+                    view:"combo",
                     width: 850,
                     height: 100,
                     label: '<p>Скорость подключения</p>',
                     labelWidth: 400,
                     css: "window_type_2",
                     inputAlign: "center",
-                    id: "window_type_2_4"
+                    id: "window_type_2_4",
+                    options:[
+                        {value:"9600", id: 0x02},
+                        {value:"19200", id: 0x03},
+                        {value:"38400", id: 0x05},
+                        {value:"57600", id: 0x06},
+                        {value:"115200", id: 0x07},
+                    ]
                 },
                 {height: 20},
                 {
@@ -120,9 +137,10 @@ export default class GeneralSettings extends JetView {
         $$('window_type_2_1').setValue(longData.llsAdr.toString());
         $$('window_type_2_2').setValue(longData.emptyTank.toString());
         $$('window_type_2_3').setValue(longData.fullTank.toString());
-        $$('window_type_2_4').setValue(longData.baudRate232.toString());
+        // $$('window_type_2_4').setValue(longData.baudRate232.toString());
+        this.setBaudRate(longData.baudRate232);
         $$('window_type_2_5').setValue(longData.autoGetData.toString());
-        $$("switch_temp_compensation").setValue(longData.te);
+        // $$("switch_temp_compensation").setValue(longData.te);
     }
 
     listenerConnect = ()=>{
@@ -143,5 +161,19 @@ export default class GeneralSettings extends JetView {
     init(){
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerLongData(this.listenerLongData);
+
+        $$('window_type_2_4').attachEvent("onChange", (newValue, oldValue, config)=>{
+            console.log("change");
+            if(config != undefined){
+                console.log(newValue);
+                let value = Number(newValue);
+                llsModel.setLongData({baudRate232:value, baudRate485:value});
+            }
+
+        });
+    }
+
+    setBaudRate(value){
+        $$('window_type_2_4').setValue(value);
     }
 }

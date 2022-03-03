@@ -1,16 +1,21 @@
 import {crc8} from "easy-crc";
+
 const {SerialPort} = eval(`require('serialport')`);
 const EventEmitter = require('events');
 
-class MyEmitter extends EventEmitter {}
+class MyEmitter extends EventEmitter {
+}
+
 const myEmitter = new MyEmitter();
 
-export default class llsProtocol{
+export default class llsProtocol {
 
-     PR_RECEIVE = 0x3E;
-     PR_TRANSMIT =  0x31;
+    PR_RECEIVE = 0x3E;
+    PR_TRANSMIT = 0x31;
 
-     #password = [0,0,0,0,0,0,0,0];
+    #password = [0, 0, 0, 0, 0, 0, 0, 0];
+
+    #queueWrite = [];
 
     _settingPort = {
         portName: null,
@@ -26,6 +31,7 @@ export default class llsProtocol{
         this._settingPort.name = name;
 
         this.port = new SerialPort({path: portName, baudRate: baudRate});
+        this.#loopPortWrite();
         return new Promise(async (resolve, reject) => {
             this.open().then(() => {
                 resolve(this);
@@ -36,32 +42,66 @@ export default class llsProtocol{
         });
     }
 
-    async send(command, data = null, timeout = 1000){
+    // async send(command, data = null, timeout = 1000){
+    //     let timerId = null;
+    //     return new Promise(async (resolve, reject)=>{
+    //         this.port.pause();
+    //         let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
+    //         this.port.write(dataBuffer);
+    //         timerId = setTimeout(()=>{
+    //             reject("Error: timeout response message!");
+    //             this.port.resume();
+    //         }, timeout);
+    //         let dataParse = await this._eventDataParse(command);
+    //         clearInterval(timerId);
+    //         this.port.resume();
+    //         resolve(dataParse);
+    //     });
+    // };
+    async send(command, data = null, timeout = 1000) {
         let timerId = null;
-        return new Promise(async (resolve, reject)=>{
+        return new Promise(async (resolve, reject) => {
+            this.port.pause();
             let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
-            this.port.write(dataBuffer);
-            timerId = setTimeout(()=>{
+            this.#pushQueueWrite(dataBuffer);
+            //this.port.write(dataBuffer);
+            timerId = setTimeout(() => {
                 reject("Error: timeout response message!");
+                this.port.resume();
             }, timeout);
             let dataParse = await this._eventDataParse(command);
             clearInterval(timerId);
+            this.port.resume();
             resolve(dataParse);
         });
     };
 
-    _listenerResponseData(){
-        this.port.on('readable', ()=> {
-            this.port.pause();
-            setTimeout(()=>{
+
+    #pushQueueWrite(data) {
+        this.#queueWrite.push(data);
+    };
+
+    #loopPortWrite() {
+        setInterval(() => {
+            if (this.#queueWrite.length) {
+                let data = this.#queueWrite.shift();
+                this.port.write(data);
+            }
+        }, 500);
+    }
+
+    _listenerResponseData() {
+        this.port.on('readable', () => {
+            // this.port.pause();
+            setTimeout(() => {
                 let data = this.port.read();
-                if(!data) return;
+                if (!data) return;
                 console.log('Data:', data);
                 let dataPars = this._parseData(data);
-                if(dataPars){
+                if (dataPars) {
                     myEmitter.emit(`data:${dataPars.command}`, dataPars);
                 }
-                this.port.resume();
+                // this.port.resume();
             }, 100);
         })
 
@@ -74,13 +114,14 @@ export default class llsProtocol{
         //     }
         // })
     }
-    open(){
+
+    open() {
         return new Promise(((resolve, reject) => {
-            this.port.on('error', function(err) {
+            this.port.on('error', function (err) {
                 console.log('Error: ', err.message);
                 reject(err.message);
             });
-            this.port.on('open',  ()=>{
+            this.port.on('open', () => {
                 // open logic
                 console.log("serialPort is Open");
                 this._listenerResponseData();
@@ -90,39 +131,39 @@ export default class llsProtocol{
         }));
     }
 
-    async close(){
+    async close() {
         return new Promise((resolve, reject) => {
-            if(this.port.isOpen){
+            if (this.port.isOpen) {
                 this.port.close(error => {
                     console.log(error);
                     resolve(error);
                 })
-            }else{
+            } else {
                 resolve();
             }
         });
     }
 
-    _commandCreate(command, llsAdr, data){
+    _commandCreate(command, llsAdr, data) {
         let dataBuffer = [0x31, llsAdr];
-        switch(command){
-            case "find232":{ //для поиска по rs232
+        switch (command) {
+            case "find232": { //для поиска по rs232
                 dataBuffer.splice(1, 1); //удалим llsAdr
                 dataBuffer.push(0xFF);
                 dataBuffer.push(0x74);
                 dataBuffer.push(...this.password);
                 break;
             }
-            case 0x74:{ //проверить правильность пароля и адреса ДУТ
+            case 0x74: { //проверить правильность пароля и адреса ДУТ
                 dataBuffer.push(command);
                 dataBuffer.push(...this.#password);
                 break;
             }
-            case 0x47:{ //читать все настройки
+            case 0x47: { //читать все настройки
                 dataBuffer.push(command);
                 break;
             }
-            case 0x48:{
+            case 0x48: {
                 dataBuffer.push(command);
                 dataBuffer.push(...this.#password);
                 dataBuffer.push(0xff);
@@ -159,52 +200,54 @@ export default class llsProtocol{
                 console.log(dataBuffer);
                 break;
             }
-            case 0x06:{ //читать однократные данные
+            case 0x06: { //читать однократные данные
                 dataBuffer.push(command);
                 break;
             }
-            case 0x08:{ //калибровка на минимум
-                dataBuffer.push(command);
-                dataBuffer.push(...this.#password);
-                break;
-            }
-            case 0x09:{ //калибровка на максимум
+            case 0x08: { //калибровка на минимум
                 dataBuffer.push(command);
                 dataBuffer.push(...this.#password);
                 break;
             }
-            default: break;
+            case 0x09: { //калибровка на максимум
+                dataBuffer.push(command);
+                dataBuffer.push(...this.#password);
+                break;
+            }
+            default:
+                break;
         }
 
         dataBuffer = new Uint8Array(dataBuffer);
         return new Uint8Array([...dataBuffer, this._getCRC8(dataBuffer)]);
     };
 
-    _getCRC8(buffer){
+    _getCRC8(buffer) {
         let checksum = crc8('MAXIM', buffer);
         // console.log("CRC8: " + checksum.toString(16));
         return checksum;
     };
 
-    _checkCRC8(data){
+    _checkCRC8(data) {
         let arr = [...data];
         let crc8 = arr.pop();
 
-        if(crc8 == this._getCRC8(arr)){
+        if (crc8 == this._getCRC8(arr)) {
             return true;
-        }else{
+        } else {
             return false;
-        };
+        }
+        ;
     }
 
-    _parseData(data){
+    _parseData(data) {
         let [prefix, llsAdr, command, ...buff] = data;
-        if(prefix == this.PR_RECEIVE){
+        if (prefix == this.PR_RECEIVE) {
             let buffer = new Uint8Array(data).buffer;
             let dataView = new DataView(buffer);
 
-            switch(command){
-                case 0x06:{
+            switch (command) {
+                case 0x06: {
                     let shortDataResp = {};
                     shortDataResp.prefix = dataView.getUint8(0);
                     shortDataResp.llsAdr = dataView.getUint8(1);
@@ -215,16 +258,16 @@ export default class llsProtocol{
                     return shortDataResp;
                     break;
                 }
-                case 0x47:{
+                case 0x47: {
                     let longDataResp = {};
                     longDataResp.prefix = dataView.getUint8(0);
                     longDataResp.llsAdr = dataView.getUint8(1);
                     longDataResp.command = dataView.getUint8(2);
                     longDataResp.typeLls = dataView.getUint8(3);
-                    longDataResp.serialNumber = this._createArr(dataView,4,12);
-                    longDataResp.softwareVersion = this._createArr(dataView,16,8);
-                    longDataResp.bootVersion = this._createArr(dataView, 24,8);
-                    longDataResp.sizeOfSettings = dataView.getUint16(32,true);
+                    longDataResp.serialNumber = this._createArr(dataView, 4, 12);
+                    longDataResp.softwareVersion = this._createArr(dataView, 16, 8);
+                    longDataResp.bootVersion = this._createArr(dataView, 24, 8);
+                    longDataResp.sizeOfSettings = dataView.getUint16(32, true);
                     longDataResp.emptyTank = dataView.getUint32(34, true);
                     longDataResp.fullTank = dataView.getUint32(38, true);
                     longDataResp.llsAdr = dataView.getUint8(42);
@@ -254,7 +297,7 @@ export default class llsProtocol{
                     return longDataResp;
                     break;
                 }
-                case 0x48:{
+                case 0x48: {
                     let setLongData = {};
                     setLongData.prefix = dataView.getUint8(0);
                     setLongData.llsAdr = dataView.getUint8(1);
@@ -263,7 +306,7 @@ export default class llsProtocol{
                     return setLongData;
                     break;
                 }
-                case 0x74:{
+                case 0x74: {
                     let checkPassword = {};
                     checkPassword.prefix = dataView.getUint8(0);
                     checkPassword.llsAdr = dataView.getUint8(1);
@@ -272,7 +315,7 @@ export default class llsProtocol{
                     return checkPassword;
                     break;
                 }
-                case 0x08:{
+                case 0x08: {
                     let setMinimum = {};
                     setMinimum.prefix = dataView.getUint8(0);
                     setMinimum.llsAdr = dataView.getUint8(1);
@@ -282,7 +325,7 @@ export default class llsProtocol{
                     break;
                 }
 
-                case 0x09:{
+                case 0x09: {
                     let setMaximum = {};
                     setMaximum.prefix = dataView.getUint8(0);
                     setMaximum.llsAdr = dataView.getUint8(1);
@@ -291,24 +334,25 @@ export default class llsProtocol{
                     return setMaximum;
                     break;
                 }
-                default: break;
+                default:
+                    break;
             }
         }
         return null;
     }
 
-    _createArr(dataView,byteOffset, length){
+    _createArr(dataView, byteOffset, length) {
         let arr = [];
-        for(let i = 0; i<length; i++ ){
+        for (let i = 0; i < length; i++) {
             arr.push(dataView.getUint8((byteOffset + i)));
         }
         return arr;
     }
 
-    #getValue16(value16){
+    #getValue16(value16) {
         let data = value16;
         let arrData = [];
-        for(let i = 0; i < 2; i++){
+        for (let i = 0; i < 2; i++) {
             let byte = data & 0b11111111;
             arrData.push(byte);
             data = data >>> 8;
@@ -317,10 +361,10 @@ export default class llsProtocol{
         return arrData;
     }
 
-    #getValue32(value32){
+    #getValue32(value32) {
         let data = value32;
         let arrData = [];
-        for(let i = 0; i < 4; i++){
+        for (let i = 0; i < 4; i++) {
             let byte = data & 0b11111111;
             arrData.push(byte);
             data = data >>> 8;
@@ -328,12 +372,12 @@ export default class llsProtocol{
         console.log(arrData[0], arrData[1], arrData[2], arrData[3]);
         return arrData;
     }
-    
+
     _eventDataParse(command) {
         return new Promise((resolve, reject) => {
             myEmitter.once(`data:${command}`, (data) => {
                 // console.log(data);
-                 resolve(data);
+                resolve(data);
             });
         });
     }

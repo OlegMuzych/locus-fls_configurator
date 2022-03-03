@@ -75,16 +75,6 @@ export default class GeneralSettings extends JetView {
                     inputAlign: "center",
                     id: "window_type_2_4"
                 },
-                {
-                    view: "text",
-                    width: 850,
-                    height: 100,
-                    label: '<p>Скорость подключения</p>',
-                    labelWidth: 400,
-                    css: "window_type_2",
-                    inputAlign: "center",
-                    id: "window_type_2_4"
-                },
                 {height: 20},
                 {
                     view: "text",

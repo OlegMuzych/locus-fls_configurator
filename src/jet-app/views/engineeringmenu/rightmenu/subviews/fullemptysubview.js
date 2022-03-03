@@ -67,7 +67,7 @@ export default class FullEmptySubView extends JetView {
                             minRange: 0,
                             maxRange: 4095,
                             bands: [
-                                {value: 100, color: "#f0f0f0"},
+                                {value: 4095, color: "#f0f0f0"},
                             ],
                             scale: {
                                 step: 450,

@@ -33,7 +33,7 @@ class FindLls {
             this.testLls = null;
         }
         try {
-            this.testLls = await new Lls({path: path, baudRate: baudRate, llsData: 0xFF});
+            this.testLls = await new Lls({path: path, baudRate: baudRate, llsAdr: 0xFF});
             let data = await this.testLls.actions.checkPassword();
             let settingPort = {
                 llsAdr: data.llsAdr,

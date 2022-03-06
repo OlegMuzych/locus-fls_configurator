@@ -3,6 +3,15 @@ import llsModel from "../../../models/lls-model";
 
 export default class GeneralSettings extends JetView {
     config() {
+        let counterPeriod = {
+            view: "counter",
+            label: "Period, sec",
+            localId: 'counterPeriod',
+            step: 1,
+            value: 5,
+            min: 1,
+            max: 255,
+        }
         let general_config = {
             minWidth: 600,
             maxWidth: 850,
@@ -16,7 +25,7 @@ export default class GeneralSettings extends JetView {
                     rows: [
                         {
                             view: 'button',
-                            id:"test_button_1"
+                            id: "test_button_1"
                         },
                         {
                             view: "text",
@@ -65,18 +74,8 @@ export default class GeneralSettings extends JetView {
                     id: "window_type_2_3"
                 },
                 {height: 20},
-                // {
-                //     view: "text",
-                //     width: 850,
-                //     height: 100,
-                //     label: '<p>Скорость подключения</p>',
-                //     labelWidth: 400,
-                //     css: "window_type_2",
-                //     inputAlign: "center",
-                //     id: "window_type_2_4"
-                // },
                 {
-                    view:"combo",
+                    view: "combo",
                     width: 850,
                     height: 100,
                     label: '<p>Скорость подключения</p>',
@@ -84,25 +83,43 @@ export default class GeneralSettings extends JetView {
                     css: "window_type_2",
                     inputAlign: "center",
                     id: "window_type_2_4",
-                    options:[
-                        {value:"9600", id: 0x02},
-                        {value:"19200", id: 0x03},
-                        {value:"38400", id: 0x05},
-                        {value:"57600", id: 0x06},
-                        {value:"115200", id: 0x07},
+                    options: [
+                        {value: "9600", id: '2'},
+                        {value: "19200", id: '3'},
+                        {value: "38400", id: '5'},
+                        {value: "57600", id: '6'},
+                        {value: "115200", id: '7'},
                     ]
                 },
                 {height: 20},
+                // {
+                //     view: "text",
+                //     width: 850,
+                //     height: 100,
+                //     label: '<p>Автоматическая выдача данных</p>',
+                //     labelWidth: 400,
+                //     css: "window_type_2 ",
+                //     inputAlign: "center",
+                //     id: "window_type_2_5"
+                // },
+
                 {
-                    view: "text",
+                    view: "combo",
                     width: 850,
                     height: 100,
                     label: '<p>Автоматическая выдача данных</p>',
                     labelWidth: 400,
-                    css: "window_type_2 ",
+                    css: "window_type_2",
                     inputAlign: "center",
-                    id: "window_type_2_5"
+                    id: "window_type_2_5",
+                    options: [
+                        {value: "Выключена", id: '0'},
+                        {value: "Бинарная", id: '1'},
+                        {value: "Символьная", id: '2'},
+                    ]
                 },
+                counterPeriod,
+
                 {height: 20,},
                 {
                     css: "window_type_2",
@@ -125,8 +142,7 @@ export default class GeneralSettings extends JetView {
                         },
                     ]
                 },
-                {
-                },
+                {},
             ]
         };
         return general_config;
@@ -137,17 +153,17 @@ export default class GeneralSettings extends JetView {
         $$('window_type_2_1').setValue(longData.llsAdr.toString());
         $$('window_type_2_2').setValue(longData.emptyTank.toString());
         $$('window_type_2_3').setValue(longData.fullTank.toString());
-        // $$('window_type_2_4').setValue(longData.baudRate232.toString());
-        this.setBaudRate(longData.baudRate232);
-        $$('window_type_2_5').setValue(longData.autoGetData.toString());
-        // $$("switch_temp_compensation").setValue(longData.te);
+        this.setBaudRate(longData.baudRate232.toString());
+        this.setAutoGetData(longData.autoGetData.toString());
+        this.$$('counterPeriod').setValue(longData.periodOfDataIssuance.toString());
+        this.setThermalCompensation(longData.thermalCompensationType);
     }
 
-    listenerConnect = ()=>{
+    listenerConnect = () => {
         llsModel.getLongData();
     }
 
-    listenerDisconnect = ()=>{
+    listenerDisconnect = () => {
     }
 
     destroy() {
@@ -158,22 +174,82 @@ export default class GeneralSettings extends JetView {
     }
 
 
-    init(){
+    init() {
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerLongData(this.listenerLongData);
 
-        $$('window_type_2_4').attachEvent("onChange", (newValue, oldValue, config)=>{
+        $$('window_type_2_1').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
-            if(config != undefined){
+            if (config != undefined) {
                 console.log(newValue);
                 let value = Number(newValue);
-                llsModel.setLongData({baudRate232:value, baudRate485:value});
+                llsModel.setLongData({llsAdr: value});
             }
 
         });
+
+        $$('window_type_2_4').attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                let value = Number(newValue);
+                llsModel.setLongData({baudRate232: value, baudRate485: value});
+            }
+
+        });
+
+        $$('window_type_2_5').attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                let value = Number(newValue);
+                llsModel.setLongData({autoGetData: value});
+            }
+
+        })
+
+        this.$$('counterPeriod').attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                let value = Number(newValue);
+                llsModel.setLongData({periodOfDataIssuance: value});
+            }
+
+        });
+
+        this.$$('switch_temp_compensation').attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                if(newValue){
+                    llsModel.setLongData({thermalCompensationType: 0x05}); //DT winter
+                }else{
+                    llsModel.setLongData({thermalCompensationType: 0x00});
+                }
+            }
+        });
     }
 
-    setBaudRate(value){
+    setBaudRate(value) {
         $$('window_type_2_4').setValue(value);
     }
+
+    setAutoGetData(value) {
+        $$('window_type_2_5').setValue(value);
+    }
+
+    setThermalCompensation(value) {
+        switch (value) {
+            case 0x00: {
+                $$('switch_temp_compensation').setValue(false);
+                break;
+            }
+            default: {
+                $$('switch_temp_compensation').setValue(true);
+                break;
+            }
+        }
+    }
+
 }

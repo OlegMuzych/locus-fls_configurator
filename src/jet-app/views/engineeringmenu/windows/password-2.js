@@ -1,7 +1,7 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
 
-export default class PasswordWindow extends JetView {
+export default class PasswordWindow2 extends JetView {
     config() {
 
         let body = {

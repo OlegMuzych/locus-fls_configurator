@@ -1,4 +1,5 @@
 import {JetView} from "webix-jet";
+import llsModel from "../../../models/lls-model";
 
 export default class Calibrationsettings extends JetView {
     config() {
@@ -19,9 +20,9 @@ export default class Calibrationsettings extends JetView {
                                     view: "multitext",
                                     inputWidth: 200,
                                     value: "Susan Way, Dirk Gently, Clark Kent",
-                                    tooltip: function (obj) {
-                                        return "Guests: " + $$(obj.id).getValueHere();
-                                    }
+                                    // tooltip: function (obj) {
+                                    //     return "Guests: " + $$(obj.id).getValueHere();
+                                    // }
                                 }
                             ]
                         }
@@ -31,6 +32,20 @@ export default class Calibrationsettings extends JetView {
         };
 
         return calibration;
+    }
+    listenerTable(table){
+
+    }
+
+    destroy() {
+        super.destroy();
+        llsModel.clearListenerTable(this.listenerTable);
+    }
+
+    init(){
+        llsModel.addListenerTable(this.listenerTable);
+
+        llsModel.getTable().then();
     }
 }
 

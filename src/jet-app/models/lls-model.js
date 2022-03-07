@@ -57,6 +57,25 @@ class LlsModel {
         this._myEmitter.removeListener('longData', listener);
     }
 
+    /* Event Table */
+    addListenerTable(listener) {
+        this._myEmitter.on("table", listener);
+    }
+
+    clearListenerTable(listener) {
+        this._myEmitter.removeListener('table', listener);
+    }
+v
+
+    /* Event Command Error */
+    addListenerCommandError(listener) {
+        this._myEmitter.on("commandError", listener);
+    }
+
+    clearListenerCommandError(listener) {
+        this._myEmitter.removeListener('commandError', listener);
+    }
+
     getStatusConnect() {
         if (this.#statusLls == "connect") { //Для момента инициализации
             this._myEmitter.emit('isConnect');
@@ -64,7 +83,7 @@ class LlsModel {
     }
 
     async getLongData() {
-        if (this.#statusLls = 'connect') {
+        if (this.#statusLls == 'connect') {
             let dataLong = await this._lls.data.getLong();
             this._myEmitter.emit('longData', dataLong);
         } else {
@@ -73,14 +92,16 @@ class LlsModel {
     }
 
     async setLongData(data) {
-        if (this.#statusLls = 'connect') {
+        if (this.#statusLls == 'connect') {
             let resp = await this._lls.data.setLong(data);
             if (resp.status == 0x00) {
                 this.getLongData().then();
             } else if (resp.status == 0x01) {
                 console.log('Lls response error!');
+                this._myEmitter.emit('commandError', resp.status);
             } else if (resp.status == 0x02) {
                 console.log("Lls password error!");
+                this._myEmitter.emit('commandError', resp.status);
             }
         } else {
             return 'LLS not connect';
@@ -88,7 +109,7 @@ class LlsModel {
     }
 
     async setMaximum() {
-        if (this.#statusLls = 'connect') {
+        if (this.#statusLls == 'connect') {
             let resp = await this._lls.actions.setMaximum();
             if (resp.status == 0x00) {
                 this.getLongData().then();
@@ -103,7 +124,7 @@ class LlsModel {
     }
 
     async setMinimum() {
-        if (this.#statusLls = 'connect') {
+        if (this.#statusLls == 'connect') {
             let resp = await this._lls.actions.setMinimum();
             if (resp.status == 0x00) {
                 this.getLongData().then();
@@ -118,7 +139,7 @@ class LlsModel {
     }
 
     async resetLls() {
-        if (this.#statusLls = 'connect') {
+        if (this.#statusLls == 'connect') {
             let resp = await this._lls.actions.resetLls();
             if (resp.status == 0x00) {
                 this.getLongData().then();
@@ -131,12 +152,20 @@ class LlsModel {
             return 'LLS not connect';
         }
     }
+
+    async getTable(){
+        if (this.#statusLls == 'connect') {
+            let table = await this._lls.table.get();
+            this._myEmitter.emit('table', table);
+        } else {
+            return 'LLS not connect';
+        }
+    }
     setNewPassword(currentPassword, newPassword){
         return new Promise(async (resolve, reject) => {
-            if (this.#statusLls = 'connect') {
+            if (this.#statusLls == 'connect') {
                 let resp = await this._lls.actions.setNewPassword(currentPassword,newPassword);
                 if (resp.status == 0x00) {
-                    // this.getLongData().then();
                     resolve();
                 } else if (resp.status == 0x01) {
                     console.log('Lls response error!');
@@ -146,17 +175,16 @@ class LlsModel {
                     reject();
                 }
             } else {
+                console.log('LLS not connect');
                 reject();
-                // return 'LLS not connect';
             }
         });
     }
     setCurrentPassword(str){
         return new Promise(async (resolve, reject) => {
-            if (this.#statusLls = 'connect') {
+            if (this.#statusLls == 'connect') {
                 let resp = await this._lls.actions.setCurrentPassword(str);
                 if (resp.status == 0x00) {
-                    // this.getLongData().then();
                     resolve();
                 } else if (resp.status == 0x01) {
                     console.log('Lls response error!');
@@ -166,23 +194,10 @@ class LlsModel {
                     reject();
                 }
             } else {
+                console.log('LLS not connect');
                 reject();
-                // return 'LLS not connect';
             }
         });
-        // if (this.#statusLls = 'connect') {
-        //     let resp = await this._lls.actions.setCurrentPassword(str);
-        //
-        //     if (resp.status == 0x00) {
-        //         this.getLongData().then();
-        //     } else if (resp.status == 0x01) {
-        //         console.log('Lls response error!');
-        //     } else if (resp.status == 0x02) {
-        //         console.log("Lls password error!");
-        //     }
-        // } else {
-        //     return 'LLS not connect';
-        // }
     }
 
     async #loop() {

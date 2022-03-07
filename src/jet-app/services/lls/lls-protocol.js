@@ -238,6 +238,10 @@ export default class llsProtocol {
                 dataBuffer.push(...data.newPassword);
                 break;
             }
+            case 0x26: { //читать табллицу тарировки
+                dataBuffer.push(command);
+                break;
+            }
             default:
                 break;
         }
@@ -374,6 +378,22 @@ export default class llsProtocol {
                     newPassword.command = dataView.getUint8(2);
                     newPassword.code = dataView.getUint8(3);
                     return newPassword;
+                    break;
+                }
+
+                case 0x26: {
+                    let readTable = {};
+                    readTable.prefix = dataView.getUint8(0);
+                    readTable.llsAdr = dataView.getUint8(1);
+                    readTable.command = dataView.getUint8(2);
+                    readTable.countPoint = dataView.getUint8(3);
+                    readTable.levels = [];
+                    readTable.values = [];
+                    for(let i = 0; i < 30; i++ ){
+                        readTable.levels.push(dataView.getUint16((4+i*2), true));
+                        readTable.values.push(dataView.getUint16((6+i*2), true));
+                    }
+                    return readTable;
                     break;
                 }
                 default:

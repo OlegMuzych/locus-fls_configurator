@@ -1,6 +1,7 @@
 import llsProtocol from "./lls-protocol";
 import llsData from "./lls-data";
 import llsAction from "./lls-action";
+import llsTable from "./lls-table";
 
 export default class Lls{
     _settingPort = {};
@@ -21,6 +22,7 @@ export default class Lls{
                 this._llsProtocol = llsProtocol;
                 this.data = new llsData(this._llsProtocol);
                 this.actions = new llsAction(this._llsProtocol);
+                this.table = new llsTable(this._llsProtocol);
                 resolve(this);
             }).catch(
                 (e)=>{reject(e)}

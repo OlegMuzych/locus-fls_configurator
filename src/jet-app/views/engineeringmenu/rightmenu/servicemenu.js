@@ -1,6 +1,7 @@
 import {JetView} from "webix-jet";
 import ResetLlsWindow from "../windows/reset-lls";
 import llsModel from "../../../models/lls-model";
+import PasswordWindow from "../windows/password";
 
 export default class ServiceMenu extends JetView {
     config() {
@@ -29,7 +30,7 @@ export default class ServiceMenu extends JetView {
                             height: 70,
                             label: "Пароль",
                             css: "button_right_menu_top_1",
-                            id: "button_right_menu_top_2"
+                            id: "buttonPassword"
                         },
                         {}
                     ]
@@ -50,10 +51,10 @@ export default class ServiceMenu extends JetView {
             body: {
                 view: "list",
                 data: [
-                    {view: "button", id: "install", location: "Обновить прошивку", name: ""},
+                    {id: "updateFramework", location: "Обновить прошивку", name: ""},
                     {id: "resetLls", location: "Сброс всех настроек", name: ""},
                 ],
-                id:"list",
+                id: "list",
                 template: "#name# - #location#",
                 autoheight: true,
                 select: true
@@ -68,11 +69,21 @@ export default class ServiceMenu extends JetView {
         });
 
         this.resetLlsWindow = this.ui(ResetLlsWindow);
-        $$("list").attachEvent("onItemClick", (id,name, e)=>{
+        $$("list").attachEvent("onItemClick", (id, name, e) => {
             console.log("click");
-            if(id == 'resetLls'){
+            if (id == 'resetLls') {
                 this.resetLlsWindow.showWindow();
             }
+
+            if (id == 'updateFramework') {
+                //todo: show update framework window
+            }
+        });
+
+        this.passwordWindow = this.ui(PasswordWindow);
+        $$("buttonPassword").attachEvent("onItemClick", (id, name, e) => {
+            console.log("click");
+            this.passwordWindow.showWindow();
         });
     }
 }

@@ -5,13 +5,13 @@ export default class llsAction{
         this._llsProtocol = llsProtocol;
     };
 
-    async getShort(){
-        let shortSettingResponse = await this._llsProtocol.send(0x06);
-        console.log(shortSettingResponse);
-        this.shortSetting = shortSettingResponse;
-        console.log(this.shortSetting);
-        return this.shortSetting;
-    };
+    // async getShort(){
+    //     let shortSettingResponse = await this._llsProtocol.send(0x06);
+    //     console.log(shortSettingResponse);
+    //     this.shortSetting = shortSettingResponse;
+    //     console.log(this.shortSetting);
+    //     return this.shortSetting;
+    // };
 
     async setMaximum(){
         let {llsAdr, code: status} = await this._llsProtocol.send(0x09);
@@ -43,22 +43,65 @@ export default class llsAction{
             status: status
         }
     };
-    async setNewPassword(){};
+
+    async setCurrentPassword(value) {
+        // todo: promise
+        this._llsProtocol.password = value;
+        return await this.checkPassword();
+    };
+
+    async setNewPassword(currentPassword, newPassword){
+        let zeroPass1 = [0, 0, 0, 0, 0, 0, 0, 0];
+        let zeroPass2 = [0, 0, 0, 0, 0, 0, 0, 0];
+        let currentPassArr = currentPassword.split('');
+        let newPassArr = newPassword.split('');
+        if(currentPassArr.length <= 8){
+
+            zeroPass1.splice(0, currentPassArr.length, ...currentPassArr);
+        }else{
+            return 0;
+        }
+
+        if(newPassArr.length <= 8){
+            zeroPass2.splice(0, newPassArr.length, ...newPassArr);
+        }else{
+            return 0;
+        }
+
+        let {llsAdr, code: status} = await this._llsProtocol.send(0x16, {currentPassword: zeroPass1, newPassword: zeroPass2});
+        return {
+            llsAdr: llsAdr,
+            status: status,
+        }
+    };
 
     async getErrors(){};
 
-    async setBootMode(){};
+    async setBootMode(){
+        let {llsAdr, code: status} = await this._llsProtocol.send(0x67);
+        return {
+            llsAdr: llsAdr,
+            status: status,
+        }
+    };
+
+    async resetLls(){
+        let {llsAdr, code: status} = await this._llsProtocol.send("reset");
+        return {
+            llsAdr: llsAdr,
+            status: status,
+        }
+    };
 
 
 
-
-    set shortSetting({llsAdr, temperature, level, cnt}){
-        this._shortSetting.llsAdr = llsAdr;
-        this._shortSetting.temperature = temperature;
-        this._shortSetting.level = level;
-        this._shortSetting.cnt = cnt;
-    }
-    get shortSetting(){
-        return this._shortSetting;
-    }
+    // set shortSetting({llsAdr, temperature, level, cnt}){
+    //     this._shortSetting.llsAdr = llsAdr;
+    //     this._shortSetting.temperature = temperature;
+    //     this._shortSetting.level = level;
+    //     this._shortSetting.cnt = cnt;
+    // }
+    // get shortSetting(){
+    //     return this._shortSetting;
+    // }
 }

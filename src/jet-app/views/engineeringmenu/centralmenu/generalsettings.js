@@ -92,16 +92,20 @@ export default class GeneralSettings extends JetView {
                     ]
                 },
                 {height: 20},
-                // {
-                //     view: "text",
-                //     width: 850,
-                //     height: 100,
-                //     label: '<p>Автоматическая выдача данных</p>',
-                //     labelWidth: 400,
-                //     css: "window_type_2 ",
-                //     inputAlign: "center",
-                //     id: "window_type_2_5"
-                // },
+
+                {
+                    view: "radio",
+                    label: '<p>Выходное сообщение</p>',
+                    width: 850,
+                    height: 100,
+                    labelWidth: 400,
+                    value: 0,
+                    localId: 'outputParametersOfSensor',
+                    options: [
+                        {id: 0, value: "Уровень"}, // изначально выбранный элемент
+                        {id: 1, value: "Объем"}
+                    ]
+                },
 
                 {
                     view: "combo",
@@ -153,6 +157,7 @@ export default class GeneralSettings extends JetView {
         $$('window_type_2_1').setValue(longData.llsAdr.toString());
         $$('window_type_2_2').setValue(longData.emptyTank.toString());
         $$('window_type_2_3').setValue(longData.fullTank.toString());
+        this.$$('outputParametersOfSensor').setValue(longData.outputParametersOfSensor);
         this.setBaudRate(longData.baudRate232.toString());
         this.setAutoGetData(longData.autoGetData.toString());
         this.$$('counterPeriod').setValue(longData.periodOfDataIssuance.toString());
@@ -218,13 +223,23 @@ export default class GeneralSettings extends JetView {
 
         });
 
+        this.$$('outputParametersOfSensor').attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                let value = Number(newValue);
+                llsModel.setLongData({outputParametersOfSensor: value});
+            }
+
+        });
+
         this.$$('switch_temp_compensation').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                if(newValue){
+                if (newValue) {
                     llsModel.setLongData({thermalCompensationType: 0x05}); //DT winter
-                }else{
+                } else {
                     llsModel.setLongData({thermalCompensationType: 0x00});
                 }
             }

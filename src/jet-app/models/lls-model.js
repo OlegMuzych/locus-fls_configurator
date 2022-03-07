@@ -25,90 +25,164 @@ class LlsModel {
     addListenerShortData(listener) {
         this._myEmitter.on('shortData', listener);
     }
+
     clearListenerShortData(listener) {
         this._myEmitter.removeListener('shortData', listener);
     }
 
     /* Event is Connect */
-    addListenerIsConnect(listener){
-        this._myEmitter.on("isConnect", listener );
+    addListenerIsConnect(listener) {
+        this._myEmitter.on("isConnect", listener);
     }
+
     clearListenerIsConnect(listener) {
         this._myEmitter.removeListener('isConnect', listener);
     }
 
     /* Event is Disconnect */
-    addListenerIsDisconnect(listener){
-        this._myEmitter.on("isDisconnect", listener );
+    addListenerIsDisconnect(listener) {
+        this._myEmitter.on("isDisconnect", listener);
     }
+
     clearListenerIsDisconnect(listener) {
         this._myEmitter.removeListener('isDisconnect', listener);
     }
 
     /* Event Long Data */
-    addListenerLongData(listener){
-        this._myEmitter.on("longData", listener );
+    addListenerLongData(listener) {
+        this._myEmitter.on("longData", listener);
     }
+
     clearListenerLongData(listener) {
         this._myEmitter.removeListener('longData', listener);
     }
 
-    getStatusConnect(){
-        if(this.#statusLls == "connect"){ //Для момента инициализации
+    getStatusConnect() {
+        if (this.#statusLls == "connect") { //Для момента инициализации
             this._myEmitter.emit('isConnect');
         }
     }
 
-    async getLongData(){
-        if(this.#statusLls = 'connect'){
+    async getLongData() {
+        if (this.#statusLls = 'connect') {
             let dataLong = await this._lls.data.getLong();
             this._myEmitter.emit('longData', dataLong);
-        }else{
-            return 'LLS not connect';
-        }
-    }
-    async setLongData(data){
-        if(this.#statusLls = 'connect'){
-            let resp = await this._lls.data.setLong(data);
-            if (resp.status == 0x00){
-                this.getLongData().then();
-            }else if (resp.status == 0x01){
-                console.log('Lls response error!');
-            }else if (resp.status == 0x02){
-                console.log("Lls password error!");
-            }
-        }else{
+        } else {
             return 'LLS not connect';
         }
     }
 
-    async setMaximum(){
-        if(this.#statusLls = 'connect'){
-            let resp = await this._lls.actions.setMaximum();
-            if (resp.status == 0x00){
+    async setLongData(data) {
+        if (this.#statusLls = 'connect') {
+            let resp = await this._lls.data.setLong(data);
+            if (resp.status == 0x00) {
                 this.getLongData().then();
-            }else if (resp.status == 0x01){
+            } else if (resp.status == 0x01) {
                 console.log('Lls response error!');
-            }else if (resp.status == 0x02){
+            } else if (resp.status == 0x02) {
                 console.log("Lls password error!");
             }
-        }else{
+        } else {
             return 'LLS not connect';
         }
     }
-    async setMinimum(){
-        if(this.#statusLls = 'connect'){
-            let resp = await this._lls.actions.setMinimum();
-            if (resp.status == 0x00){
+
+    async setMaximum() {
+        if (this.#statusLls = 'connect') {
+            let resp = await this._lls.actions.setMaximum();
+            if (resp.status == 0x00) {
                 this.getLongData().then();
-            }else if (resp.status == 0x01){
+            } else if (resp.status == 0x01) {
                 console.log('Lls response error!');
-            }else if (resp.status == 0x02){
+            } else if (resp.status == 0x02) {
                 console.log("Lls password error!");
             }
-        }else{
+        } else {
             return 'LLS not connect';
         }
+    }
+
+    async setMinimum() {
+        if (this.#statusLls = 'connect') {
+            let resp = await this._lls.actions.setMinimum();
+            if (resp.status == 0x00) {
+                this.getLongData().then();
+            } else if (resp.status == 0x01) {
+                console.log('Lls response error!');
+            } else if (resp.status == 0x02) {
+                console.log("Lls password error!");
+            }
+        } else {
+            return 'LLS not connect';
+        }
+    }
+
+    async resetLls() {
+        if (this.#statusLls = 'connect') {
+            let resp = await this._lls.actions.resetLls();
+            if (resp.status == 0x00) {
+                this.getLongData().then();
+            } else if (resp.status == 0x01) {
+                console.log('Lls response error!');
+            } else if (resp.status == 0x02) {
+                console.log("Lls password error!");
+            }
+        } else {
+            return 'LLS not connect';
+        }
+    }
+    setNewPassword(currentPassword, newPassword){
+        return new Promise(async (resolve, reject) => {
+            if (this.#statusLls = 'connect') {
+                let resp = await this._lls.actions.setNewPassword(currentPassword,newPassword);
+                if (resp.status == 0x00) {
+                    // this.getLongData().then();
+                    resolve();
+                } else if (resp.status == 0x01) {
+                    console.log('Lls response error!');
+                    reject();
+                } else if (resp.status == 0x02) {
+                    console.log("Lls password error!");
+                    reject();
+                }
+            } else {
+                reject();
+                // return 'LLS not connect';
+            }
+        });
+    }
+    setCurrentPassword(str){
+        return new Promise(async (resolve, reject) => {
+            if (this.#statusLls = 'connect') {
+                let resp = await this._lls.actions.setCurrentPassword(str);
+                if (resp.status == 0x00) {
+                    // this.getLongData().then();
+                    resolve();
+                } else if (resp.status == 0x01) {
+                    console.log('Lls response error!');
+                    reject();
+                } else if (resp.status == 0x02) {
+                    console.log("Lls password error!");
+                    reject();
+                }
+            } else {
+                reject();
+                // return 'LLS not connect';
+            }
+        });
+        // if (this.#statusLls = 'connect') {
+        //     let resp = await this._lls.actions.setCurrentPassword(str);
+        //
+        //     if (resp.status == 0x00) {
+        //         this.getLongData().then();
+        //     } else if (resp.status == 0x01) {
+        //         console.log('Lls response error!');
+        //     } else if (resp.status == 0x02) {
+        //         console.log("Lls password error!");
+        //     }
+        // } else {
+        //     return 'LLS not connect';
+        // }
     }
 
     async #loop() {
@@ -140,16 +214,19 @@ class LlsModel {
                 case 'connect': {
                     await this.#delay();
                     console.log('Connect to LLS');
-                    try{
+                    try {
                         let dataShort = await this._lls.data.getShort();
                         this._myEmitter.emit('shortData', dataShort);
-                    }catch (e) {
+                    } catch (e) {
                         console.log(e);
                         this.#statusLls = 'noConnect';
                         this._myEmitter.emit('isDisconnect');
-                        try{
+                        try {
                             await this._lls.close();
-                        }catch (e){close()};
+                        } catch (e) {
+                            close()
+                        }
+                        ;
                         break;
                     }
                 }

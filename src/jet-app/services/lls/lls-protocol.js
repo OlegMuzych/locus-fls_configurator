@@ -14,6 +14,14 @@ export default class llsProtocol {
     PR_TRANSMIT = 0x31;
 
     #password = [0, 0, 0, 0, 0, 0, 0, 0];
+    set password(str){
+        let arr = str.split('');
+        let zeroPass = [0, 0, 0, 0, 0, 0, 0, 0];
+        if(arr.length <= 8){
+            zeroPass.splice(0, arr.length, ...arr);
+            this.#password = zeroPass;
+        }
+    }
 
     #queueWrite = [];
 
@@ -214,6 +222,22 @@ export default class llsProtocol {
                 dataBuffer.push(...this.#password);
                 break;
             }
+            case 0x67: { //переход в загрузчиик
+                dataBuffer.push(command);
+                dataBuffer.push(0x19);
+                break;
+            }
+            case "reset": { //сброс к заводским настойкам
+                dataBuffer.push(0x67);
+                dataBuffer.push(0x69);
+                break;
+            }
+            case 0x16: { //новый пароль
+                dataBuffer.push(command);
+                dataBuffer.push(...data.currentPassword);
+                dataBuffer.push(...data.newPassword);
+                break;
+            }
             default:
                 break;
         }
@@ -332,6 +356,24 @@ export default class llsProtocol {
                     setMaximum.command = dataView.getUint8(2);
                     setMaximum.code = dataView.getUint8(3);
                     return setMaximum;
+                    break;
+                }
+                case 0x67: {// переход в  загрузчик или зброс к заводскиим настройкам
+                    let goBootloader = {};
+                    goBootloader.prefix = dataView.getUint8(0);
+                    goBootloader.llsAdr = dataView.getUint8(1);
+                    goBootloader.command = dataView.getUint8(2);
+                    goBootloader.code = dataView.getUint8(3);
+                    return goBootloader;
+                    break;
+                }
+                case 0x16: {
+                    let newPassword = {};
+                    newPassword.prefix = dataView.getUint8(0);
+                    newPassword.llsAdr = dataView.getUint8(1);
+                    newPassword.command = dataView.getUint8(2);
+                    newPassword.code = dataView.getUint8(3);
+                    return newPassword;
                     break;
                 }
                 default:

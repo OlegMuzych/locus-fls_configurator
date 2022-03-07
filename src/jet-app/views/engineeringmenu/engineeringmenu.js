@@ -6,9 +6,16 @@ import LeftMenu from "./leftmenu/leftmenu";
 export default class EngineeringMenu extends JetView{
     config(){
 
-        let body = {
-            cols: [LeftMenu, CentralMenu, RightMenu],
-        }
+            let body = {
+                view: "scrollview",
+                scroll: "y",
+                maxHeight: 1000,
+                css: "style_body",
+                id: "dark",
+                body: {
+                    cols: [LeftMenu, CentralMenu, RightMenu],
+                }
+            }
 
         return body;
     }

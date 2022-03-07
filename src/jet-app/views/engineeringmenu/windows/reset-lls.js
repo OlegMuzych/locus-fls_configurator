@@ -1,4 +1,5 @@
 import {JetView} from "webix-jet";
+import llsModel from "../../../models/lls-model";
 
 export default class ResetLlsWindow extends JetView {
     config() {
@@ -67,6 +68,7 @@ export default class ResetLlsWindow extends JetView {
 
         this.$$('buttonOk').attachEvent("onItemClick", (id, e) => {
             console.log('click');
+            llsModel.resetLls().then();
             //todo: command resetLls
         });
     }

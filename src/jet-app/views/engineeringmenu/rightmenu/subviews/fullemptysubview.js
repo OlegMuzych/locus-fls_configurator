@@ -150,7 +150,8 @@ export default class FullEmptySubView extends JetView {
                                     label: "Редактировать значения",
                                     width: 460,
                                     height: 50,
-                                    css: "edit_values"
+                                    css: "edit_values",
+                                    id: "button_edit",
                                 }
                             ]
                         }
@@ -183,11 +184,61 @@ export default class FullEmptySubView extends JetView {
         $$('auto_calibration_1').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             llsModel.setMaximum().then();
+            $$("auto_calibration_1").disable();
+            $$("auto_calibration_set_1").disable();
+            $$("auto_calibration_2").enable();
+            $$("auto_calibration_set_2").enable();
         });
 
         $$('auto_calibration_2').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             llsModel.setMinimum().then();
+            $$("auto_calibration_2").disable();
+            $$("auto_calibration_set_2").disable();
+            $$("button_edit").enable();
+        });
+
+        $$("auto_calibration").disable();
+
+        $$("calibration_fuel").attachEvent("onChange", (newValue, oldValue, config)=>{
+            if(newValue){
+                $$("auto_calibration").disable();
+                $$("auto_calibration_1").disable();
+                $$("auto_calibration_set_1").disable();
+                $$("auto_calibration_2").disable();
+                $$("auto_calibration_set_2").disable();
+                $$("button_edit").enable();
+            }else{
+                $$("auto_calibration").enable();
+                $$("auto_calibration_1").disable();
+                $$("auto_calibration_set_1").disable();
+                $$("auto_calibration_2").disable();
+                $$("auto_calibration_set_2").disable();
+                $$("button_edit").disable();
+            }
+        });
+
+        $$("auto_calibration_set_1").attachEvent("onChange", (newValue, oldValue, config)=>{
+            if(newValue == "45000000"){
+                this.app.callEvent("app:fullemptysubview:fulltank:default", [true]);
+            }else{
+                this.app.callEvent("app:fullemptysubview:fulltank:default", [false]);
+            }
+        });
+
+        $$("auto_calibration_set_2").attachEvent("onChange", (newValue, oldValue, config)=>{
+            if(newValue == "1000000"){
+                this.app.callEvent("app:fullemptysubview:emptytank:default", [true]);
+            }else{
+                this.app.callEvent("app:fullemptysubview:emptytank:default", [false]);
+            }
+        });
+
+        $$('button_edit').attachEvent("onItemClick", (id, e)=>{
+            console.log('click');
+            $$("button_edit").disable();
+            $$("auto_calibration_1").enable();
+            $$("auto_calibration_set_1").enable();
         });
     }
 

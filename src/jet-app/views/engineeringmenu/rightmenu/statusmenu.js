@@ -103,22 +103,21 @@ export default class StatusMenu extends JetView{
         llsModel.addListenerShortData(this.listenerShortData);
         llsModel.getStatusConnect();
 
-        this.statusFullDefault = false;
-        this.statusEmptyDefault = false;
+        this.fullLevelDefault = false;
+        this.emptyLevelDefault = false;
 
-        this.on(this.app, "app:fullemptysubview:emptytank:default", (status) => {
-            this.statusEmptyDefault = status[0];
-            setCalibrateState(this.statusEmptyDefault && this.statusFullDefault);
-        })
-        this.on(this.app, "app:fullemptysubview:fulltank:default", (status) => {
-            this.statusFullDefault = status[0];
-            setCalibrateState(this.statusEmptyDefault && this.statusFullDefault);
-        })
+        this.on(this.app, "app:fullemptysubview:fullTankDefault", (status) => {
+            this.fullLevelDefault = status;
+            setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
+        });
+
+        this.on(this.app, "app:fullemptysubview:emptyTankDefault", (status) => {
+            this.emptyLevelDefault = status;
+            setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
+        });
     }
 }
 
-// let statusFullDefault = false;
-// let statusEmptyDefault = false;
 function setStatusConnect(status){
     if(status){
         $$("button_define_define_1").show();

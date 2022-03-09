@@ -161,6 +161,24 @@ v
             return 'LLS not connect';
         }
     }
+
+    async setTable(data) {
+        if (this.#statusLls == 'connect') {
+            let resp = await this._lls.table.set(data);
+            if (resp.status == 0x00) {
+                this.getTable().then();
+            } else if (resp.status == 0x01) {
+                console.log('Lls response error!');
+                this._myEmitter.emit('commandError', resp.status);
+            } else if (resp.status == 0x02) {
+                console.log("Lls password error!");
+                this._myEmitter.emit('commandError', resp.status);
+            }
+        } else {
+            return 'LLS not connect';
+        }
+    }
+
     setNewPassword(currentPassword, newPassword){
         return new Promise(async (resolve, reject) => {
             if (this.#statusLls == 'connect') {

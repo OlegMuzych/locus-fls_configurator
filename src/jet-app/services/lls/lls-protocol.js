@@ -66,7 +66,7 @@ export default class llsProtocol {
     //         resolve(dataParse);
     //     });
     // };
-    async send(command, data = null, timeout = 1000) {
+    async send(command, data = null, timeout = 2000) {
         let timerId = null;
         return new Promise(async (resolve, reject) => {
             this.port.pause();
@@ -242,6 +242,18 @@ export default class llsProtocol {
                 dataBuffer.push(command);
                 break;
             }
+            case 0x27: { //записать табллицу тарировки
+                dataBuffer.push(command);
+                dataBuffer.push(...this.#password);
+                dataBuffer.push(data.countPoint);
+                for(let i = 0; i < 30; i++){
+                    dataBuffer.push(...this.#getValue16(data.levels[i]));
+                    dataBuffer.push(...this.#getValue16(data.volumes[i]));
+                }
+                dataBuffer.push(0xff);
+                dataBuffer.push(0xff);
+                break;
+            }
             default:
                 break;
         }
@@ -388,10 +400,10 @@ export default class llsProtocol {
                     readTable.command = dataView.getUint8(2);
                     readTable.countPoint = dataView.getUint8(3);
                     readTable.levels = [];
-                    readTable.values = [];
+                    readTable.volumes = [];
                     for(let i = 0; i < 30; i++ ){
-                        readTable.levels.push(dataView.getUint16((4+i*2), true));
-                        readTable.values.push(dataView.getUint16((6+i*2), true));
+                        readTable.levels.push(dataView.getUint16((4+i*4), true));
+                        readTable.volumes.push(dataView.getUint16((6+i*4), true));
                     }
                     return readTable;
                     break;

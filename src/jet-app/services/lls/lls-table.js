@@ -10,8 +10,32 @@ export default class llsTable {
     async get() {
         let tableResponse = await this._llsProtocol.send(0x26);
         console.log(tableResponse);
-        // this.table = tableResponse;
-        // return this.table;
+        this.table = tableResponse;
+        return this.table;
     };
+
+    async set({levels, volumes, countPoint}) {
+
+        let newTable = {
+            levels: levels,
+            volumes: volumes,
+            countPoint: countPoint
+        }
+
+        let {code: status} = await this._llsProtocol.send(0x27, newTable);
+        return {
+            status: status,
+        }
+    }
+
+    set table({countPoint, levels, volumes}){
+        this.#table.countPoint = countPoint;
+        this.#table.levels = levels;
+        this.#table.volumes = volumes;
+    }
+
+    get table(){
+        return this.#table;
+    }
 }
 

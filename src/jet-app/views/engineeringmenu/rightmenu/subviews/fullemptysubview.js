@@ -199,6 +199,11 @@ export default class FullEmptySubView extends JetView {
         });
 
         $$("auto_calibration").disable();
+        $$("auto_calibration_1").disable();
+        $$("auto_calibration_set_1").disable();
+        $$("auto_calibration_2").disable();
+        $$("auto_calibration_set_2").disable();
+        $$("button_edit").enable();
 
         $$("calibration_fuel").attachEvent("onChange", (newValue, oldValue, config)=>{
             if(newValue){

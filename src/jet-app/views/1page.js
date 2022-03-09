@@ -601,8 +601,6 @@ export default class Page9View extends JetView {
                 ]
         };
 
-
-
         var right_menu_status={
             css:"right_menu_status",
             id:"right_menu_status",

@@ -285,6 +285,10 @@ export default class CalibrationSubView extends JetView {
         this.$$("button_add_step_2").attachEvent("onItemClick", (id, e) => {
             this.app.callEvent("app:calibrationsubview:removeRow", []);
         });
+
+        this.$$("closed_calibration_button_window_2").attachEvent("onItemClick", (id, e) => {
+            this.app.callEvent("app:calibrationsubview:finishCalibrate", []);
+        });
     }
 
     startShow(){

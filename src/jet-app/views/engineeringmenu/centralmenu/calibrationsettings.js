@@ -68,6 +68,7 @@ export default class CalibrationSettings extends JetView {
         console.log(table);
         this.removeAll();
         this.createTable(table.countPoint, table.levels, table.volumes);
+        this.checkContinueCalibrate();
     }
 
     listenerConnect = () => {
@@ -75,7 +76,6 @@ export default class CalibrationSettings extends JetView {
     }
 
     listenerShortData = (shortData) => {
-        console.log(shortData);
         this.currenLevel = shortData.level;
     }
 
@@ -120,6 +120,18 @@ export default class CalibrationSettings extends JetView {
             for(let i = 0; i < (countStep); i++){
                 let number = this.#number.length + 1;
                 this.addNumber(number);
+            }
+            this.saveTable();
+        });
+
+        this.on(this.app, "app:calibrationsubview:finishCalibrate", () => {
+            let  count = this.#number.length
+            for(let i = 0; i < count; i++){
+                if(this.#number.length > this.#level.length){
+                    this.$$(this.#number.pop()).destructor();
+                }else{
+                    break;
+                }
             }
             this.saveTable();
         });
@@ -270,6 +282,14 @@ export default class CalibrationSettings extends JetView {
         let table = this.parseTable();
         llsModel.setTable(table).then();
         console.log(table);
+    }
+
+    checkContinueCalibrate(){
+        let level =  [...this.#level];
+        if(this.$$(level.pop()).getValue() == "0"){
+            //todo: emit 'Are you continue calibration?'
+            webix.message('Are you continue calibration?');
+        }
     }
 
 }

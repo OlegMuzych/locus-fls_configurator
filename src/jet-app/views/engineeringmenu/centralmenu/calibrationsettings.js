@@ -84,6 +84,19 @@ export default class CalibrationSettings extends JetView {
         llsModel.addListenerTable(this.listenerTable);
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.getTable().then();
+
+        this.on(this.app, "app:calibrationsubview:addStep", () => {
+            let number = this.#number.length + 1;
+            this.addRow(number, 0, 0);
+        });
+
+        this.on(this.app, "app:calibrationsubview:removeRow", () => {
+            this.removeRow();
+        });
+
+        this.on(this.app, "app:calibrationsubview:clearTable", () => {
+            this.removeAll();
+        });
     }
 
     #number = [];
@@ -169,7 +182,7 @@ export default class CalibrationSettings extends JetView {
     parseTable(){
         let levels = this.initArray(30);
         let volumes = this.initArray(30);
-        let countPoint = this.#level.length;
+        let countPoint = this.#number.length;
 
         this.#level.forEach((value, index, array)=>{
             value = Number($$(value).getValue());
@@ -190,14 +203,14 @@ export default class CalibrationSettings extends JetView {
 
     initArray(count){
         let arr = new Array(count);
-        // arr.forEach((value,index, array)=>{
-        //     array[index] = 0;
-        // });
         for(let i = 0; i < arr.length; i++){
             arr[i] = 0;
         }
         return arr;
     }
+
+
+
 }
 
 

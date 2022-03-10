@@ -2,6 +2,153 @@ import {JetView} from "webix-jet";
 
 export default class CalibrationSubView extends JetView {
     config() {
+        let passportVolume = {
+            localId:'passportVolume',
+            cols: [
+                {},
+                {
+                    view: "label",
+                    label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Паспортный объем бака, л</p>",
+                    width: 190,
+                    height: 50,
+                },
+                {},
+                {view: "text", css: "full_window_text", width: 200, localId: "manual_volume_fuel_1"},
+                {}
+            ]
+        };
+
+        let startVolume = {
+            localId: 'startVolume',
+            cols: [
+                {},
+                {
+                    view: "label",
+                    label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Начальный объем, л</p>",
+                    width: 190,
+                    height: 50,
+                },
+                {},
+                {view: "text", css: "full_window_text", width: 200, localId: "initial_volume_fuel_1"},
+                {}
+            ]
+        };
+
+        let stepVolume = {
+            localId:'stepVolume',
+            cols: [
+                {},
+                {
+                    view: "label",
+                    label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Шаг, л</p>",
+                    width: 190,
+                    height: 50,
+                },
+                {},
+                {view: "text", css: "full_window_text", width: 200, localId: "step_liters_1"},
+                {}
+            ]
+        };
+
+        let countStep = {
+            localId:'countStep',
+            cols: [
+                {},
+                {
+                    view: "label",
+                    label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Количество шагов</p>",
+                    width: 190,
+                    height: 50,
+                },
+                {},
+                {view: "text", width: 200, css: "full_window_text", readonly: true, localId: "counts_step"},
+                {}
+            ]
+        };
+
+        let buttonRemoveStep = {
+            localId:'buttonRemoveStep',
+            cols: [
+                {},
+                {
+                    view: "button",
+                    label: "Удалить шаг",
+                    width: 480,
+                    height: 50,
+                    css: "set_step_drain_button_2",
+                    id: "button_add_step_2"
+                },
+                {}
+
+            ]
+        };
+
+        let buttonAddStep = {
+            localId:'buttonAddStep',
+            cols: [
+                {},
+                {
+                    view: "button",
+                    label: "Добавить шаг",
+                    width: 480,
+                    height: 50,
+                    css: "set_step_drain_button_2",
+                    id: "button_add_step_1"
+                },
+                {}
+
+            ]
+        };
+
+        let buttonClearTable = {
+            localId: 'buttonClearTable',
+            cols: [
+                {},
+                {
+                    view: "button",
+                    label: "Очистить таблицу",
+                    width: 480,
+                    height: 50,
+                    css: "clear_table_drain_button_2",
+                    localId:'clearTable'
+                },
+                {}
+
+            ]
+        };
+
+        let buttonStopCalibrate = {
+            localId: 'buttonStopCalibrate',
+            cols: [
+                {},
+                {
+                    view: "button",
+                    label: "Завершить тарировку",
+                    width: 480,
+                    height: 50,
+                    id: "closed_calibration_button_window_2",
+                    css: "button_next_drain_window_1_2"
+                },
+                {}
+            ]
+        };
+
+        let buttonNext = {
+            localId:'buttonNext',
+            cols: [
+                {},
+                {
+                    view: "button",
+                    label: "Продолжить",
+                    width: 480,
+                    height: 50,
+                    id: "central_menu_and_right_menu_calibration_next_window_button",
+                    css: "button_next_drain_window_1_2"
+                },
+                {}
+            ]
+        };
+
         let right_menu_calibration = {
             id: "right_menu_calibration_button",
             cols: [
@@ -34,66 +181,13 @@ export default class CalibrationSubView extends JetView {
                 {
                     height: 50,
                 },
-                {
-                    cols: [
-                        {},
-                        {
-                            view: "label",
-                            label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Паспортный объем бака, л</p>",
-                            width: 190,
-                            height: 50,
-                        },
-                        {},
-                        {view: "text", css: "full_window_text", width: 200, id: "manual_volume_fuel_1"},
-                        {}
-                    ]
-                },
-                {
-                    cols: [
-                        {},
-                        {
-                            view: "label",
-                            label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Начальный объем, л</p>",
-                            width: 190,
-                            height: 50,
-                        },
-                        {},
-                        {view: "text", css: "full_window_text", width: 200, id: "initial_volume_fuel_1"},
-                        {}
-                    ]
-
-                },
-                {
-                    cols: [
-                        {},
-                        {
-                            view: "label",
-                            label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Шаг, л</p>",
-                            width: 190,
-                            height: 50,
-                        },
-                        {},
-                        {view: "text", css: "full_window_text", width: 200, id: "step_liters_1"},
-                        {}
-                    ]
-                },
+                passportVolume,
+                startVolume,
+                stepVolume,
                 {
                     height: 100,
                 },
-                {
-                    cols: [
-                        {},
-                        {
-                            view: "button",
-                            label: "Продолжить",
-                            width: 480,
-                            height: 50,
-                            id: "central_menu_and_right_menu_calibration_next_window_button",
-                            css: "button_next_drain_window_1_2"
-                        },
-                        {}
-                    ]
-                }
+                buttonNext,
             ]
         };
 
@@ -105,145 +199,30 @@ export default class CalibrationSubView extends JetView {
                 {
                     height: 50,
                 },
-                {
-                    cols: [
-                        {},
-                        {
-                            view: "label",
-                            label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Паспортный объем бака, л</p>",
-                            width: 190,
-                            height: 50,
-                        },
-                        {},
-                        {view: "text", width: 200, css: "full_window_text", readonly: true, id: "manual_volume_fuel_2"},
-                        {}
-                    ]
-                },
-                {
-                    cols: [
-                        {},
-                        {
-                            view: "label",
-                            label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Начальный объем, л</p>",
-                            width: 190,
-                            height: 50,
-                        },
-                        {},
-                        {
-                            view: "text",
-                            width: 200,
-                            css: "full_window_text",
-                            readonly: true,
-                            id: "initial_volume_fuel_2"
-                        },
-                        {}
-                    ]
-
-                },
-                {
-                    cols: [
-                        {},
-                        {
-                            view: "label",
-                            label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Шаг, л</p>",
-                            width: 190,
-                            height: 50,
-                        },
-                        {},
-                        {view: "text", width: 200, css: "full_window_text", readonly: true, id: "step_liters_2"},
-                        {}
-                    ]
-                },
+                passportVolume,
+                startVolume,
+                stepVolume,
                 {
                     height: 30,
                 },
-                {
-                    cols: [
-                        {},
-                        {
-                            view: "label",
-                            label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Количество шагов</p>",
-                            width: 190,
-                            height: 50,
-                        },
-                        {},
-                        {view: "text", width: 200, css: "full_window_text", readonly: true, id: "counts_step"},
-                        {}
-                    ]
-                },
+                buttonNext,
+                countStep,
                 {
                     height: 20,
                 },
-                {
-                    cols: [
-                        {},
-                        {
-                            view: "button",
-                            label: "Добавить шаг",
-                            width: 480,
-                            height: 50,
-                            css: "set_step_drain_button_2",
-                            id: "button_add_step_1"
-                        },
-                        {}
-
-                    ]
-                },
+                buttonAddStep,
                 {
                     height: 10,
                 },
-                {
-                    cols: [
-                        {},
-                        {
-                            view: "button",
-                            label: "Удалить шаг",
-                            width: 480,
-                            height: 50,
-                            css: "set_step_drain_button_2",
-                            id: "button_add_step_2"
-                        },
-                        {}
-
-                    ]
-                },
+                buttonRemoveStep,
                 {
                     height: 60,
                 },
-                {
-                    cols: [
-                        {},
-                        {
-                            view: "button",
-                            label: "Очистить таблицу",
-                            width: 480,
-                            height: 50,
-                            css: "clear_table_drain_button_2"
-                        },
-                        {}
-
-                    ]
-                },
+                buttonClearTable,
                 {
                     height: 10,
                 },
-                {
-                    cols: [
-                        {},
-                        {
-                            view: "button",
-                            label: "Завершить тарировку",
-                            width: 480,
-                            height: 50,
-                            id: "closed_calibration_button_window_2",
-                            css: "button_next_drain_window_1_2"
-                        },
-                        {}
-
-                    ]
-                }
-
-
+                buttonStopCalibrate,
             ]
         };
 
@@ -261,7 +240,7 @@ export default class CalibrationSubView extends JetView {
         }
 
         let body = {
-            rows:[
+            rows: [
                 right_menu_calibration,
                 myMultiview,
             ]
@@ -271,6 +250,8 @@ export default class CalibrationSubView extends JetView {
     }
 
     init() {
+        this.startShow();
+
         this.$$("buttonFuelDrain").attachEvent("onItemClick", (id, e) => {
             $$('fuelDrain').show();
         });
@@ -278,8 +259,65 @@ export default class CalibrationSubView extends JetView {
         this.$$("buttonFuelFill").attachEvent("onItemClick", (id, e) => {
             $$('fuelFill').show();
         });
+
+        $$("central_menu_and_right_menu_calibration_next_window_button").attachEvent("onItemClick", (id, e) => {
+            let countStep = this.calcCountStep(this.$$("manual_volume_fuel_1").getValue(), this.$$("step_liters_1").getValue());
+            if(countStep > 0){
+                this.$$('counts_step').setValue(countStep);
+                this.nextShow();
+            }
+        });
+
+        $$("closed_calibration_button_window_2").attachEvent("onItemClick", (id, e) => {
+            this.startShow();
+        });
+
+        this.$$("clearTable").attachEvent("onItemClick", (id, e) => {
+            this.app.callEvent("app:calibrationsubview:clearTable", []);
+        });
+
+        this.$$("button_add_step_1").attachEvent("onItemClick", (id, e) => {
+            this.app.callEvent("app:calibrationsubview:addStep", []);
+        });
+
+        this.$$("button_add_step_2").attachEvent("onItemClick", (id, e) => {
+            this.app.callEvent("app:calibrationsubview:removeRow", []);
+        });
     }
 
+    startShow(){
+        this.$$('passportVolume').show();
+        this.$$('startVolume').show();
+        this.$$('stepVolume').show();
+        this.$$('countStep').hide();
+        this.$$('buttonNext').show();
+        this.$$('buttonAddStep').hide();
+        this.$$('buttonRemoveStep').hide();
+        this.$$('buttonClearTable').hide();
+        this.$$('buttonStopCalibrate').hide();
+    }
+
+    nextShow(){
+        this.$$('passportVolume').show();
+        this.$$('startVolume').show();
+        this.$$('stepVolume').show();
+        this.$$('countStep').show();
+        this.$$('buttonNext').hide();
+        this.$$('buttonAddStep').show();
+        this.$$('buttonRemoveStep').show();
+        this.$$('buttonClearTable').show();
+        this.$$('buttonStopCalibrate').show();
+    }
+
+    calcCountStep(volumeTank, volumeStep){
+        let countStep = 0;
+        volumeTank = Number(volumeTank);
+        volumeStep = Number(volumeStep);
+        if(volumeTank > 0 && volumeStep > 0){
+            countStep = Math.floor(volumeTank/volumeStep);
+        }
+        return countStep;
+    }
 }
 
 

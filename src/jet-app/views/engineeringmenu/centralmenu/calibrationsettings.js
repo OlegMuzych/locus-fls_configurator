@@ -44,18 +44,18 @@ export default class CalibrationSettings extends JetView {
                 //         {view:'button', label:'deleteLevel',click:()=>this.removeLevel()},
                 //         {view:'button', label:'deleteVolume',click:()=>this.removeVolume()},
                 //     ]},
-                {
-                    cols: [
-                        {view: 'button', label: 'addRow', click: () => this.addRow(123, 123, 123)},
-                        {view: 'button', label: 'deleteRow', click: () => this.removeRow()},
-                        {view: 'button', label: 'delAll', click: () => this.removeAll()},
-                        {view: 'button', label: 'parseAll', click: () => {
-                            let table = this.parseTable();
-                            llsModel.setTable(table).then();
-                            console.log(table);
-                            }},
-                    ]
-                },
+                // {
+                //     cols: [
+                //         {view: 'button', label: 'addRow', click: () => this.addRow(123, 123, 123)},
+                //         {view: 'button', label: 'deleteRow', click: () => this.removeRow()},
+                //         {view: 'button', label: 'delAll', click: () => this.removeAll()},
+                //         {view: 'button', label: 'parseAll', click: () => {
+                //             let table = this.parseTable();
+                //             llsModel.setTable(table).then();
+                //             console.log(table);
+                //             }},
+                //     ]
+                // },
                 table
             ],
 
@@ -101,14 +101,17 @@ export default class CalibrationSettings extends JetView {
             }else{
                 this.addStep(0,0);
             }
+            this.saveTable();
         });
 
         this.on(this.app, "app:calibrationsubview:removeRow", () => {
             this.removeStep();
+            this.saveTable();
         });
 
         this.on(this.app, "app:calibrationsubview:clearTable", () => {
             this.removeAll();
+            this.saveTable();
         });
 
         this.on(this.app, "app:calibrationsubview:countStep", (countStep) => {
@@ -118,6 +121,7 @@ export default class CalibrationSettings extends JetView {
                 let number = this.#number.length + 1;
                 this.addNumber(number);
             }
+            this.saveTable();
         });
     }
 
@@ -131,6 +135,7 @@ export default class CalibrationSettings extends JetView {
             align: 'center',
             label: value,
         });
+        this.addChangeEvent(id);
         this.#number.push(id);
     }
 
@@ -140,6 +145,7 @@ export default class CalibrationSettings extends JetView {
             align: 'center',
             value: value,
         });
+        this.addChangeEvent(id);
         this.#level.push(id);
     }
 
@@ -149,6 +155,7 @@ export default class CalibrationSettings extends JetView {
             align: 'center',
             value: value,
         });
+        this.addChangeEvent(id);
         this.#volume.push(id);
     }
 
@@ -249,7 +256,21 @@ export default class CalibrationSettings extends JetView {
         return arr;
     }
 
+    addChangeEvent(id){
+        this.$$(id).attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                this.saveTable();
+            }
+        });
+    }
 
+    saveTable(){
+        let table = this.parseTable();
+        llsModel.setTable(table).then();
+        console.log(table);
+    }
 
 }
 

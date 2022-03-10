@@ -264,6 +264,7 @@ export default class CalibrationSubView extends JetView {
             let countStep = this.calcCountStep(this.$$("manual_volume_fuel_1").getValue(), this.$$("step_liters_1").getValue());
             if(countStep > 0){
                 this.$$('counts_step').setValue(countStep);
+                this.app.callEvent("app:calibrationsubview:countStep", [countStep]);
                 this.nextShow();
             }
         });

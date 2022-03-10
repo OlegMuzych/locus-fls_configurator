@@ -86,16 +86,25 @@ export default class CalibrationSettings extends JetView {
         llsModel.getTable().then();
 
         this.on(this.app, "app:calibrationsubview:addStep", () => {
-            let number = this.#number.length + 1;
-            this.addRow(number, 0, 0);
+            this.addStep();
+            // let number = this.#number.length + 1;
+            // this.addRow(number, 0, 0);
         });
 
         this.on(this.app, "app:calibrationsubview:removeRow", () => {
-            this.removeRow();
+            this.removeStep();
         });
 
         this.on(this.app, "app:calibrationsubview:clearTable", () => {
             this.removeAll();
+        });
+
+        this.on(this.app, "app:calibrationsubview:countStep", (countStep) => {
+            this.removeAll();
+            for(let i = 0; i < countStep; i++){
+                let number = this.#number.length + 1;
+                this.addNumber(number);
+            }
         });
     }
 
@@ -158,6 +167,16 @@ export default class CalibrationSettings extends JetView {
 
     }
 
+    addStep(level, volume){
+        if(this.#level.length < this.#number.length){
+            this.addLevel(level);
+            this.addVolume(volume);
+        }else{
+            let number = this.#number.length + 1;
+            this.addRow(number, 0, 0);
+        }
+    }
+
     removeRow() {
         this.removeNumber();
         this.removeLevel();
@@ -171,6 +190,14 @@ export default class CalibrationSettings extends JetView {
         this.#number = [];
         this.#level = [];
         this.#volume = [];
+    }
+    removeStep(){
+        if(this.#level.length < this.#number.length){
+            this.removeLevel();
+            this.removeVolume();
+        }else{
+            this.removeRow();
+        }
     }
 
     createTable(countStep, levels, volumes) {

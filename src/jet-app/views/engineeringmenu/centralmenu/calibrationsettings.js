@@ -74,21 +74,33 @@ export default class CalibrationSettings extends JetView {
         llsModel.getTable().then();
     }
 
+    listenerShortData = (shortData) => {
+        console.log(shortData);
+        this.currenLevel = shortData.level;
+    }
+
     destroy() {
         super.destroy();
         llsModel.clearListenerTable(this.listenerTable);
-        llsModel.clearListenerIsConnect(this.listenerConnect)
+        llsModel.clearListenerIsConnect(this.listenerConnect);
+        llsModel.clearListenerShortData(this.listenerShortData);
     }
 
     init() {
         llsModel.addListenerTable(this.listenerTable);
         llsModel.addListenerIsConnect(this.listenerConnect);
+        llsModel.addListenerShortData(this.listenerShortData);
         llsModel.getTable().then();
 
-        this.on(this.app, "app:calibrationsubview:addStep", () => {
-            this.addStep();
-            // let number = this.#number.length + 1;
-            // this.addRow(number, 0, 0);
+        this.on(this.app, "app:calibrationsubview:addStep", (volumeStep) => {
+            if(this.#volume.length){
+                let volumes = [ ...this.#volume];
+                let lastVolumeStep = this.$$(volumes.pop()).getValue();
+                let nextVolumes  = Number(lastVolumeStep) + Number(volumeStep);
+                this.addStep(this.currenLevel ,nextVolumes);
+            }else{
+                this.addStep(0,0);
+            }
         });
 
         this.on(this.app, "app:calibrationsubview:removeRow", () => {
@@ -101,7 +113,8 @@ export default class CalibrationSettings extends JetView {
 
         this.on(this.app, "app:calibrationsubview:countStep", (countStep) => {
             this.removeAll();
-            for(let i = 0; i < countStep; i++){
+            this.addRow(1,0,0);
+            for(let i = 0; i < (countStep); i++){
                 let number = this.#number.length + 1;
                 this.addNumber(number);
             }
@@ -173,7 +186,7 @@ export default class CalibrationSettings extends JetView {
             this.addVolume(volume);
         }else{
             let number = this.#number.length + 1;
-            this.addRow(number, 0, 0);
+            this.addRow(number, level, volume);
         }
     }
 

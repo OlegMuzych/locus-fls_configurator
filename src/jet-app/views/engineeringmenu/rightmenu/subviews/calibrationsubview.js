@@ -278,7 +278,8 @@ export default class CalibrationSubView extends JetView {
         });
 
         this.$$("button_add_step_1").attachEvent("onItemClick", (id, e) => {
-            this.app.callEvent("app:calibrationsubview:addStep", []);
+            let  volumeStep = this.$$('step_liters_1').getValue();
+            this.app.callEvent("app:calibrationsubview:addStep", [Number(volumeStep)]);
         });
 
         this.$$("button_add_step_2").attachEvent("onItemClick", (id, e) => {

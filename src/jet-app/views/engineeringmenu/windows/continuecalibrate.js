@@ -68,8 +68,9 @@ export default class ContinueCalibrateWindow extends JetView {
 
         this.$$('buttonOk').attachEvent("onItemClick", (id, e) => {
             console.log('click');
+            this.app.callEvent("app:continuecalibratewindow:continueCalibrate", []);
+            this.getRoot().hide();
         });
-
     }
 
     showWindow() {

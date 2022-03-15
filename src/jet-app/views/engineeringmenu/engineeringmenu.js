@@ -33,7 +33,7 @@ export default class EngineeringMenu extends JetView{
     init(){
         llsModel.addListenerCommandError(this.listenerCommandError);
 
-        this.passwordWindow = this.ui(PasswordWindow2);
+        this.passwordWindow = this.ui(PasswordWindow);
 
         this.continueWindow = this.ui(ContinueCalibrateWindow);
 
@@ -47,7 +47,6 @@ export default class EngineeringMenu extends JetView{
 
         }
         if(status == 0x02){
-
             this.passwordWindow.showWindow();
         }
     }

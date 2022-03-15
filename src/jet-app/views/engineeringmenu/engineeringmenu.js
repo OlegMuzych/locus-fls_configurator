@@ -21,7 +21,7 @@ export default class EngineeringMenu extends JetView{
             }
         }
 
-        return body;
+        return body;s
     }
 
 
@@ -33,8 +33,11 @@ export default class EngineeringMenu extends JetView{
     init(){
         llsModel.addListenerCommandError(this.listenerCommandError);
 
+        this.passwordWindow = this.ui(PasswordWindow2);
+
+        this.continueWindow = this.ui(ContinueCalibrateWindow);
+
         this.on(this.app, "app:calibrationsubview:continue", () => {
-            this.continueWindow = this.ui(ContinueCalibrateWindow);
             this.continueWindow.showWindow();
         });
     }
@@ -44,8 +47,8 @@ export default class EngineeringMenu extends JetView{
 
         }
         if(status == 0x02){
-            // this.passwordWindow = this.ui(PasswordWindow2);
-            // this.passwordWindow.showWindow();
+
+            this.passwordWindow.showWindow();
         }
     }
 }

@@ -161,13 +161,13 @@ export default class PasswordWindow extends JetView {
                                                         view: "label",
                                                         label: "<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Новый пароль</p>",
                                                         width: 200,
-                                                        id: "windows_password_label_3",
+                                                        // id: "windows_password_label_3",
                                                         css: "windows_password_label"
                                                     },
                                                     {
                                                         view: "text",
                                                         height: 50,
-                                                        id: "textNewPass",
+                                                        // id: "textNewPass",
                                                         css: "password_windows_set",
                                                         inputAlign: "center",
                                                         pattern: {mask: "####", allow: /[0-9]/g}

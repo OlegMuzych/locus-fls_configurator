@@ -3,15 +3,31 @@ import llsModel from "../../../models/lls-model";
 
 export default class GeneralSettings extends JetView {
     config() {
-        let counterPeriod = {
-            view: "counter",
-            label: "Period, sec",
-            localId: 'counterPeriod',
-            step: 1,
-            value: 5,
-            min: 1,
-            max: 255,
-        }
+
+
+        // let counterPeriod = {
+        //     css: "window_type_2",
+        //     rows:[
+        //         {
+        //             cols:[
+        //                 {
+        //                     view: "label",
+        //                     label: "Задержка выдачи, сек."
+        //                 },
+        //                 {
+        //                     view: "counter",
+        //                     localId: 'counterPeriod',
+        //                     step: 1,
+        //                     value: 5,
+        //                     min: 1,
+        //                     max: 255,
+        //                 }
+        //             ]
+        //
+        //         }
+        //     ]
+        //
+        // }
         let general_config = {
             minWidth: 600,
             maxWidth: 850,
@@ -24,8 +40,7 @@ export default class GeneralSettings extends JetView {
                 {
                     rows: [
                         {
-                            view: 'button',
-                            id: "test_button_1"
+                            height: 20,
                         },
                         {
                             view: "text",
@@ -96,8 +111,9 @@ export default class GeneralSettings extends JetView {
                 {
                     view: "radio",
                     label: '<p>Выходное сообщение</p>',
+                    css: "window_type_2",
                     width: 850,
-                    height: 100,
+                    height: 60,
                     labelWidth: 400,
                     value: 0,
                     localId: 'outputParametersOfSensor',
@@ -106,7 +122,6 @@ export default class GeneralSettings extends JetView {
                         {id: 1, value: "Объем"}
                     ]
                 },
-
                 {
                     view: "combo",
                     width: 850,
@@ -122,7 +137,41 @@ export default class GeneralSettings extends JetView {
                         {value: "Символьная", id: '2'},
                     ]
                 },
-                counterPeriod,
+                {
+                    height: 0,
+                },
+
+                {
+                    width: 850,
+                    height: 100,
+                    css: "window_type_3",
+                    cols:[
+                        {
+                            view:"label",
+                            label:'<p>Период выдачи данных, сек.</p>',
+                            width: 350,
+                            height: 100,
+                        },
+                        // {
+                        //     width: 64,
+                        // },
+                        {
+                            view: "counter",
+                            localId: 'counterPeriod',
+                            step: 1,
+                            value: 5,
+                            min: 1,
+                            max: 255,
+                            width: 200,
+
+                        },
+
+                    ]
+
+                },
+
+
+                // counterPeriod,
 
                 {height: 20,},
                 {

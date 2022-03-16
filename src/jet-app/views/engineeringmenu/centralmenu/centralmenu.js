@@ -55,6 +55,8 @@ export default class CentralMenu extends JetView{
 
         let myMultiview = {
             view: "multiview",
+            css:"style_general_rows",
+            id:"style_general_rows_1",
             cells: [
                 {
                     id: 'generalSettings', rows: [GeneralSettings],

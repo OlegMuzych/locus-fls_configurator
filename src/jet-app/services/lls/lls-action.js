@@ -56,7 +56,6 @@ export default class llsAction{
         let currentPassArr = currentPassword.split('');
         let newPassArr = newPassword.split('');
         if(currentPassArr.length <= 8){
-
             zeroPass1.splice(0, currentPassArr.length, ...currentPassArr);
         }else{
             return 0;

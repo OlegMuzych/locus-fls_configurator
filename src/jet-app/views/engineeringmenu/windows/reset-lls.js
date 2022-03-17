@@ -69,6 +69,7 @@ export default class ResetLlsWindow extends JetView {
         this.$$('buttonOk').attachEvent("onItemClick", (id, e) => {
             console.log('click');
             llsModel.resetLls().then();
+            this.getRoot().hide();
             //todo: command resetLls
         });
     }

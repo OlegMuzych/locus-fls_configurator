@@ -109,7 +109,7 @@ export default class FiltrationSettings extends JetView {
 
                 },
                 {
-                    height: 320,
+                    height: 420,
                     css: "filters_rows",
                     id: "degree_of_filtration_2",
                     rows: [
@@ -136,7 +136,7 @@ export default class FiltrationSettings extends JetView {
                                         },
                                         {
                                             view: "text",
-                                            value: "Квадратичная",
+                                            // value: "Квадратичная",
                                             width: 210,
                                             inputAlign: "center",
                                             inputHeight: 54,
@@ -221,7 +221,7 @@ export default class FiltrationSettings extends JetView {
                                                     inputHeight: 50,
                                                     css: "full_window_text",
                                                     id: "window_text_time",
-                                                    // readonly: true,
+                                                    readonly: true,
                                                     height:50,
                                                 },
                                             ]
@@ -293,7 +293,7 @@ export default class FiltrationSettings extends JetView {
                                                     inputHeight: 50,
                                                     css: "full_window_text",
                                                     id:"window_text_mediana",
-                                                    // readonly: true,
+                                                    readonly: true,
                                                     height:50,
                                                 },
                                             ]
@@ -316,6 +316,144 @@ export default class FiltrationSettings extends JetView {
                                 }
                             ]
                         },
+                        {
+                            id: "degree_of_filtration_5",
+                            rows: [
+                                {
+
+                                    height: 100,
+                                    cols: [
+                                        {
+                                            minWidth: 10,
+                                        },
+                                        {
+
+                                            view: "label",
+                                            label: "<p>Ковариация (Q)</p>",
+                                            width: 280,
+                                            css:"text_color_filter",
+                                            id:"text_color_filter_3",
+                                        },
+                                        {
+                                            // width: 30,
+                                        },
+                                        {
+                                            paddingY: 41,
+                                            rows:[
+                                                {
+                                                    view: "text",
+                                                    // value: "Квадратичная",
+                                                    width: 210,
+                                                    inputAlign: "center",
+                                                    inputHeight: 54,
+                                                    css: "full_window_text",
+                                                    // readonly: true,
+                                                    id:"text_q"
+                                                },
+                                                // {
+                                                //     view: "slider",
+                                                //     value: "0",
+                                                //     name: "s2",
+                                                //     minWidth: 120,
+                                                //     min: 0,
+                                                //     max: 7,
+                                                //     css: "slider_1",
+                                                //     title: webix.template("#value#"),
+                                                //     id:"slider_filter_2",
+                                                // }
+                                            ]
+                                        },
+                                        // {
+                                        //     paddingY: 40,
+                                        //     rows:[
+                                        //         {
+                                        //             view: "text",
+                                        //             value: "0",
+                                        //             name: "s1",
+                                        //             width: 50,
+                                        //             inputAlign: "center",
+                                        //             inputHeight: 50,
+                                        //             css: "full_window_text",
+                                        //             id:"window_text_mediana",
+                                        //             // readonly: true,
+                                        //             height:50,
+                                        //         },
+                                        //     ]
+                                        // },
+                                        {
+                                            // width: 30,
+                                        },
+                                        {
+                                            view: "button",
+                                            type: "label",
+                                            label: "Применить",
+                                            width: 150,
+                                            id: "button_slider_gen_value_3",
+                                            css: "button_slider_gen_value"
+                                        },
+                                        {
+
+                                        },
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            id: "degree_of_filtration_6",
+                            rows: [
+                                {
+
+                                    height: 100,
+                                    cols: [
+                                        {
+                                            minWidth: 10,
+                                        },
+                                        {
+
+                                            view: "label",
+                                            label: "<p>Ковариация (R)</p>",
+                                            width: 280,
+                                            css:"text_color_filter",
+                                            id:"text_color_filter_4",
+                                        },
+                                        {
+                                            // width: 30,
+                                        },
+                                        {
+                                            paddingY: 41,
+                                            rows:[
+                                                {
+                                                    view: "text",
+                                                    // value: "Квадратичная",
+                                                    width: 210,
+                                                    inputAlign: "center",
+                                                    inputHeight: 54,
+                                                    css: "full_window_text",
+                                                    // readonly: true,
+                                                    id:"text_r"
+                                                },
+                                            ]
+                                        },
+
+                                        {
+                                            // width: 30,
+                                        },
+                                        {
+                                            view: "button",
+                                            type: "label",
+                                            label: "Применить",
+                                            width: 150,
+                                            id: "button_slider_gen_value_4",
+                                            css: "button_slider_gen_value"
+                                        },
+                                        {
+
+                                        },
+                                    ]
+                                }
+                            ]
+                        },
+
                     ]
                 },
                 // {popup:true },
@@ -328,6 +466,8 @@ export default class FiltrationSettings extends JetView {
         $$('window_text_time').setValue(longData.averagingLength.toString());
         $$('slider_filter_2').setValue(longData.medianLength.toString());
         $$('window_text_mediana').setValue(longData.medianLength.toString());
+        $$('text_q').setValue(longData.coefficientQ.toString());
+        $$('text_r').setValue(longData.coefficientR.toString());
         this.setFiltrationType(longData.filtrationType);
     }
     destroy() {
@@ -345,6 +485,30 @@ export default class FiltrationSettings extends JetView {
             llsModel.setLongData({medianLength:$$('slider_filter_2').getValue()});
         });
 
+        $$('button_slider_gen_value_3').attachEvent("onItemClick", (id, e)=>{
+            let test = parseFloat($$('text_q').getValue());
+            llsModel.setLongData({coefficientQ:test});
+        });
+
+        $$('button_slider_gen_value_4').attachEvent("onItemClick", (id, e)=>{
+            let test = parseFloat($$('text_r').getValue());
+            llsModel.setLongData({coefficientR:test});
+        });
+
+        $$('image_button_filter_1').attachEvent("onItemClick", (id, e)=>{
+            $$('slider_filter_1').setValue(5);
+            llsModel.setLongData({filtrationType:1, averagingLength:$$('slider_filter_1').getValue()});  // усреднение
+        });
+
+        $$('image_button_filter_2').attachEvent("onItemClick", (id, e)=>{
+            $$('slider_filter_2').setValue(3);
+            llsModel.setLongData({filtrationType:2, medianLength:$$('slider_filter_2').getValue()}); //медиана
+        });
+
+        $$('image_button_filter_3').attachEvent("onItemClick", (id, e)=>{
+        });
+
+        $$('degree_of_filtration_3').hide();
         const popupFilterType = {
             // Кнопка выбрать в окне фильтрация -------------------------------//
             view: "popup",
@@ -386,15 +550,31 @@ export default class FiltrationSettings extends JetView {
         switch(number){
             case 0:{
                 $$("filter_open_windows").setValue("Выключена");
+                $$('degree_of_filtration_3').hide();
+                $$('degree_of_filtration_4').hide();
+                $$('degree_of_filtration_5').hide();
+                $$('degree_of_filtration_6').hide();
                 break;}
             case 1:{
                 $$("filter_open_windows").setValue("Усреднение");
+                $$('degree_of_filtration_3').show();
+                $$('degree_of_filtration_4').hide();
+                $$('degree_of_filtration_5').hide();
+                $$('degree_of_filtration_6').hide();
                 break;}
             case 2:{
                 $$("filter_open_windows").setValue("Медиана");
+                $$('degree_of_filtration_3').hide();
+                $$('degree_of_filtration_4').show();
+                $$('degree_of_filtration_5').hide();
+                $$('degree_of_filtration_6').hide();
                 break;}
             case 3:{
                 $$("filter_open_windows").setValue("Адаптивный");
+                $$('degree_of_filtration_3').hide();
+                $$('degree_of_filtration_4').hide();
+                $$('degree_of_filtration_5').show();
+                $$('degree_of_filtration_6').show();
                 break;}
             default:{
                 $$("filter_open_windows").setValue("ВЫКЛЮЧЕНА");

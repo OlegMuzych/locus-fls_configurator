@@ -198,6 +198,7 @@ v
             }
         });
     }
+
     setCurrentPassword(str){
         return new Promise(async (resolve, reject) => {
             if (this.#statusLls == 'connect') {

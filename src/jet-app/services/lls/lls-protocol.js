@@ -176,22 +176,22 @@ export default class llsProtocol {
                 dataBuffer.push(...this.#password);
                 dataBuffer.push(0xff);
                 dataBuffer.push(0xff);
-                dataBuffer.push(...this.#getValue32(data.emptyTank));
-                dataBuffer.push(...this.#getValue32(data.fullTank));
+                dataBuffer.push(...this.#getUint32(data.emptyTank));
+                dataBuffer.push(...this.#getUint32(data.fullTank));
                 dataBuffer.push(data.llsAdr);
                 dataBuffer.push(data.autoGetData);
                 dataBuffer.push(data.periodOfDataIssuance);
-                dataBuffer.push(...this.#getValue16(data.minLevel));
-                dataBuffer.push(...this.#getValue16(data.maxLevel));
+                dataBuffer.push(...this.#getUint16(data.minLevel));
+                dataBuffer.push(...this.#getUint16(data.maxLevel));
                 dataBuffer.push(data.outputParametersOfSensor);
                 dataBuffer.push(data.filtrationType);
                 dataBuffer.push(data.averagingLength);
                 dataBuffer.push(data.medianLength);
-                dataBuffer.push(...this.#getValue32(data.coefficientQ));
-                dataBuffer.push(...this.#getValue32(data.coefficientR));
+                dataBuffer.push(...this.#getUint32(data.coefficientQ));
+                dataBuffer.push(...this.#getUint32(data.coefficientR));
                 dataBuffer.push(data.thermalCompensationType);
-                dataBuffer.push(...this.#getValue32(data.coefficientK1));
-                dataBuffer.push(...this.#getValue32(data.coefficientK2));
+                dataBuffer.push(...this.#getUint32(data.coefficientK1));
+                dataBuffer.push(...this.#getUint32(data.coefficientK2));
                 dataBuffer.push(data.interpolationType);
                 dataBuffer.push(data.baudRate232);
                 dataBuffer.push(data.baudRate485);
@@ -247,8 +247,8 @@ export default class llsProtocol {
                 dataBuffer.push(...this.#password);
                 dataBuffer.push(data.countPoint);
                 for(let i = 0; i < 30; i++){
-                    dataBuffer.push(...this.#getValue16(data.levels[i]));
-                    dataBuffer.push(...this.#getValue16(data.volumes[i]));
+                    dataBuffer.push(...this.#getUint16(data.levels[i]));
+                    dataBuffer.push(...this.#getUint16(data.volumes[i]));
                 }
                 dataBuffer.push(0xff);
                 dataBuffer.push(0xff);
@@ -319,8 +319,8 @@ export default class llsProtocol {
                     longDataResp.filtrationType = dataView.getUint8(50);
                     longDataResp.averagingLength = dataView.getUint8(51);
                     longDataResp.medianLength = dataView.getUint8(52);
-                    longDataResp.coefficientQ = dataView.getUint32(53, true);
-                    longDataResp.coefficientR = dataView.getUint32(57, true);
+                    longDataResp.coefficientQ = dataView.getFloat32(53, true);
+                    longDataResp.coefficientR = dataView.getFloat32(57, true);
                     longDataResp.thermalCompensationType = dataView.getUint8(61);
                     longDataResp.coefficientK1 = dataView.getUint32(62, true);
                     longDataResp.coefficientK2 = dataView.getUint32(66, true);
@@ -423,7 +423,7 @@ export default class llsProtocol {
         return arr;
     }
 
-    #getValue16(value16) {
+    #getUint16(value16) {
         let data = value16;
         let arrData = [];
         for (let i = 0; i < 2; i++) {
@@ -435,7 +435,7 @@ export default class llsProtocol {
         return arrData;
     }
 
-    #getValue32(value32) {
+    #getUint32(value32) {
         let data = value32;
         let arrData = [];
         for (let i = 0; i < 4; i++) {
@@ -445,6 +445,17 @@ export default class llsProtocol {
         }
         console.log(arrData[0], arrData[1], arrData[2], arrData[3]);
         return arrData;
+    }
+
+    #getFloat32(float32) {
+        //todo: for коэфициент q and r
+        // let data = float32;
+        // // let arrData = [];
+        // let buffer = new ArrayBuffer(data.length);
+        // let floatView = new Float32Array(buffer).set(data);
+        // let byteView = new Uint8Array(buffer);
+        // // console.log(arrData[0], arrData[1], arrData[2], arrData[3]);
+        // // return arrData;
     }
 
     _eventDataParse(command) {

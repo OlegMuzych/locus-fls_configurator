@@ -6,7 +6,7 @@ export default class CalibrationSubView extends JetView {
     config() {
         let tabBarCalibrate = {
             view: "tabbar",
-            id: "tabbar",
+            localId: "tabbar",
             value: "fuelFill",
             css: "button_type_calibration_1",
             height: 70,
@@ -40,8 +40,11 @@ export default class CalibrationSubView extends JetView {
     }
 
     init() {
-
+        this.on(this.app, "app:calibrationSettings:continueCalibrate", () => {
+            this.$$('tabbar').setValue("fuelFill");
+        });
     }
 }
+
 
 

@@ -37,7 +37,7 @@ export default class EngineeringMenu extends JetView{
 
         this.continueWindow = this.ui(ContinueCalibrateWindow);
 
-        this.on(this.app, "app:calibrationsubview:continue", () => {
+        this.on(this.app, "app:calibrationSettings:continueWindow", () => {
             this.continueWindow.showWindow();
         });
     }

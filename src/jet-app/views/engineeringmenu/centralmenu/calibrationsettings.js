@@ -150,6 +150,35 @@ export default class CalibrationSettings extends JetView {
             }
             this.saveTable();
         });
+
+        this.on(this.app, "app:continueCalibrateWindow:continueCalibrate", () => {
+            let countStep = this.#number.length;
+            let maxVolume = 0;
+            for(let i = 1; i< countStep; i++){
+                if(maxVolume < Number(this.$$(this.#volume[i]).getValue())){
+                    maxVolume = Number(this.$$(this.#volume[i]).getValue());
+                }
+            }
+            let countStepNoEmpty = 0;
+            for(let i = 1; i < countStep; i++){
+                if(Number(this.$$(this.#volume[i]).getValue()) == 0){
+                    countStepNoEmpty += 1;
+                    break;
+                }
+            }
+            if(countStepNoEmpty != 0){
+                let volumeStep = maxVolume/countStepNoEmpty;
+                let volume = volumeStep * countStep;
+            }
+            let volumeStep = maxVolume/countStepNoEmpty;
+            let volume = volumeStep * countStep;
+
+            for(let i = 0; i < (countStep - countStepNoEmpty); i++){
+                // this.removeLevel();
+                // this.removeVolume();
+            }
+            this.app.callEvent("app:calibrationSettings:continueCalibrate", [volume, volumeStep]);
+        });
     }
 
     #number = [];
@@ -304,7 +333,7 @@ export default class CalibrationSettings extends JetView {
         if(this.$$(level.pop()).getValue() == "0"){
             //todo: emit 'Are you continue calibration?'
             // webix.message('Are you continue calibration?');
-            this.app.callEvent("app:calibrationsubview:continue", []);
+            // this.app.callEvent("app:calibrationSettings:continueWindow", []);
         }
     }
 

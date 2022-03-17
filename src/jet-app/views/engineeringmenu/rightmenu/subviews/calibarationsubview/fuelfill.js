@@ -221,6 +221,11 @@ export default class FuelFillView extends JetView {
         this.$$("closed_calibration_button_window_2").attachEvent("onItemClick", (id, e) => {
             this.app.callEvent("app:calibrationsubview:finishCalibrate", []);
         });
+
+        this.on(this.app, "app:calibrationSettings:continueCalibrate", (volume, stepVolume) => {
+            this.$$('manual_volume_fuel_1').setValue(volume);
+            this.$$('step_liters_1').setValue(stepVolume);
+        });
     }
 
     startShow(){

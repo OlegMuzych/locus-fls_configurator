@@ -5,6 +5,7 @@ import LeftMenu from "./leftmenu/leftmenu";
 import llsModel from "../../models/lls-model";
 import PasswordWindow from "./windows/password";
 import PasswordWindow2 from "./windows/password-2";
+import ContinueCalibrateWindow from "./windows/continuecalibrate";
 
 export default class EngineeringMenu extends JetView{
     config() {
@@ -33,7 +34,7 @@ export default class EngineeringMenu extends JetView{
             }
         }
 
-        return body;
+        return body;s
     }
 
 
@@ -43,8 +44,15 @@ export default class EngineeringMenu extends JetView{
     }
 
     init(){
-
         llsModel.addListenerCommandError(this.listenerCommandError);
+
+        this.passwordWindow = this.ui(PasswordWindow);
+
+        this.continueWindow = this.ui(ContinueCalibrateWindow);
+
+        this.on(this.app, "app:calibrationSettings:continueWindow", () => {
+            this.continueWindow.showWindow();
+        });
     }
 
     listenerCommandError = (status)=>{
@@ -52,8 +60,7 @@ export default class EngineeringMenu extends JetView{
 
         }
         if(status == 0x02){
-            // this.passwordWindow = this.ui(PasswordWindow2);
-            // this.passwordWindow.showWindow();
+            this.passwordWindow.showWindow();
         }
     }
 }

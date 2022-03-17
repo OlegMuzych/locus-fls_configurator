@@ -104,6 +104,21 @@ export default class CalibrationSettings extends JetView {
             this.saveTable();
         });
 
+        this.on(this.app, "app:calibrationsubview:drain:addStep", (volumeStep) => {
+            if(this.#volume.length){
+                let volumes = [ ...this.#volume];
+                let lastVolumeStep = this.$$(volumes.pop()).getValue();
+                let nextVolumes  = Number(lastVolumeStep) - Number(volumeStep);
+                if(nextVolumes <= 0){
+                    nextVolumes = 0;
+                }
+                this.addStep(this.currenLevel ,nextVolumes);
+            }else{
+                this.addStep(0,0);
+            }
+            this.saveTable();
+        });
+
         this.on(this.app, "app:calibrationsubview:removeRow", () => {
             this.removeStep();
             this.saveTable();
@@ -114,9 +129,9 @@ export default class CalibrationSettings extends JetView {
             this.saveTable();
         });
 
-        this.on(this.app, "app:calibrationsubview:countStep", (countStep) => {
+        this.on(this.app, "app:calibrationsubview:countStep", (countStep, firstVolume) => {
             this.removeAll();
-            this.addRow(1,0,0);
+            this.addRow(1,0, firstVolume);
             for(let i = 0; i < (countStep); i++){
                 let number = this.#number.length + 1;
                 this.addNumber(number);
@@ -134,6 +149,35 @@ export default class CalibrationSettings extends JetView {
                 }
             }
             this.saveTable();
+        });
+
+        this.on(this.app, "app:continueCalibrateWindow:continueCalibrate", () => {
+            let countStep = this.#number.length;
+            let maxVolume = 0;
+            for(let i = 1; i< countStep; i++){
+                if(maxVolume < Number(this.$$(this.#volume[i]).getValue())){
+                    maxVolume = Number(this.$$(this.#volume[i]).getValue());
+                }
+            }
+            let countStepNoEmpty = 0;
+            for(let i = 1; i < countStep; i++){
+                if(Number(this.$$(this.#volume[i]).getValue()) == 0){
+                    countStepNoEmpty += 1;
+                    break;
+                }
+            }
+            if(countStepNoEmpty != 0){
+                let volumeStep = maxVolume/countStepNoEmpty;
+                let volume = volumeStep * countStep;
+            }
+            let volumeStep = maxVolume/countStepNoEmpty;
+            let volume = volumeStep * countStep;
+
+            for(let i = 0; i < (countStep - countStepNoEmpty); i++){
+                // this.removeLevel();
+                // this.removeVolume();
+            }
+            this.app.callEvent("app:calibrationSettings:continueCalibrate", [volume, volumeStep]);
         });
     }
 
@@ -288,7 +332,8 @@ export default class CalibrationSettings extends JetView {
         let level =  [...this.#level];
         if(this.$$(level.pop()).getValue() == "0"){
             //todo: emit 'Are you continue calibration?'
-            webix.message('Are you continue calibration?');
+            // webix.message('Are you continue calibration?');
+            // this.app.callEvent("app:calibrationSettings:continueWindow", []);
         }
     }
 

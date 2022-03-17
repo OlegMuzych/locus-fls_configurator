@@ -16,7 +16,7 @@ export default class PasswordWindow extends JetView {
                 rows: [
                     {
                         view: "segmented",
-                        id: 'tabbar_windows_password',
+                        localId: 'tabbar_windows_password',
                         css: "tabbar_windows_password",
                         multiview: true,
                         height: 80,
@@ -60,7 +60,7 @@ export default class PasswordWindow extends JetView {
                                                 view: "button",
                                                 type: "image",
                                                 image: "assets/images/info_black.svg",
-                                                id: "closed_1",
+                                                localId: "closed_1",
                                                 css: "set_password_button_icon",
                                                 width: 100,
                                                 height: 100,
@@ -72,7 +72,7 @@ export default class PasswordWindow extends JetView {
                                                 view: "label",
                                                 label: "<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Введите пароль для изменения настроек</p>",
                                                 width: 420,
-                                                id: "windows_password_label",
+                                                localId: "windows_password_label",
                                                 css: "windows_password_label"
                                             },
                                             {}
@@ -87,7 +87,7 @@ export default class PasswordWindow extends JetView {
                                             {
                                                 view: "text",
                                                 height: 50,
-                                                id: "textCurrentPass",
+                                                localId: "textCurrentPass",
                                                 css: "password_windows_set",
                                                 inputAlign: "center",
                                                 pattern: {mask: "####", allow: /[0-9]/g}
@@ -104,14 +104,14 @@ export default class PasswordWindow extends JetView {
                                             {
                                                 view: "button",
                                                 label: "OK",
-                                                id: "buttonCurrentPassOk",
+                                                localId: "buttonCurrentPassOk",
                                                 css: "set_password_button"
                                             },
                                             {},
                                             {
                                                 view: "button",
                                                 label: "Отмена",
-                                                id: "buttonCancel_1",
+                                                localId: "buttonCancel_1",
                                                 css: "set_password_button"
                                             },
                                             {}
@@ -137,13 +137,13 @@ export default class PasswordWindow extends JetView {
                                                         view: "label",
                                                         label: "<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Старый пароль</p>",
                                                         width: 200,
-                                                        id: "windows_password_label_2",
+                                                        localId: "windows_password_label_2",
                                                         css: "windows_password_label"
                                                     },
                                                     {
                                                         view: "text",
                                                         height: 50,
-                                                        id: "textCurrentPass_2",
+                                                        localId: "textCurrentPass_2",
                                                         css: "password_windows_set",
                                                         inputAlign: "center",
                                                         pattern: {mask: "####", allow: /[0-9]/g},
@@ -161,13 +161,13 @@ export default class PasswordWindow extends JetView {
                                                         view: "label",
                                                         label: "<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Новый пароль</p>",
                                                         width: 200,
-                                                        id: "windows_password_label_3",
+                                                        localId: "windows_password_label_3",
                                                         css: "windows_password_label"
                                                     },
                                                     {
                                                         view: "text",
                                                         height: 50,
-                                                        id: "textNewPass",
+                                                        localId: "textNewPass",
                                                         css: "password_windows_set",
                                                         inputAlign: "center",
                                                         pattern: {mask: "####", allow: /[0-9]/g}
@@ -184,14 +184,14 @@ export default class PasswordWindow extends JetView {
                                                     {
                                                         view: "button",
                                                         label: "Изменить",
-                                                        id: "buttonNewPassOk",
+                                                        localId: "buttonNewPassOk",
                                                         css: "set_password_button"
                                                     },
                                                     {},
                                                     {
                                                         view: "button",
                                                         label: "Отмена",
-                                                        id: "buttonCancel_2",
+                                                        localId: "buttonCancel_2",
                                                         css: "set_password_button"
                                                     },
                                                     {}
@@ -223,27 +223,27 @@ export default class PasswordWindow extends JetView {
 
         this.$$('buttonCurrentPassOk').attachEvent("onItemClick", (id, e) => {
             console.log('click');
-            let pass = $$("textCurrentPass").getValue();
+            let pass = this.$$("textCurrentPass").getValue();
             llsModel.setCurrentPassword(pass)
                 .then(()=>{
 
                 })
                 .catch(()=>{
-                    $$("textCurrentPass").setValue('');
+                    this.$$("textCurrentPass").setValue('');
                 })
         });
 
         this.$$('buttonNewPassOk').attachEvent("onItemClick", (id, e) => {
             console.log('click');
-            let currentPass = $$("textCurrentPass_2").getValue();
-            let newPass = $$('textNewPass').getValue();
+            let currentPass = this.$$("textCurrentPass_2").getValue();
+            let newPass = this.$$('textNewPass').getValue();
             llsModel.setNewPassword(currentPass, newPass)
                 .then(()=>{
 
                 })
                 .catch(()=>{
-                    $$("textCurrentPass_2").setValue('');
-                    $$("textNewPass").setValue('');
+                    this.$$("textCurrentPass_2").setValue('');
+                    this.$$("textNewPass").setValue('');
                 })
         });
 

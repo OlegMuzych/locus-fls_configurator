@@ -11,7 +11,7 @@ export default class ContinueCalibrateWindow extends JetView {
             id: "window_show_4",
             modal: true,
             css: "window_show",
-            head: {
+            body: {
                 height: 400,
                 rows: [
                     {},
@@ -24,15 +24,15 @@ export default class ContinueCalibrateWindow extends JetView {
                                 view: "button",
                                 type: "image",
                                 image: "assets/images/Warning.png",
-                                id: "closed_2",
+                                // id: "closed_2",
                                 css: "set_password_button_icon",
                                 height: 100,
                             },
                             {
                                 view: "label",
-                                label: "<p style='font-size: 20px; position: relative; top: -10px; text-align: center;'>:Продолжить заполнять таблицу тарировки?</p>",
+                                label: "<p style='font-size: 20px; position: relative; top: -10px; text-align: center;'>Продолжить заполнять таблицу тарировки?</p>",
                                 css: "language_windows_modal",
-                                id: "language_windows_modal_2",
+                                // id: "language_windows_modal_2",
                                 height: 100,
                                 width: 420,
                             },
@@ -68,6 +68,8 @@ export default class ContinueCalibrateWindow extends JetView {
 
         this.$$('buttonOk').attachEvent("onItemClick", (id, e) => {
             console.log('click');
+            this.app.callEvent("app:continueCalibrateWindow:continueCalibrate", []);
+            this.getRoot().hide();
         });
     }
 

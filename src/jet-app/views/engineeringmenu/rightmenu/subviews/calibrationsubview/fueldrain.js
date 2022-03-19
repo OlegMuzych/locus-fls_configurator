@@ -199,11 +199,13 @@ export default class FuelDrainView extends JetView {
                 this.$$('counts_step').setValue(countStep);
                 this.app.callEvent("app:calibrationsubview:countStep", [countStep, firsVolume]);
                 this.nextShow();
+                this.app.callEvent("app:calibrationSubview:startCalibrate", ['drain']);
             }
         });
 
         this.$$("closed_calibration_button_window_2").attachEvent("onItemClick", (id, e) => {
             this.startShow();
+            this.app.callEvent("app:calibrationSubview:finishCalibrate", []);
         });
 
         this.$$("clearTable").attachEvent("onItemClick", (id, e) => {

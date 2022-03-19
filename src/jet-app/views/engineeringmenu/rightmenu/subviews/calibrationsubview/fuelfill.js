@@ -198,11 +198,13 @@ export default class FuelFillView extends JetView {
                 this.$$('counts_step').setValue(countStep);
                 this.app.callEvent("app:calibrationsubview:countStep", [countStep, 0]);
                 this.nextShow();
+                this.app.callEvent("app:calibrationSubview:startCalibrate", ['fill']);
             }
         });
 
         this.$$("closed_calibration_button_window_2").attachEvent("onItemClick", (id, e) => {
             this.startShow();
+            this.app.callEvent("app:calibrationSubview:finishCalibrate", []);
         });
 
         this.$$("clearTable").attachEvent("onItemClick", (id, e) => {

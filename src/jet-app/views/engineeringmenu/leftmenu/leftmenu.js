@@ -77,5 +77,13 @@ export default class LeftMenu extends JetView{
         this.$$("button_back").attachEvent("onItemClick", (id, e)=>{
             this.show("win");
         });
+
+        this.on(this.app, "app:calibrationSubview:startCalibrate", (type) => {
+            this.$$('button_back').disable();
+        });
+
+        this.on(this.app, "app:calibrationSubview:finishCalibrate", () => {
+            this.$$('button_back').enable();
+        });
     }
 }

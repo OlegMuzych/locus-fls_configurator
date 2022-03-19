@@ -85,5 +85,15 @@ export default class ServiceMenu extends JetView {
             console.log("click");
             this.passwordWindow.showWindow();
         });
+
+        this.on(this.app, "app:calibrationSubview:startCalibrate", (type) => {
+            $$('buttonService').disable();
+            $$('buttonPassword').disable();
+        });
+
+        this.on(this.app, "app:calibrationSubview:finishCalibrate", () => {
+            $$('buttonService').enable();
+            $$('buttonPassword').enable();
+        });
     }
 }

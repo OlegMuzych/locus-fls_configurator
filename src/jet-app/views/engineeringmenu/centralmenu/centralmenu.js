@@ -101,6 +101,18 @@ export default class CentralMenu extends JetView{
             $$('calibrationSettings').show();
             this.app.callEvent("app:setting:calibration", []);
         });
+
+        this.on(this.app, "app:calibrationSubview:startCalibrate", (type) => {
+            $$('general').disable();
+            $$('calibration').disable();
+            $$('filtering').disable();
+        });
+
+        this.on(this.app, "app:calibrationSubview:finishCalibrate", () => {
+            $$('general').enable();
+            $$('calibration').enable();
+            $$('filtering').enable();
+        });
     }
 
 }

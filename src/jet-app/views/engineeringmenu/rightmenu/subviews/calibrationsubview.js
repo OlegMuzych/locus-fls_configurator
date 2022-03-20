@@ -1,6 +1,7 @@
 import {JetView} from "webix-jet";
 import FuelFillView from "./calibrationsubview/fuelfill";
 import FuelDrainView from "./calibrationsubview/fueldrain";
+import configFile from "../../../../config-app";
 
 export default class CalibrationSubView extends JetView {
     config() {
@@ -58,6 +59,13 @@ export default class CalibrationSubView extends JetView {
             this.$$('tabbar').enableOption('fuelFill');
             this.$$('tabbar').enableOption('fuelDrain');
         });
+
+        if(configFile.theme.color == 'white'){
+            webix.html.addCss( this.$$("tabbar").getNode(), "button_type_calibration_1");
+        }
+        if(configFile.theme.color == 'black'){
+            webix.html.addCss( this.$$("tabbar").getNode(), "button_type_calibration_1_dark");
+        }
     }
 }
 

@@ -2,6 +2,7 @@ import {JetView} from "webix-jet";
 import ResetLlsWindow from "../windows/reset-lls";
 import llsModel from "../../../models/lls-model";
 import PasswordWindow from "../windows/password";
+import configFile from "../../../config-app";
 
 export default class ServiceMenu extends JetView {
     config() {
@@ -95,5 +96,14 @@ export default class ServiceMenu extends JetView {
             $$('buttonService').enable();
             $$('buttonPassword').enable();
         });
+
+        if(configFile.theme.color == 'white'){
+            webix.html.addCss( $$("buttonService").getNode(), "button_right_menu_top_1");
+            webix.html.addCss( $$("buttonPassword").getNode(), "button_right_menu_top_1");
+        }
+        if(configFile.theme.color == 'black'){
+            webix.html.addCss( $$("buttonService").getNode(), "button_right_menu_top_1_dark");
+            webix.html.addCss( $$("buttonPassword").getNode(), "button_right_menu_top_1_dark");
+        }
     }
 }

@@ -1,5 +1,6 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
+import configFile from "../../../config-app";
 
 export default class FiltrationSettings extends JetView {
     config() {
@@ -544,6 +545,21 @@ export default class FiltrationSettings extends JetView {
             console.log(obj);
             llsModel.setLongData({filtrationType:obj.value});
         });
+
+        if(configFile.theme.color == 'white'){
+            webix.html.addCss( $$("text_color_filter_1").getNode(), "text_color_filter");
+            webix.html.addCss( $$("text_color_filter_2").getNode(), "text_color_filter");
+            webix.html.addCss( $$("text_color_filter_3").getNode(), "text_color_filter");
+            webix.html.addCss( $$("text_color_filter_1_0").getNode(), "text_color_filter");
+            webix.html.addCss( $$("text_color_filter_1_1").getNode(), "text_color_filter");
+        }
+        if(configFile.theme.color == 'black'){
+            webix.html.addCss( $$("text_color_filter_1").getNode(), "text_color_filter_dark");
+            webix.html.addCss( $$("text_color_filter_2").getNode(), "text_color_filter_dark");
+            webix.html.addCss( $$("text_color_filter_3").getNode(), "text_color_filter_dark");
+            webix.html.addCss( $$("text_color_filter_1_0").getNode(), "text_color_filter_dark");
+            webix.html.addCss( $$("text_color_filter_1_1").getNode(), "text_color_filter_dark");
+        }
     }
 
     setFiltrationType(number){

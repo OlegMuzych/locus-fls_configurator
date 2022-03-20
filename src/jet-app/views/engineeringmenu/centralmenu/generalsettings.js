@@ -1,5 +1,6 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
+import configFile from "../../../config-app";
 
 export default class GeneralSettings extends JetView {
     config() {
@@ -293,6 +294,26 @@ export default class GeneralSettings extends JetView {
                 }
             }
         });
+
+        if(configFile.theme.color == 'white'){
+            webix.html.addCss( $$("window_type_1").getNode(), "window_type_1");
+            webix.html.addCss( $$("window_type_2_1").getNode(), "window_type_2");
+            webix.html.addCss( $$("window_type_2_2").getNode(), "window_type_2");
+            webix.html.addCss( $$("window_type_2_3").getNode(), "window_type_2");
+            webix.html.addCss( $$("window_type_2_4").getNode(), "window_type_2");
+            webix.html.addCss( $$("window_type_2_5").getNode(), "window_type_2");
+            webix.html.addCss( $$("window_type_2_6").getNode(), "window_type_2");
+
+        }
+        if(configFile.theme.color == 'black'){
+            webix.html.addCss( $$("window_type_1").getNode(), "window_type_1_dark");
+            webix.html.addCss( $$("window_type_2_1").getNode(), "window_type_2_dark");
+            webix.html.addCss( $$("window_type_2_2").getNode(), "window_type_2_dark");
+            webix.html.addCss( $$("window_type_2_3").getNode(), "window_type_2_dark");
+            webix.html.addCss( $$("window_type_2_4").getNode(), "window_type_2_dark");
+            webix.html.addCss( $$("window_type_2_5").getNode(), "window_type_2_dark");
+            webix.html.addCss( $$("window_type_2_6").getNode(), "window_type_2_dark");
+        }
     }
 
     setBaudRate(value) {

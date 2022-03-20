@@ -3,6 +3,7 @@ import StatusMenu from "./statusmenu";
 import ServiceMenu from "./servicemenu";
 import CalibrationSubView from "./subviews/calibrationsubview";
 import FullEmptySubView from "./subviews/fullemptysubview";
+import configFile from "../../../config-app";
 
 export default class RightMenu extends JetView{
     config(){
@@ -84,5 +85,12 @@ export default class RightMenu extends JetView{
         );
 
         $$('fullEmptySubView').show();
+
+        if(configFile.theme.color == 'white'){
+            webix.html.addCss( $$("rows_right_2").getNode(), "rows_right");
+        }
+        if(configFile.theme.color == 'black'){
+            webix.html.addCss( $$("rows_right_2").getNode(), "rows_right_dark");
+        }
     }
 }

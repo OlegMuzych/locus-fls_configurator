@@ -1,5 +1,6 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../../models/lls-model";
+import configFile from "../../../../config-app";
 
 export default class FullEmptySubView extends JetView {
     config(){
@@ -245,5 +246,29 @@ export default class FullEmptySubView extends JetView {
             $$("auto_calibration_1").enable();
             $$("auto_calibration_set_1").enable();
         });
+
+        if(configFile.theme.color == 'white'){
+            webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status");
+            webix.html.addCss( $$("right_menu_status_text").getNode(), "right_menu_status_text");
+            webix.html.addCss( $$("calibration_fuel").getNode(), "filter_toggle");
+            webix.html.addCss( $$("auto_calibration").getNode(), "auto_calibration");
+            webix.html.addCss( $$("progress_bar").getNode(), "progress_bar");
+            webix.html.addCss( $$("auto_calibration_set_1").getNode(), "full_window_text");
+            webix.html.addCss( $$("auto_calibration_1").getNode(), "auto_calibration");
+            webix.html.addCss( $$("auto_calibration_set_2").getNode(), "full_window_text");
+            webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration");
+c        }
+        if(configFile.theme.color == 'black'){
+            webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status_dark");
+            webix.html.addCss( $$("right_menu_status_text").getNode(), "right_menu_status_text_dark");
+            webix.html.addCss( $$("calibration_fuel").getNode(), "filter_toggle_dark");
+            webix.html.addCss( $$("auto_calibration").getNode(), "auto_calibration_dark");
+            webix.html.addCss( $$("progress_bar").getNode(), "progress_bar_dark");
+            webix.html.addCss( $$("auto_calibration_set_1").getNode(), "full_window_text_dark");
+            webix.html.addCss( $$("auto_calibration_1").getNode(), "auto_calibration_dark");
+            webix.html.addCss( $$("auto_calibration_set_2").getNode(), "full_window_text_dark");
+            webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration_dark");
+            webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration_dark");
+        }
     }
 }

@@ -1,4 +1,5 @@
 import {JetView} from "webix-jet";
+import configFile from "../../../config-app";
 
 export default class LeftMenu extends JetView{
     config(){
@@ -85,5 +86,22 @@ export default class LeftMenu extends JetView{
         this.on(this.app, "app:calibrationSubview:finishCalibrate", () => {
             this.$$('button_back').enable();
         });
+
+        if(configFile.theme.color == 'white'){
+            webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols");
+            webix.html.addCss( $$("left_menu_button_1").getNode(), "left_menu_button");
+            webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button");
+            webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button");
+            webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference");
+            webix.html.addCss( this.$$("button_back").getNode(), "left_menu_button_reference");
+        }
+        if(configFile.theme.color == 'black'){
+            webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols_dark");
+            webix.html.addCss( $$("left_menu_button_1").getNode(), "left_menu_button_dark");
+            webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_dark");
+            webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button_dark");
+            webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference_dark");
+            webix.html.addCss( this.$$("button_back").getNode(), "left_menu_button_reference_dark");
+        }
     }
 }

@@ -1,5 +1,6 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
+import configFile from "../../../config-app";
 
 export default class StatusMenu extends JetView{
     config(){
@@ -115,6 +116,22 @@ export default class StatusMenu extends JetView{
             this.emptyLevelDefault = status;
             setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
         });
+
+        if(configFile.theme.color == 'white'){
+            webix.html.addCss( $$("right_menu_status").getNode(), "right_menu_status");
+            webix.html.addCss( $$("rows_level_right_menu_info_1").getNode(), "rows_level_right_menu_info");
+            webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info");
+            webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info");
+            webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info");
+
+        }
+        if(configFile.theme.color == 'black'){
+            webix.html.addCss( $$("right_menu_status").getNode(), "right_menu_status_dark");
+            webix.html.addCss( $$("rows_level_right_menu_info_1").getNode(), "rows_level_right_menu_info_dark");
+            webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info_dark");
+            webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info_dark");
+            webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info_dark");
+        }
     }
 }
 

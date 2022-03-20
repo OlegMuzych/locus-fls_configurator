@@ -1,4 +1,5 @@
 import {JetView} from "webix-jet";
+import configFile from "../../../../../config-app";
 
 export default class FuelFillView extends JetView {
     config() {
@@ -228,6 +229,31 @@ export default class FuelFillView extends JetView {
             this.$$('manual_volume_fuel_1').setValue(volume);
             this.$$('step_liters_1').setValue(stepVolume);
         });
+
+        if(configFile.theme.color == 'white'){
+            webix.html.addCss( this.$$("manual_volume_fuel_1").getNode(), "full_window_text");
+            webix.html.addCss( this.$$("initial_volume_fuel_1").getNode(), "full_window_text");
+            webix.html.addCss( this.$$("step_liters_1").getNode(), "full_window_text");
+            webix.html.addCss( this.$$("counts_step").getNode(), "full_window_text");
+            webix.html.addCss( this.$$("button_add_step_2").getNode(), "set_step_drain_button_2");
+            webix.html.addCss( this.$$("button_add_step_1").getNode(), "set_step_drain_button_2");
+            webix.html.addCss( this.$$("clearTable").getNode(), "clear_table_drain_button_2");
+            webix.html.addCss( this.$$("closed_calibration_button_window_2").getNode(), "button_next_drain_window_1_2");
+            webix.html.addCss( this.$$("central_menu_and_right_menu_calibration_next_window_button").getNode(), "button_next_drain_window_1_2");
+            webix.html.addCss( $$("right_menu_calibration_drain_2").getNode(), "rows_right_menu_calibration_2");
+        }
+        if(configFile.theme.color == 'black'){
+            webix.html.addCss( this.$$("manual_volume_fuel_1").getNode(), "full_window_text_dark");
+            webix.html.addCss( this.$$("initial_volume_fuel_1").getNode(), "full_window_text_dark");
+            webix.html.addCss( this.$$("step_liters_1").getNode(), "full_window_text_dark");
+            webix.html.addCss( this.$$("counts_step").getNode(), "full_window_text_dark");
+            webix.html.addCss( this.$$("button_add_step_2").getNode(), "set_step_drain_button_2_dark");
+            webix.html.addCss( this.$$("button_add_step_1").getNode(), "set_step_drain_button_2_dark");
+            webix.html.addCss( this.$$("clearTable").getNode(), "clear_table_drain_button_2_dark");
+            webix.html.addCss( this.$$("closed_calibration_button_window_2").getNode(), "button_next_drain_window_1_2_dark");
+            webix.html.addCss( this.$$("central_menu_and_right_menu_calibration_next_window_button").getNode(), "button_next_drain_window_1_2_dark");
+            webix.html.addCss( $$("right_menu_calibration_drain_2").getNode(), "rows_right_menu_calibration_2_dark");
+        }
     }
 
     startShow(){

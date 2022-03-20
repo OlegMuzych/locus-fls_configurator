@@ -51,7 +51,7 @@ export default class ServiceMenu extends JetView {
             body: {
                 view: "list",
                 data: [
-                    {id: "updateFramework", location: "Обновить прошивку", name: ""},
+                    // {id: "updateFramework", location: "Обновить прошивку", name: ""},
                     {id: "resetLls", location: "Сброс всех настроек", name: ""},
                 ],
                 id: "list",

@@ -1,6 +1,7 @@
 // webix.ui.fullScreen();
 import {JetView} from "webix-jet";
 import llsModel from "../models/lls-model";
+import configFile from "../config-app";
 //const SerialPort = eval(`require('serialport')`);
 // const findPort = require("../models/lls/findPort");
 
@@ -391,6 +392,7 @@ export default class Page9View extends JetView {
                 $$("reference").refresh()
                 $$("application_menu").refresh()
                 setColor("white","white");
+                configFile.theme.color = 'black';
             } else {
 
                 $$("dark_theme_label").hide()
@@ -406,7 +408,7 @@ export default class Page9View extends JetView {
                 $$("reference").refresh()
                 $$("application_menu").refresh()
                 setColor("dark","black");
-
+                configFile.theme.color = 'white';
             }
 
         });

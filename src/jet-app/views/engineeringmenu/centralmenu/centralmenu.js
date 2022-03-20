@@ -2,6 +2,7 @@ import {JetView} from "webix-jet";
 import GeneralSettings from "./generalsettings";
 import Calibrationsettings from "./calibrationsettings";
 import FiltrationSettings from "./filtaringSettings";
+import configFile from "../../../config-app";
 export default class CentralMenu extends JetView{
     config(){
         let central_menu_button = {
@@ -113,6 +114,23 @@ export default class CentralMenu extends JetView{
             $$('calibration').enable();
             $$('filtering').enable();
         });
+
+
+
+        if(configFile.theme.color == 'white'){
+            webix.html.addCss( $$("central_cols_button").getNode(), "central_cols_button");
+            webix.html.addCss( $$("general").getNode(), "button_central_menu");
+            webix.html.addCss( $$("calibration").getNode(), "button_central_menu");
+            webix.html.addCss( $$("filtering").getNode(), "button_central_menu");
+            webix.html.addCss( $$("style_general_rows_1").getNode(), "style_general_rows");
+        }
+        if(configFile.theme.color == 'black'){
+            webix.html.addCss( $$("central_cols_button").getNode(), "central_cols_button_dark");
+            webix.html.addCss( $$("general").getNode(), "button_central_menu_dark");
+            webix.html.addCss( $$("calibration").getNode(), "button_central_menu_dark");
+            webix.html.addCss( $$("filtering").getNode(), "button_central_menu_dark");
+            webix.html.addCss( $$("style_general_rows_1").getNode(), "style_general_rows_dark");
+        }
     }
 
 }

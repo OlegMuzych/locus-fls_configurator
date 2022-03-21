@@ -186,33 +186,39 @@ export default class CalibrationSettings extends JetView {
     #volume = [];
 
     addNumber(value, number = null) {
-        let id = this.$$('rowNumber').addView({
-            view: 'label',
-            align: 'center',
-            label: value,
-        });
-        this.addChangeEvent(id);
-        this.#number.push(id);
+        if(this.#number.length < 30){
+            let id = this.$$('rowNumber').addView({
+                view: 'label',
+                align: 'center',
+                label: value,
+            });
+            this.addChangeEvent(id);
+            this.#number.push(id);
+        }
     }
 
     addLevel(value, number = null) {
-        let id = this.$$('rowLevel').addView({
-            view: 'text',
-            align: 'center',
-            value: value,
-        });
-        this.addChangeEvent(id);
-        this.#level.push(id);
+        if(this.#level.length < 30) {
+            let id = this.$$('rowLevel').addView({
+                view: 'text',
+                align: 'center',
+                value: value,
+            });
+            this.addChangeEvent(id);
+            this.#level.push(id);
+        }
     }
 
     addVolume(value, number = null) {
-        let id = this.$$('rowVolume').addView({
-            view: 'text',
-            align: 'center',
-            value: value,
-        });
-        this.addChangeEvent(id);
-        this.#volume.push(id);
+        if(this.#volume.length < 30) {
+            let id = this.$$('rowVolume').addView({
+                view: 'text',
+                align: 'center',
+                value: value,
+            });
+            this.addChangeEvent(id);
+            this.#volume.push(id);
+        }
     }
 
     removeNumber(id = null) {

@@ -195,7 +195,7 @@ export default class FuelFillView extends JetView {
 
         this.$$("central_menu_and_right_menu_calibration_next_window_button").attachEvent("onItemClick", (id, e) => {
             let countStep = this.calcCountStep(this.$$("manual_volume_fuel_1").getValue(), this.$$("step_liters_1").getValue());
-            if(countStep > 0){
+            if(countStep > 0 && countStep <= 30){
                 this.$$('counts_step').setValue(countStep);
                 this.app.callEvent("app:calibrationsubview:countStep", [countStep, 0]);
                 this.nextShow();

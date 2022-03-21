@@ -315,7 +315,7 @@ export default class llsProtocol {
                     longDataResp.periodOfDataIssuance = dataView.getUint8(44);
                     longDataResp.minLevel = dataView.getUint16(45, true);
                     longDataResp.maxLevel = dataView.getUint16(47, true);
-                    longDataResp.outputParametersOfSensor = dataView.getUint16(49, true);
+                    longDataResp.outputParametersOfSensor = dataView.getUint8(49);
                     longDataResp.filtrationType = dataView.getUint8(50);
                     longDataResp.averagingLength = dataView.getUint8(51);
                     longDataResp.medianLength = dataView.getUint8(52);

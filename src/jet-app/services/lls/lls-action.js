@@ -37,7 +37,7 @@ export default class llsAction{
 
 
     async checkPassword(){
-        let{llsAdr, code: status} =  await this._llsProtocol.send(0x74);
+        let{llsAdr, code: status} =  await this._llsProtocol.send(0x74, null, 1000);
         return {
             llsAdr: llsAdr,
             status: status

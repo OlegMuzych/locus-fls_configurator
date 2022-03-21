@@ -21,9 +21,11 @@ export default class llsProtocol {
             zeroPass.splice(0, arr.length, ...arr);
             this.#password = zeroPass;
         }
-    }
+    };
 
     #queueWrite = [];
+    #timeoutWrite = [];
+    #writeMutex = true;
 
     _settingPort = {
         portName: null,
@@ -48,7 +50,7 @@ export default class llsProtocol {
                 reject(e);
             })
         });
-    }
+    };
 
     // async send(command, data = null, timeout = 1000){
     //     let timerId = null;
@@ -66,45 +68,73 @@ export default class llsProtocol {
     //         resolve(dataParse);
     //     });
     // };
-    async send(command, data = null, timeout = 3000) {
+
+    async send(command, data = null, timeout = 2000) {
         let timerId = null;
         return new Promise(async (resolve, reject) => {
             this.port.pause();
             let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
-            this.#pushQueueWrite(dataBuffer);
+            this.#pushQueueWrite(dataBuffer, timeout);
+            let summTimeout = this.#getSummTimeoutWrite();
             //this.port.write(dataBuffer);
             timerId = setTimeout(() => {
+                this.#writeMutex = true;
                 reject(`Error command ${command.toString(16)}: timeout response message!`);
                 this.port.resume();
             }, timeout);
             let dataParse = await this._eventDataParse(command);
             // if(dataParse.command == command){
+            //     this.#writeMutex = true;
             //     clearInterval(timerId);
             //     this.port.resume();
             //     resolve(dataParse);
             // }
+            this.#writeMutex = true;
             clearInterval(timerId);
             this.port.resume();
             resolve(dataParse);
         });
     };
 
-    #pushQueueWrite(data) {
+    #pushQueueWrite(data, timeout) {
+        this.#timeoutWrite.push(timeout); //для учета времени задержки ожидания выполнения команды
         this.#queueWrite.push(data);
     };
 
-    getLengthQeueWrite(){
+    #shiftQueueWrite() {
+        this.#timeoutWrite.shift();
+        return this.#queueWrite.shift();
+    };
+
+    #getSummTimeoutWrite(){
+        let timeoutSumm = 0;
+        this.#timeoutWrite.forEach((value, index, array)=>{
+            timeoutSumm += value;
+        });
+        return timeoutSumm;
+    };
+
+    getLengthQueueWrite(){
         return this.#queueWrite.length;
-    }
+    };
 
     #loopPortWrite() {
+        // setInterval(() => {
+        //     if (this.#queueWrite.length) {
+        //         let data = this.#queueWrite.shift();
+        //         this.port.write(data);
+        //     }
+        // }, 100);
+
         setInterval(() => {
-            if (this.#queueWrite.length) {
+            if (this.#queueWrite.length && this.#writeMutex) {
+                this.#writeMutex = false;
                 let data = this.#queueWrite.shift();
+                // let data = this.#shiftQueueWrite();
                 this.port.write(data);
             }
-        }, 1000);
-    }
+        }, 500);
+    };
 
     _listenerResponseData() {
         this.port.on('readable', () => {
@@ -129,7 +159,7 @@ export default class llsProtocol {
         //         myEmitter.emit(`data:${dataPars.command}`, dataPars);
         //     }
         // })
-    }
+    };
 
     open() {
         return new Promise(((resolve, reject) => {
@@ -145,7 +175,7 @@ export default class llsProtocol {
             });
 
         }));
-    }
+    };
 
     async close() {
         return new Promise((resolve, reject) => {
@@ -158,7 +188,7 @@ export default class llsProtocol {
                 resolve();
             }
         });
-    }
+    };
 
     _commandCreate(command, llsAdr, data) {
         let dataBuffer = [0x31, llsAdr];
@@ -286,7 +316,7 @@ export default class llsProtocol {
             return false;
         }
         ;
-    }
+    };
 
     _parseData(data) {
         let [prefix, llsAdr, command, ...buff] = data;
@@ -429,7 +459,7 @@ export default class llsProtocol {
             }
         }
         return null;
-    }
+    };
 
     _createArr(dataView, byteOffset, length) {
         let arr = [];
@@ -437,7 +467,7 @@ export default class llsProtocol {
             arr.push(dataView.getUint8((byteOffset + i)));
         }
         return arr;
-    }
+    };
 
     #getUint16(value16) {
         let data = value16;
@@ -449,7 +479,7 @@ export default class llsProtocol {
         }
         console.log(arrData[0], arrData[1]);
         return arrData;
-    }
+    };
 
     #getUint32(value32) {
         let data = value32;
@@ -461,7 +491,7 @@ export default class llsProtocol {
         }
         console.log(arrData[0], arrData[1], arrData[2], arrData[3]);
         return arrData;
-    }
+    };
 
     #getFloat32(float32) {
         //todo: for коэфициент q and r
@@ -472,7 +502,7 @@ export default class llsProtocol {
         // let byteView = new Uint8Array(buffer);
         // // console.log(arrData[0], arrData[1], arrData[2], arrData[3]);
         // // return arrData;
-    }
+    };
 
     _eventDataParse(command) {
         return new Promise((resolve, reject) => {
@@ -481,6 +511,6 @@ export default class llsProtocol {
                 resolve(data);
             });
         });
-    }
+    };
 
 }

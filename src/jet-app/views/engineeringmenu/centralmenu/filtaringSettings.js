@@ -525,7 +525,7 @@ export default class FiltrationSettings extends JetView {
                     {id: "0", location: "Выключена", name: "0", value: 0},
                     {id: "1", location: "Усреднение", name: "1", value: 1},
                     {id: "2", location: "Медиана", name: "2", value: 2},
-                    {id: "3", location: "Адаптивный", name: "3", value: 3},
+                    // {id: "3", location: "Адаптивный", name: "3", value: 3},
                 ],
                 template: "#name# - #location#",
                 autoheight: true,

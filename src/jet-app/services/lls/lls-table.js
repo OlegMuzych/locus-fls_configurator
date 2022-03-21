@@ -8,7 +8,7 @@ export default class llsTable {
     };
 
     async get() {
-        let tableResponse = await this._llsProtocol.send(0x26);
+        let tableResponse = await this._llsProtocol.send(0x26,null,5000);
         console.log(tableResponse);
         this.table = tableResponse;
         return this.table;
@@ -22,7 +22,7 @@ export default class llsTable {
             countPoint: countPoint
         }
 
-        let {code: status} = await this._llsProtocol.send(0x27, newTable);
+        let {code: status} = await this._llsProtocol.send(0x27, newTable,3000);
         return {
             status: status,
         }

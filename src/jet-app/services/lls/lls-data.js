@@ -76,11 +76,20 @@ export default class llsData {
     };
 
     async getShort() {
-        let shortSettingResponse = await this._llsProtocol.send(0x06);
-        console.log(shortSettingResponse);
-        this.shortSetting = shortSettingResponse;
-        console.log(this.shortSetting);
-        return this.shortSetting;
+        if(this._llsProtocol.getLengthQeueWrite() == 0){
+            let shortSettingResponse = await this._llsProtocol.send(0x06);
+            // console.log(shortSettingResponse);
+            this.shortSetting = shortSettingResponse;
+            console.log(this.shortSetting);
+            return this.shortSetting;
+        }else{
+            return this.shortSetting;
+        }
+        // let shortSettingResponse = await this._llsProtocol.send(0x06);
+        // console.log(shortSettingResponse);
+        // this.shortSetting = shortSettingResponse;
+        // console.log(this.shortSetting);
+        // return this.shortSetting;
     };
 
     async getLong() {

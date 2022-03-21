@@ -163,17 +163,6 @@ border: none;
 
 
 
-
-
-.button_1 .webix_image{
-
-
-}
-
-
-
-
-
 .window_show .webix_header{
     background-color: #f3f3f3;
     font-size: 20px;
@@ -251,9 +240,6 @@ border: none;
     top: -16px;
 
 }
-
-
-
 
 
 .label_status_gage_windows_start .webix_el_box{
@@ -384,6 +370,11 @@ border: none;
     right: 20px;
     box-shadow: inset 1px 1px 1px #212121;
 }
+
+
+
+
+
 .window_type_2 p{
     color: #000;
     text-align: right;
@@ -468,6 +459,7 @@ border: none;
     position: relative;
     top: -20px;
 
+
 }
 
 .window_type_3 {
@@ -480,7 +472,7 @@ border: none;
 }
 
 
-.window_type_3  input {
+.window_type_3  .webix_inp_counter_value {
     color: var(--white-style-text-color);
     font-size: var(--font-size);
     background-color: #fff;
@@ -491,12 +483,12 @@ border: none;
 
 }
 
-.window_type_3_dark  input {
-    color: #c1c4c6;
+.window_type_3_dark .webix_inp_counter_value {
+    color: var(--c-color-text-dark);
     font-size: var(--font-size);
     font-weight: var(--font-weight);
-    background-color: var(--c-white-color-background-dark_general_windows);
-    border: 1px solid var(--c-white-color-background-dark_general_rows);
+    background-color: var(--c-white-color-background-dark);
+    border: 1px solid var(--c-white-color-background-dark);
     position: relative;
     box-shadow: inset 1px 1px 1px #212121;
 }
@@ -507,6 +499,7 @@ border: none;
     position: relative;
     top: 30px;
     width: 50px;
+
 }
 
 .window_type_3 .webix_inp_counter_next{
@@ -515,6 +508,27 @@ border: none;
     position: relative;
     top: 30px;
     width: 50px;
+
+}
+
+.window_type_3_dark .webix_inp_counter_prev{
+    color: #fff;
+    height: 40%;
+    position: relative;
+    top: 30px;
+    width: 50px;
+    background-color: #414e72;
+    border: 1px solid var(--c-white-color-background-dark_general_rows);
+}
+
+.window_type_3_dark .webix_inp_counter_next{
+    color: #fff;
+    height: 40%;
+    position: relative;
+    top: 30px;
+    width: 50px;
+    background-color: #414e72;
+    border: 1px solid var(--c-white-color-background-dark_general_rows);
 }
 
 .window_type_3 .webix_inp_counter_value{

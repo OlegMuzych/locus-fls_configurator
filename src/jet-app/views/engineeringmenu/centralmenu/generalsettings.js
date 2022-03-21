@@ -113,6 +113,7 @@ export default class GeneralSettings extends JetView {
                     view: "radio",
                     label: '<p>Выходное сообщение</p>',
                     css: "window_type_2",
+                    id: "window_type_2_7",
                     width: 850,
                     height: 60,
                     labelWidth: 400,
@@ -146,6 +147,7 @@ export default class GeneralSettings extends JetView {
                     width: 850,
                     height: 100,
                     css: "window_type_3",
+                    id: "window_type_2_8",
                     cols:[
                         {
                             view:"label",
@@ -153,17 +155,19 @@ export default class GeneralSettings extends JetView {
                             width: 350,
                             height: 100,
                         },
-                        // {
-                        //     width: 64,
-                        // },
+                        {
+                            width: 100,
+                        },
                         {
                             view: "counter",
+                            css: "window_type_3",
+                            id: "window_type_2_9",
                             localId: 'counterPeriod',
                             step: 1,
                             value: 5,
                             min: 1,
                             max: 255,
-                            width: 200,
+                            // width: 200,
 
                         },
 
@@ -187,11 +191,17 @@ export default class GeneralSettings extends JetView {
                                     width: 400,
                                     height: 100,
                                 },
+                                {
+                                    width: 50,
+                                },
                                 {view: "switch", value: 0, id: "switch_temp_compensation", width: 68,},
                                 {
-                                    width: 100,
-                                },
-                                {view: "switch", value: 0, id: "temp_compensation_2", width: 68,}
+
+                                }
+                                // {
+                                //     width: 100,
+                                // },
+                                // {view: "switch", value: 0, id: "temp_compensation_2", width: 68,}
                             ]
                         },
                     ]
@@ -295,6 +305,9 @@ export default class GeneralSettings extends JetView {
             }
         });
 
+
+
+
         if(configFile.theme.color == 'white'){
             webix.html.addCss( $$("window_type_1").getNode(), "window_type_1");
             webix.html.addCss( $$("window_type_2_1").getNode(), "window_type_2");
@@ -303,6 +316,9 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss( $$("window_type_2_4").getNode(), "window_type_2");
             webix.html.addCss( $$("window_type_2_5").getNode(), "window_type_2");
             webix.html.addCss( $$("window_type_2_6").getNode(), "window_type_2");
+            webix.html.addCss( $$("window_type_2_7").getNode(), "window_type_3");
+            webix.html.addCss( $$("window_type_2_8").getNode(), "window_type_3");
+            webix.html.addCss( $$("window_type_2_9").getNode(), "window_type_3");
 
         }
         if(configFile.theme.color == 'black'){
@@ -313,6 +329,10 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss( $$("window_type_2_4").getNode(), "window_type_2_dark");
             webix.html.addCss( $$("window_type_2_5").getNode(), "window_type_2_dark");
             webix.html.addCss( $$("window_type_2_6").getNode(), "window_type_2_dark");
+            webix.html.addCss( $$("window_type_2_7").getNode(), "window_type_3_dark");
+            webix.html.addCss( $$("window_type_2_8").getNode(), "window_type_3_dark");
+            webix.html.addCss( $$("window_type_2_9").getNode(), "window_type_3_dark");
+
         }
     }
 

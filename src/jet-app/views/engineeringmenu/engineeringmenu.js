@@ -20,10 +20,12 @@ export default class EngineeringMenu extends JetView{
                 cols:[
                     LeftMenu,
                     {
+                        css: "style_body",
                         width: 20,
                     },
                     CentralMenu,
                     {
+                        css: "style_body",
                         width: 20,
                     },
                     RightMenu,

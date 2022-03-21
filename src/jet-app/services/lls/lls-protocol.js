@@ -66,7 +66,7 @@ export default class llsProtocol {
     //         resolve(dataParse);
     //     });
     // };
-    async send(command, data = null, timeout = 2000) {
+    async send(command, data = null, timeout = 3000) {
         let timerId = null;
         return new Promise(async (resolve, reject) => {
             this.port.pause();
@@ -74,20 +74,28 @@ export default class llsProtocol {
             this.#pushQueueWrite(dataBuffer);
             //this.port.write(dataBuffer);
             timerId = setTimeout(() => {
-                reject("Error: timeout response message!");
+                reject(`Error command ${command.toString(16)}: timeout response message!`);
                 this.port.resume();
             }, timeout);
             let dataParse = await this._eventDataParse(command);
+            // if(dataParse.command == command){
+            //     clearInterval(timerId);
+            //     this.port.resume();
+            //     resolve(dataParse);
+            // }
             clearInterval(timerId);
             this.port.resume();
             resolve(dataParse);
         });
     };
 
-
     #pushQueueWrite(data) {
         this.#queueWrite.push(data);
     };
+
+    getLengthQeueWrite(){
+        return this.#queueWrite.length;
+    }
 
     #loopPortWrite() {
         setInterval(() => {
@@ -95,7 +103,7 @@ export default class llsProtocol {
                 let data = this.#queueWrite.shift();
                 this.port.write(data);
             }
-        }, 500);
+        }, 1000);
     }
 
     _listenerResponseData() {
@@ -409,7 +417,15 @@ export default class llsProtocol {
                     break;
                 }
                 default:
+                {
+                    let defaultResp = {};
+                    defaultResp.prefix = dataView.getUint8(0);
+                    defaultResp.llsAdr = dataView.getUint8(1);
+                    defaultResp.command = dataView.getUint8(2);
+                    defaultResp.code = dataView.getUint8(3);
+                    return defaultResp;
                     break;
+                }
             }
         }
         return null;

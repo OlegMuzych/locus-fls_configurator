@@ -4,6 +4,9 @@ import llsModel from "../../../models/lls-model";
 export default class CalibrationSettings extends JetView {
     config() {
         let table = {
+            minWidth: 600,
+            maxWidth: 852,
+            minHeight: 940,
             cols: [
                 {
                     gravity: 1,

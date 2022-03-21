@@ -1289,10 +1289,11 @@ border: none;
     border-radius: 8px;
 }
 
-.filter_rows_dark{
+.filters_rows_dark{
     background-color: var(--c-white-color-background-dark_general_rows);
     border-radius: 8px;
 }
+
 /*Кнопка быврать фильтр-----------------------------------------*/
 .button_slider_gen_value .webix_button{
     position: relative;
@@ -1450,48 +1451,106 @@ border: none;
 
 /*-Меню тарировка слив/залив------------------------------------------------------------------*/
 
-.button_type_calibration_1 .webix_button{
-    background-color: rgba(243, 243, 243, 0.0);
+.button_type_calibration_1 .webix_item_tab{
+    font-size: 20px;
     color: #000;
-    font-size: 18px;
     font-weight: 100;
-    position: relative;
-    border-top-left-radius: 8px;
-    right: 2px;
-    width: 105%;
-    height: 105%;
-    z-index: 100;
+    background-color: #f9f9f9;
+
 }
 
-.button_type_calibration_1_dark .webix_button{
+.button_type_calibration_1 .webix_item_tab.webix_selected{
+    border: none;
+    font-size: 20px;
+    color: #000;
+    font-weight: 100;
+    background-color: var(--c-white-color-background);
+    box-shadow: none;
+
+}
+
+.button_type_calibration_1 .webix_item_tab.webix_selected:hover{
+    border-bottom: none;
+    font-size: 20px;
+    color: #000;
+    font-weight: 100;
+    background-color: var(--c-white-color-background);
+
+}
+
+.button_type_calibration_1 .webix_all_tabs .webix_item_tab.webix_selected:focus{
+    color: #000;
+    box-shadow: none;
+
+}
+
+/*------*/
+
+
+.button_type_calibration_1_dark .webix_item_tab{
+    font-size: 20px;
+    font-weight: 100;
     background-color: var(--c-white-color-background-dark_left_menu);
     color: #fff;
-    font-size: 18px;
+
+}
+
+.button_type_calibration_1_dark .webix_item_tab.webix_selected{
+    border: none;
+    font-size: 20px;
+    color: #000;
     font-weight: 100;
-    position: relative;
-    border-top-left-radius: 8px;
-    right: 2px;
-    width: 105%;
-    height: 105%;
-    z-index: 100;
-}
-
-.button_type_calibration_1 .webix_button:hover{
-    background-color: rgba(243, 243, 243, 0.0);
-}
-
-.button_type_calibration_1_dark .webix_button:hover{
-    background-color: var(--c-white-color-background-dark_general_rows);
+    background-color: var(--c-white-color-background);
+    box-shadow: none;
 
 }
 
-.button_type_calibration_1 .webix_button:focus{
-    background-color: #f9f9f9;
+.button_type_calibration_1_dark .webix_item_tab.webix_selected:hover{
+    border-bottom: none;
+    font-size: 20px;
+    color: #000;
+    font-weight: 100;
+    background-color: var(--c-white-color-background);
+
 }
 
-.button_type_calibration_1_dark .webix_button:focus{
-    background-color: var(--c-white-color-background-dark_general_rows);
+.button_type_calibration_1_dark .webix_all_tabs .webix_item_tab.webix_selected:focus{
+    color: #000;
+    box-shadow: none;
+
 }
+
+
+
+/*.button_type_calibration_1_dark .webix_button{*/
+/*    background-color: var(--c-white-color-background-dark_left_menu);*/
+/*    color: #fff;*/
+/*    font-size: 18px;*/
+/*    font-weight: 100;*/
+/*    position: relative;*/
+/*    border-top-left-radius: 8px;*/
+/*    right: 2px;*/
+/*    width: 105%;*/
+/*    height: 105%;*/
+/*    z-index: 100;*/
+/*}*/
+
+/*.button_type_calibration_1 .webix_button:hover{*/
+/*    background-color: rgba(243, 243, 243, 0.0);*/
+/*}*/
+
+/*.button_type_calibration_1_dark .webix_button:hover{*/
+/*    background-color: var(--c-white-color-background-dark_general_rows);*/
+
+/*}*/
+
+/*.button_type_calibration_1 .webix_button:focus{*/
+/*    background-color: #f9f9f9;*/
+/*}*/
+
+/*.button_type_calibration_1_dark .webix_button:focus{*/
+/*    background-color: var(--c-white-color-background-dark_general_rows);*/
+/*}*/
 
 .button_type_calibration_2 .webix_button{
     background-color: rgba(243, 243, 243, 0.0);

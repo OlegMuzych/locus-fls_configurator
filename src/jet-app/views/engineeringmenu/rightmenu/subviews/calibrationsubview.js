@@ -11,7 +11,8 @@ export default class CalibrationSubView extends JetView {
             value: "fuelFill",
             css: "button_type_calibration_1",
             height: 70,
-            multiview: true, options: [
+            multiview: true,
+            options: [
                 {value: "Слив", id: "fuelDrain"},
                 {value: "Залив", id: "fuelFill"},
             ]

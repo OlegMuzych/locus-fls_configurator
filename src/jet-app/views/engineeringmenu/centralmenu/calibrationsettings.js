@@ -11,22 +11,22 @@ export default class CalibrationSettings extends JetView {
                 {
                     gravity: 1,
                     rows: [
-                        {view: 'label', label: 'Step N', align: 'center'},
-                        {localId: 'rowNumber', rows: []}
+                        {view: 'label', label: 'Шагов', align: 'center'},
+                        {localId: 'rowNumber', css:"rowNumber_style_1", rows: []}
                     ]
                 },
                 {
                     gravity: 3,
                     rows: [
-                        {view: 'label', label: 'Level', align: 'center'},
-                        {localId: 'rowLevel', rows: []}
+                        {view: 'label', label: 'Уровень', align: 'center'},
+                        {localId: 'rowLevel', css:"rowNumber_style", rows: []}
                     ]
                 },
                 {
                     gravity: 3,
                     rows: [
-                        {view: 'label', label: 'Volume', align: 'center'},
-                        {localId: 'rowVolume', rows: []}
+                        {view: 'label', label: 'Объем', align: 'center'},
+                        {localId: 'rowVolume',css:"rowNumber_style",  rows: []}
                     ]
                 }
             ],

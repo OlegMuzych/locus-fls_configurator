@@ -935,15 +935,15 @@ border: none;
 
 
 .webix_view .webix_control > .webix_disabled{
-    background-color: #6a6a6a00;
-    opacity: 0.4;
+    background-color: #666666;
+    opacity: 0.2;
     color: #cccccc;
 
 }
 
 .webix_view .webix_control > .webix_disabled_dark{
-    background-color: var(--c-white-color-background-dark_left_menu);
-    opacity: 0.4;
+    background-color: #666666;
+    opacity: 0.2;
 
 }
 
@@ -1455,7 +1455,8 @@ border: none;
     font-size: 20px;
     color: #000;
     font-weight: 100;
-    background-color: #f9f9f9;
+    /*background-color: #f9f9f9;*/
+    background-color: var(--c-white-color-background);
 
 }
 
@@ -1464,7 +1465,8 @@ border: none;
     font-size: 20px;
     color: #000;
     font-weight: 100;
-    background-color: var(--c-white-color-background);
+    /*background-color: var(--c-white-color-background);*/
+    background-color: #f9f9f9;
     box-shadow: none;
 
 }
@@ -1484,7 +1486,25 @@ border: none;
 
 }
 
-/*------*/
+/*-------------*/
+
+/*.rowNumber_style .webix_el_label .webix_el_box{*/
+/*    font-size: 16px;*/
+/*    font-weight: 100;*/
+/*}*/
+
+.rowNumber_style .webix_el_label.webix_el_box{
+    font-size: 16px;
+    font-weight: 100;
+}
+
+.rowNumber_style_1 .webix_inp_label, .webix_inp_top_label, legend.webix_forminput_label, .webix_el_label .webix_el_box{
+    font-size: 18px;
+    font-weight: 100;
+}
+
+
+/*--------------*/
 
 
 .button_type_calibration_1_dark .webix_item_tab{
@@ -1498,9 +1518,9 @@ border: none;
 .button_type_calibration_1_dark .webix_item_tab.webix_selected{
     border: none;
     font-size: 20px;
-    color: #000;
+    color: #fff;
     font-weight: 100;
-    background-color: var(--c-white-color-background);
+    background-color: var(--c-white-color-background-dark_general_rows);
     box-shadow: none;
 
 }
@@ -1508,49 +1528,30 @@ border: none;
 .button_type_calibration_1_dark .webix_item_tab.webix_selected:hover{
     border-bottom: none;
     font-size: 20px;
-    color: #000;
+    color: #fff;
     font-weight: 100;
-    background-color: var(--c-white-color-background);
+    background-color: var(--c-white-color-background-dark_general_rows);
 
 }
 
 .button_type_calibration_1_dark .webix_all_tabs .webix_item_tab.webix_selected:focus{
-    color: #000;
+    color: #fff;
     box-shadow: none;
 
 }
 
+.button_type_calibration_1_dark .webix_all_tabs .webix_item_tab.webix_selected::selection{
+    color: #fff;
+    box-shadow: none;
+    background-color: #000;
+
+}
 
 
-/*.button_type_calibration_1_dark .webix_button{*/
-/*    background-color: var(--c-white-color-background-dark_left_menu);*/
-/*    color: #fff;*/
-/*    font-size: 18px;*/
-/*    font-weight: 100;*/
-/*    position: relative;*/
-/*    border-top-left-radius: 8px;*/
-/*    right: 2px;*/
-/*    width: 105%;*/
-/*    height: 105%;*/
-/*    z-index: 100;*/
-/*}*/
+/*--------------*/
 
-/*.button_type_calibration_1 .webix_button:hover{*/
-/*    background-color: rgba(243, 243, 243, 0.0);*/
-/*}*/
 
-/*.button_type_calibration_1_dark .webix_button:hover{*/
-/*    background-color: var(--c-white-color-background-dark_general_rows);*/
 
-/*}*/
-
-/*.button_type_calibration_1 .webix_button:focus{*/
-/*    background-color: #f9f9f9;*/
-/*}*/
-
-/*.button_type_calibration_1_dark .webix_button:focus{*/
-/*    background-color: var(--c-white-color-background-dark_general_rows);*/
-/*}*/
 
 .button_type_calibration_2 .webix_button{
     background-color: rgba(243, 243, 243, 0.0);

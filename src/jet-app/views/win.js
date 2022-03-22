@@ -13,22 +13,25 @@ export default class Page9View extends JetView {
 
         // Версия прошивки надпись
         var ver = {
-            rows:[
+            rows: [
                 {
                     cols: [
                         {
                             width: 10,
                         },
-                        {view: "label", label: "Версия Программы " + VERSION,  align: "left", css:"ver_soft", id:"ver_soft"},
                         {
-
-                        }
+                            view: "label",
+                            label: "Версия Программы " + VERSION,
+                            align: "left",
+                            css: "ver_soft",
+                            id: "ver_soft"
+                        },
+                        {}
                     ]
                 }
             ]
 
         };
-
 
 
         // Логотип
@@ -39,26 +42,50 @@ export default class Page9View extends JetView {
             // width: 500,
             height: 600,
             css: "logo_1",
-            id:"logo_1",
+            id: "logo_1",
         };
 
 
         // Статус подключения датчика
-        var status_gage={
-            rows:[
+        var status_gage = {
+            rows: [
                 {
-                    cols:[
+                    cols: [
                         {
                             width: 170,
                         },
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_1"},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_1"},
-                        {width: 20,},
-                        {view:"label", label:"Датчик подключен", height: 30, width: 300, css:"label_status_gage_windows_start", id:"label_status_gage_windows_start_1",},
-                        {view:"label", label:"Датчик не подключен", height: 30, width: 300, css:"label_status_gage_windows_start", id:"label_status_gage_windows_start_2"},
                         {
-
-                        }
+                            view: "button",
+                            width: 30,
+                            height: 30,
+                            css: "rows_level_right_menu_switch",
+                            id: "button_define_define_1"
+                        },
+                        {
+                            view: "button",
+                            width: 30,
+                            height: 30,
+                            css: "rows_level_right_menu_switch_define",
+                            id: "button_define_1"
+                        },
+                        {width: 20,},
+                        {
+                            view: "label",
+                            label: "Датчик подключен",
+                            height: 30,
+                            width: 300,
+                            css: "label_status_gage_windows_start",
+                            id: "label_status_gage_windows_start_1",
+                        },
+                        {
+                            view: "label",
+                            label: "Датчик не подключен",
+                            height: 30,
+                            width: 300,
+                            css: "label_status_gage_windows_start",
+                            id: "label_status_gage_windows_start_2"
+                        },
+                        {}
                     ]
                 }
             ]
@@ -66,22 +93,32 @@ export default class Page9View extends JetView {
         };
 
 
-
-
         // Кнопки меню
-        var button_menu={
+        var button_menu = {
 
             width: 1000,
-            rows:[
+            rows: [
                 {
 
                     maxHeight: 400,
                     cols: [
-                        { view: "button", type: "image", image: "assets/images/master.svg",   css: "button_1", id: "master_setup"},
+                        {
+                            view: "button",
+                            type: "image",
+                            image: "assets/images/master.svg",
+                            css: "button_1",
+                            id: "master_setup"
+                        },
                         {
                             width: 20,
                         },
-                        { view: "button", type: "image", image: "assets/images/ingeneer.svg",  css: "button_1", id: "engineering_setup"}
+                        {
+                            view: "button",
+                            type: "image",
+                            image: "assets/images/ingeneer.svg",
+                            css: "button_1",
+                            id: "engineering_setup"
+                        }
                     ]
                 },
                 {
@@ -90,12 +127,25 @@ export default class Page9View extends JetView {
                 {
 
                     maxHeight: 400,
-                    cols:[
-                        { view: "button", type: "image", image: "assets/images/info.svg",   css: "button_1", id: "reference"},
+                    cols: [
+                        {
+                            view: "button",
+                            type: "image",
+                            image: "assets/images/info.svg",
+                            css: "button_1",
+                            id: "reference"
+                        },
                         {
                             width: 20,
                         },
-                        { view: "button", type: "image", image: "assets/images/konfig.svg",  align: "center",  css: "button_1", id: "application_menu"},
+                        {
+                            view: "button",
+                            type: "image",
+                            image: "assets/images/konfig.svg",
+                            align: "center",
+                            css: "button_1",
+                            id: "application_menu"
+                        },
                     ]
                 },
 
@@ -103,21 +153,23 @@ export default class Page9View extends JetView {
         };
 
         var win = webix.ui({
-            view:"window",
-            position:"center",
+            view: "window",
+            position: "center",
             width: 500,
             height: 300,
-            id:"window_show",
-            modal:true,
-            css:"window_show",
-            head:{
-                rows:[
+            id: "window_show",
+            modal: true,
+            css: "window_show",
+            head: {
+                rows: [
                     {
-                        cols:[
-                            {template:"Настройки", type:"header", borderless:true,},
-                            {view:"icon", icon:"wxi-close", tooltip:"Close window", click: function(){
+                        cols: [
+                            {template: "Настройки", type: "header", borderless: true,},
+                            {
+                                view: "icon", icon: "wxi-close", tooltip: "Close window", click: function () {
                                     $$("window_show").hide()
-                                }}
+                                }
+                            }
                         ]
                     },
                     {
@@ -127,20 +179,26 @@ export default class Page9View extends JetView {
                     {
                         width: 200,
 
-                        rows:[
+                        rows: [
 
                             {
                                 height: 100,
-                                cols:[
+                                cols: [
+                                    {},
                                     {
-
+                                        view: "label",
+                                        label: "<p style='font-size: 16px; position: relative; top: -10px;'>Выбор темы</p>",
+                                        width: 130,
+                                        id: "light_theme_label"
                                     },
-                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px;'>Выбор темы</p>", width: 130, id:"light_theme_label"},
-                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; color: #fff;'>Выбор темы</p>", width: 130, id:"dark_theme_label"},
+                                    {
+                                        view: "label",
+                                        label: "<p style='font-size: 16px; position: relative; top: -10px; color: #fff;'>Выбор темы</p>",
+                                        width: 130,
+                                        id: "dark_theme_label"
+                                    },
                                     {view: "switch", value: 0, id: "dark_light_theme", width: 70,},
-                                    {
-
-                                    },
+                                    {},
 
                                 ]
                             },
@@ -149,18 +207,27 @@ export default class Page9View extends JetView {
                             },
                             {
 
-                                cols:[
+                                cols: [
                                     {
                                         width: 150,
                                     },
-                                    {view:"label", label:"<p>Выбор языка</p>", width: 130, id:"language_windows_modal", css:"language_windows_modal"},
-                                    {width: 130, view:"richselect", value:1, id:"language", options:[{ "id":1, "value":"Русский"}, { "id":2, "value":"English"},
+                                    {
+                                        view: "label",
+                                        label: "<p>Выбор языка</p>",
+                                        width: 130,
+                                        id: "language_windows_modal",
+                                        css: "language_windows_modal"
+                                    },
+                                    {
+                                        width: 130,
+                                        view: "richselect",
+                                        value: 1,
+                                        id: "language",
+                                        options: [{"id": 1, "value": "Русский"}, {"id": 2, "value": "English"},
                                         ]
 
                                     },
-                                    {
-
-                                    }
+                                    {}
                                 ]
                             }
 
@@ -176,23 +243,24 @@ export default class Page9View extends JetView {
         win.hide();
 
 
-
         var win_2 = webix.ui({
-            view:"window",
-            position:"center",
+            view: "window",
+            position: "center",
             width: 500,
             height: 300,
-            id:"window_show_2",
-            modal:true,
-            css:"window_show",
-            head:{
-                rows:[
+            id: "window_show_2",
+            modal: true,
+            css: "window_show",
+            head: {
+                rows: [
                     {
-                        cols:[
-                            {template:"Справка", type:"header", borderless:true,},
-                            {view:"icon", icon:"wxi-close", tooltip:"Close window", click: function(){
+                        cols: [
+                            {template: "Справка", type: "header", borderless: true,},
+                            {
+                                view: "icon", icon: "wxi-close", tooltip: "Close window", click: function () {
                                     $$("window_show_2").hide()
-                                }}
+                                }
+                            }
                         ]
                     },
                     {
@@ -201,28 +269,44 @@ export default class Page9View extends JetView {
                     },
                     {
                         cols: [
-                            {
-
-                            },
+                            {},
                             {
 
                                 height: 200,
-                                rows:[
+                                rows: [
+                                    {},
                                     {
-
+                                        view: "label",
+                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Торговая марка: 'Точка Мониторинга'</p>",
+                                        width: 330,
+                                        css: "language_windows_modal",
+                                        id: "language_windows_modal_2"
                                     },
-                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Торговая марка: 'Точка Мониторинга'</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_2"},
-                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Версия программного обеспечения </p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_3"},
-                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Производитель: ООО 'Новотек'</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_4"},
-                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>www.point-monitoring.ru</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_5"},
                                     {
-
+                                        view: "label",
+                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Версия программного обеспечения </p>",
+                                        width: 330,
+                                        css: "language_windows_modal",
+                                        id: "language_windows_modal_3"
                                     },
+                                    {
+                                        view: "label",
+                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Производитель: ООО 'Новотек'</p>",
+                                        width: 330,
+                                        css: "language_windows_modal",
+                                        id: "language_windows_modal_4"
+                                    },
+                                    {
+                                        view: "label",
+                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>www.point-monitoring.ru</p>",
+                                        width: 330,
+                                        css: "language_windows_modal",
+                                        id: "language_windows_modal_5"
+                                    },
+                                    {},
                                 ]
                             },
-                            {
-
-                            }
+                            {}
                         ]
 
 
@@ -242,14 +326,12 @@ export default class Page9View extends JetView {
                 id: "color_rows_star_pages",
                 rows: [
                     {
-                        cols:[
+                        cols: [
                             {
                                 width: 10,
                             },
                             ver,
-                            {
-
-                            }
+                            {}
                         ]
                     },
                     {
@@ -257,42 +339,30 @@ export default class Page9View extends JetView {
                     },
                     {
                         paddingY: -220,
-                        cols:[
-                            {
-
-                            },
+                        cols: [
+                            {},
                             logo,
-                            {
-
-                            }
+                            {}
                         ]
                     },
                     {
                         height: 20,
                     },
                     {
-                        cols:[
-                            {
-
-                            },
+                        cols: [
+                            {},
                             status_gage,
-                            {
-
-                            }
+                            {}
                         ]
                     },
                     {
                         height: 20,
                     },
                     {
-                        cols:[
-                            {
-
-                            },
+                        cols: [
+                            {},
                             button_menu,
-                            {
-
-                            }
+                            {}
                         ]
                     }
                 ]
@@ -300,11 +370,11 @@ export default class Page9View extends JetView {
         }
     }
 
-    listenerConnect = ()=>{
+    listenerConnect = () => {
         this.setStatusConnect(true);
     }
 
-    listenerDisconnect = ()=>{
+    listenerDisconnect = () => {
         this.setStatusConnect(false);
     }
 
@@ -314,13 +384,13 @@ export default class Page9View extends JetView {
         llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
     }
 
-    setStatusConnect(status){
-        if(status){
+    setStatusConnect(status) {
+        if (status) {
             $$("button_define_define_1").show();
             $$("label_status_gage_windows_start_1").show();
             $$("button_define_1").hide();
             $$("label_status_gage_windows_start_2").hide();
-        }else{
+        } else {
             $$("button_define_define_1").hide();
             $$("label_status_gage_windows_start_1").hide();
             $$("button_define_1").show();
@@ -328,14 +398,16 @@ export default class Page9View extends JetView {
         }
     };
 
-    init(view){
+    init(view) {
         this.setStatusConnect(false);
+
+        setTheme();
 
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerIsDisconnect(this.listenerDisconnect);
         llsModel.getStatusConnect();
 
-        let goEngineering = (code, e)=> {
+        let goEngineering = (code, e) => {
             console.log(e);
             if (e.altKey && e.ctrlKey && e.code == "KeyT") {
                 console.log("OPEN ENGINEERING MENU");
@@ -346,44 +418,45 @@ export default class Page9View extends JetView {
 
         $$("logo_1").attachEvent("onKeyPress", goEngineering);
 
-        $$("master_setup").attachEvent("onItemClick", (id, e)=>{
+        $$("master_setup").attachEvent("onItemClick", (id, e) => {
             // this.show("1page");
-            // this.show("./engineeringmenu/engineeringmenu");
-            // $$("color_rows_page22").define(color)
+
         });
 
 
-        $$("engineering_setup").attachEvent("onItemClick", (id, e)=>{
-            // this.show("1page");
+        $$("engineering_setup").attachEvent("onItemClick", (id, e) => {
             this.show("./engineeringmenu/engineeringmenu");
-
         });
-
-
 
         // $$("button_define_define_1").hide()
         // $$("label_status_gage_windows_start_1").hide()
 
-
-
-        $$("application_menu").attachEvent("onItemClick", (id, e )=>{
+        $$("application_menu").attachEvent("onItemClick", (id, e) => {
             $$("window_show").show()
         });
 
-
-
         $$("window_show_2").hide()
-        $$("reference").attachEvent("onItemClick", (id, e )=>{
+
+        $$("reference").attachEvent("onItemClick", (id, e) => {
             $$("window_show_2").show()
         });
 
-
         $$("dark_theme_label").hide()
-        $$("dark_light_theme").attachEvent("onChange", function(newValue, oldValue, config){
-            if(newValue){
+
+        if (configFile.theme.color == 'white') {
+            $$("dark_light_theme").setValue(1);
+        }
+
+        if (configFile.theme.color == 'black') {
+            $$("dark_light_theme").setValue(0);
+        }
+
+
+        $$("dark_light_theme").attachEvent("onChange", function (newValue, oldValue, config) {
+            if (newValue) {
                 configFile.theme.color = 'white';
                 setTheme();
-            }else{
+            } else {
                 configFile.theme.color = 'black';
                 setTheme();
             }
@@ -483,8 +556,8 @@ export default class Page9View extends JetView {
         //
         // }
 
-        function setTheme(){
-            if (configFile.theme.color == 'white') {
+        function setTheme() {
+            if (configFile.theme.color == 'black') {
                 webix.html.addCss($$("window_show").getNode(), "window_show_dark");
                 webix.html.addCss($$("window_show_2").getNode(), "window_show_dark");
                 webix.html.addCss($$("language_windows_modal").getNode(), "language_windows_modal_dark");
@@ -515,7 +588,7 @@ export default class Page9View extends JetView {
                 $$("reference").refresh()
                 $$("application_menu").refresh()
             }
-            if (configFile.theme.color == 'black') {
+            if (configFile.theme.color == 'white') {
                 webix.html.addCss($$("window_show").getNode(), "window_show");
                 webix.html.addCss($$("window_show_2").getNode(), "window_show");
                 webix.html.addCss($$("language_windows_modal").getNode(), "language_windows_modal");

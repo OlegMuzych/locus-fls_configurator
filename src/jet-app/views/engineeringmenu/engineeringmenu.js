@@ -60,14 +60,23 @@ export default class EngineeringMenu extends JetView{
         });
 
 
+        // if(configFile.theme.color == 'white'){
+        //     webix.html.addCss( $$("rows_left_1").getNode(), "style_body");
+        //     webix.html.addCss( $$("rows_left_2").getNode(), "style_body");
+        // }
+        // if(configFile.theme.color == 'black'){
+        //     webix.html.addCss( $$("rows_left_1").getNode(), "style_body_dark");
+        //     webix.html.addCss( $$("rows_right_2").getNode(), "style_body_dark");
+        //
+        // }
+
         if(configFile.theme.color == 'white'){
             webix.html.addCss( $$("rows_left_1").getNode(), "style_body");
-            webix.html.addCss( $$("rows_left_2").getNode(), "style_body");
+            webix.html.addCss( $$("rows_right_2").getNode(), "style_body");
         }
         if(configFile.theme.color == 'black'){
             webix.html.addCss( $$("rows_left_1").getNode(), "style_body_dark");
             webix.html.addCss( $$("rows_right_2").getNode(), "style_body_dark");
-
         }
     }
 

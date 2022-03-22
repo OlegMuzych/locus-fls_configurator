@@ -371,7 +371,46 @@ border: none;
     box-shadow: inset 1px 1px 1px #212121;
 }
 
+/*-----------*/
 
+.rowNumber_style input{
+    color: var(--white-style-text-color);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    /*height: 100%;*/
+    /*width: 50%;*/
+    background-color: #fff;
+    border: 1px solid #ececec;
+    position: relative;
+    top: 20%;
+}
+
+.rowNumber_style_dark input{
+    color: #c1c4c6;
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    /*height: 100%;*/
+    /*width: 50%;*/
+    background-color: var(--c-white-color-background-dark_general_windows);
+    border: 1px solid var(--c-white-color-background-dark_general_rows);
+    position: relative;
+    top: 20%;
+    box-shadow: inset 1px 1px 1px #212121;
+}
+
+
+.calib_rows{
+    background-color: var(--white-bacground-central-menu);
+
+}
+
+.calib_rows_dark{
+    background-color: var(--c-white-color-background-dark_general_windows);
+
+}
+
+
+/*----------*/
 
 
 
@@ -935,15 +974,15 @@ border: none;
 
 
 .webix_view .webix_control > .webix_disabled{
-    background-color: #6a6a6a00;
-    opacity: 0.4;
+    background-color: #666666;
+    opacity: 0.2;
     color: #cccccc;
 
 }
 
 .webix_view .webix_control > .webix_disabled_dark{
-    background-color: var(--c-white-color-background-dark_left_menu);
-    opacity: 0.4;
+    background-color: #666666;
+    opacity: 0.2;
 
 }
 
@@ -1289,10 +1328,11 @@ border: none;
     border-radius: 8px;
 }
 
-.filter_rows_dark{
+.filters_rows_dark{
     background-color: var(--c-white-color-background-dark_general_rows);
     border-radius: 8px;
 }
+
 /*Кнопка быврать фильтр-----------------------------------------*/
 .button_slider_gen_value .webix_button{
     position: relative;
@@ -1450,48 +1490,126 @@ border: none;
 
 /*-Меню тарировка слив/залив------------------------------------------------------------------*/
 
-.button_type_calibration_1 .webix_button{
-    background-color: rgba(243, 243, 243, 0.0);
+.button_type_calibration_1 .webix_item_tab{
+    font-size: 20px;
     color: #000;
-    font-size: 18px;
     font-weight: 100;
-    position: relative;
-    border-top-left-radius: 8px;
-    right: 2px;
-    width: 105%;
-    height: 105%;
-    z-index: 100;
+    /*background-color: #f9f9f9;*/
+    background-color: var(--c-white-color-background);
+
 }
 
-.button_type_calibration_1_dark .webix_button{
+.button_type_calibration_1 .webix_item_tab.webix_selected{
+    border: none;
+    font-size: 20px;
+    color: #000;
+    font-weight: 100;
+    /*background-color: var(--c-white-color-background);*/
+    background-color: #f9f9f9;
+    box-shadow: none;
+
+}
+
+.button_type_calibration_1 .webix_item_tab.webix_selected:hover{
+    border-bottom: none;
+    font-size: 20px;
+    color: #000;
+    font-weight: 100;
+    background-color: var(--c-white-color-background);
+
+}
+
+.button_type_calibration_1 .webix_all_tabs .webix_item_tab.webix_selected:focus{
+    color: #000;
+    box-shadow: none;
+
+}
+
+/*-------------*/
+
+/*.rowNumber_style .webix_el_label .webix_el_box{*/
+/*    font-size: 16px;*/
+/*    font-weight: 100;*/
+/*}*/
+
+.rowNumber_style .webix_el_label.webix_el_box{
+    font-size: 16px;
+    font-weight: 100;
+
+}
+
+.rowNumber_style_1 .webix_inp_label, .webix_inp_top_label, legend.webix_forminput_label, .webix_el_label .webix_el_box{
+    font-size: 18px;
+    font-weight: 100;
+    color: var(--white-style-text-color);
+}
+
+
+.rowNumber_style_1_dark .webix_inp_label, .webix_inp_top_label, legend.webix_forminput_label, .webix_el_label .webix_el_box{
+    font-size: 18px;
+    font-weight: 100;
+    color: var(--c-color-text-dark);
+}
+
+
+
+/*--------------*/
+
+
+.button_type_calibration_1_dark .webix_item_tab{
+    font-size: 20px;
+    font-weight: 100;
     background-color: var(--c-white-color-background-dark_left_menu);
     color: #fff;
-    font-size: 18px;
+
+}
+
+.button_type_calibration_1_dark .webix_item_tab.webix_selected{
+    border: none;
+    font-size: 20px;
+    color: #fff;
     font-weight: 100;
-    position: relative;
-    border-top-left-radius: 8px;
-    right: 2px;
-    width: 105%;
-    height: 105%;
-    z-index: 100;
+    background-color: var(--c-white-color-background-dark_general_rows);
+    box-shadow: none;
+
 }
 
-.button_type_calibration_1 .webix_button:hover{
-    background-color: rgba(243, 243, 243, 0.0);
-}
-
-.button_type_calibration_1_dark .webix_button:hover{
+.button_type_calibration_1_dark .webix_item_tab.webix_selected:hover{
+    border-bottom: none;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 100;
     background-color: var(--c-white-color-background-dark_general_rows);
 
 }
 
-.button_type_calibration_1 .webix_button:focus{
-    background-color: #f9f9f9;
+.button_type_calibration_1_dark .webix_all_tabs .webix_item_tab.webix_selected:focus{
+    color: #fff;
+    box-shadow: none;
+
 }
 
-.button_type_calibration_1_dark .webix_button:focus{
-    background-color: var(--c-white-color-background-dark_general_rows);
+.button_type_calibration_1_dark .webix_all_tabs .webix_item_tab.webix_selected::selection{
+    color: #fff;
+    box-shadow: none;
+    background-color: #000;
+
 }
+
+
+/*--------------*/
+
+
+.style_body{
+    background-color: var(--modal_windows_background) ;
+}
+
+.style_body_dark{
+    background-color: var(--c-white-color-background-dark_left_menu);
+}
+/*-------------*/
+
+
 
 .button_type_calibration_2 .webix_button{
     background-color: rgba(243, 243, 243, 0.0);

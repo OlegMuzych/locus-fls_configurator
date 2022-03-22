@@ -1,35 +1,44 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
+import configFile from "../../../config-app";
 
 export default class CalibrationSettings extends JetView {
     config() {
         let table = {
+
+            view:"scrollview",
+            scroll: "y",
             minWidth: 600,
-            maxWidth: 852,
-            minHeight: 940,
-            cols: [
-                {
-                    gravity: 1,
-                    rows: [
-                        {view: 'label', label: 'Шагов', align: 'center'},
-                        {localId: 'rowNumber', css:"rowNumber_style_1", rows: []}
-                    ]
-                },
-                {
-                    gravity: 3,
-                    rows: [
-                        {view: 'label', label: 'Уровень', align: 'center'},
-                        {localId: 'rowLevel', css:"rowNumber_style", rows: []}
-                    ]
-                },
-                {
-                    gravity: 3,
-                    rows: [
-                        {view: 'label', label: 'Объем', align: 'center'},
-                        {localId: 'rowVolume',css:"rowNumber_style",  rows: []}
-                    ]
-                }
-            ],
+            maxWidth: 850,
+            css:"calib_rows",
+            id:"calib_rows",
+            body: {
+
+                cols: [
+                    {
+                        gravity: 1,
+                        rows: [
+                            {view: 'label', label: 'Шагов', align: 'center'},
+                            {localId: 'rowNumber', css: "rowNumber_style_1", rows: []}
+                        ]
+                    },
+                    {
+                        gravity: 3,
+                        rows: [
+                            {view: 'label', label: 'Уровень', align: 'center'},
+                            {localId: 'rowLevel', css: "rowNumber_style", rows: []}
+                        ]
+                    },
+                    {
+                        gravity: 3,
+                        rows: [
+                            {view: 'label', label: 'Объем', align: 'center'},
+                            {localId: 'rowVolume', css: "rowNumber_style",  rows: []}
+                        ]
+                    },
+                    {}
+                ],
+            }
         }
 
         let body = {
@@ -94,6 +103,27 @@ export default class CalibrationSettings extends JetView {
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerShortData(this.listenerShortData);
         llsModel.getTable().then();
+
+
+
+        if(configFile.theme.color == 'white'){
+            webix.html.addCss(this.$$("rowNumber").getNode(), "rowNumber_style_1");
+            webix.html.addCss(this.$$("calib_rows").getNode(), "calib_rows");
+            webix.html.addCss(this.$$("rowLevel").getNode(), "rowNumber_style");
+            webix.html.addCss(this.$$("rowVolume").getNode(), "rowNumber_style");
+
+        }
+        if(configFile.theme.color == 'black'){
+            webix.html.addCss(this.$$("rowNumber").getNode(), "rowNumber_style_1_dark");
+            webix.html.addCss(this.$$("calib_rows").getNode(), "calib_rows_dark");
+            webix.html.addCss(this.$$("rowLevel").getNode(), "rowNumber_style_dark");
+            webix.html.addCss(this.$$("rowVolume").getNode(), "rowNumber_style_dark");
+
+        }
+
+
+
+
 
         this.on(this.app, "app:calibrationsubview:addStep", (volumeStep) => {
             if(this.#volume.length){

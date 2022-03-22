@@ -15,7 +15,7 @@ export default class LeftMenu extends JetView{
                         view: "button",
                         type: "image",
                         image: "assets/images/model_101.svg",
-                        width: 160,
+                        width: 155,
                         height: 200,
                         css: "left_menu_button",
                         id: "left_menu_button_1"
@@ -24,7 +24,7 @@ export default class LeftMenu extends JetView{
                         view: "button",
                         type: "image",
                         image: "assets/images/model_201.svg",
-                        width: 160,
+                        width: 155,
                         height: 200,
                         css: "left_menu_button",
                         id: "left_menu_button_2"
@@ -33,7 +33,7 @@ export default class LeftMenu extends JetView{
                         view: "button",
                         type: "image",
                         image: "assets/images/MODEL_301_BLE.svg",
-                        width: 160,
+                        width: 155,
                         height: 200,
                         css: "left_menu_button",
                         id: "left_menu_button_3"
@@ -48,7 +48,7 @@ export default class LeftMenu extends JetView{
                         image: "assets/images/Back.svg",
                         width: 160,
                         height: 120,
-                        localId: "button_back",
+                        id: "button_back",
                         css: "left_menu_button_reference",
                     },
                     {
@@ -94,6 +94,22 @@ export default class LeftMenu extends JetView{
             webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button");
             webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference");
             webix.html.addCss( this.$$("button_back").getNode(), "left_menu_button_reference");
+
+
+
+            $$("left_menu_button_1").define("image", "assets/images//MODEL_101.svg")
+            $$("left_menu_button_2").define("image", "assets/images//MODEL_201.svg")
+            $$("left_menu_button_3").define("image", "assets/images//MODEL_301_BLE.svg")
+            $$("button_back").define("image", "assets/images//Back.svg")
+            $$("button_reference").define("image", "assets/images//info.svg")
+
+            $$("left_menu_button_1").refresh();
+            $$("left_menu_button_2").refresh();
+            $$("left_menu_button_3").refresh();
+            $$("button_back").refresh();
+            $$("button_reference").refresh();
+
+
         }
         if(configFile.theme.color == 'black'){
             webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols_dark");
@@ -102,6 +118,21 @@ export default class LeftMenu extends JetView{
             webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button_dark");
             webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference_dark");
             webix.html.addCss( this.$$("button_back").getNode(), "left_menu_button_reference_dark");
+
+
+
+            $$("left_menu_button_1").define("image", "assets/images/MODEL_101_inverse.svg")
+            $$("left_menu_button_2").define("image", "assets/images/MODEL_201_inverse.svg")
+            $$("left_menu_button_3").define("image", "assets/images/MODEL_301_BLE_inverse.svg")
+            $$("button_back").define("image", "assets/images/back_inverse.svg")
+            $$("button_reference").define("image", "assets/images/info_inverse.svg")
+
+            $$("left_menu_button_1").refresh();
+            $$("left_menu_button_2").refresh();
+            $$("left_menu_button_3").refresh();
+            $$("button_back").refresh();
+            $$("button_reference").refresh();
+
         }
     }
 }

@@ -6,6 +6,7 @@ import llsModel from "../../models/lls-model";
 import PasswordWindow from "./windows/password";
 import PasswordWindow2 from "./windows/password-2";
 import ContinueCalibrateWindow from "./windows/continuecalibrate";
+import configFile from "../../config-app";
 
 export default class EngineeringMenu extends JetView{
     config() {
@@ -21,12 +22,14 @@ export default class EngineeringMenu extends JetView{
                     LeftMenu,
                     {
                         css: "style_body",
+                        id:"rows_left_1",
                         width: 20,
                     },
                     CentralMenu,
                     {
                         css: "style_body",
-                        width: 20,
+                        id:"rows_right_2",
+                        width: 25,
                     },
                     RightMenu,
 
@@ -36,7 +39,7 @@ export default class EngineeringMenu extends JetView{
             }
         }
 
-        return body;s
+        return body;
     }
 
 
@@ -55,6 +58,17 @@ export default class EngineeringMenu extends JetView{
         this.on(this.app, "app:calibrationSettings:continueWindow", () => {
             this.continueWindow.showWindow();
         });
+
+
+        if(configFile.theme.color == 'white'){
+            webix.html.addCss( $$("rows_left_1").getNode(), "style_body");
+            webix.html.addCss( $$("rows_left_2").getNode(), "style_body");
+        }
+        if(configFile.theme.color == 'black'){
+            webix.html.addCss( $$("rows_left_1").getNode(), "style_body_dark");
+            webix.html.addCss( $$("rows_right_2").getNode(), "style_body_dark");
+
+        }
     }
 
     listenerCommandError = (status)=>{
@@ -66,3 +80,6 @@ export default class EngineeringMenu extends JetView{
         }
     }
 }
+
+
+

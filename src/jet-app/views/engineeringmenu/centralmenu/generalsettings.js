@@ -243,6 +243,11 @@ export default class GeneralSettings extends JetView {
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerLongData(this.listenerLongData);
 
+
+
+
+
+
         $$('window_type_2_1').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {

@@ -19,7 +19,7 @@ export default class Page9View extends JetView {
                         {
                             width: 10,
                         },
-                        {view: "label", label: "Версия Программы v1.1.1",  align: "left", css:"ver_soft", id:"ver_soft"},
+                        {view: "label", label: "Версия Программы",  align: "left", css:"ver_soft", id:"ver_soft"},
                         {
 
                         }
@@ -212,7 +212,7 @@ export default class Page9View extends JetView {
 
                                     },
                                     {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Торговая марка: 'Точка Мониторинга'</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_2"},
-                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Версия программного обеспечения 1.1.1</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_3"},
+                                    {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Версия программного обеспечения </p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_3"},
                                     {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Производитель: ООО 'Новотек'</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_4"},
                                     {view: "label", label:"<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>www.point-monitoring.ru</p>", width: 330, css:"language_windows_modal", id:"language_windows_modal_5"},
                                     {

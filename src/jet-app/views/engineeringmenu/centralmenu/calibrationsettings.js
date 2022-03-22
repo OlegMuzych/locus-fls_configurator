@@ -16,23 +16,27 @@ export default class CalibrationSettings extends JetView {
 
                 cols: [
                     {
-                        gravity: 1,
+                        maxWidth: 10,
+                    },
+                    {
+
+                        gravity: 2,
                         rows: [
-                            {view: 'label', label: 'Шагов', align: 'center'},
+                            {view: 'label', label: "<p>Шагов</p>", css: "rowNumber_style_1", align: 'center', id:"top_text_1", height: 70,},
                             {localId: 'rowNumber', css: "rowNumber_style_1", rows: []}
                         ]
                     },
                     {
                         gravity: 3,
                         rows: [
-                            {view: 'label', label: 'Уровень', align: 'center'},
+                            {view: 'label', label: "<p>Уровень</p>", align: 'center', css: "rowNumber_style_1", id:"top_text_2", height: 70,},
                             {localId: 'rowLevel', css: "rowNumber_style", rows: []}
                         ]
                     },
                     {
                         gravity: 3,
                         rows: [
-                            {view: 'label', label: 'Объем', align: 'center'},
+                            {view: 'label', label: "<p>Объем</p>", align: 'center', css: "rowNumber_style_1", id:"top_text_3", height: 70,},
                             {localId: 'rowVolume', css: "rowNumber_style",  rows: []}
                         ]
                     },
@@ -108,6 +112,9 @@ export default class CalibrationSettings extends JetView {
 
         if(configFile.theme.color == 'white'){
             webix.html.addCss(this.$$("rowNumber").getNode(), "rowNumber_style_1");
+            webix.html.addCss(this.$$("top_text_1").getNode(), "rowNumber_style_1");
+            webix.html.addCss(this.$$("top_text_2").getNode(), "rowNumber_style_1");
+            webix.html.addCss(this.$$("top_text_3").getNode(), "rowNumber_style_1");
             webix.html.addCss(this.$$("calib_rows").getNode(), "calib_rows");
             webix.html.addCss(this.$$("rowLevel").getNode(), "rowNumber_style");
             webix.html.addCss(this.$$("rowVolume").getNode(), "rowNumber_style");
@@ -115,6 +122,9 @@ export default class CalibrationSettings extends JetView {
         }
         if(configFile.theme.color == 'black'){
             webix.html.addCss(this.$$("rowNumber").getNode(), "rowNumber_style_1_dark");
+            webix.html.addCss(this.$$("top_text_1").getNode(), "rowNumber_style_1_dark");
+            webix.html.addCss(this.$$("top_text_2").getNode(), "rowNumber_style_1_dark");
+            webix.html.addCss(this.$$("top_text_3").getNode(), "rowNumber_style_1_dark");
             webix.html.addCss(this.$$("calib_rows").getNode(), "calib_rows_dark");
             webix.html.addCss(this.$$("rowLevel").getNode(), "rowNumber_style_dark");
             webix.html.addCss(this.$$("rowVolume").getNode(), "rowNumber_style_dark");
@@ -224,6 +234,8 @@ export default class CalibrationSettings extends JetView {
                 view: 'label',
                 align: 'center',
                 label: value,
+                // css: "rowNumber_style_1",
+
             });
             this.addChangeEvent(id);
             this.#number.push(id);

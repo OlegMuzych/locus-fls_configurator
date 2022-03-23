@@ -77,12 +77,17 @@ export default class StatusMenu extends JetView{
         llsModel.clearListenerIsConnect(this.listenerConnect);
         llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
         llsModel.clearListenerShortData(this.listenerShortData);
+        llsModel.clearListenerLongData(this.listenerLongData);
+        llsModel.cle
     }
 
     listenerShortData = (shortData)=>{
         console.log(shortData);
         $$("window_temp").setValue(shortData.temperature.toString());
-        if(shortData.thermalCompensationType){
+    }
+
+    listenerLongData = (longData)=>{
+        if(longData.thermalCompensationType){
             setTermoState(true);
         }else{
             setTermoState(false);
@@ -107,6 +112,7 @@ export default class StatusMenu extends JetView{
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerIsDisconnect(this.listenerDisconnect);
         llsModel.addListenerShortData(this.listenerShortData);
+        llsModel.addListenerLongData(this.listenerLongData);
         llsModel.getStatusConnect();
 
         this.fullLevelDefault = false;

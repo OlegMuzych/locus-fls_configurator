@@ -22,7 +22,7 @@ const createWindow = () => {
         zoomFactor: 0.6,
     },
     fullscreenable: false,
-    icon: __dirname + '/src/vertical_tagline_on_transparent_curves_by_logaster-01.icon',
+    icon: __dirname + '/vertical_tagline_on_transparent_curves_by_logaster-01.ico',
     removeMenu: true,
     autoHideMenuBar: true,
   });

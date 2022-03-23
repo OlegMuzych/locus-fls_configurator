@@ -557,7 +557,7 @@ border: none;
     height: 40%;
     position: relative;
     top: 30px;
-    width: 50px;
+    width: 70px;
     background-color: #414e72;
     border: 1px solid var(--c-white-color-background-dark_general_rows);
 }
@@ -573,7 +573,7 @@ border: none;
 }
 
 .window_type_3 .webix_inp_counter_value{
-    width: 80px;
+    width: 100px;
 }
 
 @media screen and (max-width: 1641px){
@@ -693,54 +693,55 @@ border: none;
         font-size: 16px;
     }
 
-    .window_type_3 p{
-        color: #000;
-        text-align: left;
-        padding-right: 50px;
-        padding-left: 20px;
-        font-size: 18px;
-        font-weight: 100;
-        position: relative;
-        top: -20px;
-        width: 110%;
-    }
+
+    /*.window_type_3 p{*/
+    /*    color: #000;*/
+    /*    text-align: left;*/
+    /*    padding-right: 50px;*/
+    /*    padding-left: 20px;*/
+    /*    font-size: 18px;*/
+    /*    font-weight: 100;*/
+    /*    position: relative;*/
+    /*    top: -20px;*/
+    /*    width: 110%;*/
+    /*}*/
 
 
-    .window_type_3_dark p{
-        color: #fff;
-        text-align: left;
-        padding-right: 50px;
-        padding-left: 20px;
-        font-size: 18px;
-        font-weight: 100;
-        position: relative;
-        top: -20px;
-        width: 110%;
-    }
+    /*.window_type_3_dark p{*/
+    /*    color: #fff;*/
+    /*    text-align: left;*/
+    /*    padding-right: 50px;*/
+    /*    padding-left: 20px;*/
+    /*    font-size: 18px;*/
+    /*    font-weight: 100;*/
+    /*    position: relative;*/
+    /*    top: -20px;*/
+    /*    width: 110%;*/
+    /*}*/
 
-    .window_type_3 .webix_inp_counter_prev{
-        color: #000;
-        height: 40%;
-        position: relative;
-        top: 30px;
-        width: 50px;
-        right: 50px;
+    /*.window_type_3 .webix_inp_counter_prev{*/
+    /*    color: #000;*/
+    /*    height: 40%;*/
+    /*    position: relative;*/
+    /*    top: 30px;*/
+    /*    width: 50px;*/
+    /*    right: 50px;*/
 
-    }
+    /*}*/
 
-    .window_type_3 .webix_inp_counter_next{
-        color: #000;
-        height: 40%;
-        position: relative;
-        top: 30px;
-        width: 50px;
-        right: 50px;
-    }
+    /*.window_type_3 .webix_inp_counter_next{*/
+    /*    color: #000;*/
+    /*    height: 40%;*/
+    /*    position: relative;*/
+    /*    top: 30px;*/
+    /*    width: 50px;*/
+    /*    right: 50px;*/
+    /*}*/
 
-    .window_type_3 .webix_inp_counter_value{
-        width: 80px;
-        right: 50px;
-    }
+    /*.window_type_3 .webix_inp_counter_value{*/
+    /*    width: 80px;*/
+    /*    right: 50px;*/
+    /*}*/
 
 }
 /*///////////------------------------------------------------------------------*/

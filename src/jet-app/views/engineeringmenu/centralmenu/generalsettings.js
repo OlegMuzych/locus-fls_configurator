@@ -144,7 +144,7 @@ export default class GeneralSettings extends JetView {
                 },
 
                 {
-                    width: 850,
+                    // width: 850,
                     height: 100,
                     css: "window_type_3",
                     id: "window_type_2_8",
@@ -156,18 +156,24 @@ export default class GeneralSettings extends JetView {
                             height: 100,
                         },
                         {
-                            height: 20,
+                           maxWidth: 44,
                         },
                         {
-                            view: "counter",
-                            css: "window_type_3",
-                            id: "window_type_2_9",
-                            localId: 'counterPeriod',
-                            step: 1,
-                            value: 5,
-                            min: 1,
-                            max: 255,
-                            // width: 200,
+                            rows:[
+                                {
+                                    view: "counter",
+                                    css: "window_type_3",
+                                    id: "window_type_2_9",
+                                    localId: 'counterPeriod',
+                                    step: 1,
+                                    value: 5,
+                                    min: 1,
+                                    max: 255,
+                                    height: 100,
+                                    // width: 200,
+                                }
+                            ]
+
 
                         },
 

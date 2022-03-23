@@ -276,6 +276,7 @@ export default class Page9View extends JetView {
                             {},
                             {
 
+                                hidden: false,
                                 height: 200,
                                 rows: [
                                     {},
@@ -567,7 +568,7 @@ export default class Page9View extends JetView {
                 webix.html.addCss($$("window_show").getNode(), "window_show_dark");
                 webix.html.addCss($$("window_show_2").getNode(), "window_show_dark");
                 webix.html.addCss($$("language_windows_modal").getNode(), "language_windows_modal_dark");
-                webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
+                // webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
                 webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal_dark");
                 webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal_dark");
                 webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal_dark");
@@ -598,7 +599,7 @@ export default class Page9View extends JetView {
                 webix.html.addCss($$("window_show").getNode(), "window_show");
                 webix.html.addCss($$("window_show_2").getNode(), "window_show");
                 webix.html.addCss($$("language_windows_modal").getNode(), "language_windows_modal");
-                webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal");
+                // webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal");
                 webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal");
                 webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal");
                 webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal");

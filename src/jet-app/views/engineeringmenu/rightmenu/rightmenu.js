@@ -1,6 +1,7 @@
 import {JetView} from "webix-jet";
 import StatusMenu from "./statusmenu";
 import ServiceMenu from "./servicemenu";
+
 import CalibrationSubView from "./subviews/calibrationsubview";
 import FullEmptySubView from "./subviews/fullemptysubview";
 import configFile from "../../../config-app";

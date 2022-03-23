@@ -1,6 +1,7 @@
 import {JetView} from "webix-jet";
 import FuelFillView from "./calibrationsubview/fuelfill";
 import FuelDrainView from "./calibrationsubview/fueldrain";
+
 import configFile from "../../../../config-app";
 
 export default class CalibrationSubView extends JetView {
@@ -27,14 +28,73 @@ export default class CalibrationSubView extends JetView {
                 {
                     id: "fuelFill", rows: [FuelFillView],
                 },
+
             ],
             animate: false,
-        }
+        };
+
+
+        let button_table = {
+            css: "rows_right_menu_calibration_2",
+            rows:[
+                {
+
+                },
+                {
+                    cols:[
+                        {
+
+                        },
+                        {
+                            view: "button",
+                            type: "label",
+                            label: "Експорт таблицы тарировки",
+                            id:"button_export",
+                            width: 480,
+                            css: "set_step_drain_button_2"
+                        },
+                        {
+
+                        }
+                    ]
+                },
+                {
+                    height: 10,
+                },
+                {
+                    cols:[
+                        {
+
+                        },
+                        {
+                            view: "button",
+                            type: "label",
+                            label: "Импорт таблицы тарировки",
+                            id:"button_import",
+                            width: 480,
+                            css: "set_step_drain_button_2"
+                        },
+                        {
+
+                        }
+                    ]
+                },
+                {
+
+                }
+
+            ]
+
+
+        };
+
 
         let body = {
             rows: [
                 tabBarCalibrate,
                 myMultiview,
+                button_table
+
             ]
         };
 

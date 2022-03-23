@@ -7,7 +7,7 @@ export default class FullEmptySubView extends JetView {
         let right_menu_setup = {
             css: "right_menu_status",
             id: "right_menu_setup",
-            height: 650,
+            height: 750,
             rows: [
                 {
                     disabled:true,
@@ -35,7 +35,7 @@ export default class FullEmptySubView extends JetView {
                         {
                             cols: [
                                 {
-                                    width: 40,
+                                    // width: 40,
                                 },
                                 {
                                     view: "button",
@@ -45,9 +45,61 @@ export default class FullEmptySubView extends JetView {
                                     height: 50,
                                     css: "auto_calibration",
                                     id: "auto_calibration"
-                                }
+                                },
+                                {
+
+
+                                },
                             ]
                         }
+                    ]
+                },
+                {
+                    rows:[
+                        {
+                            height: 10,
+                        },
+                        {
+                            cols:[
+                                {
+                                    // width: 40,
+                                },
+                                {
+                                    view: "text",
+                                    width: 460,
+                                    height: 70,
+                                    css: "full_level_windows",
+                                    readonly: false,
+                                    id: "status_level_fuel",
+                                    inputAlign: "center",
+
+                                },
+                                {
+
+                                }
+                            ]
+                        },
+                        {
+                            cols:[
+                                {
+
+                                },
+                                {
+                                    view: "label",
+                                    label: "<p style='position: relative; top: -20px; '>Текущий уровень</p>",
+                                    // width: 460,
+                                    // height: 100,
+                                    css: "right_menu_fuel_level",
+                                    id: "right_menu_fuel_level"
+                                },
+                                {
+
+                                }
+                            ]
+                        },
+
+
+
                     ]
                 },
                 {

@@ -150,6 +150,7 @@ export default class FuelDrainView extends JetView {
             ]
         };
 
+
         let calibrationFuelDrain = {
             id: "right_menu_calibration_drain_2",
             css: "rows_right_menu_calibration_2",
@@ -182,7 +183,14 @@ export default class FuelDrainView extends JetView {
                     height: 10,
                 },
                 buttonStopCalibrate,
+                {
+                    height: 10,
+                },
+
+
+
             ]
+
         };
 
         let body = calibrationFuelDrain;

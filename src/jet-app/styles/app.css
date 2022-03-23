@@ -751,6 +751,28 @@ border: none;
 
 
 /*Поле правого меню------------------------------------------------*/
+
+
+.right_menu_fuel_level p{
+    color:  var(--c-white-color-background-dark_left_menu_button_hover);
+    font-size: 16px;
+    font-weight: 100;
+    text-align: center;
+
+}
+
+.full_level_windows input{
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 4px #c5c5c5,
+    inset -2px -2px 4px #ffffff;
+    color: #000;
+    font-size: 24px;
+    height: 100%;
+    border: 1px solid #fff;
+}
+
+
 .rows_style_right_menu{
     background-color: #f9f9f9;
     border-radius: 8px;

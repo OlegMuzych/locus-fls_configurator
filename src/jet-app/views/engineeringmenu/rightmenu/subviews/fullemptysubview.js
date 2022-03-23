@@ -10,13 +10,14 @@ export default class FullEmptySubView extends JetView {
             height: 650,
             rows: [
                 {
+                    disabled:true,
                     cols: [
                         {
                             width: 50,
                         },
                         {
                             view: "label",
-                            label: "<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 30px; '>Колибровка с топливом</p>",
+                            label: "<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 30px; '>Автоматическая колибровка</p>",
                             width: 300,
                             height: 100,
                             css: "right_menu_status_text",

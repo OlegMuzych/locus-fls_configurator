@@ -140,7 +140,7 @@ export default class GeneralSettings extends JetView {
                     ]
                 },
                 {
-                    height: 0,
+                    height: 20,
                 },
 
                 {
@@ -156,7 +156,7 @@ export default class GeneralSettings extends JetView {
                             height: 100,
                         },
                         {
-                            width: 100,
+                            height: 20,
                         },
                         {
                             view: "counter",

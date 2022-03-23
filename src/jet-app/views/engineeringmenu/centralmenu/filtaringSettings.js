@@ -317,7 +317,6 @@ export default class FiltrationSettings extends JetView {
                         },
                         {
                             id: "degree_of_filtration_5",
-                            // paddingY: 41,
                             rows: [
                                 {
                                     height: 20,
@@ -329,30 +328,42 @@ export default class FiltrationSettings extends JetView {
 
                                         },
                                         {
-                                            view: "label",
-                                            label: "<p style='position: relative; top: -20px;'>Ковариация</p>",
-                                            width: 240,
-                                            css:"text_color_filter",
-                                            id:"text_color_filter_4",
-                                        },
-                                        {
+                                            paddingY: 48,
+                                            rows:[
+                                                {
+                                                    view: "label",
+                                                    label: "<p style='position: relative; top: -20px;'>Ковариация</p>",
+                                                    width: 240,
+                                                    css:"text_color_filter",
+                                                    id:"text_color_filter_4",
+                                                }
+                                            ]
 
                                         },
                                         {
 
-                                            view: "text",
-                                            width: 210,
-                                            inputAlign: "center",
-                                            inputHeight: 54,
-                                            css: "full_window_text",
-                                            readonly: false,
-                                            id:"text_q",
-                                            marginY: 100,
+                                        },
+                                        {
+                                            paddingY: 40,
+                                            rows:[
+                                                {
+                                                    view: "text",
+                                                    width: 210,
+                                                    inputAlign: "center",
+                                                    inputHeight: 64,
+                                                    css: "full_window_text",
+                                                    readonly: false,
+                                                    id:"text_q",
+                                                    height: 50,
+                                                }
+                                            ]
+
                                         },
                                         {
 
                                         },
                                         {
+
                                             view: "button",
                                             type: "label",
                                             label: "Применить",
@@ -380,24 +391,36 @@ export default class FiltrationSettings extends JetView {
 
                                         },
                                         {
-                                            view: "label",
-                                            label: "<p style='position: relative; top: -20px;'>Ковариация (R)</p>",
-                                            width: 240,
-                                            css:"text_color_filter",
-                                            id:"text_color_filter_5",
+                                            paddingY: 48,
+                                            rows:[
+                                                {
+                                                    view: "label",
+                                                    label: "<p style='position: relative; top: -20px;'>Ковариация (R)</p>",
+                                                    width: 240,
+                                                    css:"text_color_filter",
+                                                    id:"text_color_filter_5",
+                                                }
+                                            ]
+
                                         },
                                         {
 
                                         },
                                         {
-                                            // paddingY: 40,
-                                            view: "text",
-                                            width: 210,
-                                            inputAlign: "center",
-                                            inputHeight: 54,
-                                            css: "full_window_text",
-                                            readonly: false,
-                                            id:"text_r"
+                                            paddingY: 40,
+                                            rows:[
+                                                {
+                                                    view: "text",
+                                                    width: 210,
+                                                    inputAlign: "center",
+                                                    inputHeight: 54,
+                                                    css: "full_window_text",
+                                                    readonly: false,
+                                                    id:"text_r",
+                                                    height: 50,
+                                                }
+                                            ]
+
                                         },
                                         {
 
@@ -559,6 +582,24 @@ export default class FiltrationSettings extends JetView {
         llsModel.clearListenerLongData(this.listenerLongData);
     }
     init(){
+
+            //Выключатель фитрации
+            $$("filtering_switch_top").attachEvent("onItemClick", (id, e)=>{
+                if ($$("filtering_switch_top").getValue()== 0) {
+                    $$("degree of filtration").disable()
+                    $$("degree_of_filtration").disable()
+                    $$("degree_of_filtration_2").disable()
+                } else {if
+                ($$("filtering_switch_top").getValue()== 1) {
+                    $$("degree of filtration").enable()
+                    $$("degree_of_filtration").enable()
+                    $$("degree_of_filtration_2").enable()
+                }
+                }
+            });
+
+
+
         llsModel.addListenerLongData(this.listenerLongData);
 
         $$('button_slider_gen_value_1').attachEvent("onItemClick", (id, e)=>{

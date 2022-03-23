@@ -22,12 +22,12 @@ export default class LeftMenu extends JetView{
                         hidden: true,
                     },
                     {
-                       height: 20,
+                       height: 10,
                     },
                     {
                         view: "button",
                         type: "image",
-                        image: "assets/images/model_201.svg",
+                        image: "assets/images/ONE.MAX.svg",
                         width: 155,
                         height: 200,
                         css: "left_menu_button",
@@ -36,7 +36,7 @@ export default class LeftMenu extends JetView{
                     {
                         view: "button",
                         type: "image",
-                        image: "assets/images/MODEL_301_BLE.svg",
+                        image: "assets/images/ONE.BLE.svg",
                         width: 155,
                         height: 200,
                         css: "left_menu_button",
@@ -102,8 +102,10 @@ export default class LeftMenu extends JetView{
 
 
             $$("left_menu_button_1").define("image", "assets/images//MODEL_101.svg")
-            $$("left_menu_button_2").define("image", "assets/images//MODEL_201.svg")
-            $$("left_menu_button_3").define("image", "assets/images//MODEL_301_BLE.svg")
+            // $$("left_menu_button_2").define("image", "assets/images//MODEL_201.svg")
+            $$("left_menu_button_2").define("image", "assets/images//ONE.MAX.svg")
+            // $$("left_menu_button_3").define("image", "assets/images//MODEL_301_BLE.svg")
+            $$("left_menu_button_3").define("image", "assets/images//ONE.BLE.svg")
             $$("button_back").define("image", "assets/images//Back.svg")
             $$("button_reference").define("image", "assets/images//info.svg")
 
@@ -126,8 +128,10 @@ export default class LeftMenu extends JetView{
 
 
             $$("left_menu_button_1").define("image", "assets/images/MODEL_101_inverse.svg")
-            $$("left_menu_button_2").define("image", "assets/images/MODEL_201_inverse.svg")
-            $$("left_menu_button_3").define("image", "assets/images/MODEL_301_BLE_inverse.svg")
+            // $$("left_menu_button_2").define("image", "assets/images/MODEL_201_inverse.svg")
+            $$("left_menu_button_2").define("image", "assets/images/ONE.MAX inverse.svg")
+            // $$("left_menu_button_3").define("image", "assets/images/MODEL_301_BLE_inverse.svg")
+            $$("left_menu_button_3").define("image", "assets/images/ONE.BLE inverse.svg")
             $$("button_back").define("image", "assets/images/back_inverse.svg")
             $$("button_reference").define("image", "assets/images/info_inverse.svg")
 

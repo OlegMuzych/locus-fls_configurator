@@ -12,9 +12,9 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    maxWidth: 900,
+    maxWidth: 1900,
     minWidth: 800,
-    maxHeight: 600,
+    maxHeight: 1600,
     minHeight: 600,
     webPreferences: {
       nodeIntegration: true,
@@ -22,7 +22,7 @@ const createWindow = () => {
         zoomFactor: 0.6,
     },
     fullscreenable: false,
-    // icon: __dirname + '/img/logo.png',
+    icon: __dirname + '/src/vertical_tagline_on_transparent_curves_by_logaster-01.icon',
     removeMenu: true,
     autoHideMenuBar: true,
   });
@@ -33,7 +33,7 @@ const createWindow = () => {
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished

@@ -12,17 +12,17 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 580,
-    // maxWidth: 800,
-    // minWidth: 1200,
-    // maxHeight: 580,
-    // minHeight: 600,
+    maxWidth: 900,
+    minWidth: 800,
+    maxHeight: 600,
+    minHeight: 600,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
     }
   });
+
+  mainWindow.setMenuBarVisibility(false);
 
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);

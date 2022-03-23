@@ -82,6 +82,11 @@ export default class StatusMenu extends JetView{
     listenerShortData = (shortData)=>{
         console.log(shortData);
         $$("window_temp").setValue(shortData.temperature.toString());
+        if(shortData.thermalCompensationType){
+            setTermoState(true);
+        }else{
+            setTermoState(false);
+        }
     }
 
     listenerConnect = ()=>{

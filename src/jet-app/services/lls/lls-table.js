@@ -8,7 +8,7 @@ export default class llsTable {
     };
 
     async get() {
-        let tableResponse = await this._llsProtocol.send(0x26,null,5000);
+        let tableResponse = await this._llsProtocol.send(0x26,null,3000);
         console.log(tableResponse);
         this.table = tableResponse;
         return this.table;

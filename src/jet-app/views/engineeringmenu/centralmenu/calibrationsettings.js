@@ -84,7 +84,7 @@ export default class CalibrationSettings extends JetView {
         console.log(table);
         this.removeAll();
         this.createTable(table.countPoint, table.levels, table.volumes);
-        this.checkContinueCalibrate();
+        // this.checkContinueCalibrate();
     }
 
     listenerConnect = () => {
@@ -131,10 +131,7 @@ export default class CalibrationSettings extends JetView {
 
         }
 
-
-
-
-
+        
         this.on(this.app, "app:calibrationsubview:addStep", (volumeStep) => {
             if(this.#volume.length){
                 let volumes = [ ...this.#volume];
@@ -389,7 +386,6 @@ export default class CalibrationSettings extends JetView {
             }
         }
     }
-
 }
 
 

@@ -21,7 +21,9 @@
   "config": {
     "forge": {
       "electronRebuildConfig": {},
-      "packagerConfig": {},
+      "packagerConfig": {
+        "icon": "./src/vertical_tagline_on_transparent_curves_by_logaster-01.png"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",

@@ -282,21 +282,21 @@ export default class Page9View extends JetView {
                                     {
                                         view: "label",
                                         label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Торговая марка: 'Иванов Инжиниринг'</p>",
-                                        width: 330,
+                                        width: 460,
                                         css: "language_windows_modal",
                                         id: "language_windows_modal_2"
                                     },
                                     {
                                         view: "label",
                                         label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Производитель: ООО 'Иванов Инжиниринг'</p>",
-                                        width: 330,
+                                        width: 460,
                                         css: "language_windows_modal",
                                         id: "language_windows_modal_4"
                                     },
                                     {
                                         view: "label",
                                         label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Версия программы Beta 1.0.2</p>",
-                                        width: 330,
+                                        width: 460,
                                         css: "language_windows_modal",
                                         id: "language_windows_modal_3"
                                     },
@@ -304,7 +304,7 @@ export default class Page9View extends JetView {
                                     {
                                         view: "label",
                                         label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>www.locme.ru</p>",
-                                        width: 330,
+                                        width: 460,
                                         css: "language_windows_modal",
                                         id: "language_windows_modal_5"
                                     },

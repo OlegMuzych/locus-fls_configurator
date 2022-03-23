@@ -12,15 +12,19 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    maxWidth: 1900,
+    maxWidth: 900,
     minWidth: 800,
-    maxHeight: 1600,
+    maxHeight: 600,
     minHeight: 600,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
         zoomFactor: 0.6,
-    }
+    },
+    fullscreenable: false,
+    // icon: __dirname + '/img/logo.png',
+    removeMenu: true,
+    autoHideMenuBar: true,
   });
 
   mainWindow.setMenuBarVisibility(false);

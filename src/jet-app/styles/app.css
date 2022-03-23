@@ -56,10 +56,12 @@ border: none;
 
 .color_rows_star_pages{
     background-color: var(--white-bacground-central-menu);
+    transform: scale(1);
 }
 
 .color_rows_star_pages_dark{
     background-color: var(--c-white-color-background-dark_left_menu);
+    transform: scale(1);
 }
 
 

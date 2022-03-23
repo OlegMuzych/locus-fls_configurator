@@ -323,6 +323,7 @@ export default class Page9View extends JetView {
             scroll: "y",
             body: {
                 css: "color_rows_star_pages",
+                // css: {transform: scale(0.5)},
                 id: "color_rows_star_pages",
                 rows: [
                     {
@@ -401,7 +402,7 @@ export default class Page9View extends JetView {
     init(view) {
         this.setStatusConnect(false);
 
-        setTheme();
+        // setTheme();
 
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerIsDisconnect(this.listenerDisconnect);
@@ -452,15 +453,15 @@ export default class Page9View extends JetView {
         }
 
 
-        $$("dark_light_theme").attachEvent("onChange", function (newValue, oldValue, config) {
-            if (newValue) {
-                configFile.theme.color = 'white';
-                setTheme();
-            } else {
-                configFile.theme.color = 'black';
-                setTheme();
-            }
-        });
+        // $$("dark_light_theme").attachEvent("onChange", function (newValue, oldValue, config) {
+        //     if (newValue) {
+        //         configFile.theme.color = 'white';
+        //         setTheme();
+        //     } else {
+        //         configFile.theme.color = 'black';
+        //         setTheme();
+        //     }
+        // });
         // $$("dark_light_theme").attachEvent("onItemClick", (id, e )=>{
         //     if ($$("dark_light_theme").getValue()== 1) {
         //         $$("light_theme_label").hide()

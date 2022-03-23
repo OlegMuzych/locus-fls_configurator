@@ -65,7 +65,6 @@ class LlsModel {
     clearListenerTable(listener) {
         this._myEmitter.removeListener('table', listener);
     }
-v
 
     /* Event Command Error */
     addListenerCommandError(listener) {

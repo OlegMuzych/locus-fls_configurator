@@ -18,7 +18,11 @@ export default class LeftMenu extends JetView{
                         width: 155,
                         height: 200,
                         css: "left_menu_button",
-                        id: "left_menu_button_1"
+                        id: "left_menu_button_1",
+                        hidden: true,
+                    },
+                    {
+                       height: 20,
                     },
                     {
                         view: "button",
@@ -39,7 +43,7 @@ export default class LeftMenu extends JetView{
                         id: "left_menu_button_3"
                     },
                     {
-                        height: 115,
+                        height: 360,
                     },
 
                     {

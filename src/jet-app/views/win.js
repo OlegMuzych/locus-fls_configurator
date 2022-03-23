@@ -21,7 +21,7 @@ export default class Page9View extends JetView {
                         },
                         {
                             view: "label",
-                            label: "Версия Программы " + VERSION,
+                            label: "Версия Beta " + VERSION,
                             align: "left",
                             css: "ver_soft",
                             id: "ver_soft"
@@ -38,7 +38,7 @@ export default class Page9View extends JetView {
         var logo = {
             view: "button",
             type: "image",
-            image: "assets/images/Logo_1.svg",
+            image: "assets/images/Ivanov_Logo_1.svg",
             // width: 500,
             height: 600,
             css: "logo_1",
@@ -107,7 +107,9 @@ export default class Page9View extends JetView {
                             type: "image",
                             image: "assets/images/master.svg",
                             css: "button_1",
-                            id: "master_setup"
+                            id: "master_setup",
+                            disabled: true,
+
                         },
                         {
                             width: 20,
@@ -183,6 +185,7 @@ export default class Page9View extends JetView {
 
                             {
                                 height: 100,
+                                disabled: true,
                                 cols: [
                                     {},
                                     {
@@ -207,6 +210,7 @@ export default class Page9View extends JetView {
                             },
                             {
 
+                                disabled: true,
                                 cols: [
                                     {
                                         width: 150,
@@ -277,28 +281,29 @@ export default class Page9View extends JetView {
                                     {},
                                     {
                                         view: "label",
-                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Торговая марка: 'Точка Мониторинга'</p>",
+                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Торговая марка: 'Иванов Инжиниринг'</p>",
                                         width: 330,
                                         css: "language_windows_modal",
                                         id: "language_windows_modal_2"
                                     },
                                     {
                                         view: "label",
-                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Версия программного обеспечения </p>",
-                                        width: 330,
-                                        css: "language_windows_modal",
-                                        id: "language_windows_modal_3"
-                                    },
-                                    {
-                                        view: "label",
-                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Производитель: ООО 'Новотек'</p>",
+                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Производитель: ООО 'Иванов Инжиниринг'</p>",
                                         width: 330,
                                         css: "language_windows_modal",
                                         id: "language_windows_modal_4"
                                     },
                                     {
                                         view: "label",
-                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>www.point-monitoring.ru</p>",
+                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Версия программы Beta 1.0.2</p>",
+                                        width: 330,
+                                        css: "language_windows_modal",
+                                        id: "language_windows_modal_3"
+                                    },
+
+                                    {
+                                        view: "label",
+                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>www.locme.ru</p>",
                                         width: 330,
                                         css: "language_windows_modal",
                                         id: "language_windows_modal_5"

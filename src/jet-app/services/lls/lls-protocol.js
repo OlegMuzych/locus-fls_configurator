@@ -52,14 +52,14 @@ export default class llsProtocol {
         });
     };
 
-    // async send(command, data = null, timeout = 1000){
+    // async send(command, data = null, timeout = 2000){
     //     let timerId = null;
     //     return new Promise(async (resolve, reject)=>{
     //         this.port.pause();
     //         let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
     //         this.port.write(dataBuffer);
     //         timerId = setTimeout(()=>{
-    //             reject("Error: timeout response message!");
+    //             reject(`Error command ${command.toString(16)}: timeout response message!`);
     //             this.port.resume();
     //         }, timeout);
     //         let dataParse = await this._eventDataParse(command);
@@ -69,16 +69,41 @@ export default class llsProtocol {
     //     });
     // };
 
+    // async send(command, data = null, timeout = 3000) {
+    //     let timerId = null;
+    //     return new Promise(async (resolve, reject) => {
+    //         this.port.pause();
+    //         let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
+    //         this.#pushQueueWrite(dataBuffer, timeout);
+    //         let summTimeout = this.#getSummTimeoutWrite();
+    //         //this.port.write(dataBuffer);
+    //         timerId = setTimeout(() => {
+    //             this.#writeMutex = true;
+    //             reject(`Error command ${command.toString(16)}: timeout response message!`);
+    //             this.port.resume();
+    //         }, summTimeout);
+    //         let dataParse = await this._eventDataParse(command);
+    //         if(dataParse.command == command){
+    //             this.#writeMutex = true;
+    //             clearInterval(timerId);
+    //             this.port.resume();
+    //             resolve(dataParse);
+    //         }
+    //         // this.#writeMutex = true;
+    //         // clearInterval(timerId);
+    //         // this.port.resume();
+    //         // resolve(dataParse);
+    //     });
+    // };
+    //
     async send(command, data = null, timeout = 3000) {
         let timerId = null;
         return new Promise(async (resolve, reject) => {
             this.port.pause();
             let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
-            this.#pushQueueWrite(dataBuffer, timeout);
-            let summTimeout = this.#getSummTimeoutWrite();
+            this.#pushQueueWrite(dataBuffer);
             //this.port.write(dataBuffer);
             timerId = setTimeout(() => {
-                this.#writeMutex = true;
                 reject(`Error command ${command.toString(16)}: timeout response message!`);
                 this.port.resume();
             }, timeout);
@@ -89,51 +114,53 @@ export default class llsProtocol {
             //     this.port.resume();
             //     resolve(dataParse);
             // }
-            this.#writeMutex = true;
             clearInterval(timerId);
             this.port.resume();
             resolve(dataParse);
         });
     };
 
-    #pushQueueWrite(data, timeout) {
-        this.#timeoutWrite.push(timeout); //для учета времени задержки ожидания выполнения команды
+    #pushQueueWrite(data) {
         this.#queueWrite.push(data);
     };
+    // #pushQueueWrite(data, timeout) {
+    //     this.#timeoutWrite.push(timeout); //для учета времени задержки ожидания выполнения команды
+    //     this.#queueWrite.push(data);
+    // };
 
-    #shiftQueueWrite() {
-        this.#timeoutWrite.shift();
-        return this.#queueWrite.shift();
-    };
+    // #shiftQueueWrite() {
+    //     this.#timeoutWrite.shift();
+    //     return this.#queueWrite.shift();
+    // };
 
-    #getSummTimeoutWrite(){
-        let timeoutSumm = 0;
-        this.#timeoutWrite.forEach((value, index, array)=>{
-            timeoutSumm += value;
-        });
-        return timeoutSumm;
-    };
+    // #getSummTimeoutWrite(){
+    //     let timeoutSumm = 0;
+    //     this.#timeoutWrite.forEach((value, index, array)=>{
+    //         timeoutSumm += value;
+    //     });
+    //     return timeoutSumm;
+    // };
 
     getLengthQueueWrite(){
         return this.#queueWrite.length;
     };
 
     #loopPortWrite() {
-        // setInterval(() => {
-        //     if (this.#queueWrite.length) {
-        //         let data = this.#queueWrite.shift();
-        //         this.port.write(data);
-        //     }
-        // }, 100);
-
         setInterval(() => {
-            if (this.#queueWrite.length && this.#writeMutex) {
-                this.#writeMutex = false;
+            if (this.#queueWrite.length) {
                 let data = this.#queueWrite.shift();
-                // let data = this.#shiftQueueWrite();
                 this.port.write(data);
             }
         }, 500);
+
+        // setInterval(() => {
+        //     if (this.#queueWrite.length && this.#writeMutex) {
+        //         this.#writeMutex = false;
+        //         // let data = this.#queueWrite.shift();
+        //         let data = this.#shiftQueueWrite();
+        //         this.port.write(data);
+        //     }
+        // }, 100);
     };
 
     _listenerResponseData() {

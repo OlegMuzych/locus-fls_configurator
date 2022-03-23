@@ -369,10 +369,12 @@ export default class CalibrationSettings extends JetView {
 
     checkContinueCalibrate(){
         let level =  [...this.#level];
-        if(this.$$(level.pop()).getValue() == "0"){
-            //todo: emit 'Are you continue calibration?'
-            // webix.message('Are you continue calibration?');
-            // this.app.callEvent("app:calibrationSettings:continueWindow", []);
+        if(this.#level.length > 0) {
+            if (this.$$(level.pop()).getValue() == "0") {
+                //todo: emit 'Are you continue calibration?'
+                // webix.message('Are you continue calibration?');
+                // this.app.callEvent("app:calibrationSettings:continueWindow", []);
+            }
         }
     }
 

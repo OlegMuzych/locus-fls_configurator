@@ -4,9 +4,9 @@ import RightMenu from "./rightmenu/rightmenu";
 import LeftMenu from "./leftmenu/leftmenu";
 import llsModel from "../../models/lls-model";
 import PasswordWindow from "./windows/password";
-import PasswordWindow2 from "./windows/password-2";
 import ContinueCalibrateWindow from "./windows/continuecalibrate";
 import configFile from "../../config-app";
+import PasswordInputWindow from "./windows/passwordinput";
 
 export default class EngineeringMenu extends JetView{
     config() {
@@ -52,23 +52,14 @@ export default class EngineeringMenu extends JetView{
         llsModel.addListenerCommandError(this.listenerCommandError);
 
         this.passwordWindow = this.ui(PasswordWindow);
-
         this.continueWindow = this.ui(ContinueCalibrateWindow);
+        this.passwordInput = this.ui(PasswordInputWindow);
 
         this.on(this.app, "app:calibrationSettings:continueWindow", () => {
             this.continueWindow.showWindow();
         });
 
-
-        // if(configFile.theme.color == 'white'){
-        //     webix.html.addCss( $$("rows_left_1").getNode(), "style_body");
-        //     webix.html.addCss( $$("rows_left_2").getNode(), "style_body");
-        // }
-        // if(configFile.theme.color == 'black'){
-        //     webix.html.addCss( $$("rows_left_1").getNode(), "style_body_dark");
-        //     webix.html.addCss( $$("rows_right_2").getNode(), "style_body_dark");
-        //
-        // }
+        this.passwordInput.showWindow();
 
         if(configFile.theme.color == 'white'){
             webix.html.addCss( $$("rows_left_1").getNode(), "style_body");

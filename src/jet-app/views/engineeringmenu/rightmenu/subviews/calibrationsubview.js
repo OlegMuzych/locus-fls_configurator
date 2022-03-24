@@ -48,9 +48,10 @@ export default class CalibrationSubView extends JetView {
                         {
                             view: "button",
                             type: "label",
-                            label: "Експорт таблицы тарировки",
+                            label: "Сохранить таблицу тарировки",
                             id:"button_export",
                             width: 480,
+                            height: 50,
                             css: "set_step_drain_button_2"
                         },
                         {
@@ -59,7 +60,7 @@ export default class CalibrationSubView extends JetView {
                     ]
                 },
                 {
-                    height: 10,
+                    height: 5,
                 },
                 {
                     cols:[
@@ -67,13 +68,17 @@ export default class CalibrationSubView extends JetView {
 
                         },
                         {
-                            view: "button",
-                            type: "label",
-                            label: "Импорт таблицы тарировки",
-                            id:"button_import",
+                            view:"uploader",
+                            id: "uploader1",
+                            value:"Экспорт таблицы тарировки",
+                            link:"mylist",
+                            upload:"//docs.webix.com/samples/server/upload",
+                            datatype:"json",
                             width: 480,
+                            height: 50,
                             css: "set_step_drain_button_2"
                         },
+
                         {
 
                         }

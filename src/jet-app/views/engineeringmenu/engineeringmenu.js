@@ -12,12 +12,12 @@ export default class EngineeringMenu extends JetView{
     config() {
 
         let body = {
-            view: "scrollview",
-            scroll: "y",
-            maxHeight: 1000,
-            css: "style_body",
-            id: "dark",
-            body: {
+            // view: "scrollview",
+            // scroll: "y",
+            // maxHeight: 1000,
+            // css: "style_body",
+            // id: "dark",
+            // body: {
                 cols:[
                     LeftMenu,
                     {
@@ -36,7 +36,7 @@ export default class EngineeringMenu extends JetView{
 
                 ],
 
-            }
+            // }
         }
 
         return body;

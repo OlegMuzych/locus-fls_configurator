@@ -359,7 +359,7 @@ export default class llsProtocol {
                     shortDataResp.command = dataView.getUint8(2)
                     shortDataResp.temperature = dataView.getUint8(3);
                     shortDataResp.level = dataView.getUint16(4, true);
-                    shortDataResp.cnt = dataView.getUint16(6, true);
+                    shortDataResp.frequency = dataView.getUint16(6, true);
                     return shortDataResp;
                     break;
                 }

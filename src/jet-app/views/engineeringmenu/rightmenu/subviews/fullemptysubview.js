@@ -70,7 +70,7 @@ export default class FullEmptySubView extends JetView {
                                     height: 70,
                                     css: "full_level_windows",
                                     readonly: false,
-                                    id: "status_level_fuel",
+                                    localId: "status_level_fuel",
                                     inputAlign: "center",
 
                                 },
@@ -224,6 +224,7 @@ export default class FullEmptySubView extends JetView {
 
     listenerShortData = (shortData)=>{
         $$("progress_bar").setValue(shortData.level);
+        this.$$("status_level_fuel").setValue(shortData.level.toString());
     }
 
     listenerLongData = (longData) => {

@@ -4,9 +4,10 @@ import RightMenu from "./rightmenu/rightmenu";
 import LeftMenu from "./leftmenu/leftmenu";
 import llsModel from "../../models/lls-model";
 import PasswordWindow from "./windows/password";
-import PasswordWindow2 from "./windows/password-2";
 import ContinueCalibrateWindow from "./windows/continuecalibrate";
 import configFile from "../../config-app";
+import PasswordInputWindow from "./windows/passwordinput";
+import LlsNoConnectWindow from "./windows/llsnoconnect";
 
 export default class EngineeringMenu extends JetView{
     config() {
@@ -49,26 +50,36 @@ export default class EngineeringMenu extends JetView{
     }
 
     init(){
+        llsModel.checkPassword()
+            .then(()=>{
+
+            })
+            .catch((status)=>{
+                switch(status){
+                    case 0x01:{
+                        this.llsNoConnectWindow.showWindow(); //в случае ошибки передачии команды
+                        break;
+                    }
+                    case 0x02:{
+                        this.passwordInput.showWindow();
+                        break;
+                    }
+                    default:{
+                        this.llsNoConnectWindow.showWindow(); //в случае если датчик не поключен
+                        break;
+                    }}
+            });
+
         llsModel.addListenerCommandError(this.listenerCommandError);
 
         this.passwordWindow = this.ui(PasswordWindow);
-
         this.continueWindow = this.ui(ContinueCalibrateWindow);
+        this.passwordInput = this.ui(PasswordInputWindow);
+        this.llsNoConnectWindow = this.ui(LlsNoConnectWindow);
 
         this.on(this.app, "app:calibrationSettings:continueWindow", () => {
             this.continueWindow.showWindow();
         });
-
-
-        // if(configFile.theme.color == 'white'){
-        //     webix.html.addCss( $$("rows_left_1").getNode(), "style_body");
-        //     webix.html.addCss( $$("rows_left_2").getNode(), "style_body");
-        // }
-        // if(configFile.theme.color == 'black'){
-        //     webix.html.addCss( $$("rows_left_1").getNode(), "style_body_dark");
-        //     webix.html.addCss( $$("rows_right_2").getNode(), "style_body_dark");
-        //
-        // }
 
         if(configFile.theme.color == 'white'){
             webix.html.addCss( $$("rows_left_1").getNode(), "style_body");

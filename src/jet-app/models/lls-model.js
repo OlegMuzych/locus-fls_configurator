@@ -178,6 +178,26 @@ class LlsModel {
         }
     }
 
+    checkPassword(){
+        return new Promise(async (resolve, reject) => {
+            if (this.#statusLls == 'connect') {
+                let resp = await this._lls.actions.checkPassword();
+                if (resp.status == 0x00) {
+                    resolve();
+                } else if (resp.status == 0x01) {
+                    console.log('Lls response error!');
+                    reject(resp.status);
+                } else if (resp.status == 0x02) {
+                    console.log("Lls password error!");
+                    reject(resp.status);
+                }
+            } else {
+                console.log('LLS not connect');
+                reject();
+            }
+        });
+    }
+
     setNewPassword(currentPassword, newPassword){
         return new Promise(async (resolve, reject) => {
             if (this.#statusLls == 'connect') {

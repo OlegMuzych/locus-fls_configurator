@@ -12,9 +12,9 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    maxWidth: 900,
+    maxWidth: 1900,
     minWidth: 800,
-    maxHeight: 660,
+    maxHeight: 1660,
     minHeight: 660,
     webPreferences: {
       nodeIntegration: true,
@@ -33,7 +33,7 @@ const createWindow = () => {
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished

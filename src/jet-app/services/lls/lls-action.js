@@ -45,7 +45,6 @@ export default class llsAction{
     };
 
     async setCurrentPassword(value) {
-        // todo: promise
         this._llsProtocol.password = value;
         return await this.checkPassword();
     };
@@ -68,6 +67,9 @@ export default class llsAction{
         }
 
         let {llsAdr, code: status} = await this._llsProtocol.send(0x16, {currentPassword: zeroPass1, newPassword: zeroPass2});
+        if(status == 0x00){
+            this._llsProtocol.password = newPassword;
+        }
         return {
             llsAdr: llsAdr,
             status: status,

@@ -4,5 +4,8 @@ export default  {
     },
     theme: {
         color: "white",
+    },
+    settings:{
+        differenceFuelForStable: 1,
     }
 }

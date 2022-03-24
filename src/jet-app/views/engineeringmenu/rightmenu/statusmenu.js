@@ -1,6 +1,7 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
 import configFile from "../../../config-app";
+import configApp from "../../../config-app";
 
 export default class StatusMenu extends JetView{
     config(){
@@ -84,6 +85,7 @@ export default class StatusMenu extends JetView{
     listenerShortData = (shortData)=>{
         console.log(shortData);
         $$("window_temp").setValue(shortData.temperature.toString());
+        this.cntStableComputing(shortData.cnt);
     }
 
     listenerLongData = (longData)=>{
@@ -142,6 +144,16 @@ export default class StatusMenu extends JetView{
             webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info_dark");
+        }
+    }
+
+    lastCnt = 0;
+    cntStableComputing(currentLevel){
+        let difference = Math.abs(this.lastCnt - currentLevel);
+        if(difference > configApp.settings.differenceFuelForStable){
+            setFuelState(false);
+        }else{
+            setFuelState(true);
         }
     }
 }

@@ -41,7 +41,7 @@ export default class llsData {
         _llsAdr: null,
         _temperature: null,
         _level: null,
-        _cnt: null,
+        _frequency: null,
         get llsAdr() {
             return this._llsAdr;
         },
@@ -63,11 +63,11 @@ export default class llsData {
             this._level = value;
         },
 
-        get cnt() {
-            return this._cnt;
+        get frequency() {
+            return this._frequency;
         },
-        set cnt(value) {
-            this._cnt = value;
+        set frequency(value) {
+            this._frequency = value;
         },
     };
 
@@ -172,11 +172,11 @@ export default class llsData {
         }
     }
 
-    set shortSetting({llsAdr, temperature, level, cnt}) {
+    set shortSetting({llsAdr, temperature, level, frequency}) {
         this._shortSetting.llsAdr = llsAdr;
         this._shortSetting.temperature = temperature;
         this._shortSetting.level = level;
-        this._shortSetting.cnt = cnt;
+        this._shortSetting.frequency = frequency;
     };
 
     get shortSetting() {

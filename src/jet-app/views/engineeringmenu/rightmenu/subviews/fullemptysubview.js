@@ -225,7 +225,6 @@ export default class FullEmptySubView extends JetView {
     listenerShortData = (shortData)=>{
         $$("progress_bar").setValue(shortData.level);
         this.$$("status_level_fuel").setValue(shortData.level.toString());
-
     }
 
     listenerLongData = (longData) => {

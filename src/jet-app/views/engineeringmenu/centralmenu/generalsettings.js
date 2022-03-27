@@ -77,6 +77,7 @@ export default class GeneralSettings extends JetView {
                     labelWidth: 400,
                     css: "window_type_2",
                     inputAlign: "center",
+                    readonly: true,
                     id: "window_type_2_2"
                 },
                 {
@@ -87,6 +88,7 @@ export default class GeneralSettings extends JetView {
                     labelWidth: 400,
                     css: "window_type_2",
                     inputAlign: "center",
+                    readonly: true,
                     id: "window_type_2_3"
                 },
                 {height: 20},
@@ -219,7 +221,11 @@ export default class GeneralSettings extends JetView {
     }
 
     listenerLongData = (longData) => {
-        $$('window_type_1').setValue(longData.serialNumber.toString());
+        // $$('window_type_1').setValue(longData.serialNumber.toString());
+        let serialNumber = longData.serialNumber.map((item)=>{
+            return item.toString(16);
+        });
+        $$('window_type_1').setValue(serialNumber);
         $$('window_type_2_1').setValue(longData.llsAdr.toString());
         $$('window_type_2_2').setValue(longData.emptyTank.toString());
         $$('window_type_2_3').setValue(longData.fullTank.toString());
@@ -244,15 +250,9 @@ export default class GeneralSettings extends JetView {
         llsModel.clearListenerLongData(this.listenerLongData);
     }
 
-
     init() {
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerLongData(this.listenerLongData);
-
-
-
-
-
 
         $$('window_type_2_1').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");

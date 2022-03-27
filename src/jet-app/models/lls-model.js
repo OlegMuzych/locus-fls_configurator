@@ -187,7 +187,7 @@ class LlsModel {
         if (this.#statusLls == 'connect') {
             let resp = await this._lls.table.set(data);
             if (resp.status == 0x00) {
-                this.getTable().then();
+                // this.getTable().then();
             } else if (resp.status == 0x01) {
                 console.log('Lls response error!');
                 this._myEmitter.emit('commandError', resp.status);
@@ -298,8 +298,9 @@ class LlsModel {
                 case 'connect': {
                     await this.#delay();
                     console.log('Connect to LLS');
-                    await this.getCnt();
+                    // await this.getCnt();
                     try {
+                        await this.getCnt();
                         let dataShort = await this._lls.data.getShort();
                         this._myEmitter.emit('shortData', dataShort);
                     } catch (e) {

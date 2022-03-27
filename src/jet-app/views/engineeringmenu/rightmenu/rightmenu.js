@@ -5,6 +5,7 @@ import ServiceMenu from "./servicemenu";
 import CalibrationSubView from "./subviews/calibrationsubview";
 import FullEmptySubView from "./subviews/fullemptysubview";
 import configFile from "../../../config-app";
+import FiltrationSubView from "./subviews/filteringsubview";
 
 export default class RightMenu extends JetView{
     config(){
@@ -17,6 +18,9 @@ export default class RightMenu extends JetView{
                 {
                     id: 'fullEmptySubView', rows: [FullEmptySubView],
                 },
+                {
+                    id: 'filteringSubView', rows: [FiltrationSubView],
+                }
             ],
             animate: false,
         }
@@ -76,7 +80,7 @@ export default class RightMenu extends JetView{
         );
 
         this.on(this.app, "app:setting:filtering", ()=>{
-                $$('fullEmptySubView').show();
+                $$('filteringSubView').show();
             }
         );
 

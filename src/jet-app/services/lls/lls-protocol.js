@@ -23,6 +23,10 @@ export default class llsProtocol {
         }
     };
 
+    // setLlsAdr(value){
+    //     this._settingPort.llsAdr = value;
+    // }
+
     #queueWrite = [];
     #timeoutWrite = [];
     #writeMutex = true;

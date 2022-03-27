@@ -1,7 +1,7 @@
 export default class llsData {
     _llsProtocol = {};
     password = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00];
-
+    #cnt = {};
     #longSettingsReceive = {
         // llsAdr: null,
         // fuelType: null,
@@ -35,7 +35,7 @@ export default class llsData {
         // llsAdrSlave3: null,
         // llsAdrSlave4: null,
         // fuelWaterMode: null,
-    }
+    };
 
     _shortSetting = {
         _llsAdr: null,
@@ -250,4 +250,26 @@ export default class llsData {
     get longSettings() {
         return this.#longSettingsReceive;
     }
+
+    async getCnt(){
+        // if(this._llsProtocol.getLengthQueueWrite() == 0){
+            let readCnt = await this._llsProtocol.send(0xF7, null, 2000);
+            // console.log(shortSettingResponse);
+            this.cnt = readCnt;
+            console.log(this.cnt);
+            return this.cnt;
+        // }else{
+        //     return this.cnt;
+        // }
+    }
+
+    get cnt(){
+        return this.#cnt;
+    }
+    set cnt({cnt, fuel, llsType}){
+        this.#cnt.cnt = cnt;
+        this.#cnt.fuell = fuel;
+        this.#cnt.llsType = llsType;
+    }
+
 }

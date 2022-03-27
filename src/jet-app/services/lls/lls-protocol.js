@@ -319,6 +319,10 @@ export default class llsProtocol {
                 dataBuffer.push(0xff);
                 break;
             }
+            case 0xf7: { //читать cnt
+                dataBuffer.push(command);
+                break;
+            }
             default:
                 break;
         }
@@ -471,6 +475,17 @@ export default class llsProtocol {
                         readTable.volumes.push(dataView.getUint16((6+i*4), true));
                     }
                     return readTable;
+                    break;
+                }
+                case 0xf7: {
+                    let readCnt = {};
+                    readCnt.prefix = dataView.getUint8(0);
+                    readCnt.llsAdr = dataView.getUint8(1);
+                    readCnt.command = dataView.getUint8(2)
+                    readCnt.llsType = dataView.getUint8(3);
+                    readCnt.cnt = dataView.getUint32(4, true);
+                    readCnt.fuel = dataView.getUint16(8);
+                    return readCnt;
                     break;
                 }
                 default:

@@ -79,13 +79,13 @@ export default class StatusMenu extends JetView{
         llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
         llsModel.clearListenerShortData(this.listenerShortData);
         llsModel.clearListenerLongData(this.listenerLongData);
+        llsModel.clearListenerReadCnt(this.listenerReadCnt);
         llsModel.cle
     }
 
     listenerShortData = (shortData)=>{
-        console.log(shortData);
+        // console.log(shortData);
         $$("window_temp").setValue(shortData.temperature.toString());
-        this.cntStableComputing(shortData.cnt);
     }
 
     listenerLongData = (longData)=>{
@@ -105,6 +105,10 @@ export default class StatusMenu extends JetView{
         setStatusConnect(false);
     }
 
+    listenerReadCnt= (readCnt)=>{
+        this.cntStableComputing(readCnt.cnt);
+    }
+
     init(){
         setStatusConnect(false);
         setFuelState(false);
@@ -115,6 +119,7 @@ export default class StatusMenu extends JetView{
         llsModel.addListenerIsDisconnect(this.listenerDisconnect);
         llsModel.addListenerShortData(this.listenerShortData);
         llsModel.addListenerLongData(this.listenerLongData);
+        llsModel.addListenerReadCnt(this.listenerReadCnt);
         llsModel.getStatusConnect();
 
         this.fullLevelDefault = false;
@@ -150,6 +155,7 @@ export default class StatusMenu extends JetView{
     lastCnt = 0;
     cntStableComputing(currentLevel){
         let difference = Math.abs(this.lastCnt - currentLevel);
+        this.lastCnt = currentLevel;
         if(difference > configApp.settings.differenceFuelForStable){
             setFuelState(false);
         }else{

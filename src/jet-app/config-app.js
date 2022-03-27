@@ -6,6 +6,6 @@ export default  {
         color: "white",
     },
     settings:{
-        differenceFuelForStable: 1,
+        differenceFuelForStable: 100,
     }
 }

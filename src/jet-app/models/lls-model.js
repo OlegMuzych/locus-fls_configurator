@@ -21,7 +21,11 @@ class LlsModel {
         this.#init(timeout).then().catch();
     }
 
-    /* Event Short Data */
+    /******* Start Listeners *******/
+    /*****************************/
+
+    /*** Event Short Data ***/
+    /***/
     addListenerShortData(listener) {
         this._myEmitter.on('shortData', listener);
     }
@@ -30,7 +34,8 @@ class LlsModel {
         this._myEmitter.removeListener('shortData', listener);
     }
 
-    /* Event is Connect */
+    /*** Event is Connect ***/
+    /***/
     addListenerIsConnect(listener) {
         this._myEmitter.on("isConnect", listener);
     }
@@ -39,7 +44,8 @@ class LlsModel {
         this._myEmitter.removeListener('isConnect', listener);
     }
 
-    /* Event is Disconnect */
+    /*** Event is Disconnect ***/
+    /***/
     addListenerIsDisconnect(listener) {
         this._myEmitter.on("isDisconnect", listener);
     }
@@ -48,7 +54,8 @@ class LlsModel {
         this._myEmitter.removeListener('isDisconnect', listener);
     }
 
-    /* Event Long Data */
+    /*** Event Long Data ***/
+    /***/
     addListenerLongData(listener) {
         this._myEmitter.on("longData", listener);
     }
@@ -57,7 +64,8 @@ class LlsModel {
         this._myEmitter.removeListener('longData', listener);
     }
 
-    /* Event Table */
+    /*** Event Table ***/
+    /***/
     addListenerTable(listener) {
         this._myEmitter.on("table", listener);
     }
@@ -66,7 +74,18 @@ class LlsModel {
         this._myEmitter.removeListener('table', listener);
     }
 
-    /* Event Command Error */
+    /*** Event Read CNT ***/
+    /***/
+    addListenerReadCnt(listener) {
+        this._myEmitter.on("readCnt", listener);
+    }
+
+    clearListenerReadCnt(listener) {
+        this._myEmitter.removeListener('readCnt', listener);
+    }
+
+    /*** Event Command Error ***/
+    /***/
     addListenerCommandError(listener) {
         this._myEmitter.on("commandError", listener);
     }
@@ -74,6 +93,9 @@ class LlsModel {
     clearListenerCommandError(listener) {
         this._myEmitter.removeListener('commandError', listener);
     }
+
+    /******* END Listeners *******/
+    /*****************************/
 
     getStatusConnect() {
         if (this.#statusLls == "connect") { //Для момента инициализации
@@ -178,6 +200,15 @@ class LlsModel {
         }
     }
 
+    async getCnt(){
+        if (this.#statusLls == 'connect') {
+            let cnt = await this._lls.data.getCnt();
+            this._myEmitter.emit('readCnt', cnt);
+        } else {
+            return 'LLS not connect';
+        }
+    }
+
     checkPassword(){
         return new Promise(async (resolve, reject) => {
             if (this.#statusLls == 'connect') {
@@ -267,6 +298,7 @@ class LlsModel {
                 case 'connect': {
                     await this.#delay();
                     console.log('Connect to LLS');
+                    await this.getCnt();
                     try {
                         let dataShort = await this._lls.data.getShort();
                         this._myEmitter.emit('shortData', dataShort);

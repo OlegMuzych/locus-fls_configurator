@@ -311,7 +311,9 @@ class LlsModel {
                         //await this.getCnt();
                         let dataShort = await this._lls.data.getShort();
                         console.log(dataShort);
-                        this._myEmitter.emit('shortData', dataShort);
+                        if(dataShort.llsAdr){
+                            this._myEmitter.emit('shortData', dataShort);
+                        }
                     } catch (e) {
                         console.log(e);
                         this.#statusLls = 'noConnect';

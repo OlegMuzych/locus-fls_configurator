@@ -104,27 +104,21 @@ export default class llsProtocol {
         let timerId = null;
         return new Promise(async (resolve, reject) => {
             this.port.pause();
-            // let dataBuffer = this._commandCreate(command, data);
-            this.#pushQueueWrite({command:command, data:data});
-            //this.port.write(dataBuffer);
+            this.#pushQueueWrite({command:command, data:data}, timeout);
+            let timeoutSumm = this.#getSummTimeoutWrite();
             timerId = setTimeout(() => {
                 reject(`Error command ${command.toString(16)}: timeout response message!`);
                 this.port.resume();
-            }, timeout);
+            }, timeoutSumm);
             let dataParse = await this._eventDataParse(command);
-            // if(dataParse.command == command){
-            //     this.#writeMutex = true;
-            //     clearInterval(timerId);
-            //     this.port.resume();
-            //     resolve(dataParse);
-            // }
             clearInterval(timerId);
             this.port.resume();
             resolve(dataParse);
         });
     };
 
-    #pushQueueWrite({command, data}) {
+    #pushQueueWrite({command, data}, timeout) {
+        this.#timeoutWrite.push(timeout); //для учета времени задержки ожидания выполнения команды
         let obj = {
             command: command,
             data: data
@@ -136,18 +130,18 @@ export default class llsProtocol {
     //     this.#queueWrite.push(data);
     // };
 
-    // #shiftQueueWrite() {
-    //     this.#timeoutWrite.shift();
-    //     return this.#queueWrite.shift();
-    // };
+    #shiftQueueWrite() {
+        this.#timeoutWrite.shift();
+        return this.#queueWrite.shift();
+    };
 
-    // #getSummTimeoutWrite(){
-    //     let timeoutSumm = 0;
-    //     this.#timeoutWrite.forEach((value, index, array)=>{
-    //         timeoutSumm += value;
-    //     });
-    //     return timeoutSumm;
-    // };
+    #getSummTimeoutWrite(){
+        let timeoutSumm = 0;
+        this.#timeoutWrite.forEach((value, index, array)=>{
+            timeoutSumm += value;
+        });
+        return timeoutSumm;
+    };
 
     getLengthQueueWrite(){
         return this.#queueWrite.length;
@@ -163,7 +157,8 @@ export default class llsProtocol {
 
         setInterval(() => {
             if (this.#queueWrite.length) {
-                let obj = this.#queueWrite.shift();
+                // let obj = this.#queueWrite.shift();
+                let obj = this.#shiftQueueWrite();
                 let dataBuffer = this._commandCreate(obj.command, obj.data);
                 this.port.write(dataBuffer);
             }

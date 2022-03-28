@@ -308,7 +308,7 @@ class LlsModel {
                     console.log('Connect to LLS');
                     // await this.getCnt();
                     try {
-                        //await this.getCnt();
+                        await this.getCnt();
                         let dataShort = await this._lls.data.getShort();
                         console.log(dataShort);
                         if(dataShort.llsAdr){

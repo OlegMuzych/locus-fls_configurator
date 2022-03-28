@@ -23,9 +23,9 @@ export default class llsProtocol {
         }
     };
 
-    // setLlsAdr(value){
-    //     this._settingPort.llsAdr = value;
-    // }
+    setLlsAdr(value){
+        this._settingPort.llsAdr = value;
+    }
 
     #queueWrite = [];
     #timeoutWrite = [];
@@ -104,8 +104,8 @@ export default class llsProtocol {
         let timerId = null;
         return new Promise(async (resolve, reject) => {
             this.port.pause();
-            let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
-            this.#pushQueueWrite(dataBuffer);
+            // let dataBuffer = this._commandCreate(command, data);
+            this.#pushQueueWrite({command:command, data:data});
             //this.port.write(dataBuffer);
             timerId = setTimeout(() => {
                 reject(`Error command ${command.toString(16)}: timeout response message!`);
@@ -124,8 +124,12 @@ export default class llsProtocol {
         });
     };
 
-    #pushQueueWrite(data) {
-        this.#queueWrite.push(data);
+    #pushQueueWrite({command, data}) {
+        let obj = {
+            command: command,
+            data: data
+        }
+        this.#queueWrite.push(obj);
     };
     // #pushQueueWrite(data, timeout) {
     //     this.#timeoutWrite.push(timeout); //для учета времени задержки ожидания выполнения команды
@@ -150,10 +154,18 @@ export default class llsProtocol {
     };
 
     #loopPortWrite() {
+        // setInterval(() => {
+        //     if (this.#queueWrite.length) {
+        //         let data = this.#queueWrite.shift();
+        //         this.port.write(data);
+        //     }
+        // }, 500);
+
         setInterval(() => {
             if (this.#queueWrite.length) {
-                let data = this.#queueWrite.shift();
-                this.port.write(data);
+                let obj = this.#queueWrite.shift();
+                let dataBuffer = this._commandCreate(obj.command, obj.data);
+                this.port.write(dataBuffer);
             }
         }, 500);
 
@@ -221,7 +233,8 @@ export default class llsProtocol {
         });
     };
 
-    _commandCreate(command, llsAdr, data) {
+    _commandCreate(command, data) {
+        let llsAdr = this._settingPort.llsAdr;
         let dataBuffer = [0x31, llsAdr];
         switch (command) {
             case "find232": { //для поиска по rs232
@@ -383,7 +396,7 @@ export default class llsProtocol {
                     longDataResp.sizeOfSettings = dataView.getUint16(32, true);
                     longDataResp.emptyTank = dataView.getUint32(34, true);
                     longDataResp.fullTank = dataView.getUint32(38, true);
-                    longDataResp.llsAdr = dataView.getUint8(42);
+                    longDataResp.llsAdrNet = dataView.getUint8(42);
                     longDataResp.autoGetData = dataView.getUint8(43);
                     longDataResp.periodOfDataIssuance = dataView.getUint8(44);
                     longDataResp.minLevel = dataView.getUint16(45, true);
@@ -407,6 +420,8 @@ export default class llsProtocol {
                     longDataResp.llsAdrSlave3 = dataView.getUint8(77);
                     longDataResp.llsAdrSlave4 = dataView.getUint8(78);
                     longDataResp.fuelWaterMode = dataView.getInt8(79);
+
+                    // this.setLlsAdr(longDataResp.llsAdr);
                     return longDataResp;
                     break;
                 }

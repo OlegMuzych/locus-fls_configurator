@@ -96,7 +96,6 @@ export default class llsData {
         let longSettingResponse = await this._llsProtocol.send(0x47, null, 4000);
         console.log(longSettingResponse);
         this.longSettings = longSettingResponse;
-        // this._llsProtocol.setLlsAdr(this.longSettings.llsAdr);
         return this.longSettings;
     };
 
@@ -168,6 +167,9 @@ export default class llsData {
         }
 
         let {code: status} = await this._llsProtocol.send(0x48, newLongData);
+        if(status == 0){
+            this._llsProtocol.setLlsAdr(newLongData.llsAdr);
+        }
         return {
             status: status,
         }
@@ -185,7 +187,7 @@ export default class llsData {
     };
 
     set longSettings({
-                         llsAdr,
+                         llsAdrNet: llsAdr,
                          typeLls,
                          serialNumber,
                          softwareVersion,

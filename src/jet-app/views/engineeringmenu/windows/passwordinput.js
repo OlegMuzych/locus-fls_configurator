@@ -126,29 +126,40 @@ export default class PasswordInputWindow extends JetView {
     init() {
         this.passValidFlag = true;
 
+
+
         this.$$('buttonCancel_1').attachEvent("onItemClick", (id, e) => {
             console.log('click');
             this.getRoot().hide();
             this.show("win");
         });
 
-        this.$$('buttonCurrentPassOk').attachEvent("onItemClick", (id, e) => {
-            console.log('click');
-
-            let pass = this.$$("textCurrentPass").getValue();
-            llsModel.setCurrentPassword(pass)
-                .then(()=>{
-                    this.passValidFlag = true;
-                    this.$$('textCurrentPass').validate();
-                    this.getRoot().hide();
-                })
-                .catch(()=>{
-                    this.passValidFlag = false;
-                    this.$$('textCurrentPass').validate();
-                    this.$$("textCurrentPass").setValue('');
-                })
+        this.$$('textCurrentPass').attachEvent("onEnter",(ev)=>{
+            this.pressOk();
         });
 
+        this.$$('buttonCurrentPassOk').attachEvent("onItemClick", (id, e) => {
+            console.log('click');
+            this.pressOk();
+        });
+
+        this.$$('textCurrentPass').focus();
+
+    }
+
+    pressOk = ()=>{
+        let pass = this.$$("textCurrentPass").getValue();
+        llsModel.setCurrentPassword(pass)
+            .then(()=>{
+                this.passValidFlag = true;
+                this.$$('textCurrentPass').validate();
+                this.getRoot().hide();
+            })
+            .catch(()=>{
+                this.passValidFlag = false;
+                this.$$('textCurrentPass').validate();
+                this.$$("textCurrentPass").setValue('');
+            })
     }
 
     showWindow() {

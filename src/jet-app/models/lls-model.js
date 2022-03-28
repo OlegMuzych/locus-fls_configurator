@@ -25,6 +25,7 @@ class LlsModel {
     /*****************************/
 
     /*** Event Short Data ***/
+
     /***/
     addListenerShortData(listener) {
         this._myEmitter.on('shortData', listener);
@@ -35,6 +36,7 @@ class LlsModel {
     }
 
     /*** Event is Connect ***/
+
     /***/
     addListenerIsConnect(listener) {
         this._myEmitter.on("isConnect", listener);
@@ -45,6 +47,7 @@ class LlsModel {
     }
 
     /*** Event is Disconnect ***/
+
     /***/
     addListenerIsDisconnect(listener) {
         this._myEmitter.on("isDisconnect", listener);
@@ -55,6 +58,7 @@ class LlsModel {
     }
 
     /*** Event Long Data ***/
+
     /***/
     addListenerLongData(listener) {
         this._myEmitter.on("longData", listener);
@@ -65,6 +69,7 @@ class LlsModel {
     }
 
     /*** Event Table ***/
+
     /***/
     addListenerTable(listener) {
         this._myEmitter.on("table", listener);
@@ -75,6 +80,7 @@ class LlsModel {
     }
 
     /*** Event Read CNT ***/
+
     /***/
     addListenerReadCnt(listener) {
         this._myEmitter.on("readCnt", listener);
@@ -85,6 +91,7 @@ class LlsModel {
     }
 
     /*** Event Command Error ***/
+
     /***/
     addListenerCommandError(listener) {
         this._myEmitter.on("commandError", listener);
@@ -95,6 +102,7 @@ class LlsModel {
     }
 
     /******* END Listeners *******/
+
     /*****************************/
 
     getStatusConnect() {
@@ -174,7 +182,7 @@ class LlsModel {
         }
     }
 
-    async getTable(){
+    async getTable() {
         if (this.#statusLls == 'connect') {
             let table = await this._lls.table.get();
             this._myEmitter.emit('table', table);
@@ -200,7 +208,7 @@ class LlsModel {
         }
     }
 
-    async getCnt(){
+    async getCnt() {
         if (this.#statusLls == 'connect') {
             let cnt = await this._lls.data.getCnt();
             this._myEmitter.emit('readCnt', cnt);
@@ -209,7 +217,7 @@ class LlsModel {
         }
     }
 
-    checkPassword(){
+    checkPassword() {
         return new Promise(async (resolve, reject) => {
             if (this.#statusLls == 'connect') {
                 let resp = await this._lls.actions.checkPassword();
@@ -229,10 +237,10 @@ class LlsModel {
         });
     }
 
-    setNewPassword(currentPassword, newPassword){
+    setNewPassword(currentPassword, newPassword) {
         return new Promise(async (resolve, reject) => {
             if (this.#statusLls == 'connect') {
-                let resp = await this._lls.actions.setNewPassword(currentPassword,newPassword);
+                let resp = await this._lls.actions.setNewPassword(currentPassword, newPassword);
                 if (resp.status == 0x00) {
                     resolve();
                 } else if (resp.status == 0x01) {
@@ -249,7 +257,7 @@ class LlsModel {
         });
     }
 
-    setCurrentPassword(str){
+    setCurrentPassword(str) {
         return new Promise(async (resolve, reject) => {
             if (this.#statusLls == 'connect') {
                 let resp = await this._lls.actions.setCurrentPassword(str);
@@ -300,8 +308,9 @@ class LlsModel {
                     console.log('Connect to LLS');
                     // await this.getCnt();
                     try {
-                        await this.getCnt();
+                        //await this.getCnt();
                         let dataShort = await this._lls.data.getShort();
+                        console.log(dataShort);
                         this._myEmitter.emit('shortData', dataShort);
                     } catch (e) {
                         console.log(e);

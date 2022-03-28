@@ -239,12 +239,17 @@ border: none;
     color: var(--c-color-text-light);
     font-size: 20px;
     text-align: center;
+    position: relative;
+    top: -22px;
+
 }
 
 .save_windows_modal_dark p{
     color: var(--c-color-text-dark);
     font-size: 20px;
     text-align: center;
+    position: relative;
+    top: -22px;
 }
 
 
@@ -1909,6 +1914,18 @@ border: none;
     border-radius: 6px;
 }
 
+
+.window_show_save{
+    background-color: rgba(107, 252, 63, 0.8);
+    /*background-color: #f9f9f9;*/
+    border-radius: 6px;
+
+}
+
+.window_show_save_dark{
+    background-color: var(--c-white-color-background-dark);
+    border-radius: 6px;
+}
 
 
 .tabbar_windows_password .webix_segment_N{

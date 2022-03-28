@@ -51,7 +51,7 @@ export default class LeftMenu extends JetView{
                         id: "left_menu_button_3"
                     },
                     {
-                        height: 360,
+                        height: 300,
                     },
 
                     {
@@ -86,33 +86,22 @@ export default class LeftMenu extends JetView{
 
         let save = webix.ui({
             view: "window",
-            position: "center",
-            width: 600,
-            height: 90,
+            position: "top",
+            width: 1000,
+            height: 40,
             id: "save_settings_windows",
-            // modal: true,
-            css: "window_show",
+            css: "window_show_save",
             head: {
-                height: 400,
                 rows: [
                     {
-                        height: 1,
+                        view: "label",
+                        label: "<p>Настройки записаны в датчик</p>",
+                        css: "save_windows_modal",
+                        // localId: "language_windows_modal_2",
+                        width: 1000,
+                        height: 50,
                     },
-                    {
-                        cols: [
-                            {
-                                view: "label",
-                                label: "<p>Настройки записаны в датчик</p>",
-                                css: "save_windows_modal",
-                                // localId: "language_windows_modal_2",
-                                width:600,
-                                height: 70,
-                            },
-                        ]
-                    },
-                    {
-                        height: 1,
-                    }
+
                 ]
             },
         });
@@ -126,6 +115,9 @@ export default class LeftMenu extends JetView{
         $$("save_settings").attachEvent("onItemClick", (id, e) => {
             $$("save_settings_windows").show()
         });
+
+
+
 
 
         this.$$("button_back").attachEvent("onItemClick", (id, e)=>{

@@ -157,8 +157,8 @@ export default class Page9View extends JetView {
         var win = webix.ui({
             view: "window",
             position: "center",
-            width: 500,
-            height: 300,
+            width: 850,
+            height: 400,
             id: "window_show",
             modal: true,
             css: "window_show",
@@ -180,28 +180,34 @@ export default class Page9View extends JetView {
                     },
                     {
                         width: 200,
-
                         rows: [
-
                             {
-                                height: 100,
-                                disabled: true,
+
+                                disabled: false,
                                 cols: [
-                                    {},
                                     {
-                                        view: "label",
-                                        label: "<p style='font-size: 16px; position: relative; top: -10px;'>Выбор темы</p>",
-                                        width: 130,
-                                        id: "light_theme_label"
+
                                     },
                                     {
                                         view: "label",
-                                        label: "<p style='font-size: 16px; position: relative; top: -10px; color: #fff;'>Выбор темы</p>",
-                                        width: 130,
-                                        id: "dark_theme_label"
+                                        label: "<p>Выбор темы</p>",
+                                        width: 230,
+                                        id: "light_theme_label",
+                                        css:"language_windows_modal",
                                     },
-                                    {view: "switch", value: 0, id: "dark_light_theme", width: 70,},
-                                    {},
+                                    {view: "switch", value: 0, id: "dark_light_theme", width: 70, height: 100,},
+                                    {
+
+                                    },
+
+
+                                    // {
+                                    //     view: "label",
+                                    //     label: "<p style='font-size: 26px; position: relative; top: -18px; color: #fff;'>Выбор темы</p>",
+                                    //     width: 230,
+                                    //     id: "dark_theme_label"
+                                    // },
+
 
                                 ]
                             },
@@ -210,28 +216,49 @@ export default class Page9View extends JetView {
                             },
                             {
 
-                                disabled: true,
+                                disabled: false,
+                                height: 80,
+                                width: 200,
                                 cols: [
                                     {
-                                        width: 150,
-                                    },
-                                    {
-                                        view: "label",
-                                        label: "<p>Выбор языка</p>",
-                                        width: 130,
-                                        id: "language_windows_modal",
-                                        css: "language_windows_modal"
-                                    },
-                                    {
-                                        width: 130,
-                                        view: "richselect",
-                                        value: 1,
-                                        id: "language",
-                                        options: [{"id": 1, "value": "Русский"}, {"id": 2, "value": "English"},
-                                        ]
 
                                     },
-                                    {}
+                                    // {
+                                    //     view: "label",
+                                    //     label: "<p>Выбор языка</p>",
+                                    //     width: 200,
+                                    //     id: "language_windows_modal",
+                                    //     css: "language_windows_modal"
+                                    // },
+                                    // {
+                                    //     paddingY: 100,
+                                    //     width: 230,
+                                    //     height: 50,
+                                    //     view: "richselect",
+                                    //     value: 1,
+                                    //     id: "language",
+                                    //     options: [{"id": 1, "value": "Русский"}, {"id": 2, "value": "English"},
+                                    //     ]
+                                    // },
+
+                                    {
+                                        view: "combo",
+                                        width: 400,
+                                        height: 100,
+                                        label: '<p>Выбор языка</p>',
+                                        labelWidth: 200,
+                                        css: "window_type_2",
+                                        inputAlign: "center",
+                                        id: "language",
+                                        options: [
+                                            {value: "Русский", id: '2'},
+                                            {value: "English", id: '3'},
+
+                                        ]
+                                    },
+                                    {
+
+                                    }
                                 ]
                             }
 
@@ -250,8 +277,8 @@ export default class Page9View extends JetView {
         var win_2 = webix.ui({
             view: "window",
             position: "center",
-            width: 500,
-            height: 300,
+            width: 850,
+            height: 400,
             id: "window_show_2",
             modal: true,
             css: "window_show",
@@ -277,35 +304,38 @@ export default class Page9View extends JetView {
                             {
 
                                 hidden: false,
-                                height: 200,
+                                height: 320,
                                 rows: [
                                     {},
                                     {
                                         view: "label",
-                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Торговая марка: 'Иванов Инжиниринг'</p>",
-                                        width: 460,
+                                        label: "<p>Торговая марка: 'Иванов Инжиниринг'</p>",
+                                        width: 700,
+                                        height: 80,
                                         css: "language_windows_modal",
                                         id: "language_windows_modal_2"
                                     },
                                     {
                                         view: "label",
-                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Производитель: ООО 'Иванов Инжиниринг'</p>",
-                                        width: 460,
+                                        label: "<p>Производитель: ООО 'Иванов Инжиниринг'</p>",
+                                        width: 700,
+                                        height: 80,
                                         css: "language_windows_modal",
                                         id: "language_windows_modal_4"
                                     },
                                     {
                                         view: "label",
-                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>Версия программы Beta 1.0.2</p>",
-                                        width: 460,
+                                        label: "<p>Версия конфигуратора Beta 1.0.3</p>",
+                                        width: 700,
+                                        height: 80,
                                         css: "language_windows_modal",
                                         id: "language_windows_modal_3"
                                     },
-
                                     {
                                         view: "label",
-                                        label: "<p style='font-size: 16px; position: relative; top: -10px; text-align: center;'>www.locme.ru</p>",
-                                        width: 460,
+                                        label: "<p>www.locme.ru</p>",
+                                        width: 700,
+                                        height: 80,
                                         css: "language_windows_modal",
                                         id: "language_windows_modal_5"
                                     },
@@ -332,13 +362,16 @@ export default class Page9View extends JetView {
                 // css: {transform: scale(0.5)},
                 id: "color_rows_star_pages",
                 rows: [
+
                     {
                         cols: [
                             {
                                 width: 10,
                             },
                             ver,
-                            {}
+                            {
+                                height: 10,
+                            }
                         ]
                     },
                     {
@@ -346,10 +379,15 @@ export default class Page9View extends JetView {
                     },
                     {
                         paddingY: -220,
+                        // height: 400,
                         cols: [
-                            {},
+                            {
+
+                            },
                             logo,
-                            {}
+                            {
+
+                            }
                         ]
                     },
                     {
@@ -448,7 +486,7 @@ export default class Page9View extends JetView {
             $$("window_show_2").show()
         });
 
-        $$("dark_theme_label").hide()
+        // $$("dark_theme_label").hide()
 
         if (configFile.theme.color == 'white') {
             $$("dark_light_theme").setValue(1);
@@ -582,8 +620,8 @@ export default class Page9View extends JetView {
                 webix.html.addCss($$("reference").getNode(), "button_1_dark");
                 webix.html.addCss($$("application_menu").getNode(), "button_1_dark");
 
-                $$("light_theme_label").hide()
-                $$("dark_theme_label").show()
+                // $$("light_theme_label").hide()
+                // $$("dark_theme_label").show()
                 $$("logo_1").define("image", "assets/images/Logo_2.svg")
                 $$("master_setup").define("image", "assets/images/master_inverse.svg")
                 $$("engineering_setup").define("image", "assets/images/ingeneer_inverse.svg")
@@ -613,8 +651,8 @@ export default class Page9View extends JetView {
                 webix.html.addCss($$("reference").getNode(), "button_1");
                 webix.html.addCss($$("application_menu").getNode(), "button_1");
 
-                $$("dark_theme_label").hide()
-                $$("light_theme_label").show()
+                // $$("dark_theme_label").hide()
+                // $$("light_theme_label").show()
                 $$("logo_1").define("image", "assets/images/Logo_1.svg")
                 $$("master_setup").define("image", "assets/images/master.svg")
                 $$("engineering_setup").define("image", "assets/images/ingeneer.svg")

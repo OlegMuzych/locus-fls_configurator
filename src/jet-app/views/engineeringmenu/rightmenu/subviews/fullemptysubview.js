@@ -66,7 +66,7 @@ export default class FullEmptySubView extends JetView {
                                 },
                                 {
                                     view: "text",
-                                    width: 460,
+                                    width: 470,
                                     height: 70,
                                     css: "full_level_windows",
                                     readonly: false,

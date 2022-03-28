@@ -4,10 +4,10 @@ import configFile from "../../../config-app";
 export default class LeftMenu extends JetView{
     config(){
         let left_menu = {
-            view: "scrollview",
-            scroll: "y",
-            id: "1",
-            body: {
+            // view: "scrollview",
+            // scroll: "y",
+            // id: "1",
+            // body: {
                 id: "style_left_cols",
                 css: "style_left_cols",
                 rows: [
@@ -72,7 +72,7 @@ export default class LeftMenu extends JetView{
                     }
 
                 ]
-            }
+            // }
         };
 
         return left_menu;

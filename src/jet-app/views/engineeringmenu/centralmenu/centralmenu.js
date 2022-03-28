@@ -6,8 +6,9 @@ import configFile from "../../../config-app";
 export default class CentralMenu extends JetView{
     config(){
         let central_menu_button = {
+            minWidth: 600,
+            maxWidth: 850,
             paddingY: 0,
-            minWidth: 500,
             rows: [
                 {
                     css: "central_cols_button",

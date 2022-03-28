@@ -7,7 +7,7 @@ export default class LlsNoConnectWindow extends JetView {
         let body = {
             view: "window",
             position: "center",
-            width: 650,
+            width: 850,
             height: 400,
             id: "window_show_4",
             modal: true,
@@ -27,11 +27,11 @@ export default class LlsNoConnectWindow extends JetView {
                                 image: "assets/images/Warning.png",
                                 id: "closed_2",
                                 css: "set_password_button_icon",
-                                height: 100,
+                                height: 200,
                             },
                             {
                                 view: "label",
-                                label: "<p style='font-size: 20px; position: relative; top: -10px; text-align: center;'>Датчик не подключен!</p>",
+                                label: "<p>Датчик не подключен</p>",
                                 css: "language_windows_modal",
                                 localId: "language_windows_modal_2",
                                 height: 100,
@@ -46,10 +46,10 @@ export default class LlsNoConnectWindow extends JetView {
                     {
                         cols: [
                             {},
-                            {view: "button", label: "OK", localId: "buttonOk", css: "set_password_button"},
+                            {view: "button", label: "OK" , localId: "buttonOk", css: "set_password_button",},
                             {},
-                            {view: "button", label: "Тестовый Режим", localId: "buttonCancel", css: "set_password_button", disabled: true},
-                            {}
+                            // {view: "button", label: "Тестовый Режим", localId: "buttonCancel", css: "set_password_button", disabled: true},
+                            // {}
                         ]
                     },
                     {}
@@ -61,10 +61,10 @@ export default class LlsNoConnectWindow extends JetView {
     }
 
     init() {
-        this.$$('buttonCancel').attachEvent("onItemClick", (id, e) => {
-            console.log('click');
-            this.getRoot().hide();
-        });
+        // this.$$('buttonCancel').attachEvent("onItemClick", (id, e) => {
+        //     console.log('click');
+        //     this.getRoot().hide();
+        // });
 
         this.$$('buttonOk').attachEvent("onItemClick", (id, e) => {
             console.log('click');

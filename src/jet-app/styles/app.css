@@ -235,7 +235,20 @@ border: none;
 /*----------------------*/
 
 
-.language_windows_modal p{
+.save_windows_modal p{
+    color: var(--c-color-text-light);
+    font-size: 20px;
+    text-align: center;
+}
+
+.save_windows_modal_dark p{
+    color: var(--c-color-text-dark);
+    font-size: 20px;
+    text-align: center;
+}
+
+
+.language_windows_modallanguage_windows_modal p{
     color: var(--c-color-text-light);
     font-size: 26px;
     text-align: center;

@@ -60,14 +60,15 @@ export default class EngineeringMenu extends JetView{
                         this.llsNoConnectWindow.showWindow(); //в случае ошибки передачии команды
                         break;
                     }
-                    case 0x02:{
-                        this.passwordInput.showWindow();
-                        break;
-                    }
-                    default:{
-                        this.llsNoConnectWindow.showWindow(); //в случае если датчик не поключен
-                        break;
-                    }}
+                    // case 0x02:{
+                    //     this.passwordInput.showWindow();
+                    //     break;
+                    // }
+                    // default:{
+                    //     this.llsNoConnectWindow.showWindow(); //в случае если датчик не поключен
+                    //     break;
+                    // }
+            }
             });
 
         llsModel.addListenerCommandError(this.listenerCommandError);

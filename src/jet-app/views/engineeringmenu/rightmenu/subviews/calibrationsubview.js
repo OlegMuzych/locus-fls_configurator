@@ -38,7 +38,7 @@ export default class CalibrationSubView extends JetView {
             css: "rows_right_menu_calibration_2",
             rows:[
                 {
-
+                    height: 10,
                 },
                 {
                     cols:[

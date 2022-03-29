@@ -1,7 +1,6 @@
-import {crc8} from "easy-crc";
+// import {crc8} from "easy-crc";
 
 // const {SerialPort} = eval(`require('serialport')`);
-let {SerialPort} = window.serialPort.get;
 const EventEmitter = require('events');
 
 class MyEmitter extends EventEmitter {
@@ -45,62 +44,21 @@ export default class llsProtocol {
         this._settingPort.llsAdr = llsAdr;
         this._settingPort.name = name;
 
-        this.port = new SerialPort({path: portName, baudRate: baudRate});
+        // this.port = new SerialPort({path: portName, baudRate: baudRate});
+        this.port = window.serialPort;
+        this.port.new({path: portName, baudRate: baudRate});
         this.#loopPortWrite();
         return new Promise(async (resolve, reject) => {
             this.open().then(() => {
                 resolve(this);
             }).catch((e) => {
-                delete this.port;
+                // delete this.port;
+                this.port.delete();
                 reject(e);
             })
         });
     };
 
-    // async send(command, data = null, timeout = 2000){
-    //     let timerId = null;
-    //     return new Promise(async (resolve, reject)=>{
-    //         this.port.pause();
-    //         let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
-    //         this.port.write(dataBuffer);
-    //         timerId = setTimeout(()=>{
-    //             reject(`Error command ${command.toString(16)}: timeout response message!`);
-    //             this.port.resume();
-    //         }, timeout);
-    //         let dataParse = await this._eventDataParse(command);
-    //         clearInterval(timerId);
-    //         this.port.resume();
-    //         resolve(dataParse);
-    //     });
-    // };
-
-    // async send(command, data = null, timeout = 3000) {
-    //     let timerId = null;
-    //     return new Promise(async (resolve, reject) => {
-    //         this.port.pause();
-    //         let dataBuffer = this._commandCreate(command, this._settingPort.llsAdr, data);
-    //         this.#pushQueueWrite(dataBuffer, timeout);
-    //         let summTimeout = this.#getSummTimeoutWrite();
-    //         //this.port.write(dataBuffer);
-    //         timerId = setTimeout(() => {
-    //             this.#writeMutex = true;
-    //             reject(`Error command ${command.toString(16)}: timeout response message!`);
-    //             this.port.resume();
-    //         }, summTimeout);
-    //         let dataParse = await this._eventDataParse(command);
-    //         if(dataParse.command == command){
-    //             this.#writeMutex = true;
-    //             clearInterval(timerId);
-    //             this.port.resume();
-    //             resolve(dataParse);
-    //         }
-    //         // this.#writeMutex = true;
-    //         // clearInterval(timerId);
-    //         // this.port.resume();
-    //         // resolve(dataParse);
-    //     });
-    // };
-    //
     async send(command, data = null, timeout = 3000) {
         let timerId = null;
         return new Promise(async (resolve, reject) => {
@@ -126,10 +84,6 @@ export default class llsProtocol {
         }
         this.#queueWrite.push(obj);
     };
-    // #pushQueueWrite(data, timeout) {
-    //     this.#timeoutWrite.push(timeout); //для учета времени задержки ожидания выполнения команды
-    //     this.#queueWrite.push(data);
-    // };
 
     #shiftQueueWrite() {
         this.#timeoutWrite.shift();
@@ -149,13 +103,6 @@ export default class llsProtocol {
     };
 
     #loopPortWrite() {
-        // setInterval(() => {
-        //     if (this.#queueWrite.length) {
-        //         let data = this.#queueWrite.shift();
-        //         this.port.write(data);
-        //     }
-        // }, 500);
-
         setInterval(() => {
             if (this.#queueWrite.length) {
                 // let obj = this.#queueWrite.shift();
@@ -164,20 +111,12 @@ export default class llsProtocol {
                 this.port.write(dataBuffer);
             }
         }, 500);
-
-        // setInterval(() => {
-        //     if (this.#queueWrite.length && this.#writeMutex) {
-        //         this.#writeMutex = false;
-        //         // let data = this.#queueWrite.shift();
-        //         let data = this.#shiftQueueWrite();
-        //         this.port.write(data);
-        //     }
-        // }, 100);
     };
 
     _listenerResponseData() {
-        this.port.on('readable', () => {
+        this.port.onReadable(() => {
             // this.port.pause();
+            console.log("readable");
             setTimeout(() => {
                 let data = this.port.read();
                 if (!data) return;
@@ -189,24 +128,15 @@ export default class llsProtocol {
                 // this.port.resume();
             }, 100);
         })
-
-        // this.port.on('data',  (data) =>{
-        //     console.log('Data:', data);
-        //     // this._checkCrc8(data);
-        //     let dataPars = this._parseData(data);
-        //     if(dataPars){
-        //         myEmitter.emit(`data:${dataPars.command}`, dataPars);
-        //     }
-        // })
     };
 
     open() {
         return new Promise(((resolve, reject) => {
-            this.port.on('error', function (err) {
+            this.port.onError( (err) => {
                 console.log('Error: ', err.message);
                 reject(err.message);
             });
-            this.port.on('open', () => {
+            this.port.onOpen( () => {
                 // open logic
                 console.log("serialPort is Open");
                 this._listenerResponseData();
@@ -345,8 +275,9 @@ export default class llsProtocol {
     };
 
     _getCRC8(buffer) {
-        let checksum = crc8('MAXIM', buffer);
-        // console.log("CRC8: " + checksum.toString(16));
+        // let checksum = crc8('MAXIM', buffer);
+        let checksum = window.checkSumm.crc8('MAXIM', buffer);
+        console.log("CRC8: " + checksum.toString(16));
         return checksum;
     };
 

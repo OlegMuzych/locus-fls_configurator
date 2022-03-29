@@ -133,7 +133,7 @@ export default class Page9View extends JetView {
                         {
                             view: "button",
                             type: "image",
-                            image: "assets/images/info.svg",
+                            image: "assets/images/info_win.svg",
                             css: "button_1",
                             id: "reference"
                         },
@@ -656,7 +656,7 @@ export default class Page9View extends JetView {
                 $$("logo_1").define("image", "assets/images/Logo_1.svg")
                 $$("master_setup").define("image", "assets/images/master.svg")
                 $$("engineering_setup").define("image", "assets/images/ingeneer.svg")
-                $$("reference").define("image", "assets/images/info.svg")
+                $$("reference").define("image", "assets/images/info_win.svg")
                 $$("application_menu").define("image", "assets/images/konfig.svg")
                 $$("logo_1").refresh()
                 $$("master_setup").refresh()

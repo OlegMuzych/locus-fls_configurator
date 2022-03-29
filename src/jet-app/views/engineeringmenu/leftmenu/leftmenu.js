@@ -20,6 +20,9 @@ export default class LeftMenu extends JetView{
                         id:"save_settings"
                     },
                     {
+                        height: 9,
+                    },
+                    {
                         view: "button",
                         type: "image",
                         image: "assets/images/model_101.svg",
@@ -51,7 +54,7 @@ export default class LeftMenu extends JetView{
                         id: "left_menu_button_3"
                     },
                     {
-                        height: 300,
+                        height: 280,
                     },
 
                     {
@@ -64,14 +67,14 @@ export default class LeftMenu extends JetView{
                         css: "left_menu_button_reference",
                     },
                     {
-                        height: 1,
+                        height: 30,
                     },
                     {
                         view: "button",
                         type: "image",
                         image: "assets/images/info.svg",
                         width: 160,
-                        height: 200,
+                        height: 120,
                         id: "button_reference",
                         css: "left_menu_button_reference",
                     },

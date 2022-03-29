@@ -4,50 +4,27 @@ import llsModel from "../../../models/lls-model";
 export default class LlsNoConnectWindow extends JetView {
     config() {
 
-        let body = {
+        let save = webix.ui({
             view: "window",
-            position: "center",
-            width: 850,
-            height: 400,
+            position: "top",
+            width: 1000,
+            height: 40,
             id: "save_settings_windows",
-            modal: true,
-            css: "window_show",
+            css: "window_show_save",
             head: {
-                height: 400,
                 rows: [
-                    {},
                     {
-                        cols: [
-                            {
-                                width: 50,
-                            },
-                            {
-                                view: "label",
-                                label: "<p>OK</p>",
-                                css: "language_windows_modal",
-                                localId: "language_windows_modal_2",
-                                height: 100,
-                                width: 420,
-                            },
-                            {}
-                        ]
+                        view: "label",
+                        label: "<p>Настройки записаны в датчик</p>",
+                        css: "save_windows_modal",
+                        // localId: "language_windows_modal_2",
+                        width: 1000,
+                        height: 50,
                     },
-                    {
-                        height: 65,
-                    },
-                    {
-                        cols: [
-                            {},
-                            {view: "button", label: "OK" , localId: "buttonOk", css: "set_password_button",},
-                            {},
-                            // {view: "button", label: "Тестовый Режим", localId: "buttonCancel", css: "set_password_button", disabled: true},
-                            // {}
-                        ]
-                    },
-                    {}
+
                 ]
             },
-        }
+        });
 
         return body;
     }

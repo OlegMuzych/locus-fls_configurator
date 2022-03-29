@@ -3,7 +3,6 @@ import FuelFillView from "./calibrationsubview/fuelfill";
 import FuelDrainView from "./calibrationsubview/fueldrain";
 
 import configFile from "../../../../config-app";
-import rwTable from "../../../../services/files/table/rw-table";
 
 export default class CalibrationSubView extends JetView {
     config() {
@@ -122,21 +121,11 @@ export default class CalibrationSubView extends JetView {
         });
 
         this.$$('button_import').attachEvent("onItemClick", (id, e)=>{
-            rwTable.read().then();
-        //     const dialogConfig = {
-        //         title: 'Выберите файл с таблицой',
-        //         buttonLabel: 'Импортировать',
-        //         properties: ['openFile'],
-        //         filters: [
-        //             { name: 'Файл таблицы', extensions: ['csv'] },
-        //             { name: 'Все файлы', extensions: ['*'] }
-        //         ]
-        //     };
-        //     window.electron.openDialog('showOpenDialog', dialogConfig).then((result) => console.log(result));
+            this.app.callEvent("app:calibrationsubview:readFromFile", []);
         });
 
         this.$$('button_export').attachEvent("onItemClick", (id, e)=>{
-            rwTable.write().then();
+            this.app.callEvent("app:calibrationsubview:saveToFile", []);
         });
 
         if(configFile.theme.color == 'white'){

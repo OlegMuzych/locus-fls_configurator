@@ -3,6 +3,7 @@ const { contextBridge, dialog, ipcRenderer } = require('electron');
 const {SerialPort} = require('serialport');
 const {crc8} = require("easy-crc");
 const { writeFile, readFile }  = require('fs/promises');
+const CSV = require('csv-string');
 
 contextBridge.exposeInMainWorld('myAPI', {
     desktop: true
@@ -72,3 +73,8 @@ contextBridge.exposeInMainWorld('fs', {
     }
 );
 
+contextBridge.exposeInMainWorld('csv-string', {
+        parse: (string, options) => CSV.parse(string,options),
+        stringify: (arr, separator) => CSV.stringify(arr, separator),
+    }
+);

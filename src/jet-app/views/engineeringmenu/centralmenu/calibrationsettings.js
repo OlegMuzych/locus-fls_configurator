@@ -1,6 +1,7 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
 import configFile from "../../../config-app";
+import fileTableModel from "../../../models/file-table-model";
 
 export default class CalibrationSettings extends JetView {
     config() {
@@ -79,9 +80,10 @@ export default class CalibrationSettings extends JetView {
 
         return body;
     }
-
+    currentTable = {};
     listenerTable = (table) => {
         console.log(table);
+        this.currentTable = table;
         this.removeAll();
         this.createTable(table.countPoint, table.levels, table.volumes);
         // this.checkContinueCalibrate();
@@ -218,6 +220,17 @@ export default class CalibrationSettings extends JetView {
                 // this.removeVolume();
             }
             this.app.callEvent("app:calibrationSettings:continueCalibrate", [volume, volumeStep]);
+        });
+
+        this.on(this.app, "app:calibrationsubview:saveToFile", () => { //save to file
+            fileTableModel.write(this.currentTable).then();
+        });
+
+        this.on(this.app, "app:calibrationsubview:readFromFile", () => { // read from file
+            fileTableModel.read()
+                .then((table)=>{
+                    this.app.callEvent("app:calibrationSettings:openTableFromFile", [table]);
+                })
         });
     }
 

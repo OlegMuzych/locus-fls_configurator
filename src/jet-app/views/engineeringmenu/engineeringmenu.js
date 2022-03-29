@@ -8,6 +8,7 @@ import ContinueCalibrateWindow from "./windows/continuecalibrate";
 import configFile from "../../config-app";
 import PasswordInputWindow from "./windows/passwordinput";
 import LlsNoConnectWindow from "./windows/llsnoconnect";
+import TablePreviewWindow from "./windows/table-preview";
 
 export default class EngineeringMenu extends JetView{
     config() {
@@ -76,10 +77,16 @@ export default class EngineeringMenu extends JetView{
         this.continueWindow = this.ui(ContinueCalibrateWindow);
         this.passwordInput = this.ui(PasswordInputWindow);
         this.llsNoConnectWindow = this.ui(LlsNoConnectWindow);
+        this.tablePreviewWindow = this.ui(TablePreviewWindow);
 
         this.on(this.app, "app:calibrationSettings:continueWindow", () => {
             this.continueWindow.showWindow();
         });
+
+        this.on(this.app, "app:calibrationSettings:openTableFromFile", (table) => {
+            this.tablePreviewWindow.showWindow(table);
+        });
+        this.tablePreviewWindow.showWindow();
 
         if(configFile.theme.color == 'white'){
             webix.html.addCss( $$("rows_left_1").getNode(), "style_body");

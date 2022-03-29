@@ -48,8 +48,11 @@ export default class LlsNoConnectWindow extends JetView {
                             {},
                             {view: "button", label: "OK" , localId: "buttonOk", css: "set_password_button",},
                             {},
-                            // {view: "button", label: "Тестовый Режим", localId: "buttonCancel", css: "set_password_button", disabled: true},
-                            // {}
+                            {view: "button", label: "Тестовый Режим", localId: "buttonCancel", css: "set_password_button",
+                                // disabled: true,
+                                // hidden: true,
+                            },
+                            {}
                         ]
                     },
                     {}
@@ -61,10 +64,10 @@ export default class LlsNoConnectWindow extends JetView {
     }
 
     init() {
-        // this.$$('buttonCancel').attachEvent("onItemClick", (id, e) => {
-        //     console.log('click');
-        //     this.getRoot().hide();
-        // });
+        this.$$('buttonCancel').attachEvent("onItemClick", (id, e) => {
+            console.log('click');
+            this.getRoot().hide();
+        });
 
         this.$$('buttonOk').attachEvent("onItemClick", (id, e) => {
             console.log('click');

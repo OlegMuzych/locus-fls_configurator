@@ -1,5 +1,6 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
+const { ipcMain, dialog } = require('electron');
 
 app.allowRendererProcessReuse = false;
 
@@ -38,6 +39,12 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  app.whenReady().then(() => {
+    ipcMain.handle('dialog', (event, method, params) => {
+      return dialog[method](mainWindow,params);
+    });
+  });
 };
 
 // This method will be called when Electron has finished
@@ -62,12 +69,6 @@ app.on('activate', () => {
   }
 });
 
-const { ipcMain, dialog } = require('electron');
-app.whenReady().then(() => {
-  ipcMain.handle('dialog', (event, method, params) => {
-    return dialog[method](params);
-  });
-});
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.

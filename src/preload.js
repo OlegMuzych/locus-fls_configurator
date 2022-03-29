@@ -2,6 +2,7 @@
 const { contextBridge, dialog, ipcRenderer } = require('electron');
 const {SerialPort} = require('serialport');
 const {crc8} = require("easy-crc");
+const { writeFile, readFile }  = require('fs/promises');
 
 contextBridge.exposeInMainWorld('myAPI', {
     desktop: true
@@ -64,4 +65,10 @@ contextBridge.exposeInMainWorld('electron', {
 contextBridge.exposeInMainWorld('checkSumm', {
     crc8: (method, data) => {return crc8(method, data)}
 });
+
+contextBridge.exposeInMainWorld('fs', {
+        writeFile: (file, data, options) => writeFile(file, data, options),
+        readFile: (path, options) => readFile(path, options),
+    }
+);
 

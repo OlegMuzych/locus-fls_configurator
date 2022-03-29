@@ -3,6 +3,7 @@ import FuelFillView from "./calibrationsubview/fuelfill";
 import FuelDrainView from "./calibrationsubview/fueldrain";
 
 import configFile from "../../../../config-app";
+import rwTable from "../../../../services/files/table/rw-table";
 
 export default class CalibrationSubView extends JetView {
     config() {
@@ -48,7 +49,7 @@ export default class CalibrationSubView extends JetView {
                         {
                             view: "button",
                             type: "label",
-                            label: "Сохранить таблицу тарировки",
+                            label: "Экспортировать таблицу тарировки",
                             localId:"button_export",
                             width: 480,
                             height: 50,
@@ -68,12 +69,10 @@ export default class CalibrationSubView extends JetView {
 
                         },
                         {
-                            view:"uploader",
+                            view: "button",
+                            type: "label",
+                            label:"Импортировать таблицу тарировки",
                             localId:"button_import",
-                            value:"Экспорт таблицы тарировки",
-                            link:"mylist",
-                            upload:"//docs.webix.com/samples/server/upload",
-                            datatype:"json",
                             width: 480,
                             height: 50,
                             css: "set_step_drain_button_2"
@@ -122,13 +121,22 @@ export default class CalibrationSubView extends JetView {
             this.$$('tabbar').enableOption('fuelDrain');
         });
 
+        this.$$('button_import').attachEvent("onItemClick", (id, e)=>{
+            rwTable.read().then();
+        //     const dialogConfig = {
+        //         title: 'Выберите файл с таблицой',
+        //         buttonLabel: 'Импортировать',
+        //         properties: ['openFile'],
+        //         filters: [
+        //             { name: 'Файл таблицы', extensions: ['csv'] },
+        //             { name: 'Все файлы', extensions: ['*'] }
+        //         ]
+        //     };
+        //     window.electron.openDialog('showOpenDialog', dialogConfig).then((result) => console.log(result));
+        });
+
         this.$$('button_export').attachEvent("onItemClick", (id, e)=>{
-            const dialogConfig = {
-                title: 'Select a file',
-                buttonLabel: 'This one will do',
-                properties: ['openFile']
-            };
-            window.electron.openDialog('showOpenDialog', dialogConfig).then((result) => console.log(result));
+            rwTable.write().then();
         });
 
         if(configFile.theme.color == 'white'){

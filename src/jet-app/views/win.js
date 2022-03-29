@@ -176,22 +176,53 @@ export default class Page9View extends JetView {
                     },
                     {
                         height: 20,
+                    },
+                    {
+                        disabled: true,
+                        height: 80,
+                        width: 200,
+                        cols: [
+                            {
+                                width: 20,
+                            },
+                            {
+                                view: "combo",
+                                width: 750,
+                                height: 100,
+                                label: '<p>Выбор языка</p>',
+                                labelWidth: 500,
+                                css: "window_type_4",
+                                inputAlign: "center",
+                                id: "language",
+                                value:"2",
+                                options: [
+                                    {value: "Русский", id: '2' },
+                                    {value: "English", id: '3'},
 
+                                ]
+                            },
+                            {
+
+                            }
+                        ]
+                    },
+                    {
+                        height: 20,
                     },
                     {
                         width: 200,
                         rows: [
                             {
 
-                                disabled: false,
+                                disabled: true,
                                 cols: [
                                     {
-
+                                        width: 20,
                                     },
                                     {
                                         view: "label",
-                                        label: "<p>Выбор темы</p>",
-                                        width: 230,
+                                        label: "<p style='position: relative; top: -20px; text-align: left'>Выбор темы</p>",
+                                        width: 550,
                                         id: "light_theme_label",
                                         css:"language_windows_modal",
                                     },
@@ -215,54 +246,25 @@ export default class Page9View extends JetView {
                                 height: 20,
                             },
                             {
-
-                                disabled: false,
-                                height: 80,
-                                width: 200,
-                                cols: [
+                                disabled: true,
+                                cols:[
                                     {
-
-                                    },
-                                    // {
-                                    //     view: "label",
-                                    //     label: "<p>Выбор языка</p>",
-                                    //     width: 200,
-                                    //     id: "language_windows_modal",
-                                    //     css: "language_windows_modal"
-                                    // },
-                                    // {
-                                    //     paddingY: 100,
-                                    //     width: 230,
-                                    //     height: 50,
-                                    //     view: "richselect",
-                                    //     value: 1,
-                                    //     id: "language",
-                                    //     options: [{"id": 1, "value": "Русский"}, {"id": 2, "value": "English"},
-                                    //     ]
-                                    // },
-
-                                    {
-                                        view: "combo",
-                                        width: 400,
-                                        height: 100,
-                                        label: '<p>Выбор языка</p>',
-                                        labelWidth: 200,
-                                        css: "window_type_2",
-                                        inputAlign: "center",
-                                        id: "language",
-                                        options: [
-                                            {value: "Русский", id: '2'},
-                                            {value: "English", id: '3'},
-
-                                        ]
+                                        width: 20,
                                     },
                                     {
+                                        view: "label",
+                                        label: "<p style='position: relative; top: -20px; text-align: left'>Автоматическое сохранение настроек</p>",
+                                        width: 550,
+                                        id: "light_theme_label_2",
+                                        css:"language_windows_modal",
+                                    },
+                                    {view: "switch", value: 1, id: "dark_light_theme_2", width: 70, height: 100,},
+                                    {
+
 
                                     }
                                 ]
-                            }
-
-
+                            },
                         ]
                     },
                 ]

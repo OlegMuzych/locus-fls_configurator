@@ -50,7 +50,7 @@ export default class LeftMenu extends JetView{
                         image: "assets/images/ONE.BLE.svg",
                         width: 155,
                         height: 200,
-                        css: "left_menu_button",
+                        css: "left_menu_button_2",
                         id: "left_menu_button_3"
                     },
                     {

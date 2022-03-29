@@ -235,6 +235,7 @@ border: none;
 /*----------------------*/
 
 
+
 .save_windows_modal p{
     color: var(--c-color-text-light);
     font-size: 20px;
@@ -440,7 +441,29 @@ border: none;
 
 
 /*----------*/
+.window_type_4 p{
+    color: #000;
+    text-align: left;
+    font-size: 26px;
+    /*font-weight: 100;*/
+    position: relative;
+    top: -25px;
+}
 
+.window_type_4 input{
+    color: #000;
+    text-align: left;
+    /*padding-right: 50px;*/
+    font-size: 26px;
+    height: 60%;
+    position: relative;
+    top: 20px;
+}
+
+.window_type_4 .webix_view div, .webix_view span, .webix_list_item, .webix_view.webix_window{
+    font-size: 20px;
+    /*margin-bottom: 10px;*/
+}
 
 
 .window_type_2 p{
@@ -904,12 +927,99 @@ border: none;
 
 /* кнопки в левом меню на странице №2 -------------------------------------------------- */
 
-.left_menu_button .webix_button{
-    background-color: #f3f3f3;
-    border-right: 0 solid #fff;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-left: 8px solid #fff;
+/*.left_menu_button .webix_button{*/
+/*    background-color: #f3f3f3;*/
+/*    border-right: 0 solid #fff;*/
+/*    border-top-right-radius: 10px;*/
+/*    border-bottom-right-radius: 10px;*/
+/*    border-left: 8px solid #fff;*/
+/*}*/
+
+/*.left_menu_button_dark .webix_button{*/
+/*    background-color: var(--c-white-color-background-dark_left_menu_button);*/
+/*    border-right: 0 solid #fff;*/
+/*    border-top-right-radius: 10px;*/
+/*    border-bottom-right-radius: 10px;*/
+/*    border-left: 8px solid var(--c-white-color-background-dark_left_menu_button);*/
+/*}*/
+
+/*.left_menu_button_dark .webix_image{*/
+/*    width: 80%;*/
+/*}*/
+
+/*.left_menu_button .webix_image{*/
+/*    width: 80%;*/
+/*}*/
+
+
+/*.left_menu_button .webix_button:hover{*/
+/*    background-color: #fff;*/
+/*    border-right: 2px solid rgba(255, 255, 255, 0);*/
+/*    border-top: 2px solid rgba(255, 255, 255, 0);*/
+/*    border-bottom: 2px solid rgba(255, 255, 255, 0);*/
+/*    border-left: 8px solid #fff;*/
+/*    position: relative;*/
+/*    top: -2px;*/
+/*    width: 101%;*/
+/*}*/
+
+/*.left_menu_button_dark .webix_button:hover{*/
+/*    background-color: var(--c-white-color-background-dark_left_menu_button_hover);*/
+/*    border-left: 8px solid #fff;*/
+/*    border-right: 2px solid #fff;*/
+/*    border-top: 2px solid #fff;*/
+/*    border-bottom: 2px solid #fff;*/
+/*    position: relative;*/
+/*    top: -2px;*/
+/*    width: 101%;*/
+
+/*}*/
+
+
+/*.left_menu_button .webix_button:focus{*/
+/*    background-color: #fff;*/
+/*    border-right: 2px solid rgba(255, 255, 255, 0);*/
+/*    border-top: 2px solid rgba(255, 255, 255, 0);*/
+/*    border-bottom: 2px solid rgba(255, 255, 255, 0);*/
+/*    border-left: 8px solid #628cbb;*/
+/*    position: relative;*/
+/*    top: -2px;*/
+/*    width: 101%;*/
+
+/*}*/
+
+.left_menu_button .webix_button:focus {
+    background-color: #fff;
+    border-right: 2px solid rgba(255, 255, 255, 0);
+    border-top: 2px solid rgba(255, 255, 255, 0);
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
+    border-left: 8px solid #628cbb;
+    position: relative;
+    top: -2px;
+    width: 101%;
+}
+
+.left_menu_button .webix_button:hover {
+    background-color: #fff;
+    border-right: 2px solid rgba(255, 255, 255, 0);
+    border-top: 2px solid rgba(255, 255, 255, 0);
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
+    border-left: 8px solid #628cbb;
+    position: relative;
+    top: -2px;
+    width: 101%;
+}
+
+
+.left_menu_button .webix_button {
+    background-color: #fff;
+    border-right: 2px solid rgba(255, 255, 255, 0);
+    border-top: 2px solid rgba(255, 255, 255, 0);
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
+    border-left: 8px solid #628cbb;
+    position: relative;
+    top: -2px;
+    width: 101%;
 }
 
 .left_menu_button_dark .webix_button{
@@ -924,46 +1034,6 @@ border: none;
     width: 80%;
 }
 
-.left_menu_button .webix_image{
-    width: 80%;
-}
-
-
-.left_menu_button .webix_button:hover{
-    background-color: #fff;
-    border-right: 2px solid rgba(255, 255, 255, 0);
-    border-top: 2px solid rgba(255, 255, 255, 0);
-    border-bottom: 2px solid rgba(255, 255, 255, 0);
-    border-left: 8px solid #fff;
-    position: relative;
-    top: -2px;
-    width: 101%;
-}
-
-.left_menu_button_dark .webix_button:hover{
-    background-color: var(--c-white-color-background-dark_left_menu_button_hover);
-    border-left: 8px solid #fff;
-    border-right: 2px solid #fff;
-    border-top: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-    position: relative;
-    top: -2px;
-    width: 101%;
-
-}
-
-
-.left_menu_button .webix_button:focus{
-    background-color: #fff;
-    border-right: 2px solid rgba(255, 255, 255, 0);
-    border-top: 2px solid rgba(255, 255, 255, 0);
-    border-bottom: 2px solid rgba(255, 255, 255, 0);
-    border-left: 8px solid #628cbb;
-    position: relative;
-    top: -2px;
-    width: 101%;
-
-}
 
 .left_menu_button_dark .webix_button:focus{
     background-color: var(--c-white-color-background-dark_left_menu_button_hover);
@@ -981,6 +1051,49 @@ border: none;
     top: -2px;
     width: 101%;
 }
+
+/*-------------------------------*/
+
+
+
+.left_menu_button_2 .webix_button {
+        background-color: #f3f3f3;
+        border-right: 0 solid #fff;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-left: 8px solid #fff;
+}
+
+.left_menu_button_2 .webix_button:focus{
+    background-color: #f3f3f3;
+    border-right: 0 solid #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: 8px solid #fff;
+}
+
+.left_menu_button_2 .webix_button:hover {
+    background-color: #f3f3f3;
+    border-right: 0 solid #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: 8px solid #fff;
+}
+
+.left_menu_button_2 .webix_button:active {
+    background-color: #f3f3f3;
+    border-right: 0 solid #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: 8px solid #fff;
+}
+
+
+
+/*-------------------------------*/
+
+
+
 
 
 

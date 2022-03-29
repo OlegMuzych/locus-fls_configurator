@@ -252,8 +252,7 @@ border: none;
     top: -22px;
 }
 
-
-.language_windows_modallanguage_windows_modal p{
+.language_windows_modal p{
     color: var(--c-color-text-light);
     font-size: 26px;
     text-align: center;

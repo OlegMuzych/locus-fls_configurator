@@ -19,9 +19,11 @@ const createWindow = () => {
     height: 650,
     // maxHeight: 750,
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
-        zoomFactor: 0.6,
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: false,
+      contextIsolation: true,
+      webSecurity: false,
+      zoomFactor: 0.6,
     },
     fullscreenable: false,
     icon: __dirname + '/vertical_tagline_on_transparent_curves_by_logaster-01.ico',
@@ -58,6 +60,13 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
+});
+
+const { ipcMain, dialog } = require('electron');
+app.whenReady().then(() => {
+  ipcMain.handle('dialog', (event, method, params) => {
+    return dialog[method](params);
+  });
 });
 
 // In this file you can include the rest of your app's specific main process

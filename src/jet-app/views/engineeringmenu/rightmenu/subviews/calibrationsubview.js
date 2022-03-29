@@ -49,7 +49,7 @@ export default class CalibrationSubView extends JetView {
                             view: "button",
                             type: "label",
                             label: "Сохранить таблицу тарировки",
-                            id:"button_export",
+                            localId:"button_export",
                             width: 480,
                             height: 50,
                             css: "set_step_drain_button_2"
@@ -69,7 +69,7 @@ export default class CalibrationSubView extends JetView {
                         },
                         {
                             view:"uploader",
-                            id: "uploader1",
+                            localId:"button_import",
                             value:"Экспорт таблицы тарировки",
                             link:"mylist",
                             upload:"//docs.webix.com/samples/server/upload",
@@ -87,10 +87,7 @@ export default class CalibrationSubView extends JetView {
                 {
 
                 }
-
             ]
-
-
         };
 
 
@@ -99,7 +96,6 @@ export default class CalibrationSubView extends JetView {
                 tabBarCalibrate,
                 myMultiview,
                 button_table
-
             ]
         };
 
@@ -124,6 +120,15 @@ export default class CalibrationSubView extends JetView {
         this.on(this.app, "app:calibrationSubview:finishCalibrate", () => {
             this.$$('tabbar').enableOption('fuelFill');
             this.$$('tabbar').enableOption('fuelDrain');
+        });
+
+        this.$$('button_export').attachEvent("onItemClick", (id, e)=>{
+            const dialogConfig = {
+                title: 'Select a file',
+                buttonLabel: 'This one will do',
+                properties: ['openFile']
+            };
+            window.electron.openDialog('showOpenDialog', dialogConfig).then((result) => console.log(result));
         });
 
         if(configFile.theme.color == 'white'){

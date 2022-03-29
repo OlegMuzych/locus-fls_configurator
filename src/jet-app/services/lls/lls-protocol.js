@@ -1,6 +1,7 @@
 import {crc8} from "easy-crc";
 
-const {SerialPort} = eval(`require('serialport')`);
+// const {SerialPort} = eval(`require('serialport')`);
+let {SerialPort} = window.serialPort.get;
 const EventEmitter = require('events');
 
 class MyEmitter extends EventEmitter {

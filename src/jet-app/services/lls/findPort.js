@@ -1,9 +1,8 @@
-import llsProtocol from "./lls-protocol";
+// import llsProtocol from "./lls-protocol";
 
-const {SerialPort} = eval(`require('serialport')`);
+// const {SerialPort} = eval(`require('serialport')`);
 import config from "../../config-app";
 import Lls from "./lls";
-
 class FindLls {
     testLls = null;
 
@@ -50,7 +49,8 @@ class FindLls {
 
     async listPath() {
         try {
-            let portList = await SerialPort.list();
+            // let portList = await SerialPort.list();
+            let portList = await window.serialPort.portList();
             console.log(portList);
             return portList.map((item) => {
                 return item.path;

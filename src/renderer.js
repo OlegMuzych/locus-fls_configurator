@@ -40,5 +40,6 @@ import './jet-app/assets/libraries/webix/webix.js';
 //import './test/index.html';
 import  './jet-app/myapp.js';
 
-
+console.log(window.myAPI);
+window.serialPort.portList().then((list)=>console.log(list));
 console.log('👋 This message is being logged by "renderer.js", included via webpack');

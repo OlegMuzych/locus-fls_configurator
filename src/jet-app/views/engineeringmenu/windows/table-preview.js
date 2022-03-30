@@ -11,13 +11,11 @@ export default class TablePreviewWindow extends JetView {
             css: "calib_rows",
             localId: "calib_rows",
             body: {
-
                 cols: [
                     {
                         maxWidth: 10,
                     },
                     {
-
                         gravity: 2,
                         rows: [
                             {
@@ -25,7 +23,7 @@ export default class TablePreviewWindow extends JetView {
                                 label: "<p>Шагов</p>",
                                 css: "rowNumber_style_1",
                                 align: 'center',
-                                id: "top_text_1",
+                                localId: "top_text_1",
                                 height: 70,
                             },
                             {localId: 'rowNumber', css: "rowNumber_style_1", rows: []}
@@ -39,7 +37,7 @@ export default class TablePreviewWindow extends JetView {
                                 label: "<p>Уровень</p>",
                                 align: 'center',
                                 css: "rowNumber_style_1",
-                                id: "top_text_2",
+                                localId: "top_text_2",
                                 height: 70,
                             },
                             {localId: 'rowLevel', css: "rowNumber_style", rows: []}
@@ -53,7 +51,7 @@ export default class TablePreviewWindow extends JetView {
                                 label: "<p>Объем</p>",
                                 align: 'center',
                                 css: "rowNumber_style_1",
-                                id: "top_text_3",
+                                localId: "top_text_3",
                                 height: 70,
                             },
                             {localId: 'rowVolume', css: "rowNumber_style", rows: []}
@@ -64,18 +62,44 @@ export default class TablePreviewWindow extends JetView {
             }
         }
 
-        let form = {
+        let elements = {
             rows: [
-                table
+                table,
+                {
+                    cols: [
+                        {},
+                        {
+                            view: "button",
+                            label: "OK",
+                            localId: "buttonOk",
+                            css: "set_password_button"
+                        },
+                        {},
+                        {
+                            view: "button",
+                            label: "Отмена",
+                            localId: "buttonCancel",
+                            css: "set_password_button"
+                        },
+                        {}
+                    ]
+                },
             ]
-        }
+        };
+
+        let form = {
+            view:"form",
+            scroll:false,
+            height: 800,
+            elements: [elements],
+        };
 
 
         let body = {
             view: "window",
             position: "center",
-            width: 1000,
-            height: 1200,
+            width: 600,
+            height: 800,
             id: "window_show_3",
             modal: true,
             css: "window_show_password",
@@ -87,25 +111,24 @@ export default class TablePreviewWindow extends JetView {
     }
 
     init() {
-        // this.$$('buttonCancel').attachEvent("onItemClick", (id, e) => {
-        //     console.log('click');
-        //     this.getRoot().hide();
-        // });
-        //
-        // this.$$('buttonOk').attachEvent("onItemClick", (id, e) => {
-        //     console.log('click');
-        //     llsModel.resetLls().then();
-        //     this.getRoot().hide();
-        //     //todo: command resetLls
-        // });
+        this.$$('buttonCancel').attachEvent("onItemClick", (id, e) => {
+            console.log('click');
+            this.getRoot().hide();
+        });
+
+        this.$$('buttonOk').attachEvent("onItemClick", (id, e) => {
+            console.log('click');
+            this.saveTable()
+            this.getRoot().hide();
+        });
     }
 
     showWindow(table) {
-        if (table) {
-            this.createTable(table.countPoint, table.levels, table.volumes);
-            v
-        }
         this.getRoot().show();
+        if (table) {
+            this.removeAll();
+            this.createTable(table.countPoint, table.levels, table.volumes);
+        }
     }
 
     #number = [];

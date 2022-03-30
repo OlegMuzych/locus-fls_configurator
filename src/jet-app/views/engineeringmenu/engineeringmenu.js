@@ -86,7 +86,7 @@ export default class EngineeringMenu extends JetView{
         this.on(this.app, "app:calibrationSettings:openTableFromFile", (table) => {
             this.tablePreviewWindow.showWindow(table);
         });
-        this.tablePreviewWindow.showWindow();
+        // this.tablePreviewWindow.showWindow();
 
         if(configFile.theme.color == 'white'){
             webix.html.addCss( $$("rows_left_1").getNode(), "style_body");

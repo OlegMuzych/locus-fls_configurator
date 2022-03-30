@@ -57,18 +57,21 @@ export default class EngineeringMenu extends JetView{
             })
             .catch((status)=>{
                 switch(status){
-                    case 0x01:{
-                        this.llsNoConnectWindow.showWindow(); //в случае ошибки передачии команды
-                        break;
-                    }
-                    case 0x02:{
-                        this.passwordInput.showWindow();
-                        break;
-                    }
-                    default:{
-                        this.llsNoConnectWindow.showWindow(); //в случае если датчик не поключен
-                        break;
-                    }}
+                    // case 0x01:{
+                    //     this.llsNoConnectWindow.showWindow(); //в случае ошибки передачии команды
+                    //     break;
+                    // }
+                    // case 0x02:{
+                    //     this.passwordInput.showWindow();
+                    //     break;
+                    // }
+                    // default:{
+                    //     // this.llsNoConnectWindow.showWindow(); //в случае если датчик не поключен
+                    //     this.passwordInput.showWindow();
+                    //
+                    //     break;
+                    // }
+            }
             });
 
         llsModel.addListenerCommandError(this.listenerCommandError);

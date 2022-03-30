@@ -69,7 +69,7 @@ export default class FullEmptySubView extends JetView {
                                     width: 470,
                                     height: 70,
                                     css: "full_level_windows",
-                                    readonly: false,
+                                    readonly: true,
                                     localId: "status_level_fuel",
                                     inputAlign: "center",
 

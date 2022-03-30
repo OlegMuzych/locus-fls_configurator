@@ -12,16 +12,19 @@ export default class PasswordInputWindow extends JetView {
                     multiview: true,
                     height: 80,
                     options: [
-                        {value: 'Ввести', id: 'rows_11'},
+                        {value:'Ввести', id:'input_password'},
+                        {value:'Сбросить настройки', id:'reset_password'},
                     ],
                 },
 
                 {
                     animate: {type: "show", delay: 10},
+                    height: 300,
+                    width: 400,
                     cells: [
                         {
-                            id: "rows_11",
-                            rows: [
+                            id: "input_password",
+                            rows:[
                                 {
                                     height: 30,
                                 },
@@ -45,23 +48,27 @@ export default class PasswordInputWindow extends JetView {
                                         },
                                         {
                                             view: "label",
-                                            label: "<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Введите пароль для изменения настроек</p>",
-                                            width: 420,
+                                            label: "<p style='position: relative; top: -25px'>Введите пароль для входа</p>",
+                                            width: 380,
                                             localId: "windows_password_label",
-                                            css: "windows_password_label"
+                                            css: "language_windows_modal"
                                         },
-                                        {}
+                                        {
+
+                                        }
                                     ]
                                 },
                                 {
-                                    height: 15,
+                                    height: 30,
                                 },
                                 {
                                     cols: [
-                                        {},
+                                        {
+
+                                        },
                                         {
                                             view: "text",
-                                            height: 50,
+                                            height: 60,
                                             localId: "textCurrentPass",
                                             css: "password_windows_set",
                                             inputAlign: "center",
@@ -74,7 +81,7 @@ export default class PasswordInputWindow extends JetView {
                                     ]
                                 },
                                 {
-                                    height: 65,
+                                    height: 50,
                                 },
                                 {
                                     cols: [
@@ -85,7 +92,8 @@ export default class PasswordInputWindow extends JetView {
                                             localId: "buttonCurrentPassOk",
                                             css: "set_password_button"
                                         },
-                                        {},
+                                        {
+                                        },
                                         {
                                             view: "button",
                                             label: "Отмена",
@@ -97,8 +105,58 @@ export default class PasswordInputWindow extends JetView {
                                 },
                             ]
                         },
-                        {},
+
+                        {
+                            id: "reset_password",
+                            height: 500,
+                             rows: [
+                              {
+                                  view: "button",
+                                  type: "image",
+                                  image: "assets/images/Warning.png",
+                                  id: "closed_3",
+                                  css: "set_password_button_icon",
+                                  height: 100,
+                              },
+                                 {
+                                     view: "label",
+                                     label: "<p style='position: relative; top: -30px; color: #eb2323;'>Все настройки датчика будут стерты</p>",
+                                     css: "language_windows_modal",
+                                     height: 100,
+                                     width: 610,
+                                 },
+                                 {
+                                     height: 38,
+                                 },
+                        {
+                            cols: [
+                                {
+
+                                },
+                                {
+                                    view: "button",
+                                    label: "OK",
+                                    localId: "buttonCurrentPassOk_2",
+                                    css: "set_password_button"
+                                },
+                                {
+
+                                },
+                                {
+                                    view: "button",
+                                    label: "Отмена",
+                                    localId: "buttonCancel_1_2",
+                                    css: "set_password_button"
+                                },
+                                {
+
+                                }
+                            ]
+                        }
                     ]
+                 }
+                ]
+
                 }
             ]
         };

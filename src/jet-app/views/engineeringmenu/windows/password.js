@@ -98,8 +98,9 @@ export default class PasswordWindow extends JetView {
                                 },
                             ]
                         },
-                        {},
+                        {
 
+                        },
 
                         {
                             id: "rows_21",

@@ -24,7 +24,7 @@ export default class FiltrationSubView extends JetView {
                                     width: 460,
                                     height: 70,
                                     css: "full_level_windows",
-                                    readonly: false,
+                                    readonly: true,
                                     localId: "status_level_fuel",
                                     inputAlign: "center",
 

@@ -13,6 +13,17 @@ export default class LeftMenu extends JetView{
                 rows: [
                     {
                         view: "button",
+                        type:"label",
+                        label:"Сохранить настройки",
+                        css: "edit_values",
+                        height: 103,
+                        id:"save_settings"
+                    },
+                    {
+                        height: 9,
+                    },
+                    {
+                        view: "button",
                         type: "image",
                         image: "assets/images/model_101.svg",
                         width: 155,
@@ -39,11 +50,11 @@ export default class LeftMenu extends JetView{
                         image: "assets/images/ONE.BLE.svg",
                         width: 155,
                         height: 200,
-                        css: "left_menu_button",
+                        css: "left_menu_button_2",
                         id: "left_menu_button_3"
                     },
                     {
-                        height: 360,
+                        height: 280,
                     },
 
                     {
@@ -56,14 +67,14 @@ export default class LeftMenu extends JetView{
                         css: "left_menu_button_reference",
                     },
                     {
-                        height: 1,
+                        height: 30,
                     },
                     {
                         view: "button",
                         type: "image",
                         image: "assets/images/info.svg",
                         width: 160,
-                        height: 200,
+                        height: 120,
                         id: "button_reference",
                         css: "left_menu_button_reference",
                     },
@@ -75,10 +86,43 @@ export default class LeftMenu extends JetView{
             // }
         };
 
+
+        let save = webix.ui({
+            view: "window",
+            position: "top",
+            width: 1000,
+            height: 40,
+            id: "save_settings_windows",
+            css: "window_show_save",
+            head: {
+                rows: [
+                    {
+                        view: "label",
+                        label: "<p>Настройки записаны в датчик</p>",
+                        css: "save_windows_modal",
+                        // localId: "language_windows_modal_2",
+                        width: 1000,
+                        height: 50,
+                    },
+
+                ]
+            },
+        });
+        save.hide();
+
         return left_menu;
     }
 
     init(){
+
+        $$("save_settings").attachEvent("onItemClick", (id, e) => {
+            $$("save_settings_windows").show()
+        });
+
+
+
+
+
         this.$$("button_back").attachEvent("onItemClick", (id, e)=>{
             this.show("win");
         });

@@ -21,7 +21,7 @@ export default class Page9View extends JetView {
                         },
                         {
                             view: "label",
-                            label: "Версия Beta " + VERSION,
+                            label: "Версия: " + VERSION,
                             align: "left",
                             css: "ver_soft",
                             id: "ver_soft"

@@ -49,6 +49,7 @@ export default class EngineeringMenu extends JetView{
     destroy() {
         super.destroy();
         llsModel.clearListenerCommandError(this.listenerCommandError);
+        llsModel.clearListenerIsDisconnect(this.listenerIsDisconnect);
     }
 
     init(){
@@ -74,6 +75,7 @@ export default class EngineeringMenu extends JetView{
             });
 
         llsModel.addListenerCommandError(this.listenerCommandError);
+        llsModel.addListenerIsDisconnect(this.listenerIsDisconnect);
 
         this.passwordWindow = this.ui(PasswordWindow);
         this.continueWindow = this.ui(ContinueCalibrateWindow);
@@ -122,6 +124,10 @@ export default class EngineeringMenu extends JetView{
 
             }
         }
+    }
+
+    listenerIsDisconnect = ()=>{
+        this.llsNoConnectWindow.showWindow();
     }
 }
 

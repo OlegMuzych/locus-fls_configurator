@@ -83,40 +83,14 @@ export default class LeftMenu extends JetView{
                     }
 
                 ]
-            // }
         };
-
-
-        let save = webix.ui({
-            view: "window",
-            position: "top",
-            width: 1000,
-            height: 40,
-            id: "save_settings_windows",
-            css: "window_show_save",
-            head: {
-                rows: [
-                    {
-                        view: "label",
-                        label: "<p>Настройки записаны в датчик</p>",
-                        css: "save_windows_modal",
-                        // localId: "language_windows_modal_2",
-                        width: 1000,
-                        height: 50,
-                    },
-
-                ]
-            },
-        });
-        save.hide();
-
         return left_menu;
     }
 
     init(){
 
         $$("save_settings").attachEvent("onItemClick", (id, e) => {
-            $$("save_settings_windows").show()
+            this.app.callEvent("app:settings:setToLls", []);
         });
 
 

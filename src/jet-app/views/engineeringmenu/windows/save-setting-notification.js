@@ -1,10 +1,10 @@
-import {JetView} from "webix-jet";
-import llsModel from "../../../models/lls-model";
 
-export default class LlsNoConnectWindow extends JetView {
+import {JetView} from "webix-jet";
+
+export default class SaveSettingNotificationWindow extends JetView {
     config() {
 
-        let save = webix.ui({
+        let body = {
             view: "window",
             position: "top",
             width: 1000,
@@ -24,25 +24,18 @@ export default class LlsNoConnectWindow extends JetView {
 
                 ]
             },
-        });
+        }
 
         return body;
     }
 
-    init() {
-        // this.$$('buttonCancel').attachEvent("onItemClick", (id, e) => {
-        //     console.log('click');
-        //     this.getRoot().hide();
-        // });
+    init(){
+    }
 
-    //     this.$$('buttonOk').attachEvent("onItemClick", (id, e) => {
-    //         console.log('click');
-    //         this.getRoot().hide();
-    //         this.show("win");
-    //     });
-    // }
-    //
-    // showWindow() {
-    //     this.getRoot().show();
-  }
+    showWindow() {
+            this.getRoot().show();
+            setTimeout(() => {
+                this.getRoot().hide();
+            }, 500);
+    }
 }

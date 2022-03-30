@@ -9,6 +9,7 @@ import configFile from "../../config-app";
 import PasswordInputWindow from "./windows/passwordinput";
 import LlsNoConnectWindow from "./windows/llsnoconnect";
 import TablePreviewWindow from "./windows/table-preview";
+import SaveSettingNotificationWindow from "./windows/save-setting-notification";
 
 export default class EngineeringMenu extends JetView{
     config() {
@@ -57,20 +58,18 @@ export default class EngineeringMenu extends JetView{
             })
             .catch((status)=>{
                 switch(status){
-                    // case 0x01:{
-                    //     this.llsNoConnectWindow.showWindow(); //в случае ошибки передачии команды
-                    //     break;
-                    // }
-                    // case 0x02:{
-                    //     this.passwordInput.showWindow();
-                    //     break;
-                    // }
-                    // default:{
-                    //     // this.llsNoConnectWindow.showWindow(); //в случае если датчик не поключен
-                    //     this.passwordInput.showWindow();
-                    //
-                    //     break;
-                    // }
+                    case 0x01:{
+                        this.llsNoConnectWindow.showWindow(); //в случае ошибки передачи команды
+                        break;
+                    }
+                    case 0x02:{
+                        this.passwordInput.showWindow();
+                        break;
+                    }
+                    default:{
+                        this.llsNoConnectWindow.showWindow(); //в случае если датчик не подключен
+                        break;
+                    }
             }
             });
 
@@ -81,6 +80,7 @@ export default class EngineeringMenu extends JetView{
         this.passwordInput = this.ui(PasswordInputWindow);
         this.llsNoConnectWindow = this.ui(LlsNoConnectWindow);
         this.tablePreviewWindow = this.ui(TablePreviewWindow);
+        this.saveSettingNotification = this.ui(SaveSettingNotificationWindow);
 
         this.on(this.app, "app:calibrationSettings:continueWindow", () => {
             this.continueWindow.showWindow();
@@ -89,7 +89,10 @@ export default class EngineeringMenu extends JetView{
         this.on(this.app, "app:calibrationSettings:openTableFromFile", (table) => {
             this.tablePreviewWindow.showWindow(table);
         });
-        // this.tablePreviewWindow.showWindow();
+
+        this.on(this.app, "app:settings:setToLls", () => {
+            this.saveSettingNotification.showWindow();
+        });
 
         if(configFile.theme.color == 'white'){
             webix.html.addCss( $$("rows_left_1").getNode(), "style_body");
@@ -101,12 +104,23 @@ export default class EngineeringMenu extends JetView{
         }
     }
 
-    listenerCommandError = (status)=>{
-        if(status == 0x01){
+    listenerCommandError = (status)=> {
+        switch (status) {
+            case 0x00: {
+                this.saveSettingNotification.showWindow();
+                break;
+            }
+            case 0x01: {
 
-        }
-        if(status == 0x02){
-            this.passwordWindow.showWindow();
+                break;
+            }
+            case 0x02: {
+                this.passwordWindow.showWindow();
+                break;
+            }
+            default: {
+
+            }
         }
     }
 }

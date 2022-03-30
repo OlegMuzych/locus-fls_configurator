@@ -125,6 +125,7 @@ class LlsModel {
             let resp = await this._lls.data.setLong(data);
             if (resp.status == 0x00) {
                 this.getLongData().then();
+                this._myEmitter.emit('commandError', resp.status);
             } else if (resp.status == 0x01) {
                 console.log('Lls response error!');
                 this._myEmitter.emit('commandError', resp.status);
@@ -142,10 +143,13 @@ class LlsModel {
             let resp = await this._lls.actions.setMaximum();
             if (resp.status == 0x00) {
                 this.getLongData().then();
+                this._myEmitter.emit('commandError', resp.status);
             } else if (resp.status == 0x01) {
                 console.log('Lls response error!');
+                this._myEmitter.emit('commandError', resp.status);
             } else if (resp.status == 0x02) {
                 console.log("Lls password error!");
+                this._myEmitter.emit('commandError', resp.status);
             }
         } else {
             return 'LLS not connect';
@@ -157,10 +161,13 @@ class LlsModel {
             let resp = await this._lls.actions.setMinimum();
             if (resp.status == 0x00) {
                 this.getLongData().then();
+                this._myEmitter.emit('commandError', resp.status);
             } else if (resp.status == 0x01) {
                 console.log('Lls response error!');
+                this._myEmitter.emit('commandError', resp.status);
             } else if (resp.status == 0x02) {
                 console.log("Lls password error!");
+                this._myEmitter.emit('commandError', resp.status);
             }
         } else {
             return 'LLS not connect';
@@ -196,6 +203,7 @@ class LlsModel {
             if (this.#statusLls == 'connect') {
                 let resp = await this._lls.table.set(data);
                 if (resp.status == 0x00) {
+                    this._myEmitter.emit('commandError', resp.status);
                     resolve();
                 } else if (resp.status == 0x01) {
                     console.log('Lls response error!');
@@ -247,12 +255,15 @@ class LlsModel {
             if (this.#statusLls == 'connect') {
                 let resp = await this._lls.actions.setNewPassword(currentPassword, newPassword);
                 if (resp.status == 0x00) {
+                    this._myEmitter.emit('commandError', resp.status);
                     resolve();
                 } else if (resp.status == 0x01) {
                     console.log('Lls response error!');
+                    this._myEmitter.emit('commandError', resp.status);
                     reject();
                 } else if (resp.status == 0x02) {
                     console.log("Lls password error!");
+                    this._myEmitter.emit('commandError', resp.status);
                     reject();
                 }
             } else {

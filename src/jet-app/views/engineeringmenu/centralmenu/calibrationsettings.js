@@ -231,6 +231,7 @@ export default class CalibrationSettings extends JetView {
                 .then((table)=>{
                     this.app.callEvent("app:calibrationSettings:openTableFromFile", [table]);
                 })
+                .catch((err)=>{console.log(err)});
         });
     }
 

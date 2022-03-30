@@ -6,7 +6,7 @@ class FileTableModel {
     async write(table) {
         return new Promise(async (resolve, reject)=>{
             let tableArr = this.#tableToArray(table);
-            if (!tableArr) {
+            if (tableArr == undefined) {
                 reject();
             }
             let str = CSV.stringify(tableArr, ';');
@@ -14,7 +14,8 @@ class FileTableModel {
             if (!filePath) {
                 reject();
             }
-            let ret = await fs.writeFile(filePath + '.csv', str);
+            filePath = this.#pathAddDotCsv(filePath); //add '.csv' if need
+            let ret = await fs.writeFile(filePath, str);
 
             if(ret == undefined){
                 resolve();
@@ -110,6 +111,16 @@ class FileTableModel {
         }
         return arr;
     }
+
+    #pathAddDotCsv(path){
+        let pathArr = path.split('.');
+        if(pathArr[pathArr.length - 1] == 'csv'){
+            return path;
+        }else{
+            return (path + '.csv');
+        }
+    }
+
 }
 
 

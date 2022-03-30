@@ -88,8 +88,8 @@ export default class TablePreviewWindow extends JetView {
         };
 
         let form = {
-            view:"form",
-            scroll:false,
+            view: "form",
+            scroll: false,
             height: 800,
             elements: [elements],
         };
@@ -283,7 +283,11 @@ export default class TablePreviewWindow extends JetView {
 
     saveTable() {
         let table = this.parseTable();
-        llsModel.setTable(table).then();
+        llsModel.setTable(table)
+            .then(() => {
+                return llsModel.getTable();
+            })
+            .then()
         console.log(table);
     }
 }

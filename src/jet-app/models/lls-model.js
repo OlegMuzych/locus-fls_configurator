@@ -191,21 +191,26 @@ class LlsModel {
         }
     }
 
-    async setTable(data) {
-        if (this.#statusLls == 'connect') {
-            let resp = await this._lls.table.set(data);
-            if (resp.status == 0x00) {
-                // this.getTable().then();
-            } else if (resp.status == 0x01) {
-                console.log('Lls response error!');
-                this._myEmitter.emit('commandError', resp.status);
-            } else if (resp.status == 0x02) {
-                console.log("Lls password error!");
-                this._myEmitter.emit('commandError', resp.status);
+    setTable(data) {
+        return new Promise(async (resolve, reject) => {
+            if (this.#statusLls == 'connect') {
+                let resp = await this._lls.table.set(data);
+                if (resp.status == 0x00) {
+                    resolve();
+                } else if (resp.status == 0x01) {
+                    console.log('Lls response error!');
+                    this._myEmitter.emit('commandError', resp.status);
+                    reject(resp.status);
+                } else if (resp.status == 0x02) {
+                    console.log("Lls password error!");
+                    this._myEmitter.emit('commandError', resp.status);
+                    reject(resp.status);
+                }
+            } else {
+                console.log('LLS not connect');
+                reject();
             }
-        } else {
-            return 'LLS not connect';
-        }
+        });
     }
 
     async getCnt() {

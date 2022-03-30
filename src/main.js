@@ -27,7 +27,7 @@ const createWindow = () => {
       zoomFactor: 0.6,
     },
     fullscreenable: false,
-    icon: __dirname + '/vertical_tagline_on_transparent_curves_by_logaster-01.ico',
+    icon: __dirname + '/ivanov_logo_conf.ico',
     removeMenu: true,
     autoHideMenuBar: true,
   });

@@ -45,11 +45,6 @@ module.exports = {
       patterns: [
         { from: "src/jet-app/assets/images", to: "assets/images" },
         { from: "src/jet-app/assets/images", to: "main_window/assets/images" },
-        { from: "node_modules/ms", to: "node_modules/ms"},
-        { from: "node_modules/debug", to: "node_modules/debug"},
-        { from: "node_modules/serialport", to: "node_modules/serialport"},
-        { from: "node_modules/node-gyp-build", to: "node_modules/node-gyp-build"},
-        { from: "node_modules/@serialport", to: "node_modules/@serialport"},
       ],
     }),
   ],

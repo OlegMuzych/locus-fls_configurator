@@ -1,7 +1,7 @@
 {
   "name": "FLS_Configurate",
   "productName": "FLS_Configurate",
-  "version": "1.0.2",
+  "version": "1.0.3 beta",
   "description": "My Electron application description",
   "main": ".webpack/main",
   "scripts": {
@@ -22,7 +22,6 @@
     "forge": {
       "electronRebuildConfig": {},
       "packagerConfig": {
-        "icon": "./src/vertical_tagline_on_transparent_curves_by_logaster-01.png"
       },
       "makers": [
         {

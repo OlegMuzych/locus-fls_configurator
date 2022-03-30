@@ -1,8 +1,8 @@
 {
-  "name": "FLS_Configurate",
-  "productName": "FLS_Configurate",
+  "name": "IE Configurator",
+  "productName": "IE Configurator",
   "version": "1.0.3 beta",
-  "description": "My Electron application description",
+  "description": "IE Configurator",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",

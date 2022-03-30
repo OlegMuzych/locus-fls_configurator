@@ -110,14 +110,14 @@ export default class PasswordInputWindow extends JetView {
                             id: "reset_password",
                             height: 500,
                              rows: [
-                              {
-                                  view: "button",
-                                  type: "image",
-                                  image: "assets/images/Warning.png",
-                                  id: "closed_3",
-                                  css: "set_password_button_icon",
-                                  height: 100,
-                              },
+                                 {
+                                     view: "button",
+                                     type: "image",
+                                     image: "assets/images/Warning.png",
+                                     id: "closed_3",
+                                     css: "set_password_button_icon",
+                                     height: 100,
+                                 },
                                  {
                                      view: "label",
                                      label: "<p style='position: relative; top: -30px; color: #eb2323;'>Все настройки датчика будут стерты</p>",
@@ -136,7 +136,7 @@ export default class PasswordInputWindow extends JetView {
                                 {
                                     view: "button",
                                     label: "OK",
-                                    localId: "buttonCurrentPassOk_2",
+                                    localId: "buttonResetOk",
                                     css: "set_password_button"
                                 },
                                 {
@@ -145,7 +145,7 @@ export default class PasswordInputWindow extends JetView {
                                 {
                                     view: "button",
                                     label: "Отмена",
-                                    localId: "buttonCancel_1_2",
+                                    localId: "buttonResetCancel",
                                     css: "set_password_button"
                                 },
                                 {
@@ -190,6 +190,19 @@ export default class PasswordInputWindow extends JetView {
             console.log('click');
             this.getRoot().hide();
             this.show("win");
+        });
+
+        this.$$('buttonResetCancel').attachEvent("onItemClick", (id, e) => {
+            console.log('click');
+            this.getRoot().hide();
+            this.show("win");
+        });
+
+        this.$$('buttonResetOk').attachEvent("onItemClick", (id, e) => {
+            console.log('click');
+            llsModel.resetLls().then();
+            this.getRoot().hide();
+            //todo: command resetLls
         });
 
         this.$$('textCurrentPass').attachEvent("onEnter",(ev)=>{

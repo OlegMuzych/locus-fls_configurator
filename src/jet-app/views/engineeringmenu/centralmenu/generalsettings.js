@@ -81,7 +81,9 @@ export default class GeneralSettings extends JetView {
                     labelWidth: 400,
                     css: "window_type_2",
                     inputAlign: "center",
-                    id: "window_type_2_2"
+                    type: 'number',
+                    title:'0-1024',
+                    localId: "textMinLevel"
                 },
                 {
                     view: "text",
@@ -91,7 +93,9 @@ export default class GeneralSettings extends JetView {
                     labelWidth: 400,
                     css: "window_type_2",
                     inputAlign: "center",
-                    id: "window_type_2_3"
+                    type: 'number',
+                    title:'1024-4095',
+                    localId: "textMaxLevel"
                 },
                 {height: 20},
                 {
@@ -223,11 +227,11 @@ export default class GeneralSettings extends JetView {
                         labelWidth: 400,
                         css: "window_type_2",
                         inputAlign: "center",
-                        id: "window_type_3_5",
+                        localId: "comboTypeFuel",
                         options: [
-                            {value: "Дизельное топливо ( Лето )", id: '1'},
-                            {value: "Дизельное топлива ( Зима )", id: '2'},
-                            {value: "Бензин", id: '0'},
+                            {value: "Дизельное топливо ( Лето )", id: '5'},
+                            {value: "Дизельное топлива ( Зима )", id: '6'},
+                            {value: "Бензин", id: '2'},
                         ]
                     },
                     {
@@ -246,13 +250,14 @@ export default class GeneralSettings extends JetView {
         });
         $$('window_type_1').setValue(serialNumber);
         $$('window_type_2_1').setValue(longData.llsAdr.toString());
-        $$('window_type_2_2').setValue(longData.emptyTank.toString());
-        $$('window_type_2_3').setValue(longData.fullTank.toString());
+        this.$$('textMinLevel').setValue(longData.minLevel);
+        this.$$('textMaxLevel').setValue(longData.maxLevel);
         this.$$('outputParametersOfSensor').setValue(longData.outputParametersOfSensor);
         this.setBaudRate(longData.baudRate232.toString());
         this.setAutoGetData(longData.autoGetData.toString());
         this.$$('counterPeriod').setValue(longData.periodOfDataIssuance.toString());
         this.setThermalCompensation(longData.thermalCompensationType);
+        this.$$('comboTypeFuel').setValue(longData.thermalCompensationType);
     }
 
     listenerConnect = () => {
@@ -303,6 +308,32 @@ export default class GeneralSettings extends JetView {
 
         })
 
+        this.$$('textMinLevel').attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                let value = Number(newValue);
+                if(newValue >= 0 && newValue  <= 1024){
+                    llsModel.setLongData({minLevel: value});
+                }else{
+                    this.$$('textMinLevel').setValue(oldValue);
+                }
+            }
+        })
+
+        this.$$('textMaxLevel').attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                let value = Number(newValue);
+                if(newValue >= 1024 && newValue  <= 4095){
+                    llsModel.setLongData({maxLevel: value});
+                }else{
+                    this.$$('textMaxLevel').setValue(oldValue);
+                }
+            }
+        })
+
         this.$$('counterPeriod').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
@@ -310,7 +341,6 @@ export default class GeneralSettings extends JetView {
                 let value = Number(newValue);
                 llsModel.setLongData({periodOfDataIssuance: value});
             }
-
         });
 
         this.$$('outputParametersOfSensor').attachEvent("onChange", (newValue, oldValue, config) => {
@@ -320,7 +350,6 @@ export default class GeneralSettings extends JetView {
                 let value = Number(newValue);
                 llsModel.setLongData({outputParametersOfSensor: value});
             }
-
         });
 
         this.$$('switch_temp_compensation').attachEvent("onChange", (newValue, oldValue, config) => {
@@ -328,10 +357,22 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue) {
-                    llsModel.setLongData({thermalCompensationType: 0x05}); //DT winter
+                    // llsModel.setLongData({thermalCompensationType: 0x05}); //DT winter
+                    this.$$("comboTypeFuel").show();
                 } else {
                     llsModel.setLongData({thermalCompensationType: 0x00});
+                    this.$$("comboTypeFuel").hide();
                 }
+            }
+        });
+
+        this.$$("comboTypeFuel").hide();
+        this.$$('comboTypeFuel').attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                let value = Number(newValue);
+                llsModel.setLongData({thermalCompensationType: value});
             }
         });
 
@@ -349,8 +390,8 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss( $$("window_type_2_7").getNode(), "window_type_3");
             webix.html.addCss( $$("window_type_2_8").getNode(), "window_type_3");
             webix.html.addCss( $$("window_type_2_9").getNode(), "window_type_3");
-
         }
+
         if(configFile.theme.color == 'black'){
             webix.html.addCss( $$("window_type_1").getNode(), "window_type_1_dark");
             webix.html.addCss( $$("window_type_2_1").getNode(), "window_type_2_dark");
@@ -362,7 +403,6 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss( $$("window_type_2_7").getNode(), "window_type_3_dark");
             webix.html.addCss( $$("window_type_2_8").getNode(), "window_type_3_dark");
             webix.html.addCss( $$("window_type_2_9").getNode(), "window_type_3_dark");
-
         }
     }
 
@@ -378,10 +418,12 @@ export default class GeneralSettings extends JetView {
         switch (value) {
             case 0x00: {
                 $$('switch_temp_compensation').setValue(false);
+                this.$$("comboTypeFuel").hide();
                 break;
             }
             default: {
                 $$('switch_temp_compensation').setValue(true);
+                this.$$("comboTypeFuel").show();
                 break;
             }
         }

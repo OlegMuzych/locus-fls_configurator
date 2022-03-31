@@ -133,7 +133,7 @@ export default class Page9View extends JetView {
                         {
                             view: "button",
                             type: "image",
-                            image: "assets/images/info_win.svg",
+                            image: "assets/images/info-win2.svg",
                             css: "button_1",
                             id: "reference"
                         },
@@ -158,7 +158,7 @@ export default class Page9View extends JetView {
             view: "window",
             position: "center",
             width: 850,
-            height: 400,
+            height: 500,
             id: "window_show",
             modal: true,
             css: "window_show",
@@ -228,18 +228,36 @@ export default class Page9View extends JetView {
                                     },
                                     {view: "switch", value: 0, id: "dark_light_theme", width: 70, height: 100,},
                                     {
-
                                     },
+                                ]
+                            },
+                            {
+                                height: 20,
+                            },
+                            {
+                                disabled: true,
+                                height: 90,
+                                cols:[
+                                    {
+                                        width: 20,
+                                    },
+                                    {
+                                        view: "label",
+                                        label: "<p style='position: relative; top: -30px; text-align: left'>Размер шрифта</p>",
+                                        width: 300,
+                                        id: "light_theme_label_3",
+                                        css:"language_windows_modal",
+                                    },
+                                    { view:"slider", value:"0", step:10, min:0, max:30, name:"s1", width: 400, height: 30, title:"%", css:"text_size_slider",
+                                        on:{
+                                            onChange:function(){
+                                                this.define("title","%" + this.getValue());
+                                                this.refresh(); }
+                                        }},
+                                    {
 
 
-                                    // {
-                                    //     view: "label",
-                                    //     label: "<p style='font-size: 26px; position: relative; top: -18px; color: #fff;'>Выбор темы</p>",
-                                    //     width: 230,
-                                    //     id: "dark_theme_label"
-                                    // },
-
-
+                                    }
                                 ]
                             },
                             {
@@ -265,6 +283,9 @@ export default class Page9View extends JetView {
                                     }
                                 ]
                             },
+
+
+
                         ]
                     },
                 ]
@@ -280,7 +301,7 @@ export default class Page9View extends JetView {
             view: "window",
             position: "center",
             width: 850,
-            height: 400,
+            height: 500,
             id: "window_show_2",
             modal: true,
             css: "window_show",
@@ -305,8 +326,8 @@ export default class Page9View extends JetView {
                             {},
                             {
 
-                                hidden: false,
-                                height: 320,
+                                // hidden: false,
+                                height: 400,
                                 rows: [
                                     {},
                                     {
@@ -315,7 +336,7 @@ export default class Page9View extends JetView {
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
-                                        id: "language_windows_modal_2"
+                                        // id: "language_windows_modal_2"
                                     },
                                     {
                                         view: "label",
@@ -323,15 +344,23 @@ export default class Page9View extends JetView {
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
+                                        id: "language_windows_modal_3"
+                                    },
+                                    {
+                                        view: "label",
+                                        label: "<p>Версия конфигуратора 1.0.3 Beta</p>",
+                                        width: 700,
+                                        height: 80,
+                                        css: "language_windows_modal",
                                         id: "language_windows_modal_4"
                                     },
                                     {
                                         view: "label",
-                                        label: "<p>Версия конфигуратора Beta 1.0.3</p>",
+                                        label: "<p>Сборка от 30.03.2022г.</p>",
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
-                                        id: "language_windows_modal_3"
+                                        id: "language_windows_modal_5"
                                     },
                                     {
                                         view: "label",
@@ -339,7 +368,7 @@ export default class Page9View extends JetView {
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
-                                        id: "language_windows_modal_5"
+                                        id: "language_windows_modal_6"
                                     },
                                     {},
                                 ]
@@ -658,7 +687,7 @@ export default class Page9View extends JetView {
                 $$("logo_1").define("image", "assets/images/Logo_1.svg")
                 $$("master_setup").define("image", "assets/images/master.svg")
                 $$("engineering_setup").define("image", "assets/images/ingeneer.svg")
-                $$("reference").define("image", "assets/images/info_win.svg")
+                $$("reference").define("image", "assets/images/info-win2.svg")
                 $$("application_menu").define("image", "assets/images/konfig.svg")
                 $$("logo_1").refresh()
                 $$("master_setup").refresh()

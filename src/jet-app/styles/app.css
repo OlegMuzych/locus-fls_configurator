@@ -54,6 +54,26 @@ border: none;
 
 /*Оформление стр. №1 --------------------------------------------------------------------- */
 
+.text_size_slider .webix_slider_box .webix_slider_right{
+    height: 40%;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+.text_size_slider .webix_slider_box .webix_slider_left{
+    height: 40%;
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+}
+
+.text_size_slider .webix_slider_box .webix_slider_handle{
+    width: 35px;
+    height: 35px;
+    /*position: relative;*/
+    /*top: 1px;*/
+    border-radius: 30px;
+}
+
 .color_rows_star_pages{
     background-color: var(--white-bacground-central-menu);
     transform: scale(1);

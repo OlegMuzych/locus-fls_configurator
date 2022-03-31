@@ -148,7 +148,7 @@ export default class FullEmptySubView extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "full_window_text",
-                                                    readonly: false,
+                                                    readonly: true,
                                                     id: "auto_calibration_set_1"
                                                 },
                                                 {
@@ -168,7 +168,7 @@ export default class FullEmptySubView extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "full_window_text",
-                                                    readonly: false,
+                                                    readonly: true,
                                                     id: "auto_calibration_set_2"
                                                 },
                                                 {
@@ -233,32 +233,33 @@ export default class FullEmptySubView extends JetView {
     }
 
     init(){
+        this.flagCalibrationEdit = false;
         llsModel.addListenerShortData(this.listenerShortData);
         llsModel.addListenerLongData(this.listenerLongData);
 
         $$('auto_calibration_1').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             llsModel.setMaximum().then();
-            $$("auto_calibration_1").disable();
-            $$("auto_calibration_set_1").disable();
-            $$("auto_calibration_2").enable();
-            $$("auto_calibration_set_2").enable();
+            // $$("auto_calibration_1").disable();
+            // $$("auto_calibration_set_1").disable();
+            // $$("auto_calibration_2").enable();
+            // $$("auto_calibration_set_2").enable();
         });
 
         $$('auto_calibration_2').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             llsModel.setMinimum().then();
-            $$("auto_calibration_2").disable();
-            $$("auto_calibration_set_2").disable();
-            $$("button_edit").enable();
+            // $$("auto_calibration_2").disable();
+            // $$("auto_calibration_set_2").disable();
+            // $$("button_edit").enable();
         });
 
-        $$("auto_calibration").disable();
+        // $$("auto_calibration").disable();
         $$("auto_calibration_1").disable();
-        $$("auto_calibration_set_1").disable();
+        // $$("auto_calibration_set_1").disable();
         $$("auto_calibration_2").disable();
-        $$("auto_calibration_set_2").disable();
-        $$("button_edit").enable();
+        // $$("auto_calibration_set_2").disable();
+        // $$("button_edit").enable();
 
         $$("calibration_fuel").attachEvent("onChange", (newValue, oldValue, config)=>{
             if(newValue){
@@ -296,9 +297,16 @@ export default class FullEmptySubView extends JetView {
 
         $$('button_edit').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
-            $$("button_edit").disable();
-            $$("auto_calibration_1").enable();
-            $$("auto_calibration_set_1").enable();
+            if(this.flagCalibrationEdit){
+                this.flagCalibrationEdit = false;
+                $$("auto_calibration_1").disable();
+                $$("auto_calibration_2").disable();
+            }else{
+                this.flagCalibrationEdit = true;
+                $$("auto_calibration_1").enable();
+                $$("auto_calibration_2").enable();
+            }
+            // $$("auto_calibration_set_1").enable();
         });
 
         if(configFile.theme.color == 'white'){

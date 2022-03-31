@@ -245,9 +245,8 @@ export default class GeneralSettings extends JetView {
 
     listenerLongData = (longData) => {
         // $$('window_type_1').setValue(longData.serialNumber.toString());
-        let serialNumber = longData.serialNumber.map((item)=>{
-            return item.toString(16);
-        });
+        //
+        let serialNumber = sn2ascii(longData.serialNumber);
         $$('window_type_1').setValue(serialNumber);
         $$('window_type_2_1').setValue(longData.llsAdr.toString());
         this.$$('textMinLevel').setValue(longData.minLevel);
@@ -429,4 +428,22 @@ export default class GeneralSettings extends JetView {
         }
     }
 
+}
+
+function hex2a(hexx) {
+    hexx = hexx.join('');
+    let hex = hexx.toString();//force conversion
+    let str = '';
+    for (let i = 0; i < hex.length; i += 2)
+        str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+    return str;
+}
+
+function sn2ascii(decArray) {
+    let newDecArray = [];
+    for(let i = 0; i < 8; i++){
+        newDecArray.push(decArray[i]);
+    }
+    let strAscii = String.fromCharCode(...newDecArray);
+    return strAscii;
 }

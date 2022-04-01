@@ -160,7 +160,7 @@ export default class GeneralSettings extends JetView {
             maxWidth: 850,
             view: "scrollview",
             scroll: "y",
-            maxHeight: 1000,
+            maxHeight: 2000,
             body: {
                 id: "central_menu_button_1",
                 css: "style_general_rows",
@@ -268,22 +268,6 @@ export default class GeneralSettings extends JetView {
                             },
                         ]
                     },
-                    // {
-                    //
-                    //     view: "combo",
-                    //     width: 850,
-                    //     height: 100,
-                    //     label: '<p>Тип топлива</p>',
-                    //     labelWidth: 400,
-                    //     css: "window_type_2",
-                    //     inputAlign: "center",
-                    //     localId: "comboTypeFuel",
-                    //     options: [
-                    //         {value: "Дизельное топливо ( Лето )", id: '5'},
-                    //         {value: "Дизельное топлива ( Зима )", id: '6'},
-                    //         {value: "Бензин", id: '2'},
-                    //     ]
-                    // },
                     fuelTypeSwitch,
                     {
                         height: 20,

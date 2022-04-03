@@ -18,6 +18,7 @@ export default class FiltrationSettings extends JetView {
                 rows: [
                     {
                         height: 100,
+                        hidden:true,
                         cols: [
                             {
                                 view: "label",

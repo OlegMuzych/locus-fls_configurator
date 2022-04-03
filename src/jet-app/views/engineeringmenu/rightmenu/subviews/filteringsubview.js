@@ -99,6 +99,7 @@ export default class FiltrationSubView extends JetView {
     destroy() {
         super.destroy();
         llsModel.clearListenerShortData(this.listenerShortData);
+        llsModel.clearListenerLongData(this.listenerLongData);
     }
 
     listenerShortData = (shortData) => {
@@ -108,11 +109,17 @@ export default class FiltrationSubView extends JetView {
         this.$$("progress_bar2").setValue(level);
     }
 
+    listenerLongData = (longData) => {
+        this.setMinBar(longData.minLevel);
+        this.setMaxBar(longData.maxLevel);
+    }
+
 
 
     init() {
         this.$$("status_level_fuel").attachEvent("onAfterRender", webix.once(()=>{
             llsModel.addListenerShortData(this.listenerShortData);
+            llsModel.addListenerLongData(this.listenerLongData);
         }));
 
         if (configFile.theme.color == 'white') {
@@ -121,5 +128,23 @@ export default class FiltrationSubView extends JetView {
         if (configFile.theme.color == 'black') {
             webix.html.addCss(this.$$("progress_bar2").getNode(), "progress_bar_dark");
         }
+    }
+
+    setMaxBar(value){
+        this.$$('progress_bar2').define({maxRange: value});
+        this.$$('progress_bar2').config.maxRange;
+        this.setScaleBar(this.$$('progress_bar2').config.minRange, this.$$('progress_bar2').config.maxRange);
+        this.$$('progress_bar2').refresh();
+    }
+    setMinBar(value){
+        this.$$('progress_bar2').define({minRange: value});
+        this.setScaleBar(this.$$('progress_bar2').config.minRange, this.$$('progress_bar2').config.maxRange);
+        this.$$('progress_bar2').refresh();
+    }
+
+    setScaleBar(minRange,maxRange){
+        let step = (maxRange - minRange)/10;
+        this.$$('progress_bar2').define({scale: {step: step}});
+        this.$$('progress_bar2').refresh();
     }
 }

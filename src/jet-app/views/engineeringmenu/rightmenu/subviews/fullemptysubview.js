@@ -230,6 +230,8 @@ export default class FullEmptySubView extends JetView {
     listenerLongData = (longData) => {
         $$('auto_calibration_set_2').setValue(longData.emptyTank.toString());
         $$('auto_calibration_set_1').setValue(longData.fullTank.toString());
+        this.setMinBar(longData.minLevel);
+        this.setMaxBar(longData.maxLevel);
     }
 
     init(){
@@ -332,5 +334,23 @@ export default class FullEmptySubView extends JetView {
             webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration_dark");
             webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration_dark");
         }
+    }
+
+    setMaxBar(value){
+        this.$$('progress_bar').define({maxRange: value});
+        this.$$('progress_bar').config.maxRange;
+        this.setScaleBar(this.$$('progress_bar').config.minRange, this.$$('progress_bar').config.maxRange);
+        this.$$('progress_bar').refresh();
+    }
+    setMinBar(value){
+        this.$$('progress_bar').define({minRange: value});
+        this.setScaleBar(this.$$('progress_bar').config.minRange, this.$$('progress_bar').config.maxRange);
+        this.$$('progress_bar').refresh();
+    }
+
+    setScaleBar(minRange,maxRange){
+        let step = (maxRange - minRange)/10;
+        this.$$('progress_bar').define({scale: {step: step}});
+        this.$$('progress_bar').refresh();
     }
 }

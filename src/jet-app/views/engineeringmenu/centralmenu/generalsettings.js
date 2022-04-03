@@ -77,6 +77,86 @@ export default class GeneralSettings extends JetView {
             ]
         }
 
+        let coefficientK1 = {
+            localId: "coefficientK1",
+            rows: [
+                {
+                    css: "window_type_2",
+                    cols: [
+                        {
+                            view: "text",
+                            height: 100,
+                            inputAlign: "center",
+                            inputHeight: 100,
+                            label: '<p>Коэффициент К1</p>',
+                            labelWidth: 400,
+                            css: "window_type_2",
+                            readonly: false,
+                            minWidth: 60,
+                            localId: "textCoefficientK1"
+                        },
+
+                        {
+                            align: "right",
+                            rows: [
+                                {},
+                                {
+                                    view: "button",
+                                    css: "button_filter_set",
+                                    label: 'Применить',
+                                    height: 60,
+                                    width: 150,
+                                    localId: 'buttonCoefficientK1',
+                                },
+                                {}
+                            ]
+                        },
+                        {width: 20},
+                    ]
+                },
+            ]
+        }
+
+        let coefficientK2 = {
+            localId: "coefficientK2",
+            rows: [
+                {
+                    css: "window_type_2",
+                    cols: [
+                        {
+                            view: "text",
+                            height: 100,
+                            inputAlign: "center",
+                            inputHeight: 100,
+                            label: '<p>Коэффициент К2</p>',
+                            labelWidth: 400,
+                            css: "window_type_2",
+                            readonly: false,
+                            minWidth: 60,
+                            localId: "textCoefficientK2"
+                        },
+
+                        {
+                            align: "right",
+                            rows: [
+                                {},
+                                {
+                                    view: "button",
+                                    css: "button_filter_set",
+                                    label: 'Применить',
+                                    height: 60,
+                                    width: 150,
+                                    localId: 'buttonCoefficientK2',
+                                },
+                                {}
+                            ]
+                        },
+                        {width: 20},
+                    ]
+                },
+            ]
+        }
+
         let baudRateSwitch = {
             rows: [
                 {
@@ -269,6 +349,8 @@ export default class GeneralSettings extends JetView {
                         ]
                     },
                     fuelTypeSwitch,
+                    coefficientK1,
+                    coefficientK2,
                     {
                         height: 20,
                     },
@@ -290,6 +372,8 @@ export default class GeneralSettings extends JetView {
         this.$$('counterCounterPeriod').setValue(longData.periodOfDataIssuance.toString());
         this.setThermalCompensation(longData.thermalCompensationType);
         this.setTypeFuel(longData.thermalCompensationType);
+        this.$$('textCoefficientK1').setValue(longData.coefficientK1.toString());
+        this.$$('textCoefficientK2').setValue(longData.coefficientK2.toString());
     }
 
     listenerConnect = () => {
@@ -482,6 +566,18 @@ export default class GeneralSettings extends JetView {
             llsModel.setLongData({thermalCompensationType: obj.value});
         });
 
+        this.$$('buttonCoefficientK1').attachEvent("onItemClick", (id, e)=>{
+            let test = parseFloat(this.$$('textCoefficientK1').getValue());
+            test = 0x01ff01ff01;
+            llsModel.setLongData({coefficientK1:test});
+        });
+
+        this.$$('buttonCoefficientK2').attachEvent("onItemClick", (id, e)=>{
+            let test = parseFloat(this.$$('textCoefficientK2').getValue());
+            test = 0x01ff01ff01;
+            llsModel.setLongData({coefficientK2:test});
+        });
+
 
         if (configFile.theme.color == 'white') {
             webix.html.addCss($$("window_type_1").getNode(), "window_type_1");
@@ -581,11 +677,25 @@ export default class GeneralSettings extends JetView {
             case 0x00: {
                 $$('switch_temp_compensation').setValue(false);
                 this.$$("fuelTypeSwitch").hide();
+
+                this.$$("coefficientK1").hide();
+                this.$$("coefficientK2").hide();
+                break;
+            }
+            case 0x07: {
+                $$('switch_temp_compensation').setValue(true);
+                this.$$("fuelTypeSwitch").show();
+
+                this.$$("coefficientK1").show();
+                this.$$("coefficientK2").show();
                 break;
             }
             default: {
                 $$('switch_temp_compensation').setValue(true);
                 this.$$("fuelTypeSwitch").show();
+
+                this.$$("coefficientK1").hide();
+                this.$$("coefficientK2").hide();
                 break;
             }
         }

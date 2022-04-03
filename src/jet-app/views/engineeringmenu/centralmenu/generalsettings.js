@@ -5,6 +5,133 @@ import configFile from "../../../config-app";
 export default class GeneralSettings extends JetView {
     config() {
 
+        let llsAdr = {
+            localId: "llsAdr",
+            rows: [
+                {
+                    css: "window_type_2",
+                    cols: [
+                        {
+                            view: "text",
+                            height: 100,
+                            inputAlign: "center",
+                            inputHeight: 100,
+                            label: '<p>Сетевой адрес</p>',
+                            labelWidth: 400,
+                            css: "window_type_2",
+                            readonly: false,
+                            minWidth: 60,
+                            type: 'number',
+                            title: '1-254',
+                            localId: "textLlsAdr"
+                        },
+
+                        {
+                            align: "right",
+                            rows: [
+                                {},
+                                {
+                                    view: "button",
+                                    css: "button_filter_set",
+                                    label: 'Применить',
+                                    height: 60,
+                                    width: 150,
+                                    localId: 'buttonLlsAdr',
+                                },
+                                {}
+                            ]
+                        },
+                        {width: 20},
+                    ]
+                },
+            ]
+        }
+
+        let minLevel = {
+            localId: "minLevel",
+            rows: [
+                {
+                    css: "window_type_2",
+                    cols: [
+                        {
+                            view: "text",
+                            height: 100,
+                            inputAlign: "center",
+                            inputHeight: 100,
+                            label: '<p>Минимальный уровень</p>',
+                            labelWidth: 400,
+                            css: "window_type_2",
+                            readonly: false,
+                            minWidth: 60,
+                            type: 'number',
+                            title: '0-1024',
+                            localId: "textMinLevel"
+                        },
+
+                        {
+                            align: "right",
+                            rows: [
+                                {},
+                                {
+                                    view: "button",
+                                    css: "button_filter_set",
+                                    label: 'Применить',
+                                    height: 60,
+                                    width: 150,
+                                    localId: 'buttonMinLevel',
+                                },
+                                {}
+                            ]
+                        },
+                        {width: 20},
+                    ]
+                },
+            ]
+        }
+
+        let maxLevel = {
+            localId: "maxLevel",
+            rows: [
+                {
+                    css: "window_type_2",
+                    cols: [
+                        {
+                            view: "text",
+                            height: 100,
+                            inputAlign: "center",
+                            inputHeight: 100,
+                            label: '<p>Максимальный уровень</p>',
+                            labelWidth: 400,
+                            css: "window_type_2",
+                            readonly: false,
+                            minWidth: 60,
+                            type: 'number',
+                            title: '0-1024',
+                            localId: "textMaxLevel"
+                        },
+
+                        {
+                            align: "right",
+                            rows: [
+                                {},
+                                {
+                                    view: "button",
+                                    css: "button_filter_set",
+                                    label: 'Применить',
+                                    height: 60,
+                                    width: 150,
+                                    localId: 'buttonMaxLevel',
+                                },
+                                {}
+                            ]
+                        },
+                        {width: 20},
+                    ]
+                },
+            ]
+        }
+
+
         let counterPeriod = {
             height: 100,
             css: "window_type_3",
@@ -268,41 +395,20 @@ export default class GeneralSettings extends JetView {
                     },
 
                     {height: 20,},
-                    {
-                        view: "text",
-                        width: 850,
-                        height: 100,
-                        label: '<p>Сетевой адрес</p>',
-                        labelWidth: 400,
-                        css: "window_type_2",
-                        inputAlign: "center",
-                        id: "window_type_2_1"
-                    },
+                    // {
+                    //     view: "text",
+                    //     width: 850,
+                    //     height: 100,
+                    //     label: '<p>Сетевой адрес</p>',
+                    //     labelWidth: 400,
+                    //     css: "window_type_2",
+                    //     inputAlign: "center",
+                    //     id: "window_type_2_1"
+                    // },
+                    llsAdr,
                     {height: 20},
-                    {
-                        view: "text",
-                        width: 850,
-                        height: 100,
-                        label: '<p>Минимальный уровень</p>',
-                        labelWidth: 400,
-                        css: "window_type_2",
-                        inputAlign: "center",
-                        type: 'number',
-                        title: '0-1024',
-                        localId: "textMinLevel"
-                    },
-                    {
-                        view: "text",
-                        width: 850,
-                        height: 100,
-                        label: '<p>Максимальный уровень</p>',
-                        labelWidth: 400,
-                        css: "window_type_2",
-                        inputAlign: "center",
-                        type: 'number',
-                        title: '1024-4095',
-                        localId: "textMaxLevel"
-                    },
+                    minLevel,
+                    maxLevel,
                     {height: 20},
                     baudRateSwitch,
                     {height: 20},
@@ -363,7 +469,7 @@ export default class GeneralSettings extends JetView {
     listenerLongData = (longData) => {
         let serialNumber = sn2ascii(longData.serialNumber);
         $$('window_type_1').setValue(serialNumber);
-        $$('window_type_2_1').setValue(longData.llsAdr.toString());
+        this.$$('textLlsAdr').setValue(longData.llsAdr);
         this.$$('textMinLevel').setValue(longData.minLevel);
         this.$$('textMaxLevel').setValue(longData.maxLevel);
         this.$$('outputParametersOfSensor').setValue(longData.outputParametersOfSensor);
@@ -394,14 +500,29 @@ export default class GeneralSettings extends JetView {
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerLongData(this.listenerLongData);
 
-        $$('window_type_2_1').attachEvent("onChange", (newValue, oldValue, config) => {
+        // $$('window_type_2_1').attachEvent("onChange", (newValue, oldValue, config) => {
+        //     console.log("change");
+        //     if (config != undefined) {
+        //         console.log(newValue);
+        //         let value = Number(newValue);
+        //         llsModel.setLongData({llsAdr: value});
+        //     }
+        // });
+
+        this.$$('textLlsAdr').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                let value = Number(newValue);
-                llsModel.setLongData({llsAdr: value});
+                if (newValue >= 1 && newValue <= 254) {
+                } else {
+                    this.$$('textLlsAdr').setValue(oldValue);
+                }
             }
-
+        })
+        this.$$('buttonLlsAdr').attachEvent("onItemClick", (id, e) => {
+            let test = this.$$('textLlsAdr').getValue();
+            let value = Number(test);
+            llsModel.setLongData({llsAdr: value});
         });
 
         const popupBaudRate = {
@@ -474,27 +595,37 @@ export default class GeneralSettings extends JetView {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                let value = Number(newValue);
+                // let value = Number(newValue);
                 if (newValue >= 0 && newValue <= 1024) {
-                    llsModel.setLongData({minLevel: value});
+                    // llsModel.setLongData({minLevel: value});
                 } else {
                     this.$$('textMinLevel').setValue(oldValue);
                 }
             }
         })
+        this.$$('buttonMinLevel').attachEvent("onItemClick", (id, e) => {
+            let test = this.$$('textMinLevel').getValue();
+            let value = Number(test);
+            llsModel.setLongData({minLevel: value});
+        });
 
         this.$$('textMaxLevel').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                let value = Number(newValue);
+                // let value = Number(newValue);
                 if (newValue >= 1024 && newValue <= 4095) {
-                    llsModel.setLongData({maxLevel: value});
+                    // llsModel.setLongData({maxLevel: value});
                 } else {
                     this.$$('textMaxLevel').setValue(oldValue);
                 }
             }
         })
+        this.$$('buttonMaxLevel').attachEvent("onItemClick", (id, e) => {
+            let test = this.$$('textMaxLevel').getValue();
+            let value = Number(test);
+            llsModel.setLongData({maxLevel: value});
+        });
 
         this.$$('counterCounterPeriod').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
@@ -539,13 +670,13 @@ export default class GeneralSettings extends JetView {
             body: {
                 view: "list",
                 data: [
-                    {id: "0", location: "Выключена", name: "1",     value: 0},
-                    {id: "1", location: "АИ-95", name: "2",         value: 1},
-                    {id: "2", location: "АИ-92", name: "3",         value: 2},
-                    {id: "3", location: "АИ-80 (Лето)", name: "4",  value: 3},
-                    {id: "4", location: "АИ-80 (Зима)", name: "5",  value: 4},
-                    {id: "5", location: "ДТ (Лето)", name: "6",     value: 5},
-                    {id: "6", location: "ДТ (Зима)", name: "7",    value: 6},
+                    {id: "0", location: "Выключена", name: "1", value: 0},
+                    {id: "1", location: "АИ-95", name: "2", value: 1},
+                    {id: "2", location: "АИ-92", name: "3", value: 2},
+                    {id: "3", location: "АИ-80 (Лето)", name: "4", value: 3},
+                    {id: "4", location: "АИ-80 (Зима)", name: "5", value: 4},
+                    {id: "5", location: "ДТ (Лето)", name: "6", value: 5},
+                    {id: "6", location: "ДТ (Зима)", name: "7", value: 6},
                     {id: "7", location: "Свои параметры", name: "8", value: 7},
                 ],
                 template: "#name# - #location#",
@@ -554,7 +685,7 @@ export default class GeneralSettings extends JetView {
                 select: true
             }
         }
-        this.popFuelType= this.ui(popupFuelType);
+        this.popFuelType = this.ui(popupFuelType);
         this.$$('buttonFuelType').attachEvent("onItemClick", (id, e) => {
             console.log('click');
             this.popFuelType.show($$(id).getNode());
@@ -566,16 +697,16 @@ export default class GeneralSettings extends JetView {
             llsModel.setLongData({thermalCompensationType: obj.value});
         });
 
-        this.$$('buttonCoefficientK1').attachEvent("onItemClick", (id, e)=>{
+        this.$$('buttonCoefficientK1').attachEvent("onItemClick", (id, e) => {
             let test = parseFloat(this.$$('textCoefficientK1').getValue());
             test = 0x01ff01ff01;
-            llsModel.setLongData({coefficientK1:test});
+            llsModel.setLongData({coefficientK1: test});
         });
 
-        this.$$('buttonCoefficientK2').attachEvent("onItemClick", (id, e)=>{
+        this.$$('buttonCoefficientK2').attachEvent("onItemClick", (id, e) => {
             let test = parseFloat(this.$$('textCoefficientK2').getValue());
             test = 0x01ff01ff01;
-            llsModel.setLongData({coefficientK2:test});
+            llsModel.setLongData({coefficientK2: test});
         });
 
 

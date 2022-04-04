@@ -699,13 +699,11 @@ export default class GeneralSettings extends JetView {
 
         this.$$('buttonCoefficientK1').attachEvent("onItemClick", (id, e) => {
             let test = parseFloat(this.$$('textCoefficientK1').getValue());
-            test = 0x01ff01ff01;
             llsModel.setLongData({coefficientK1: test});
         });
 
         this.$$('buttonCoefficientK2').attachEvent("onItemClick", (id, e) => {
             let test = parseFloat(this.$$('textCoefficientK2').getValue());
-            test = 0x01ff01ff01;
             llsModel.setLongData({coefficientK2: test});
         });
 

@@ -407,10 +407,10 @@ export default class GeneralSettings extends JetView {
                     // },
                     llsAdr,
                     {height: 20},
+                    baudRateSwitch,
+                    {height: 20},
                     minLevel,
                     maxLevel,
-                    {height: 20},
-                    baudRateSwitch,
                     {height: 20},
 
                     {

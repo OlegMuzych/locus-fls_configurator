@@ -271,7 +271,7 @@ export default class llsData {
     }
     set cnt({cnt, fuel, llsType}){
         this.#cnt.cnt = cnt;
-        this.#cnt.fuell = fuel;
+        this.#cnt.fuel = fuel;
         this.#cnt.llsType = llsType;
     }
 

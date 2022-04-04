@@ -13,7 +13,7 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    maxWidth: 900,
+    maxWidth: 1900,
     minWidth: 800,
     minHeight: 650,
     maxHeight: 1000,
@@ -38,7 +38,7 @@ const createWindow = () => {
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   app.whenReady().then(() => {
     ipcMain.handle('dialog', (event, method, params) => {

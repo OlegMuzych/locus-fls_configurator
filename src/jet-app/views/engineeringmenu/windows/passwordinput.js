@@ -13,7 +13,7 @@ export default class PasswordInputWindow extends JetView {
                     height: 80,
                     options: [
                         {value:'Ввести', id:'input_password'},
-                        {value:'Сбросить настройки', id:'reset_password'},
+                        // {value:'Сбросить настройки', id:'reset_password'},
                     ],
                 },
 

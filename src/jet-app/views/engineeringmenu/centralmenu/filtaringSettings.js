@@ -144,12 +144,13 @@ export default class FiltrationSettings extends JetView {
                                             },
                                             {},
                                             {
+                                                paddingY: -50,
                                                 view: "toolbar",
                                                 css: "toolbar_button",
                                                 elements: [{
                                                     view: "button",
                                                     localId: 'buttonFilterType',
-                                                    css: "button_filter_set",
+                                                    css: "button_slider_gen_value",
                                                     label: 'Выбрать',
                                                     // popup: "my_pop",
                                                     height: 54,
@@ -157,6 +158,25 @@ export default class FiltrationSettings extends JetView {
 
                                                 }]
                                             },
+                                            {
+                                                paddingX: -4,
+                                                rows:[
+                                                    {
+
+                                                    },
+                                                    {
+                                                        view: "button",
+                                                        height: 56,
+                                                        width: 14,
+                                                        css:" status_define_button_yellow"
+                                                        // css:" status_define_button" - скрытая кнопка
+                                                    },
+                                                    {
+
+                                                    }
+                                                ]
+                                            },
+                                            {width: 10},
                                             {}
                                         ]
                                     },
@@ -227,6 +247,7 @@ export default class FiltrationSettings extends JetView {
                                                 id: "button_slider_gen_value_1",
                                                 css: "button_slider_gen_value"
                                             },
+
                                             {}
                                         ]
                                     }
@@ -296,6 +317,26 @@ export default class FiltrationSettings extends JetView {
                                                 id: "button_slider_gen_value_2",
                                                 css: "button_slider_gen_value"
                                             },
+                                            {
+                                                paddingX: -1,
+                                                paddingY: 41,
+                                                rows:[
+                                                    {
+
+                                                    },
+                                                    {
+                                                        view: "button",
+                                                        height: 52,
+                                                        width: 12,
+                                                        css:" status_define_button_yellow"
+                                                        // css:" status_define_button" - скрытая кнопка
+                                                    },
+                                                    {
+
+                                                    }
+                                                ]
+                                            },
+                                            {width: 10},
                                             {},
                                         ]
                                     }
@@ -324,6 +365,7 @@ export default class FiltrationSettings extends JetView {
                                                 ]
 
                                             },
+
                                             {},
                                             {
                                                 paddingY: 40,
@@ -351,6 +393,26 @@ export default class FiltrationSettings extends JetView {
                                                 id: "button_slider_gen_value_3",
                                                 css: "button_slider_gen_value",
                                             },
+                                            {
+                                                paddingX: -1,
+                                                paddingY: 42,
+                                                rows:[
+                                                    {
+
+                                                    },
+                                                    {
+                                                        view: "button",
+                                                        height: 52,
+                                                        width: 12,
+                                                        css:" status_define_button_yellow"
+                                                        // css:" status_define_button" - скрытая кнопка
+                                                    },
+                                                    {
+
+                                                    }
+                                                ]
+                                            },
+                                            {width: 10},
                                             {}
                                         ]
                                     },
@@ -405,6 +467,26 @@ export default class FiltrationSettings extends JetView {
                                                 id: "button_slider_gen_value_4",
                                                 css: "button_slider_gen_value",
                                             },
+                                            {
+                                                paddingX: -1,
+                                                paddingY: 40,
+                                                rows:[
+                                                    {
+
+                                                    },
+                                                    {
+                                                        view: "button",
+                                                        height: 54,
+                                                        width: 12,
+                                                        css:" status_define_button_yellow"
+                                                        // css:" status_define_button" - скрытая кнопка
+                                                    },
+                                                    {
+
+                                                    }
+                                                ]
+                                            },
+                                            {width: 10},
                                             {}
                                         ]
                                     },

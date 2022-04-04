@@ -25,11 +25,12 @@ export default class GeneralSettings extends JetView {
                             title: '1-254',
                             localId: "textLlsAdr"
                         },
-
                         {
                             align: "right",
                             rows: [
-                                {},
+                                {
+
+                                },
                                 {
                                     view: "button",
                                     css: "button_filter_set",
@@ -38,10 +39,30 @@ export default class GeneralSettings extends JetView {
                                     width: 150,
                                     localId: 'buttonLlsAdr',
                                 },
-                                {}
+                                {
+
+                                }
                             ]
                         },
-                        {width: 20},
+                        {
+                            paddingX: -1,
+                            rows:[
+                                {
+
+                                },
+                                {
+                                    view: "button",
+                                    height: 60,
+                                    width: 10,
+                                    css:" status_define_button_yellow"
+                                    // css:" status_define_button" - скрытая кнопка
+                                },
+                                {
+
+                                }
+                            ]
+                        },
+                        {width: 10},
                     ]
                 },
             ]
@@ -83,7 +104,25 @@ export default class GeneralSettings extends JetView {
                                 {}
                             ]
                         },
-                        {width: 20},
+                        {
+                            paddingX: -1,
+                            rows:[
+                                {
+
+                                },
+                                {
+                                    view: "button",
+                                    height: 60,
+                                    width: 10,
+                                    css:" status_define_button_yellow"
+                                    // css:" status_define_button" - скрытая кнопка
+                                },
+                                {
+
+                                }
+                            ]
+                        },
+                        {width: 10},
                     ]
                 },
             ]
@@ -125,7 +164,25 @@ export default class GeneralSettings extends JetView {
                                 {}
                             ]
                         },
-                        {width: 20},
+                        {
+                            paddingX: -1,
+                            rows:[
+                                {
+
+                                },
+                                {
+                                    view: "button",
+                                    height: 60,
+                                    width: 10,
+                                    css:" status_define_button_yellow"
+                                    // css:" status_define_button" - скрытая кнопка
+                                },
+                                {
+
+                                }
+                            ]
+                        },
+                        {width: 10},
                     ]
                 },
             ]
@@ -198,7 +255,25 @@ export default class GeneralSettings extends JetView {
                                 {}
                             ]
                         },
-                        {width: 20},
+                        {
+                            paddingX: -1,
+                            rows:[
+                                {
+
+                                },
+                                {
+                                    view: "button",
+                                    height: 60,
+                                    width: 10,
+                                    css:" status_define_button_yellow"
+                                    // css:" status_define_button" - скрытая кнопка
+                                },
+                                {
+
+                                }
+                            ]
+                        },
+                        {width: 10},
                     ]
                 },
             ]
@@ -238,7 +313,25 @@ export default class GeneralSettings extends JetView {
                                 {}
                             ]
                         },
-                        {width: 20},
+                        {
+                            paddingX: -1,
+                            rows:[
+                                {
+
+                                },
+                                {
+                                    view: "button",
+                                    height: 60,
+                                    width: 10,
+                                    css:" status_define_button_yellow"
+                                    // css:" status_define_button" - скрытая кнопка
+                                },
+                                {
+
+                                }
+                            ]
+                        },
+                        {width: 10},
                     ]
                 },
             ]
@@ -278,7 +371,25 @@ export default class GeneralSettings extends JetView {
                                 {}
                             ]
                         },
-                        {width: 20},
+                        {
+                            paddingX: -1,
+                            rows:[
+                                {
+
+                                },
+                                {
+                                    view: "button",
+                                    height: 60,
+                                    width: 10,
+                                    css:" status_define_button_yellow"
+                                    // css:" status_define_button" - скрытая кнопка
+                                },
+                                {
+
+                                }
+                            ]
+                        },
+                        {width: 10},
                     ]
                 },
             ]
@@ -317,7 +428,25 @@ export default class GeneralSettings extends JetView {
                                 {}
                             ]
                         },
-                        {width: 20},
+                        {
+                            paddingX: -1,
+                            rows:[
+                                {
+
+                                },
+                                {
+                                    view: "button",
+                                    height: 60,
+                                    width: 10,
+                                    css:" status_define_button_yellow"
+                                    // css:" status_define_button" - скрытая кнопка
+                                },
+                                {
+
+                                }
+                            ]
+                        },
+                        {width: 10},
                     ]
                 },
             ]
@@ -356,7 +485,25 @@ export default class GeneralSettings extends JetView {
                                 {}
                             ]
                         },
-                        {width: 20},
+                        {
+                            paddingX: -1,
+                            rows:[
+                                {
+
+                                },
+                                {
+                                    view: "button",
+                                    height: 60,
+                                    width: 10,
+                                    css:" status_define_button_yellow"
+                                    // css:" status_define_button" - скрытая кнопка
+                                },
+                                {
+
+                                }
+                            ]
+                        },
+                        {width: 10},
                     ]
                 },
             ]
@@ -394,7 +541,7 @@ export default class GeneralSettings extends JetView {
                         ]
                     },
 
-                    {height: 20,},
+                    {height: 10,},
                     // {
                     //     view: "text",
                     //     width: 850,

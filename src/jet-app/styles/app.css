@@ -54,6 +54,26 @@ border: none;
 
 /*Оформление стр. №1 --------------------------------------------------------------------- */
 
+.text_size_slider .webix_slider_box .webix_slider_right{
+    height: 40%;
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+.text_size_slider .webix_slider_box .webix_slider_left{
+    height: 40%;
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+}
+
+.text_size_slider .webix_slider_box .webix_slider_handle{
+    width: 35px;
+    height: 35px;
+    /*position: relative;*/
+    /*top: 1px;*/
+    border-radius: 30px;
+}
+
 .color_rows_star_pages{
     background-color: var(--white-bacground-central-menu);
     transform: scale(1);
@@ -98,17 +118,9 @@ border: none;
     background-color: var(--c-white-color-background-dark_left_menu);
 }
 
-
-
-/*.logo_1 .webix_image {*/
-/*    width: 100%;*/
-/*}*/
-
 .background_2page{
     background-color: #f3f3f3;
 }
-
-
 
 .button_1 .webix_button{
     border-radius: 10px;
@@ -163,6 +175,37 @@ border: none;
     /*box-shadow: rgb(190, 192, 195) 0.9px 0.9px 4px, rgb(255, 255, 255) -1.9px -1.9px 4px;*/
 }
 
+
+.status_define_button .webix_button{
+    background-color: rgba(255, 255, 255, 0.0);
+    cursor: default;
+}
+
+.status_define_button .webix_button:focus{
+    background-color: rgba(255, 255, 255, 0.0);
+    cursor: default;
+}
+
+.status_define_button .webix_button:hover{
+    background-color: rgba(255, 255, 255, 0.0);
+    cursor: default;
+}
+
+.status_define_button_yellow .webix_button{
+    background-color: rgba(230, 187, 46, 1);
+    cursor: default;
+
+}
+
+.status_define_button_yellow .webix_button:hover{
+    background-color: rgba(230, 187, 46, 1);
+    cursor: default;
+}
+
+.status_define_button_yellow .webix_button:focus{
+    background-color: rgba(230, 187, 46, 1);
+    cursor: default;
+}
 /*------------------------------------*/
 
 .webix_modal{

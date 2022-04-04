@@ -54,8 +54,9 @@ export default class GeneralSettings extends JetView {
                                     view: "button",
                                     height: 60,
                                     width: 10,
-                                    css:" status_define_button_yellow"
-                                    // css:" status_define_button" - скрытая кнопка
+                                    // css:"status_define_button_yellow",
+                                    localId:"statusLlsAdr",
+                                    css:"status_define_button" //- скрытая кнопка
                                 },
                                 {
 
@@ -114,8 +115,9 @@ export default class GeneralSettings extends JetView {
                                     view: "button",
                                     height: 60,
                                     width: 10,
-                                    css:" status_define_button_yellow"
-                                    // css:" status_define_button" - скрытая кнопка
+                                    // css:" status_define_button_yellow",
+                                    localId:"statusMinLevel",
+                                    css:" status_define_button" //- скрытая кнопка
                                 },
                                 {
 
@@ -174,8 +176,9 @@ export default class GeneralSettings extends JetView {
                                     view: "button",
                                     height: 60,
                                     width: 10,
-                                    css:" status_define_button_yellow"
-                                    // css:" status_define_button" - скрытая кнопка
+                                    // css:" status_define_button_yellow",
+                                    localId: 'statusMaxLevel',
+                                    css:" status_define_button"  // - скрытая кнопка
                                 },
                                 {
 
@@ -265,8 +268,9 @@ export default class GeneralSettings extends JetView {
                                     view: "button",
                                     height: 60,
                                     width: 10,
-                                    css:" status_define_button_yellow"
-                                    // css:" status_define_button" - скрытая кнопка
+                                    // css:" status_define_button_yellow",
+                                    css:" status_define_button", //- скрытая кнопка
+                                    localId:"statusFuelType"
                                 },
                                 {
 
@@ -323,8 +327,10 @@ export default class GeneralSettings extends JetView {
                                     view: "button",
                                     height: 60,
                                     width: 10,
-                                    css:" status_define_button_yellow"
-                                    // css:" status_define_button" - скрытая кнопка
+                                    // css:" status_define_button_yellow",
+                                    css:" status_define_button", //- скрытая кнопка
+                                    localId:"statusCoefficientK1",
+
                                 },
                                 {
 
@@ -381,8 +387,9 @@ export default class GeneralSettings extends JetView {
                                     view: "button",
                                     height: 60,
                                     width: 10,
-                                    css:" status_define_button_yellow"
-                                    // css:" status_define_button" - скрытая кнопка
+                                    // css:" status_define_button_yellow",
+                                    css:" status_define_button", //- скрытая кнопка
+                                    localId:"statusCoefficientK2",
                                 },
                                 {
 
@@ -438,8 +445,9 @@ export default class GeneralSettings extends JetView {
                                     view: "button",
                                     height: 60,
                                     width: 10,
-                                    css:" status_define_button_yellow"
-                                    // css:" status_define_button" - скрытая кнопка
+                                    // css:" status_define_button_yellow",
+                                    css:" status_define_button", //- скрытая кнопка
+                                    localId:"statusBaudRate",
                                 },
                                 {
 
@@ -495,8 +503,10 @@ export default class GeneralSettings extends JetView {
                                     view: "button",
                                     height: 60,
                                     width: 10,
-                                    css:" status_define_button_yellow"
-                                    // css:" status_define_button" - скрытая кнопка
+                                    // css:" status_define_button_yellow",
+                                    css:" status_define_button", //- скрытая кнопка
+                                    localId:"statusAutoGetData",
+
                                 },
                                 {
 
@@ -614,6 +624,7 @@ export default class GeneralSettings extends JetView {
     }
 
     listenerLongData = (longData) => {
+        this.currentLongData = longData;
         let serialNumber = sn2ascii(longData.serialNumber);
         $$('window_type_1').setValue(serialNumber);
         this.$$('textLlsAdr').setValue(longData.llsAdr);
@@ -647,20 +658,17 @@ export default class GeneralSettings extends JetView {
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerLongData(this.listenerLongData);
 
-        // $$('window_type_2_1').attachEvent("onChange", (newValue, oldValue, config) => {
-        //     console.log("change");
-        //     if (config != undefined) {
-        //         console.log(newValue);
-        //         let value = Number(newValue);
-        //         llsModel.setLongData({llsAdr: value});
-        //     }
-        // });
-
+        // llsAdr
         this.$$('textLlsAdr').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue >= 1 && newValue <= 254) {
+                    if(newValue == this.currentLongData.llsAdr){
+                        this.setStatusNewValue('statusLlsAdr', false);
+                    }else{
+                        this.setStatusNewValue('statusLlsAdr', true);
+                    }
                 } else {
                     this.$$('textLlsAdr').setValue(oldValue);
                 }
@@ -669,9 +677,11 @@ export default class GeneralSettings extends JetView {
         this.$$('buttonLlsAdr').attachEvent("onItemClick", (id, e) => {
             let test = this.$$('textLlsAdr').getValue();
             let value = Number(test);
+            this.setStatusNewValue('statusLlsAdr', false);
             llsModel.setLongData({llsAdr: value});
         });
 
+        // baudRate
         const popupBaudRate = {
             // Кнопка выбрать в окне BaudRate -------------------------------//
             view: "popup",
@@ -706,6 +716,7 @@ export default class GeneralSettings extends JetView {
             llsModel.setLongData({baudRate232: obj.value, baudRate485: obj.value});
         });
 
+        // autoGet
         const popupAutoGetData = {
             // Кнопка выбрать в окне Auto Get data -------------------------------//
             view: "popup",
@@ -738,13 +749,17 @@ export default class GeneralSettings extends JetView {
             llsModel.setLongData({autoGetData: obj.value});
         });
 
+        // minLevel
         this.$$('textMinLevel').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                // let value = Number(newValue);
                 if (newValue >= 0 && newValue <= 1024) {
-                    // llsModel.setLongData({minLevel: value});
+                    if(newValue == this.currentLongData.minLevel){
+                        this.setStatusNewValue('statusMinLevel', false);
+                    }else{
+                        this.setStatusNewValue('statusMinLevel', true);
+                    }
                 } else {
                     this.$$('textMinLevel').setValue(oldValue);
                 }
@@ -753,16 +768,21 @@ export default class GeneralSettings extends JetView {
         this.$$('buttonMinLevel').attachEvent("onItemClick", (id, e) => {
             let test = this.$$('textMinLevel').getValue();
             let value = Number(test);
+            this.setStatusNewValue('statusMinLevel', false);
             llsModel.setLongData({minLevel: value});
         });
 
+        // maxLevel
         this.$$('textMaxLevel').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                // let value = Number(newValue);
                 if (newValue >= 1024 && newValue <= 4095) {
-                    // llsModel.setLongData({maxLevel: value});
+                    if(newValue == this.currentLongData.maxLevel){
+                        this.setStatusNewValue('statusMaxLevel', false);
+                    }else{
+                        this.setStatusNewValue('statusMaxLevel', true);
+                    }
                 } else {
                     this.$$('textMaxLevel').setValue(oldValue);
                 }
@@ -771,6 +791,7 @@ export default class GeneralSettings extends JetView {
         this.$$('buttonMaxLevel').attachEvent("onItemClick", (id, e) => {
             let test = this.$$('textMaxLevel').getValue();
             let value = Number(test);
+            this.setStatusNewValue('statusMaxLevel', false);
             llsModel.setLongData({maxLevel: value});
         });
 
@@ -783,7 +804,7 @@ export default class GeneralSettings extends JetView {
             }
         });
 
-
+        // outputParametersOfSensor
         this.$$('outputParametersOfSensor').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
@@ -793,6 +814,7 @@ export default class GeneralSettings extends JetView {
             }
         });
 
+        // fuelType
         this.$$('switch_temp_compensation').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
@@ -844,13 +866,47 @@ export default class GeneralSettings extends JetView {
             llsModel.setLongData({thermalCompensationType: obj.value});
         });
 
+        // coefficientK1
+        this.$$('textCoefficientK1').attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                if (newValue >= 0 && newValue < 1000) {
+                    if(newValue == this.currentLongData.coefficientK1){
+                        this.setStatusNewValue('statusCoefficientK1', false);
+                    }else{
+                        this.setStatusNewValue('statusCoefficientK1', true);
+                    }
+                } else {
+                    this.$$('textCoefficientK1').setValue(oldValue);
+                }
+            }
+        })
         this.$$('buttonCoefficientK1').attachEvent("onItemClick", (id, e) => {
             let test = parseFloat(this.$$('textCoefficientK1').getValue());
+            this.setStatusNewValue('statusCoefficientK1', false);
             llsModel.setLongData({coefficientK1: test});
         });
 
+        // coefficientK2
+        this.$$('textCoefficientK2').attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                if (newValue >= 0 && newValue < 1000) {
+                    if(newValue == this.currentLongData.coefficientK2){
+                        this.setStatusNewValue('statusCoefficientK2', false);
+                    }else{
+                        this.setStatusNewValue('statusCoefficientK2', true);
+                    }
+                } else {
+                    this.$$('textCoefficientK2').setValue(oldValue);
+                }
+            }
+        })
         this.$$('buttonCoefficientK2').attachEvent("onItemClick", (id, e) => {
             let test = parseFloat(this.$$('textCoefficientK2').getValue());
+            this.setStatusNewValue('statusCoefficientK2', false);
             llsModel.setLongData({coefficientK2: test});
         });
 
@@ -1015,6 +1071,16 @@ export default class GeneralSettings extends JetView {
                 this.$$("textFuelType").setValue("undefined");
                 break;
             }
+        }
+    }
+
+    setStatusNewValue(id, status){
+        webix.html.removeCss(this.$$(id).getNode(), "status_define_button_yellow");
+        webix.html.removeCss(this.$$(id).getNode(), "status_define_button");
+        if(status){
+            webix.html.addCss(this.$$(id).getNode(), "status_define_button_yellow");
+        }else{
+            webix.html.addCss(this.$$(id).getNode(), "status_define_button");
         }
     }
 }

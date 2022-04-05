@@ -630,12 +630,13 @@ export default class GeneralSettings extends JetView {
         this.setAutoGetData(longData.autoGetData);
 
         this.$$('counterCounterPeriod').setValue(longData.periodOfDataIssuance.toString());
-        this.setThermalCompensation(longData.thermalCompensationType);
-        this.setTypeFuel(longData.thermalCompensationType);
+
+        // this.setThermalCompensation(longData.thermalCompensationType);
+        // this.setTypeFuel(longData.thermalCompensationType);
+        this.setThermalCompensationValue();
 
         // this.$$('textCoefficientK1').setValue(longData.coefficientK1.toString());
         // this.$$('textCoefficientK2').setValue(longData.coefficientK2.toString());
-
         this.setTextValue("textCoefficientK1", 'coefficientK1', "statusCoefficientK1");
         this.setTextValue("textCoefficientK2", 'coefficientK2', "statusCoefficientK2");
     }
@@ -815,7 +816,7 @@ export default class GeneralSettings extends JetView {
         this.$$('switch_temp_compensation').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
-                console.log(newValue);;
+                console.log(newValue);
                 if (newValue) {
                     // llsModel.setLongData({thermalCompensationType: 0x05}); //DT winter
                     this.$$("fuelTypeSwitch").show();
@@ -860,7 +861,13 @@ export default class GeneralSettings extends JetView {
             console.log("click");
             let obj = $$("listFuelType").getItem(id);
             console.log(obj);
-            llsModel.setLongData({thermalCompensationType: obj.value});
+            llsModel.newLongData.thermalCompensationType = obj.value;
+            if(configFile.settings.autoSaveMode){
+                llsModel.setLongData({thermalCompensationType: obj.value});
+                this.setThermalCompensationValue();
+            }else{
+                this.setThermalCompensationValue();
+            }
         });
 
         // coefficientK1
@@ -1080,6 +1087,7 @@ export default class GeneralSettings extends JetView {
         }
     }
 
+    /* setters Values */
     setTextValue(id, name, statusId){
         if(llsModel.currentLongData[name] == llsModel.newLongData[name]){
             this.$$(id).setValue(llsModel.currentLongData[name]);
@@ -1089,7 +1097,18 @@ export default class GeneralSettings extends JetView {
             this.setStatusNewValue(statusId, true);
         }
     }
-    setComboValue(id, name){
+    setThermalCompensationValue(){
+        if(llsModel.currentLongData.thermalCompensationType == llsModel.newLongData.thermalCompensationType){
+            this.setTypeFuel(llsModel.currentLongData.thermalCompensationType);
+            this.setThermalCompensation(llsModel.currentLongData.thermalCompensationType);
+            this.setStatusNewValue("statusFuelType", false);
+        }else{
+            this.setTypeFuel(llsModel.newLongData.thermalCompensationType);
+            this.setThermalCompensation(llsModel.newLongData.thermalCompensationType);
+            this.setStatusNewValue("statusFuelType", true);
+        }
+    }
+    setFloatValue(id, name){
         if(llsModel.currentLongData[name] == llsModel.newLongData[name]){
             // this.$$(id).setValue(llsModel.currentLongData[name]);
         }else{

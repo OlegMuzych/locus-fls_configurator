@@ -617,18 +617,27 @@ export default class GeneralSettings extends JetView {
     listenerLongData = (longData) => {
         let serialNumber = sn2ascii(longData.serialNumber);
         $$('window_type_1').setValue(serialNumber);
-        // this.$$('textLlsAdr').setValue(longData.llsAdr);
+
         this.setTextValue("textLlsAdr", 'llsAdr', "statusLlsAdr");
-        this.$$('textMinLevel').setValue(longData.minLevel);
-        this.$$('textMaxLevel').setValue(longData.maxLevel);
+
+        this.setTextValue("textMinLevel", 'minLevel', "statusMinLevel");
+        this.setTextValue("textMaxLevel", 'maxLevel', "statusMaxLevel");
+
         this.$$('outputParametersOfSensor').setValue(longData.outputParametersOfSensor);
+
         this.setBaudRate(longData.baudRate232);
+
         this.setAutoGetData(longData.autoGetData);
+
         this.$$('counterCounterPeriod').setValue(longData.periodOfDataIssuance.toString());
         this.setThermalCompensation(longData.thermalCompensationType);
         this.setTypeFuel(longData.thermalCompensationType);
-        this.$$('textCoefficientK1').setValue(longData.coefficientK1.toString());
-        this.$$('textCoefficientK2').setValue(longData.coefficientK2.toString());
+
+        // this.$$('textCoefficientK1').setValue(longData.coefficientK1.toString());
+        // this.$$('textCoefficientK2').setValue(longData.coefficientK2.toString());
+
+        this.setTextValue("textCoefficientK1", 'coefficientK1', "statusCoefficientK1");
+        this.setTextValue("textCoefficientK2", 'coefficientK2', "statusCoefficientK2");
     }
 
     listenerConnect = () => {
@@ -746,11 +755,10 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 if (newValue >= 0 && newValue <= 1024) {
                     llsModel.newLongData.minLevel = newValue;
-                    if(newValue == llsModel.currentLongData.minLevel){
-                        this.setStatusNewValue('statusMinLevel', false);
-                    }else{
-                        this.setStatusNewValue('statusMinLevel', true);
+                    if(configFile.settings.autoSaveMode){
+                        llsModel.setLongData({minLevel: llsModel.newLongData.minLevel});
                     }
+                    this.setTextValue("textMinLevel", 'minLevel', "statusMinLevel");
                 } else {
                     this.$$('textMinLevel').setValue(oldValue);
                 }
@@ -759,7 +767,6 @@ export default class GeneralSettings extends JetView {
         this.$$('buttonMinLevel').attachEvent("onItemClick", (id, e) => {
             let test = this.$$('textMinLevel').getValue();
             let value = Number(test);
-            this.setStatusNewValue('statusMinLevel', false);
             llsModel.setLongData({minLevel: value});
         });
 
@@ -770,11 +777,10 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 if (newValue >= 1024 && newValue <= 4095) {
                     llsModel.newLongData.maxLevel = newValue;
-                    if(newValue == llsModel.currentLongData.maxLevel){
-                        this.setStatusNewValue('statusMaxLevel', false);
-                    }else{
-                        this.setStatusNewValue('statusMaxLevel', true);
+                    if(configFile.settings.autoSaveMode){
+                        llsModel.setLongData({maxLevel: llsModel.newLongData.maxLevel});
                     }
+                    this.setTextValue("textMaxLevel", 'maxLevel', "statusMaxLevel");
                 } else {
                     this.$$('textMaxLevel').setValue(oldValue);
                 }
@@ -783,7 +789,6 @@ export default class GeneralSettings extends JetView {
         this.$$('buttonMaxLevel').attachEvent("onItemClick", (id, e) => {
             let test = this.$$('textMaxLevel').getValue();
             let value = Number(test);
-            this.setStatusNewValue('statusMaxLevel', false);
             llsModel.setLongData({maxLevel: value});
         });
 
@@ -863,13 +868,13 @@ export default class GeneralSettings extends JetView {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
+                newValue = Number(newValue);
                 if (newValue >= 0 && newValue < 1000) {
                     llsModel.newLongData.coefficientK1 = newValue;
-                    if(newValue == llsModel.currentLongData.coefficientK1){
-                        this.setStatusNewValue('statusCoefficientK1', false);
-                    }else{
-                        this.setStatusNewValue('statusCoefficientK1', true);
+                    if(configFile.settings.autoSaveMode){
+                        llsModel.setLongData({coefficientK1: llsModel.newLongData.coefficientK1});
                     }
+                    this.setTextValue("textCoefficientK1", 'coefficientK1', "statusCoefficientK1");
                 } else {
                     this.$$('textCoefficientK1').setValue(oldValue);
                 }
@@ -877,7 +882,6 @@ export default class GeneralSettings extends JetView {
         })
         this.$$('buttonCoefficientK1').attachEvent("onItemClick", (id, e) => {
             let test = parseFloat(this.$$('textCoefficientK1').getValue());
-            this.setStatusNewValue('statusCoefficientK1', false);
             llsModel.setLongData({coefficientK1: test});
         });
 
@@ -888,11 +892,10 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 if (newValue >= 0 && newValue < 1000) {
                     llsModel.newLongData.coefficientK2 = newValue;
-                    if(newValue == llsModel.currentLongData.coefficientK2){
-                        this.setStatusNewValue('statusCoefficientK2', false);
-                    }else{
-                        this.setStatusNewValue('statusCoefficientK2', true);
+                    if(configFile.settings.autoSaveMode){
+                        llsModel.setLongData({coefficientK2: llsModel.newLongData.coefficientK2});
                     }
+                    this.setTextValue("textCoefficientK2", 'coefficientK2', "statusCoefficientK2");
                 } else {
                     this.$$('textCoefficientK2').setValue(oldValue);
                 }
@@ -900,7 +903,6 @@ export default class GeneralSettings extends JetView {
         })
         this.$$('buttonCoefficientK2').attachEvent("onItemClick", (id, e) => {
             let test = parseFloat(this.$$('textCoefficientK2').getValue());
-            this.setStatusNewValue('statusCoefficientK2', false);
             llsModel.setLongData({coefficientK2: test});
         });
 

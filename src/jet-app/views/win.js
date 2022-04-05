@@ -348,7 +348,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: "<p>Версия конфигуратора 1.0.3 Beta</p>",
+                                        label: `<p>Версия конфигуратора ${VERSION}</p>`,
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",

@@ -20,11 +20,11 @@ export default class GeneralSettings extends JetView {
                             labelWidth: 400,
                             css: "window_type_2",
                             readonly: false,
-                            // minWidth: 60,
+                            minWidth: 60,
                             type: 'number',
                             title: '1-254',
                             localId: "textLlsAdr",
-                            maxWidth: 600,
+                            // maxWidth: 600,
                         },
                         // {
                         //   width: 100,

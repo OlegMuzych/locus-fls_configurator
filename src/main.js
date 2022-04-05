@@ -13,11 +13,12 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    maxWidth: 1900,
-    minWidth: 800,
+    maxWidth: 950,
+    minWidth: 900,
     minHeight: 700,
     maxHeight: 1000,
     height: 700,
+    width: 950,
     // maxHeight: 750,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -38,7 +39,7 @@ const createWindow = () => {
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   app.whenReady().then(() => {
     ipcMain.handle('dialog', (event, method, params) => {

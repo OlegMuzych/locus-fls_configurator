@@ -633,7 +633,6 @@ export default class GeneralSettings extends JetView {
 
     listenerConnect = () => {
         llsModel.getLongData();
-        llsModel.newLongData = {...llsModel.currentLongData};
     }
 
     listenerDisconnect = () => {
@@ -657,16 +656,10 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 if (newValue >= 1 && newValue <= 254) {
                     llsModel.newLongData.llsAdr = newValue;
-                    // if(newValue == llsModel.currentLongData.llsAdr){
-                    //     this.setStatusNewValue('statusLlsAdr', false);
-                    // }else{
-                    //     this.setStatusNewValue('statusLlsAdr', true);
-                    // }
-                    if (llsModel.newLongData.llsAdr == llsModel.currentLongData.llsAdr) {
-                        this.setStatusNewValue('statusLlsAdr', false);
-                    } else {
-                        this.setStatusNewValue('statusLlsAdr', true);
+                    if(configFile.settings.autoSaveMode){
+                        llsModel.setLongData({llsAdr: llsModel.newLongData.llsAdr});
                     }
+                    this.setTextValue("textLlsAdr", 'llsAdr', "statusLlsAdr");
                 } else {
                     this.$$('textLlsAdr').setValue(oldValue);
                 }
@@ -1091,7 +1084,7 @@ export default class GeneralSettings extends JetView {
             this.setStatusNewValue(statusId, false);
         }else{
             this.$$(id).setValue(llsModel.newLongData[name]);
-            this.setStatusNewValue(statusId, false);
+            this.setStatusNewValue(statusId, true);
         }
     }
     setComboValue(id, name){

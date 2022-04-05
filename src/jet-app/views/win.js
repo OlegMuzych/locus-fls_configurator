@@ -264,7 +264,7 @@ export default class Page9View extends JetView {
                                 height: 20,
                             },
                             {
-                                disabled: true,
+                                disabled: false,
                                 cols:[
                                     {
                                         width: 20,
@@ -276,7 +276,7 @@ export default class Page9View extends JetView {
                                         id: "light_theme_label_2",
                                         css:"language_windows_modal",
                                     },
-                                    {view: "switch", value: 1, id: "dark_light_theme_2", width: 70, height: 100,},
+                                    {view: "switch", value: 1, id: "switchAutoSaveMode", width: 70, height: 100,},
                                     {
 
 
@@ -527,6 +527,14 @@ export default class Page9View extends JetView {
             $$("dark_light_theme").setValue(0);
         }
 
+        $$("switchAutoSaveMode").setValue(configFile.settings.autoSaveMode);
+        $$("switchAutoSaveMode").attachEvent("onChange",  (newValue, oldValue, config) => {
+            if (newValue) {
+                configFile.settings.autoSaveMode = true;
+            } else {
+                configFile.settings.autoSaveMode = false;
+            }
+        });
 
         // $$("dark_light_theme").attachEvent("onChange", function (newValue, oldValue, config) {
         //     if (newValue) {

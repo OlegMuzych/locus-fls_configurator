@@ -22,7 +22,7 @@ class LlsModel {
     }
 
     currentLongData = {};
-    newLongData = {};
+    newLongData = null;
 
     /******* Start Listeners *******/
     /*****************************/
@@ -118,6 +118,9 @@ class LlsModel {
         if (this.#statusLls == 'connect') {
             let dataLong = await this._lls.data.getLong();
             this.currentLongData = dataLong;
+            if(this.newLongData == null){
+                this.newLongData = {...dataLong};
+            }
             this._myEmitter.emit('longData', dataLong);
         } else {
             return 'LLS not connect';
@@ -344,6 +347,7 @@ class LlsModel {
                             close()
                         }
                         ;
+                        this.newLongData = null;
                         break;
                     }
                 }

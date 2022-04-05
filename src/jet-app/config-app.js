@@ -7,5 +7,6 @@ export default  {
     },
     settings:{
         differenceFuelForStable: 500,
+        autoSaveMode: false,
     }
 }

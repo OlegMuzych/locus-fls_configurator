@@ -617,7 +617,8 @@ export default class GeneralSettings extends JetView {
     listenerLongData = (longData) => {
         let serialNumber = sn2ascii(longData.serialNumber);
         $$('window_type_1').setValue(serialNumber);
-        this.$$('textLlsAdr').setValue(longData.llsAdr);
+        // this.$$('textLlsAdr').setValue(longData.llsAdr);
+        this.setTextValue("textLlsAdr", 'llsAdr', "statusLlsAdr");
         this.$$('textMinLevel').setValue(longData.minLevel);
         this.$$('textMaxLevel').setValue(longData.maxLevel);
         this.$$('outputParametersOfSensor').setValue(longData.outputParametersOfSensor);
@@ -632,6 +633,7 @@ export default class GeneralSettings extends JetView {
 
     listenerConnect = () => {
         llsModel.getLongData();
+        llsModel.newLongData = {...llsModel.currentLongData};
     }
 
     listenerDisconnect = () => {
@@ -654,9 +656,15 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue >= 1 && newValue <= 254) {
-                    if(newValue == llsModel.currentLongData.llsAdr){
+                    llsModel.newLongData.llsAdr = newValue;
+                    // if(newValue == llsModel.currentLongData.llsAdr){
+                    //     this.setStatusNewValue('statusLlsAdr', false);
+                    // }else{
+                    //     this.setStatusNewValue('statusLlsAdr', true);
+                    // }
+                    if (llsModel.newLongData.llsAdr == llsModel.currentLongData.llsAdr) {
                         this.setStatusNewValue('statusLlsAdr', false);
-                    }else{
+                    } else {
                         this.setStatusNewValue('statusLlsAdr', true);
                     }
                 } else {
@@ -667,7 +675,6 @@ export default class GeneralSettings extends JetView {
         this.$$('buttonLlsAdr').attachEvent("onItemClick", (id, e) => {
             let test = this.$$('textLlsAdr').getValue();
             let value = Number(test);
-            this.setStatusNewValue('statusLlsAdr', false);
             llsModel.setLongData({llsAdr: value});
         });
 
@@ -745,6 +752,7 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue >= 0 && newValue <= 1024) {
+                    llsModel.newLongData.minLevel = newValue;
                     if(newValue == llsModel.currentLongData.minLevel){
                         this.setStatusNewValue('statusMinLevel', false);
                     }else{
@@ -768,6 +776,7 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue >= 1024 && newValue <= 4095) {
+                    llsModel.newLongData.maxLevel = newValue;
                     if(newValue == llsModel.currentLongData.maxLevel){
                         this.setStatusNewValue('statusMaxLevel', false);
                     }else{
@@ -808,7 +817,7 @@ export default class GeneralSettings extends JetView {
         this.$$('switch_temp_compensation').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
-                console.log(newValue);
+                console.log(newValue);;
                 if (newValue) {
                     // llsModel.setLongData({thermalCompensationType: 0x05}); //DT winter
                     this.$$("fuelTypeSwitch").show();
@@ -862,6 +871,7 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue >= 0 && newValue < 1000) {
+                    llsModel.newLongData.coefficientK1 = newValue;
                     if(newValue == llsModel.currentLongData.coefficientK1){
                         this.setStatusNewValue('statusCoefficientK1', false);
                     }else{
@@ -884,6 +894,7 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue >= 0 && newValue < 1000) {
+                    llsModel.newLongData.coefficientK2 = newValue;
                     if(newValue == llsModel.currentLongData.coefficientK2){
                         this.setStatusNewValue('statusCoefficientK2', false);
                     }else{
@@ -1073,6 +1084,24 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss(this.$$(id).getNode(), "status_define_button");
         }
     }
+
+    setTextValue(id, name, statusId){
+        if(llsModel.currentLongData[name] == llsModel.newLongData[name]){
+            this.$$(id).setValue(llsModel.currentLongData[name]);
+            this.setStatusNewValue(statusId, false);
+        }else{
+            this.$$(id).setValue(llsModel.newLongData[name]);
+            this.setStatusNewValue(statusId, false);
+        }
+    }
+    setComboValue(id, name){
+        if(llsModel.currentLongData[name] == llsModel.newLongData[name]){
+            // this.$$(id).setValue(llsModel.currentLongData[name]);
+        }else{
+            // this.$$(id).setValue(llsModel.newLongData[name]);
+        }
+    }
+
 }
 
 function sn2ascii(decArray) {

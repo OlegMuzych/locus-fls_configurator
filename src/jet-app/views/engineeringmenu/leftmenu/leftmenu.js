@@ -1,5 +1,6 @@
 import {JetView} from "webix-jet";
 import configFile from "../../../config-app";
+import llsModel from "../../../models/lls-model";
 
 export default class LeftMenu extends JetView{
     config(){
@@ -90,11 +91,9 @@ export default class LeftMenu extends JetView{
     init(){
 
         $$("save_settings").attachEvent("onItemClick", (id, e) => {
-            this.app.callEvent("app:settings:setToLls", []);
+            llsModel.setLongData(llsModel.newLongData);
+            // this.app.callEvent("app:settings:setToLls", []);
         });
-
-
-
 
 
         this.$$("button_back").attachEvent("onItemClick", (id, e)=>{

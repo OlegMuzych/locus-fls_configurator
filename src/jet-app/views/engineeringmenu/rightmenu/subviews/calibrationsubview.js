@@ -43,6 +43,32 @@ export default class CalibrationSubView extends JetView {
                         {}
                     ]
                 },
+                {
+                    cols: [
+                        {},
+                        {
+                            view: "bullet",
+                            layout: "x",
+                            localId: "progress_bar3",
+                            css: "progress_bar",
+                            value: 0,
+                            // width: 120,
+                            width: 470,
+                            minRange: 0,
+                            maxRange: 4095,
+                            bands: [
+                                {value: 4095, color: "#f0f0f0"},
+                            ],
+                            scale: {
+                                step: 450,
+                                // template: "#value#%"
+                            },
+                            stroke: 40,
+                            color: "#628cbb",
+                        },
+                        {}
+                    ]
+                },
             ]
         };
         let tabBarCalibrate = {
@@ -132,15 +158,26 @@ export default class CalibrationSubView extends JetView {
 
     listenerShortData = (shortData)=>{
         this.$$("status_level_fuel").setValue(shortData.level);
+        this.$$("progress_bar3").setValue(shortData.level);
+    }
+
+    listenerLongData = (longData) => {
+        this.setMinBar(longData.minLevel);
+        this.setMaxBar(longData.maxLevel);
     }
 
     destroy() {
         super.destroy();
         llsModel.clearListenerShortData(this.listenerShortData);
+        llsModel.clearListenerLongData(this.listenerLongData);
     }
 
     init() {
-        llsModel.addListenerShortData(this.listenerShortData);
+        this.$$("right_menu_fuel_level").attachEvent("onAfterRender", webix.once(()=>{
+            llsModel.addListenerShortData(this.listenerShortData);
+            llsModel.addListenerLongData(this.listenerLongData);
+        }));
+        // llsModel.addListenerLongData(this.listenerLongData);
         this.on(this.app, "app:calibrationSettings:continueCalibrate", () => {
             this.$$('tabbar').setValue("fuelFill");
         });
@@ -174,6 +211,23 @@ export default class CalibrationSubView extends JetView {
         if (configFile.theme.color == 'black') {
             webix.html.addCss(this.$$("tabbar").getNode(), "button_type_calibration_1_dark");
         }
+    }
+
+    setMaxBar(value){
+        this.$$('progress_bar3').define({maxRange: value});
+        this.setScaleBar(this.$$('progress_bar3').config.minRange, this.$$('progress_bar3').config.maxRange);
+        this.$$('progress_bar3').refresh();
+    }
+    setMinBar(value){
+        this.$$('progress_bar3').define({minRange: value});
+        this.setScaleBar(this.$$('progress_bar3').config.minRange, this.$$('progress_bar3').config.maxRange);
+        this.$$('progress_bar3').refresh();
+    }
+
+    setScaleBar(minRange,maxRange){
+        let step = (maxRange - minRange)/10;
+        this.$$('progress_bar3').define({scale: {step: step}});
+        this.$$('progress_bar3').refresh();
     }
 }
 

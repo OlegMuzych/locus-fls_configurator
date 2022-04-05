@@ -5,7 +5,6 @@ import configFile from "../../../config-app";
 export default class FiltrationSettings extends JetView {
     config() {
         let filtering = {
-
             minWidth: 600,
             maxWidth: 850,
             view: "scrollview",
@@ -628,7 +627,6 @@ export default class FiltrationSettings extends JetView {
     }
 
     listenerLongData = (longData) => {
-        this.currentLongData = longData;
         $$('slider_filter_1').setValue(longData.averagingLength.toString());
         $$('window_text_time').setValue(longData.averagingLength.toString());
         $$('slider_filter_2').setValue(longData.medianLength.toString());
@@ -668,7 +666,7 @@ export default class FiltrationSettings extends JetView {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                if (newValue == this.currentLongData.averagingLength) {
+                if (newValue == llsModel.currentLongData.averagingLength) {
                     this.setStatusNewValue('statusAveragingLength', false);
                 } else {
                     this.setStatusNewValue('statusAveragingLength', true);
@@ -684,7 +682,7 @@ export default class FiltrationSettings extends JetView {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                if (newValue == this.currentLongData.medianLength) {
+                if (newValue == llsModel.currentLongData.medianLength) {
                     this.setStatusNewValue('statusMedianLength', false);
                 } else {
                     this.setStatusNewValue('statusMedianLength', true);
@@ -700,7 +698,7 @@ export default class FiltrationSettings extends JetView {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                if (newValue == this.currentLongData.coefficientQ) {
+                if (newValue == llsModel.currentLongData.coefficientQ) {
                     this.setStatusNewValue('statusCoefficientQ', false);
                 } else {
                     this.setStatusNewValue('statusCoefficientQ', true);
@@ -717,7 +715,7 @@ export default class FiltrationSettings extends JetView {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                if (newValue == this.currentLongData.coefficientQ) {
+                if (newValue == llsModel.currentLongData.coefficientQ) {
                     this.setStatusNewValue('statusCoefficientR', false);
                 } else {
                     this.setStatusNewValue('statusCoefficientR', true);

@@ -340,7 +340,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: "<p>Производитель: ООО 'Иванов Инжиниринг'</p>",
+                                        label: "<p>Разработчик: ООО 'Иванов Инжиниринг'</p>",
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
@@ -356,19 +356,19 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: "<p>Сборка от 30.03.2022г.</p>",
-                                        width: 700,
-                                        height: 80,
-                                        css: "language_windows_modal",
-                                        id: "language_windows_modal_5"
-                                    },
-                                    {
-                                        view: "label",
                                         label: "<p>www.locme.ru</p>",
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
                                         id: "language_windows_modal_6"
+                                    },
+                                    {
+                                        view: "label",
+                                        label: "<p>© 2022</p>",
+                                        width: 700,
+                                        height: 80,
+                                        css: "language_windows_modal",
+                                        id: "language_windows_modal_5"
                                     },
                                     {},
                                 ]

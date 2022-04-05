@@ -553,16 +553,6 @@ export default class GeneralSettings extends JetView {
                     },
 
                     {height: 10,},
-                    // {
-                    //     view: "text",
-                    //     width: 850,
-                    //     height: 100,
-                    //     label: '<p>Сетевой адрес</p>',
-                    //     labelWidth: 400,
-                    //     css: "window_type_2",
-                    //     inputAlign: "center",
-                    //     id: "window_type_2_1"
-                    // },
                     llsAdr,
                     {height: 20},
                     baudRateSwitch,
@@ -625,7 +615,6 @@ export default class GeneralSettings extends JetView {
     }
 
     listenerLongData = (longData) => {
-        this.currentLongData = longData;
         let serialNumber = sn2ascii(longData.serialNumber);
         $$('window_type_1').setValue(serialNumber);
         this.$$('textLlsAdr').setValue(longData.llsAdr);
@@ -665,7 +654,7 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue >= 1 && newValue <= 254) {
-                    if(newValue == this.currentLongData.llsAdr){
+                    if(newValue == llsModel.currentLongData.llsAdr){
                         this.setStatusNewValue('statusLlsAdr', false);
                     }else{
                         this.setStatusNewValue('statusLlsAdr', true);
@@ -756,7 +745,7 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue >= 0 && newValue <= 1024) {
-                    if(newValue == this.currentLongData.minLevel){
+                    if(newValue == llsModel.currentLongData.minLevel){
                         this.setStatusNewValue('statusMinLevel', false);
                     }else{
                         this.setStatusNewValue('statusMinLevel', true);
@@ -779,7 +768,7 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue >= 1024 && newValue <= 4095) {
-                    if(newValue == this.currentLongData.maxLevel){
+                    if(newValue == llsModel.currentLongData.maxLevel){
                         this.setStatusNewValue('statusMaxLevel', false);
                     }else{
                         this.setStatusNewValue('statusMaxLevel', true);
@@ -873,7 +862,7 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue >= 0 && newValue < 1000) {
-                    if(newValue == this.currentLongData.coefficientK1){
+                    if(newValue == llsModel.currentLongData.coefficientK1){
                         this.setStatusNewValue('statusCoefficientK1', false);
                     }else{
                         this.setStatusNewValue('statusCoefficientK1', true);
@@ -895,7 +884,7 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue >= 0 && newValue < 1000) {
-                    if(newValue == this.currentLongData.coefficientK2){
+                    if(newValue == llsModel.currentLongData.coefficientK2){
                         this.setStatusNewValue('statusCoefficientK2', false);
                     }else{
                         this.setStatusNewValue('statusCoefficientK2', true);

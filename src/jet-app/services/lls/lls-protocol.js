@@ -126,7 +126,7 @@ export default class llsProtocol {
                     myEmitter.emit(`data:${dataPars.command}`, dataPars);
                 }
                 // this.port.resume();
-            }, 100);
+            }, 200); //100
         })
     };
 

@@ -38,6 +38,7 @@ export default class GeneralSettings extends JetView {
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonLlsAdr',
+                                    hidden: false,
                                 },
                                 {
 

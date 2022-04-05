@@ -625,9 +625,11 @@ export default class GeneralSettings extends JetView {
 
         this.$$('outputParametersOfSensor').setValue(longData.outputParametersOfSensor);
 
-        this.setBaudRate(longData.baudRate232);
+        // this.setBaudRate(longData.baudRate232);
+        this.setBaudRateValue()
 
-        this.setAutoGetData(longData.autoGetData);
+        // this.setAutoGetData(longData.autoGetData);
+        this.setAutoGetDataValue();
 
         this.$$('counterCounterPeriod').setValue(longData.periodOfDataIssuance.toString());
 
@@ -713,7 +715,15 @@ export default class GeneralSettings extends JetView {
             console.log("click");
             let obj = $$("listBaudRate").getItem(id);
             console.log(obj);
-            llsModel.setLongData({baudRate232: obj.value, baudRate485: obj.value});
+            llsModel.newLongData.baudRate232 = obj.value;
+            llsModel.newLongData.baudRate485 = obj.value;
+            if(configFile.settings.autoSaveMode){
+                llsModel.setLongData({baudRate232: obj.value, baudRate485: obj.value});
+                this.setBaudRateValue();
+            }else{
+                this.setBaudRateValue();
+            }
+            // llsModel.setLongData({baudRate232: obj.value, baudRate485: obj.value});
         });
 
         // autoGet
@@ -746,7 +756,13 @@ export default class GeneralSettings extends JetView {
             console.log("click");
             let obj = $$("listAutoGetData").getItem(id);
             console.log(obj);
-            llsModel.setLongData({autoGetData: obj.value});
+            llsModel.newLongData.autoGetData = obj.value;
+            if(configFile.settings.autoSaveMode){
+                llsModel.setLongData({autoGetData: obj.value});
+                this.setAutoGetDataValue();
+            }else{
+                this.setAutoGetDataValue();
+            }
         });
 
         // minLevel
@@ -1106,6 +1122,26 @@ export default class GeneralSettings extends JetView {
             this.setTypeFuel(llsModel.newLongData.thermalCompensationType);
             this.setThermalCompensation(llsModel.newLongData.thermalCompensationType);
             this.setStatusNewValue("statusFuelType", true);
+        }
+    }
+
+    setAutoGetDataValue(){
+        if(llsModel.currentLongData.autoGetData == llsModel.newLongData.autoGetData){
+            this.setAutoGetData(llsModel.currentLongData.autoGetData);
+            this.setStatusNewValue("statusAutoGetData", false);
+        }else{
+            this.setAutoGetData(llsModel.newLongData.autoGetData);
+            this.setStatusNewValue("statusAutoGetData", true);
+        }
+    }
+
+    setBaudRateValue(){
+        if(llsModel.currentLongData.baudRate232 == llsModel.newLongData.baudRate232){
+            this.setBaudRate(llsModel.currentLongData.baudRate232);
+            this.setStatusNewValue("statusBaudRate", false);
+        }else{
+            this.setBaudRate(llsModel.newLongData.baudRate232);
+            this.setStatusNewValue("statusBaudRate", true);
         }
     }
     setFloatValue(id, name){

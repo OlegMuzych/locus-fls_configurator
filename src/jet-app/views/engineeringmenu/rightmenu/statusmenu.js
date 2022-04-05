@@ -57,16 +57,51 @@ export default class StatusMenu extends JetView{
                         {width: 20,},
                         {view:"label", label:"Термокомпенсация", height: 30, width:200, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_4"},
                         {
-                            width:50,
+                            width:10,
                         },
-                        {view:"button", type:"image", image:"assets/images/temperature.png", width:30, height:30, css:"thermometer_image",},
+                        {view:"button", type:"image", image:"assets/images/temperature_2.svg", width:30, height:30, css:"thermometer_image",},
                         {view:"text", width: 60, height:30, css:"window_temp", id:"window_temp", readonly:true, value:"25°"},
 
                     ]
                 },
                 {
-                    height: 20,
+                    height: 10,
+                },
+                {
+                    disabled: true,
+                    height: 60,
+                    rows:[
+                        {
+                            height: 30,
+                            cols:[
+                                {
+                                    width: 70,
+                                },
+                                {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_5_base", },
+                                {
+                                    width: 20,
+                                },
+                                {
+                                    cols:[
+                                        {
+                                            view: "text",
+                                            width: 300,
+                                            height: 60,
+                                            css: "full_level_windows_status",
+                                            readonly: true,
+                                            localId: "status_level_fuel",
+                                            inputAlign: "center",
+                                            value: "Ошибок нет",
+                                        },
+                                    ]
+                                }
+                            ]
+                        }
+
+
+                    ]
                 }
+
             ]
         };
 

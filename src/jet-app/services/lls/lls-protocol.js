@@ -14,16 +14,16 @@ export default class llsProtocol {
     PR_TRANSMIT = 0x31;
 
     #password = [0, 0, 0, 0, 0, 0, 0, 0];
-    set password(str){
+    set password(str) {
         let arr = str.split('');
         let zeroPass = [0, 0, 0, 0, 0, 0, 0, 0];
-        if(arr.length <= 8){
+        if (arr.length <= 8) {
             zeroPass.splice(0, arr.length, ...arr);
             this.#password = zeroPass;
         }
     };
 
-    setLlsAdr(value){
+    setLlsAdr(value) {
         this._settingPort.llsAdr = value;
     }
 
@@ -63,7 +63,7 @@ export default class llsProtocol {
         let timerId = null;
         return new Promise(async (resolve, reject) => {
             this.port.pause();
-            this.#pushQueueWrite({command:command, data:data}, timeout);
+            this.#pushQueueWrite({command: command, data: data}, timeout);
             let timeoutSumm = this.#getSummTimeoutWrite();
             timerId = setTimeout(() => {
                 reject(`Error command ${command.toString(16)}: timeout response message!`);
@@ -90,15 +90,15 @@ export default class llsProtocol {
         return this.#queueWrite.shift();
     };
 
-    #getSummTimeoutWrite(){
+    #getSummTimeoutWrite() {
         let timeoutSumm = 0;
-        this.#timeoutWrite.forEach((value, index, array)=>{
+        this.#timeoutWrite.forEach((value, index, array) => {
             timeoutSumm += value;
         });
         return timeoutSumm;
     };
 
-    getLengthQueueWrite(){
+    getLengthQueueWrite() {
         return this.#queueWrite.length;
     };
 
@@ -126,17 +126,17 @@ export default class llsProtocol {
                     myEmitter.emit(`data:${dataPars.command}`, dataPars);
                 }
                 // this.port.resume();
-            }, 100);
+            }, 200); //100
         })
     };
 
     open() {
         return new Promise(((resolve, reject) => {
-            this.port.onError( (err) => {
+            this.port.onError((err) => {
                 console.log('Error: ', err.message);
                 reject(err.message);
             });
-            this.port.onOpen( () => {
+            this.port.onOpen(() => {
                 // open logic
                 console.log("serialPort is Open");
                 this._listenerResponseData();
@@ -195,11 +195,11 @@ export default class llsProtocol {
                 dataBuffer.push(data.filtrationType);
                 dataBuffer.push(data.averagingLength);
                 dataBuffer.push(data.medianLength);
-                dataBuffer.push(...this.#getUint32(data.coefficientQ));
-                dataBuffer.push(...this.#getUint32(data.coefficientR));
+                dataBuffer.push(...this.#float2Buffer(data.coefficientQ));
+                dataBuffer.push(...this.#float2Buffer(data.coefficientR));
                 dataBuffer.push(data.thermalCompensationType);
-                dataBuffer.push(...this.#getUint32(data.coefficientK1));
-                dataBuffer.push(...this.#getUint32(data.coefficientK2));
+                dataBuffer.push(...this.#float2Buffer(data.coefficientK1));
+                dataBuffer.push(...this.#float2Buffer(data.coefficientK2));
                 dataBuffer.push(data.interpolationType);
                 dataBuffer.push(data.baudRate232);
                 dataBuffer.push(data.baudRate485);
@@ -254,7 +254,7 @@ export default class llsProtocol {
                 dataBuffer.push(command);
                 dataBuffer.push(...this.#password);
                 dataBuffer.push(data.countPoint);
-                for(let i = 0; i < 30; i++){
+                for (let i = 0; i < 30; i++) {
                     dataBuffer.push(...this.#getUint16(data.levels[i]));
                     dataBuffer.push(...this.#getUint16(data.volumes[i]));
                 }
@@ -335,8 +335,8 @@ export default class llsProtocol {
                     longDataResp.coefficientQ = dataView.getFloat32(53, true);
                     longDataResp.coefficientR = dataView.getFloat32(57, true);
                     longDataResp.thermalCompensationType = dataView.getUint8(61);
-                    longDataResp.coefficientK1 = dataView.getUint32(62, true);
-                    longDataResp.coefficientK2 = dataView.getUint32(66, true);
+                    longDataResp.coefficientK1 = dataView.getFloat32(62, true);
+                    longDataResp.coefficientK2 = dataView.getFloat32(66, true);
                     longDataResp.interpolationType = dataView.getUint8(70);
                     longDataResp.baudRate232 = dataView.getUint8(71);
                     longDataResp.baudRate485 = dataView.getUint8(72);
@@ -416,9 +416,9 @@ export default class llsProtocol {
                     readTable.countPoint = dataView.getUint8(3);
                     readTable.levels = [];
                     readTable.volumes = [];
-                    for(let i = 0; i < 30; i++ ){
-                        readTable.levels.push(dataView.getUint16((4+i*4), true));
-                        readTable.volumes.push(dataView.getUint16((6+i*4), true));
+                    for (let i = 0; i < 30; i++) {
+                        readTable.levels.push(dataView.getUint16((4 + i * 4), true));
+                        readTable.volumes.push(dataView.getUint16((6 + i * 4), true));
                     }
                     return readTable;
                     break;
@@ -434,8 +434,7 @@ export default class llsProtocol {
                     return readCnt;
                     break;
                 }
-                default:
-                {
+                default: {
                     let defaultResp = {};
                     defaultResp.prefix = dataView.getUint8(0);
                     defaultResp.llsAdr = dataView.getUint8(1);
@@ -481,7 +480,7 @@ export default class llsProtocol {
         return arrData;
     };
 
-    #getFloat32(float32) {
+    #float2BufferOld(float32) {
         //todo: for коэфициент q and r
         // let data = float32;
         // // let arrData = [];
@@ -490,7 +489,26 @@ export default class llsProtocol {
         // let byteView = new Uint8Array(buffer);
         // // console.log(arrData[0], arrData[1], arrData[2], arrData[3]);
         // // return arrData;
+        let src = new Float32Array([0.5]);
+        let buffer = new ArrayBuffer(src.byteLength);
+        // let baseView = new src.constructor(buffer).set(src);
+        let newBuff = new Uint8Array(buffer);
+        console.log(newBuff);
+        return newBuff;
     };
+
+    #float2Buffer = (float32) => {
+        const getHex = i => ('00' + i.toString(16)).slice(-2);
+        let view = new DataView(new ArrayBuffer(4));
+        view.setFloat32(0, float32);
+        // return Array.apply(null, { length: 4 }).map((_, i) => getHex(view.getUint8(i))).join('');
+        let arr = Array.apply(null, { length: 4 }).map((_, i) => getHex(view.getUint8(i)));
+        let newArr = new Array(4);
+        arr.forEach((value, index, array)=>{
+            newArr[3 - index] = (parseInt(value, 16));
+        });
+        return newArr;
+    }
 
     _eventDataParse(command) {
         return new Promise((resolve, reject) => {

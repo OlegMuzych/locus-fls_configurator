@@ -21,6 +21,9 @@ class LlsModel {
         this.#init(timeout).then().catch();
     }
 
+    currentLongData = {};
+    newLongData = {};
+
     /******* Start Listeners *******/
     /*****************************/
 
@@ -114,6 +117,7 @@ class LlsModel {
     async getLongData() {
         if (this.#statusLls == 'connect') {
             let dataLong = await this._lls.data.getLong();
+            this.currentLongData = dataLong;
             this._myEmitter.emit('longData', dataLong);
         } else {
             return 'LLS not connect';

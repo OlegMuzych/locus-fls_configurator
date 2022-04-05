@@ -639,8 +639,8 @@ export default class GeneralSettings extends JetView {
 
         // this.$$('textCoefficientK1').setValue(longData.coefficientK1.toString());
         // this.$$('textCoefficientK2').setValue(longData.coefficientK2.toString());
-        this.setTextValue("textCoefficientK1", 'coefficientK1', "statusCoefficientK1");
-        this.setTextValue("textCoefficientK2", 'coefficientK2', "statusCoefficientK2");
+        this.setFloatValue("textCoefficientK1", 'coefficientK1', "statusCoefficientK1");
+        this.setFloatValue("textCoefficientK2", 'coefficientK2', "statusCoefficientK2");
     }
 
     listenerConnect = () => {
@@ -891,13 +891,13 @@ export default class GeneralSettings extends JetView {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                newValue = Number(newValue);
+                newValue = Number(newValue).toFixed(6);
                 if (newValue >= 0 && newValue < 1000) {
                     llsModel.newLongData.coefficientK1 = newValue;
                     if(configFile.settings.autoSaveMode){
                         llsModel.setLongData({coefficientK1: llsModel.newLongData.coefficientK1});
                     }
-                    this.setTextValue("textCoefficientK1", 'coefficientK1', "statusCoefficientK1");
+                    this.setFloatValue("textCoefficientK1", 'coefficientK1', "statusCoefficientK1");
                 } else {
                     this.$$('textCoefficientK1').setValue(oldValue);
                 }
@@ -913,12 +913,13 @@ export default class GeneralSettings extends JetView {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
+                newValue = Number(newValue).toFixed(6);
                 if (newValue >= 0 && newValue < 1000) {
                     llsModel.newLongData.coefficientK2 = newValue;
                     if(configFile.settings.autoSaveMode){
                         llsModel.setLongData({coefficientK2: llsModel.newLongData.coefficientK2});
                     }
-                    this.setTextValue("textCoefficientK2", 'coefficientK2', "statusCoefficientK2");
+                    this.setFloatValue("textCoefficientK2", 'coefficientK2', "statusCoefficientK2");
                 } else {
                     this.$$('textCoefficientK2').setValue(oldValue);
                 }
@@ -1144,13 +1145,19 @@ export default class GeneralSettings extends JetView {
             this.setStatusNewValue("statusBaudRate", true);
         }
     }
-    setFloatValue(id, name){
-        if(llsModel.currentLongData[name] == llsModel.newLongData[name]){
-            // this.$$(id).setValue(llsModel.currentLongData[name]);
+
+    setFloatValue(id, name, statusId){
+        let oldFloat = Number(llsModel.currentLongData[name]).toFixed(4);
+        let newFloat = Number(llsModel.newLongData[name]).toFixed(4);
+        if(oldFloat == newFloat){
+            this.$$(id).setValue(llsModel.currentLongData[name]);
+            this.setStatusNewValue(statusId, false);
         }else{
-            // this.$$(id).setValue(llsModel.newLongData[name]);
+            this.$$(id).setValue(llsModel.newLongData[name]);
+            this.setStatusNewValue(statusId, true);
         }
     }
+
 
 }
 

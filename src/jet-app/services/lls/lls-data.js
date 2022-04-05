@@ -233,11 +233,11 @@ export default class llsData {
         this.#longSettingsReceive.filtrationType = filtrationType;
         this.#longSettingsReceive.averagingLength = averagingLength;
         this.#longSettingsReceive.medianLength = medianLength;
-        this.#longSettingsReceive.coefficientQ = coefficientQ;
-        this.#longSettingsReceive.coefficientR = coefficientR;
+        this.#longSettingsReceive.coefficientQ = coefficientQ.toFixed(6);
+        this.#longSettingsReceive.coefficientR = coefficientR.toFixed(6);
         this.#longSettingsReceive.thermalCompensationType = thermalCompensationType;
-        this.#longSettingsReceive.coefficientK1 = coefficientK1.toFixed(7);
-        this.#longSettingsReceive.coefficientK2 = coefficientK2.toFixed(7);
+        this.#longSettingsReceive.coefficientK1 = coefficientK1.toFixed(6);
+        this.#longSettingsReceive.coefficientK2 = coefficientK2.toFixed(6);
         this.#longSettingsReceive.interpolationType = interpolationType;
         this.#longSettingsReceive.baudRate232 = baudRate232;
         this.#longSettingsReceive.baudRate485 = baudRate485;

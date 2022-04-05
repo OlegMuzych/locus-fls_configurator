@@ -480,23 +480,6 @@ export default class llsProtocol {
         return arrData;
     };
 
-    #float2BufferOld(float32) {
-        //todo: for коэфициент q and r
-        // let data = float32;
-        // // let arrData = [];
-        // let buffer = new ArrayBuffer(data.length);
-        // let floatView = new Float32Array(buffer).set(data);
-        // let byteView = new Uint8Array(buffer);
-        // // console.log(arrData[0], arrData[1], arrData[2], arrData[3]);
-        // // return arrData;
-        let src = new Float32Array([0.5]);
-        let buffer = new ArrayBuffer(src.byteLength);
-        // let baseView = new src.constructor(buffer).set(src);
-        let newBuff = new Uint8Array(buffer);
-        console.log(newBuff);
-        return newBuff;
-    };
-
     #float2Buffer = (float32) => {
         const getHex = i => ('00' + i.toString(16)).slice(-2);
         let view = new DataView(new ArrayBuffer(4));

@@ -166,7 +166,7 @@ export default class FiltrationSettings extends JetView {
                                                         width: 14,
                                                         // css: "status_define_button_yellow",
                                                         localId: "statusFiltrationType",
-                                                        css:" status_define_button" //- скрытая кнопка
+                                                        css: " status_define_button" //- скрытая кнопка
                                                     },
                                                     {}
                                                 ]
@@ -253,7 +253,7 @@ export default class FiltrationSettings extends JetView {
                                                         width: 12,
                                                         // css: " status_define_button_yellow",
                                                         localId: "statusAveragingLength",
-                                                        css:" status_define_button" //- скрытая кнопка
+                                                        css: " status_define_button" //- скрытая кнопка
                                                     },
                                                     {width: 10},
                                                     {}
@@ -340,7 +340,7 @@ export default class FiltrationSettings extends JetView {
                                                         width: 12,
                                                         // css: " status_define_button_yellow",
                                                         localId: "statusMedianLength",
-                                                        css:" status_define_button" //- скрытая кнопка
+                                                        css: " status_define_button" //- скрытая кнопка
                                                     },
                                                     {}
                                                 ]
@@ -414,7 +414,7 @@ export default class FiltrationSettings extends JetView {
                                                         // css: " status_define_button_yellow",
                                                         localId: "statusCoefficientQ",
 
-                                                        css:" status_define_button" //- скрытая кнопка
+                                                        css: " status_define_button" //- скрытая кнопка
                                                     },
                                                     {}
                                                 ]
@@ -485,7 +485,7 @@ export default class FiltrationSettings extends JetView {
                                                         width: 12,
                                                         // css: " status_define_button_yellow",
                                                         localId: "statusCoefficientR",
-                                                        css:" status_define_button" //- скрытая кнопка
+                                                        css: " status_define_button" //- скрытая кнопка
                                                     },
                                                     {}
                                                 ]
@@ -627,13 +627,22 @@ export default class FiltrationSettings extends JetView {
     }
 
     listenerLongData = (longData) => {
-        $$('slider_filter_1').setValue(longData.averagingLength.toString());
-        $$('window_text_time').setValue(longData.averagingLength.toString());
-        $$('slider_filter_2').setValue(longData.medianLength.toString());
-        $$('window_text_mediana').setValue(longData.medianLength.toString());
-        $$('text_q').setValue(longData.coefficientQ.toString());
-        $$('text_r').setValue(longData.coefficientR.toString());
-        this.setFiltrationType(longData.filtrationType);
+        // $$('slider_filter_1').setValue(longData.averagingLength.toString());
+        // $$('window_text_time').setValue(longData.averagingLength.toString());
+        this.setSliderValue('window_text_time', 'averagingLength', 'statusAveragingLength');
+
+        // $$('slider_filter_2').setValue(longData.medianLength.toString());
+        // $$('window_text_mediana').setValue(longData.medianLength.toString());
+        this.setSliderValue('window_text_mediana', 'medianLength', 'statusMedianLength');
+
+        // $$('text_q').setValue(longData.coefficientQ.toString());
+        this.setFloatValue('text_q', "coefficientQ", "statusCoefficientQ");
+
+        // $$('text_r').setValue(longData.coefficientR.toString());
+        this.setFloatValue('text_r', "coefficientR", "statusCoefficientR");
+
+        // this.setFiltrationType(longData.filtrationType);
+        this.setFiltrationTypeValue();
     }
 
     destroy() {
@@ -666,6 +675,7 @@ export default class FiltrationSettings extends JetView {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
+                llsModel.newLongData.averagingLength = newValue;
                 if (newValue == llsModel.currentLongData.averagingLength) {
                     this.setStatusNewValue('statusAveragingLength', false);
                 } else {
@@ -682,6 +692,7 @@ export default class FiltrationSettings extends JetView {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
+                llsModel.newLongData.medianLength = newValue;
                 if (newValue == llsModel.currentLongData.medianLength) {
                     this.setStatusNewValue('statusMedianLength', false);
                 } else {
@@ -698,10 +709,16 @@ export default class FiltrationSettings extends JetView {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                if (newValue == llsModel.currentLongData.coefficientQ) {
-                    this.setStatusNewValue('statusCoefficientQ', false);
+                newValue = Number(newValue).toFixed(6);
+                // newValue = this.fixed(Number(newValue));
+                if (newValue >= 0 && newValue < 1000) {
+                    llsModel.newLongData.coefficientQ = newValue;
+                    if (configFile.settings.autoSaveMode) {
+                        llsModel.setLongData({coefficientQ: llsModel.newLongData.coefficientQ});
+                    }
+                    this.setFloatValue('text_q', "coefficientQ", "statusCoefficientQ");
                 } else {
-                    this.setStatusNewValue('statusCoefficientQ', true);
+                    this.$$('text_q').setValue(oldValue);
                 }
             }
         })
@@ -715,10 +732,15 @@ export default class FiltrationSettings extends JetView {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                if (newValue == llsModel.currentLongData.coefficientQ) {
-                    this.setStatusNewValue('statusCoefficientR', false);
+                newValue = Number(newValue).toFixed(6);
+                if (newValue >= 0 && newValue < 1000) {
+                    llsModel.newLongData.coefficientR = newValue;
+                    if (configFile.settings.autoSaveMode) {
+                        llsModel.setLongData({coefficientR: llsModel.newLongData.coefficientR});
+                    }
+                    this.setFloatValue('text_r', "coefficientR", "statusCoefficientR");
                 } else {
-                    this.setStatusNewValue('statusCoefficientR', true);
+                    this.$$('text_r').setValue(oldValue);
                 }
             }
         })
@@ -770,12 +792,17 @@ export default class FiltrationSettings extends JetView {
             console.log('click');
             this.pop.show($$(id).getNode());
         });
-
         $$("listFilterType").attachEvent("onItemClick", (id, name, e) => {
             console.log("click");
             let obj = $$("listFilterType").getItem(id);
             console.log(obj);
-            llsModel.setLongData({filtrationType: obj.value});
+            llsModel.newLongData.filtrationType = obj.value;
+            if (configFile.settings.autoSaveMode) {
+                llsModel.setLongData({filtrationType: obj.value});
+                this.setFiltrationTypeValue();
+            } else {
+                this.setFiltrationTypeValue();
+            }
         });
 
         if (configFile.theme.color == 'white') {
@@ -830,13 +857,45 @@ export default class FiltrationSettings extends JetView {
         }
     }
 
-    setStatusNewValue(id, status){
+    setStatusNewValue(id, status) {
         webix.html.removeCss(this.$$(id).getNode(), "status_define_button_yellow");
         webix.html.removeCss(this.$$(id).getNode(), "status_define_button");
-        if(status){
+        if (status) {
             webix.html.addCss(this.$$(id).getNode(), "status_define_button_yellow");
-        }else{
+        } else {
             webix.html.addCss(this.$$(id).getNode(), "status_define_button");
+        }
+    }
+
+    setFiltrationTypeValue() {
+        if (llsModel.currentLongData.filtrationType == llsModel.newLongData.filtrationType) {
+            this.setFiltrationType(llsModel.currentLongData.filtrationType);
+            this.setStatusNewValue("statusFiltrationType", false);
+        } else {
+            this.setFiltrationType(llsModel.newLongData.filtrationType);
+            this.setStatusNewValue("statusFiltrationType", true);
+        }
+    }
+
+    setSliderValue(id, name, statusId) {
+        if (llsModel.currentLongData[name] == llsModel.newLongData[name]) {
+            this.$$(id).setValue(llsModel.currentLongData[name]);
+            this.setStatusNewValue(statusId, false);
+        } else {
+            this.$$(id).setValue(llsModel.newLongData[name]);
+            this.setStatusNewValue(statusId, true);
+        }
+    }
+
+    setFloatValue(id, name, statusId) {
+        let oldFloat = Number(llsModel.currentLongData[name]).toFixed(4);
+        let newFloat = Number(llsModel.newLongData[name]).toFixed(4);
+        if (oldFloat == newFloat) {
+            this.$$(id).setValue(llsModel.currentLongData[name]);
+            this.setStatusNewValue(statusId, false);
+        } else {
+            this.$$(id).setValue(llsModel.newLongData[name]);
+            this.setStatusNewValue(statusId, true);
         }
     }
 
@@ -881,3 +940,5 @@ export default class FiltrationSettings extends JetView {
         }
     }
 }
+
+

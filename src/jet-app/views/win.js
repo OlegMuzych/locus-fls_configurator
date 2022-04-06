@@ -39,7 +39,7 @@ export default class Page9View extends JetView {
         var logo = {
             view: "button",
             type: "image",
-            image: "assets/images/Ivanov_Logo_1.svg",
+            image: "assets/images/Logo_1.svg",
             // width: 500,
             height: 600,
             css: "logo_1",

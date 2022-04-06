@@ -31,7 +31,7 @@ export default class LeftMenu extends JetView{
                         height: 200,
                         css: "left_menu_button",
                         id: "left_menu_button_1",
-                        hidden: true,
+                        hidden: false,
                     },
                     {
                        height: 10,
@@ -39,23 +39,23 @@ export default class LeftMenu extends JetView{
                     {
                         view: "button",
                         type: "image",
-                        image: "assets/images/ONE.MAX.svg",
+                        image: "assets/images/model_201.svg",
                         width: 155,
                         height: 200,
-                        css: "left_menu_button",
+                        css: "left_menu_button_2",
                         id: "left_menu_button_2"
                     },
                     {
                         view: "button",
                         type: "image",
-                        image: "assets/images/ONE.BLE.svg",
+                        image: "assets/images/model_301_ble.svg",
                         width: 155,
                         height: 200,
                         css: "left_menu_button_2",
                         id: "left_menu_button_3"
                     },
                     {
-                        height: 340,
+                        height: 140, //340
                     },
 
                     {
@@ -121,7 +121,7 @@ export default class LeftMenu extends JetView{
             $$("left_menu_button_1").define("image", "assets/images//MODEL_101.svg")
             // $$("left_menu_button_2").define("image", "assets/images//MODEL_201.svg")
             $$("left_menu_button_2").define("image", "assets/images//ONE.MAX.svg")
-            // $$("left_menu_button_3").define("image", "assets/images//MODEL_301_BLE.svg")
+            // $$("left_menu_button_3").define("image", "assets/images//model_301_ble.svg")
             $$("left_menu_button_3").define("image", "assets/images//ONE.BLE.svg")
             $$("button_back").define("image", "assets/images//Back.svg")
             $$("button_reference").define("image", "assets/images//info.svg")

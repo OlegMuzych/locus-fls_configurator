@@ -37,7 +37,7 @@ export default class Page9View extends JetView {
                     {
                         view: "button",
                         type: "image",
-                        image: "assets/images/MODEL_301_BLE.svg",
+                        image: "assets/images/model_301_ble.svg",
                         width: 160,
                         height: 200,
                         css: "left_menu_button",

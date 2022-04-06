@@ -13,7 +13,7 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    maxWidth: 1950,
+    maxWidth: 950,
     minWidth: 900,
     minHeight: 700,
     maxHeight: 1000,
@@ -28,7 +28,7 @@ const createWindow = () => {
       zoomFactor: 0.6,
     },
     fullscreenable: false,
-    icon: __dirname + '/ivanov_logo_conf.ico',
+    icon: __dirname + '/point-monitoring.ico',
     removeMenu: true,
     autoHideMenuBar: true,
   });

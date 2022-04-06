@@ -3,6 +3,7 @@ import ResetLlsWindow from "../windows/reset-lls";
 import llsModel from "../../../models/lls-model";
 import PasswordWindow from "../windows/password";
 import configFile from "../../../config-app";
+import fileSettingsModel from "../../../models/file-settings-model";
 
 export default class ServiceMenu extends JetView {
     config() {
@@ -47,13 +48,15 @@ export default class ServiceMenu extends JetView {
             view: "popup",
             id: "popService",
             css: "service_button",
-            width: 245,
+            width: 400,//245
             height: 400,
             body: {
                 view: "list",
                 data: [
                     // {id: "updateFramework", location: "Обновить прошивку", name: ""},
                     {id: "resetLls", location: "Сброс всех настроек", name: ""},
+                    {id: "saveSettings", location: "Сохраниить насторйки в файл", name: ""},
+                    {id: "readSettings", location: "Прочитать настройкии из файла", name: ""},
                 ],
                 id: "list",
                 template: "#name# - #location#",
@@ -78,6 +81,17 @@ export default class ServiceMenu extends JetView {
 
             if (id == 'updateFramework') {
                 //todo: show update framework window
+            }
+
+            if (id == 'saveSettings') {
+                fileSettingsModel.write(llsModel.currentLongData).then();
+            }
+
+            if (id == 'readSettings') {
+                fileSettingsModel.read().then((settings)=>{
+                    llsModel.newLongData = {...settings};
+                    llsModel.getLongData().then();
+                });
             }
         });
 

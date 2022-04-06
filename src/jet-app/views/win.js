@@ -2,6 +2,7 @@
 import {JetView} from "webix-jet";
 import llsModel from "../models/lls-model";
 import configFile from "../config-app";
+import globalVariable from "../global-variable-app";
 //const SerialPort = eval(`require('serialport')`);
 // const findPort = require("../models/lls/findPort");
 
@@ -527,12 +528,12 @@ export default class Page9View extends JetView {
             $$("dark_light_theme").setValue(0);
         }
 
-        $$("switchAutoSaveMode").setValue(configFile.settings.autoSaveMode);
+        $$("switchAutoSaveMode").setValue(globalVariable.autoSaveMode);
         $$("switchAutoSaveMode").attachEvent("onChange",  (newValue, oldValue, config) => {
             if (newValue) {
-                configFile.settings.autoSaveMode = true;
+                globalVariable.autoSaveMode = true;
             } else {
-                configFile.settings.autoSaveMode = false;
+                globalVariable.autoSaveMode = false;
             }
         });
 

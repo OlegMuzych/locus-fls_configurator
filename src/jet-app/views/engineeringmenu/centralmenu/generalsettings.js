@@ -1,6 +1,7 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
 import configFile from "../../../config-app";
+import globalVariable from "../../../global-variable-app";
 
 export default class GeneralSettings extends JetView {
     config() {
@@ -671,7 +672,7 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 if (newValue >= 1 && newValue <= 254) {
                     llsModel.newLongData.llsAdr = newValue;
-                    if(configFile.settings.autoSaveMode){
+                    if(globalVariable.autoSaveMode){
                         llsModel.setLongData({llsAdr: llsModel.newLongData.llsAdr});
                     }
                     this.setTextValue("textLlsAdr", 'llsAdr', "statusLlsAdr");
@@ -720,7 +721,7 @@ export default class GeneralSettings extends JetView {
             console.log(obj);
             llsModel.newLongData.baudRate232 = obj.value;
             llsModel.newLongData.baudRate485 = obj.value;
-            if(configFile.settings.autoSaveMode){
+            if(globalVariable.autoSaveMode){
                 llsModel.setLongData({baudRate232: obj.value, baudRate485: obj.value});
                 this.setBaudRateValue();
             }else{
@@ -760,7 +761,7 @@ export default class GeneralSettings extends JetView {
             let obj = $$("listAutoGetData").getItem(id);
             console.log(obj);
             llsModel.newLongData.autoGetData = obj.value;
-            if(configFile.settings.autoSaveMode){
+            if(globalVariable.autoSaveMode){
                 llsModel.setLongData({autoGetData: obj.value});
                 this.setAutoGetDataValue();
             }else{
@@ -775,7 +776,7 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 if (newValue >= 0 && newValue <= 1024) {
                     llsModel.newLongData.minLevel = newValue;
-                    if(configFile.settings.autoSaveMode){
+                    if(globalVariable.autoSaveMode){
                         llsModel.setLongData({minLevel: llsModel.newLongData.minLevel});
                     }
                     this.setTextValue("textMinLevel", 'minLevel', "statusMinLevel");
@@ -797,7 +798,7 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 if (newValue >= 1024 && newValue <= 4095) {
                     llsModel.newLongData.maxLevel = newValue;
-                    if(configFile.settings.autoSaveMode){
+                    if(globalVariable.autoSaveMode){
                         llsModel.setLongData({maxLevel: llsModel.newLongData.maxLevel});
                     }
                     this.setTextValue("textMaxLevel", 'maxLevel', "statusMaxLevel");
@@ -881,7 +882,7 @@ export default class GeneralSettings extends JetView {
             let obj = $$("listFuelType").getItem(id);
             console.log(obj);
             llsModel.newLongData.thermalCompensationType = obj.value;
-            if(configFile.settings.autoSaveMode){
+            if(globalVariable.autoSaveMode){
                 llsModel.setLongData({thermalCompensationType: obj.value});
                 this.setThermalCompensationValue();
             }else{
@@ -897,7 +898,7 @@ export default class GeneralSettings extends JetView {
                 newValue = Number(newValue).toFixed(6);
                 if (newValue >= 0 && newValue < 1000) {
                     llsModel.newLongData.coefficientK1 = newValue;
-                    if(configFile.settings.autoSaveMode){
+                    if(globalVariable.autoSaveMode){
                         llsModel.setLongData({coefficientK1: llsModel.newLongData.coefficientK1});
                     }
                     this.setFloatValue("textCoefficientK1", 'coefficientK1', "statusCoefficientK1");
@@ -919,7 +920,7 @@ export default class GeneralSettings extends JetView {
                 newValue = Number(newValue).toFixed(6);
                 if (newValue >= 0 && newValue < 1000) {
                     llsModel.newLongData.coefficientK2 = newValue;
-                    if(configFile.settings.autoSaveMode){
+                    if(globalVariable.autoSaveMode){
                         llsModel.setLongData({coefficientK2: llsModel.newLongData.coefficientK2});
                     }
                     this.setFloatValue("textCoefficientK2", 'coefficientK2', "statusCoefficientK2");

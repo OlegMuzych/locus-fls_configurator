@@ -1,6 +1,7 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
 import configFile from "../../../config-app";
+import globalVariable from "../../../global-variable-app";
 
 export default class FiltrationSettings extends JetView {
     config() {
@@ -713,7 +714,7 @@ export default class FiltrationSettings extends JetView {
                 // newValue = this.fixed(Number(newValue));
                 if (newValue >= 0 && newValue < 1000) {
                     llsModel.newLongData.coefficientQ = newValue;
-                    if (configFile.settings.autoSaveMode) {
+                    if (globalVariable.autoSaveMode) {
                         llsModel.setLongData({coefficientQ: llsModel.newLongData.coefficientQ});
                     }
                     this.setFloatValue('text_q', "coefficientQ", "statusCoefficientQ");
@@ -735,7 +736,7 @@ export default class FiltrationSettings extends JetView {
                 newValue = Number(newValue).toFixed(6);
                 if (newValue >= 0 && newValue < 1000) {
                     llsModel.newLongData.coefficientR = newValue;
-                    if (configFile.settings.autoSaveMode) {
+                    if (globalVariable.autoSaveMode) {
                         llsModel.setLongData({coefficientR: llsModel.newLongData.coefficientR});
                     }
                     this.setFloatValue('text_r', "coefficientR", "statusCoefficientR");
@@ -797,7 +798,7 @@ export default class FiltrationSettings extends JetView {
             let obj = $$("listFilterType").getItem(id);
             console.log(obj);
             llsModel.newLongData.filtrationType = obj.value;
-            if (configFile.settings.autoSaveMode) {
+            if (globalVariable.autoSaveMode) {
                 llsModel.setLongData({filtrationType: obj.value});
                 this.setFiltrationTypeValue();
             } else {

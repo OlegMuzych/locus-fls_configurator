@@ -40,7 +40,7 @@ export default class Page9View extends JetView {
             view: "button",
             type: "image",
             image: "assets/images/Logo_1.svg",
-            // width: 500,
+            width: 500,
             height: 600,
             css: "logo_1",
             id: "logo_1",
@@ -53,7 +53,7 @@ export default class Page9View extends JetView {
                 {
                     cols: [
                         {
-                            width: 170,
+                            width: 170, //170
                         },
                         {
                             view: "button",
@@ -333,7 +333,7 @@ export default class Page9View extends JetView {
                                     {},
                                     {
                                         view: "label",
-                                        label: "<p>Торговая марка: 'Иванов Инжиниринг'</p>",
+                                        label: "<p>Торговая марка: 'Точка Мониторинга'</p>",
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
@@ -341,7 +341,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: "<p>Разработчик: ООО 'Иванов Инжиниринг'</p>",
+                                        label: "<p>Разработчик: ООО 'Точка Mониторинга'</p>",
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
@@ -349,7 +349,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: `<p>Версия конфигуратора ${VERSION}</p>`,
+                                        label: `<p>Версия конфигуратора: ${VERSION}</p>`,
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
@@ -357,7 +357,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: "<p>www.locme.ru</p>",
+                                        label: "<p>Point-Monitoring.ru</p>",
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",

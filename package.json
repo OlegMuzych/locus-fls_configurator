@@ -22,7 +22,7 @@
     "forge": {
       "electronRebuildConfig": {},
       "packagerConfig": {
-        "icon":"./src/point-monitoring.png"
+        "icon":"./src/ivanov_logo_conf.png"
       },
       "makers": [
         {

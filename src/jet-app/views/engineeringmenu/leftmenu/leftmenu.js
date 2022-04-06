@@ -112,9 +112,11 @@ export default class LeftMenu extends JetView{
             webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols");
             webix.html.addCss( $$("left_menu_button_1").getNode(), "left_menu_button");
             webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button");
-            webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button");
+            // webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button");
             webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference");
             webix.html.addCss( this.$$("button_back").getNode(), "left_menu_button_reference");
+            webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2");
+            webix.html.addCss( this.$$("save_settings").getNode(), "edit_values");
 
 
 
@@ -138,9 +140,11 @@ export default class LeftMenu extends JetView{
             webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols_dark");
             webix.html.addCss( $$("left_menu_button_1").getNode(), "left_menu_button_dark");
             webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_dark");
-            webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button_dark");
+            // webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button_dark");
             webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference_dark");
             webix.html.addCss( this.$$("button_back").getNode(), "left_menu_button_reference_dark");
+            webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2_dark");
+            webix.html.addCss( this.$$("save_settings").getNode(), "edit_values_dark");
 
 
 
@@ -149,8 +153,8 @@ export default class LeftMenu extends JetView{
             $$("left_menu_button_2").define("image", "assets/images/ONE.MAX inverse.svg")
             // $$("left_menu_button_3").define("image", "assets/images/MODEL_301_BLE_inverse.svg")
             $$("left_menu_button_3").define("image", "assets/images/ONE.BLE inverse.svg")
-            $$("button_back").define("image", "assets/images/back_inverse.svg")
-            $$("button_reference").define("image", "assets/images/info_inverse.svg")
+            $$("button_back").define("image", "assets/images/back_inverse_3.svg")
+            $$("button_reference").define("image", "assets/images/info_inverse_3.svg")
 
             $$("left_menu_button_1").refresh();
             $$("left_menu_button_2").refresh();

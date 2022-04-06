@@ -10,6 +10,7 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id: "rows_number_2",
                     cols: [
                         {
                             view: "text",
@@ -18,17 +19,15 @@ export default class GeneralSettings extends JetView {
                             inputHeight: 100,
                             label: '<p>Сетевой адрес</p>',
                             labelWidth: 400,
-                            css: "window_type_2",
+                            // css: "window_type_2_dark",
                             readonly: false,
                             minWidth: 60,
                             type: 'number',
                             title: '1-254',
                             localId: "textLlsAdr",
+                            id:"textLlsAdr1"
                             // maxWidth: 600,
                         },
-                        // {
-                        //   width: 100,
-                        // },
                         {
                             align: "right",
                             rows: [
@@ -37,7 +36,7 @@ export default class GeneralSettings extends JetView {
                                 },
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
+                                    css: "auto_calibration",
                                     label: 'Применить',
                                     height: 60,
                                     width: 150,
@@ -79,6 +78,7 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id: "rows_number_4",
                     cols: [
                         {
                             view: "text",
@@ -100,7 +100,7 @@ export default class GeneralSettings extends JetView {
                                 {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
+                                    css: "auto_calibration",
                                     label: 'Применить',
                                     height: 60,
                                     width: 150,
@@ -139,6 +139,7 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id: "rows_number_5",
                     cols: [
                         {
                             view: "text",
@@ -161,7 +162,7 @@ export default class GeneralSettings extends JetView {
                                 {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
+                                    css: "auto_calibration",
                                     label: 'Применить',
                                     height: 60,
                                     width: 150,
@@ -233,6 +234,7 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id:"rows_number_8",
                     cols: [
                         {
                             view: "text",
@@ -253,7 +255,7 @@ export default class GeneralSettings extends JetView {
                                 {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
+                                    css: "auto_calibration",
                                     label: 'Выбрать',
                                     height: 60,
                                     width: 150,
@@ -292,6 +294,7 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id:"rows_rows_9",
                     cols: [
                         {
                             view: "text",
@@ -312,7 +315,7 @@ export default class GeneralSettings extends JetView {
                                 {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
+                                    css: "auto_calibration",
                                     label: 'Применить',
                                     height: 60,
                                     width: 150,
@@ -352,6 +355,7 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id:"rows_number_10",
                     cols: [
                         {
                             view: "text",
@@ -372,7 +376,7 @@ export default class GeneralSettings extends JetView {
                                 {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
+                                    css: "auto_calibration",
                                     label: 'Применить',
                                     height: 60,
                                     width: 150,
@@ -410,6 +414,7 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id:"rows_number_3",
                     cols: [
                         {
                             view: "text",
@@ -430,7 +435,7 @@ export default class GeneralSettings extends JetView {
                                 {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
+                                    css: "auto_calibration",
                                     label: 'Выбрать',
                                     height: 60,
                                     width: 150,
@@ -468,6 +473,7 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id:"rows_number_7",
                     cols: [
                         {
                             view: "text",
@@ -488,7 +494,7 @@ export default class GeneralSettings extends JetView {
                                 {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
+                                    css: "auto_calibration",
                                     label: 'Выбрать',
                                     height: 60,
                                     width: 150,
@@ -565,19 +571,35 @@ export default class GeneralSettings extends JetView {
                     {height: 20},
 
                     {
-                        view: "radio",
-                        label: '<p>Выходное сообщение</p>',
+                        height: 100,
                         css: "window_type_2",
-                        id: "window_type_2_7",
-                        width: 850,
-                        height: 60,
-                        labelWidth: 400,
-                        value: 0,
-                        localId: 'outputParametersOfSensor',
-                        options: [
-                            {id: 0, value: "Уровень"}, // изначально выбранный элемент
-                            {id: 1, value: "Объем"}
+                        id:"rows_number_6",
+                        rows:[
+                            {
+
+                            },
+
+                            {
+                                view: "radio",
+                                label: '<p>Выходное сообщение</p>',
+                                css: "window_type_2",
+                                id: "window_type_2_7",
+                                width: 850,
+                                // height: 80,
+                                labelWidth: 400,
+                                value: 0,
+                                localId: 'outputParametersOfSensor',
+                                options: [
+                                    {id: 0, value: "Уровень",}, // изначально выбранный элемент
+                                    {id: 1, value: "Объем"}
+                                ]
+                            },
+                            {
+
+                            }
+
                         ]
+
                     },
                     {height: 20},
                     autoOutputSwitch,
@@ -595,6 +617,8 @@ export default class GeneralSettings extends JetView {
                                         label: "<p>Температурная компенсация</p>",
                                         width: 400,
                                         height: 100,
+                                        css: "window_type_2",
+                                        id: "window_type_4_4",
                                     },
                                     {
                                         width: 50,
@@ -935,29 +959,71 @@ export default class GeneralSettings extends JetView {
 
 
         if (configFile.theme.color == 'white') {
+            webix.html.addCss($$("rows_number_2").getNode(), "window_type_2");
+            webix.html.addCss($$("central_menu_button_1").getNode(), "style_general_rows");
             webix.html.addCss($$("window_type_1").getNode(), "window_type_1");
-            webix.html.addCss($$("window_type_2_1").getNode(), "window_type_2");
-            webix.html.addCss($$("window_type_2_2").getNode(), "window_type_2");
-            webix.html.addCss($$("window_type_2_3").getNode(), "window_type_2");
-            webix.html.addCss($$("window_type_2_4").getNode(), "window_type_2");
-            webix.html.addCss($$("window_type_2_5").getNode(), "window_type_2");
-            webix.html.addCss($$("window_type_2_6").getNode(), "window_type_2");
-            webix.html.addCss($$("window_type_2_7").getNode(), "window_type_3");
-            webix.html.addCss($$("window_type_2_8").getNode(), "window_type_3");
-            webix.html.addCss($$("window_type_2_9").getNode(), "window_type_3");
+            webix.html.addCss($$("rows_number_4").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("textMinLevel").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("textMaxLevel").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("rows_number_5").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("counterPeriod").getNode(), "window_type_3");
+            webix.html.addCss(this.$$("counterCounterPeriod").getNode(), "window_type_3");
+            webix.html.addCss(this.$$("textBaudRate").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("rows_number_3").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("textAutoGetData").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("rows_number_7").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("window_type_2_7").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("rows_number_6").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("window_type_2_6").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("window_type_4_4").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("rows_number_10").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("textCoefficientK2").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("rows_rows_9").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("textCoefficientK1").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("rows_number_8").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("textFuelType").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("buttonAutoGetData").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("buttonBaudRate").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("buttonLlsAdr").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("buttonMinLevel").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("buttonMaxLevel").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("buttonCoefficientK2").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("buttonCoefficientK1").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("buttonFuelType").getNode(), "auto_calibration");
         }
 
         if (configFile.theme.color == 'black') {
+            webix.html.addCss($$("rows_number_2").getNode(), "window_type_2_dark");
+            webix.html.addCss($$("central_menu_button_1").getNode(), "style_general_rows_dark");
             webix.html.addCss($$("window_type_1").getNode(), "window_type_1_dark");
-            webix.html.addCss($$("window_type_2_1").getNode(), "window_type_2_dark");
-            webix.html.addCss($$("window_type_2_2").getNode(), "window_type_2_dark");
-            webix.html.addCss($$("window_type_2_3").getNode(), "window_type_2_dark");
-            webix.html.addCss($$("window_type_2_4").getNode(), "window_type_2_dark");
-            webix.html.addCss($$("window_type_2_5").getNode(), "window_type_2_dark");
-            webix.html.addCss($$("window_type_2_6").getNode(), "window_type_2_dark");
-            webix.html.addCss($$("window_type_2_7").getNode(), "window_type_3_dark");
-            webix.html.addCss($$("window_type_2_8").getNode(), "window_type_3_dark");
-            webix.html.addCss($$("window_type_2_9").getNode(), "window_type_3_dark");
+            webix.html.addCss($$("rows_number_4").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("textMinLevel").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("textMaxLevel").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("rows_number_5").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("counterPeriod").getNode(), "window_type_3_dark");
+            webix.html.addCss(this.$$("counterCounterPeriod").getNode(), "window_type_3_dark");
+            webix.html.addCss(this.$$("textBaudRate").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("rows_number_3").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("textAutoGetData").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("rows_number_7").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("window_type_2_7").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("rows_number_6").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("window_type_2_6").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("window_type_4_4").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("rows_number_10").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("textCoefficientK2").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("rows_rows_9").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("textCoefficientK1").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("rows_number_8").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("textFuelType").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("buttonAutoGetData").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("buttonBaudRate").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("buttonLlsAdr").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("buttonMinLevel").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("buttonMaxLevel").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("buttonCoefficientK2").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("buttonCoefficientK1").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("buttonFuelType").getNode(), "auto_calibration_dark");
         }
     }
 

@@ -10,20 +10,28 @@ import FiltrationSubView from "./subviews/filteringsubview";
 export default class RightMenu extends JetView{
     config(){
         let myMultiview = {
-            view: "multiview",
-            cells: [
-                {
-                    id: 'calibrationSubView', rows: [CalibrationSubView],
-                },
-                {
-                    id: 'fullEmptySubView', rows: [FullEmptySubView],
-                },
-                {
-                    id: 'filteringSubView', rows: [FiltrationSubView],
-                }
-            ],
-            animate: false,
-        }
+            view: "scrollview",
+            scroll: "y",
+            maxHeight: 970,
+            id: "rows_right_body",
+            css: "rows_right",
+            body: {
+                view: "multiview",
+                cells: [
+                    {
+                        id: 'calibrationSubView', rows: [CalibrationSubView],
+                    },
+                    {
+                        id: 'fullEmptySubView', rows: [FullEmptySubView],
+                    },
+                    {
+                        id: 'filteringSubView', rows: [FiltrationSubView],
+                    }
+                ],
+
+                animate: false,
+            }
+        };
 
         let body = {
             css: "rows_right",
@@ -93,9 +101,11 @@ export default class RightMenu extends JetView{
 
         if(configFile.theme.color == 'white'){
             webix.html.addCss( $$("rows_right_2").getNode(), "rows_right");
+            webix.html.addCss( $$("rows_right_body").getNode(), "rows_right");
         }
         if(configFile.theme.color == 'black'){
             webix.html.addCss( $$("rows_right_2").getNode(), "rows_right_dark");
+            webix.html.addCss( $$("rows_right_body").getNode(), "rows_right_dark");
         }
     }
 }

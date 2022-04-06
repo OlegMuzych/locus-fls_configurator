@@ -23,7 +23,7 @@ export default class FiltrationSubView extends JetView {
                                     view: "text",
                                     width: 460,
                                     height: 70,
-                                    css: "full_level_windows",
+                                    css: "full_window_text",
                                     readonly: true,
                                     localId: "status_level_fuel",
                                     inputAlign: "center",
@@ -37,7 +37,7 @@ export default class FiltrationSubView extends JetView {
                                 {},
                                 {
                                     view: "label",
-                                    label: "<p style='position: relative; top: -20px; '>Текущий уровень</p>",
+                                    label: "<p style='position: relative; top: -20px;'>Текущий уровень</p>",
                                     // width: 460,
                                     // height: 100,
                                     css: "right_menu_fuel_level",
@@ -124,9 +124,13 @@ export default class FiltrationSubView extends JetView {
 
         if (configFile.theme.color == 'white') {
             webix.html.addCss(this.$$("progress_bar2").getNode(), "progress_bar");
+            webix.html.addCss(this.$$("status_level_fuel").getNode(), "full_window_text");
+            webix.html.addCss(this.$$("right_menu_setup").getNode(), "right_menu_status");
         }
         if (configFile.theme.color == 'black') {
             webix.html.addCss(this.$$("progress_bar2").getNode(), "progress_bar_dark");
+            webix.html.addCss(this.$$("status_level_fuel").getNode(), "full_window_text_dark");
+            webix.html.addCss(this.$$("right_menu_setup").getNode(), "right_menu_status_dark");
         }
     }
 

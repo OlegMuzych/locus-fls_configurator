@@ -632,7 +632,7 @@ border: none;
     height: 40%;
     position: relative;
     top: 30px;
-    width: 50px;
+    width: 70px;
 
 }
 
@@ -641,27 +641,27 @@ border: none;
     height: 40%;
     position: relative;
     top: 30px;
-    width: 50px;
+    width: 70px;
 
 }
 
 .window_type_3_dark .webix_inp_counter_prev{
-    color: #fff;
+    color: #000;
     height: 40%;
     position: relative;
     top: 30px;
     width: 70px;
-    background-color: #414e72;
+    background-color: #f0f0f0;
     border: 1px solid var(--c-white-color-background-dark_general_rows);
 }
 
 .window_type_3_dark .webix_inp_counter_next{
-    color: #fff;
+    color: #000;
     height: 40%;
     position: relative;
     top: 30px;
-    width: 50px;
-    background-color: #414e72;
+    width: 70px;
+    background-color: #f0f0f0;
     border: 1px solid var(--c-white-color-background-dark_general_rows);
 }
 
@@ -729,6 +729,14 @@ border: none;
     }
 
 
+    /*.window_type_2_dark .webix_el_group{*/
+    /*    position: relative;*/
+    /*    top: 50px;*/
+    /*    left: 100px;*/
+    /*    margin-top: 100px;*/
+    /*}*/
+
+
     .window_type_2 p{
         color: #000;
         text-align: left;
@@ -738,6 +746,11 @@ border: none;
         position: relative;
         top: -20px;
 
+    }
+
+
+    .window_type_2 .webix_el_box{
+       width: 500px;
     }
 
 
@@ -757,13 +770,13 @@ border: none;
         font-size: var(--font-size);
         font-weight: var(--font-weight);
         height: 60%;
-        width: 50%;
+        width: 150%;
         background-color: #fff;
         border: 1px solid #ececec;
         border-radius: 0;
         position: relative;
         top: 20%;
-        right: 180px;
+        right: 80px;
     }
 
     .window_type_2_dark  input {
@@ -1033,12 +1046,18 @@ border: none;
 }
 
 .left_menu_button_dark .webix_button{
-    background-color: var(--c-white-color-background-dark_left_menu_button);
-    border-right: 0 solid #fff;
+    background-color: var(--c-white-color-background-dark_left_menu_button_hover);
+    border-left: 8px solid #fff;
+    border-right: 2px solid #fff;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    border-left: 8px solid var(--c-white-color-background-dark_left_menu_button);
+    position: relative;
+    top: -2px;
+    width: 101%;
 }
+
 
 .left_menu_button_dark .webix_image{
     width: 80%;
@@ -1047,21 +1066,42 @@ border: none;
 
 .left_menu_button_dark .webix_button:focus{
     background-color: var(--c-white-color-background-dark_left_menu_button_hover);
-    border-left: 8px solid #628cbb;
+    border-left: 8px solid #fff;
     border-right: 2px solid #fff;
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     position: relative;
     top: -2px;
     width: 101%;
 }
 
 .left_menu_button_dark .webix_button:active{
+    background-color: var(--c-white-color-background-dark_left_menu_button_hover);
+    border-left: 8px solid #fff;
+    border-right: 2px solid #fff;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     position: relative;
     top: -2px;
     width: 101%;
 }
 
+.left_menu_button_dark .webix_button:hover{
+    background-color: var(--c-white-color-background-dark_left_menu_button_hover);
+    border-left: 8px solid #fff;
+    border-right: 2px solid #fff;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: relative;
+    top: -2px;
+    width: 101%;
+}
 /*-------------------------------*/
 
 
@@ -1099,6 +1139,38 @@ border: none;
 }
 
 
+.left_menu_button_2_dark .webix_button {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-right: 0 solid rgba(255, 255, 255, 0.1);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: 8px solid rgba(255, 255, 255, 0.1);
+    cursor: default;
+}
+
+.left_menu_button_2_dark .webix_button:focus{
+    background-color: rgba(255, 255, 255, 0.1);
+    border-right: 0 solid rgba(255, 255, 255, 0.1);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: 8px solid rgba(255, 255, 255, 0.1);
+}
+
+.left_menu_button_2_dark .webix_button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-right: 0 solid rgba(255, 255, 255, 0.1);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: 8px solid rgba(255, 255, 255, 0.1);
+}
+
+.left_menu_button_2_dark .webix_button:active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-right: 0 solid rgba(255, 255, 255, 0.1);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: 8px solid rgba(255, 255, 255, 0.1);
+}
 
 /*-------------------------------*/
 
@@ -1399,6 +1471,16 @@ border: none;
 
 }
 
+.auto_calibration_dark .webix_button{
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.auto_calibration_dark .webix_button:hover{
+    background-color: #dbdbdb;
+    color: #000;
+}
+
 .progress_bar{
     background-color: #f8f8f8;
 }
@@ -1413,6 +1495,40 @@ border: none;
     width: 98%;
     height: 98%;
 }
+
+.edit_values_dark .webix_button{
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    border: 3px solid #fff;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 100;
+    width: 98%;
+    height: 98%;
+}
+
+.edit_values_dark .webix_button:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    border: 3px solid #fff;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 100;
+    width: 98%;
+    height: 98%;
+}
+
+.edit_values_dark .webix_button:focus{
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    border: 3px solid #fff;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 100;
+    width: 98%;
+    height: 98%;
+}
+/*---------
 /*----------------------------------------------------------*/
 
 
@@ -1587,6 +1703,10 @@ border: none;
     font-size: 18px;
     font-weight: 100;
 }
+
+
+
+
 .toolbar_button_filter_set{
     background-color: #f0f0f0;
     border: none;
@@ -1873,6 +1993,26 @@ border: none;
     background-color: #b7c5e2;
 }
 
+
+.button_next_drain_window_1_2_dark .webix_button{
+    background-color: #f0f0f0;
+    color: #000;
+    font-size: 18px;
+    font-weight: 100;
+    border-radius: 4px;
+}
+
+.button_next_drain_window_1_2_dark .webix_button:hover{
+    background-color: #dbdbdb;
+}
+.button_next_drain_window_1_2_dark .webix_button:focus{
+    background-color: #dbdbdb;
+}
+
+.filters_rows_number_2_dark{
+    background-color: var(--c-white-color-background-dark_general_windows);
+    border-radius: 12px;
+}
 .set_step_drain_button_2 .webix_button{
     background-color: #f9f9f9;
     color: #000;

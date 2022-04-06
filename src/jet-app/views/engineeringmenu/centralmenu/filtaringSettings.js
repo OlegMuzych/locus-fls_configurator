@@ -9,11 +9,14 @@ export default class FiltrationSettings extends JetView {
             maxWidth: 850,
             view: "scrollview",
             scroll: "y",
-            maxHeight: 960,
+            maxHeight: 1960,
+            id: "central_menu_button_3",
+            css: "style_general_rows",
             body: {
                 minWidth: 600,
                 maxWidth: 850,
-                id: "central_menu_button_3",
+                // id: "central_menu_button_3",
+                // css: "style_general_rows",
                 rows: [
                     {
                         height: 100,
@@ -107,12 +110,11 @@ export default class FiltrationSettings extends JetView {
                         ]
                     },
                     {
-                        minHeight: 10,
-
+                        height: 150,
                     },
                     {
                         height: 420,
-                        // css: "filters_rows",
+                        css: "filters_rows_number_2",
                         id: "degree_of_filtration_2",
                         rows: [
                             {
@@ -818,7 +820,7 @@ export default class FiltrationSettings extends JetView {
             webix.html.addCss($$("image_button_filter_1").getNode(), "image_button_filter");
             webix.html.addCss($$("image_button_filter_2").getNode(), "image_button_filter");
             webix.html.addCss($$("image_button_filter_3").getNode(), "image_button_filter");
-            webix.html.addCss($$("degree_of_filtration_2").getNode(), "filters_rows");
+            webix.html.addCss($$("degree_of_filtration_2").getNode(), "filters_rows_number_2");
             webix.html.addCss($$("filter_open_windows").getNode(), "full_window_text");
             webix.html.addCss($$("text_q").getNode(), "full_window_text");
             webix.html.addCss($$("text_r").getNode(), "full_window_text");
@@ -829,7 +831,9 @@ export default class FiltrationSettings extends JetView {
             webix.html.addCss($$("slider_filter_2").getNode(), "slider_1");
             webix.html.addCss($$("window_text_mediana").getNode(), "full_window_text");
             webix.html.addCss($$("button_slider_gen_value_2").getNode(), "button_slider_gen_value");
+            webix.html.addCss($$("central_menu_button_3").getNode(), "style_general_rows");
         }
+
         if (configFile.theme.color == 'black') {
             webix.html.addCss($$("text_color_filter_1").getNode(), "text_color_filter_dark");
             webix.html.addCss($$("text_color_filter_2").getNode(), "text_color_filter_dark");
@@ -843,7 +847,7 @@ export default class FiltrationSettings extends JetView {
             webix.html.addCss($$("image_button_filter_1").getNode(), "image_button_filter_dark");
             webix.html.addCss($$("image_button_filter_2").getNode(), "image_button_filter_dark");
             webix.html.addCss($$("image_button_filter_3").getNode(), "image_button_filter_dark");
-            webix.html.addCss($$("degree_of_filtration_2").getNode(), "filters_rows_dark");
+            webix.html.addCss($$("degree_of_filtration_2").getNode(), "filters_rows_number_2_dark");
             webix.html.addCss($$("filter_open_windows").getNode(), "full_window_text_dark");
             webix.html.addCss($$("text_q").getNode(), "full_window_text_dark");
             webix.html.addCss($$("text_r").getNode(), "full_window_text_dark");
@@ -854,6 +858,7 @@ export default class FiltrationSettings extends JetView {
             webix.html.addCss($$("slider_filter_2").getNode(), "slider_1_dark");
             webix.html.addCss($$("window_text_mediana").getNode(), "full_window_text_dark");
             webix.html.addCss($$("button_slider_gen_value_2").getNode(), "button_slider_gen_value_dark");
+            webix.html.addCss($$("central_menu_button_3").getNode(), "style_general_rows_dark");
         }
     }
 

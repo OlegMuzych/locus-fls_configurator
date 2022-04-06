@@ -52,7 +52,7 @@ export default class LlsNoConnectWindow extends JetView {
                             //     disabled: false,
                             //     hidden: false,
                             // },
-                            {}
+                            // {}
                         ]
                     },
                     {}

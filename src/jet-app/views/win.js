@@ -11,7 +11,7 @@ import globalVariable from "../global-variable-app";
 export default class Page9View extends JetView {
     config() {
 
-
+        const _ = this.app.getService("locale")._;
         // Версия прошивки надпись
         var ver = {
             rows: [
@@ -22,7 +22,7 @@ export default class Page9View extends JetView {
                         },
                         {
                             view: "label",
-                            label: "Версия: " + VERSION,
+                            label: _("version") + ": " + VERSION,
                             align: "left",
                             css: "ver_soft",
                             id: "ver_soft"
@@ -72,7 +72,7 @@ export default class Page9View extends JetView {
                         {width: 20,},
                         {
                             view: "label",
-                            label: "Датчик подключен",
+                            label: _("sensor_is_connected"),
                             height: 30,
                             width: 300,
                             css: "label_status_gage_windows_start",
@@ -80,7 +80,8 @@ export default class Page9View extends JetView {
                         },
                         {
                             view: "label",
-                            label: "Датчик не подключен",
+                            // label: "Датчик не подключен",
+                            label: _('sensor_is_not_connected'),
                             height: 30,
                             width: 300,
                             css: "label_status_gage_windows_start",
@@ -167,7 +168,7 @@ export default class Page9View extends JetView {
                 rows: [
                     {
                         cols: [
-                            {template: "Настройки", type: "header", borderless: true,},
+                            {template: _("settings"), type: "header", borderless: true,},
                             {
                                 view: "icon", icon: "wxi-close", tooltip: "Close window", click: function () {
                                     $$("window_show").hide()
@@ -190,7 +191,7 @@ export default class Page9View extends JetView {
                                 view: "combo",
                                 width: 750,
                                 height: 100,
-                                label: '<p>Выбор языка</p>',
+                                label: `<p>${_("language_selection")}</p>`,
                                 labelWidth: 500,
                                 css: "window_type_4",
                                 inputAlign: "center",
@@ -222,7 +223,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: "<p style='position: relative; top: -20px; text-align: left'>Выбор темы</p>",
+                                        label: `<p style='position: relative; top: -20px; text-align: left'>${_("theme_selection")}</p>`,
                                         width: 550,
                                         id: "light_theme_label",
                                         css:"language_windows_modal",
@@ -244,7 +245,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: "<p style='position: relative; top: -30px; text-align: left'>Размер шрифта</p>",
+                                        label: `<p style='position: relative; top: -30px; text-align: left'>${_("font_size")}</p>`,
                                         width: 300,
                                         id: "light_theme_label_3",
                                         css:"language_windows_modal",
@@ -272,7 +273,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: "<p style='position: relative; top: -20px; text-align: left'>Автоматическое сохранение настроек</p>",
+                                        label: `<p style='position: relative; top: -20px; text-align: left'>${_("auto_save_mode")}</p>`,
                                         width: 550,
                                         id: "light_theme_label_2",
                                         css:"language_windows_modal",
@@ -310,7 +311,7 @@ export default class Page9View extends JetView {
                 rows: [
                     {
                         cols: [
-                            {template: "Справка", type: "header", borderless: true,},
+                            {template: _("reference"), type: "header", borderless: true,},
                             {
                                 view: "icon", icon: "wxi-close", tooltip: "Close window", click: function () {
                                     $$("window_show_2").hide()
@@ -333,7 +334,7 @@ export default class Page9View extends JetView {
                                     {},
                                     {
                                         view: "label",
-                                        label: "<p>Торговая марка: 'Иванов Инжиниринг'</p>",
+                                        label: `<p>${_("trademark")}</p>`,
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
@@ -341,7 +342,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: "<p>Разработчик: ООО 'Иванов Инжиниринг'</p>",
+                                        label: `<p>${_('developer')}</p>`,
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
@@ -349,7 +350,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: `<p>Версия конфигуратора ${VERSION}</p>`,
+                                        label: `<p>${_('program_version')}: ${VERSION}</p>`,
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
@@ -357,7 +358,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: "<p>www.locme.ru</p>",
+                                        label: `<p>${_('website')}</p>`,
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
@@ -365,7 +366,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: "<p>© 2022</p>",
+                                        label: `<p>${_('copyright')}</p>`,
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",

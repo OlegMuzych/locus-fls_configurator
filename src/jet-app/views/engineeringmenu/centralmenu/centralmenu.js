@@ -5,6 +5,7 @@ import FiltrationSettings from "./filtaringSettings";
 import configFile from "../../../config-app";
 export default class CentralMenu extends JetView{
     config(){
+        const _ = this.app.getService("locale")._;
         let central_menu_button = {
             minWidth: 600,
             maxWidth: 850,
@@ -16,7 +17,7 @@ export default class CentralMenu extends JetView{
                     cols: [
                         {
                             view: "button",
-                            label: "Основные настройки",
+                            label: _("main_settings"),
                             maxWidth: 300,
                             minWidth: 120,
                             height: 100,
@@ -26,7 +27,7 @@ export default class CentralMenu extends JetView{
                         },
                         {
                             view: "button",
-                            label: "Тарировка",
+                            label: _("calibration"),
                             maxWidth: 300,
                             minWidth: 120,
                             height: 100,
@@ -36,7 +37,7 @@ export default class CentralMenu extends JetView{
                         },
                         {
                             view: "button",
-                            label: "Фильтрация",
+                            label: _("filtering"),
                             maxWidth: 300,
                             minWidth: 120,
                             height: 100,

@@ -16,6 +16,7 @@ export default class MyApp extends JetApp{
 		};
 
 		super({ ...defaults, ...config });
+		this.use(plugins.Locale, { lang:"ru" });
 
 	}
 }

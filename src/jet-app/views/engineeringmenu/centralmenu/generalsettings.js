@@ -5,7 +5,7 @@ import globalVariable from "../../../global-variable-app";
 
 export default class GeneralSettings extends JetView {
     config() {
-
+        const _ = this.app.getService("locale")._;
         let llsAdr = {
             localId: "llsAdr",
             rows: [
@@ -17,7 +17,7 @@ export default class GeneralSettings extends JetView {
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Сетевой адрес</p>',
+                            label: `<p>${_('address_lls')}</p>`,
                             labelWidth: 400,
                             css: "window_type_2",
                             readonly: false,
@@ -39,7 +39,7 @@ export default class GeneralSettings extends JetView {
                                 {
                                     view: "button",
                                     css: "button_filter_set",
-                                    label: 'Применить',
+                                    label: _('apply'),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonLlsAdr',
@@ -86,7 +86,7 @@ export default class GeneralSettings extends JetView {
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Минимальный уровень</p>',
+                            label: `<p>${_("min_level")}</p>`,
                             labelWidth: 400,
                             css: "window_type_2",
                             readonly: false,
@@ -102,7 +102,7 @@ export default class GeneralSettings extends JetView {
                                 {
                                     view: "button",
                                     css: "button_filter_set",
-                                    label: 'Применить',
+                                    label: _('apply'),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonMinLevel',
@@ -146,7 +146,7 @@ export default class GeneralSettings extends JetView {
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Максимальный уровень</p>',
+                            label: `<p>${_("max_level")}</p>`,
                             labelWidth: 400,
                             css: "window_type_2",
                             readonly: false,
@@ -163,7 +163,7 @@ export default class GeneralSettings extends JetView {
                                 {
                                     view: "button",
                                     css: "button_filter_set",
-                                    label: 'Применить',
+                                    label: _('apply'),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonMaxLevel',
@@ -204,7 +204,7 @@ export default class GeneralSettings extends JetView {
             cols: [
                 {
                     view: "label",
-                    label: '<p>Период выдачи данных, сек.</p>',
+                    label: `<p>${_("period_of_data_issuance")}</p>`,
                     width: 350,
                     height: 100,
                 },
@@ -240,7 +240,7 @@ export default class GeneralSettings extends JetView {
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Тип топлива</p>',
+                            label: `<p>${_("fuel_type")}</p>`,
                             labelWidth: 400,
                             css: "window_type_2",
                             readonly: true,
@@ -255,7 +255,7 @@ export default class GeneralSettings extends JetView {
                                 {
                                     view: "button",
                                     css: "button_filter_set",
-                                    label: 'Выбрать',
+                                    label: _('choose'),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonFuelType',
@@ -299,7 +299,7 @@ export default class GeneralSettings extends JetView {
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Коэффициент К1</p>',
+                            label: `<p>${_("coefficient_k1")}</p>`,
                             labelWidth: 400,
                             css: "window_type_2",
                             readonly: false,
@@ -314,7 +314,7 @@ export default class GeneralSettings extends JetView {
                                 {
                                     view: "button",
                                     css: "button_filter_set",
-                                    label: 'Применить',
+                                    label: _("apply"),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonCoefficientK1',
@@ -359,7 +359,7 @@ export default class GeneralSettings extends JetView {
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Коэффициент К2</p>',
+                            label: `<p>${_("coefficient_k2")}</p>`,
                             labelWidth: 400,
                             css: "window_type_2",
                             readonly: false,
@@ -374,7 +374,7 @@ export default class GeneralSettings extends JetView {
                                 {
                                     view: "button",
                                     css: "button_filter_set",
-                                    label: 'Применить',
+                                    label: _("apply"),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonCoefficientK2',
@@ -417,7 +417,7 @@ export default class GeneralSettings extends JetView {
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Скорость подключения</p>',
+                            label: `<p>${_("baud_rate")}</p>`,
                             labelWidth: 400,
                             css: "window_type_2",
                             readonly: true,
@@ -432,7 +432,7 @@ export default class GeneralSettings extends JetView {
                                 {
                                     view: "button",
                                     css: "button_filter_set",
-                                    label: 'Выбрать',
+                                    label: _('choose'),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonBaudRate',
@@ -475,8 +475,7 @@ export default class GeneralSettings extends JetView {
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Автоматическая выдача данных</p>',
-                            labelWidth: 400,
+                            label: `<p>${_("automatic_data_output")}</p>`,                            labelWidth: 400,
                             css: "window_type_2",
                             readonly: true,
                             minWidth: 60,
@@ -490,7 +489,7 @@ export default class GeneralSettings extends JetView {
                                 {
                                     view: "button",
                                     css: "button_filter_set",
-                                    label: 'Выбрать',
+                                    label: _('choose'),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonAutoGetData',
@@ -546,7 +545,7 @@ export default class GeneralSettings extends JetView {
                                 view: "text",
                                 width: 850,
                                 height: 100,
-                                label: '<p>Серийный номер</p>',
+                                label: `<p>${_("serial_number")}</p>`,
                                 labelWidth: 400,
                                 css: "window_type_1",
                                 inputAlign: "center",
@@ -567,7 +566,7 @@ export default class GeneralSettings extends JetView {
 
                     {
                         view: "radio",
-                        label: '<p>Выходное сообщение</p>',
+                        label: `<p>${_("output_message_type")}</p>`,
                         css: "window_type_2",
                         id: "window_type_2_7",
                         width: 850,
@@ -593,7 +592,7 @@ export default class GeneralSettings extends JetView {
                                 cols: [
                                     {
                                         view: "label",
-                                        label: "<p>Температурная компенсация</p>",
+                                        label: `<p>${_("temperature_compensation")}</p>`,
                                         width: 400,
                                         height: 100,
                                     },
@@ -662,6 +661,7 @@ export default class GeneralSettings extends JetView {
     }
 
     init() {
+        const _ = this.app.getService("locale")._;
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerLongData(this.listenerLongData);
 
@@ -741,9 +741,9 @@ export default class GeneralSettings extends JetView {
             body: {
                 view: "list",
                 data: [
-                    {id: "0", location: "Выключена", name: "1", value: 0},
-                    {id: "1", location: "Бинарная", name: "2", value: 1},
-                    {id: "2", location: "Символьная", name: "3", value: 2},
+                    {id: "0", location: _("automatic_data_output_turned_off"), name: "1", value: 0},
+                    {id: "1", location: _("automatic_data_output_binary"), name: "2", value: 1},
+                    {id: "2", location: _("automatic_data_output_symbolic"), name: "3", value: 2},
                 ],
                 template: "#name# - #location#",
                 autoheight: true,
@@ -857,14 +857,14 @@ export default class GeneralSettings extends JetView {
             body: {
                 view: "list",
                 data: [
-                    {id: "0", location: "Выключена", name: "1", value: 0},
-                    {id: "1", location: "АИ-95", name: "2", value: 1},
-                    {id: "2", location: "АИ-92", name: "3", value: 2},
-                    {id: "3", location: "АИ-80 (Лето)", name: "4", value: 3},
-                    {id: "4", location: "АИ-80 (Зима)", name: "5", value: 4},
-                    {id: "5", location: "ДТ (Лето)", name: "6", value: 5},
-                    {id: "6", location: "ДТ (Зима)", name: "7", value: 6},
-                    {id: "7", location: "Свои параметры", name: "8", value: 7},
+                    {id: "0", location: _("fuel_type_turned_off"), name: "1", value: 0},
+                    {id: "1", location: _("fuel_type_1"), name: "2", value: 1},
+                    {id: "2", location: _("fuel_type_2"), name: "3", value: 2},
+                    {id: "3", location: _("fuel_type_3"), name: "4", value: 3},
+                    {id: "4", location: _("fuel_type_4"), name: "5", value: 4},
+                    {id: "5", location: _("fuel_type_5"), name: "6", value: 5},
+                    {id: "6", location: _("fuel_type_6"), name: "7", value: 6},
+                    {id: "7", location: _("fuel_type_7"), name: "8", value: 7},
                 ],
                 template: "#name# - #location#",
                 autoheight: true,
@@ -1006,17 +1006,17 @@ export default class GeneralSettings extends JetView {
     setAutoGetData(number) {
         switch (number) {
             case 0: {
-                this.$$("textAutoGetData").setValue("Выключена");
+                this.$$("textAutoGetData").setValue(_("automatic_data_output_turned_off"));
                 this.$$("counterPeriod").hide();
                 break;
             }
             case 1: {
-                this.$$("textAutoGetData").setValue("Бинарная");
+                this.$$("textAutoGetData").setValue(_("automatic_data_output_binary"));
                 this.$$("counterPeriod").show();
                 break;
             }
             case 2: {
-                this.$$("textAutoGetData").setValue("Сивольная");
+                this.$$("textAutoGetData").setValue(_("automatic_data_output_symbolic"));
                 this.$$("counterPeriod").show();
                 break;
             }
@@ -1060,39 +1060,39 @@ export default class GeneralSettings extends JetView {
     setTypeFuel(number) {
         switch (number) {
             case 0: {
-                this.$$("textFuelType").setValue("Выключена");
+                this.$$("textFuelType").setValue(_("fuel_type_turned_off"));
                 break;
             }
             case 1: {
-                this.$$("textFuelType").setValue("АИ-95");
+                this.$$("textFuelType").setValue(_("fuel_type_1"));
                 break;
             }
             case 2: {
-                this.$$("textFuelType").setValue("АИ-92");
+                this.$$("textFuelType").setValue(_("fuel_type_2"));
                 break;
             }
             case 3: {
-                this.$$("textFuelType").setValue("АИ-80 (Лето)");
+                this.$$("textFuelType").setValue(_("fuel_type_3"));
                 break;
             }
             case 4: {
-                this.$$("textFuelType").setValue("АИ-80 (Зима)");
+                this.$$("textFuelType").setValue(_("fuel_type_4"));
                 break;
             }
             case 5: {
-                this.$$("textFuelType").setValue("ДТ (Лето)");
+                this.$$("textFuelType").setValue(_("fuel_type_5"));
                 break;
             }
             case 6: {
-                this.$$("textFuelType").setValue("ДТ (Зима)");
+                this.$$("textFuelType").setValue(_("fuel_type_6"));
                 break;
             }
             case 7: {
-                this.$$("textFuelType").setValue("Свои параметры");
+                this.$$("textFuelType").setValue(_("fuel_type_7"));
                 break;
             }
             default: {
-                this.$$("textFuelType").setValue("undefined");
+                this.$$("textFuelType").setValue(_("fuel_type_turned_off"));
                 break;
             }
         }

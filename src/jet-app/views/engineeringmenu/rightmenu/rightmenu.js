@@ -13,6 +13,7 @@ export default class RightMenu extends JetView{
             view: "scrollview",
             scroll: "y",
             maxHeight: 970,
+            width: 530,
             id: "rows_right_body",
             css: "rows_right",
             body: {
@@ -36,46 +37,51 @@ export default class RightMenu extends JetView{
         let body = {
             css: "rows_right",
             id: "rows_right_2",
-            rows: [
+            cols:[
                 {
                     rows: [
-                        ServiceMenu,
+                        {
+                            rows: [
+                                ServiceMenu,
+                            ]
+                        },
+                        {
+                            height: 20,
+                        },
+                        {
+                            rows: [
+                                StatusMenu,
+                            ]
+                        },
+                        {
+                            height: 20,
+                        },
+                        {
+                            rows: [
+                                myMultiview,
+                            ]
+                        },
+                        {
+                            height: 1,
+                        },
+                        {
+                            rows: [
+                                //right_menu_filter
+                            ]
+                        },
+                        {
+                            rows: [
+                                // right_menu_calibration,
+                                // right_menu_calibration_setup,
+                                // right_menu_calibration_drain_2,
+                                // fuel_filling,
+                                // fuel_filling_2,
+                            ]
+                        }
                     ]
                 },
-                {
-                    height: 20,
-                },
-                {
-                    rows: [
-                        StatusMenu,
-                    ]
-                },
-                {
-                    height: 20,
-                },
-                {
-                    rows: [
-                        myMultiview,
-                    ]
-                },
-                {
-                    height: 1,
-                },
-                {
-                    rows: [
-                        //right_menu_filter
-                    ]
-                },
-                {
-                    rows: [
-                        // right_menu_calibration,
-                        // right_menu_calibration_setup,
-                        // right_menu_calibration_drain_2,
-                        // fuel_filling,
-                        // fuel_filling_2,
-                    ]
-                }
             ]
+
         }
 
         return body;

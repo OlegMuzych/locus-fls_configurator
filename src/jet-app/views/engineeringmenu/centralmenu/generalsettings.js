@@ -530,16 +530,13 @@ export default class GeneralSettings extends JetView {
         }
 
         let general_config = {
-            minWidth: 600,
-            maxWidth: 850,
             view: "scrollview",
             scroll: "y",
-            maxHeight: 2000,
+            minWidth: 900,
+            maxWidth: 1300,
             body: {
                 id: "central_menu_button_1",
                 css: "style_general_rows",
-                minWidth: 600,
-                maxWidth: 850,
                 maxHeight: 1000,
                 rows: [
                     {
@@ -561,7 +558,7 @@ export default class GeneralSettings extends JetView {
                         ]
                     },
 
-                    {height: 10,},
+                    {height: 20,},
                     llsAdr,
                     {height: 20},
                     baudRateSwitch,

@@ -6,15 +6,13 @@ import fileTableModel from "../../../models/file-table-model";
 export default class CalibrationSettings extends JetView {
     config() {
         let table = {
-
             view:"scrollview",
             scroll: "y",
-            minWidth: 600,
-            maxWidth: 850,
             css:"calib_rows",
             id:"calib_rows",
+            minWidth: 900,
+            maxWidth: 1300,
             body: {
-
                 cols: [
                     {
                         maxWidth: 10,
@@ -47,8 +45,6 @@ export default class CalibrationSettings extends JetView {
         }
 
         let body = {
-            // minWidth: 600,
-            // maxWidth: 850,
             // id: "central_menu_button_2",
             rows: [
                 // {cols:[
@@ -75,7 +71,6 @@ export default class CalibrationSettings extends JetView {
                 // },
                 table
             ],
-
         };
 
         return body;

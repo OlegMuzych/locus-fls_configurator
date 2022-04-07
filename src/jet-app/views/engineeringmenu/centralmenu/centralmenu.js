@@ -6,9 +6,7 @@ import configFile from "../../../config-app";
 export default class CentralMenu extends JetView{
     config(){
         let central_menu_button = {
-            minWidth: 600,
-            maxWidth: 850,
-            paddingY: 0,
+
             rows: [
                 {
                     css: "central_cols_button",
@@ -17,8 +15,8 @@ export default class CentralMenu extends JetView{
                         {
                             view: "button",
                             label: "Основные настройки",
-                            maxWidth: 300,
-                            minWidth: 120,
+                            // maxWidth: 400,
+                            // minWidth: 120,
                             height: 100,
                             css: "button_central_menu",
                             id: "general",
@@ -27,8 +25,8 @@ export default class CentralMenu extends JetView{
                         {
                             view: "button",
                             label: "Тарировка",
-                            maxWidth: 300,
-                            minWidth: 120,
+                            // maxWidth: 400,
+                            // minWidth: 120,
                             height: 100,
                             css: "button_central_menu",
                             id: "calibration",
@@ -37,8 +35,8 @@ export default class CentralMenu extends JetView{
                         {
                             view: "button",
                             label: "Фильтрация",
-                            maxWidth: 300,
-                            minWidth: 120,
+                            // maxWidth: 400,
+                            // minWidth: 120,
                             height: 100,
                             css: "button_central_menu",
                             id: "filtering",
@@ -54,8 +52,9 @@ export default class CentralMenu extends JetView{
         //     rows: [GeneralSettings],
         // }
 
-
         let myMultiview = {
+            // minWidth: 900,
+            // maxWidth: 1300,
             view: "multiview",
             css:"style_general_rows",
             id:"style_general_rows_1",
@@ -75,7 +74,8 @@ export default class CentralMenu extends JetView{
 
         let body = {
             rows: [
-                central_menu_button, myMultiview
+                central_menu_button,
+                myMultiview
             ],
         }
 

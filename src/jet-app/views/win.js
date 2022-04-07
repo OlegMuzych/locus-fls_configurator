@@ -214,7 +214,7 @@ export default class Page9View extends JetView {
                         rows: [
                             {
 
-                                disabled: true,
+                                // disabled: true,
                                 cols: [
                                     {
                                         width: 20,

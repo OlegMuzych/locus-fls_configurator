@@ -676,128 +676,128 @@ border: none;
 
 @media screen and (max-width: 1500px){
 
-    .window_type_1 p{
-        color: #000;
-        text-align: left;
-        padding-right: 50px;
-        padding-left: 20px;
-        font-size: 18px;
-        font-weight: 100;
-        position: relative;
-        top: -20px;
-    }
-
-
-    .window_type_1_dark p{
-        color: #fff;
-        text-align: left;
-        padding-right: 50px;
-        padding-left: 20px;
-        font-size: 18px;
-        font-weight: 100;
-        position: relative;
-        top: -20px;
-    }
-
-    .window_type_1  input {
-        color: var(--white-style-text-color);
-        font-size: var(--font-size);
-        font-weight: var(--font-weight);
-        height: 60%;
-        width: 50%;
-        background-color: #fff;
-        border: 1px solid #ececec;
-        border-radius: 10px;
-        position: relative;
-        top: 20%;
-        right: 80px;
-    }
-
-    .window_type_1_dark  input {
-        color: #c1c4c6;
-        font-size: var(--font-size);
-        font-weight: var(--font-weight);
-        height: 60%;
-        width: 50%;
-        background-color: var(--c-white-color-background-dark_general_windows);
-        border: 1px solid var(--c-white-color-background-dark_general_rows);
-        border-radius: 10px;
-        position: relative;
-        top: 20%;
-        right: 80px;
-        box-shadow: inset 1px 1px 1px #212121;
-    }
-
-
-    /*.window_type_2_dark .webix_el_group{*/
+    /*.window_type_1 p{*/
+    /*    color: #000;*/
+    /*    text-align: left;*/
+    /*    padding-right: 50px;*/
+    /*    padding-left: 20px;*/
+    /*    font-size: 18px;*/
+    /*    font-weight: 100;*/
     /*    position: relative;*/
-    /*    top: 50px;*/
-    /*    left: 100px;*/
-    /*    margin-top: 100px;*/
+    /*    top: -20px;*/
     /*}*/
 
 
-    .window_type_2 p{
-        color: #000;
-        text-align: left;
-        padding-left: -110px;
-        font-size: 18px;
-        font-weight: 100;
-        position: relative;
-        top: -20px;
+    /*.window_type_1_dark p{*/
+    /*    color: #fff;*/
+    /*    text-align: left;*/
+    /*    padding-right: 50px;*/
+    /*    padding-left: 20px;*/
+    /*    font-size: 18px;*/
+    /*    font-weight: 100;*/
+    /*    position: relative;*/
+    /*    top: -20px;*/
+    /*}*/
 
-    }
+    /*.window_type_1  input {*/
+    /*    color: var(--white-style-text-color);*/
+    /*    font-size: var(--font-size);*/
+    /*    font-weight: var(--font-weight);*/
+    /*    height: 60%;*/
+    /*    width: 50%;*/
+    /*    background-color: #fff;*/
+    /*    border: 1px solid #ececec;*/
+    /*    border-radius: 10px;*/
+    /*    position: relative;*/
+    /*    top: 20%;*/
+    /*    right: 80px;*/
+    /*}*/
 
-
-    .window_type_2 .webix_el_box{
-       width: 500px;
-    }
-
-
-    .window_type_2_dark p{
-        color: #fff;
-        text-align: left;
-        padding-right: 50px;
-        padding-left: 20px;
-        font-size: 18px;
-        font-weight: 100;
-        position: relative;
-        top: -20px;
-    }
-
-    .window_type_2  input {
-        color: var(--white-style-text-color);
-        font-size: var(--font-size);
-        font-weight: var(--font-weight);
-        height: 60%;
-        width: 150%;
-        background-color: #fff;
-        border: 1px solid #ececec;
-        border-radius: 0;
-        position: relative;
-        top: 20%;
-        right: 80px;
-    }
-
-    .window_type_2_dark  input {
-        color: #c1c4c6;
-        font-size: var(--font-size);
-        font-weight: var(--font-weight);
-        height: 60%;
-        width: 50%;
-        background-color: var(--c-white-color-background-dark_general_windows);
-        border: 1px solid var(--c-white-color-background-dark_general_rows);
-        border-radius: 0;
-        position: relative;
-        top: 20%;
-        right: 80px;
-        box-shadow: inset 1px 1px 1px #212121;
-    }
+    /*.window_type_1_dark  input {*/
+    /*    color: #c1c4c6;*/
+    /*    font-size: var(--font-size);*/
+    /*    font-weight: var(--font-weight);*/
+    /*    height: 60%;*/
+    /*    width: 50%;*/
+    /*    background-color: var(--c-white-color-background-dark_general_windows);*/
+    /*    border: 1px solid var(--c-white-color-background-dark_general_rows);*/
+    /*    border-radius: 10px;*/
+    /*    position: relative;*/
+    /*    top: 20%;*/
+    /*    right: 80px;*/
+    /*    box-shadow: inset 1px 1px 1px #212121;*/
+    /*}*/
 
 
-    .text_color_filter p{
-        font-size: 16px;
-    }
+    /*!*.window_type_2_dark .webix_el_group{*!*/
+    /*!*    position: relative;*!*/
+    /*!*    top: 50px;*!*/
+    /*!*    left: 100px;*!*/
+    /*!*    margin-top: 100px;*!*/
+    /*!*}*!*/
+
+
+    /*.window_type_2 p{*/
+    /*    color: #000;*/
+    /*    text-align: left;*/
+    /*    padding-left: -110px;*/
+    /*    font-size: 18px;*/
+    /*    font-weight: 100;*/
+    /*    position: relative;*/
+    /*    top: -20px;*/
+
+    /*}*/
+
+
+    /*.window_type_2 .webix_el_box{*/
+    /*   width: 500px;*/
+    /*}*/
+
+
+    /*.window_type_2_dark p{*/
+    /*    color: #fff;*/
+    /*    text-align: left;*/
+    /*    padding-right: 50px;*/
+    /*    padding-left: 20px;*/
+    /*    font-size: 18px;*/
+    /*    font-weight: 100;*/
+    /*    position: relative;*/
+    /*    top: -20px;*/
+    /*}*/
+
+    /*.window_type_2  input {*/
+    /*    color: var(--white-style-text-color);*/
+    /*    font-size: var(--font-size);*/
+    /*    font-weight: var(--font-weight);*/
+    /*    height: 60%;*/
+    /*    width: 150%;*/
+    /*    background-color: #fff;*/
+    /*    border: 1px solid #ececec;*/
+    /*    border-radius: 0;*/
+    /*    position: relative;*/
+    /*    top: 20%;*/
+    /*    right: 80px;*/
+    /*}*/
+
+    /*.window_type_2_dark  input {*/
+    /*    color: #c1c4c6;*/
+    /*    font-size: var(--font-size);*/
+    /*    font-weight: var(--font-weight);*/
+    /*    height: 60%;*/
+    /*    width: 50%;*/
+    /*    background-color: var(--c-white-color-background-dark_general_windows);*/
+    /*    border: 1px solid var(--c-white-color-background-dark_general_rows);*/
+    /*    border-radius: 0;*/
+    /*    position: relative;*/
+    /*    top: 20%;*/
+    /*    right: 80px;*/
+    /*    box-shadow: inset 1px 1px 1px #212121;*/
+    /*}*/
+
+
+    /*.text_color_filter p{*/
+    /*    font-size: 16px;*/
+    /*}*/
 
 
 

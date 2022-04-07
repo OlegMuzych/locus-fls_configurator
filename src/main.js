@@ -13,7 +13,7 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    maxWidth: 950,
+    maxWidth: 1350,
     minWidth: 900,
     minHeight: 700,
     maxHeight: 1000,

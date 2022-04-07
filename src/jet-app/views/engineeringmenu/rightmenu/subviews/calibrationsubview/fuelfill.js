@@ -3,13 +3,15 @@ import configFile from "../../../../../config-app";
 
 export default class FuelFillView extends JetView {
     config() {
+        const _ = this.app.getService("locale")._;
+
         let passportVolume = {
             localId:'passportVolume',
             cols: [
                 {},
                 {
                     view: "label",
-                    label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Паспортный объем бака, л</p>",
+                    label: `<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>${_("passport_volume_tank")}</p>`,
                     width: 190,
                     height: 50,
                 },
@@ -25,7 +27,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "label",
-                    label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Начальный объем, л</p>",
+                    label: `<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>${_("start_volume_tank")}</p>`,
                     width: 190,
                     height: 50,
                 },
@@ -41,7 +43,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "label",
-                    label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Шаг, л</p>",
+                    label: `<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>${_("step_volume")}</p>`,
                     width: 190,
                     height: 50,
                 },
@@ -57,7 +59,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "label",
-                    label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Количество шагов</p>",
+                    label: `<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>${_("step_count")}</p>`,
                     width: 190,
                     height: 50,
                 },
@@ -73,7 +75,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "button",
-                    label: "Удалить шаг",
+                    label: _("button_remove_step"),
                     width: 480,
                     height: 50,
                     css: "set_step_drain_button_2",
@@ -90,7 +92,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "button",
-                    label: "Добавить шаг",
+                    label: _("button_add_step"),
                     width: 480,
                     height: 50,
                     css: "set_step_drain_button_2",
@@ -107,7 +109,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "button",
-                    label: "Очистить таблицу",
+                    label: _("button_clear_table"),
                     width: 480,
                     height: 50,
                     css: "clear_table_drain_button_2",
@@ -124,7 +126,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "button",
-                    label: "Завершить тарировку",
+                    label: _("button_finish_calibration"),
                     width: 480,
                     height: 50,
                     localId: "closed_calibration_button_window_2",
@@ -140,7 +142,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "button",
-                    label: "Продолжить",
+                    label: _("button_start_calibration"),
                     width: 480,
                     height: 50,
                     localId: "central_menu_and_right_menu_calibration_next_window_button",

@@ -3,6 +3,7 @@ import llsModel from "../../../models/lls-model";
 
 export default class LlsNoConnectWindow extends JetView {
     config() {
+        const _ = this.app.getService("locale")._;
 
         let body = {
             view: "window",
@@ -31,7 +32,7 @@ export default class LlsNoConnectWindow extends JetView {
                             },
                             {
                                 view: "label",
-                                label: "<p>Датчик не подключен</p>",
+                                label: `<p>${_("windows_lls_no_connect_text")}</p>`,
                                 css: "language_windows_modal",
                                 localId: "language_windows_modal_2",
                                 height: 100,
@@ -46,9 +47,9 @@ export default class LlsNoConnectWindow extends JetView {
                     {
                         cols: [
                             {},
-                            {view: "button", label: "OK" , localId: "buttonOk", css: "set_password_button",},
+                            {view: "button", label: _("button_ok") , localId: "buttonOk", css: "set_password_button",},
                             {},
-                            {view: "button", label: "Тестовый Режим", localId: "buttonCancel", css: "set_password_button",
+                            {view: "button", label: _("button_test_mode"), localId: "buttonCancel", css: "set_password_button",
                                 disabled: false,
                                 hidden: false,
                             },

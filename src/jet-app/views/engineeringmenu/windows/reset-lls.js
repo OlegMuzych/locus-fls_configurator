@@ -2,7 +2,9 @@ import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
 
 export default class ResetLlsWindow extends JetView {
+
     config() {
+        const _ = this.app.getService("locale")._;
 
         let body = {
             view: "window",
@@ -31,7 +33,7 @@ export default class ResetLlsWindow extends JetView {
                             },
                             {
                                 view: "label",
-                                label: "<p style='font-size: 20px; position: relative; top: -10px; text-align: center;'>Все настройки датчика будут сброшенны</p>",
+                                label: `<p style='font-size: 20px; position: relative; top: -10px; text-align: center;'>${_("windows_reset-lls_text")}</p>`,
                                 css: "language_windows_modal",
                                 id: "language_windows_modal_2",
                                 height: 100,
@@ -46,9 +48,9 @@ export default class ResetLlsWindow extends JetView {
                     {
                         cols: [
                             {},
-                            {view: "button", label: "OK", localId: "buttonOk", css: "set_password_button"},
+                            {view: "button", label: _("button_ok"), localId: "buttonOk", css: "set_password_button"},
                             {},
-                            {view: "button", label: "Отмена", localId: "buttonCancel", css: "set_password_button"},
+                            {view: "button", label: _("button_cancel"), localId: "buttonCancel", css: "set_password_button"},
                             {}
                         ]
                     },

@@ -7,6 +7,7 @@ import fileSettingsModel from "../../../models/file-settings-model";
 
 export default class ServiceMenu extends JetView {
     config() {
+        const _ = this.app.getService("locale")._;
         let right_menu_button = {
             height: 95,
             rows: [
@@ -19,7 +20,7 @@ export default class ServiceMenu extends JetView {
                             view: "button",
                             width: 250,
                             height: 70,
-                            label: "Сервис",
+                            label: _("service_service"),
                             css: "button_right_menu_top_1",
                             id: "buttonService"
                         },
@@ -30,7 +31,7 @@ export default class ServiceMenu extends JetView {
                             view: "button",
                             width: 250,
                             height: 70,
-                            label: "Пароль",
+                            label: _("service_password"),
                             css: "button_right_menu_top_1",
                             id: "buttonPassword"
                         },
@@ -43,6 +44,7 @@ export default class ServiceMenu extends JetView {
     }
 
     init() {
+        const _ = this.app.getService("locale")._;
         // Кнопка Сервис -------------------------------//
         let service = {
             view: "popup",
@@ -54,9 +56,9 @@ export default class ServiceMenu extends JetView {
                 view: "list",
                 data: [
                     // {id: "updateFramework", location: "Обновить прошивку", name: ""},
-                    {id: "resetLls", location: "Сброс всех настроек", name: ""},
-                    {id: "saveSettings", location: "Сохраниить насторйки в файл", name: ""},
-                    {id: "readSettings", location: "Прочитать настройкии из файла", name: ""},
+                    {id: "resetLls", location: _("service_service_reset_sensor"), name: ""},
+                    {id: "saveSettings", location: _("service_service_save_setting_file"), name: ""},
+                    {id: "readSettings", location: _("service_service_read_setting_file"), name: ""},
                 ],
                 id: "list",
                 template: "#name# - #location#",

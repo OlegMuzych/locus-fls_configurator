@@ -3,6 +3,8 @@ import llsModel from "../../../models/lls-model";
 
 export default class PasswordWindow extends JetView {
     config() {
+        const _ = this.app.getService("locale")._;
+
         let elements = {
             rows: [
                 {
@@ -12,8 +14,8 @@ export default class PasswordWindow extends JetView {
                     multiview: true,
                     height: 80,
                     options: [
-                        {value: 'Ввести', id: 'rows_11'},
-                        {value: 'Задать новый', id: 'rows_21'},
+                        {value: _("window_password_segmented_current"), id: 'rows_11'},
+                        {value: _("window_password_segmented_new"), id: 'rows_21'},
                     ],
                 },
 
@@ -46,10 +48,10 @@ export default class PasswordWindow extends JetView {
                                         },
                                         {
                                             view: "label",
-                                            label: "<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Введите пароль для изменения настроек</p>",
+                                            label: `<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>${_("window_password_text")}</p>`,
                                             width: 420,
                                             localId: "windows_password_label",
-                                            css: "windows_password_label"
+                                            css: "windows_password_label",
                                         },
                                         {}
                                     ]
@@ -67,7 +69,7 @@ export default class PasswordWindow extends JetView {
                                             css: "password_windows_set",
                                             inputAlign: "center",
                                             pattern: {mask: "########", allow: /[0-9]/g},
-                                            invalidMessage:"Неверный пароль",
+                                            invalidMessage: _("window_password_invalid_message"),
                                             name: 'test',
                                             validate: ()=>{return this.passValidFlag},
                                         },
@@ -82,14 +84,14 @@ export default class PasswordWindow extends JetView {
                                         {},
                                         {
                                             view: "button",
-                                            label: "OK",
+                                            label: _('button_ok'),
                                             localId: "buttonCurrentPassOk",
                                             css: "set_password_button"
                                         },
                                         {},
                                         {
                                             view: "button",
-                                            label: "Отмена",
+                                            label: _('button_cancel'),
                                             localId: "buttonCancel_1",
                                             css: "set_password_button"
                                         },
@@ -115,7 +117,7 @@ export default class PasswordWindow extends JetView {
                                                 {},
                                                 {
                                                     view: "label",
-                                                    label: "<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Старый пароль</p>",
+                                                    label: `<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>${_('window_password_old_password')}</p>`,
                                                     width: 200,
                                                     localId: "windows_password_label_2",
                                                     css: "windows_password_label"
@@ -127,7 +129,7 @@ export default class PasswordWindow extends JetView {
                                                     css: "password_windows_set",
                                                     inputAlign: "center",
                                                     pattern: {mask: "########", allow: /[0-9]/g},
-                                                    invalidMessage:"Неверный пароль",
+                                                    invalidMessage: _("window_password_invalid_message"),
                                                     name: "test2",
                                                     validate: ()=>{return this.passValidFlag},
                                                 },
@@ -143,7 +145,7 @@ export default class PasswordWindow extends JetView {
                                                 {},
                                                 {
                                                     view: "label",
-                                                    label: "<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>Новый пароль</p>",
+                                                    label: `<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>${_('window_password_new_password')}</p>`,
                                                     width: 200,
                                                     localId: "windows_password_label_3",
                                                     css: "windows_password_label"
@@ -167,14 +169,14 @@ export default class PasswordWindow extends JetView {
                                                 {},
                                                 {
                                                     view: "button",
-                                                    label: "Изменить",
+                                                    label: _("window_password_button_edit"),
                                                     localId: "buttonNewPassOk",
                                                     css: "set_password_button"
                                                 },
                                                 {},
                                                 {
                                                     view: "button",
-                                                    label: "Отмена",
+                                                    label: _("button_cancel"),
                                                     localId: "buttonCancel_2",
                                                     css: "set_password_button"
                                                 },

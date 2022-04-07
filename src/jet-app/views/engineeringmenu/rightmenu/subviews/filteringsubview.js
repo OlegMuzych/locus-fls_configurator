@@ -4,6 +4,7 @@ import configFile from "../../../../config-app";
 
 export default class FiltrationSubView extends JetView {
     config() {
+        const _ = this.app.getService("locale")._;
         let right_menu_setup = {
             css: "right_menu_status",
             localId: "right_menu_setup",
@@ -37,7 +38,7 @@ export default class FiltrationSubView extends JetView {
                                 {},
                                 {
                                     view: "label",
-                                    label: "<p style='position: relative; top: -20px; '>Текущий уровень</p>",
+                                    label: `<p style='position: relative; top: -20px; '>${_("current_level")}</p>`,
                                     // width: 460,
                                     // height: 100,
                                     css: "right_menu_fuel_level",

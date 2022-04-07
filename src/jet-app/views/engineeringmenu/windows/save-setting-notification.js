@@ -3,7 +3,7 @@ import {JetView} from "webix-jet";
 
 export default class SaveSettingNotificationWindow extends JetView {
     config() {
-
+        const _ = this.app.getService("locale")._;
         let body = {
             view: "window",
             position: "top",
@@ -15,7 +15,7 @@ export default class SaveSettingNotificationWindow extends JetView {
                 rows: [
                     {
                         view: "label",
-                        label: "<p>Настройки записаны в датчик</p>",
+                        label: `<p>${_('window_save-setting-notification_text')}</p>`,
                         css: "save_windows_modal",
                         // localId: "language_windows_modal_2",
                         width: 1000,

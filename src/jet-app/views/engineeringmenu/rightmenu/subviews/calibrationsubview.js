@@ -7,6 +7,8 @@ import llsModel from "../../../../models/lls-model";
 
 export default class CalibrationSubView extends JetView {
     config() {
+        const _ = this.app.getService("locale")._;
+
         let currentLevel = {
             rows: [
                 {
@@ -34,7 +36,7 @@ export default class CalibrationSubView extends JetView {
                         {},
                         {
                             view: "label",
-                            label: "<p style='position: relative; top: -20px; '>Текущий уровень</p>",
+                            label: `<p style='position: relative; top: -20px; '>${_("current_level")}</p>`,
                             // width: 460,
                             // height: 100,
                             css: "right_menu_fuel_level",
@@ -111,7 +113,7 @@ export default class CalibrationSubView extends JetView {
                         {
                             view: "button",
                             type: "label",
-                            label: "Экспортировать таблицу тарировки",
+                            label: _("button_save_table_file"),
                             localId: "button_export",
                             width: 480,
                             height: 50,
@@ -129,7 +131,7 @@ export default class CalibrationSubView extends JetView {
                         {
                             view: "button",
                             type: "label",
-                            label: "Импортировать таблицу тарировки",
+                            label: _("button_read_table_file"),
                             localId: "button_import",
                             width: 480,
                             height: 50,

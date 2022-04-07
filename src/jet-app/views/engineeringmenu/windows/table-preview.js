@@ -3,6 +3,8 @@ import llsModel from "../../../models/lls-model";
 
 export default class TablePreviewWindow extends JetView {
     config() {
+        const _ = this.app.getService("locale")._;
+
         let table = {
             view: "scrollview",
             scroll: "y",
@@ -20,7 +22,7 @@ export default class TablePreviewWindow extends JetView {
                         rows: [
                             {
                                 view: 'label',
-                                label: "<p>Шагов</p>",
+                                label: `<p>${_("column_steps_header")}</p>`,
                                 css: "rowNumber_style_1",
                                 align: 'center',
                                 localId: "top_text_1",
@@ -34,7 +36,7 @@ export default class TablePreviewWindow extends JetView {
                         rows: [
                             {
                                 view: 'label',
-                                label: "<p>Уровень</p>",
+                                label: `<p>${_("column_level_header")}</p>`,
                                 align: 'center',
                                 css: "rowNumber_style_1",
                                 localId: "top_text_2",
@@ -48,7 +50,7 @@ export default class TablePreviewWindow extends JetView {
                         rows: [
                             {
                                 view: 'label',
-                                label: "<p>Объем</p>",
+                                label: `<p>${_("column_volume_header")}</p>`,
                                 align: 'center',
                                 css: "rowNumber_style_1",
                                 localId: "top_text_3",
@@ -70,14 +72,14 @@ export default class TablePreviewWindow extends JetView {
                         {},
                         {
                             view: "button",
-                            label: "OK",
+                            label: _("button_ok"),
                             localId: "buttonOk",
                             css: "set_password_button"
                         },
                         {},
                         {
                             view: "button",
-                            label: "Отмена",
+                            label: _("button_cancel"),
                             localId: "buttonCancel",
                             css: "set_password_button"
                         },

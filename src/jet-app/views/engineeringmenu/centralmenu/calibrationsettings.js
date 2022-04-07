@@ -5,6 +5,8 @@ import fileTableModel from "../../../models/file-table-model";
 
 export default class CalibrationSettings extends JetView {
     config() {
+        const _ = this.app.getService("locale")._;
+
         let table = {
 
             view:"scrollview",
@@ -23,21 +25,21 @@ export default class CalibrationSettings extends JetView {
 
                         gravity: 2,
                         rows: [
-                            {view: 'label', label: "<p>Шагов</p>", css: "rowNumber_style_1", align: 'center', id:"top_text_1", height: 70,},
+                            {view: 'label', label: `<p>${_("column_steps_header")}</p>`, css: "rowNumber_style_1", align: 'center', id:"top_text_1", height: 70,},
                             {localId: 'rowNumber', css: "rowNumber_style_1", rows: []}
                         ]
                     },
                     {
                         gravity: 3,
                         rows: [
-                            {view: 'label', label: "<p>Уровень</p>", align: 'center', css: "rowNumber_style_1", id:"top_text_2", height: 70,},
+                            {view: 'label', label: `<p>${_("column_level_header")}</p>`, align: 'center', css: "rowNumber_style_1", id:"top_text_2", height: 70,},
                             {localId: 'rowLevel', css: "rowNumber_style", rows: []}
                         ]
                     },
                     {
                         gravity: 3,
                         rows: [
-                            {view: 'label', label: "<p>Объем</p>", align: 'center', css: "rowNumber_style_1", id:"top_text_3", height: 70,},
+                            {view: 'label', label: `<p>${_("column_volume_header")}</p>`, align: 'center', css: "rowNumber_style_1", id:"top_text_3", height: 70,},
                             {localId: 'rowVolume', css: "rowNumber_style",  rows: []}
                         ]
                     },

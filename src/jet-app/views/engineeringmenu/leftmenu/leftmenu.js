@@ -4,6 +4,8 @@ import llsModel from "../../../models/lls-model";
 
 export default class LeftMenu extends JetView{
     config(){
+        const _ = this.app.getService("locale")._;
+
         let left_menu = {
             // view: "scrollview",
             // scroll: "y",
@@ -15,7 +17,7 @@ export default class LeftMenu extends JetView{
                     {
                         view: "button",
                         type:"label",
-                        label:"Сохранить настройки",
+                        label:_("button_save_setting"),
                         css: "edit_values",
                         height: 103,
                         id:"save_settings"

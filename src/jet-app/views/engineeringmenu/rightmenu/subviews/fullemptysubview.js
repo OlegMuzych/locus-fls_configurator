@@ -4,6 +4,8 @@ import configFile from "../../../../config-app";
 
 export default class FullEmptySubView extends JetView {
     config(){
+        const _ = this.app.getService("locale")._;
+
         let right_menu_setup = {
             css: "right_menu_status",
             id: "right_menu_setup",
@@ -17,7 +19,7 @@ export default class FullEmptySubView extends JetView {
                         },
                         {
                             view: "label",
-                            label: "<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 30px; '>Автоматическая колибровка</p>",
+                            label: `<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 30px; '>${_("automatic_calibration")}</p>`,
                             width: 300,
                             height: 100,
                             css: "right_menu_status_text",
@@ -40,7 +42,7 @@ export default class FullEmptySubView extends JetView {
                                 {
                                     view: "button",
                                     type: "label",
-                                    label: "Откалибровать",
+                                    label: _("button_automatic_calibration"),
                                     width: 460,
                                     height: 50,
                                     css: "auto_calibration",
@@ -86,7 +88,7 @@ export default class FullEmptySubView extends JetView {
                                 },
                                 {
                                     view: "label",
-                                    label: "<p style='position: relative; top: -20px; '>Текущий уровень</p>",
+                                    label: `<p style='position: relative; top: -20px; '>${_("current_level")}</p>`,
                                     // width: 460,
                                     // height: 100,
                                     css: "right_menu_fuel_level",
@@ -154,7 +156,7 @@ export default class FullEmptySubView extends JetView {
                                                 {
                                                     view: "button",
                                                     type: "label",
-                                                    label: "Полный",
+                                                    label: _("button_set_full_tank"),
                                                     width: 200,
                                                     height: 50,
                                                     css: "auto_calibration",
@@ -173,7 +175,7 @@ export default class FullEmptySubView extends JetView {
                                                 },
                                                 {
                                                     view: "button",
-                                                    type: "label",
+                                                    type: _('button_set_empty_tank'),
                                                     label: "Пустой",
                                                     width: 200,
                                                     height: 50,
@@ -201,7 +203,7 @@ export default class FullEmptySubView extends JetView {
                                 {
                                     view: "button",
                                     type: "label",
-                                    label: "Редактировать значения",
+                                    label: _("button_enable_edit_values"),
                                     width: 460,
                                     height: 50,
                                     css: "edit_values",

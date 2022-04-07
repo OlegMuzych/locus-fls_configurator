@@ -34,6 +34,7 @@ export default class ResetLlsWindow extends JetView {
                             {
                                 view: "label",
                                 label: `<p style='font-size: 20px; position: relative; top: -10px; text-align: center;'>${_("windows_reset-lls_text")}</p>`,
+                                // label: `<p style='font-size: 20px; position: relative; top: -10px; text-align: center;'>Все настройки будут сброшены</p>`,
                                 css: "language_windows_modal",
                                 id: "language_windows_modal_2",
                                 height: 100,

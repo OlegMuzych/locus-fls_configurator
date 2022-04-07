@@ -17,7 +17,7 @@ export default {
     "settings": "Настройки", //view: "window", template: this
 
     /* generalsettings.js */
-    "choose": 'выбрать',
+    "choose": 'Выбрать',
     "apply": "Применить",
 
     "address_lls": 'Сетевой адрес',
@@ -149,4 +149,10 @@ export default {
     "window_password_segmented_current": "Ввести",
     "window_password_segmented_new": "Задать новый",
 
+    /* passwordinput.js */
+
+    "window_passwordinput_segmented_current": "Ввести",
+    "window_passwordinput_segmented_reset": "Сбросить настройки",
+    "window_passwordinput_segmented_current_text": "Введите пароль для входа",
+    "window_passwordinput_segmented_reset_text":"Все настройки датчика будут стерты"
 };

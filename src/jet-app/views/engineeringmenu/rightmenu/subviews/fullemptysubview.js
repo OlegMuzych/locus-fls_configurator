@@ -175,8 +175,8 @@ export default class FullEmptySubView extends JetView {
                                                 },
                                                 {
                                                     view: "button",
-                                                    type: _('button_set_empty_tank'),
-                                                    label: "Пустой",
+                                                    type: "label",
+                                                    label: _('button_set_empty_tank'),
                                                     width: 200,
                                                     height: 50,
                                                     css: "auto_calibration",

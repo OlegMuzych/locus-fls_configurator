@@ -109,6 +109,8 @@ export default {
     /* calibrationsubview.js */
     "button_save_table_file": "Экспортировать таблицу тарировки",
     "button_read_table_file": "Импортировать таблицу тарировки",
+    "tabbar_fill": "Залив",
+    "tabbar_drain": "Слив",
 
     /* fueldrain.js , fuelfill.js*/
     "passport_volume_tank": "Паспортный объем бака, л",

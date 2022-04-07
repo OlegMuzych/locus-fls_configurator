@@ -1,4 +1,11 @@
-class globalVariableApp {
+import UserStorage from "./services/user-storage/user-storage";
+
+class GlobalVariableApp {
+    #userStorage = null;
+    constructor() {
+         this.#userStorage = new UserStorage();
+    }
+
     #globalVariableDefault = {
         theme: 'white', // 'black',
         language:  'rus', // eng, ...
@@ -6,13 +13,15 @@ class globalVariableApp {
     }
 
     get autoSaveMode(){
-        let globalVariable = this.#readGlobal();
-        if(globalVariable){
-            return globalVariable.autoSaveMode
-        }else{
-            this.#saveGlobal(this.#globalVariableDefault);
-            return this.#globalVariableDefault;
-        }
+        return new Promise(async (resolve, reject)=>{
+            let globalVariable = await this.#readGlobal();
+            if(globalVariable){
+                resolve(globalVariable.autoSaveMode);
+            }else{
+                this.#saveGlobal(this.#globalVariableDefault);
+                resolve(this.#globalVariableDefault);
+            }
+        });
     }
     set autoSaveMode(value){
         this.#globalVariableDefault.autoSaveMode = value;
@@ -20,13 +29,15 @@ class globalVariableApp {
     }
 
     get theme(){
-        let globalVariable = this.#readGlobal();
-        if(globalVariable){
-            return globalVariable.theme
-        }else{
-            this.#saveGlobal(this.#globalVariableDefault);
-            return this.#globalVariableDefault;
-        }
+        return new Promise(async (resolve, reject)=>{
+            let globalVariable = this.#readGlobal();
+            if(globalVariable){
+                resolve(globalVariable.theme);
+            }else{
+                this.#saveGlobal(this.#globalVariableDefault);
+                resolve(this.#globalVariableDefault);
+            }
+        });
     }
     set theme(value){
         this.#globalVariableDefault.theme = value;
@@ -34,13 +45,15 @@ class globalVariableApp {
     }
 
     get language(){
-        let globalVariable = this.#readGlobal();
-        if(globalVariable){
-            return globalVariable.language
-        }else{
-            this.#saveGlobal(this.#globalVariableDefault);
-            return this.#globalVariableDefault;
-        }
+        return new Promise(async (resolve, reject)=>{
+            let globalVariable = this.#readGlobal();
+            if(globalVariable){
+                resolve(globalVariable.language);
+            }else{
+                this.#saveGlobal(this.#globalVariableDefault);
+                resolve(this.#globalVariableDefault);
+            }
+        });
     }
     set language(value){
         this.#globalVariableDefault.language = value;
@@ -48,17 +61,17 @@ class globalVariableApp {
     }
 
     #saveGlobal(globalVariable){
-        webix.storage.cookie.put("global-variable", globalVariable);
+        this.#userStorage.set("global-variable", globalVariable);
     }
 
-    #readGlobal(){
-        let strJson = webix.storage.cookie.get("global-variable");
-        if(strJson){
-            return strJson;
+    async #readGlobal(){
+        try{
+            return this.#userStorage.get("global-variable");
+        }catch (e) {
+            return null;
         }
-        return null;
     }
 }
-let globalVariable = new globalVariableApp();
+let globalVariable = new GlobalVariableApp();
 
 export default globalVariable;

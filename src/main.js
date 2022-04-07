@@ -45,6 +45,9 @@ const createWindow = () => {
     ipcMain.handle('dialog', (event, method, params) => {
       return dialog[method](mainWindow,params);
     });
+    ipcMain.handle('app', (event, method, params) => {
+      return app[method](params);
+    });
   });
 };
 

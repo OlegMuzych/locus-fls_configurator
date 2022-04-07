@@ -529,7 +529,7 @@ export default class Page9View extends JetView {
             $$("dark_light_theme").setValue(0);
         }
 
-        $$("switchAutoSaveMode").setValue(globalVariable.autoSaveMode);
+        globalVariable.autoSaveMode.then(flag => $$("switchAutoSaveMode").setValue(flag));
         $$("switchAutoSaveMode").attachEvent("onChange",  (newValue, oldValue, config) => {
             if (newValue) {
                 globalVariable.autoSaveMode = true;

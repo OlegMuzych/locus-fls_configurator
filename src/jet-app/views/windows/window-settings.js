@@ -166,35 +166,9 @@ export default class WindowSettings extends JetView {
             }
         });
 
-        // globalVariable.language.then((lang) => {
-        //     let locale = this.app.getService("locale");
-        //     if(locale.getLang() != lang){
-        //         this.app.getService("locale").setLang(lang);
-        //     }
-        //     $$("language").setValue(lang);
-        // });
-        // $$("language").attachEvent("onChange",  (newValue, oldValue, config) => {
-        //     if(config == "user"){
-        //         globalVariable.language = newValue;
-        //         this.app.getService("locale").setLang(newValue);
-        //     }
-        // });
-        //
+
         globalVariable.language.then(async (language)=>{
             this.setLanguage(language).then();
-            // let locale = this.app.getService("locale");
-            // let langStr = null;
-            // if(language == 'like_system' ){
-            //     let systemLangStr = await window.electron.app("getLocale");
-            //     langStr = getStrLang(systemLangStr);
-            // }else{
-            //     langStr = getStrLang(language);
-            // }
-            //
-            // if(langStr != locale.getLang()){
-            //     locale.setLang(langStr);
-            // }
-
             $$("language").setValue(language);
         });
 

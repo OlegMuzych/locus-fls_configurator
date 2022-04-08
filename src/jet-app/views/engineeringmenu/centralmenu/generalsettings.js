@@ -33,9 +33,7 @@ export default class GeneralSettings extends JetView {
                         {
                             align: "right",
                             rows: [
-                                {
-
-                                },
+                                {},
                                 {
                                     view: "button",
                                     css: "button_filter_set",
@@ -45,28 +43,22 @@ export default class GeneralSettings extends JetView {
                                     localId: 'buttonLlsAdr',
                                     hidden: false,
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:"status_define_button_yellow",
-                                    localId:"statusLlsAdr",
-                                    css:"status_define_button" //- скрытая кнопка
+                                    localId: "statusLlsAdr",
+                                    css: "status_define_button" //- скрытая кнопка
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -112,21 +104,17 @@ export default class GeneralSettings extends JetView {
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
-                                    localId:"statusMinLevel",
-                                    css:" status_define_button" //- скрытая кнопка
+                                    localId: "statusMinLevel",
+                                    css: " status_define_button" //- скрытая кнопка
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -173,21 +161,17 @@ export default class GeneralSettings extends JetView {
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
                                     localId: 'statusMaxLevel',
-                                    css:" status_define_button"  // - скрытая кнопка
+                                    css: " status_define_button"  // - скрытая кнопка
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -265,21 +249,17 @@ export default class GeneralSettings extends JetView {
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
-                                    css:" status_define_button", //- скрытая кнопка
-                                    localId:"statusFuelType"
+                                    css: " status_define_button", //- скрытая кнопка
+                                    localId: "statusFuelType"
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -324,22 +304,18 @@ export default class GeneralSettings extends JetView {
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
-                                    css:" status_define_button", //- скрытая кнопка
-                                    localId:"statusCoefficientK1",
+                                    css: " status_define_button", //- скрытая кнопка
+                                    localId: "statusCoefficientK1",
 
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -384,21 +360,17 @@ export default class GeneralSettings extends JetView {
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
-                                    css:" status_define_button", //- скрытая кнопка
-                                    localId:"statusCoefficientK2",
+                                    css: " status_define_button", //- скрытая кнопка
+                                    localId: "statusCoefficientK2",
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -442,21 +414,17 @@ export default class GeneralSettings extends JetView {
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
-                                    css:" status_define_button", //- скрытая кнопка
-                                    localId:"statusBaudRate",
+                                    css: " status_define_button", //- скрытая кнопка
+                                    localId: "statusBaudRate",
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -475,7 +443,7 @@ export default class GeneralSettings extends JetView {
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: `<p>${_("automatic_data_output")}</p>`,                            labelWidth: 400,
+                            label: `<p>${_("automatic_data_output")}</p>`, labelWidth: 400,
                             css: "window_type_2",
                             readonly: true,
                             minWidth: 60,
@@ -499,22 +467,18 @@ export default class GeneralSettings extends JetView {
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
-                                    css:" status_define_button", //- скрытая кнопка
-                                    localId:"statusAutoGetData",
+                                    css: " status_define_button", //- скрытая кнопка
+                                    localId: "statusAutoGetData",
 
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -672,9 +636,7 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 if (newValue >= 1 && newValue <= 254) {
                     llsModel.newLongData.llsAdr = newValue;
-                    if(globalVariable.autoSaveMode){
-                        llsModel.setLongData({llsAdr: llsModel.newLongData.llsAdr});
-                    }
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({llsAdr: llsModel.newLongData.llsAdr}) : '');
                     this.setTextValue("textLlsAdr", 'llsAdr', "statusLlsAdr");
                 } else {
                     this.$$('textLlsAdr').setValue(oldValue);
@@ -721,12 +683,8 @@ export default class GeneralSettings extends JetView {
             console.log(obj);
             llsModel.newLongData.baudRate232 = obj.value;
             llsModel.newLongData.baudRate485 = obj.value;
-            if(globalVariable.autoSaveMode){
-                llsModel.setLongData({baudRate232: obj.value, baudRate485: obj.value});
-                this.setBaudRateValue();
-            }else{
-                this.setBaudRateValue();
-            }
+            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({baudRate232: obj.value, baudRate485: obj.value}) : '');
+            this.setBaudRateValue();
             // llsModel.setLongData({baudRate232: obj.value, baudRate485: obj.value});
         });
 
@@ -761,12 +719,9 @@ export default class GeneralSettings extends JetView {
             let obj = $$("listAutoGetData").getItem(id);
             console.log(obj);
             llsModel.newLongData.autoGetData = obj.value;
-            if(globalVariable.autoSaveMode){
-                llsModel.setLongData({autoGetData: obj.value});
-                this.setAutoGetDataValue();
-            }else{
-                this.setAutoGetDataValue();
-            }
+
+            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({autoGetData: obj.value}) : '');
+            this.setAutoGetDataValue();
         });
 
         // minLevel
@@ -776,9 +731,7 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 if (newValue >= 0 && newValue <= 1024) {
                     llsModel.newLongData.minLevel = newValue;
-                    if(globalVariable.autoSaveMode){
-                        llsModel.setLongData({minLevel: llsModel.newLongData.minLevel});
-                    }
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({minLevel: llsModel.newLongData.minLevel}) : '');
                     this.setTextValue("textMinLevel", 'minLevel', "statusMinLevel");
                 } else {
                     this.$$('textMinLevel').setValue(oldValue);
@@ -798,9 +751,7 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 if (newValue >= 1024 && newValue <= 4095) {
                     llsModel.newLongData.maxLevel = newValue;
-                    if(globalVariable.autoSaveMode){
-                        llsModel.setLongData({maxLevel: llsModel.newLongData.maxLevel});
-                    }
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({maxLevel: llsModel.newLongData.maxLevel}) : '');
                     this.setTextValue("textMaxLevel", 'maxLevel', "statusMaxLevel");
                 } else {
                     this.$$('textMaxLevel').setValue(oldValue);
@@ -882,12 +833,8 @@ export default class GeneralSettings extends JetView {
             let obj = $$("listFuelType").getItem(id);
             console.log(obj);
             llsModel.newLongData.thermalCompensationType = obj.value;
-            if(globalVariable.autoSaveMode){
-                llsModel.setLongData({thermalCompensationType: obj.value});
-                this.setThermalCompensationValue();
-            }else{
-                this.setThermalCompensationValue();
-            }
+            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({thermalCompensationType: obj.value}) : '');
+            this.setThermalCompensationValue();
         });
 
         // coefficientK1
@@ -898,9 +845,7 @@ export default class GeneralSettings extends JetView {
                 newValue = Number(newValue).toFixed(6);
                 if (newValue >= 0 && newValue < 1000) {
                     llsModel.newLongData.coefficientK1 = newValue;
-                    if(globalVariable.autoSaveMode){
-                        llsModel.setLongData({coefficientK1: llsModel.newLongData.coefficientK1});
-                    }
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({coefficientK1: llsModel.newLongData.coefficientK1}) : '');
                     this.setFloatValue("textCoefficientK1", 'coefficientK1', "statusCoefficientK1");
                 } else {
                     this.$$('textCoefficientK1').setValue(oldValue);
@@ -920,9 +865,7 @@ export default class GeneralSettings extends JetView {
                 newValue = Number(newValue).toFixed(6);
                 if (newValue >= 0 && newValue < 1000) {
                     llsModel.newLongData.coefficientK2 = newValue;
-                    if(globalVariable.autoSaveMode){
-                        llsModel.setLongData({coefficientK2: llsModel.newLongData.coefficientK2});
-                    }
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({coefficientK2: llsModel.newLongData.coefficientK2}) : '');
                     this.setFloatValue("textCoefficientK2", 'coefficientK2', "statusCoefficientK2");
                 } else {
                     this.$$('textCoefficientK2').setValue(oldValue);
@@ -1004,6 +947,8 @@ export default class GeneralSettings extends JetView {
     }
 
     setAutoGetData(number) {
+        const _ = this.app.getService("locale")._;
+
         switch (number) {
             case 0: {
                 this.$$("textAutoGetData").setValue(_("automatic_data_output_turned_off"));
@@ -1029,6 +974,8 @@ export default class GeneralSettings extends JetView {
     }
 
     setThermalCompensation(value) {
+        const _ = this.app.getService("locale")._;
+
         switch (value) {
             case 0x00: {
                 $$('switch_temp_compensation').setValue(false);
@@ -1058,6 +1005,8 @@ export default class GeneralSettings extends JetView {
     }
 
     setTypeFuel(number) {
+        const _ = this.app.getService("locale")._;
+
         switch (number) {
             case 0: {
                 this.$$("textFuelType").setValue(_("fuel_type_turned_off"));
@@ -1098,65 +1047,66 @@ export default class GeneralSettings extends JetView {
         }
     }
 
-    setStatusNewValue(id, status){
+    setStatusNewValue(id, status) {
         webix.html.removeCss(this.$$(id).getNode(), "status_define_button_yellow");
         webix.html.removeCss(this.$$(id).getNode(), "status_define_button");
-        if(status){
+        if (status) {
             webix.html.addCss(this.$$(id).getNode(), "status_define_button_yellow");
-        }else{
+        } else {
             webix.html.addCss(this.$$(id).getNode(), "status_define_button");
         }
     }
 
     /* setters Values */
-    setTextValue(id, name, statusId){
-        if(llsModel.currentLongData[name] == llsModel.newLongData[name]){
+    setTextValue(id, name, statusId) {
+        if (llsModel.currentLongData[name] == llsModel.newLongData[name]) {
             this.$$(id).setValue(llsModel.currentLongData[name]);
             this.setStatusNewValue(statusId, false);
-        }else{
+        } else {
             this.$$(id).setValue(llsModel.newLongData[name]);
             this.setStatusNewValue(statusId, true);
         }
     }
-    setThermalCompensationValue(){
-        if(llsModel.currentLongData.thermalCompensationType == llsModel.newLongData.thermalCompensationType){
+
+    setThermalCompensationValue() {
+        if (llsModel.currentLongData.thermalCompensationType == llsModel.newLongData.thermalCompensationType) {
             this.setTypeFuel(llsModel.currentLongData.thermalCompensationType);
             this.setThermalCompensation(llsModel.currentLongData.thermalCompensationType);
             this.setStatusNewValue("statusFuelType", false);
-        }else{
+        } else {
             this.setTypeFuel(llsModel.newLongData.thermalCompensationType);
             this.setThermalCompensation(llsModel.newLongData.thermalCompensationType);
             this.setStatusNewValue("statusFuelType", true);
         }
     }
 
-    setAutoGetDataValue(){
-        if(llsModel.currentLongData.autoGetData == llsModel.newLongData.autoGetData){
+    setAutoGetDataValue() {
+        if (llsModel.currentLongData.autoGetData == llsModel.newLongData.autoGetData) {
             this.setAutoGetData(llsModel.currentLongData.autoGetData);
             this.setStatusNewValue("statusAutoGetData", false);
-        }else{
+        } else {
             this.setAutoGetData(llsModel.newLongData.autoGetData);
             this.setStatusNewValue("statusAutoGetData", true);
         }
     }
 
-    setBaudRateValue(){
-        if(llsModel.currentLongData.baudRate232 == llsModel.newLongData.baudRate232){
+    setBaudRateValue() {
+        if (llsModel.currentLongData.baudRate232 == llsModel.newLongData.baudRate232) {
             this.setBaudRate(llsModel.currentLongData.baudRate232);
             this.setStatusNewValue("statusBaudRate", false);
-        }else{
+        } else {
             this.setBaudRate(llsModel.newLongData.baudRate232);
             this.setStatusNewValue("statusBaudRate", true);
         }
     }
 
-    setFloatValue(id, name, statusId){
+    setFloatValue(id, name, statusId) {
         let oldFloat = Number(llsModel.currentLongData[name]).toFixed(4);
         let newFloat = Number(llsModel.newLongData[name]).toFixed(4);
-        if(oldFloat == newFloat){
+        if (oldFloat == newFloat) {
             this.$$(id).setValue(llsModel.currentLongData[name]);
             this.setStatusNewValue(statusId, false);
-        }else{
+        } else {
             this.$$(id).setValue(llsModel.newLongData[name]);
             this.setStatusNewValue(statusId, true);
         }

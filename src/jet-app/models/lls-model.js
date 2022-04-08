@@ -372,7 +372,7 @@ class LlsModel {
     async #findLls() {
         try {
             let settings = await findPort.findLls232();
-            console.log(settings);
+            // console.log(settings);
             return settings;
         } catch (e) {
             console.log(e);

@@ -1,6 +1,7 @@
-import {JetView} from "webix-jet";
+import {JetView, plugins} from "webix-jet";
 import configFile from "../../config-app";
 import globalVariable from "../../global-variable-app";
+import {getStrLang} from "../../services/auxiliary-functions";
 
 export default class WindowSettings extends JetView {
     config() {
@@ -49,7 +50,7 @@ export default class WindowSettings extends JetView {
                                 options: [
                                     {value: "Русский", id: 'ru'},
                                     {value: "English", id: 'en'},
-
+                                    {value: "Как в системе", id: 'like_system'},
                                 ]
                             },
                             {}
@@ -165,23 +166,63 @@ export default class WindowSettings extends JetView {
             }
         });
 
-        globalVariable.language.then((lang) => {
-            let locale = this.app.getService("locale");
-            if(locale.getLang() != lang){
-                this.app.getService("locale").setLang(lang);
-            }
-            $$("language").setValue(lang);
+        // globalVariable.language.then((lang) => {
+        //     let locale = this.app.getService("locale");
+        //     if(locale.getLang() != lang){
+        //         this.app.getService("locale").setLang(lang);
+        //     }
+        //     $$("language").setValue(lang);
+        // });
+        // $$("language").attachEvent("onChange",  (newValue, oldValue, config) => {
+        //     if(config == "user"){
+        //         globalVariable.language = newValue;
+        //         this.app.getService("locale").setLang(newValue);
+        //     }
+        // });
+        //
+        globalVariable.language.then(async (language)=>{
+            this.setLanguage(language).then();
+            // let locale = this.app.getService("locale");
+            // let langStr = null;
+            // if(language == 'like_system' ){
+            //     let systemLangStr = await window.electron.app("getLocale");
+            //     langStr = getStrLang(systemLangStr);
+            // }else{
+            //     langStr = getStrLang(language);
+            // }
+            //
+            // if(langStr != locale.getLang()){
+            //     locale.setLang(langStr);
+            // }
+
+            $$("language").setValue(language);
         });
+
         $$("language").attachEvent("onChange",  (newValue, oldValue, config) => {
             if(config == "user"){
                 globalVariable.language = newValue;
-                this.app.getService("locale").setLang(newValue);
+                this.setLanguage(newValue);
             }
         });
 
     }
-
     showWindow() {
         this.getRoot().show();
+    }
+
+    async setLanguage(language){
+        let locale = this.app.getService("locale");
+        let langStr = null;
+
+        if(language == 'like_system' ){
+            let systemLangStr = await window.electron.app("getLocale");
+            langStr = getStrLang(systemLangStr);
+        }else{
+            langStr = getStrLang(language);
+        }
+
+        if(langStr != locale.getLang()){
+            locale.setLang(langStr);
+        }
     }
 }

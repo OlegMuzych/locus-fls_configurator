@@ -44,4 +44,6 @@ console.log(window.myAPI);
 window.serialPort.portList().then((list)=>console.log(list));
 
 window.electron.app('getPath','userData').then(path => console.log(path));
+window.electron.app('getLocale').then(str => console.log(str));
+
 console.log('👋 This message is being logged by "renderer.js", included via webpack');

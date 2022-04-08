@@ -5,6 +5,8 @@ import FiltrationSettings from "./filtaringSettings";
 import configFile from "../../../config-app";
 export default class CentralMenu extends JetView{
     config(){
+        const _ = this.app.getService("locale")._;
+
         let central_menu_button = {
             minWidth: 600,
             maxWidth: 850,
@@ -121,14 +123,14 @@ export default class CentralMenu extends JetView{
 
 
 
-        if(configFile.theme.color == 'white'){
+        if(configFile.theme == 'light'){
             webix.html.addCss( $$("central_cols_button").getNode(), "central_cols_button");
             webix.html.addCss( $$("general").getNode(), "button_central_menu");
             webix.html.addCss( $$("calibration").getNode(), "button_central_menu");
             webix.html.addCss( $$("filtering").getNode(), "button_central_menu");
             webix.html.addCss( $$("style_general_rows_1").getNode(), "style_general_rows");
         }
-        if(configFile.theme.color == 'black'){
+        if(configFile.theme == 'dark'){
             webix.html.addCss( $$("central_cols_button").getNode(), "central_cols_button_dark");
             webix.html.addCss( $$("general").getNode(), "button_central_menu_dark");
             webix.html.addCss( $$("calibration").getNode(), "button_central_menu_dark");

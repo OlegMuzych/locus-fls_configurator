@@ -110,7 +110,7 @@ export default class LeftMenu extends JetView{
             this.$$('button_back').enable();
         });
 
-        if(configFile.theme.color == 'white'){
+        if(configFile.theme == 'light'){
             webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols");
             webix.html.addCss( $$("left_menu_button_1").getNode(), "left_menu_button");
             webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button");
@@ -138,7 +138,7 @@ export default class LeftMenu extends JetView{
 
 
         }
-        if(configFile.theme.color == 'black'){
+        if(configFile.theme == 'dark'){
             webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols_dark");
             webix.html.addCss( $$("left_menu_button_1").getNode(), "left_menu_button_dark");
             webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_dark");

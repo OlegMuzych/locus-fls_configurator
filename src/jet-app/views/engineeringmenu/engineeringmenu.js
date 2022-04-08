@@ -97,11 +97,11 @@ export default class EngineeringMenu extends JetView{
             this.saveSettingNotification.showWindow();
         });
 
-        if(configFile.theme.color == 'white'){
+        if(configFile.theme == 'light'){
             webix.html.addCss( $$("rows_left_1").getNode(), "style_body");
             webix.html.addCss( $$("rows_right_2").getNode(), "style_body");
         }
-        if(configFile.theme.color == 'black'){
+        if(configFile.theme == 'dark'){
             webix.html.addCss( $$("rows_left_1").getNode(), "style_body_dark");
             webix.html.addCss( $$("rows_right_2").getNode(), "style_body_dark");
         }

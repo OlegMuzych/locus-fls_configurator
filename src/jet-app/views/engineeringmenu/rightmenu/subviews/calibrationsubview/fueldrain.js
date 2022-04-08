@@ -236,7 +236,7 @@ export default class FuelDrainView extends JetView {
             this.app.callEvent("app:calibrationsubview:finishCalibrate", []);
         });
 
-        if(configFile.theme.color == 'white'){
+        if(configFile.theme == 'light'){
             webix.html.addCss( this.$$("manual_volume_fuel_1").getNode(), "full_window_text");
             webix.html.addCss( this.$$("initial_volume_fuel_1").getNode(), "full_window_text");
             webix.html.addCss( this.$$("step_liters_1").getNode(), "full_window_text");
@@ -248,7 +248,7 @@ export default class FuelDrainView extends JetView {
             webix.html.addCss( this.$$("central_menu_and_right_menu_calibration_next_window_button").getNode(), "button_next_drain_window_1_2");
             webix.html.addCss( $$("right_menu_calibration_drain_2").getNode(), "rows_right_menu_calibration_2");
         }
-        if(configFile.theme.color == 'black'){
+        if(configFile.theme == 'dark'){
             webix.html.addCss( this.$$("manual_volume_fuel_1").getNode(), "full_window_text_dark");
             webix.html.addCss( this.$$("initial_volume_fuel_1").getNode(), "full_window_text_dark");
             webix.html.addCss( this.$$("step_liters_1").getNode(), "full_window_text_dark");

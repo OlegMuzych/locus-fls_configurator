@@ -123,12 +123,12 @@ export default class FiltrationSubView extends JetView {
             llsModel.addListenerLongData(this.listenerLongData);
         }));
 
-        if (configFile.theme.color == 'white') {
+        if (configFile.theme == 'light') {
             webix.html.addCss(this.$$("progress_bar2").getNode(), "progress_bar");
             webix.html.addCss(this.$$("status_level_fuel").getNode(), "full_window_text");
             webix.html.addCss(this.$$("right_menu_setup").getNode(), "right_menu_status");
         }
-        if (configFile.theme.color == 'black') {
+        if (configFile.theme == 'dark') {
             webix.html.addCss(this.$$("progress_bar2").getNode(), "progress_bar_dark");
             webix.html.addCss(this.$$("status_level_fuel").getNode(), "full_window_text_dark");
             webix.html.addCss(this.$$("right_menu_setup").getNode(), "right_menu_status_dark");

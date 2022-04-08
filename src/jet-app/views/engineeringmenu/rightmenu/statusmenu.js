@@ -173,7 +173,7 @@ export default class StatusMenu extends JetView{
             setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
         });
 
-        if(configFile.theme.color == 'white'){
+        if(configFile.theme == 'light'){
             webix.html.addCss( $$("right_menu_status").getNode(), "right_menu_status");
             webix.html.addCss( $$("rows_level_right_menu_info_1").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info");
@@ -181,7 +181,7 @@ export default class StatusMenu extends JetView{
             webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info");
 
         }
-        if(configFile.theme.color == 'black'){
+        if(configFile.theme == 'dark'){
             webix.html.addCss( $$("right_menu_status").getNode(), "right_menu_status_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_1").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info_dark");

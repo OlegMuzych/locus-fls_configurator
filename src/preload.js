@@ -61,7 +61,8 @@ contextBridge.exposeInMainWorld(
 
 contextBridge.exposeInMainWorld('electron', {
     openDialog: (method, config) => {return ipcRenderer.invoke('dialog', method, config);},
-    app: (method, params) => {return ipcRenderer.invoke('app', method, params);}
+    app: (method, params) => {return ipcRenderer.invoke('app', method, params);},
+    nativeTheme: (properties) => {return ipcRenderer.invoke('nativeTheme', properties);},
 });
 
 contextBridge.exposeInMainWorld('checkSumm', {

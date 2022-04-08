@@ -313,7 +313,7 @@ export default class FullEmptySubView extends JetView {
             // $$("auto_calibration_set_1").enable();
         });
 
-        if(configFile.theme.color == 'white'){
+        if(configFile.theme == 'light'){
             webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status");
             webix.html.addCss( $$("right_menu_status_text").getNode(), "right_menu_status_text");
             webix.html.addCss( $$("calibration_fuel").getNode(), "filter_toggle");
@@ -326,7 +326,7 @@ export default class FullEmptySubView extends JetView {
             webix.html.addCss( $$("button_edit").getNode(), "edit_values");
             webix.html.addCss( this.$$("status_level_fuel").getNode(), "full_window_text");
         }
-        if(configFile.theme.color == 'black'){
+        if(configFile.theme == 'dark'){
             webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status_dark");
             webix.html.addCss( $$("right_menu_status_text").getNode(), "right_menu_status_text_dark");
             webix.html.addCss( $$("calibration_fuel").getNode(), "filter_toggle_dark");

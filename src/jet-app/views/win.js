@@ -479,9 +479,6 @@ export default class Page9View extends JetView {
     init(view) {
         this.setStatusConnect(false);
 
-        // setTheme();
-
-
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerIsDisconnect(this.listenerDisconnect);
         llsModel.getStatusConnect();
@@ -656,69 +653,150 @@ export default class Page9View extends JetView {
         //
         // }
 
-        function setTheme() {
-            if (configFile.theme.color == 'black') {
-                webix.html.addCss($$("window_show").getNode(), "window_show_dark");
-                webix.html.addCss($$("window_show_2").getNode(), "window_show_dark");
-                webix.html.addCss($$("language_windows_modal").getNode(), "language_windows_modal_dark");
-                // webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
-                webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal_dark");
-                webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal_dark");
-                webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal_dark");
-                webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages_dark");
-                webix.html.addCss($$("logo_1").getNode(), "logo_1_dark");
-                webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start_dark");
-                webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start_dark");
-                webix.html.addCss($$("ver_soft").getNode(), "ver_soft_dark");
-                webix.html.addCss($$("master_setup").getNode(), "button_1_dark");
-                webix.html.addCss($$("engineering_setup").getNode(), "button_1_dark");
-                webix.html.addCss($$("reference").getNode(), "button_1_dark");
-                webix.html.addCss($$("application_menu").getNode(), "button_1_dark");
-
-                // $$("light_theme_label").hide()
-                // $$("dark_theme_label").show()
-                $$("logo_1").define("image", "assets/images/Logo_2.svg")
-                $$("master_setup").define("image", "assets/images/master_inverse.svg")
-                $$("engineering_setup").define("image", "assets/images/ingeneer_inverse.svg")
-                $$("reference").define("image", "assets/images/info_inverse.svg")
-                $$("application_menu").define("image", "assets/images/konfig_inverse.svg")
-                $$("logo_1").refresh()
-                $$("master_setup").refresh()
-                $$("engineering_setup").refresh()
-                $$("reference").refresh()
-                $$("application_menu").refresh()
+        globalVariable.theme.then(async theme => {
+            if (theme == 'like_system') {
+                let systemIsDark = await window.electron.nativeTheme('shouldUseDarkColors');
+                if (systemIsDark){
+                    configFile.theme = "dark";
+                }else{
+                    configFile.theme = 'light';
+                }
+                this.setTheme();
+            } else {
+                configFile.theme = theme;
+                this.setTheme();
             }
-            if (configFile.theme.color == 'white') {
-                webix.html.addCss($$("window_show").getNode(), "window_show");
-                webix.html.addCss($$("window_show_2").getNode(), "window_show");
-                webix.html.addCss($$("language_windows_modal").getNode(), "language_windows_modal");
-                // webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal");
-                webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal");
-                webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal");
-                webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal");
-                webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages");
-                webix.html.addCss($$("logo_1").getNode(), "logo_1");
-                webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start");
-                webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start");
-                webix.html.addCss($$("ver_soft").getNode(), "ver_soft");
-                webix.html.addCss($$("master_setup").getNode(), "button_1");
-                webix.html.addCss($$("engineering_setup").getNode(), "button_1");
-                webix.html.addCss($$("reference").getNode(), "button_1");
-                webix.html.addCss($$("application_menu").getNode(), "button_1");
+        });
 
-                // $$("dark_theme_label").hide()
-                // $$("light_theme_label").show()
-                $$("logo_1").define("image", "assets/images/Logo_1.svg")
-                $$("master_setup").define("image", "assets/images/master.svg")
-                $$("engineering_setup").define("image", "assets/images/ingeneer.svg")
-                $$("reference").define("image", "assets/images/info-win2.svg")
-                $$("application_menu").define("image", "assets/images/konfig.svg")
-                $$("logo_1").refresh()
-                $$("master_setup").refresh()
-                $$("engineering_setup").refresh()
-                $$("reference").refresh()
-                $$("application_menu").refresh()
-            }
+
+        //     function setTheme() {
+        //         if (configFile.theme == 'dark') {
+        //             // webix.html.addCss($$("window_show").getNode(), "window_show_dark");
+        //             webix.html.addCss($$("window_show_2").getNode(), "window_show_dark");
+        //             // webix.html.addCss($$("language_windows_modal").getNode(), "language_windows_modal_dark");
+        //             // webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
+        //             webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal_dark");
+        //             webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal_dark");
+        //             webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal_dark");
+        //             webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages_dark");
+        //             webix.html.addCss($$("logo_1").getNode(), "logo_1_dark");
+        //             webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start_dark");
+        //             webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start_dark");
+        //             webix.html.addCss($$("ver_soft").getNode(), "ver_soft_dark");
+        //             webix.html.addCss($$("master_setup").getNode(), "button_1_dark");
+        //             webix.html.addCss($$("engineering_setup").getNode(), "button_1_dark");
+        //             webix.html.addCss($$("reference").getNode(), "button_1_dark");
+        //             webix.html.addCss($$("application_menu").getNode(), "button_1_dark");
+        //
+        //             // $$("light_theme_label").hide()
+        //             // $$("dark_theme_label").show()
+        //             $$("logo_1").define("image", "assets/images/Logo_2.svg")
+        //             $$("master_setup").define("image", "assets/images/master_inverse.svg")
+        //             $$("engineering_setup").define("image", "assets/images/ingeneer_inverse.svg")
+        //             $$("reference").define("image", "assets/images/info_inverse.svg")
+        //             $$("application_menu").define("image", "assets/images/konfig_inverse.svg")
+        //             $$("logo_1").refresh()
+        //             $$("master_setup").refresh()
+        //             $$("engineering_setup").refresh()
+        //             $$("reference").refresh()
+        //             $$("application_menu").refresh()
+        //         }
+        //         if (configFile.theme == 'light') {
+        //             // webix.html.addCss($$("window_show").getNode(), "window_show");
+        //             webix.html.addCss($$("window_show_2").getNode(), "window_show");
+        //             // webix.html.addCss($$("language_windows_modal").getNode(), "language_windows_modal");
+        //             // webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal");
+        //             webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal");
+        //             webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal");
+        //             webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal");
+        //             webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages");
+        //             webix.html.addCss($$("logo_1").getNode(), "logo_1");
+        //             webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start");
+        //             webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start");
+        //             webix.html.addCss($$("ver_soft").getNode(), "ver_soft");
+        //             webix.html.addCss($$("master_setup").getNode(), "button_1");
+        //             webix.html.addCss($$("engineering_setup").getNode(), "button_1");
+        //             webix.html.addCss($$("reference").getNode(), "button_1");
+        //             webix.html.addCss($$("application_menu").getNode(), "button_1");
+        //
+        //             // $$("dark_theme_label").hide()
+        //             // $$("light_theme_label").show()
+        //             $$("logo_1").define("image", "assets/images/Logo_1.svg")
+        //             $$("master_setup").define("image", "assets/images/master.svg")
+        //             $$("engineering_setup").define("image", "assets/images/ingeneer.svg")
+        //             $$("reference").define("image", "assets/images/info-win2.svg")
+        //             $$("application_menu").define("image", "assets/images/konfig.svg")
+        //             $$("logo_1").refresh()
+        //             $$("master_setup").refresh()
+        //             $$("engineering_setup").refresh()
+        //             $$("reference").refresh()
+        //             $$("application_menu").refresh()
+        //         }
+        //     }
+        // }
+    }
+    setTheme(){
+        if (configFile.theme == 'dark') {
+            // webix.html.addCss($$("window_show").getNode(), "window_show_dark");
+            webix.html.addCss($$("window_show_2").getNode(), "window_show_dark");
+            // webix.html.addCss($$("language_windows_modal").getNode(), "language_windows_modal_dark");
+            // webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
+            webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal_dark");
+            webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal_dark");
+            webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal_dark");
+            webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages_dark");
+            webix.html.addCss($$("logo_1").getNode(), "logo_1_dark");
+            webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start_dark");
+            webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start_dark");
+            webix.html.addCss($$("ver_soft").getNode(), "ver_soft_dark");
+            webix.html.addCss($$("master_setup").getNode(), "button_1_dark");
+            webix.html.addCss($$("engineering_setup").getNode(), "button_1_dark");
+            webix.html.addCss($$("reference").getNode(), "button_1_dark");
+            webix.html.addCss($$("application_menu").getNode(), "button_1_dark");
+
+            // $$("light_theme_label").hide()
+            // $$("dark_theme_label").show()
+            $$("logo_1").define("image", "assets/images/Logo_2.svg")
+            $$("master_setup").define("image", "assets/images/master_inverse.svg");
+            $$("engineering_setup").define("image", "assets/images/ingeneer_inverse.svg");
+            $$("reference").define("image", "assets/images/info_inverse.svg");
+            $$("application_menu").define("image", "assets/images/konfig_inverse.svg");
+            $$("logo_1").refresh();
+            $$("master_setup").refresh();
+            $$("engineering_setup").refresh();
+            $$("reference").refresh();
+            $$("application_menu").refresh();
+        }
+        if (configFile.theme == 'light') {
+            // webix.html.addCss($$("window_show").getNode(), "window_show");
+            webix.html.addCss($$("window_show_2").getNode(), "window_show");
+            // webix.html.addCss($$("language_windows_modal").getNode(), "language_windows_modal");
+            // webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal");
+            webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal");
+            webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal");
+            webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal");
+            webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages");
+            webix.html.addCss($$("logo_1").getNode(), "logo_1");
+            webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start");
+            webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start");
+            webix.html.addCss($$("ver_soft").getNode(), "ver_soft");
+            webix.html.addCss($$("master_setup").getNode(), "button_1");
+            webix.html.addCss($$("engineering_setup").getNode(), "button_1");
+            webix.html.addCss($$("reference").getNode(), "button_1");
+            webix.html.addCss($$("application_menu").getNode(), "button_1");
+
+            // $$("dark_theme_label").hide()
+            // $$("light_theme_label").show()
+            $$("logo_1").define("image", "assets/images/Logo_1.svg");
+            $$("master_setup").define("image", "assets/images/master.svg");
+            $$("engineering_setup").define("image", "assets/images/ingeneer.svg");
+            $$("reference").define("image", "assets/images/info-win2.svg");
+            $$("application_menu").define("image", "assets/images/konfig.svg");
+            $$("logo_1").refresh();
+            $$("master_setup").refresh();
+            $$("engineering_setup").refresh();
+            $$("reference").refresh();
+            $$("application_menu").refresh();
         }
     }
 

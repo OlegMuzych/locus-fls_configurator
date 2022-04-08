@@ -109,7 +109,7 @@ export default class CalibrationSettings extends JetView {
 
 
 
-        if(configFile.theme.color == 'white'){
+        if(configFile.theme == 'light'){
             webix.html.addCss(this.$$("rowNumber").getNode(), "rowNumber_style_1");
             webix.html.addCss(this.$$("top_text_1").getNode(), "rowNumber_style_1");
             webix.html.addCss(this.$$("top_text_2").getNode(), "rowNumber_style_1");
@@ -119,7 +119,7 @@ export default class CalibrationSettings extends JetView {
             webix.html.addCss(this.$$("rowVolume").getNode(), "rowNumber_style");
 
         }
-        if(configFile.theme.color == 'black'){
+        if(configFile.theme == 'dark'){
             webix.html.addCss(this.$$("rowNumber").getNode(), "rowNumber_style_1_dark");
             webix.html.addCss(this.$$("top_text_1").getNode(), "rowNumber_style_1_dark");
             webix.html.addCss(this.$$("top_text_2").getNode(), "rowNumber_style_1_dark");

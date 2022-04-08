@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, nativeTheme } = require('electron');
 const path = require('path');
 const { ipcMain, dialog } = require('electron');
 
@@ -47,6 +47,9 @@ const createWindow = () => {
     });
     ipcMain.handle('app', (event, method, params) => {
       return app[method](params);
+    });
+    ipcMain.handle('nativeTheme', (event, properties) => {
+      return nativeTheme[properties];
     });
   });
 };

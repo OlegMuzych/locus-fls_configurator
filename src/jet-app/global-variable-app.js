@@ -7,7 +7,7 @@ class GlobalVariableApp {
     }
 
     #globalVariableDefault = {
-        theme: 'white', // 'black',
+        theme: 'like_system', // 'dark','light'
         language:  'like_system', // eng, ...
         autoSaveMode: true // false
     }

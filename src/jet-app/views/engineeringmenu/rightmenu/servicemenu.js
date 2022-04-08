@@ -113,11 +113,11 @@ export default class ServiceMenu extends JetView {
             $$('buttonPassword').enable();
         });
 
-        if(configFile.theme.color == 'white'){
+        if(configFile.theme == 'light'){
             webix.html.addCss( $$("buttonService").getNode(), "button_right_menu_top_1");
             webix.html.addCss( $$("buttonPassword").getNode(), "button_right_menu_top_1");
         }
-        if(configFile.theme.color == 'black'){
+        if(configFile.theme == 'dark'){
             webix.html.addCss( $$("buttonService").getNode(), "button_right_menu_top_1_dark");
             webix.html.addCss( $$("buttonPassword").getNode(), "button_right_menu_top_1_dark");
         }

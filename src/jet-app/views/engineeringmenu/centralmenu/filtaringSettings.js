@@ -679,7 +679,7 @@ export default class FiltrationSettings extends JetView {
             this.setFiltrationTypeValue();
         });
 
-        if (configFile.theme.color == 'white') {
+        if (configFile.theme == 'light') {
             webix.html.addCss($$("text_color_filter_1").getNode(), "text_color_filter");
             webix.html.addCss($$("text_color_filter_2").getNode(), "text_color_filter");
             webix.html.addCss($$("text_color_filter_3").getNode(), "text_color_filter");
@@ -714,7 +714,7 @@ export default class FiltrationSettings extends JetView {
             $$("image_button_filter_3").refresh();
         }
 
-        if (configFile.theme.color == 'black') {
+        if (configFile.theme == 'dark') {
             webix.html.addCss($$("text_color_filter_1").getNode(), "text_color_filter_dark");
             webix.html.addCss($$("text_color_filter_2").getNode(), "text_color_filter_dark");
             webix.html.addCss($$("text_color_filter_3").getNode(), "text_color_filter_dark");

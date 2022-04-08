@@ -596,9 +596,7 @@ export default class FiltrationSettings extends JetView {
                 // newValue = this.fixed(Number(newValue));
                 if (newValue >= 0 && newValue < 1000) {
                     llsModel.newLongData.coefficientQ = newValue;
-                    if (globalVariable.autoSaveMode) {
-                        llsModel.setLongData({coefficientQ: llsModel.newLongData.coefficientQ});
-                    }
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({coefficientQ: llsModel.newLongData.coefficientQ}) : '');
                     this.setFloatValue('text_q', "coefficientQ", "statusCoefficientQ");
                 } else {
                     this.$$('text_q').setValue(oldValue);
@@ -618,9 +616,7 @@ export default class FiltrationSettings extends JetView {
                 newValue = Number(newValue).toFixed(6);
                 if (newValue >= 0 && newValue < 1000) {
                     llsModel.newLongData.coefficientR = newValue;
-                    if (globalVariable.autoSaveMode) {
-                        llsModel.setLongData({coefficientR: llsModel.newLongData.coefficientR});
-                    }
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({coefficientR: llsModel.newLongData.coefficientR}) : '');
                     this.setFloatValue('text_r', "coefficientR", "statusCoefficientR");
                 } else {
                     this.$$('text_r').setValue(oldValue);
@@ -680,12 +676,8 @@ export default class FiltrationSettings extends JetView {
             let obj = $$("listFilterType").getItem(id);
             console.log(obj);
             llsModel.newLongData.filtrationType = obj.value;
-            if (globalVariable.autoSaveMode) {
-                llsModel.setLongData({filtrationType: obj.value});
-                this.setFiltrationTypeValue();
-            } else {
-                this.setFiltrationTypeValue();
-            }
+            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({filtrationType: obj.value}) : '');
+            this.setFiltrationTypeValue();
         });
 
         if (configFile.theme.color == 'white') {

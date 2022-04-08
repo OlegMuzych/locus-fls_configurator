@@ -23,7 +23,7 @@ export default class CalibrationSubView extends JetView {
                             view: "text",
                             width: 470,
                             height: 70,
-                            css: "full_level_windows",
+                            css: "full_window_text",
                             readonly: true,
                             localId: "status_level_fuel",
                             inputAlign: "center",
@@ -103,6 +103,7 @@ export default class CalibrationSubView extends JetView {
 
         let button_table = {
             css: "rows_right_menu_calibration_2",
+            id:"rows_export_import",
             rows: [
                 {
                     height: 10,
@@ -209,9 +210,13 @@ export default class CalibrationSubView extends JetView {
 
         if (configFile.theme.color == 'white') {
             webix.html.addCss(this.$$("tabbar").getNode(), "button_type_calibration_1");
+            webix.html.addCss(this.$$("rows_export_import").getNode(), "rows_right_menu_calibration_2");
+            webix.html.addCss(this.$$("status_level_fuel").getNode(), "full_window_text");
         }
         if (configFile.theme.color == 'black') {
             webix.html.addCss(this.$$("tabbar").getNode(), "button_type_calibration_1_dark");
+            webix.html.addCss(this.$$("rows_export_import").getNode(), "rows_right_menu_calibration_2_dark");
+            webix.html.addCss(this.$$("status_level_fuel").getNode(), "full_window_text_dark");
         }
     }
 

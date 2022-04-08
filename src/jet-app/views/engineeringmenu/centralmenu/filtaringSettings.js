@@ -4,19 +4,18 @@ import configFile from "../../../config-app";
 import globalVariable from "../../../global-variable-app";
 
 export default class FiltrationSettings extends JetView {
-
     config() {
         const _ = this.app.getService("locale")._;
         let filtering = {
-            minWidth: 600,
-            maxWidth: 850,
             view: "scrollview",
             scroll: "y",
-            maxHeight: 960,
+            maxHeight: 1960,
+            id: "central_menu_button_3",
+            css: "style_general_rows",
+            minWidth: 900,
+            maxWidth: 1300,
             body: {
-                minWidth: 600,
-                maxWidth: 850,
-                id: "central_menu_button_3",
+
                 rows: [
                     {
                         height: 100,
@@ -51,7 +50,7 @@ export default class FiltrationSettings extends JetView {
                                 cols: [
                                     {
                                         view: "label",
-                                        label: `<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 30px;'>${_("filtering_preset")}</p>`,
+                                        label: `<p style='font-size: 24px; font-weight: 500; position: relative; top: -20px; left: 30px;'>${_("filtering_preset")}</p>`,
                                         width: 300,
                                         height: 50,
                                         css: "text_color_filter",
@@ -62,13 +61,14 @@ export default class FiltrationSettings extends JetView {
                         ]
                     },
                     {
+                        height: 20,
+                    },
+                    {
 
                         id: "degree_of_filtration",
                         rows: [
                             {
-
-
-                                height: 300,
+                                height: 400,
                                 css: "degree_of_filtration",
                                 cols: [
                                     {},
@@ -79,7 +79,7 @@ export default class FiltrationSettings extends JetView {
                                         label: "Карьерная техника",
                                         css: "image_button_filter",
                                         id: "image_button_filter_1",
-                                        minWidth: 195,
+                                        minWidth: 240,
                                     },
                                     {
                                         // view: "button",  minWidth: 10,
@@ -90,7 +90,7 @@ export default class FiltrationSettings extends JetView {
                                         image: "assets/images/filtr_Stroit.svg",
                                         css: "image_button_filter",
                                         id: "image_button_filter_2",
-                                        minWidth: 195,
+                                        minWidth: 240,
                                     },
                                     {
                                         // view: "button",  minWidth: 10,
@@ -102,7 +102,7 @@ export default class FiltrationSettings extends JetView {
                                         image: "assets/images/filtr_Rovn.svg",
                                         css: "image_button_filter",
                                         id: "image_button_filter_3",
-                                        minWidth: 195,
+                                        minWidth: 240,
                                     },
                                     {}
                                 ]
@@ -110,12 +110,11 @@ export default class FiltrationSettings extends JetView {
                         ]
                     },
                     {
-                        minHeight: 10,
-
+                        height: 100,
                     },
                     {
                         height: 420,
-                        // css: "filters_rows",
+                        css: "filters_rows_number_2",
                         id: "degree_of_filtration_2",
                         rows: [
                             {
@@ -693,7 +692,7 @@ export default class FiltrationSettings extends JetView {
             webix.html.addCss($$("image_button_filter_1").getNode(), "image_button_filter");
             webix.html.addCss($$("image_button_filter_2").getNode(), "image_button_filter");
             webix.html.addCss($$("image_button_filter_3").getNode(), "image_button_filter");
-            webix.html.addCss($$("degree_of_filtration_2").getNode(), "filters_rows");
+            webix.html.addCss($$("degree_of_filtration_2").getNode(), "filters_rows_number_2");
             webix.html.addCss($$("filter_open_windows").getNode(), "full_window_text");
             webix.html.addCss($$("text_q").getNode(), "full_window_text");
             webix.html.addCss($$("text_r").getNode(), "full_window_text");
@@ -704,7 +703,17 @@ export default class FiltrationSettings extends JetView {
             webix.html.addCss($$("slider_filter_2").getNode(), "slider_1");
             webix.html.addCss($$("window_text_mediana").getNode(), "full_window_text");
             webix.html.addCss($$("button_slider_gen_value_2").getNode(), "button_slider_gen_value");
+            webix.html.addCss($$("central_menu_button_3").getNode(), "style_general_rows");
+
+            $$("image_button_filter_1").define("image", "assets/images/filtr_Karier.svg")
+            $$("image_button_filter_2").define("image", "assets/images/filtr_Stroit.svg")
+            $$("image_button_filter_3").define("image", "assets/images/filtr_Rovn.svg")
+
+            $$("image_button_filter_1").refresh();
+            $$("image_button_filter_2").refresh();
+            $$("image_button_filter_3").refresh();
         }
+
         if (configFile.theme.color == 'black') {
             webix.html.addCss($$("text_color_filter_1").getNode(), "text_color_filter_dark");
             webix.html.addCss($$("text_color_filter_2").getNode(), "text_color_filter_dark");
@@ -718,7 +727,7 @@ export default class FiltrationSettings extends JetView {
             webix.html.addCss($$("image_button_filter_1").getNode(), "image_button_filter_dark");
             webix.html.addCss($$("image_button_filter_2").getNode(), "image_button_filter_dark");
             webix.html.addCss($$("image_button_filter_3").getNode(), "image_button_filter_dark");
-            webix.html.addCss($$("degree_of_filtration_2").getNode(), "filters_rows_dark");
+            webix.html.addCss($$("degree_of_filtration_2").getNode(), "filters_rows_number_2_dark");
             webix.html.addCss($$("filter_open_windows").getNode(), "full_window_text_dark");
             webix.html.addCss($$("text_q").getNode(), "full_window_text_dark");
             webix.html.addCss($$("text_r").getNode(), "full_window_text_dark");
@@ -729,6 +738,16 @@ export default class FiltrationSettings extends JetView {
             webix.html.addCss($$("slider_filter_2").getNode(), "slider_1_dark");
             webix.html.addCss($$("window_text_mediana").getNode(), "full_window_text_dark");
             webix.html.addCss($$("button_slider_gen_value_2").getNode(), "button_slider_gen_value_dark");
+            webix.html.addCss($$("central_menu_button_3").getNode(), "style_general_rows_dark");
+
+
+            $$("image_button_filter_1").define("image", "assets/images/filtr_Karier_inverse.svg")
+            $$("image_button_filter_2").define("image", "assets/images/filtr_Stroit_inverse.svg")
+            $$("image_button_filter_3").define("image", "assets/images/filtr_Rovn_inverse.svg")
+
+            $$("image_button_filter_1").refresh();
+            $$("image_button_filter_2").refresh();
+            $$("image_button_filter_3").refresh();
         }
     }
 

@@ -18,18 +18,18 @@ export default class ServiceMenu extends JetView {
                         {},
                         {
                             view: "button",
-                            width: 250,
+                            width: 251,
                             height: 70,
                             label: _("service_service"),
                             css: "button_right_menu_top_1",
                             id: "buttonService"
                         },
                         {
-                            width: 10,
+                            width: 30,
                         },
                         {
                             view: "button",
-                            width: 250,
+                            width: 251,
                             height: 70,
                             label: _("service_password"),
                             css: "button_right_menu_top_1",

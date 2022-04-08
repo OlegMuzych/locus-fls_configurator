@@ -70,7 +70,7 @@ export default class FullEmptySubView extends JetView {
                                     view: "text",
                                     width: 470,
                                     height: 70,
-                                    css: "full_level_windows",
+                                    css: "full_window_text",
                                     readonly: true,
                                     localId: "status_level_fuel",
                                     inputAlign: "center",
@@ -323,6 +323,8 @@ export default class FullEmptySubView extends JetView {
             webix.html.addCss( $$("auto_calibration_1").getNode(), "auto_calibration");
             webix.html.addCss( $$("auto_calibration_set_2").getNode(), "full_window_text");
             webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration");
+            webix.html.addCss( $$("button_edit").getNode(), "edit_values");
+            webix.html.addCss( this.$$("status_level_fuel").getNode(), "full_window_text");
         }
         if(configFile.theme.color == 'black'){
             webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status_dark");
@@ -335,6 +337,8 @@ export default class FullEmptySubView extends JetView {
             webix.html.addCss( $$("auto_calibration_set_2").getNode(), "full_window_text_dark");
             webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration_dark");
             webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration_dark");
+            webix.html.addCss( $$("button_edit").getNode(), "edit_values_dark");
+            webix.html.addCss( this.$$("status_level_fuel").getNode(), "full_window_text_dark");
         }
     }
 

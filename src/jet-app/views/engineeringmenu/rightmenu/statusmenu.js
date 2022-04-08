@@ -70,11 +70,12 @@ export default class StatusMenu extends JetView{
                     height: 10,
                 },
                 {
-                    disabled: true,
+                    // disabled: true,
                     height: 60,
                     rows:[
                         {
                             height: 30,
+                            disabled: true,
                             cols:[
                                 {
                                     width: 70,

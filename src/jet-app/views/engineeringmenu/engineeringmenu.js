@@ -21,26 +21,27 @@ export default class EngineeringMenu extends JetView{
             // css: "style_body",
             // id: "dark",
             // body: {
-                cols:[
-                    LeftMenu,
-                    {
-                        css: "style_body",
-                        id:"rows_left_1",
-                        width: 20,
-                    },
-                    CentralMenu,
-                    {
-                        css: "style_body",
-                        id:"rows_right_2",
-                        width: 25,
-                    },
-                    RightMenu,
+            // maWidth: 2000,
+            // minWidth: 1000,
+            cols: [
+                LeftMenu,
+                {
+                    css: "style_body",
+                    id: "rows_left_1",
+                    minWidth: 20,
+                    // maxWidth: 150,
+                },
+                        CentralMenu,
+                {
+                    css: "style_body",
+                    id: "rows_right_2",
+                    minWidth: 25,
+                    // maxWidth: 150,
+                },
+                RightMenu,
 
-
-                ],
-
-            // }
-        }
+            ]
+        };
 
         return body;
     }

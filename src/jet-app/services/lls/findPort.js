@@ -43,7 +43,7 @@ class FindLls {
             this.testLls = null;
             return settingPort;
         } catch (e) {
-            console.log(e);
+            // console.log(e);
         }
     }
 
@@ -51,7 +51,7 @@ class FindLls {
         try {
             // let portList = await SerialPort.list();
             let portList = await window.serialPort.portList();
-            console.log(portList);
+            // console.log(portList);
             return portList.map((item) => {
                 return item.path;
             });

@@ -133,12 +133,12 @@ export default class llsProtocol {
     open() {
         return new Promise(((resolve, reject) => {
             this.port.onError((err) => {
-                console.log('Error: ', err.message);
+                // console.log('Error: ', err.message);
                 reject(err.message);
             });
             this.port.onOpen(() => {
                 // open logic
-                console.log("serialPort is Open");
+                console.log(`serialPort [${this._settingPort.portName}: ${this._settingPort.baudRate}] is Open`);
                 this._listenerResponseData();
                 resolve();
             });
@@ -277,7 +277,7 @@ export default class llsProtocol {
     _getCRC8(buffer) {
         // let checksum = crc8('MAXIM', buffer);
         let checksum = window.checkSumm.crc8('MAXIM', buffer);
-        console.log("CRC8: " + checksum.toString(16));
+        // console.log("CRC8: " + checksum.toString(16));
         return checksum;
     };
 

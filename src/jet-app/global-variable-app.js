@@ -8,7 +8,7 @@ class GlobalVariableApp {
 
     #globalVariableDefault = {
         theme: 'white', // 'black',
-        language:  'rus', // eng, ...
+        language:  'ru', // eng, ...
         autoSaveMode: true // false
     }
 
@@ -19,7 +19,7 @@ class GlobalVariableApp {
                 resolve(globalVariable.autoSaveMode);
             }else{
                 this.#saveGlobal(this.#globalVariableDefault);
-                resolve(this.#globalVariableDefault);
+                resolve(this.#globalVariableDefault.autoSaveMode);
             }
         });
     }
@@ -30,12 +30,12 @@ class GlobalVariableApp {
 
     get theme(){
         return new Promise(async (resolve, reject)=>{
-            let globalVariable = this.#readGlobal();
+            let globalVariable = await this.#readGlobal();
             if(globalVariable){
                 resolve(globalVariable.theme);
             }else{
                 this.#saveGlobal(this.#globalVariableDefault);
-                resolve(this.#globalVariableDefault);
+                resolve(this.#globalVariableDefault.theme);
             }
         });
     }
@@ -46,12 +46,12 @@ class GlobalVariableApp {
 
     get language(){
         return new Promise(async (resolve, reject)=>{
-            let globalVariable = this.#readGlobal();
+            let globalVariable = await this.#readGlobal();
             if(globalVariable){
                 resolve(globalVariable.language);
             }else{
                 this.#saveGlobal(this.#globalVariableDefault);
-                resolve(this.#globalVariableDefault);
+                resolve(this.#globalVariableDefault.language);
             }
         });
     }
@@ -61,6 +61,7 @@ class GlobalVariableApp {
     }
 
     #saveGlobal(globalVariable){
+        console.log(globalVariable);
         this.#userStorage.set("global-variable", globalVariable);
     }
 

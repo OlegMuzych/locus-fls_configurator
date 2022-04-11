@@ -176,10 +176,10 @@ export default {
     "button_image_engineering_dark": "assets/images/ru/ingeneer_inverse.svg",
 
     "button_image_info_win2": "assets/images/ru/info-win2.svg",
-    "button_image_info_win2_dark": "assets/images/ru/",
+    "button_image_info_win2_dark": "assets/images/ru/info_win2_inverse-01.svg",
 
     "button_image_konfig": "assets/images/ru/konfig.svg",
-    "button_image_konfig_dark": "assets/images/ru/kofig_inverse.svg",
+    "button_image_konfig_dark": "assets/images/ru/konfig_inverse.svg",
 
     /* leftmenu.js Images */
     "button_image_back": "assets/images/ru/Back.svg",
@@ -187,5 +187,16 @@ export default {
 
     "button_image_info": "assets/images/ru/info.svg",
     "button_image_info_dark": "assets/images/ru/info_inverse_3.svg",
+
+    /* filteringSettings.js Images */
+    "button_image_filter_karier": "assets/images/ru/filtr_Karier.svg",
+    "button_image_filter_karier_dark": "assets/images/ru/filtr_Karier_inverse.svg",
+
+    "button_image_filter_stroit": "assets/images/ru/filtr_Stroit.svg",
+    "button_image_filter_stroit_dark": "assets/images/ru/filtr_Stroit_inverse.svg",
+
+    "button_image_filter_rovn": "assets/images/ru/filtr_Rovn.svg",
+    "button_image_filter_rovn_dark": "assets/images/ru/filtr_Rovn_inverse.svg",
+
     //
 };

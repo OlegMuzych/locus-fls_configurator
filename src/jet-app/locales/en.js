@@ -169,6 +169,36 @@ export default {
     "window_passwordinput_segmented_current": "Enter",
     "window_passwordinput_segmented_reset": "Reset Settings",
     "window_passwordinput_segmented_current_text": "Enter the login password",
-    "window_passwordinput_segmented_reset_text":"All sensor settings will be erased"
+    "window_passwordinput_segmented_reset_text":"All sensor settings will be erased",
+
+    /*  win.js Images */
+    "button_image_master": "assets/images/en/master_eng.svg",
+    "button_image_master_dark": "assets/images/en/master_inverse_eng.svg",
+
+    "button_image_engineering": "assets/images/en/ingeneer_eng.svg",
+    "button_image_engineering_dark": "assets/images/en/ingeneer_inverse_eng.svg",
+
+    "button_image_info_win2": "assets/images/en/info_win2_eng.svg",
+    "button_image_info_win2_dark": "assets/images/en/info_win2_inverse-01.svg",
+
+    "button_image_konfig": "assets/images/en/konfig_eng.svg",
+    "button_image_konfig_dark": "assets/images/en/konfig_inverse_eng.svg",
+
+    /* leftmenu.js Images */
+    "button_image_back": "assets/images/en/Back.svg",
+    "button_image_back_dark": "assets/images/en/back_inverse.svg",
+
+    "button_image_info": "assets/images/en/info.svg",
+    "button_image_info_dark": "assets/images/en/info_inverse.svg",
+
+    /* filteringSettings.js Images */
+    "button_image_filter_karier": "assets/images/en/filtr_Karier.svg",
+    "button_image_filter_karier_dark": "assets/images/en/filtr_Karier_inverse.svg",
+
+    "button_image_filter_stroit": "assets/images/en/filtr_Stroit.svg",
+    "button_image_filter_stroit_dark": "assets/images/en/filtr_Stroit_inverse.svg",
+
+    "button_image_filter_rovn": "assets/images/en/filtr_Rovn.svg",
+    "button_image_filter_rovn_dark": "assets/images/en/filtr_Rovn_inverse.svg",
 
 };

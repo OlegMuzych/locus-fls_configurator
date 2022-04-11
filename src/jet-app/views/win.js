@@ -510,6 +510,8 @@ export default class Page9View extends JetView {
         // }
     }
     setTheme(){
+        const _ = this.app.getService("locale")._;
+
         if (configFile.theme == 'dark') {
             webix.html.addCss($$("window_show_2").getNode(), "window_show_dark");
             webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal_dark");

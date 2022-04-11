@@ -75,7 +75,7 @@ export default class FiltrationSettings extends JetView {
                                     {
                                         view: "button",
                                         type: "image",
-                                        image: "assets/images/filtr_Karier.svg",
+                                        image: _("button_image_filter_karier"),
                                         label: "Карьерная техника",
                                         css: "image_button_filter",
                                         id: "image_button_filter_1",
@@ -87,7 +87,7 @@ export default class FiltrationSettings extends JetView {
                                     {
                                         view: "button",
                                         type: "image",
-                                        image: "assets/images/filtr_Stroit.svg",
+                                        image: _("button_image_filter_stroit"),
                                         css: "image_button_filter",
                                         id: "image_button_filter_2",
                                         minWidth: 240,
@@ -99,7 +99,7 @@ export default class FiltrationSettings extends JetView {
                                     {
                                         view: "button",
                                         type: "image",
-                                        image: "assets/images/filtr_Rovn.svg",
+                                        image: _("button_image_filter_rovn"),
                                         css: "image_button_filter",
                                         id: "image_button_filter_3",
                                         minWidth: 240,
@@ -713,9 +713,9 @@ export default class FiltrationSettings extends JetView {
 
 
 
-            $$("image_button_filter_1").define("image", "assets/images/filtr_Karier.svg")
-            $$("image_button_filter_2").define("image", "assets/images/filtr_Stroit.svg")
-            $$("image_button_filter_3").define("image", "assets/images/filtr_Rovn.svg")
+            $$("image_button_filter_1").define("image", _("button_image_filter_karier"));
+            $$("image_button_filter_2").define("image", _("button_image_filter_stroit"));
+            $$("image_button_filter_3").define("image", _("button_image_filter_rovn"));
 
             $$("image_button_filter_1").refresh();
             $$("image_button_filter_2").refresh();
@@ -756,10 +756,9 @@ export default class FiltrationSettings extends JetView {
 
 
 
-            $$("image_button_filter_1").define("image", "assets/images/filtr_Karier_inverse.svg")
-            $$("image_button_filter_2").define("image", "assets/images/filtr_Stroit_inverse.svg")
-            $$("image_button_filter_3").define("image", "assets/images/filtr_Rovn_inverse.svg")
-
+            $$("image_button_filter_1").define("image", _("button_image_filter_karier_dark"));
+            $$("image_button_filter_2").define("image", _("button_image_filter_stroit_dark"));
+            $$("image_button_filter_3").define("image", _("button_image_filter_rovn_dark"));
             $$("image_button_filter_1").refresh();
             $$("image_button_filter_2").refresh();
             $$("image_button_filter_3").refresh();

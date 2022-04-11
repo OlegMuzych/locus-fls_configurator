@@ -6,17 +6,15 @@
 	.st0{fill:none;stroke:#FFFFFF;}
 	.st1{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
 	.st2{fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-linejoin:round;}
-	.st3{fill:none;}
-	.st4{fill:#FFFFFF;}
-	.st5{font-family:'Akrobat-Bold';}
-	.st6{font-size:20px;}
+	.st3{fill:#FFFFFF;}
+	.st4{font-family:'Akrobat-Bold';}
+	.st5{font-size:20px;}
 </style>
 <g id="главная_страница">
-	<path class="st0" d="M148.7,48.4c-0.5-0.5-0.5-1.3,0-1.8c0.5-0.5,1.3-0.5,1.8,0c0.2,0.2,0.4,0.6,0.4,0.9c0,0.7-0.6,1.3-1.3,1.2
-		C149.2,48.7,148.9,48.6,148.7,48.4z M148.6,52.2h2v17h-2V52.2z"/>
-	<circle class="st1" cx="150" cy="57.5" r="22.5"/>
-	<circle class="st2" cx="150" cy="57.5" r="21.5"/>
+	<path class="st0" d="M144.7,49.1c-0.5-0.5-0.5-1.3,0-1.8c0.5-0.5,1.3-0.5,1.8,0c0.2,0.2,0.4,0.6,0.4,0.9c0,0.7-0.6,1.3-1.3,1.2
+		C145.2,49.5,144.9,49.4,144.7,49.1z M144.6,53h2v17h-2V53z"/>
+	<circle class="st1" cx="146" cy="58.3" r="22.5"/>
+	<circle class="st2" cx="146" cy="58.3" r="21.5"/>
 </g>
-<rect x="55.8" y="113.4" class="st3" width="188.4" height="18.3"/>
-<text transform="matrix(1 0 0 1 133.3505 127.84)" class="st4 st5 st6">Help</text>
+<text transform="matrix(1 0 0 1 78.9809 128.45)" class="st3 st4 st5">About the program</text>
 </svg>

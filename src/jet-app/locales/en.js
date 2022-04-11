@@ -179,7 +179,7 @@ export default {
     "button_image_engineering_dark": "assets/images/en/ingeneer_inverse_eng.svg",
 
     "button_image_info_win2": "assets/images/en/info_win2_eng.svg",
-    "button_image_info_win2_dark": "assets/images/en/info_win2_inverse-01.svg",
+    "button_image_info_win2_dark": "assets/images/en/info_win2_inverse-0_eng.svg",
 
     "button_image_konfig": "assets/images/en/konfig_eng.svg",
     "button_image_konfig_dark": "assets/images/en/konfig_inverse_eng.svg",
@@ -188,8 +188,8 @@ export default {
     "button_image_back": "assets/images/en/Back.svg",
     "button_image_back_dark": "assets/images/en/back_inverse.svg",
 
-    "button_image_info": "assets/images/en/info.svg",
-    "button_image_info_dark": "assets/images/en/info_inverse.svg",
+    "button_image_info": "assets/images/en/info_3_eng.svg",
+    "button_image_info_dark": "assets/images/en/info_inverse_3_eng.svg",
 
     /* filteringSettings.js Images */
     "button_image_filter_karier": "assets/images/en/filtr_Karier.svg",

@@ -183,7 +183,7 @@ export default {
 
     /* leftmenu.js Images */
     "button_image_back": "assets/images/ru/Back.svg",
-    "button_image_back_dark": "assets/images/ru/back_inverse_3.svg",
+    "button_image_back_dark": "assets/images/ru/Back_inverse_3.svg",
 
     "button_image_info": "assets/images/ru/info.svg",
     "button_image_info_dark": "assets/images/ru/info_inverse_3.svg",

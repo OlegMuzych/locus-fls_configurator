@@ -185,8 +185,8 @@ export default {
     "button_image_konfig_dark": "assets/images/en/konfig_inverse_eng.svg",
 
     /* leftmenu.js Images */
-    "button_image_back": "assets/images/en/Back.svg",
-    "button_image_back_dark": "assets/images/en/back_inverse.svg",
+    "button_image_back": "assets/images/en/Back_eng.svg",
+    "button_image_back_dark": "assets/images/en/back_inverse_eng.svg",
 
     "button_image_info": "assets/images/en/info_3_eng.svg",
     "button_image_info_dark": "assets/images/en/info_inverse_3_eng.svg",

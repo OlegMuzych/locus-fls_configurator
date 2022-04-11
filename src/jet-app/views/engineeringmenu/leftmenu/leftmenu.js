@@ -94,6 +94,14 @@ export default class LeftMenu extends JetView{
                         // maxWidth: 100,
                         width: 20,
                     },
+                    {
+                        width: 200,
+                        id: "rows_info",
+                        hidden: true,
+                        rows:[
+
+                        ]
+                    }
                 ]
 
         };
@@ -120,6 +128,14 @@ export default class LeftMenu extends JetView{
             this.$$('button_back').enable();
         });
         const _ = this.app.getService("locale")._;
+
+        $$("button_reference").attachEvent("onItemClick", (id, e) => {
+            if ($$("rows_info").isVisible()){
+                $$("rows_info").hide();
+            } else {
+                $$("rows_info").show();
+            }
+        })
 
         if(configFile.theme == 'light'){
             webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols");

@@ -1587,7 +1587,30 @@ border: none;
     color: #fff;
 }
 
-/*------------------------------------------------------*/
+.window_type_2 .webix_el_radio .webix_radio_1 .webix_custom_radio{
+    color: #000;
+
+}
+
+.window_type_2 .webix_label_right{
+    color: #000;
+    font-size: 22px;
+    padding-right: 40px;
+}
+
+
+.window_type_2_dark .webix_el_radio .webix_radio_1 .webix_custom_radio{
+    color: #fff;
+
+}
+
+.window_type_2_dark .webix_label_right{
+    color: #fff;
+    font-size: 22px;
+    padding-right: 40px;
+}
+
+    /*------------------------------------------------------*/
 .empty_window_text .webix_el_box input{
     background-color: #f3f3f3;
     border-radius: 5px;

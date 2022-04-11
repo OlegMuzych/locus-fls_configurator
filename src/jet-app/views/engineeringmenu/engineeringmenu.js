@@ -18,26 +18,27 @@ export default class EngineeringMenu extends JetView{
             // view: "scrollview",
             // scroll: "y",
             // maxHeight: 1000,
-            // css: "style_body",
-            // id: "dark",
             // body: {
-            // maWidth: 2000,
-            // minWidth: 1000,
+            css: "style_body",
+            id: "dark",
+            maxWidth: 500,
+            gravity: "1",
             cols: [
                 LeftMenu,
-                {
-                    css: "style_body",
-                    id: "rows_left_1",
-                    minWidth: 20,
-                    // maxWidth: 150,
-                },
+                // {
+                //     css: "style_body",
+                //     id: "rows_left_1",
+                //
+                //     // minWidth:20,
+                // },
                         CentralMenu,
-                {
-                    css: "style_body",
-                    id: "rows_right_2",
-                    minWidth: 25,
-                    // maxWidth: 150,
-                },
+                // {
+                //     css: "style_body",
+                //     id: "rows_right_2",
+                //
+                //     // minWidth: 20,
+                //     // maxWidth: 300,
+                // },
                 RightMenu,
 
             ]
@@ -98,12 +99,14 @@ export default class EngineeringMenu extends JetView{
         });
 
         if(configFile.theme == 'light'){
-            webix.html.addCss( $$("rows_left_1").getNode(), "style_body");
-            webix.html.addCss( $$("rows_right_2").getNode(), "style_body");
+            // webix.html.addCss( $$("rows_left_1").getNode(), "style_body");
+            // webix.html.addCss( $$("rows_right_2").getNode(), "style_body");
+            webix.html.addCss( $$("dark").getNode(), "style_body");
         }
         if(configFile.theme == 'dark'){
-            webix.html.addCss( $$("rows_left_1").getNode(), "style_body_dark");
-            webix.html.addCss( $$("rows_right_2").getNode(), "style_body_dark");
+            // webix.html.addCss( $$("rows_left_1").getNode(), "style_body_dark");
+            // webix.html.addCss( $$("rows_right_2").getNode(), "style_body_dark");
+            webix.html.addCss( $$("dark").getNode(), "style_body_dark");
         }
     }
 

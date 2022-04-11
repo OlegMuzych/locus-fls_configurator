@@ -13,79 +13,89 @@ export default class LeftMenu extends JetView{
             // body: {
                 id: "style_left_cols",
                 css: "style_left_cols",
-                rows: [
+                cols:[
                     {
-                        view: "button",
-                        type:"label",
-                        label:_("button_save_setting"),
-                        css: "edit_values",
-                        height: 103,
-                        id:"save_settings"
+                        width: 10,
                     },
                     {
-                        height: 9,
-                    },
-                    {
-                        view: "button",
-                        type: "image",
-                        image: "assets/images/model_101.svg",
-                        width: 155,
-                        height: 200,
-                        css: "left_menu_button",
-                        id: "left_menu_button_1",
-                        hidden: true,
-                    },
-                    {
-                       height: 10,
-                    },
-                    {
-                        view: "button",
-                        type: "image",
-                        image: "assets/images/ONE.MAX.svg",
-                        width: 155,
-                        height: 200,
-                        css: "left_menu_button",
-                        id: "left_menu_button_2"
-                    },
-                    {
-                        view: "button",
-                        type: "image",
-                        image: "assets/images/ONE.BLE.svg",
-                        width: 155,
-                        height: 200,
-                        css: "left_menu_button_2",
-                        id: "left_menu_button_3"
-                    },
-                    {
-                        height: 340,
-                    },
+                        rows: [
+                            {
+                                view: "button",
+                                type:"label",
+                                label:_("button_save_setting"),
+                                css: "edit_values",
+                                width: 160,
+                                height: 103,
+                                id:"save_settings"
+                            },
+                            {
+                                height: 9,
+                            },
+                            {
+                                view: "button",
+                                type: "image",
+                                image: "assets/images/model_101.svg",
+                                width: 155,
+                                height: 200,
+                                css: "left_menu_button",
+                                id: "left_menu_button_1",
+                                hidden: true,
+                            },
+                            {
+                                height: 10,
+                            },
+                            {
+                                view: "button",
+                                type: "image",
+                                image: "assets/images/ONE.MAX.svg",
+                                width: 155,
+                                height: 200,
+                                css: "left_menu_button",
+                                id: "left_menu_button_2"
+                            },
+                            {
+                                view: "button",
+                                type: "image",
+                                image: "assets/images/ONE.BLE.svg",
+                                width: 155,
+                                height: 200,
+                                css: "left_menu_button_2",
+                                id: "left_menu_button_3"
+                            },
+                            {
+                                height: 340,
+                            },
 
-                    {
-                        view: "button",
-                        type: "image",
-                        image: "assets/images/Back.svg",
-                        width: 160,
-                        height: 120,
-                        id: "button_back",
-                        css: "left_menu_button_reference",
+                            {
+                                view: "button",
+                                type: "image",
+                                image: "assets/images/Back.svg",
+                                width: 160,
+                                height: 120,
+                                id: "button_back",
+                                css: "left_menu_button_reference",
+                            },
+                            {
+                                height: 30,
+                            },
+                            {
+                                view: "button",
+                                type: "image",
+                                image: "assets/images/info.svg",
+                                width: 160,
+                                height: 120,
+                                id: "button_reference",
+                                css: "left_menu_button_reference",
+                            },
+                        ]
                     },
                     {
-                        height: 30,
+                        // minWidth: 20,
+                        // maxWidth: 100,
+                        width: 20,
                     },
-                    {
-                        view: "button",
-                        type: "image",
-                        image: "assets/images/info.svg",
-                        width: 160,
-                        height: 120,
-                        id: "button_reference",
-                        css: "left_menu_button_reference",
-                    },
-                    {
-
-                    }
-
                 ]
+
         };
         return left_menu;
     }

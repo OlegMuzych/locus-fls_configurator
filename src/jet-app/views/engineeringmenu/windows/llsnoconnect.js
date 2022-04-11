@@ -1,5 +1,7 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
+import configFile from "../../../config-app";
+import {getStrLang} from "../../../services/auxiliary-functions";
 
 export default class LlsNoConnectWindow extends JetView {
     config() {
@@ -79,5 +81,19 @@ export default class LlsNoConnectWindow extends JetView {
 
     showWindow() {
         this.getRoot().show();
+    }
+
+
+
+    setTheme() {
+        if (configFile.theme == 'dark') {
+            webix.html.addCss($$("window_show_4").getNode(), "window_show_dark");
+
+        }
+        if (configFile.theme == 'light') {
+            webix.html.addCss($$("window_show_4").getNode(), "window_show");
+
+
+        }
     }
 }

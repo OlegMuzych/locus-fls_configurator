@@ -212,11 +212,13 @@ export default class CalibrationSubView extends JetView {
             webix.html.addCss(this.$$("tabbar").getNode(), "button_type_calibration_1");
             webix.html.addCss(this.$$("rows_export_import").getNode(), "rows_right_menu_calibration_2");
             webix.html.addCss(this.$$("status_level_fuel").getNode(), "full_window_text");
+            webix.html.addCss(this.$$("progress_bar3").getNode(), "edit_values");
         }
         if (configFile.theme == 'dark') {
             webix.html.addCss(this.$$("tabbar").getNode(), "button_type_calibration_1_dark");
             webix.html.addCss(this.$$("rows_export_import").getNode(), "rows_right_menu_calibration_2_dark");
             webix.html.addCss(this.$$("status_level_fuel").getNode(), "full_window_text_dark");
+            webix.html.addCss(this.$$("progress_bar3").getNode(), "edit_values_dark");
         }
     }
 

@@ -78,6 +78,8 @@ export default class CentralMenu extends JetView{
         }
 
         let body = {
+            maxWidth: 1100,
+            minWidth: 900,
             rows: [
                 central_menu_button,
                 myMultiview

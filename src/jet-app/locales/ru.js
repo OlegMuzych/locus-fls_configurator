@@ -3,10 +3,6 @@ export default {
     "version":  "Версия",
     "sensor_is_connected": "Датчик подключен",
     "sensor_is_not_connected": "Датчик не подключен",
-    "language_selection": "Выбор языка",
-    "theme_selection": "Выбор темы",
-    "font_size": "Размер шрфта",
-    "auto_save_mode": "Автоматическое  сохранение настроек",
     "trademark": "Торговая марка: 'Иванов Инжиниринг'",
     "developer": "Разработчик: ООО 'Иванов Инжиниринг'",
     "program_version": 'Версия конфигуратора',
@@ -15,6 +11,20 @@ export default {
 
     "reference": "О Программе", //view: "window", template: this
     "settings": "Настройки", //view: "window", template: this
+
+    /* window-settings.js */
+    "language_selection": "Выбор языка",
+    "theme_selection": "Выбор темы",
+    "font_size": "Размер шрфта",
+    "auto_save_mode": "Автоматическое  сохранение настроек",
+
+    "dark_theme":  'Темная',
+    "light_theme": 'Светлая',
+    "like_system_theme": "Как в системе",
+
+    "language_ru":  'Русский',
+    "language_en": 'English',
+    "language_like_system": "Как в системе",
 
     /* generalsettings.js */
     "choose": 'Выбрать',

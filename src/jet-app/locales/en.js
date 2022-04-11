@@ -3,10 +3,9 @@ export default {
     "version":  "Version",
     "sensor_is_connected": "The sensor is connected",
     "sensor_is_not_connected": "The sensor is not connected",
-    "language_selection": "Language selection",
-    "theme_selection": "Choosing a theme",
-    "font_size": "Font Size",
-    "auto_save_mode": "Automatic saving of settings",
+
+
+
     "trademark": "Trademark: 'Иванов Инжиниринг'",
     "developer": "Developer: ООО 'Иванов Инжиниринг'",
     "program_version": 'Program version',
@@ -15,6 +14,20 @@ export default {
 
     "reference": "Reference", //view: "window", template: this
     "settings": "Settings", //view: "window", template: this
+
+    /* window-settings.js */
+    "language_selection": "Language selection",
+    "theme_selection": "Choosing a theme",
+    "font_size": "Font Size",
+    "auto_save_mode": "Automatic saving of settings",
+
+    "dark_theme":  'Dark',
+    "light_theme": 'Light',
+    "like_system_theme": "As in OS",
+
+    "language_ru":  'Русский',
+    "language_en": 'English',
+    "language_like_system": "As in OS",
 
     /* generalsettings.js */
     "choose": 'Choose',

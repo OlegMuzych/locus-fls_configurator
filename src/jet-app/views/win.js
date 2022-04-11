@@ -40,7 +40,7 @@ export default class Page9View extends JetView {
         var logo = {
             view: "button",
             type: "image",
-            image: "assets/images/Ivanov_Logo_1.svg",
+            image: "assets/images/Logo_1.svg",
             width: 500,
             height: 600,
             css: "logo_1",
@@ -161,145 +161,6 @@ export default class Page9View extends JetView {
             ]
         };
 
-        // let win = {
-        //     view: "window",
-        //     position: "center",
-        //     width: 850,
-        //     height: 500,
-        //     id: "window_show",
-        //     modal: true,
-        //     css: "window_show",
-        //     head: {
-        //         rows: [
-        //             {
-        //                 cols: [
-        //                     {template: _("settings"), type: "header", borderless: true,},
-        //                     {
-        //                         view: "icon", icon: "wxi-close", tooltip: "Close window", click: function () {
-        //                             $$("window_show").hide()
-        //                         }
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 height: 20,
-        //             },
-        //             {
-        //                 disabled: false,
-        //                 height: 80,
-        //                 width: 200,
-        //                 cols: [
-        //                     {
-        //                         width: 20,
-        //                     },
-        //                     {
-        //                         view: "combo",
-        //                         width: 750,
-        //                         height: 100,
-        //                         label: `<p>${_("language_selection")}</p>`,
-        //                         labelWidth: 500,
-        //                         css: "window_type_4",
-        //                         inputAlign: "center",
-        //                         id: "language",
-        //                         options: [
-        //                             {value: "Русский", id: 'ru' },
-        //                             {value: "English", id: 'en'},
-        //
-        //                         ]
-        //                     },
-        //                     {
-        //
-        //                     }
-        //                 ]
-        //             },
-        //             {
-        //                 height: 20,
-        //             },
-        //             {
-        //                 width: 200,
-        //                 rows: [
-        //                     {
-        //
-        //                         disabled: true,
-        //                         cols: [
-        //                             {
-        //                                 width: 20,
-        //                             },
-        //                             {
-        //                                 view: "label",
-        //                                 label: `<p style='position: relative; top: -20px; text-align: left'>${_("theme_selection")}</p>`,
-        //                                 width: 550,
-        //                                 id: "light_theme_label",
-        //                                 css:"language_windows_modal",
-        //                             },
-        //                             {view: "switch", value: 0, id: "dark_light_theme", width: 70, height: 100,},
-        //                             {
-        //                             },
-        //                         ]
-        //                     },
-        //                     {
-        //                         height: 20,
-        //                     },
-        //                     {
-        //                         disabled: true,
-        //                         height: 90,
-        //                         cols:[
-        //                             {
-        //                                 width: 20,
-        //                             },
-        //                             {
-        //                                 view: "label",
-        //                                 label: `<p style='position: relative; top: -30px; text-align: left'>${_("font_size")}</p>`,
-        //                                 width: 300,
-        //                                 id: "light_theme_label_3",
-        //                                 css:"language_windows_modal",
-        //                             },
-        //                             { view:"slider", value:"0", step:10, min:0, max:30, name:"s1", width: 400, height: 30, title:"%", css:"text_size_slider",
-        //                                 on:{
-        //                                     onChange:function(){
-        //                                         this.define("title","%" + this.getValue());
-        //                                         this.refresh(); }
-        //                                 }},
-        //                             {
-        //
-        //
-        //                             }
-        //                         ]
-        //                     },
-        //                     {
-        //                         height: 20,
-        //                     },
-        //                     {
-        //                         disabled: false,
-        //                         cols:[
-        //                             {
-        //                                 width: 20,
-        //                             },
-        //                             {
-        //                                 view: "label",
-        //                                 label: `<p style='position: relative; top: -20px; text-align: left'>${_("auto_save_mode")}</p>`,
-        //                                 width: 550,
-        //                                 id: "light_theme_label_2",
-        //                                 css:"language_windows_modal",
-        //                             },
-        //                             {view: "switch", value: 1, id: "switchAutoSaveMode", width: 70, height: 100,},
-        //                             {
-        //
-        //
-        //                             }
-        //                         ]
-        //                     },
-        //
-        //
-        //
-        //                 ]
-        //             },
-        //         ]
-        //     },
-        //
-        // }
-
-
         // win.hide();
 
         var win_3 =webix.ui({
@@ -342,7 +203,7 @@ export default class Page9View extends JetView {
                 rows: [
                     {
                         cols: [
-                            {template: _("reference"), type: "header", borderless: true,},
+                            {template: "", type: "header", borderless: true,},
                             {
                                 view: "icon", icon: "wxi-close", tooltip: "Close window", click: function () {
                                     $$("window_show_2").hide()
@@ -534,8 +395,8 @@ export default class Page9View extends JetView {
             $$("window_show_3").show()
 
             setTimeout(() => {
-                this.$$("window_show_3").hide();
-            }, 100);
+                $$("window_show_3").hide();
+            }, 400);
         });
 
 
@@ -549,7 +410,6 @@ export default class Page9View extends JetView {
         this.windowsSettings = this.ui(WindowSettings);
 
         $$("application_menu").attachEvent("onItemClick", (id, e) => {
-            // $$("window_show").show()
             this.windowsSettings.showWindow();
         });
 
@@ -569,11 +429,15 @@ export default class Page9View extends JetView {
                     configFile.theme = 'light';
                 }
                 this.setTheme();
+                this.getNode().refresh();
             } else {
                 configFile.theme = theme;
                 this.setTheme();
+                this.getNode().refresh();
             }
         });
+
+
 
 
         //     function setTheme() {
@@ -644,10 +508,7 @@ export default class Page9View extends JetView {
     }
     setTheme(){
         if (configFile.theme == 'dark') {
-            // webix.html.addCss($$("window_show").getNode(), "window_show_dark");
             webix.html.addCss($$("window_show_2").getNode(), "window_show_dark");
-            // webix.html.addCss($$("language_windows_modal").getNode(), "language_windows_modal_dark");
-            // webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
             webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal_dark");
             webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal_dark");
             webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal_dark");
@@ -665,22 +526,20 @@ export default class Page9View extends JetView {
 
             // $$("light_theme_label").hide()
             // $$("dark_theme_label").show()
-            $$("logo_1").define("image", "assets/images/Logo_2.svg")
+            $$("logo_1").define("image", "assets/images/Logo_2.svg");
+            $$("logo_1").refresh();
             $$("master_setup").define("image", "assets/images/master_inverse.svg");
             $$("engineering_setup").define("image", "assets/images/ingeneer_inverse.svg");
             $$("reference").define("image", "assets/images/info_win2_inverse-01.svg");
             $$("application_menu").define("image", "assets/images/konfig_inverse.svg");
-            $$("logo_1").refresh();
+            // $$("logo_1").refresh();
             $$("master_setup").refresh();
             $$("engineering_setup").refresh();
             $$("reference").refresh();
             $$("application_menu").refresh();
         }
         if (configFile.theme == 'light') {
-            // webix.html.addCss($$("window_show").getNode(), "window_show");
             webix.html.addCss($$("window_show_2").getNode(), "window_show");
-            // webix.html.addCss($$("language_windows_modal").getNode(), "language_windows_modal");
-            // webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal");
             webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal");
             webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal");
             webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal");
@@ -699,11 +558,12 @@ export default class Page9View extends JetView {
             // $$("dark_theme_label").hide()
             // $$("light_theme_label").show()
             $$("logo_1").define("image", "assets/images/Logo_1.svg");
+            $$("logo_1").refresh();
             $$("master_setup").define("image", "assets/images/master.svg");
             $$("engineering_setup").define("image", "assets/images/ingeneer.svg");
             $$("reference").define("image", "assets/images/info-win2.svg");
             $$("application_menu").define("image", "assets/images/konfig.svg");
-            $$("logo_1").refresh();
+            // $$("logo_1").refresh();
             $$("master_setup").refresh();
             $$("engineering_setup").refresh();
             $$("reference").refresh();

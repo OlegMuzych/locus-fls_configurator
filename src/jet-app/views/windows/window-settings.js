@@ -48,9 +48,9 @@ export default class WindowSettings extends JetView {
                                 inputAlign: "center",
                                 localId: "language",
                                 options: [
-                                    {value: "Русский", id: 'ru'},
-                                    {value: "English", id: 'en'},
-                                    {value: "Как в системе", id: 'like_system'},
+                                    {value: _("language_ru"), id: 'ru'},
+                                    {value: _("language_en"), id: 'en'},
+                                    {value: _("language_like_system"), id: 'like_system'},
                                 ]
                             },
                             {}
@@ -79,7 +79,7 @@ export default class WindowSettings extends JetView {
                                 options: [
                                     {value: _("dark_theme"), id: 'dark'},
                                     {value: _("light_theme"), id: 'light'},
-                                    {value: _("like_system"), id: 'like_system'},
+                                    {value: _("like_system_theme"), id: 'like_system'},
                                 ]
                             },
                             {}

@@ -271,18 +271,18 @@ export default class PasswordWindow extends JetView {
     }
 
 
-    // setTheme() {
-    //     if (configFile.theme == 'dark') {
-    //         webix.html.addCss($$("tabbar_windows_password").getNode(), "tabbar_windows_password_dark");
-    //
-    //
-    //     }
-    //     if (configFile.theme == 'light') {
-    //         webix.html.addCss($$("tabbar_windows_password").getNode(), "tabbar_windows_password");
-    //
-    //
-    //
-    //     }
-    //   }
+    setTheme() {
+        if (configFile.theme == 'dark') {
+            webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_dark");
+
+
+        }
+        if (configFile.theme == 'light') {
+            webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password");
+
+
+
+        }
     }
+}
 

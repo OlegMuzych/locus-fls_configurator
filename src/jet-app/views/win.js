@@ -432,11 +432,9 @@ export default class Page9View extends JetView {
                     configFile.theme = 'light';
                 }
                 this.setTheme();
-                this.getNode().refresh();
             } else {
                 configFile.theme = theme;
                 this.setTheme();
-                this.getNode().refresh();
             }
         });
 
@@ -526,8 +524,6 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("engineering_setup").getNode(), "button_1_dark");
             webix.html.addCss($$("reference").getNode(), "button_1_dark");
             webix.html.addCss($$("application_menu").getNode(), "button_1_dark");
-            webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
-            webix.html.addCss($$("language_windows_modal_6").getNode(), "language_windows_modal_dark");
 
             // $$("light_theme_label").hide()
             // $$("dark_theme_label").show()
@@ -542,6 +538,10 @@ export default class Page9View extends JetView {
             $$("engineering_setup").refresh();
             $$("reference").refresh();
             $$("application_menu").refresh();
+
+            webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
+            webix.html.addCss($$("language_windows_modal_6").getNode(), "language_windows_modal_dark");
+
         }
         if (configFile.theme == 'light') {
             webix.html.addCss($$("window_show_2").getNode(), "window_show");
@@ -557,8 +557,6 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("engineering_setup").getNode(), "button_1");
             webix.html.addCss($$("reference").getNode(), "button_1");
             webix.html.addCss($$("application_menu").getNode(), "button_1");
-            webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal");
-            webix.html.addCss($$("language_windows_modal_6").getNode(), "language_windows_modal");
 
             // $$("dark_theme_label").hide()
             // $$("light_theme_label").show()
@@ -573,6 +571,9 @@ export default class Page9View extends JetView {
             $$("engineering_setup").refresh();
             $$("reference").refresh();
             $$("application_menu").refresh();
+
+            webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal");
+            webix.html.addCss($$("language_windows_modal_6").getNode(), "language_windows_modal");
         }
     }
 

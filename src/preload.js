@@ -3,6 +3,7 @@ const { contextBridge, dialog, ipcRenderer } = require('electron');
 const {SerialPort} = require('serialport');
 const {crc8} = require("easy-crc");
 const { writeFile, readFile, access }  = require('fs/promises');
+const { writeFileSync, readFileSync }  = require('fs');
 const CSV = require('csv-string');
 
 contextBridge.exposeInMainWorld('myAPI', {
@@ -72,6 +73,8 @@ contextBridge.exposeInMainWorld('checkSumm', {
 contextBridge.exposeInMainWorld('fs', {
         writeFile: (file, data, options) => writeFile(file, data, options),
         readFile: (path, options) => readFile(path, options),
+        writeFileSync: (file, data, options) => writeFileSync(file, data, options),
+        readFileSync: (path, options) => readFileSync(path, options),
         access:  (path,mode) => access(path, mode),
     }
 );

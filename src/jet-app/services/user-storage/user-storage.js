@@ -41,12 +41,13 @@ export default class UserStorage{
 
     async #writeFile(file){
         let path = await this.#getPath();
-        fs.writeFile(path, file).then();
+        // fs.writeFileSync(path, file).then();
+        fs.writeFileSync(path, file);
     }
 
     async #readFile(){
         let path = await this.#getPath();
-        let file = await fs.readFile(path, 'UTF-8');
+        let file = await fs.readFileSync(path, 'UTF-8');
         return file;
     }
 
@@ -57,7 +58,7 @@ export default class UserStorage{
             console.log("file userStorage is find");
             return path + '/' + 'userStorage';
         }catch(err){
-            await fs.writeFile(path + '/' + 'userStorage', '{"test":"test_string"}');
+            await fs.writeFileSync(path + '/' + 'userStorage', '{"test":"test_string"}');
             console.log("file userStorage is create");
             return path + '/' + 'userStorage';
         }}

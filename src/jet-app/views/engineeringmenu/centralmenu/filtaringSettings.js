@@ -279,7 +279,7 @@ export default class FiltrationSettings extends JetView {
                                             {
 
                                                 view: "label",
-                                                label: `<p>${("median_length")}</p>`,
+                                                label: `<p>${_("median_length")}</p>`,
                                                 width: 280,
                                                 css: "text_color_filter",
                                                 id: "text_color_filter_3",

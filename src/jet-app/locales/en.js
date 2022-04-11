@@ -6,11 +6,11 @@ export default {
 
 
 
-    "trademark": "Trademark: ",
-    "developer": "Developer: ",
+    "trademark": "Trademark: 'Иванов Инжиниринг'",
+    "developer": "Developer: ООО 'Иванов Инжиниринг'",
     "program_version": 'Program version',
-    "website": "",
-    "copyright": "",
+    "website": "www.locme.ru",
+    "copyright": "© 2022",
 
     "reference": "Reference", //view: "window", template: this
     "settings": "Settings", //view: "window", template: this
@@ -172,25 +172,24 @@ export default {
     "window_passwordinput_segmented_reset_text":"All sensor settings will be erased",
 
     /*  win.js Images */
-    "button_image_master": "assets/images/win1:ver2/settingsWizard_en_light.svg",
-    "button_image_master_dark": "assets/images/win1:ver2/settingsWizard_en_black.svg",
+    "button_image_master": "assets/images/en/master_eng.svg",
+    "button_image_master_dark": "assets/images/en/master_inverse_eng.svg",
 
-    "button_image_engineering": "assets/images/win1:ver2/viewSettings_en_light.svg",
-    "button_image_engineering_dark": "assets/images/win1:ver2/viewSettings_en_black.svg",
+    "button_image_engineering": "assets/images/en/ingeneer_eng.svg",
+    "button_image_engineering_dark": "assets/images/en/ingeneer_inverse_eng.svg",
 
-    "button_image_info_win2": "assets/images/win1:ver2/about_en_light.svg",
-    "button_image_info_win2_dark": "assets/images/win1:ver2/about_en_black.svg",
+    "button_image_info_win2": "assets/images/en/info_win2_eng.svg",
+    "button_image_info_win2_dark": "assets/images/en/info_win2_inverse-0_eng.svg",
 
-
-    "button_image_konfig": "assets/images/win1:ver2/mainSettings_en_light.svg",
-    "button_image_konfig_dark": "assets/images/win1:ver2/mainSettings_en_black.svg",
+    "button_image_konfig": "assets/images/en/konfig_eng.svg",
+    "button_image_konfig_dark": "assets/images/en/konfig_inverse_eng.svg",
 
     /* leftmenu.js Images */
-    "button_image_back": "assets/images/left_menu:ver2/mainMenu_en_light.svg",
-    "button_image_back_dark": "assets/images/left_menu:ver2/mainMenu_en_black.svg",
+    "button_image_back": "assets/images/en/Back.svg",
+    "button_image_back_dark": "assets/images/en/back_inverse.svg",
 
-    "button_image_info": "assets/images/left_menu:ver2/info_en_light.svg",
-    "button_image_info_dark": "assets/images/left_menu:ver2/info_en_black.svg",
+    "button_image_info": "assets/images/en/info_3_eng.svg",
+    "button_image_info_dark": "assets/images/en/info_inverse_3_eng.svg",
 
     /* filteringSettings.js Images */
     "button_image_filter_karier": "assets/images/en/filtr_Karier.svg",

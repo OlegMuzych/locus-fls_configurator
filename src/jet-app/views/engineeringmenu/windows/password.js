@@ -1,5 +1,6 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
+import configFile from "../../../config-app";
 
 export default class PasswordWindow extends JetView {
     config() {
@@ -215,6 +216,7 @@ export default class PasswordWindow extends JetView {
     init() {
         this.passValidFlag = true;
 
+
         this.$$('buttonCancel_1').attachEvent("onItemClick", (id, e) => {
             console.log('click');
             this.getRoot().hide();
@@ -259,9 +261,28 @@ export default class PasswordWindow extends JetView {
                     this.$$("textNewPass").setValue('');
                 })
         });
+
+        this.setTheme();
     }
+
 
     showWindow() {
         this.getRoot().show();
     }
-}
+
+
+    // setTheme() {
+    //     if (configFile.theme == 'dark') {
+    //         webix.html.addCss($$("tabbar_windows_password").getNode(), "tabbar_windows_password_dark");
+    //
+    //
+    //     }
+    //     if (configFile.theme == 'light') {
+    //         webix.html.addCss($$("tabbar_windows_password").getNode(), "tabbar_windows_password");
+    //
+    //
+    //
+    //     }
+    //   }
+    }
+

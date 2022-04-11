@@ -77,6 +77,8 @@ export default class LlsNoConnectWindow extends JetView {
             this.getRoot().hide();
             this.show("win");
         });
+
+        this.setTheme();
     }
 
     showWindow() {
@@ -88,10 +90,16 @@ export default class LlsNoConnectWindow extends JetView {
     setTheme() {
         if (configFile.theme == 'dark') {
             webix.html.addCss($$("window_show_4").getNode(), "window_show_dark");
+            webix.html.addCss(this.$$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
+            webix.html.addCss(this.$$("buttonOk").getNode(), "set_password_button_dark");
+            webix.html.addCss(this.$$("buttonCancel").getNode(), "set_password_button_dark");
 
         }
         if (configFile.theme == 'light') {
             webix.html.addCss($$("window_show_4").getNode(), "window_show");
+            webix.html.addCss(this.$$("language_windows_modal_2").getNode(), "language_windows_modal");
+            webix.html.addCss(this.$$("buttonOk").getNode(), "set_password_button");
+            webix.html.addCss(this.$$("buttonCancel").getNode(), "set_password_button");
 
 
         }

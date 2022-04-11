@@ -41,7 +41,7 @@ export default class Page9View extends JetView {
             view: "button",
             type: "image",
             image: "assets/images/Ivanov_Logo_1.svg",
-            // width: 500,
+            width: 500,
             height: 600,
             css: "logo_1",
             id: "logo_1",
@@ -50,11 +50,13 @@ export default class Page9View extends JetView {
 
         // Статус подключения датчика
         var status_gage = {
+            width: 400,
             rows: [
                 {
+                    paddingX: 80,
                     cols: [
                         {
-                            width: 170,
+
                         },
                         {
                             view: "button",
@@ -88,7 +90,9 @@ export default class Page9View extends JetView {
                             css: "label_status_gage_windows_start",
                             id: "label_status_gage_windows_start_2"
                         },
-                        {}
+                        {
+
+                        }
                     ]
                 }
             ]
@@ -111,7 +115,7 @@ export default class Page9View extends JetView {
                             image: "assets/images/master.svg",
                             css: "button_1",
                             id: "master_setup",
-                            disabled: true,
+                            disabled: false,
 
                         },
                         {
@@ -298,6 +302,33 @@ export default class Page9View extends JetView {
 
         // win.hide();
 
+        var win_3 =webix.ui({
+            view: "window",
+            width: 1000,
+            // height: 160,
+            id: "window_show_3",
+            modal: false,
+            css: "window_show_closed_master",
+            position: "top",
+            body: {
+                // rows:[
+                //     {
+                        cols:[
+                            {
+                                view: "label",
+                                label: "<p style='font-size: 26px;'>Функция временно не доступна</p>",
+                                css: "closed_windows_modal",
+                                height: 45,
+                            },
+                        ]
+                //     },
+                // ]
+            }
+        });
+        win_3.hide();
+
+
+
 
         var win_2 = webix.ui({
             view: "window",
@@ -321,13 +352,11 @@ export default class Page9View extends JetView {
                     },
                     {
                         height: 10,
-
                     },
                     {
                         cols: [
                             {},
                             {
-
                                 // hidden: false,
                                 height: 400,
                                 rows: [
@@ -338,7 +367,7 @@ export default class Page9View extends JetView {
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
-                                        // id: "language_windows_modal_2"
+                                        id: "language_windows_modal_2"
                                     },
                                     {
                                         view: "label",
@@ -377,8 +406,6 @@ export default class Page9View extends JetView {
                             },
                             {}
                         ]
-
-
                     }
                 ]
             },
@@ -476,7 +503,11 @@ export default class Page9View extends JetView {
         }
     };
 
+
     init(view) {
+
+
+
         this.setStatusConnect(false);
 
         llsModel.addListenerIsConnect(this.listenerConnect);
@@ -494,10 +525,19 @@ export default class Page9View extends JetView {
 
         $$("logo_1").attachEvent("onKeyPress", goEngineering);
 
-        $$("master_setup").attachEvent("onItemClick", (id, e) => {
-            // this.show("1page");
+        // $$("master_setup").attachEvent("onItemClick", (id, e) => {
+        //     // this.show("1page");
+        //
+        // });
 
+        $$("master_setup").attachEvent("onItemClick", (id, e) => {
+            $$("window_show_3").show()
+
+            setTimeout(() => {
+                this.$$("window_show_3").hide();
+            }, 100);
         });
+
 
 
         $$("engineering_setup").attachEvent("onItemClick", (id, e) => {
@@ -519,139 +559,6 @@ export default class Page9View extends JetView {
             $$("window_show_2").show()
         });
 
-        // $$("dark_theme_label").hide()
-
-
-        // if (configFile.theme.color == 'white') {
-        //     $$("dark_light_theme").setValue(1);
-        // }
-        //
-        // if (configFile.theme.color == 'black') {
-        //     $$("dark_light_theme").setValue(0);
-        // }
-        //
-        // globalVariable.autoSaveMode.then(flag => $$("switchAutoSaveMode").setValue(flag));
-        // $$("switchAutoSaveMode").attachEvent("onChange",  (newValue, oldValue, config) => {
-        //     if (newValue) {
-        //         globalVariable.autoSaveMode = true;
-        //     } else {
-        //         globalVariable.autoSaveMode = false;
-        //     }
-        // });
-        //
-        // globalVariable.language.then((locale) => {
-        //     $$("language").setValue(locale);
-        // });
-        // $$("language").attachEvent("onChange",  (newValue, oldValue, config) => {
-        //     if(config == "user"){
-        //         globalVariable.language = newValue;
-        //         this.app.getService("locale").setLang(newValue);
-        //     }
-        // });
-
-        // $$("dark_light_theme").attachEvent("onChange", function (newValue, oldValue, config) {
-        //     if (newValue) {
-        //         configFile.theme.color = 'white';
-        //         setTheme();
-        //     } else {
-        //         configFile.theme.color = 'black';
-        //         setTheme();
-        //     }
-        // });
-        // $$("dark_light_theme").attachEvent("onItemClick", (id, e )=>{
-        //     if ($$("dark_light_theme").getValue()== 1) {
-        //         $$("light_theme_label").hide()
-        //         $$("dark_theme_label").show()
-        //         $$("logo_1").define("image", "assets/images/Logo_2.svg")
-        //         $$("master_setup").define("image", "assets/images/master_inverse.svg")
-        //         $$("engineering_setup").define("image", "assets/images/ingeneer_inverse.svg")
-        //         $$("reference").define("image", "assets/images/info_inverse.svg")
-        //         $$("application_menu").define("image", "assets/images/konfig_inverse.svg")
-        //         $$("logo_1").refresh()
-        //         $$("master_setup").refresh()
-        //         $$("engineering_setup").refresh()
-        //         $$("reference").refresh()
-        //         $$("application_menu").refresh()
-        //         setColor("white","white");
-        //         configFile.theme.color = 'black';
-        //     } else {
-        //
-        //         $$("dark_theme_label").hide()
-        //         $$("light_theme_label").show()
-        //         $$("logo_1").define("image", "assets/images/Logo_1.svg")
-        //         $$("master_setup").define("image", "assets/images/master.svg")
-        //         $$("engineering_setup").define("image", "assets/images/ingeneer.svg")
-        //         $$("reference").define("image", "assets/images/info.svg")
-        //         $$("application_menu").define("image", "assets/images/konfig.svg")
-        //         $$("logo_1").refresh()
-        //         $$("master_setup").refresh()
-        //         $$("engineering_setup").refresh()
-        //         $$("reference").refresh()
-        //         $$("application_menu").refresh()
-        //         setColor("dark","black");
-        //         configFile.theme.color = 'white';
-        //     }
-        //
-        // });
-
-        // function setColor(id, color)
-        // {
-        //     // webix.html.removeCss( $$("window_show").getNode(), "window_show");
-        //     // webix.html.removeCss( $$("window_show_2").getNode(), "window_show");
-        //     // webix.html.removeCss( $$("language_windows_modal").getNode(), "language_windows_modal");
-        //     // webix.html.removeCss( $$("language_windows_modal_2").getNode(), "language_windows_modal");
-        //     // webix.html.removeCss( $$("language_windows_modal_3").getNode(), "language_windows_modal");
-        //     // webix.html.removeCss( $$("language_windows_modal_4").getNode(), "language_windows_modal");
-        //     // webix.html.removeCss( $$("language_windows_modal_5").getNode(), "language_windows_modal");
-        //     // webix.html.removeCss( $$("color_rows_star_pages").getNode(), "color_rows_star_pages");
-        //     // webix.html.removeCss( $$("logo_1").getNode(), "logo_1");
-        //     // webix.html.removeCss( $$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start");
-        //     // webix.html.removeCss( $$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start");
-        //     // webix.html.removeCss( $$("ver_soft").getNode(), "ver_soft");
-        //     // webix.html.removeCss( $$("master_setup").getNode(), "button_1");
-        //     // webix.html.removeCss( $$("engineering_setup").getNode(), "button_1");
-        //     // webix.html.removeCss( $$("reference").getNode(), "button_1");
-        //     // webix.html.removeCss( $$("application_menu").getNode(), "button_1");
-        //
-        //     if (color == "white") {
-        //         webix.html.addCss( $$("window_show").getNode(), "window_show_dark");
-        //         webix.html.addCss( $$("window_show_2").getNode(), "window_show_dark");
-        //         webix.html.addCss( $$("language_windows_modal").getNode(), "language_windows_modal_dark");
-        //         webix.html.addCss( $$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
-        //         webix.html.addCss( $$("language_windows_modal_3").getNode(), "language_windows_modal_dark");
-        //         webix.html.addCss( $$("language_windows_modal_4").getNode(), "language_windows_modal_dark");
-        //         webix.html.addCss( $$("language_windows_modal_5").getNode(), "language_windows_modal_dark");
-        //         webix.html.addCss( $$("color_rows_star_pages").getNode(), "color_rows_star_pages_dark");
-        //         webix.html.addCss( $$("logo_1").getNode(), "logo_1_dark");
-        //         webix.html.addCss( $$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start_dark");
-        //         webix.html.addCss( $$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start_dark");
-        //         webix.html.addCss( $$("ver_soft").getNode(), "ver_soft_dark");
-        //         webix.html.addCss( $$("master_setup").getNode(), "button_1_dark");
-        //         webix.html.addCss( $$("engineering_setup").getNode(), "button_1_dark");
-        //         webix.html.addCss( $$("reference").getNode(), "button_1_dark");
-        //         webix.html.addCss( $$("application_menu").getNode(), "button_1_dark");
-        //
-        //     }
-        //     if (color == "black") {
-        //         webix.html.addCss( $$("window_show").getNode(), "window_show");
-        //         webix.html.addCss( $$("window_show_2").getNode(), "window_show");
-        //         webix.html.addCss( $$("language_windows_modal").getNode(), "language_windows_modal");
-        //         webix.html.addCss( $$("language_windows_modal_2").getNode(), "language_windows_modal");
-        //         webix.html.addCss( $$("language_windows_modal_3").getNode(), "language_windows_modal");
-        //         webix.html.addCss( $$("language_windows_modal_4").getNode(), "language_windows_modal");
-        //         webix.html.addCss( $$("language_windows_modal_5").getNode(), "language_windows_modal");
-        //         webix.html.addCss( $$("color_rows_star_pages").getNode(), "color_rows_star_pages");
-        //         webix.html.addCss( $$("logo_1").getNode(), "logo_1");
-        //         webix.html.addCss( $$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start");
-        //         webix.html.addCss( $$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start");
-        //         webix.html.addCss( $$("ver_soft").getNode(), "ver_soft");
-        //         webix.html.addCss( $$("master_setup").getNode(), "button_1");
-        //         webix.html.addCss( $$("engineering_setup").getNode(), "button_1");
-        //         webix.html.addCss( $$("reference").getNode(), "button_1");
-        //         webix.html.addCss( $$("application_menu").getNode(), "button_1");
-        //     }
-        //
-        // }
 
         globalVariable.theme.then(async theme => {
             if (theme == 'like_system') {
@@ -753,13 +660,15 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("engineering_setup").getNode(), "button_1_dark");
             webix.html.addCss($$("reference").getNode(), "button_1_dark");
             webix.html.addCss($$("application_menu").getNode(), "button_1_dark");
+            webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
+            webix.html.addCss($$("language_windows_modal_6").getNode(), "language_windows_modal_dark");
 
             // $$("light_theme_label").hide()
             // $$("dark_theme_label").show()
             $$("logo_1").define("image", "assets/images/Logo_2.svg")
             $$("master_setup").define("image", "assets/images/master_inverse.svg");
             $$("engineering_setup").define("image", "assets/images/ingeneer_inverse.svg");
-            $$("reference").define("image", "assets/images/info_inverse.svg");
+            $$("reference").define("image", "assets/images/info_win2_inverse-01.svg");
             $$("application_menu").define("image", "assets/images/konfig_inverse.svg");
             $$("logo_1").refresh();
             $$("master_setup").refresh();
@@ -784,6 +693,8 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("engineering_setup").getNode(), "button_1");
             webix.html.addCss($$("reference").getNode(), "button_1");
             webix.html.addCss($$("application_menu").getNode(), "button_1");
+            webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal");
+            webix.html.addCss($$("language_windows_modal_6").getNode(), "language_windows_modal");
 
             // $$("dark_theme_label").hide()
             // $$("light_theme_label").show()
@@ -800,5 +711,11 @@ export default class Page9View extends JetView {
         }
     }
 
+    // showWindow() {
+    //     this.$$("window_show_3").show();
+    //     setTimeout(() => {
+    //         this.$$("window_show_3").hide();
+    //     }, 1000);
+    // }
 }
 

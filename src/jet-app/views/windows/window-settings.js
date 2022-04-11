@@ -89,6 +89,26 @@ export default class WindowSettings extends JetView {
                         height: 20,
                     },
                     {
+                        disabled: false,
+                        cols: [
+                            {
+                                width: 20,
+                            },
+                            {
+                                view: "label",
+                                label: `<p style='position: relative; top: -20px; text-align: left'>${_("auto_save_mode")}</p>`,
+                                width: 550,
+                                localId: "labelAutoSaveMode",
+                                css: "language_windows_modal",
+                            },
+                            {view: "switch", value: 1, localId: "switchAutoSaveMode", width: 70, height: 100,},
+                            {}
+                        ]
+                    },
+                    {
+                      height: 20,
+                    },
+                    {
                         disabled: true,
                         height: 90,
                         cols: [
@@ -120,27 +140,9 @@ export default class WindowSettings extends JetView {
                                     }
                                 }
                             },
-                            {}
-                        ]
-                    },
-                    {
-                        height: 20,
-                    },
-                    {
-                        disabled: false,
-                        cols: [
                             {
-                                width: 20,
-                            },
-                            {
-                                view: "label",
-                                label: `<p style='position: relative; top: -20px; text-align: left'>${_("auto_save_mode")}</p>`,
-                                width: 550,
-                                localId: "labelAutoSaveMode",
-                                css: "language_windows_modal",
-                            },
-                            {view: "switch", value: 1, localId: "switchAutoSaveMode", width: 70, height: 100,},
-                            {}
+
+                            }
                         ]
                     },
 
@@ -345,12 +347,16 @@ export default class WindowSettings extends JetView {
             // webix.html.addCss(this.$$("language_windows_modal").getNode(), "language_windows_modal_dark");
             webix.html.addCss(this.$$("labelFontSize").getNode(), "language_windows_modal_dark");
             webix.html.addCss(this.$$("labelAutoSaveMode").getNode(), "language_windows_modal_dark");
+            webix.html.addCss(this.$$("language").getNode(), "window_type_4_dark");
+            webix.html.addCss(this.$$("comboTheme").getNode(), "window_type_4_dark");
         }
         if (configFile.theme == 'light') {
             webix.html.addCss(this.$$("window_show").getNode(), "window_show");
             // webix.html.addCss(this.$$("language_windows_modal").getNode(), "language_windows_modal");
             webix.html.addCss(this.$$("labelFontSize").getNode(), "language_windows_modal");
             webix.html.addCss(this.$$("labelAutoSaveMode").getNode(), "language_windows_modal");
+            webix.html.addCss(this.$$("language").getNode(), "window_type_4");
+            webix.html.addCss(this.$$("comboTheme").getNode(), "window_type_4");
 
         }
     }

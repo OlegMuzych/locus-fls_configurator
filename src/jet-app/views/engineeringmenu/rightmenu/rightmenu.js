@@ -13,7 +13,7 @@ export default class RightMenu extends JetView{
             view: "scrollview",
             scroll: "y",
             maxHeight: 970,
-            width: 530,
+            minWidth: 530,
             id: "rows_right_body",
             css: "rows_right",
             body: {
@@ -38,6 +38,10 @@ export default class RightMenu extends JetView{
             css: "rows_right",
             id: "rows_right_2",
             cols:[
+                {
+                    minWidth: 25,
+                    maxWidth: 320,
+                },
                 {
                     rows: [
                         {
@@ -77,9 +81,12 @@ export default class RightMenu extends JetView{
                                 // fuel_filling,
                                 // fuel_filling_2,
                             ]
-                        }
+                        },
                     ]
                 },
+                {
+                    width: 10,
+                }
             ]
 
         }

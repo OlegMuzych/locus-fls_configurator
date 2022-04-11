@@ -13,7 +13,7 @@ export default {
     "website": "www.locme.ru",
     "copyright": "© 2022",
 
-    "reference": "Cправка", //view: "window", template: this
+    "reference": "О Программе", //view: "window", template: this
     "settings": "Настройки", //view: "window", template: this
 
     /* generalsettings.js */

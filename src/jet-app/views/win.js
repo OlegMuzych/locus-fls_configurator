@@ -112,7 +112,8 @@ export default class Page9View extends JetView {
                         {
                             view: "button",
                             type: "image",
-                            image: "assets/images/master.svg",
+                            image: _("button_image_master"),
+                            // image: "assets/images/master.svg",
                             css: "button_1",
                             id: "master_setup",
                             disabled: false,
@@ -124,7 +125,8 @@ export default class Page9View extends JetView {
                         {
                             view: "button",
                             type: "image",
-                            image: "assets/images/ingeneer.svg",
+                            image: _("button_image_engineering"),
+                            // image: "assets/images/ingeneer.svg",
                             css: "button_1",
                             id: "engineering_setup"
                         }
@@ -140,7 +142,7 @@ export default class Page9View extends JetView {
                         {
                             view: "button",
                             type: "image",
-                            image: "assets/images/info-win2.svg",
+                            image: _("button_image_info_win2"),
                             css: "button_1",
                             id: "reference"
                         },
@@ -150,7 +152,8 @@ export default class Page9View extends JetView {
                         {
                             view: "button",
                             type: "image",
-                            image: "assets/images/konfig.svg",
+                            image: _("button_image_konfig"),
+                            // image: "assets/images/konfig.svg",
                             align: "center",
                             css: "button_1",
                             id: "application_menu"
@@ -528,10 +531,10 @@ export default class Page9View extends JetView {
             // $$("dark_theme_label").show()
             $$("logo_1").define("image", "assets/images/Logo_2.svg");
             $$("logo_1").refresh();
-            $$("master_setup").define("image", "assets/images/master_inverse.svg");
-            $$("engineering_setup").define("image", "assets/images/ingeneer_inverse.svg");
-            $$("reference").define("image", "assets/images/info_win2_inverse-01.svg");
-            $$("application_menu").define("image", "assets/images/konfig_inverse.svg");
+            $$("master_setup").define("image", _("button_image_master_dark"));
+            $$("engineering_setup").define("image", _("button_image_engineering_dark"));
+            $$("reference").define("image", _("button_image_info_win2_dark"));
+            $$("application_menu").define("image", _("button_image_konfig_dark"));
             // $$("logo_1").refresh();
             $$("master_setup").refresh();
             $$("engineering_setup").refresh();
@@ -559,10 +562,10 @@ export default class Page9View extends JetView {
             // $$("light_theme_label").show()
             $$("logo_1").define("image", "assets/images/Logo_1.svg");
             $$("logo_1").refresh();
-            $$("master_setup").define("image", "assets/images/master.svg");
-            $$("engineering_setup").define("image", "assets/images/ingeneer.svg");
-            $$("reference").define("image", "assets/images/info-win2.svg");
-            $$("application_menu").define("image", "assets/images/konfig.svg");
+            $$("master_setup").define("image", _("button_image_master"));
+            $$("engineering_setup").define("image", _("button_image_engineering"));
+            $$("reference").define("image", _("button_image_info_win2"));
+            $$("application_menu").define("image", _("button_image_konfig"));
             // $$("logo_1").refresh();
             $$("master_setup").refresh();
             $$("engineering_setup").refresh();

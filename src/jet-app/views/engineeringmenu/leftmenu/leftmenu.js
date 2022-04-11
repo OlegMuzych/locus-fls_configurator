@@ -69,7 +69,7 @@ export default class LeftMenu extends JetView{
                             {
                                 view: "button",
                                 type: "image",
-                                image: "assets/images/Back.svg",
+                                image: _("button_image_back"),
                                 width: 160,
                                 height: 120,
                                 id: "button_back",
@@ -81,7 +81,7 @@ export default class LeftMenu extends JetView{
                             {
                                 view: "button",
                                 type: "image",
-                                image: "assets/images/info.svg",
+                                image: _("button_image_back_dark"),
                                 width: 160,
                                 height: 120,
                                 id: "button_reference",
@@ -119,6 +119,7 @@ export default class LeftMenu extends JetView{
         this.on(this.app, "app:calibrationSubview:finishCalibrate", () => {
             this.$$('button_back').enable();
         });
+        const _ = this.app.getService("locale")._;
 
         if(configFile.theme == 'light'){
             webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols");
@@ -132,13 +133,13 @@ export default class LeftMenu extends JetView{
 
 
 
-            $$("left_menu_button_1").define("image", "assets/images//MODEL_101.svg")
-            // $$("left_menu_button_2").define("image", "assets/images//MODEL_201.svg")
-            $$("left_menu_button_2").define("image", "assets/images//ONE.MAX.svg")
-            // $$("left_menu_button_3").define("image", "assets/images//MODEL_301_BLE.svg")
-            $$("left_menu_button_3").define("image", "assets/images//ONE.BLE.svg")
-            $$("button_back").define("image", "assets/images//Back.svg")
-            $$("button_reference").define("image", "assets/images//info.svg")
+            $$("left_menu_button_1").define("image", "assets/images//MODEL_101.svg");
+            // $$("left_menu_button_2").define("image", "assets/images//MODEL_201.svg");
+            $$("left_menu_button_2").define("image", "assets/images//ONE.MAX.svg");
+            // $$("left_menu_button_3").define("image", "assets/images//MODEL_301_BLE.svg");
+            $$("left_menu_button_3").define("image", "assets/images//ONE.BLE.svg");
+            $$("button_back").define("image", _("button_image_back"));
+            $$("button_reference").define("image", _("button_image_info"));
 
             $$("left_menu_button_1").refresh();
             $$("left_menu_button_2").refresh();
@@ -165,8 +166,8 @@ export default class LeftMenu extends JetView{
             $$("left_menu_button_2").define("image", "assets/images/ONE.MAX inverse.svg")
             // $$("left_menu_button_3").define("image", "assets/images/MODEL_301_BLE_inverse.svg")
             $$("left_menu_button_3").define("image", "assets/images/ONE.BLE inverse.svg")
-            $$("button_back").define("image", "assets/images/back_inverse_3.svg")
-            $$("button_reference").define("image", "assets/images/info_inverse_3.svg")
+            $$("button_back").define("image", _("button_image_back_dark"));
+            $$("button_reference").define("image", _("button_image_info_dark"));
 
             $$("left_menu_button_1").refresh();
             $$("left_menu_button_2").refresh();

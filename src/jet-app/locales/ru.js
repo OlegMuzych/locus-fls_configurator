@@ -1,6 +1,6 @@
 export default {
     /*  win.js */
-    "version":  "Версия",
+    "version": "Версия",
     "sensor_is_connected": "Датчик подключен",
     "sensor_is_not_connected": "Датчик не подключен",
     "trademark": "Торговая марка: 'Иванов Инжиниринг'",
@@ -18,11 +18,11 @@ export default {
     "font_size": "Размер шрфта",
     "auto_save_mode": "Автоматическое  сохранение настроек",
 
-    "dark_theme":  'Темная',
+    "dark_theme": 'Темная',
     "light_theme": 'Светлая',
     "like_system_theme": "Как в системе",
 
-    "language_ru":  'Русский',
+    "language_ru": 'Русский',
     "language_en": 'English',
     "language_like_system": "Как в системе",
 
@@ -75,9 +75,9 @@ export default {
 
     "filtering_type": "Тип фильтрации",
     "filtering_type_turned_off": "Выключена",
-    "filtering_type_averaging":  "Усреднение",
+    "filtering_type_averaging": "Усреднение",
     "filtering_type_median": "Медиана",
-    "filtering_type_adaptive" :"Адаптивный",
+    "filtering_type_adaptive": "Адаптивный",
 
     "average_time": "Время усреднения (0...21) с",
     "median_length": "Длина медианы (0...7)",
@@ -166,5 +166,26 @@ export default {
     "window_passwordinput_segmented_current": "Ввести",
     "window_passwordinput_segmented_reset": "Сбросить настройки",
     "window_passwordinput_segmented_current_text": "Введите пароль для входа",
-    "window_passwordinput_segmented_reset_text":"Все настройки датчика будут стерты"
+    "window_passwordinput_segmented_reset_text": "Все настройки датчика будут стерты",
+
+    /*  win.js Images */
+    "button_image_master": "assets/images/ru/master.svg",
+    "button_image_master_dark": "assets/images/ru/master_inverse.svg",
+
+    "button_image_engineering": "assets/images/ru/ingeneer.svg",
+    "button_image_engineering_dark": "assets/images/ru/ingeneer_inverse.svg",
+
+    "button_image_info_win2": "assets/images/ru/info-win2.svg",
+    "button_image_info_win2_dark": "assets/images/ru/",
+
+    "button_image_konfig": "assets/images/ru/konfig.svg",
+    "button_image_konfig_dark": "assets/images/ru/kofig_inverse.svg",
+
+    /* leftmenu.js Images */
+    "button_image_back": "assets/images/ru/Back.svg",
+    "button_image_back_dark": "assets/images/ru/back_inverse_3.svg",
+
+    "button_image_info": "assets/images/ru/info.svg",
+    "button_image_info_dark": "assets/images/ru/info_inverse_3.svg",
+    //
 };

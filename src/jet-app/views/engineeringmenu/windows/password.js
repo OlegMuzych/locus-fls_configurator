@@ -22,6 +22,7 @@ export default class PasswordWindow extends JetView {
 
                 {
                     animate: {type: "show", delay: 10},
+                    css:"window_show_password_dark",
                     cells: [
                         {
                             id: "rows_11",
@@ -45,12 +46,12 @@ export default class PasswordWindow extends JetView {
                                             height: 100,
                                         },
                                         {
-                                            width: 14,
+                                            width: 36,
                                         },
                                         {
                                             view: "label",
-                                            label: `<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>${_("window_password_text")}</p>`,
-                                            width: 420,
+                                            label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_("window_password_text")}</p>`,
+                                            width: 550,
                                             localId: "windows_password_label",
                                             css: "windows_password_label",
                                         },
@@ -96,7 +97,9 @@ export default class PasswordWindow extends JetView {
                                             localId: "buttonCancel_1",
                                             css: "set_password_button"
                                         },
-                                        {}
+                                        {
+                                            height: 80,
+                                        }
                                     ]
                                 },
                             ]
@@ -111,14 +114,14 @@ export default class PasswordWindow extends JetView {
                                 {
                                     rows: [
                                         {
-                                            height: 20,
+                                            height: 50,
                                         },
                                         {
                                             cols: [
                                                 {},
                                                 {
                                                     view: "label",
-                                                    label: `<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>${_('window_password_old_password')}</p>`,
+                                                    label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_('window_password_old_password')}</p>`,
                                                     width: 200,
                                                     localId: "windows_password_label_2",
                                                     css: "windows_password_label"
@@ -126,6 +129,7 @@ export default class PasswordWindow extends JetView {
                                                 {
                                                     view: "text",
                                                     height: 50,
+                                                    width: 300,
                                                     localId: "textCurrentPass_2",
                                                     css: "password_windows_set",
                                                     inputAlign: "center",
@@ -139,14 +143,15 @@ export default class PasswordWindow extends JetView {
                                         },
                                         {
                                             height: 25,
-                                            // height: 50,
                                         },
                                         {
                                             cols: [
-                                                {},
+                                                {
+                                                    height: 20,
+                                                },
                                                 {
                                                     view: "label",
-                                                    label: `<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>${_('window_password_new_password')}</p>`,
+                                                    label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_('window_password_new_password')}</p>`,
                                                     width: 200,
                                                     localId: "windows_password_label_3",
                                                     css: "windows_password_label"
@@ -154,6 +159,7 @@ export default class PasswordWindow extends JetView {
                                                 {
                                                     view: "text",
                                                     height: 50,
+                                                    width: 300,
                                                     localId: "textNewPass",
                                                     css: "password_windows_set",
                                                     inputAlign: "center",
@@ -163,7 +169,7 @@ export default class PasswordWindow extends JetView {
                                             ]
                                         },
                                         {
-                                            height: 85,
+                                            height: 55,
                                         },
                                         {
                                             cols: [
@@ -181,7 +187,9 @@ export default class PasswordWindow extends JetView {
                                                     localId: "buttonCancel_2",
                                                     css: "set_password_button"
                                                 },
-                                                {}
+                                                {
+                                                    height: 80,
+                                                }
                                             ]
                                         }
                                     ]
@@ -197,12 +205,13 @@ export default class PasswordWindow extends JetView {
             view:"form",
             scroll:false,
             elements: [elements],
+
         };
 
         let body = {
             view: "window",
             position: "center",
-            width: 650,
+            width: 850,
             height: 400,
             id: "window_show_3",
             modal: true,
@@ -271,18 +280,42 @@ export default class PasswordWindow extends JetView {
     }
 
 
-    // setTheme() {
-    //     if (configFile.theme == 'dark') {
-    //         webix.html.addCss($$("tabbar_windows_password").getNode(), "tabbar_windows_password_dark");
-    //
-    //
-    //     }
-    //     if (configFile.theme == 'light') {
-    //         webix.html.addCss($$("tabbar_windows_password").getNode(), "tabbar_windows_password");
-    //
-    //
-    //
-    //     }
-    //   }
+    setTheme() {
+        if (configFile.theme == 'dark') {
+            webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_dark");
+            webix.html.addCss(this.$$("window_show_3").getNode(), "window_show_password_dark");
+            webix.html.addCss(this.$$("windows_password_label").getNode(), "windows_password_label_dark");
+            webix.html.addCss(this.$$("windows_password_label_2").getNode(), "windows_password_label_dark");
+            webix.html.addCss(this.$$("windows_password_label_3").getNode(), "windows_password_label_dark");
+            webix.html.addCss(this.$$("buttonCurrentPassOk").getNode(), "set_password_button_dark");
+            webix.html.addCss(this.$$("buttonCancel_1").getNode(), "set_password_button_dark");
+            webix.html.addCss(this.$$("buttonCancel_2").getNode(), "set_password_button_dark");
+            webix.html.addCss(this.$$("buttonNewPassOk").getNode(), "set_password_button_dark");
+            webix.html.addCss(this.$$("textCurrentPass").getNode(), "password_windows_set_dark");
+            webix.html.addCss(this.$$("textCurrentPass_2").getNode(), "password_windows_set_dark");
+            webix.html.addCss(this.$$("textNewPass").getNode(), "password_windows_set_dark");
+
+
+
+        }
+        if (configFile.theme == 'light') {
+            webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password");
+            webix.html.addCss(this.$$("window_show_3").getNode(), "window_show_password");
+            webix.html.addCss(this.$$("windows_password_label").getNode(), "windows_password_label");
+            webix.html.addCss(this.$$("windows_password_label_2").getNode(), "windows_password_label");
+            webix.html.addCss(this.$$("windows_password_label_3").getNode(), "windows_password_label");
+            webix.html.addCss(this.$$("buttonCurrentPassOk").getNode(), "set_password_button");
+            webix.html.addCss(this.$$("buttonCancel_1").getNode(), "set_password_button");
+            webix.html.addCss(this.$$("buttonCancel_2").getNode(), "set_password_button");
+            webix.html.addCss(this.$$("buttonNewPassOk").getNode(), "set_password_button");
+            webix.html.addCss(this.$$("textCurrentPass").getNode(), "password_windows_set");
+            webix.html.addCss(this.$$("textCurrentPass_2").getNode(), "password_windows_set");
+            webix.html.addCss(this.$$("textNewPass").getNode(), "password_windows_set");
+
+
+
+
+        }
+      }
     }
 

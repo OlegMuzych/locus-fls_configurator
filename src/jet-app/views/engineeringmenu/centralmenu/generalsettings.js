@@ -929,6 +929,7 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss(this.$$("buttonCoefficientK2").getNode(), "auto_calibration");
             webix.html.addCss(this.$$("buttonCoefficientK1").getNode(), "auto_calibration");
             webix.html.addCss(this.$$("buttonFuelType").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("window_type_2_7").getNode(), "window_type_2");
         }
 
         if (configFile.theme == 'dark') {
@@ -963,6 +964,7 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss(this.$$("buttonCoefficientK2").getNode(), "auto_calibration_dark");
             webix.html.addCss(this.$$("buttonCoefficientK1").getNode(), "auto_calibration_dark");
             webix.html.addCss(this.$$("buttonFuelType").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("window_type_2_7").getNode(), "window_type_2_dark");
         }
     }
 

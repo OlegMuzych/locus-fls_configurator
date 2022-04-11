@@ -181,6 +181,7 @@ export default class FullEmptySubView extends JetView {
                                                     height: 50,
                                                     css: "auto_calibration",
                                                     id: "auto_calibration_2"
+
                                                 },
                                             ]
                                         }

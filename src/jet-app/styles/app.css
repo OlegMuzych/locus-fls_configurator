@@ -1665,6 +1665,27 @@ border: none;
 }
 .button_slider_gen_value .webix_button:focus{
     background-color: #b7c5e2;
+
+}
+
+.button_slider_gen_value_dark .webix_button{
+    background-color: #f0f0f0;
+    color: #000;
+    position: relative;
+    top: 40px;
+    height: 50%;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.button_slider_gen_value_dark .webix_button:hover{
+    background-color: #dbdbdb;
+    color: #000;
+}
+.button_slider_gen_value_dark .webix_button:focus{
+    background-color: #f0f0f0;
+    color: #000;
 }
 /*//////-----------------------------------------------------*/
 

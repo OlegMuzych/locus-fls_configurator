@@ -153,7 +153,7 @@ export default class FiltrationSettings extends JetView {
                                                     css: "button_slider_gen_value",
                                                     label: _('choose'),
                                                     // popup: "my_pop",
-                                                    height: 54,
+                                                    height: 55,
                                                     width: 150,
 
                                                 }]
@@ -475,6 +475,7 @@ export default class FiltrationSettings extends JetView {
                                                 width: 150,
                                                 id: "button_slider_gen_value_4",
                                                 css: "button_slider_gen_value",
+
                                             },
                                             {
                                                 paddingX: -1,
@@ -704,6 +705,13 @@ export default class FiltrationSettings extends JetView {
             webix.html.addCss($$("window_text_mediana").getNode(), "full_window_text");
             webix.html.addCss($$("button_slider_gen_value_2").getNode(), "button_slider_gen_value");
             webix.html.addCss($$("central_menu_button_3").getNode(), "style_general_rows");
+            webix.html.addCss($$("button_slider_gen_value_4").getNode(), "button_slider_gen_value");
+            webix.html.addCss($$("button_slider_gen_value_3").getNode(), "button_slider_gen_value");
+            webix.html.addCss($$("button_slider_gen_value_2").getNode(), "button_slider_gen_value");
+            webix.html.addCss($$("button_slider_gen_value_1").getNode(), "button_slider_gen_value");
+            webix.html.addCss(this.$$("buttonFilterType").getNode(), "button_slider_gen_value");
+
+
 
             $$("image_button_filter_1").define("image", "assets/images/filtr_Karier.svg")
             $$("image_button_filter_2").define("image", "assets/images/filtr_Stroit.svg")
@@ -739,6 +747,13 @@ export default class FiltrationSettings extends JetView {
             webix.html.addCss($$("window_text_mediana").getNode(), "full_window_text_dark");
             webix.html.addCss($$("button_slider_gen_value_2").getNode(), "button_slider_gen_value_dark");
             webix.html.addCss($$("central_menu_button_3").getNode(), "style_general_rows_dark");
+            webix.html.addCss($$("button_slider_gen_value_4").getNode(), "button_slider_gen_value_dark");
+            webix.html.addCss($$("button_slider_gen_value_3").getNode(), "button_slider_gen_value_dark");
+            webix.html.addCss($$("button_slider_gen_value_2").getNode(), "button_slider_gen_value_dark");
+            webix.html.addCss($$("button_slider_gen_value_1").getNode(), "button_slider_gen_value_dark");
+            webix.html.addCss(this.$$("buttonFilterType").getNode(), "button_slider_gen_value_dark");
+
+
 
 
             $$("image_button_filter_1").define("image", "assets/images/filtr_Karier_inverse.svg")

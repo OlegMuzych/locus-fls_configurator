@@ -2466,3 +2466,9 @@ border: none;
 .windows_password_label_dark p{
     color: var(--c-color-text-dark)
 }
+
+
+.toggle_style .webix_switch_box{
+    background-color: #628cbb;
+
+}

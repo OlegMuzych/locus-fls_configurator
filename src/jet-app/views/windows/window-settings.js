@@ -23,6 +23,7 @@ export default class WindowSettings extends JetView {
                             {
                                 view: "icon", icon: "wxi-close", tooltip: "Close window", click: () => {
                                     this.getRoot().hide();
+                                    this.getParentView().refresh();
                                 }
                             }
                         ]
@@ -140,120 +141,9 @@ export default class WindowSettings extends JetView {
                                     }
                                 }
                             },
-                            {
-
-                            }
+                            {}
                         ]
                     },
-
-
-                    // {
-                    //     width: 200,
-                    //     rows: [
-                    //         {
-                    //             disabled: false,
-                    //             height: 80,
-                    //             width: 200,
-                    //             cols: [
-                    //                 {
-                    //                     width: 20,
-                    //                 },
-                    //                 {
-                    //                     view: "combo",
-                    //                     width: 750,
-                    //                     height: 100,
-                    //                     label: `<p>${_("theme_selection")}</p>`,
-                    //                     labelWidth: 500,
-                    //                     css: "window_type_4",
-                    //                     inputAlign: "center",
-                    //                     localId: "comboTheme",
-                    //                     options: [
-                    //                         {value: _("dark_theme"), id: 'dark'},
-                    //                         {value: _("light_theme"), id: 'light'},
-                    //                         {value: _("like_system"), id: 'like_system'},
-                    //                     ]
-                    //                 },
-                    //                 {}
-                    //             ]
-                    //         },
-                    //         // {
-                    //         //
-                    //         //     disabled: true,
-                    //         //     cols: [
-                    //         //         {
-                    //         //             width: 20,
-                    //         //         },
-                    //         //         {
-                    //         //             view: "label",
-                    //         //             label: `<p style='position: relative; top: -20px; text-align: left'>${_("theme_selection")}</p>`,
-                    //         //             width: 550,
-                    //         //             id: "light_theme_label",
-                    //         //             css: "language_windows_modal",
-                    //         //         },
-                    //         //         {view: "switch", value: 0, localId: "dark_light_theme", width: 70, height: 100,},
-                    //         //         {},
-                    //         //     ]
-                    //         // },
-                    //         {
-                    //             height: 20,
-                    //         },
-                    //         {
-                    //             disabled: true,
-                    //             height: 90,
-                    //             cols: [
-                    //                 {
-                    //                     width: 20,
-                    //                 },
-                    //                 {
-                    //                     view: "label",
-                    //                     label: `<p style='position: relative; top: -30px; text-align: left'>${_("font_size")}</p>`,
-                    //                     width: 300,
-                    //                     localId: "labelFontSize",
-                    //                     css: "language_windows_modal",
-                    //                 },
-                    //                 {
-                    //                     view: "slider",
-                    //                     value: "0",
-                    //                     step: 10,
-                    //                     min: 0,
-                    //                     max: 30,
-                    //                     name: "s1",
-                    //                     width: 400,
-                    //                     height: 30,
-                    //                     title: "%",
-                    //                     css: "text_size_slider",
-                    //                     on: {
-                    //                         onChange: function () {
-                    //                             this.define("title", "%" + this.getValue());
-                    //                             this.refresh();
-                    //                         }
-                    //                     }
-                    //                 },
-                    //                 {}
-                    //             ]
-                    //         },
-                    //         {
-                    //             height: 20,
-                    //         },
-                    //         {
-                    //             disabled: false,
-                    //             cols: [
-                    //                 {
-                    //                     width: 20,
-                    //                 },
-                    //                 {
-                    //                     view: "label",
-                    //                     label: `<p style='position: relative; top: -20px; text-align: left'>${_("auto_save_mode")}</p>`,
-                    //                     width: 550,
-                    //                     localId: "labelAutoSaveMode",
-                    //                     css: "language_windows_modal",
-                    //                 },
-                    //                 {view: "switch", value: 1, localId: "switchAutoSaveMode", width: 70, height: 100,},
-                    //                 {}
-                    //             ]
-                    //         },
-                    //     ]
-                    // },
                 ]
             },
 
@@ -293,7 +183,7 @@ export default class WindowSettings extends JetView {
         });
 
         this.getRoot().attachEvent("onHide", () => {
-            this.getParentView().refresh();
+            // this.getParentView().refresh();
         });
 
         /* Auto Save Mode ***************/
@@ -357,7 +247,6 @@ export default class WindowSettings extends JetView {
             webix.html.addCss(this.$$("labelAutoSaveMode").getNode(), "language_windows_modal");
             webix.html.addCss(this.$$("language").getNode(), "window_type_4");
             webix.html.addCss(this.$$("comboTheme").getNode(), "window_type_4");
-
         }
     }
 }

@@ -56,12 +56,8 @@ export default class PasswordInputWindow extends JetView {
                                             css: "language_windows_modal"
                                         },
                                         {
-
                                         }
                                     ]
-                                },
-                                {
-                                    height: 30,
                                 },
                                 {
                                     cols: [
@@ -121,6 +117,9 @@ export default class PasswordInputWindow extends JetView {
                                      height: 100,
                                  },
                                  {
+
+                                 },
+                                 {
                                      view: "label",
                                      label: `<p style='position: relative; top: -30px; color: #eb2323;'>${_("window_passwordinput_segmented_reset_text")}</p>`,
                                      css: "language_windows_modal",
@@ -128,7 +127,7 @@ export default class PasswordInputWindow extends JetView {
                                      width: 610,
                                  },
                                  {
-                                     height: 38,
+
                                  },
                         {
                             cols: [

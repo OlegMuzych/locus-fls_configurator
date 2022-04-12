@@ -2242,7 +2242,7 @@ border: none;
 
 .window_show_password_dark{
     background-color: var(--c-white-color-background-dark);
-    border-radius: 6px;
+    border-radius: 0;
 }
 
 
@@ -2440,6 +2440,10 @@ border: none;
     box-shadow: inset 2px 2px 5px #212121,
     inset -2px -2px 5px #373737;
     height: 100%;
+}
+
+.form_win.webix_view.webix_form{
+    background-color: var(--c-white-color-background-dark_left_menu);
 }
 
 

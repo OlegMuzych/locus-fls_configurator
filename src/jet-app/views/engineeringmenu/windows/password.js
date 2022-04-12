@@ -205,6 +205,9 @@ export default class PasswordWindow extends JetView {
             view:"form",
             scroll:false,
             elements: [elements],
+            css: "form_win",
+            width: 850,
+            height: 400,
 
         };
 

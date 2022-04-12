@@ -193,7 +193,7 @@ export default class PasswordInputWindow extends JetView {
     init() {
         this.passValidFlag = true;
 
-
+        this.setTheme();
 
         this.$$('buttonCancel_1').attachEvent("onItemClick", (id, e) => {
             console.log('click');
@@ -239,10 +239,10 @@ export default class PasswordInputWindow extends JetView {
                 this.passValidFlag = false;
                 this.$$('textCurrentPass').validate();
                 this.$$("textCurrentPass").setValue('');
-            });
+            })
 
-        this.setTheme();
     }
+
 
     showWindow() {
         this.getRoot().show();

@@ -320,7 +320,6 @@ export default class PasswordWindow extends JetView {
 
 
         }
-      }
     }
 }
 

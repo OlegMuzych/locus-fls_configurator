@@ -551,8 +551,8 @@ export default class GeneralSettings extends JetView {
                                 value: 0,
                                 localId: 'outputParametersOfSensor',
                                 options: [
-                                    {id: 0, value: "Уровень",}, // изначально выбранный элемент
-                                    {id: 1, value: "Объем"}
+                                    {id: 0, value: _("output_message_type_is_level")}, // изначально выбранный элемент
+                                    {id: 1, value: _("output_message_type_is_volume")}
                                 ]
                             },
                             {

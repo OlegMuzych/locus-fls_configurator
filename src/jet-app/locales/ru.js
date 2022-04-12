@@ -169,8 +169,8 @@ export default {
     "window_passwordinput_segmented_reset_text": "Все настройки датчика будут стерты",
 
     /*  win.js Images */
-    "button_image_master": "assets/images/ru/master.svg",
-    "button_image_master_dark": "assets/images/ru/master_inverse.svg",
+    "button_image_master": "assets/images/ru/settingsWizard_ru_light.svg",
+    "button_image_master_dark": "assets/images/ru/settingsWizard_ru_black.svg",
 
     "button_image_engineering": "assets/images/ru/ingeneer.svg",
     "button_image_engineering_dark": "assets/images/ru/ingeneer_inverse.svg",
@@ -183,7 +183,7 @@ export default {
 
     /* leftmenu.js Images */
     "button_image_back": "assets/images/ru/Back.svg",
-    "button_image_back_dark": "assets/images/ru/back_inverse_3.svg",
+    "button_image_back_dark": "assets/images/ru/Back_inverse_3.svg",
 
     "button_image_info": "assets/images/ru/info.svg",
     "button_image_info_dark": "assets/images/ru/info_inverse_3.svg",

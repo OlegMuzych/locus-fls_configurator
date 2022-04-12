@@ -6,26 +6,31 @@ export default class PasswordWindow extends JetView {
     config() {
         const _ = this.app.getService("locale")._;
 
+
+
+
         let elements = {
             rows: [
                 {
                     view: "segmented",
                     localId: 'tabbar_windows_password',
-                    css: "tabbar_windows_password",
+                    css: "tabbar_windows_password_1",
                     multiview: true,
                     height: 80,
+                    width: 810,
                     options: [
-                        {value: _("window_password_segmented_current"), id: 'rows_11'},
+                        {value: _("window_password_segmented_current"), id: 'rows_22'},
                         {value: _("window_password_segmented_new"), id: 'rows_21'},
                     ],
                 },
 
                 {
                     animate: {type: "show", delay: 10},
-                    css:"window_show_password_dark",
+                    css:"window_show_password",
+                    id: "rows_11",
                     cells: [
                         {
-                            id: "rows_11",
+                            id: "rows_22",
                             rows: [
                                 {
                                     height: 30,
@@ -207,6 +212,7 @@ export default class PasswordWindow extends JetView {
             scroll:false,
             elements: [elements],
             css: "form_win",
+            id:"form_pass_1",
             width: 850,
             height: 400,
 
@@ -286,7 +292,7 @@ export default class PasswordWindow extends JetView {
 
     setTheme() {
         if (configFile.theme == 'dark') {
-            webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_dark");
+            webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_1_dark");
             webix.html.addCss(this.$$("window_show_3").getNode(), "window_show_password_dark");
             webix.html.addCss(this.$$("windows_password_label").getNode(), "windows_password_label_dark");
             webix.html.addCss(this.$$("windows_password_label_2").getNode(), "windows_password_label_dark");
@@ -298,12 +304,14 @@ export default class PasswordWindow extends JetView {
             webix.html.addCss(this.$$("textCurrentPass").getNode(), "password_windows_set_dark");
             webix.html.addCss(this.$$("textCurrentPass_2").getNode(), "password_windows_set_dark");
             webix.html.addCss(this.$$("textNewPass").getNode(), "password_windows_set_dark");
+            webix.html.addCss(this.$$("rows_11").getNode(), "window_show_password_dark");
+            webix.html.addCss(this.$$("form_pass_1").getNode(), "form_win_dark");
 
 
 
         }
         if (configFile.theme == 'light') {
-            webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password");
+            webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_1");
             webix.html.addCss(this.$$("window_show_3").getNode(), "window_show_password");
             webix.html.addCss(this.$$("windows_password_label").getNode(), "windows_password_label");
             webix.html.addCss(this.$$("windows_password_label_2").getNode(), "windows_password_label");
@@ -315,6 +323,8 @@ export default class PasswordWindow extends JetView {
             webix.html.addCss(this.$$("textCurrentPass").getNode(), "password_windows_set");
             webix.html.addCss(this.$$("textCurrentPass_2").getNode(), "password_windows_set");
             webix.html.addCss(this.$$("textNewPass").getNode(), "password_windows_set");
+            webix.html.addCss(this.$$("rows_11").getNode(), "window_show_password");
+            webix.html.addCss(this.$$("form_pass_1").getNode(), "form_win");
 
 
 

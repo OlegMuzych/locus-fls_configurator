@@ -6,11 +6,11 @@ export default {
 
 
 
-    "trademark": "Trademark: 'Иванов Инжиниринг'",
-    "developer": "Developer: ООО 'Иванов Инжиниринг'",
+    "trademark": "Trademark: ",
+    "developer": "Developer: ",
     "program_version": 'Program version',
-    "website": "www.locme.ru",
-    "copyright": "© 2022",
+    "website": "",
+    "copyright": "",
 
     "reference": "Reference", //view: "window", template: this
     "settings": "Settings", //view: "window", template: this

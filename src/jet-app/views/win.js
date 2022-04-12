@@ -4,6 +4,7 @@ import llsModel from "../models/lls-model";
 import configFile from "../config-app";
 import globalVariable from "../global-variable-app";
 import WindowSettings from "./windows/window-settings";
+import trademark from "../../trademark/trademark";
 //const SerialPort = eval(`require('serialport')`);
 // const findPort = require("../models/lls/findPort");
 
@@ -11,6 +12,7 @@ import WindowSettings from "./windows/window-settings";
 
 export default class Page9View extends JetView {
     config() {
+        const _t = trademark._t;
 
         const _ = this.app.getService("locale")._;
         // Версия прошивки надпись
@@ -32,7 +34,6 @@ export default class Page9View extends JetView {
                     ]
                 }
             ]
-
         };
 
 
@@ -40,7 +41,8 @@ export default class Page9View extends JetView {
         var logo = {
             view: "button",
             type: "image",
-            image: "assets/images/Logo_1.svg",
+            // image: "assets/images/Logo_1.svg",
+            image: _t("image_logo"),
             width: 500,
             height: 600,
             css: "logo_1",
@@ -227,7 +229,7 @@ export default class Page9View extends JetView {
                                     {},
                                     {
                                         view: "label",
-                                        label: `<p>${_("trademark")}</p>`,
+                                        label: `<p>${_("trademark")} ${_t("trademark")}</p>`,
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
@@ -235,7 +237,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: `<p>${_('developer')}</p>`,
+                                        label: `<p>${_('developer')} ${_t("developer")}</p>`,
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
@@ -251,7 +253,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: `<p>${_('website')}</p>`,
+                                        label: `<p>${_('website')} ${_t("website")}</p>`,
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
@@ -259,7 +261,7 @@ export default class Page9View extends JetView {
                                     },
                                     {
                                         view: "label",
-                                        label: `<p>${_('copyright')}</p>`,
+                                        label: `<p>${_('copyright')} ${_('copyright')}</p>`,
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
@@ -438,9 +440,6 @@ export default class Page9View extends JetView {
             }
         });
 
-
-
-
         //     function setTheme() {
         //         if (configFile.theme == 'dark') {
         //             // webix.html.addCss($$("window_show").getNode(), "window_show_dark");
@@ -508,6 +507,7 @@ export default class Page9View extends JetView {
         // }
     }
     setTheme(){
+        const _t = trademark._t;
         const _ = this.app.getService("locale")._;
 
         if (configFile.theme == 'dark') {
@@ -527,7 +527,7 @@ export default class Page9View extends JetView {
 
             // $$("light_theme_label").hide()
             // $$("dark_theme_label").show()
-            $$("logo_1").define("image", "assets/images/Logo_2.svg");
+            $$("logo_1").define("image", _t("image_logo_dark"));
             $$("logo_1").refresh();
             $$("master_setup").define("image", _("button_image_master_dark"));
             $$("engineering_setup").define("image", _("button_image_engineering_dark"));
@@ -560,7 +560,7 @@ export default class Page9View extends JetView {
 
             // $$("dark_theme_label").hide()
             // $$("light_theme_label").show()
-            $$("logo_1").define("image", "assets/images/Logo_1.svg");
+            $$("logo_1").define("image", _t("image_logo"));
             $$("logo_1").refresh();
             $$("master_setup").define("image", _("button_image_master"));
             $$("engineering_setup").define("image", _("button_image_engineering"));

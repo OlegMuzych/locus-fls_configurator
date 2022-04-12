@@ -4,9 +4,9 @@ export default{
     "image_logo_dark": "assets/images/Logo_1.svg",
 
     /* about-programm */
-    "trademark": "Ivanov Engineering",
-    "developer": "Ivanov Engineering",
-    "website": "www.loc",
+    "trademark": "Иванов Инжиниринг",
+    "developer": "ООО Иванов Инжиниринг",
+    "website": "www.locme.ru",
     "copyright": "© 2022",
 }
 

@@ -172,14 +172,14 @@ export default {
     "button_image_master": "assets/images/win1:ver2/settingsWizard_ru_light.svg",
     "button_image_master_dark": "assets/images/win1:ver2/settingsWizard_ru_black.svg",
 
-    "button_image_engineering": "assets/images/win1:ver2/viewSettings_ru_light.svg",
-    "button_image_engineering_dark": "assets/images/win1:ver2/viewSettings_ru_black.svg",
+    "button_image_konfig": "assets/images/win1:ver2/viewSettings_ru_light.svg",
+    "button_image_konfig_dark": "assets/images/win1:ver2/viewSettings_ru_black.svg",
 
     "button_image_info_win2": "assets/images/win1:ver2/about_ru_light.svg",
     "button_image_info_win2_dark": "assets/images/win1:ver2/about_ru_black.svg",
 
-    "button_image_konfig": "assets/images/win1:ver2/mainSettings_ru_light.svg",
-    "button_image_konfig_dark": "assets/images/win1:ver2/mainSettings_ru_black.svg",
+    "button_image_engineering": "assets/images/win1:ver2/mainSettings_ru_light.svg",
+    "button_image_engineering_dark": "assets/images/win1:ver2/mainSettings_ru_black.svg",
 
     /* leftmenu.js Images */
     "button_image_back": "assets/images/left_menu:ver2/mainMenu_ru_light.svg",

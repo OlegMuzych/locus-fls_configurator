@@ -10,7 +10,6 @@ export default{
     "copyright": "© 2022",
 }
 
-// "name": "IE Configurator",
-//     "productName": "IE Configurator",
-//     "version": "1.0.6 beta",
-//     "description": "IE Configurator",
+//     "name": "IE Configurator", // "PM Configurator"
+//     "productName": "IE Configurator", //"PM Configurator",
+//     "description": "IE Configurator", //"PM Configurator"

@@ -1,6 +1,11 @@
+import {JetView} from "webix-jet";
+import trademark from "../../../trademark/trademark";
+import configFile from "../../config-app";
+
 
 export default class WindowAbout extends JetView {
     config() {
+        const _t = trademark._t;
         const _ = this.app.getService("locale")._;
 
         let win = {
@@ -97,20 +102,21 @@ export default class WindowAbout extends JetView {
 
     setTheme() {
         if (configFile.theme == 'dark') {
-            webix.html.addCss(this.$$("window_show").getNode(), "window_show_dark");
-            // webix.html.addCss(this.$$("language_windows_modal").getNode(), "language_windows_modal_dark");
-            webix.html.addCss(this.$$("labelFontSize").getNode(), "language_windows_modal_dark");
-            webix.html.addCss(this.$$("labelAutoSaveMode").getNode(), "language_windows_modal_dark");
-            webix.html.addCss(this.$$("language").getNode(), "window_type_4_dark");
-            webix.html.addCss(this.$$("comboTheme").getNode(), "window_type_4_dark");
+            webix.html.addCss($$("window_show_2").getNode(), "window_show_dark");
+            webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal_dark");
+            webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal_dark");
+            webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal_dark");
+            webix.html.addCss(this.$$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
+            webix.html.addCss(this.$$("language_windows_modal_6").getNode(), "language_windows_modal_dark");
+
         }
         if (configFile.theme == 'light') {
-            webix.html.addCss(this.$$("window_show").getNode(), "window_show");
-            // webix.html.addCss(this.$$("language_windows_modal").getNode(), "language_windows_modal");
-            webix.html.addCss(this.$$("labelFontSize").getNode(), "language_windows_modal");
-            webix.html.addCss(this.$$("labelAutoSaveMode").getNode(), "language_windows_modal");
-            webix.html.addCss(this.$$("language").getNode(), "window_type_4");
-            webix.html.addCss(this.$$("comboTheme").getNode(), "window_type_4");
+            webix.html.addCss($$("window_show_2").getNode(), "window_show");
+            webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal");
+            webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal");
+            webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal");
+            webix.html.addCss(this.$$("language_windows_modal_2").getNode(), "language_windows_modal");
+            webix.html.addCss(this.$$("language_windows_modal_6").getNode(), "language_windows_modal");
         }
     }
 }

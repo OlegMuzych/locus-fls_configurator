@@ -5,6 +5,7 @@ import configFile from "../config-app";
 import globalVariable from "../global-variable-app";
 import WindowSettings from "./windows/window-settings";
 import trademark from "../../trademark/trademark";
+import WindowAbout from "./windows/window-about";
 //const SerialPort = eval(`require('serialport')`);
 // const findPort = require("../models/lls/findPort");
 
@@ -196,88 +197,88 @@ export default class Page9View extends JetView {
 
 
 
-        var win_2 = webix.ui({
-            view: "window",
-            position: "center",
-            width: 850,
-            height: 500,
-            id: "window_show_2",
-            modal: true,
-            css: "window_show",
-            head: {
-                rows: [
-                    {
-                        cols: [
-                            {template: "", type: "header", borderless: true,},
-                            {
-                                view: "icon", icon: "wxi-close", tooltip: "Close window", click: function () {
-                                    $$("window_show_2").hide()
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        height: 10,
-                    },
-                    {
-                        cols: [
-                            {},
-                            {
-                                // hidden: false,
-                                height: 400,
-                                rows: [
-                                    {},
-                                    {
-                                        view: "label",
-                                        label: `<p>${_("trademark")} ${_t("trademark")}</p>`,
-                                        width: 700,
-                                        height: 80,
-                                        css: "language_windows_modal",
-                                        localId: "language_windows_modal_2"
-                                    },
-                                    {
-                                        view: "label",
-                                        label: `<p>${_('developer')} ${_t("developer")}</p>`,
-                                        width: 700,
-                                        height: 80,
-                                        css: "language_windows_modal",
-                                        id: "language_windows_modal_3"
-                                    },
-                                    {
-                                        view: "label",
-                                        label: `<p>${_('program_version')}: ${VERSION}</p>`,
-                                        width: 700,
-                                        height: 80,
-                                        css: "language_windows_modal",
-                                        id: "language_windows_modal_4"
-                                    },
-                                    {
-                                        view: "label",
-                                        label: `<p>${_('website')} ${_t("website")}</p>`,
-                                        width: 700,
-                                        height: 80,
-                                        css: "language_windows_modal",
-                                        localId: "language_windows_modal_6"
-                                    },
-                                    {
-                                        view: "label",
-                                        label: `<p>${_('copyright')} ${_t('copyright')}</p>`,
-                                        width: 700,
-                                        height: 80,
-                                        css: "language_windows_modal",
-                                        id: "language_windows_modal_5"
-                                    },
-                                    {},
-                                ]
-                            },
-                            {}
-                        ]
-                    }
-                ]
-            },
-
-        });
-        win_2.hide();
+        // var win_2 = webix.ui({
+        //     view: "window",
+        //     position: "center",
+        //     width: 850,
+        //     height: 500,
+        //     id: "window_show_2",
+        //     modal: true,
+        //     css: "window_show",
+        //     head: {
+        //         rows: [
+        //             {
+        //                 cols: [
+        //                     {template: "", type: "header", borderless: true,},
+        //                     {
+        //                         view: "icon", icon: "wxi-close", tooltip: "Close window", click: function () {
+        //                             $$("window_show_2").hide()
+        //                         }
+        //                     }
+        //                 ]
+        //             },
+        //             {
+        //                 height: 10,
+        //             },
+        //             {
+        //                 cols: [
+        //                     {},
+        //                     {
+        //                         // hidden: false,
+        //                         height: 400,
+        //                         rows: [
+        //                             {},
+        //                             {
+        //                                 view: "label",
+        //                                 label: `<p>${_("trademark")} ${_t("trademark")}</p>`,
+        //                                 width: 700,
+        //                                 height: 80,
+        //                                 css: "language_windows_modal",
+        //                                 localId: "language_windows_modal_2"
+        //                             },
+        //                             {
+        //                                 view: "label",
+        //                                 label: `<p>${_('developer')} ${_t("developer")}</p>`,
+        //                                 width: 700,
+        //                                 height: 80,
+        //                                 css: "language_windows_modal",
+        //                                 id: "language_windows_modal_3"
+        //                             },
+        //                             {
+        //                                 view: "label",
+        //                                 label: `<p>${_('program_version')}: ${VERSION}</p>`,
+        //                                 width: 700,
+        //                                 height: 80,
+        //                                 css: "language_windows_modal",
+        //                                 id: "language_windows_modal_4"
+        //                             },
+        //                             {
+        //                                 view: "label",
+        //                                 label: `<p>${_('website')} ${_t("website")}</p>`,
+        //                                 width: 700,
+        //                                 height: 80,
+        //                                 css: "language_windows_modal",
+        //                                 localId: "language_windows_modal_6"
+        //                             },
+        //                             {
+        //                                 view: "label",
+        //                                 label: `<p>${_('copyright')} ${_t('copyright')}</p>`,
+        //                                 width: 700,
+        //                                 height: 80,
+        //                                 css: "language_windows_modal",
+        //                                 id: "language_windows_modal_5"
+        //                             },
+        //                             {},
+        //                         ]
+        //                     },
+        //                     {}
+        //                 ]
+        //             }
+        //         ]
+        //     },
+        //
+        // });
+        // win_2.hide();
 
 
         return {
@@ -391,10 +392,6 @@ export default class Page9View extends JetView {
 
         $$("logo_1").attachEvent("onKeyPress", goEngineering);
 
-        // $$("master_setup").attachEvent("onItemClick", (id, e) => {
-        //     // this.show("1page");
-        //
-        // });
 
         $$("master_setup").attachEvent("onItemClick", (id, e) => {
             $$("window_show_3").show()
@@ -418,10 +415,10 @@ export default class Page9View extends JetView {
             this.windowsSettings.showWindow();
         });
 
-        $$("window_show_2").hide()
-
+        // $$("window_show_2").hide()
+        this.windowsAbout = this.ui(WindowAbout);
         $$("reference").attachEvent("onItemClick", (id, e) => {
-            $$("window_show_2").show()
+           this.windowsAbout.showWindow();
         });
 
 
@@ -445,10 +442,10 @@ export default class Page9View extends JetView {
         const _ = this.app.getService("locale")._;
 
         if (configFile.theme == 'dark') {
-            webix.html.addCss($$("window_show_2").getNode(), "window_show_dark");
-            webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal_dark");
-            webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal_dark");
-            webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal_dark");
+            // webix.html.addCss($$("window_show_2").getNode(), "window_show_dark");
+            // webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal_dark");
+            // webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal_dark");
+            // webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal_dark");
             webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages_dark");
             webix.html.addCss($$("logo_1").getNode(), "logo_1_dark");
             webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start_dark");
@@ -473,15 +470,15 @@ export default class Page9View extends JetView {
             $$("reference").refresh();
             $$("application_menu").refresh();
 
-            webix.html.addCss(this.$$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
-            webix.html.addCss(this.$$("language_windows_modal_6").getNode(), "language_windows_modal_dark");
+            // webix.html.addCss(this.$$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
+            // webix.html.addCss(this.$$("language_windows_modal_6").getNode(), "language_windows_modal_dark");
 
         }
         if (configFile.theme == 'light') {
-            webix.html.addCss($$("window_show_2").getNode(), "window_show");
-            webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal");
-            webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal");
-            webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal");
+            // webix.html.addCss($$("window_show_2").getNode(), "window_show");
+            // webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal");
+            // webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal");
+            // webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal");
             webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages");
             webix.html.addCss($$("logo_1").getNode(), "logo_1");
             webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start");
@@ -506,8 +503,8 @@ export default class Page9View extends JetView {
             $$("reference").refresh();
             $$("application_menu").refresh();
 
-            webix.html.addCss(this.$$("language_windows_modal_2").getNode(), "language_windows_modal");
-            webix.html.addCss(this.$$("language_windows_modal_6").getNode(), "language_windows_modal");
+            // webix.html.addCss(this.$$("language_windows_modal_2").getNode(), "language_windows_modal");
+            // webix.html.addCss(this.$$("language_windows_modal_6").getNode(), "language_windows_modal");
         }
     }
 

@@ -2236,7 +2236,7 @@ border: none;
 
 .window_show_password{
     background-color: #f9f9f9;
-    border-radius: 6px;
+    border-radius: 0;
 
 }
 
@@ -2258,13 +2258,19 @@ border: none;
     border-radius: 6px;
 }
 
-.tabbar_windows_password{
+.tabbar_windows_password_1_dark{
     background-color: var(--c-white-color-background-dark);
     border-radius: 0;
 }
 
+.tabbar_windows_password_1{
+    /*background-color: var(--modal_windows_background);*/
+    background-color: #f3f3f3;
+    border-radius: 0;
+}
 
-.tabbar_windows_password .webix_segment_N{
+
+.tabbar_windows_password_1 .webix_segment_N{
     background-color: #f3f3f3;
     position: relative;
     top: -5px;
@@ -2277,7 +2283,7 @@ border: none;
 
 
 
-.tabbar_windows_password .webix_segment_0{
+.tabbar_windows_password_1 .webix_segment_0{
     background-color: #f3f3f3;
     position: relative;
     top: -5px;
@@ -2291,7 +2297,7 @@ border: none;
 
 
 
-.tabbar_windows_password_dark .webix_segment_N{
+.tabbar_windows_password_1_dark .webix_segment_N{
     background-color: var(--c-white-color-background-dark_left_menu);
     position: relative;
     top: -5px;
@@ -2301,7 +2307,7 @@ border: none;
     border-bottom: 2px solid rgba(143, 140, 140, 0.1);
     /*border-right: 1px solid rgba(143, 140, 140, 0.1);*/
 
-}.tabbar_windows_password_dark .webix_segment_0{
+}.tabbar_windows_password_1_dark .webix_segment_0{
      background-color: var(--c-white-color-background-dark_left_menu);
      position: relative;
      top: -5px;
@@ -2316,7 +2322,7 @@ border: none;
 
 
 
-.tabbar_windows_password .webix_segment_0.webix_selected{
+.tabbar_windows_password_1 .webix_segment_0.webix_selected{
     background-color: rgba(255,255,255, 0.0);
     color: #000;
     border-top-left-radius: 6px;
@@ -2325,7 +2331,7 @@ border: none;
 
 }
 
-.tabbar_windows_password .webix_segment_N.webix_selected{
+.tabbar_windows_password_1 .webix_segment_N.webix_selected{
     background-color: rgba(255,255,255, 0.0);
     color: #000;
     border-top-left-radius: 6px;
@@ -2334,7 +2340,7 @@ border: none;
 
 }
 
-.tabbar_windows_password_dark .webix_segment_0.webix_selected{
+.tabbar_windows_password_1_dark .webix_segment_0.webix_selected{
     background-color: var(--c-white-color-background-dark);
     color: var(--c-color-text-dark);
     border-top-left-radius: 6px;
@@ -2343,7 +2349,7 @@ border: none;
 
 }
 
-.tabbar_windows_password_dark .webix_segment_N.webix_selected{
+.tabbar_windows_password_1_dark .webix_segment_N.webix_selected{
     background-color: var(--c-white-color-background-dark);
     color: var(--c-color-text-dark);
     border-top-left-radius: 6px;
@@ -2442,9 +2448,16 @@ border: none;
     height: 100%;
 }
 
+
 .form_win.webix_view.webix_form{
+    background-color: var(--modal_windows_background);
+
+}
+
+.form_win_dark.webix_view.webix_form{
     background-color: var(--c-white-color-background-dark_left_menu);
 }
+
 
 
 .windows_password_label p{

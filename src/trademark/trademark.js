@@ -5,7 +5,7 @@ class Trademark{
     }
 
     _t(valueTrade){
-        let trademarkData = require('./' + "p-m");
+        let trademarkData = require('./' + TRADEMARK);
         // console.log(trademarkData.default);
         // console.log(trademarkData.default[valueTrade]);
         if(trademarkData.default[valueTrade] == undefined){

@@ -169,24 +169,24 @@ export default {
     "window_passwordinput_segmented_reset_text": "Все настройки датчика будут стерты",
 
     /*  win.js Images */
-    "button_image_master": "assets/images/ru/settingsWizard_ru_light.svg",
-    "button_image_master_dark": "assets/images/ru/settingsWizard_ru_black.svg",
+    "button_image_master": "assets/images/win1:ver2/settingsWizard_ru_light.svg",
+    "button_image_master_dark": "assets/images/win1:ver2/settingsWizard_ru_black.svg",
 
-    "button_image_engineering": "assets/images/ru/ingeneer.svg",
-    "button_image_engineering_dark": "assets/images/ru/ingeneer_inverse.svg",
+    "button_image_engineering": "assets/images/win1:ver2/viewSettings_ru_light.svg",
+    "button_image_engineering_dark": "assets/images/win1:ver2/viewSettings_ru_black.svg",
 
-    "button_image_info_win2": "assets/images/ru/info-win2.svg",
-    "button_image_info_win2_dark": "assets/images/ru/info_win2_inverse-01.svg",
+    "button_image_info_win2": "assets/images/win1:ver2/about_ru_light.svg",
+    "button_image_info_win2_dark": "assets/images/win1:ver2/about_ru_black.svg",
 
-    "button_image_konfig": "assets/images/ru/konfig.svg",
-    "button_image_konfig_dark": "assets/images/ru/konfig_inverse.svg",
+    "button_image_konfig": "assets/images/win1:ver2/mainSettings_ru_light.svg",
+    "button_image_konfig_dark": "assets/images/win1:ver2/mainSettings_ru_black.svg",
 
     /* leftmenu.js Images */
-    "button_image_back": "assets/images/ru/Back.svg",
-    "button_image_back_dark": "assets/images/ru/Back_inverse_3.svg",
+    "button_image_back": "assets/images/left_menu:ver2/mainMenu_ru_light.svg",
+    "button_image_back_dark": "assets/images/left_menu:ver2/mainMenu_ru_black.svg",
 
-    "button_image_info": "assets/images/ru/info.svg",
-    "button_image_info_dark": "assets/images/ru/info_inverse_3.svg",
+    "button_image_info": "assets/images/left_menu:ver2/info_ru_light.svg",
+    "button_image_info_dark": "assets/images/left_menu:ver2/info_ru_black.svg",
 
     /* filteringSettings.js Images */
     "button_image_filter_karier": "assets/images/ru/filtr_Karier.svg",

@@ -39,7 +39,8 @@ module.exports = {
       VERSION: `"${pack.version}"`,
       APPNAME: `"${pack.name}"`,
       PRODUCTION: false,//production,
-      BUILD_AS_MODULE: false,//(asmodule || standalone)
+      BUILD_AS_MODULE: false,//(asmodule || standalone),
+      TRADEMARK: `"${pack.trademark}"`,
     }),
     new CopyPlugin({
       patterns: [

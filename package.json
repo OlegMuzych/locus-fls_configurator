@@ -4,6 +4,7 @@
   "version": "1.0.4 beta",
   "description": "IE Configurator",
   "main": ".webpack/main",
+  "trademark" : "p-m",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",

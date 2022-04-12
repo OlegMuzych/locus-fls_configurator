@@ -17,7 +17,6 @@ export default class PasswordWindow extends JetView {
                     css: "tabbar_windows_password_1",
                     multiview: true,
                     height: 80,
-                    width: 810,
                     options: [
                         {value: _("window_password_segmented_current"), id: 'rows_22'},
                         {value: _("window_password_segmented_new"), id: 'rows_21'},
@@ -157,7 +156,7 @@ export default class PasswordWindow extends JetView {
                                                 },
                                                 {
                                                     view: "label",
-                                                    label: `<p style='font-size: 20px; position: relative; top: -17px; font-weight: 100;'>${_('window_password_new_password')}</p>`,
+                                                    label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_('window_password_new_password')}</p>`,
                                                     width: 200,
                                                     localId: "windows_password_label_3",
                                                     css: "windows_password_label"

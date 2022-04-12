@@ -4,8 +4,13 @@ export default{
     "image_logo_dark": "assets/images/Logo_1.svg",
 
     /* about-programm */
-    "trademark": "Point-monitoring",
-    "developer": "Point-monitoring",
-    "website": "www.point-monitoring.ru",
+    "trademark": "Ivanov Engineering",
+    "developer": "Ivanov Engineering",
+    "website": "www.loc",
     "copyright": "© 2022",
 }
+
+// "name": "IE Configurator",
+//     "productName": "IE Configurator",
+//     "version": "1.0.6 beta",
+//     "description": "IE Configurator",

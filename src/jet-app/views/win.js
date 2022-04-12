@@ -233,7 +233,7 @@ export default class Page9View extends JetView {
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
-                                        id: "language_windows_modal_2"
+                                        localId: "language_windows_modal_2"
                                     },
                                     {
                                         view: "label",
@@ -257,15 +257,15 @@ export default class Page9View extends JetView {
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
-                                        id: "language_windows_modal_6"
+                                        localId: "language_windows_modal_6"
                                     },
                                     {
                                         view: "label",
-                                        label: `<p>${_('copyright')} ${_('copyright')}</p>`,
+                                        label: `<p>${_('copyright')} ${_t('copyright')}</p>`,
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
-                                        id: "language_windows_modal_5"
+                                        thisId: "language_windows_modal_5"
                                     },
                                     {},
                                 ]
@@ -514,7 +514,7 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("window_show_2").getNode(), "window_show_dark");
             webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal_dark");
             webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal_dark");
-            webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal_dark");
+            webix.html.addCss(this.$$("language_windows_modal_5").getNode(), "language_windows_modal_dark");
             webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages_dark");
             webix.html.addCss($$("logo_1").getNode(), "logo_1_dark");
             webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start_dark");
@@ -539,15 +539,15 @@ export default class Page9View extends JetView {
             $$("reference").refresh();
             $$("application_menu").refresh();
 
-            webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
-            webix.html.addCss($$("language_windows_modal_6").getNode(), "language_windows_modal_dark");
+            webix.html.addCss(this.$$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
+            webix.html.addCss(this.$$("language_windows_modal_6").getNode(), "language_windows_modal_dark");
 
         }
         if (configFile.theme == 'light') {
             webix.html.addCss($$("window_show_2").getNode(), "window_show");
             webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal");
             webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal");
-            webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal");
+            webix.html.addCss(this.$$("language_windows_modal_5").getNode(), "language_windows_modal");
             webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages");
             webix.html.addCss($$("logo_1").getNode(), "logo_1");
             webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start");
@@ -572,8 +572,8 @@ export default class Page9View extends JetView {
             $$("reference").refresh();
             $$("application_menu").refresh();
 
-            webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal");
-            webix.html.addCss($$("language_windows_modal_6").getNode(), "language_windows_modal");
+            webix.html.addCss(this.$$("language_windows_modal_2").getNode(), "language_windows_modal");
+            webix.html.addCss(this.$$("language_windows_modal_6").getNode(), "language_windows_modal");
         }
     }
 

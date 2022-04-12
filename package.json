@@ -1,7 +1,7 @@
 {
   "name": "IE Configurator",
   "productName": "IE Configurator",
-  "version": "1.0.4 beta",
+  "version": "1.0.6 beta",
   "description": "IE Configurator",
   "main": ".webpack/main",
   "trademark" : "p-m",

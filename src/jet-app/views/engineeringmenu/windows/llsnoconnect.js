@@ -34,7 +34,7 @@ export default class LlsNoConnectWindow extends JetView {
                             },
                             {
                                 view: "label",
-                                label: `<p>${_("windows_lls_no_connect_text")}</p>`,
+                                label: `<p style='font-size: 26px; position: relative; top: -20px; text-align: center;'>${_("windows_lls_no_connect_text")}</p>`,
                                 css: "language_windows_modal",
                                 localId: "language_windows_modal_2",
                                 height: 100,

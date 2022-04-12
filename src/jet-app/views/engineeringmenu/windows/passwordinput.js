@@ -1,5 +1,6 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
+import configFile from "../../../config-app";
 
 export default class PasswordInputWindow extends JetView {
     config() {
@@ -10,7 +11,7 @@ export default class PasswordInputWindow extends JetView {
                 {
                     view: "segmented",
                     localId: 'tabbar_windows_password',
-                    css: "tabbar_windows_password",
+                    css: "tabbar_windows_password_1",
                     multiview: true,
                     height: 80,
                     options: [
@@ -23,6 +24,8 @@ export default class PasswordInputWindow extends JetView {
                     animate: {type: "show", delay: 10},
                     height: 300,
                     width: 400,
+                    css:"window_show_password",
+                    id: "rows_11",
                     cells: [
                         {
                             id: "input_password",
@@ -166,6 +169,10 @@ export default class PasswordInputWindow extends JetView {
             view:"form",
             scroll:false,
             elements: [elements],
+            css: "form_win",
+            id:"form_pass_1",
+            width: 850,
+            height: 400,
         };
 
         let body = {
@@ -231,10 +238,55 @@ export default class PasswordInputWindow extends JetView {
                 this.passValidFlag = false;
                 this.$$('textCurrentPass').validate();
                 this.$$("textCurrentPass").setValue('');
-            })
+            });
+
+        this.setTheme();
     }
 
     showWindow() {
         this.getRoot().show();
+    }
+
+
+    setTheme() {
+        if (configFile.theme == 'dark') {
+            webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_1_dark");
+            webix.html.addCss(this.$$("window_show_3").getNode(), "window_show_password_dark");
+            webix.html.addCss(this.$$("windows_password_label").getNode(), "windows_password_label_dark");
+            webix.html.addCss(this.$$("windows_password_label_2").getNode(), "windows_password_label_dark");
+            webix.html.addCss(this.$$("windows_password_label_3").getNode(), "windows_password_label_dark");
+            webix.html.addCss(this.$$("buttonCurrentPassOk").getNode(), "set_password_button_dark");
+            webix.html.addCss(this.$$("buttonCancel_1").getNode(), "set_password_button_dark");
+            webix.html.addCss(this.$$("buttonCancel_2").getNode(), "set_password_button_dark");
+            webix.html.addCss(this.$$("buttonNewPassOk").getNode(), "set_password_button_dark");
+            webix.html.addCss(this.$$("textCurrentPass").getNode(), "password_windows_set_dark");
+            webix.html.addCss(this.$$("textCurrentPass_2").getNode(), "password_windows_set_dark");
+            webix.html.addCss(this.$$("textNewPass").getNode(), "password_windows_set_dark");
+            webix.html.addCss(this.$$("rows_11").getNode(), "window_show_password_dark");
+            webix.html.addCss(this.$$("form_pass_1").getNode(), "form_win_dark");
+
+
+
+        }
+        if (configFile.theme == 'light') {
+            webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_1");
+            webix.html.addCss(this.$$("window_show_3").getNode(), "window_show_password");
+            webix.html.addCss(this.$$("windows_password_label").getNode(), "windows_password_label");
+            webix.html.addCss(this.$$("windows_password_label_2").getNode(), "windows_password_label");
+            webix.html.addCss(this.$$("windows_password_label_3").getNode(), "windows_password_label");
+            webix.html.addCss(this.$$("buttonCurrentPassOk").getNode(), "set_password_button");
+            webix.html.addCss(this.$$("buttonCancel_1").getNode(), "set_password_button");
+            webix.html.addCss(this.$$("buttonCancel_2").getNode(), "set_password_button");
+            webix.html.addCss(this.$$("buttonNewPassOk").getNode(), "set_password_button");
+            webix.html.addCss(this.$$("textCurrentPass").getNode(), "password_windows_set");
+            webix.html.addCss(this.$$("textCurrentPass_2").getNode(), "password_windows_set");
+            webix.html.addCss(this.$$("textNewPass").getNode(), "password_windows_set");
+            webix.html.addCss(this.$$("rows_11").getNode(), "window_show_password");
+            webix.html.addCss(this.$$("form_pass_1").getNode(), "form_win");
+
+
+
+
+        }
     }
 }

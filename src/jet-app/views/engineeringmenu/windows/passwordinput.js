@@ -252,6 +252,7 @@ export default class PasswordInputWindow extends JetView {
     setTheme() {
         if (configFile.theme == 'dark') {
             webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_1_dark");
+            // webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_1_dark");
 
 
 

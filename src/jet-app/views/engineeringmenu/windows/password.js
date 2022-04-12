@@ -17,6 +17,7 @@ export default class PasswordWindow extends JetView {
                     css: "tabbar_windows_password_1",
                     multiview: true,
                     height: 80,
+                    width: 810,
                     options: [
                         {value: _("window_password_segmented_current"), id: 'rows_22'},
                         {value: _("window_password_segmented_new"), id: 'rows_21'},

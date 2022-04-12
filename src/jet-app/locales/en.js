@@ -40,17 +40,17 @@ export default {
 
     "fuel_type": "Fuel type",
     "fuel_type_turned_off": "Turned off",
-    "fuel_type_1": "АИ-95",
-    "fuel_type_2": "АИ-92",
-    "fuel_type_3": "АИ-80 (Лето)",
-    "fuel_type_4": "АИ-80 (Зима)",
-    "fuel_type_5": "ДТ (Лето)",
-    "fuel_type_6": "ДТ (Зима)",
-    "fuel_type_7": "Own parameters",
-    "coefficient_k1": "Coefficient K1",
-    "coefficient_k2": "Coefficient K2",
+    "fuel_type_1": "Petrol-95",
+    "fuel_type_2": "Petrol-92",
+    "fuel_type_3": "Petrol-80",
+    "fuel_type_4": "Petrol-80 (Winter)",
+    "fuel_type_5": "Diesel",
+    "fuel_type_6": "Diesel (Winter)",
+    "fuel_type_7": "Set parameters",
+    "coefficient_k1": "Ratio R1",
+    "coefficient_k2": "Ratio R2",
 
-    "baud_rate": "Transmission speed",
+    "baud_rate": "Baud rate",
 
     "automatic_data_output": "Automatic data output",
     "automatic_data_output_turned_off": "Turned off",
@@ -58,14 +58,14 @@ export default {
     "automatic_data_output_symbolic": "Symbolic",
 
 
-    "serial_number": "Serial number",
+    "serial_number": "SN",
 
-    "output_message_type": "Output message",
+    "output_message_type": "Message type",
     "output_message_type_is_level": "Level",
     "output_message_type_is_volume": "Volume",
 
 
-    "temperature_compensation": "Temperature compensation",
+    "temperature_compensation": "Thermal compensation",
 
     /* centralmenu.js */
     "main_settings": "Basic Settings",

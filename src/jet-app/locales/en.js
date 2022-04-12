@@ -181,6 +181,7 @@ export default {
     "button_image_info_win2": "assets/images/win1:ver2/about_en_light.svg",
     "button_image_info_win2_dark": "assets/images/win1:ver2/about_en_black.svg",
 
+
     "button_image_konfig": "assets/images/win1:ver2/mainSettings_en_light.svg",
     "button_image_konfig_dark": "assets/images/win1:ver2/mainSettings_en_black.svg",
 

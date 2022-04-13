@@ -1,10 +1,12 @@
 import {JetView} from "webix-jet";
 import configFile from "../../../config-app";
 import llsModel from "../../../models/lls-model";
+import trademark from "../../../../trademark/trademark";
 
 export default class LeftMenu extends JetView{
     config(){
         const _ = this.app.getService("locale")._;
+        const _t = trademark._t;
 
         let left_menu = {
             // view: "scrollview",
@@ -34,12 +36,12 @@ export default class LeftMenu extends JetView{
                             {
                                 view: "button",
                                 type: "image",
-                                image: "assets/images/model_101.svg",
+                                image: _t('image_button_1'),
                                 width: 155,
                                 height: 200,
                                 css: "left_menu_button",
                                 id: "left_menu_button_1",
-                                hidden: true,
+                                // hidden: true,
                             },
                             {
                                 height: 10,
@@ -47,23 +49,26 @@ export default class LeftMenu extends JetView{
                             {
                                 view: "button",
                                 type: "image",
-                                image: "assets/images/ONE.MAX.svg",
+                                // image: "assets/images/ONE.MAX.svg",
+                                image: _t('image_button_2'),
                                 width: 155,
                                 height: 200,
-                                css: "left_menu_button",
-                                id: "left_menu_button_2"
+                                css: "left_menu_button_2",
+                                id: "left_menu_button_2",
+                                // hidden: true,
                             },
                             {
                                 view: "button",
                                 type: "image",
-                                image: "assets/images/ONE.BLE.svg",
+                                image: _t('image_button_3'),
                                 width: 155,
                                 height: 200,
                                 css: "left_menu_button_2",
-                                id: "left_menu_button_3"
+                                id: "left_menu_button_3",
+                                // hidden: true,
                             },
                             {
-                                height: 340,
+                                height: 180,
                             },
 
                             {
@@ -109,6 +114,7 @@ export default class LeftMenu extends JetView{
     }
 
     init(){
+        const _t = trademark._t;
 
         $$("save_settings").attachEvent("onItemClick", (id, e) => {
             llsModel.setLongData(llsModel.newLongData);
@@ -141,19 +147,19 @@ export default class LeftMenu extends JetView{
             webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols");
             webix.html.addCss( $$("left_menu_button_1").getNode(), "left_menu_button");
             webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button");
-            // webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button");
+            webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button");
             webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference");
             webix.html.addCss( this.$$("button_back").getNode(), "left_menu_button_reference");
-            webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2");
+            // webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2");
             webix.html.addCss( this.$$("save_settings").getNode(), "edit_values");
 
 
 
-            $$("left_menu_button_1").define("image", "assets/images//MODEL_101.svg");
+            $$("left_menu_button_1").define("image", _t("image_button_1"));
             // $$("left_menu_button_2").define("image", "assets/images//MODEL_201.svg");
-            $$("left_menu_button_2").define("image", "assets/images//ONE.MAX.svg");
+            $$("left_menu_button_2").define("image", _t("image_button_2"));
             // $$("left_menu_button_3").define("image", "assets/images//MODEL_301_BLE.svg");
-            $$("left_menu_button_3").define("image", "assets/images//ONE.BLE.svg");
+            $$("left_menu_button_3").define("image", _t("image_button_3"));
             $$("button_back").define("image", _("button_image_back"));
             $$("button_reference").define("image", _("button_image_info"));
 
@@ -168,20 +174,20 @@ export default class LeftMenu extends JetView{
         if(configFile.theme == 'dark'){
             webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols_dark");
             webix.html.addCss( $$("left_menu_button_1").getNode(), "left_menu_button_dark");
-            webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_dark");
-            // webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button_dark");
+            webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_2_dark");
+            webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button_2_dark");
             webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference_dark");
             webix.html.addCss( this.$$("button_back").getNode(), "left_menu_button_reference_dark");
-            webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2_dark");
+            // webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2_dark");
             webix.html.addCss( this.$$("save_settings").getNode(), "edit_values_dark");
 
 
 
-            $$("left_menu_button_1").define("image", "assets/images/MODEL_101_inverse.svg")
+            $$("left_menu_button_1").define("image", _t("image_button_1_dark"));
             // $$("left_menu_button_2").define("image", "assets/images/MODEL_201_inverse.svg")
-            $$("left_menu_button_2").define("image", "assets/images/ONE.MAX inverse.svg")
+            $$("left_menu_button_2").define("image", _t("image_button_2_dark"));
             // $$("left_menu_button_3").define("image", "assets/images/MODEL_301_BLE_inverse.svg")
-            $$("left_menu_button_3").define("image", "assets/images/ONE.BLE inverse.svg")
+            $$("left_menu_button_3").define("image", _t("image_button_3_dark"));
             $$("button_back").define("image", _("button_image_back_dark"));
             $$("button_reference").define("image", _("button_image_info_dark"));
 

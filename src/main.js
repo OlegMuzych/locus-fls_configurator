@@ -13,7 +13,7 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    maxWidth: 11300,
+    maxWidth: 1300,
     minWidth: 990,
     minHeight: 700,
     maxHeight: 1000,
@@ -28,7 +28,7 @@ const createWindow = () => {
       zoomFactor: 0.6,
     },
     fullscreenable: false,
-    icon: __dirname + '/ivanov_logo_conf.ico',
+    // icon: __dirname + '/ivanov_logo_conf.ico',
     removeMenu: true,
     autoHideMenuBar: true,
   });
@@ -39,7 +39,7 @@ const createWindow = () => {
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   app.whenReady().then(() => {
     ipcMain.handle('dialog', (event, method, params) => {

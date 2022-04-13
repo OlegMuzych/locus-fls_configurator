@@ -307,7 +307,7 @@ export default class Page9View extends JetView {
 
 
         $$("master_setup").attachEvent("onItemClick", (id, e) => {
-            $$("window_show_3").show()
+            $$("window_show_3").show();
 
             setTimeout(() => {
                 $$("window_show_3").hide();

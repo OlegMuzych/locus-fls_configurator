@@ -6,8 +6,8 @@ export default {
 
     "function_is_not_available": "Функция не доступна",
 
-    "trademark": "Торговая марка",
-    "developer": "Разработчик",
+    "trademark": "Торговая марка:",
+    "developer": "Разработчик:",
     "program_version": 'Версия конфигуратора',
     "website": "",
     "copyright": "",

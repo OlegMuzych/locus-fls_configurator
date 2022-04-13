@@ -627,16 +627,35 @@ export default class FiltrationSettings extends JetView {
 
         $$('image_button_filter_1').attachEvent("onItemClick", (id, e) => {
             $$('slider_filter_1').setValue(5);
-            llsModel.setLongData({filtrationType: 1, averagingLength: $$('slider_filter_1').getValue()});  // усреднение
+            llsModel.newLongData.filtrationType = 1;
+            llsModel.newLongData.averagingLength = 5;
+            this.setSliderValue('window_text_time', 'averagingLength', 'statusAveragingLength');
+            this.setFiltrationTypeValue();
+            // llsModel.setLongData({filtrationType: 1, averagingLength: $$('slider_filter_1').getValue()});  // усреднение
+            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({filtrationType: 1, averagingLength: 5}) : '');
         });
 
         $$('image_button_filter_2').attachEvent("onItemClick", (id, e) => {
             $$('slider_filter_2').setValue(3);
-            llsModel.setLongData({filtrationType: 2, medianLength: $$('slider_filter_2').getValue()}); //медиана
+            llsModel.newLongData.filtrationType = 2;
+            llsModel.newLongData.medianLenght = 3;
+            this.setFiltrationTypeValue();
+            this.setSliderValue('window_text_mediana', 'medianLength', 'statusMedianLength');
+            // llsModel.setLongData({filtrationType: 2, medianLength: $$('slider_filter_2').getValue()}); //медиана
+            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({filtrationType: 2, medianLength: 3}) : '');
         });
 
         $$('image_button_filter_3').attachEvent("onItemClick", (id, e) => {
+            llsModel.newLongData.coefficientR = 1;
+            llsModel.newLongData.coefficientQ = 437;
+            llsModel.newLongData.filtrationType = 3;
+            this.setFiltrationTypeValue();
+            this.setFloatValue('text_q', "coefficientQ", "statusCoefficientQ");
+            this.setFloatValue('text_r', "coefficientR", "statusCoefficientR");
+            // llsModel.setLongData({coefficientR: 1, coefficientQ: 437, filtrationType: 3 });
+            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({coefficientR: 1, coefficientQ: 437, filtrationType: 3 }) : '');
         });
+
 
         $$('degree_of_filtration_3').hide();
         const popupFilterType = {

@@ -11,9 +11,11 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "label",
-                    label: `<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>${_("passport_volume_tank")}</p>`,
+                    label: `<p style='font-weight:100; position: relative; top:-20px;'>${_("passport_volume_tank")}</p>`,
                     width: 190,
                     height: 50,
+                    css: "text_filtering_2",
+                    localId:"1"
                 },
                 {},
                 {view: "text", css: "full_window_text", width: 200, localId: "manual_volume_fuel_1"},
@@ -27,9 +29,11 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "label",
-                    label: `<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>${_("start_volume_tank")}</p>`,
+                    label: `<p style='font-weight:100; position: relative; top:-20px;'>${_("start_volume_tank")}</p>`,
                     width: 190,
                     height: 50,
+                    css: "text_filtering_2",
+                    localId:"2"
                 },
                 {},
                 {view: "text", css: "full_window_text", width: 200, localId: "initial_volume_fuel_1"},
@@ -43,9 +47,11 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "label",
-                    label: `<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>${_("step_volume")}</p>`,
+                    label: `<p style=' font-weight:100; position: relative; top:-20px;'>${_("step_volume")}</p>`,
                     width: 190,
                     height: 50,
+                    css: "text_filtering_2",
+                    localId:"3"
                 },
                 {},
                 {view: "text", css: "full_window_text", width: 200, localId: "step_liters_1"},
@@ -59,9 +65,11 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "label",
-                    label: `<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>${_("step_count")}</p>`,
+                    label: `<p style=' font-weight:100; position: relative; top:-20px;'>${_("step_count")}</p>`,
                     width: 190,
                     height: 50,
+                    css: "text_filtering_2",
+                    localId:"4"
                 },
                 {},
                 {view: "text", width: 200, css: "full_window_text", readonly: true, localId: "counts_step"},
@@ -243,6 +251,10 @@ export default class FuelFillView extends JetView {
             webix.html.addCss( this.$$("closed_calibration_button_window_2").getNode(), "button_next_drain_window_1_2");
             webix.html.addCss( this.$$("central_menu_and_right_menu_calibration_next_window_button").getNode(), "button_next_drain_window_1_2");
             webix.html.addCss( $$("right_menu_calibration_drain_2").getNode(), "rows_right_menu_calibration_2");
+            webix.html.addCss(this.$$("3").getNode(), "text_filtering_2");
+            webix.html.addCss(this.$$("2").getNode(), "text_filtering_2");
+            webix.html.addCss(this.$$("1").getNode(), "text_filtering_2");
+            webix.html.addCss(this.$$("4").getNode(), "text_filtering_2");
         }
 
         if(configFile.theme == 'dark'){
@@ -256,6 +268,10 @@ export default class FuelFillView extends JetView {
             webix.html.addCss( this.$$("closed_calibration_button_window_2").getNode(), "button_next_drain_window_1_2_dark");
             webix.html.addCss( this.$$("central_menu_and_right_menu_calibration_next_window_button").getNode(), "button_next_drain_window_1_2_dark");
             webix.html.addCss( $$("right_menu_calibration_drain_2").getNode(), "rows_right_menu_calibration_2_dark");
+            webix.html.addCss(this.$$("3").getNode(), "text_filtering_2_dark");
+            webix.html.addCss(this.$$("2").getNode(), "text_filtering_2_dark");
+            webix.html.addCss(this.$$("1").getNode(), "text_filtering_2_dark");
+            webix.html.addCss(this.$$("4").getNode(), "text_filtering_2_dark");
         }
     }
 

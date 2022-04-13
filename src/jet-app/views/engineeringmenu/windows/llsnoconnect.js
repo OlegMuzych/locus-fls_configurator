@@ -53,7 +53,7 @@ export default class LlsNoConnectWindow extends JetView {
                             {view: "button", label: _("button_test_mode"), localId: "buttonCancel", css: "set_password_button",
                                 disabled: false,
                                 hidden: false,
-                                hotkey: "enter",
+                                hotkey: "shift+q+w",
                                 width: 1,
                                 height: 1,
                             },

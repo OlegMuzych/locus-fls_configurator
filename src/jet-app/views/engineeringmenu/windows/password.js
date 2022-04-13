@@ -24,7 +24,7 @@ export default class PasswordWindow extends JetView {
                 },
 
                 {
-                    animate: {type: "show", delay: 10},
+                    // animate: {type: true, delay: 10},
                     css:"window_show_password",
                     id: "rows_11",
                     cells: [
@@ -44,7 +44,8 @@ export default class PasswordWindow extends JetView {
                                             view: "button",
                                             type: "image",
                                             image: "assets/images/info_black.svg",
-                                            localId: "closed_1",
+                                            // localId: "closed_1",
+                                            id:"closed_35",
                                             css: "set_password_button_icon",
                                             width: 100,
                                             height: 100,
@@ -306,6 +307,9 @@ export default class PasswordWindow extends JetView {
             webix.html.addCss(this.$$("rows_11").getNode(), "window_show_password_dark");
             webix.html.addCss(this.$$("form_pass_1").getNode(), "form_win_dark");
 
+            $$("closed_35").define("image","assets/images/info_black_inverse.svg");
+            $$("closed_35").refresh();
+
 
 
         }
@@ -325,6 +329,8 @@ export default class PasswordWindow extends JetView {
             webix.html.addCss(this.$$("rows_11").getNode(), "window_show_password");
             webix.html.addCss(this.$$("form_pass_1").getNode(), "form_win");
 
+            $$("closed_35").define("image","assets/images/info_black.svg");
+            $$("closed_35").refresh();
 
 
 

@@ -70,8 +70,8 @@ export default class EngineeringMenu extends JetView{
                         break;
                     }
                     default:{
-                        // this.llsNoConnectWindow.showWindow(); //в случае если датчик не подключен
-                        this.passwordInput.showWindow();
+                        this.llsNoConnectWindow.showWindow(); //в случае если датчик не подключен
+
                         break;
                     }
             }

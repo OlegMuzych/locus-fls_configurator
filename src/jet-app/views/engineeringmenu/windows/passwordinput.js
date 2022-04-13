@@ -21,11 +21,11 @@ export default class PasswordInputWindow extends JetView {
                 },
 
                 {
-                    animate: {type: "show", delay: 10},
+                    // animate: {type: "show", delay: 10},
                     height: 300,
                     width: 400,
                     css:"window_show_password",
-                    id: "rows_11",
+                    id: "rows_33",
                     cells: [
                         {
                             id: "input_password",
@@ -45,14 +45,14 @@ export default class PasswordInputWindow extends JetView {
                                             image: "assets/images/info_black.svg",
                                             localId: "closed_1",
                                             css: "set_password_button_icon",
-                                            width: 100,
-                                            height: 100,
+                                            width: 200,
+                                            height: 200,
                                         },
 
                                         {
                                             view: "label",
                                             label: `<p style='position: relative; font-size: 26px; top: -25px'>${_("window_passwordinput_segmented_current_text")}</p>`,
-                                            width: 590,
+                                            width: 390,
                                             localId: "windows_password_label",
                                             css: "language_windows_modal"
                                         },
@@ -127,6 +127,7 @@ export default class PasswordInputWindow extends JetView {
                                      view: "label",
                                      label: `<p style='position: relative; top: -30px; color: #eb2323;'>${_("window_passwordinput_segmented_reset_text")}</p>`,
                                      css: "language_windows_modal",
+                                     id:"text_win_5",
                                      height: 200,
                                      width: 100,
                                  },
@@ -252,7 +253,16 @@ export default class PasswordInputWindow extends JetView {
     setTheme() {
         if (configFile.theme == 'dark') {
             webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_1_dark");
-            // webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_1_dark");
+            webix.html.addCss(this.$$("rows_33").getNode(), "window_show_password_dark");
+            webix.html.addCss(this.$$("form_pass_1").getNode(), "form_win_dark");
+            webix.html.addCss(this.$$("buttonCancel_1").getNode(), "set_password_button_dark");
+            webix.html.addCss(this.$$("buttonCurrentPassOk").getNode(), "set_password_button_dark");
+            webix.html.addCss(this.$$("windows_password_label").getNode(), "language_windows_modal_dark");
+            webix.html.addCss(this.$$("textCurrentPass").getNode(), "password_windows_set_dark");
+
+            this.$$("closed_1").define("image","assets/images/info_black_inverse.svg");
+            this.$$("closed_1").refresh();
+
 
 
 
@@ -260,8 +270,15 @@ export default class PasswordInputWindow extends JetView {
         }
         if (configFile.theme == 'light') {
             webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_1");
+            webix.html.addCss(this.$$("rows_33").getNode(), "window_show_password");
+            webix.html.addCss(this.$$("form_pass_1").getNode(), "form_win");
+            webix.html.addCss(this.$$("buttonCancel_1").getNode(), "set_password_button");
+            webix.html.addCss(this.$$("buttonCurrentPassOk").getNode(), "set_password_button");
+            webix.html.addCss(this.$$("windows_password_label").getNode(), "language_windows_modal");
+            webix.html.addCss(this.$$("textCurrentPass").getNode(), "password_windows_set");
 
-
+            this.$$("closed_1").define("image","assets/images/info_black.svg");
+            this.$$("closed_1").refresh();
 
         }
     }

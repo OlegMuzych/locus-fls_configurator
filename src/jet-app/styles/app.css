@@ -1600,7 +1600,7 @@ border: none;
 
 
 .window_type_2_dark .webix_el_radio .webix_radio_1 .webix_custom_radio{
-    color: #fff;
+    color: #93db6b;
 
 }
 
@@ -2211,26 +2211,54 @@ border: none;
     left: 2px;
 }
 
+
+
+/*---------------------------------------*/
+
+.webix_list .webix_list_item:hover{
+    background-color: #fff;
+    color: var(--c-color-text-light);
+}
+
 .service_button.webix_view .webix_list{
-  font-size: 18px;
+  font-size: 20px;
    color: var(--c-color-text-light);
+    border: none;
+
+}
+
+.service_button_dark.webix_view .webix_list{
+    font-size: 24px;
+    color: var(--c-color-text-dark);
+    border: none;
 
 }
 
 .service_button .webix_view{
-    background-color: #dcdcdc;
-    border-radius: 8px;
+    background-color: var(--modal_windows_background);
+}
+
+.service_button_dark .webix_view{
+    background-color: var(--c-white-color-background-dark_left_menu);
 }
 
 .webix_view.webix_window.webix_popup.service_button{
     background-color: #dcdcdc;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+}
+
+.webix_view.webix_window.webix_popup.service_button_dark{
+    background-color: var(--c-white-color-background-dark_left_menu);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 
 }
 
+/*--------------------------------------------*/
 
-/* f3f3f3 */
+
+
 /*Окно пароль*/
 
 
@@ -2468,7 +2496,30 @@ border: none;
 }
 
 
-.toggle_style .webix_switch_box{
-    background-color: #628cbb;
+.webix_switch_box{
+    background-color: #dedede;
 
 }
+
+.webix_switch_box.webix_switch_on{
+    background-color: #93db6b;
+
+}
+
+.webix_switch_box_dark.webix_switch_on{
+    background-color: #93db6b;
+
+}
+
+.toggle_style .webix_switch_handle{
+    background-color: #fff;
+}
+
+.toggle_style_dark .webix_switch_handle{
+    background-color: #fff;
+}
+
+.window_type_2_dark .webix_el_radio.webix_radio_1.webix_custom_radio{
+    background-color: #93db6b;
+}
+

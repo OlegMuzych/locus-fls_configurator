@@ -194,13 +194,13 @@ export default {
 
 
     /* filteringSettings.js Images */
-    "button_image_filter_karier": "assets/images/en/filtr_Karier.svg",
-    "button_image_filter_karier_dark": "assets/images/en/filtr_Karier_inverse.svg",
+    "button_image_filter_karier": "assets/images/filtration/filtr_Karier_en.svg",
+    "button_image_filter_karier_dark": "assets/images/filtration/filtr_Karier_en_inverse.svg",
 
-    "button_image_filter_stroit": "assets/images/en/filtr_Stroit.svg",
-    "button_image_filter_stroit_dark": "assets/images/en/filtr_Stroit_inverse.svg",
+    "button_image_filter_stroit": "assets/images/filtration/filtr_Stroit_en.svg",
+    "button_image_filter_stroit_dark": "assets/images/filtration/filtr_Stroit_en_inverse.svg",
 
-    "button_image_filter_rovn": "assets/images/en/filtr_Rovn.svg",
-    "button_image_filter_rovn_dark": "assets/images/en/filtr_Rovn_inverse.svg",
+    "button_image_filter_rovn": "assets/images/filtration/filtr_Rovn_en.svg",
+    "button_image_filter_rovn_dark": "assets/images/filtration/filtr_Rovn_en_inverse.svg",
 
 };

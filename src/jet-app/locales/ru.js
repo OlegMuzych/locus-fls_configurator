@@ -192,14 +192,14 @@ export default {
     "button_image_info_dark": "assets/images/left_menu:ver2/info_ru_black.svg",
 
     /* filteringSettings.js Images */
-    "button_image_filter_karier": "assets/images/ru/filtr_Karier.svg",
-    "button_image_filter_karier_dark": "assets/images/ru/filtr_Karier_inverse.svg",
+    "button_image_filter_karier": "assets/images/filtration/filtr_Karier.svg",
+    "button_image_filter_karier_dark": "assets/images/filtration/filtr_Karier_inverse.svg",
 
-    "button_image_filter_stroit": "assets/images/ru/filtr_Stroit.svg",
-    "button_image_filter_stroit_dark": "assets/images/ru/filtr_Stroit_inverse.svg",
+    "button_image_filter_stroit": "assets/images/filtration/filtr_Stroit.svg",
+    "button_image_filter_stroit_dark": "assets/images/filtration/filtr_Stroit_inverse.svg",
 
-    "button_image_filter_rovn": "assets/images/ru/filtr_Rovn.svg",
-    "button_image_filter_rovn_dark": "assets/images/ru/filtr_Rovn_inverse.svg",
+    "button_image_filter_rovn": "assets/images/filtration/filtr_Rovn.svg",
+    "button_image_filter_rovn_dark": "assets/images/filtration/filtr_Rovn_inverse.svg",
 
     //
 };

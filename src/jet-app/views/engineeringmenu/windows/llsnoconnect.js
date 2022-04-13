@@ -50,12 +50,15 @@ export default class LlsNoConnectWindow extends JetView {
                         cols: [
                             {},
                             {view: "button", label: _("button_ok") , localId: "buttonOk", css: "set_password_button",},
-                            {},
                             {view: "button", label: _("button_test_mode"), localId: "buttonCancel", css: "set_password_button",
                                 disabled: false,
                                 hidden: false,
+                                hotkey: "enter",
+                                width: 1,
+                                height: 1,
                             },
-                            {}
+                            {},
+
                         ]
                     },
                     {}
@@ -67,6 +70,7 @@ export default class LlsNoConnectWindow extends JetView {
     }
 
     init() {
+
         this.$$('buttonCancel').attachEvent("onItemClick", (id, e) => {
             console.log('click');
             this.getRoot().hide();
@@ -92,14 +96,14 @@ export default class LlsNoConnectWindow extends JetView {
             webix.html.addCss($$("window_show_4").getNode(), "window_show_dark");
             webix.html.addCss(this.$$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
             webix.html.addCss(this.$$("buttonOk").getNode(), "set_password_button_dark");
-            webix.html.addCss(this.$$("buttonCancel").getNode(), "set_password_button_dark");
+            // webix.html.addCss(this.$$("buttonCancel").getNode(), "set_password_button_dark");
 
         }
         if (configFile.theme == 'light') {
             webix.html.addCss($$("window_show_4").getNode(), "window_show");
             webix.html.addCss(this.$$("language_windows_modal_2").getNode(), "language_windows_modal");
             webix.html.addCss(this.$$("buttonOk").getNode(), "set_password_button");
-            webix.html.addCss(this.$$("buttonCancel").getNode(), "set_password_button");
+            // webix.html.addCss(this.$$("buttonCancel").getNode(), "set_password_button");
 
 
         }

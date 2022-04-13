@@ -2523,3 +2523,12 @@ border: none;
     background-color: #93db6b;
 }
 
+.text_filtering_2 p{
+   color: var(--c-color-text-light);
+    font-size: 20px;
+}
+
+.text_filtering_2_dark p{
+    color: var(--c-color-text-dark);
+    font-size: 20px;
+}

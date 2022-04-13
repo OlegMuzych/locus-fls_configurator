@@ -4,7 +4,7 @@ export default {
     "sensor_is_connected": "The device is connected",
     "sensor_is_not_connected": "The device is not connected",
 
-
+    "function_is_not_available": "The function is not available",
 
     "trademark": "Trademark: ",
     "developer": "Developer: ",

@@ -3,11 +3,14 @@ export default {
     "version": "Версия",
     "sensor_is_connected": "Датчик подключен",
     "sensor_is_not_connected": "Датчик не подключен",
-    "trademark": "Торговая марка: 'Иванов Инжиниринг'",
-    "developer": "Разработчик: ООО 'Иванов Инжиниринг'",
+
+    "function_is_not_available": "Функция не доступна",
+
+    "trademark": "Торговая марка",
+    "developer": "Разработчик",
     "program_version": 'Версия конфигуратора',
-    "website": "www.locme.ru",
-    "copyright": "© 2022",
+    "website": "",
+    "copyright": "",
 
     "reference": "О Программе", //view: "window", template: this
     "settings": "Настройки", //view: "window", template: this

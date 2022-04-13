@@ -36,6 +36,6 @@ export default class SaveSettingNotificationWindow extends JetView {
             this.getRoot().show();
             setTimeout(() => {
                 this.getRoot().hide();
-            }, 500);
+            }, 1500);
     }
 }

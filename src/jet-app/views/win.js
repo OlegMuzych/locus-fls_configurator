@@ -183,7 +183,7 @@ export default class Page9View extends JetView {
                         cols:[
                             {
                                 view: "label",
-                                label: "<p style='font-size: 26px;'>Функция временно не доступна</p>",
+                                label: `<p style='font-size: 26px;'>${_("function_is_not_available")}</p>`,
                                 css: "closed_windows_modal",
                                 height: 45,
                             },

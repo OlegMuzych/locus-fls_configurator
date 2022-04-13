@@ -23,7 +23,7 @@
     "forge": {
       "electronRebuildConfig": {},
       "packagerConfig": {
-        "icon":"./src/trademark/pm-logo.png"
+        "icon":"./src/trademark/ie-logo.png"
       },
       "makers": [
         {

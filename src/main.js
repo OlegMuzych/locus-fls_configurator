@@ -29,7 +29,7 @@ const createWindow = () => {
     },
     fullscreenable: false,
     // icon: __dirname + '/ie-logo.ico',
-    icon: __dirname + '/trademark/pm-logo.ico',
+    icon: __dirname + '/trademark/ie-logo.ico',
     removeMenu: true,
     autoHideMenuBar: true,
   });

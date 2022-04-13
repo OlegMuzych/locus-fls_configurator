@@ -1,8 +1,8 @@
 {
-  "name": "PM Configurator",
-  "productName": "PM Configurator",
+  "name": "Point-Monitoring Configurator",
+  "productName": "Point-Monitoring Configurator",
   "version": "1.0.6 beta",
-  "description": "PM Configurator",
+  "description": "Point-Monitoring Configurator",
   "main": ".webpack/main",
   "trademark" : "p-m",
   "scripts": {

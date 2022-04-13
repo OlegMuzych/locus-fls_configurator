@@ -172,25 +172,25 @@ export default {
     "window_passwordinput_segmented_reset_text":"All settings will be erased",
 
     /*  win.js Images */
-    "button_image_master": "assets/images/win1:ver2/settingsWizard_en_light.svg",
-    "button_image_master_dark": "assets/images/win1:ver2/settingsWizard_en_black.svg",
+    "button_image_master": "assets/images/win1/settingsWizard_en_light.svg",
+    "button_image_master_dark": "assets/images/win1/settingsWizard_en_black.svg",
 
-    "button_image_konfig": "assets/images/win1:ver2/appSettings_en_light.svg",
-    "button_image_konfig_dark": "assets/images/win1:ver2/appSettings_en_dark.svg",
+    "button_image_konfig": "assets/images/win1/appSettings_en_light.svg",
+    "button_image_konfig_dark": "assets/images/win1/appSettings_en_dark.svg",
 
-    "button_image_info_win2": "assets/images/win1:ver2/about_en_light.svg",
-    "button_image_info_win2_dark": "assets/images/win1:ver2/about_en_black.svg",
+    "button_image_info_win2": "assets/images/win1/about_en_light.svg",
+    "button_image_info_win2_dark": "assets/images/win1/about_en_black.svg",
 
-    "button_image_engineering": "assets/images/win1:ver2/mainSettings_en_light.svg",
-    "button_image_engineering_dark": "assets/images/win1:ver2/mainSettings_en_black.svg",
+    "button_image_engineering": "assets/images/win1/mainSettings_en_light.svg",
+    "button_image_engineering_dark": "assets/images/win1/mainSettings_en_black.svg",
 
 
     /* leftmenu.js Images */
-    "button_image_back": "assets/images/left_menu:ver2/mainMenu_en_light.svg",
-    "button_image_back_dark": "assets/images/left_menu:ver2/mainMenu_en_black.svg",
+    "button_image_back": "assets/images/left_menu/mainMenu_en_light.svg",
+    "button_image_back_dark": "assets/images/left_menu/mainMenu_en_black.svg",
 
-    "button_image_info": "assets/images/left_menu:ver2/info_en_light.svg",
-    "button_image_info_dark": "assets/images/left_menu:ver2/info_en_black.svg",
+    "button_image_info": "assets/images/left_menu/info_en_light.svg",
+    "button_image_info_dark": "assets/images/left_menu/info_en_black.svg",
 
 
     /* filteringSettings.js Images */

@@ -1,14 +1,14 @@
 export default {
     /*  win.js */
     "version":  "Version",
-    "sensor_is_connected": "The sensor is connected",
-    "sensor_is_not_connected": "The sensor is not connected",
+    "sensor_is_connected": "The device is connected",
+    "sensor_is_not_connected": "The device is not connected",
 
 
 
     "trademark": "Trademark: ",
     "developer": "Developer: ",
-    "program_version": 'Program version',
+    "program_version": 'Version',
     "website": "",
     "copyright": "",
 
@@ -16,18 +16,18 @@ export default {
     "settings": "Settings", //view: "window", template: this
 
     /* window-settings.js */
-    "language_selection": "Language selection",
-    "theme_selection": "Choosing a theme",
+    "language_selection": "Language",
+    "theme_selection": "Theme",
     "font_size": "Font Size",
-    "auto_save_mode": "Automatic saving of settings",
+    "auto_save_mode": "Autosave mode",
 
     "dark_theme":  'Dark',
     "light_theme": 'Light',
-    "like_system_theme": "As in OS",
+    "like_system_theme": "Native",
 
     "language_ru":  'Русский',
     "language_en": 'English',
-    "language_like_system": "As in OS",
+    "language_like_system": "Native",
 
     /* generalsettings.js */
     "choose": 'Choose',
@@ -74,9 +74,9 @@ export default {
 
     /* filteringsetting.js */
     "switch_filtering": "Filtering",
-    "filtering_preset": "Degree of filtration",
+    "filtering_preset": "Preset",
 
-    "filtering_type": "Type of filtration",
+    "filtering_type": "Set type of filtering",
     "filtering_type_turned_off": "Turned off",
     "filtering_type_averaging":  "Averaging",
     "filtering_type_median": "Median",
@@ -88,7 +88,7 @@ export default {
     "coefficient_r": "Covariance (R)",
 
     /* calibrationsettings.js, window: table-preview.js */
-    "column_steps_header": "Steps",
+    "column_steps_header": "Step",
     "column_level_header": "Level",
     "column_volume_header": "Volume",
 
@@ -96,10 +96,10 @@ export default {
     "button_save_setting": "Save Settings",
 
     /* statusmenu.js */
-    "status_sensor_is_connected": "The sensor is connected",
-    "status_fuel_is_stable": "Fuel is stable",
+    "status_sensor_is_connected": "The devive is connected",
+    "status_fuel_is_stable": "Fuel level is stable",
     "status_calibration": "Calibration is not required",
-    "status_thermal_compensation": "Thermalcompensation",
+    "status_thermal_compensation": "Thermal compensation",
 
     /* servicemenu.js */
     "service_service": "Service",
@@ -120,15 +120,15 @@ export default {
     "button_enable_edit_values": "Edit Values",
 
     /* calibrationsubview.js */
-    "button_save_table_file": "Export the calibration table",
-    "button_read_table_file": "Import the calibration table",
-    "tabbar_fill": "Fill in",
-    "tabbar_drain": "Drain",
+    "button_save_table_file": "Save calibration data",
+    "button_read_table_file": "Load calibration data",
+    "tabbar_fill": "Tank fill mode",
+    "tabbar_drain": "Tank drain mode",
 
     /* fueldrain.js , fuelfill.js*/
-    "passport_volume_tank": "Passport tank volume, l",
+    "passport_volume_tank": "Factory tank volume",
     "start_volume_tank": "Initial volume, lm",
-    "step_volume": "Step, l",
+    "step_volume": "Step in liters",
     "step_count": "Number of steps",
 
     "button_remove_step": "Delete Step",
@@ -145,14 +145,14 @@ export default {
     "windows_continue_calibration_text": "Continue filling in the calibration table?",
 
     /* llsnoconnect.js */
-    "windows_lls_no_connect_text": "The sensor is not connected",
+    "windows_lls_no_connect_text": "The device is not connected",
     "button_test_mode": "Test Mode",
 
     /* reset-lls.js */
-    "windows_reset-lls_text": "All sensor settings will be reset",
+    "windows_reset-lls_text": "All device settings will be reset",
 
     /* save-setting-notification.js */
-    "window_save-setting-notification_text": "The settings are recorded in the sensorм",
+    "window_save-setting-notification_text": "The settings are recorded in the device",
 
     /* password.js */
     "window_password_text": "Enter the password to change the settings",
@@ -166,10 +166,10 @@ export default {
 
     /* passwordinput.js */
 
-    "window_passwordinput_segmented_current": "Enter",
+    "window_passwordinput_segmented_current": "Attention",
     "window_passwordinput_segmented_reset": "Reset Settings",
-    "window_passwordinput_segmented_current_text": "Enter the login password",
-    "window_passwordinput_segmented_reset_text":"All sensor settings will be erased",
+    "window_passwordinput_segmented_current_text": "Enter password",
+    "window_passwordinput_segmented_reset_text":"All settings will be erased",
 
     /*  win.js Images */
     "button_image_master": "assets/images/win1:ver2/settingsWizard_en_light.svg",

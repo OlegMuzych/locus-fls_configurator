@@ -13,6 +13,7 @@ export default class FullEmptySubView extends JetView {
             rows: [
                 {
                     disabled:true,
+                    hidden: true,
                     cols: [
                         {
                             width: 50,
@@ -33,6 +34,7 @@ export default class FullEmptySubView extends JetView {
 
                 },
                 {
+                    // hidden: true,
                     rows: [
                         {
                             cols: [

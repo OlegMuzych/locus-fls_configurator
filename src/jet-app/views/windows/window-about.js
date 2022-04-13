@@ -46,7 +46,7 @@ export default class WindowAbout extends JetView {
                                         height: 80,
                                         css: "language_windows_modal",
                                         localId: "language_windows_modal_2",
-                                        hidden: true,
+                                        hidden: false,
                                     },
                                     {
                                         view: "label",
@@ -80,7 +80,7 @@ export default class WindowAbout extends JetView {
                                         height: 80,
                                         css: "language_windows_modal",
                                         id: "language_windows_modal_5",
-                                        hidden: true,
+                                        hidden: false,
                                     },
                                     {},
                                 ]

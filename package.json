@@ -1,10 +1,10 @@
 {
-  "name": "Point-Monitoring Configurator",
-  "productName": "Point-Monitoring Configurator",
+  "name": "Ivanov-Engineering Configurator",
+  "productName": "Ivanov-Engineering Configurator",
   "version": "1.0.6 beta",
-  "description": "Point-Monitoring Configurator",
+  "description": "Ivanov-Engineering Configurator",
   "main": ".webpack/main",
-  "trademark" : "p-m",
+  "trademark" : "i-e",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",

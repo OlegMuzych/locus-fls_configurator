@@ -55,7 +55,7 @@ export default class WindowAbout extends JetView {
                                         height: 80,
                                         css: "language_windows_modal",
                                         id: "language_windows_modal_3",
-                                        hidden: true,
+                                        // hidden: true,
                                     },
                                     {
                                         view: "label",

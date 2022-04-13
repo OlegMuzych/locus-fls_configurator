@@ -28,7 +28,7 @@ const createWindow = () => {
       zoomFactor: 0.6,
     },
     fullscreenable: false,
-    // icon: __dirname + '/ivanov_logo_conf.ico',
+    // icon: __dirname + '/ie-logo.ico',
     icon: __dirname + '/trademark/pm-logo.ico',
     removeMenu: true,
     autoHideMenuBar: true,

@@ -175,8 +175,8 @@ export default {
     "button_image_master": "assets/images/win1:ver2/settingsWizard_en_light.svg",
     "button_image_master_dark": "assets/images/win1:ver2/settingsWizard_en_black.svg",
 
-    "button_image_konfig": "assets/images/win1:ver2/viewSettings_en_light.svg",
-    "button_image_konfig_dark": "assets/images/win1:ver2/viewSettings_en_black.svg",
+    "button_image_konfig": "assets/images/win1:ver2/appSettings_en_light.svg",
+    "button_image_konfig_dark": "assets/images/win1:ver2/appSettings_en_dark.svg",
 
     "button_image_info_win2": "assets/images/win1:ver2/about_en_light.svg",
     "button_image_info_win2_dark": "assets/images/win1:ver2/about_en_black.svg",

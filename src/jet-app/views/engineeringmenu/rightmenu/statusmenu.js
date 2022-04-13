@@ -57,7 +57,7 @@ export default class StatusMenu extends JetView{
                         {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_4_base", },
                         {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_4",},
                         {width: 20,},
-                        {view:"label", label:_("status_thermal_compensation"), height: 30, width:210, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_4"},
+                        {view:"label", label:_("status_thermal_compensation"), height: 30, width:240, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_4"},
                         {
                             width:10,
                         },

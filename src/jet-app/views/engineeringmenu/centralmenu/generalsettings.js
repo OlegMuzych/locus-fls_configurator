@@ -582,7 +582,7 @@ export default class GeneralSettings extends JetView {
                                     {
                                         width: 50,
                                     },
-                                    {view: "switch", value: 0, id: "switch_temp_compensation", width: 68,},
+                                    {view: "switch", value: 0, id: "switch_temp_compensation", width: 68, css:"toggle_style" },
                                     {}
                                 ]
                             },

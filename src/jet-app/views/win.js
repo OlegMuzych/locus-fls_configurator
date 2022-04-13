@@ -311,7 +311,7 @@ export default class Page9View extends JetView {
 
             setTimeout(() => {
                 $$("window_show_3").hide();
-            }, 400);
+            }, 1500);
         });
 
 

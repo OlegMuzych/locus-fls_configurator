@@ -76,13 +76,11 @@ export default class FiltrationSettings extends JetView {
                                         view: "button",
                                         type: "image",
                                         image: _("button_image_filter_karier"),
-                                        label: "Карьерная техника",
                                         css: "image_button_filter",
                                         id: "image_button_filter_1",
                                         minWidth: 240,
                                     },
                                     {
-                                        // view: "button",  minWidth: 10,
                                     },
                                     {
                                         view: "button",
@@ -93,8 +91,6 @@ export default class FiltrationSettings extends JetView {
                                         minWidth: 240,
                                     },
                                     {
-                                        // view: "button",  minWidth: 10,
-
                                     },
                                     {
                                         view: "button",

@@ -201,7 +201,7 @@ export default class Page9View extends JetView {
                 height: 800,
                 rows:[
                     {
-                        height: 100,
+                        // height: 100,
                     },
                     {
                         height: 200,
@@ -382,6 +382,9 @@ export default class Page9View extends JetView {
                             }
 
                         ]
+                    },
+                    {
+
                     }
                 ]
 

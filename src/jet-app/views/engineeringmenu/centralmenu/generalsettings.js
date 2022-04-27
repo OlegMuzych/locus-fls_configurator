@@ -426,7 +426,7 @@ export default class GeneralSettings extends JetView {
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
-                                    css: " status_define_button", //- скрытая кнопка
+                                    css: "status_define_button", //- скрытая кнопка
                                     localId: "statusBaudRate",
                                 },
                                 {}

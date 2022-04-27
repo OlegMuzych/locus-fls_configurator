@@ -540,7 +540,7 @@ export default class Page9View extends JetView {
             $$("b1").setValue(value);
         }, 3000);
 
-        $$("button_define_define_2").hide();
+        // $$("button_define_define_2").hide();
 
 
         this.$$("button_reload").attachEvent("onItemClick", (id, e) => {

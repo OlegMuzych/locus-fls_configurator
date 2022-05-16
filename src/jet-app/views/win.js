@@ -29,11 +29,26 @@ export default class Page9View extends JetView {
                             label: _("version") + ": " + VERSION,
                             align: "left",
                             css: "ver_soft",
-                            id: "ver_soft"
+                            id: "ver_soft",
+                            width: 200,
                         },
-                        {}
+                        {
+
+                        },
+                        {
+                            view: "button",
+                            type: "label",
+                            label: "Прошивка ДУТ",
+                            width: 200,
+                            height: 50,
+                            css: "button_reload",
+                            localId:"button_reload"
+                        },
+                        {
+                            width: 10,
+                        }
                     ]
-                }
+                },
             ]
         };
 
@@ -44,8 +59,8 @@ export default class Page9View extends JetView {
             type: "image",
             // image: "assets/images/Logo_1.svg",
             image: _t("image_logo"),
-            width: 500,
-            height: 600,
+            width: 400,
+            height: 400,
             css: "logo_1",
             id: "logo_1",
         };
@@ -54,7 +69,9 @@ export default class Page9View extends JetView {
         // Статус подключения датчика
         var status_gage = {
             width: 400,
+            // height: 100,
             rows: [
+                {height:10,},
                 {
                     paddingX: 80,
                     cols: [
@@ -97,7 +114,8 @@ export default class Page9View extends JetView {
 
                         }
                     ]
-                }
+                },
+                {height:30,}
             ]
 
         };
@@ -168,6 +186,217 @@ export default class Page9View extends JetView {
         };
 
         // win.hide();
+        var win_4 =webix.ui({
+            view: "window",
+            width: 1000,
+            height: 800,
+            id: "window_show_4",
+            modal: true,
+            head:"Обновление прошивки ДУТ",
+            css: "window_show",
+            position: "center",
+            close:true,
+            body: {
+                width: 1000,
+                height: 800,
+                rows:[
+                    {
+                        // height: 100,
+                    },
+                    {
+                        height: 200,
+                        rows:[
+                            {
+                                cols: [
+                                    {
+                                        width:20,
+
+                                    },
+                                    {
+                                        view:"label",
+                                        label:"<p>1</p>",
+                                        css:"label_text_upload_window",
+                                        id:"label_text_upload_window_1",
+                                    },
+                                    {
+                                        rows: [
+                                            {
+                                                view: "uploader",
+                                                value: "Загрузить файл",
+                                                name:"files",
+                                                link:"upload_config_window_1",
+                                                upload:"https://docs.webix.com/samples/server/upload",
+                                                width: 500,
+                                                height: 70,
+                                                css: "upload_config",
+                                                id:"upload_config"
+                                            },
+                                            {
+                                                height: 5,
+                                            },
+                                            {
+                                                view:"list",
+                                                id:"upload_config_window_1",
+                                                width: 500,
+                                                height: 70,
+                                                type:"uploader",
+                                                autoheight:false,
+                                                css:"upload_config_window"
+
+                                            },
+                                        ]
+                                    },
+                                    {
+
+                                    }
+                                ]
+                            },
+                        ]
+                    },
+                    {
+                        height: 20,
+                    },
+                    {
+                        rows:[
+                            {
+                                cols:[
+                                    {
+                                        width: 20,
+                                    },
+                                    {
+                                        view:"label",
+                                        label:"<p>2</p>",
+                                        css:"label_text_upload_window",
+                                        id:"label_text_upload_window_2",
+                                    },
+                                    {
+                                        rows:[
+
+                                            {
+                                                view: "button",
+                                                type:"label",
+                                                label:"Режим перепрошивки ДУТ",
+                                                width: 500,
+                                                height: 70,
+                                                css: "upload_config",
+                                                id:"boot_loader",
+                                            },
+                                            {
+                                                height: 5,
+                                            },
+                                            {
+                                                view: "button",
+                                                width: 500,
+                                                height: 70,
+                                                label:"Вкл",
+                                                css: "rows_level_right_menu_switch_2",
+                                                id: "button_define_define_2"
+                                            },
+                                            {
+                                                view: "button",
+                                                width: 500,
+                                                height: 70,
+                                                label:"Выкл",
+                                                css: "rows_level_right_menu_switch_define_2",
+                                                id: "button_define_2"
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        width: 240,
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        height: 70,
+                    },
+                    {
+                        height: 200,
+                        rows:[
+                            {
+                                rows:[
+                                    {
+                                        cols:[
+                                            {
+                                                width: 20,
+                                            },
+                                            {
+                                                view:"label",
+                                                label:"<p>3</p>",
+                                                css:"label_text_upload_window",
+                                                id:"label_text_upload_window_3",
+                                            },
+                                            {
+                                                view: "button",
+                                                type: "label",
+                                                label: "Записать файл в датчик",
+                                                width: 500,
+                                                height: 70,
+                                                css: "upload_config",
+                                                id:"load_file"
+                                            },
+                                            {
+
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        height: 5,
+                                    },
+                                    {
+                                        cols:[
+                                            {
+                                                width: 40,
+                                            },
+                                            {
+
+                                            },
+                                            {
+                                                view:"bullet",
+                                                id:"b1",
+                                                minRange:0,
+                                                maxRange:100,
+                                                layout: "x",
+                                                height: 100,
+                                                width: 532,
+                                                barWidth: 60,
+                                                css: "progress_bar_2",
+                                                color:"#35a642",
+                                                bands:[
+                                                    { value:100, color:"#fff"},
+                                                ],
+                                                stroke:60,
+                                                scale:{
+                                                    step:20,
+                                                    template:"#value#%"
+                                                }
+                                            },
+                                            {
+
+                                            }
+                                        ]
+                                    },
+                                ]
+                            }
+
+                        ]
+                    },
+                    {
+
+                    }
+                ]
+
+
+
+
+
+            }
+
+        });
+        win_4.hide();
+
 
         var win_3 =webix.ui({
             view: "window",
@@ -195,64 +424,87 @@ export default class Page9View extends JetView {
         win_3.hide();
 
         return {
-            view: "scrollview",
-            scroll: "y",
-            body: {
+
+                view: "scrollview",
+                scroll: "y",
                 css: "color_rows_star_pages",
-                // css: {transform: scale(0.5)},
                 id: "color_rows_star_pages",
-                rows: [
+                // minHeight: 800,
+                body: {
+                    rows:[
+                        {
+                            height: 50,
+                            cols:[
+                                {
+                                    width: 10,
+                                },
+                                ver,
+                                {
+                                    width: 10,
+                                }
+                            ]
+                        },
+                        {
+                            rows:[
+                                {
+                                    height: 300,
+                                    paddingY: -50,
+                                    rows:[
+                                        {
+                                            cols:[
+                                                {
 
-                    {
-                        cols: [
-                            {
-                                width: 10,
-                            },
-                            ver,
-                            {
-                                height: 10,
-                            }
-                        ]
-                    },
-                    {
-                        maxHeight: 50,
-                    },
-                    {
-                        paddingY: -220,
-                        // height: 400,
-                        cols: [
-                            {
+                                                },
+                                                logo,
+                                                {
 
-                            },
-                            logo,
-                            {
+                                                }
+                                            ]
+                                        },
+                                    ]
+                                },
+                                {
+                                    rows: [
+                                        {
+                                            cols:[
+                                                {
 
-                            }
-                        ]
-                    },
-                    {
-                        height: 20,
-                    },
-                    {
-                        cols: [
-                            {},
-                            status_gage,
-                            {}
-                        ]
-                    },
-                    {
-                        height: 20,
-                    },
-                    {
-                        cols: [
-                            {},
-                            button_menu,
-                            {}
-                        ]
-                    }
-                ]
-            }
-        }
+                                                },
+                                                status_gage,
+                                                {
+
+                                                }
+                                            ]
+                                        },
+                                    ]
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        button_menu,
+                                        {
+
+                                        }
+                                    ]
+                                },
+                            ]
+                        },
+                        {
+                            height: 20,
+                        }
+
+
+                    ]
+
+
+                }
+
+
+        };
+
+
     }
 
     listenerConnect = () => {
@@ -286,7 +538,17 @@ export default class Page9View extends JetView {
 
     init(view) {
 
+        setInterval(function(){
+            var value = Math.floor(Math.random()*100);
+            $$("b1").setValue(value);
+        }, 3000);
 
+        // $$("button_define_define_2").hide();
+
+
+        this.$$("button_reload").attachEvent("onItemClick", (id, e) => {
+            $$("window_show_4").show();
+        });
 
         this.setStatusConnect(false);
 
@@ -364,6 +626,15 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("engineering_setup").getNode(), "button_1_dark");
             webix.html.addCss($$("reference").getNode(), "button_1_dark");
             webix.html.addCss($$("application_menu").getNode(), "button_1_dark");
+            webix.html.addCss(this.$$("button_reload").getNode(), "button_reload_dark");
+            webix.html.addCss($$("window_show_4").getNode(), "window_show_dark");
+            webix.html.addCss($$("upload_config_window_1").getNode(), "upload_config_window_dark");
+            webix.html.addCss($$("boot_loader").getNode(), "upload_config_dark");
+            webix.html.addCss($$("upload_config").getNode(), "upload_config_dark");
+            webix.html.addCss($$("label_text_upload_window_2").getNode(), "label_text_upload_window_dark");
+            webix.html.addCss($$("label_text_upload_window_3").getNode(), "label_text_upload_window_dark");
+            webix.html.addCss($$("label_text_upload_window_1").getNode(), "label_text_upload_window_dark");
+            webix.html.addCss($$("load_file").getNode(), "upload_config_dark");
 
             // $$("light_theme_label").hide()
             // $$("dark_theme_label").show()
@@ -389,6 +660,15 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("engineering_setup").getNode(), "button_1");
             webix.html.addCss($$("reference").getNode(), "button_1");
             webix.html.addCss($$("application_menu").getNode(), "button_1");
+            webix.html.addCss(this.$$("button_reload").getNode(), "button_reload");
+            webix.html.addCss($$("window_show_4").getNode(), "window_show");
+            webix.html.addCss($$("upload_config_window_1").getNode(), "upload_config_window");
+            webix.html.addCss($$("boot_loader").getNode(), "upload_config");
+            webix.html.addCss($$("upload_config").getNode(), "upload_config");
+            webix.html.addCss($$("label_text_upload_window_2").getNode(), "label_text_upload_window");
+            webix.html.addCss($$("label_text_upload_window_3").getNode(), "label_text_upload_window");
+            webix.html.addCss($$("label_text_upload_window_1").getNode(), "label_text_upload_window");
+            webix.html.addCss($$("load_file").getNode(), "upload_config");
 
             // $$("dark_theme_label").hide()
             // $$("light_theme_label").show()

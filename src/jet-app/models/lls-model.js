@@ -7,7 +7,7 @@ class MyEmitter extends EventEmitter {
 
 
 class LlsModel {
-    #statusLls = "noConnect"; //"findConnect", "connect"
+    #statusLls = "stop"; ////"noConnect"; //"findConnect", "connect"
     _llsConnectSettings = {
         path: null,
         baudRate: null,
@@ -91,6 +91,17 @@ class LlsModel {
 
     clearListenerReadCnt(listener) {
         this._myEmitter.removeListener('readCnt', listener);
+    }
+
+    /*** Event BootLoader ***/
+
+    /***/
+    addListenerBootLoader(listener) {
+        this._myEmitter.on("bootloader", listener);
+    }
+
+    clearListenerBootLoader(listener) {
+        this._myEmitter.removeListener('bootloader', listener);
     }
 
     /*** Event Command Error ***/
@@ -191,6 +202,24 @@ class LlsModel {
             } else if (resp.status == 0x02) {
                 console.log("Lls password error!");
             }
+        } else {
+            return 'LLS not connect';
+        }
+    }
+
+    async setBootMode() {
+        // if (this.#statusLls == 'connect') {
+        if (this.#statusLls == 'bootMode') {
+            let resp = await this._lls.actions.setBootMode();
+            if (resp.status == 0x00) {
+                console.log("Lls in Boot Mode!");
+                this._myEmitter.emit('bootloader', resp.status);
+            } else if (resp.status == 0x01) {
+                console.log('Lls response error!');
+            } else if (resp.status == 0x02) {
+                console.log("Lls in Boot Mode!");
+            }
+            return resp;
         } else {
             return 'LLS not connect';
         }
@@ -300,9 +329,33 @@ class LlsModel {
         });
     }
 
+    async setStatusLlsStop(){
+        // if(this._lls){
+        //     await this._lls.close();
+        //     delete this._lls;
+        // }
+        this.#statusLls = "stop";
+        return "stop";
+    }
+    setStatusLlsNoConnect(){
+        this.#statusLls = "noConnect";
+    }
+    getLlsConnectSettings(){
+        return this._llsConnectSettings;
+    }
+
     async #loop() {
         for (; ;) {
             switch (this.#statusLls) {
+                case 'stop': {
+                    console.log("stop");
+                    if(this._lls){
+                        await this._lls.close();
+                        delete this._lls;
+                    }
+                    await this.#delay(5000);
+                    break;
+                }
                 case 'noConnect': {
                     let settings = await this.#findLls();
                     if (settings != undefined) {

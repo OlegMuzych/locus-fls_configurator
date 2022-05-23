@@ -6,6 +6,7 @@ import globalVariable from "../global-variable-app";
 import WindowSettings from "./windows/window-settings";
 import trademark from "../../trademark/trademark";
 import WindowAbout from "./windows/window-about";
+import WindowFirmwareUpdate from "./windows/window-firmware-update";
 //const SerialPort = eval(`require('serialport')`);
 // const findPort = require("../models/lls/findPort");
 
@@ -545,9 +546,10 @@ export default class Page9View extends JetView {
 
         // $$("button_define_define_2").hide();
 
-
+        const windowFirmwareUpdate = this.ui(WindowFirmwareUpdate);
         this.$$("button_reload").attachEvent("onItemClick", (id, e) => {
-            $$("window_show_4").show();
+            // $$("window_show_4").show();
+            windowFirmwareUpdate.showWindow();
         });
 
         this.setStatusConnect(false);

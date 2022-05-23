@@ -235,6 +235,10 @@ export default class llsProtocol {
                 dataBuffer.push(0x19);
                 break;
             }
+            case 0x68:{ //download_applications
+                dataBuffer.push(command);
+                break;
+            }
             case "reset": { //сброс к заводским настойкам
                 dataBuffer.push(0x67);
                 dataBuffer.push(0x69);
@@ -390,6 +394,15 @@ export default class llsProtocol {
                     break;
                 }
                 case 0x67: {// переход в  загрузчик или зброс к заводскиим настройкам
+                    let goBootloader = {};
+                    goBootloader.prefix = dataView.getUint8(0);
+                    goBootloader.llsAdr = dataView.getUint8(1);
+                    goBootloader.command = dataView.getUint8(2);
+                    goBootloader.code = dataView.getUint8(3);
+                    return goBootloader;
+                    break;
+                }
+                case 0x68: {// download_applications
                     let goBootloader = {};
                     goBootloader.prefix = dataView.getUint8(0);
                     goBootloader.llsAdr = dataView.getUint8(1);

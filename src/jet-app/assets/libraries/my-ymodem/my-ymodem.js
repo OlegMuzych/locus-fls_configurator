@@ -10,7 +10,7 @@ export default class MyYModem {
     progressCb = () => {
     };
 
-    yTransmit(file, portSettings, progressCb = console.log, consoleOutput = console.log) {
+    async yTransmit(file, portSettings, progressCb = console.log, consoleOutput = console.log) {
         this.seq = 0;
         this.port.new({path: "/dev/tty.usbserial-0001", baudRate: 19200});
         this.file = file;
@@ -29,7 +29,7 @@ export default class MyYModem {
                     for (let x = 0; x < data.length; x++) {
                         for (let key in MyYModem) {
                             if (data[x] === MyYModem[key]) {
-                                this.consoleOutput('yModem received: ' + key);
+                                this.consoleOutput('YModem received: ' + key);
                             }
                         }
                     }
@@ -38,20 +38,27 @@ export default class MyYModem {
                 }
             })
         });
-        this.#sendFile().then();
+        return await this.#sendFile();
     }
 
     async #sendFile() {
+        let resp;
         try{
-            console.log("Send StartPacket");
-            await this.#sendStartFrame('tmk24_v1_207.binHn', this.file.length);
-            console.log("Send DataPacket");
-            await this.#sendData(this.file);
-            console.log("Send ClosePacket");
-            await this.#sendEndFrame();
-            console.log("File is write !");
+            this.consoleOutput("Send StartPacket");
+            resp = await this.#sendStartFrame('my_file_name', this.file.length);
+
+            this.consoleOutput("Send DataPacket");
+            resp = await this.#sendData(this.file);
+
+            this.consoleOutput("Send ClosePacket");
+            resp = await this.#sendEndFrame();
+
+            this.consoleOutput("File is write !");
+            return resp;
+
         }catch(e){
-            console.error("SendFile: " + e);
+            this.consoleOutput("SendFile: " + e);
+            throw e;
         }
     }
 
@@ -97,8 +104,6 @@ export default class MyYModem {
                     console.log(e);
                     throw `Send Data Error! (packet N${this.seq} no receive)`
                 }
-                // let data = this.#createSendFrame(buf);
-                // await this.#portWrite(data);
                 offset++;
             }
         }
@@ -123,7 +128,6 @@ export default class MyYModem {
     #sendEndFrame() {
         this.seq = 0;
         return new Promise(async (resolve, reject)=>{
-            // for( ; this.#portWrite(new Uint8Array([MyYModem.eot]))[0] != MyYModem.ack ; );
             for (;;){
                let resp = await this.#portWrite(new Uint8Array([MyYModem.eot]));
                if(resp[0] == MyYModem.ack){
@@ -149,12 +153,9 @@ export default class MyYModem {
         let seqchr = new Uint8Array([this.seq & 0xFF]);
         let seqchr_neg = new Uint8Array([(-this.seq - 1) & 0xFF]);
         let crc16 = mycrc(buff);
-        // console.log(crc16);
-        // console.log(mycrc(new Uint8Array([0x01, 0x02, 0x03])));
-
         let packet = Buffer.concat([(new Uint8Array([MyYModem.packet_mark])), seqchr, seqchr_neg, buff, crc16]);
         if (packet.length != MyYModem.expected_packet_len) {
-            throw('packet length is wrong!');
+            throw('Packet length is wrong!');
         }
         return packet;
     }
@@ -170,13 +171,6 @@ export default class MyYModem {
             // setTimeout(()=>{reject("Error: timeout receive OnceData")}, 3000);
         });
     };
-
-    // async #portRead() {
-    //     this.port.onceData((data)=>{
-    //         console.log("once data: " +  data);
-    //         return data[0];
-    //     });
-    // }
 }
 
 MyYModem.soh = 1;     // 128 byte blocks
@@ -215,7 +209,7 @@ function mycrc(buf) {
         crc = crc16_table[j] ^ (crc << 8);
     }
     crc = ((crc ^ 0) & 0xFFFF);
-    console.log("crc: " + crc, " len = " + data.length);
+    // console.log("crc: " + crc, " len = " + data.length);
     // console.log(data);
     return new Uint8Array([(crc >> 8) & 0xFF, crc & 0xFF]);
 }
@@ -226,8 +220,4 @@ function createArray(element, length){
         arr.push(element);
     }
     return new Uint8Array(arr);
-}
-
-async function delay(time = 1000){
-    setTimeout(()=>{return time}, time);
 }

@@ -7,7 +7,7 @@ class MyEmitter extends EventEmitter {
 
 
 class LlsModel {
-    #statusLls = "stop"; ////"noConnect"; //"findConnect", "connect"
+    #statusLls = "noConnect"; //"findConnect", "connect"
     _llsConnectSettings = {
         path: null,
         baudRate: null,
@@ -129,7 +129,7 @@ class LlsModel {
         if (this.#statusLls == 'connect') {
             let dataLong = await this._lls.data.getLong();
             this.currentLongData = dataLong;
-            if(this.newLongData == null){
+            if (this.newLongData == null) {
                 this.newLongData = {...dataLong};
             }
             this._myEmitter.emit('longData', dataLong);
@@ -329,18 +329,30 @@ class LlsModel {
         });
     }
 
-    async setStatusLlsStop(){
-        // if(this._lls){
-        //     await this._lls.close();
-        //     delete this._lls;
-        // }
-        this.#statusLls = "stop";
-        return "stop";
+    async setStatusLlsStop() {
+        // this.#statusLls = "stop";
+        // return "stop";
+        if (this._lls) {
+            this.#statusLls = 'noConnect';
+            try {
+                await this._lls.close();
+                // delete this._lls;
+                this.#statusLls = "stop";
+                this._myEmitter.emit('isDisconnect');
+                return this._llsConnectSettings;
+            } catch (e) {
+                throw e;
+            }
+        } else {
+            throw "dontStop";
+        }
     }
-    setStatusLlsNoConnect(){
+
+    setStatusLlsNoConnect() {
         this.#statusLls = "noConnect";
     }
-    getLlsConnectSettings(){
+
+    getLlsConnectSettings() {
         return this._llsConnectSettings;
     }
 
@@ -349,19 +361,24 @@ class LlsModel {
             switch (this.#statusLls) {
                 case 'stop': {
                     console.log("stop");
-                    if(this._lls){
-                        await this._lls.close();
-                        delete this._lls;
-                    }
                     await this.#delay(5000);
                     break;
                 }
                 case 'noConnect': {
-                    let settings = await this.#findLls();
-                    if (settings != undefined) {
-                        this._llsConnectSettings = settings;
-                        this.#statusLls = 'findConnect';
+                    try {
+                        let settings = await this.#findLls();
+                        if (settings != undefined) {
+                            this._llsConnectSettings = settings;
+                            this.#statusLls = 'findConnect';
+                        }
+                    } catch (e) {
+                        console.log(e);
                     }
+                    // let settings = await this.#findLls();
+                    // if (settings != undefined) {
+                    //     this._llsConnectSettings = settings;
+                    //     this.#statusLls = 'findConnect';
+                    // }
                     break;
                 }
                 case 'findConnect': {
@@ -387,19 +404,20 @@ class LlsModel {
                         await this.getCnt();
                         let dataShort = await this._lls.data.getShort();
                         console.log(dataShort);
-                        if(dataShort.llsAdr){
+                        if (dataShort.llsAdr) {
                             this._myEmitter.emit('shortData', dataShort);
                         }
                     } catch (e) {
                         console.log(e);
-                        this.#statusLls = 'noConnect';
+                        if (this.#statusLls != "stop") {
+                            this.#statusLls = 'noConnect';
+                        }
                         this._myEmitter.emit('isDisconnect');
                         try {
                             await this._lls.close();
                         } catch (e) {
-                            close()
+                            console.log(e);
                         }
-                        ;
                         this.newLongData = null;
                         break;
                     }

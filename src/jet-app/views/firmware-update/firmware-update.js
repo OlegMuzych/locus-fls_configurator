@@ -2,6 +2,7 @@ import {JetView} from "webix-jet";
 import configFile from "../../config-app";
 import llsModel from "../../models/lls-model";
 import fileFirmwareModel from "../../models/file-firmware-model";
+import MessageWindow from "./windows/message";
 
 export default class FirmwareUpdate extends JetView {
     config() {
@@ -117,7 +118,7 @@ export default class FirmwareUpdate extends JetView {
                                             height: 70,
                                             label: "Вкл",
                                             css: "rows_level_right_menu_switch_2",
-                                            localId: "buttonTest1"
+                                            localId: "buttonBootModeOn"
                                         },
                                         {
                                             view: "button",
@@ -125,7 +126,7 @@ export default class FirmwareUpdate extends JetView {
                                             height: 70,
                                             label: "Выкл",
                                             css: "rows_level_right_menu_switch_define_2",
-                                            localId: "buttonTest2"
+                                            localId: "buttonBootModeOff"
                                         },
                                     ]
                                 },
@@ -178,7 +179,7 @@ export default class FirmwareUpdate extends JetView {
                                         {},
                                         {
                                             view: "bullet",
-                                            id: "b1",
+                                            localId: "bar",
                                             minRange: 0,
                                             maxRange: 100,
                                             layout: "x",
@@ -230,34 +231,40 @@ export default class FirmwareUpdate extends JetView {
         llsModel.addListenerIsDisconnect(this.listenerDisconnect);
         llsModel.getStatusConnect();
 
-        // this.$$("body").disable();
-        ///Users/oleg/Documents/forTest/прошивки/tmk24_v1_207.bin
+        this.setModeBootLed(false);
+        this.$$("buttonFirmwareWrite").disable();
+
+        const message = this.ui(MessageWindow);
+
         this.$$('textFirmwarePath').setValue("/Users/oleg/Documents/forTest/прошивки/tmk24_v1_207.bin");
         this.$$('buttonFirmwarePath').attachEvent("onItemClick", (id, e) => {
             fileFirmwareModel.choiceFirmware().then((str) => this.$$('textFirmwarePath').setValue(str));
         })
 
         this.$$('buttonSetBootMode').attachEvent("onItemClick", (id, e) => {
-            llsModel.setStatusLlsStop();
-            // llsModel.setBootMode().then();
-        })
-
-        this.$$('buttonTest1').attachEvent("onItemClick", (id, e) => {
-            fileFirmwareModel.llsConnect({path: "/dev/tty.usbserial-0001", baudRate: 19200 , llsAdr: 0xFF}).then(() =>{
+            llsModel.setStatusLlsStop()
+                .then((resp) => {
+                    console.log(resp);
+                    const {path, baudRate} = resp;
+                    return fileFirmwareModel.llsConnect({path, baudRate});
+                })
+                .then(() => {
                     return fileFirmwareModel.runBootMode();
-            })
-                .then(()=>{
+                })
+                .then(() => {
                     return fileFirmwareModel.runDownloadApp();
                 })
-                .then();
-        })
-
-        this.$$('buttonTest2').attachEvent("onItemClick", (id, e) => {
-            // fileFirmwareModel.runBootMode().then();
-            // llsModel._lls.close().then();
-            // fileFirmwareModel.runDownloadApp().then()
-            fileFirmwareModel.llsClose().then();
-
+                .then(() => {
+                    return fileFirmwareModel.llsClose();
+                })
+                .then(() => {
+                    webix.message("Boot Mode success!");
+                    this.setModeBootLed(true);
+                    this.$$("buttonFirmwareWrite").enable();
+                })
+                .catch((e) => {
+                    webix.message("Boot Mode failed!");
+                });
         })
 
         this.$$('buttonFirmwareWrite').attachEvent("onItemClick", (id, e) => {
@@ -268,8 +275,28 @@ export default class FirmwareUpdate extends JetView {
             }
             // const serialPortSettings = llsModel.getLlsConnectSettings();
             const serialPortSettings = {path: "/dev/tty.usbserial-0001", baudRate: 19200};
-            fileFirmwareModel.writeFirmware(path, serialPortSettings).then();
+            fileFirmwareModel.writeFirmware(path, serialPortSettings, (progress) => {
+                this.$$("bar").setValue(progress);
+            }).then(() => {
+                webix.message("Success");
+                this.refresh();
+                message.showWindow("textTest");
+            }).catch((e) => {
+                webix.message("Failed: " + e);
+                this.refresh();
+            });
         })
+    }
+
+
+    setModeBootLed(flag) {
+        if (flag) {
+            this.$$("buttonBootModeOn").show();
+            this.$$("buttonBootModeOff").hide();
+        } else {
+            this.$$("buttonBootModeOn").hide();
+            this.$$("buttonBootModeOff").show();
+        }
     }
 
     setStatusConnect(status) {

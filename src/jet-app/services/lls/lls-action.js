@@ -97,10 +97,9 @@ export default class llsAction {
         }
     };
 
-    async runDownloadApp() {
-        let {llsAdr, code: status} = await this._llsProtocol.send(0x68);
+    async runDownloadApp() { //ответа не будет, не совподает стандартному шаблону ответа
+        let {code: status} = await this._llsProtocol.send(0x68);
         return {
-            llsAdr: llsAdr,
             status: status,
         }
     }

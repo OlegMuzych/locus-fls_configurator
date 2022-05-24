@@ -16,39 +16,46 @@ class FileFirmwareModel {
         let resp = await this._lls.actions.runBootMode();
         if (resp == 0x02) {
             Debug("Boot is success!");
+            return "Boot is success!";
         } else if (resp == 0x01) {
             Debug("Boot error!");
+            throw "Boot error!";
         }
     }
 
-    async runDownloadApp() {
-        let resp = await this._lls.actions.runDownloadApp();
-        if (resp == 0x02) {
-            Debug("Boot is success!");
-        } else if (resp == 0x01) {
-            Debug("Boot error!");
-        }
+    runDownloadApp() {
+        return new Promise((resolve, reject) => {
+            this._lls.actions.runDownloadApp().then();
+            setTimeout(() => {
+                resolve("runDownLoadApp");
+            }, 3000); //тк ответа не последует, установлю таймер.
+        });
     }
 
     async llsClose() {
-        await this._lls.close();
+        return await this._lls.close();
     }
 
-    async writeFirmware(firmwarePath, serialPortSettings) {
-        let progressCallback = (val) => {
-            console.log(Math.round(val.current * 100 / val.total) + '%');
-        }
-        // YModem1.transfer(firmwarePath, progressCallback, serialPortSettings);
-        // YModem2.sendFile(firmwarePath, progressCallback, serialPortSettings);
-        let file = window.fs.readFileSync(firmwarePath);
-        const ymodem = new MyYModem();
-        ymodem.yTransmit(file, serialPortSettings, progressCallback)
-            .then((resp) => {
-                console.log(resp);
-            })
-            .catch(e => {
-                console.log(e);
-            });
+    async writeFirmware(firmwarePath, serialPortSettings, progressCB) {
+        return new Promise((resolve, reject)=>{
+            let progressCallback = (val) => {
+                // console.log(Math.round(val.current * 100 / val.total) + '%');
+                let progress = Math.round(val.current * 100 / val.total);
+                console.log(progress + '%');
+                progressCB(progress);
+            }
+            let file = window.fs.readFileSync(firmwarePath);
+            const ymodem = new MyYModem();
+            ymodem.yTransmit(file, serialPortSettings, progressCallback)
+                .then((resp) => {
+                    console.log(resp);
+                    resolve(resp);
+                })
+                .catch(e => {
+                    console.log(e);
+                    reject(e);
+                });
+        });
     }
 
     async choiceFirmware() {

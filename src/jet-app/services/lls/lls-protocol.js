@@ -403,12 +403,9 @@ export default class llsProtocol {
                     break;
                 }
                 case 0x68: {// download_applications
-                    let goBootloader = {};
-                    goBootloader.prefix = dataView.getUint8(0);
-                    goBootloader.llsAdr = dataView.getUint8(1);
-                    goBootloader.command = dataView.getUint8(2);
-                    goBootloader.code = dataView.getUint8(3);
-                    return goBootloader;
+                    let downloadApp = {};
+                    downloadApp.code = dataView.getUint8(0);
+                    return downloadApp;
                     break;
                 }
                 case 0x16: {

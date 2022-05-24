@@ -144,7 +144,7 @@ export default {
     /* continuecalibrate.js */
     "windows_continue_calibration_text": "Продолжить заполнять таблицу тарировки?",
 
-    /* llsnoconnect.js */
+    /* message.js */
     "windows_lls_no_connect_text": "Датчик не подключен",
     "button_test_mode": "Тестовый Режим",
 

@@ -144,7 +144,7 @@ export default {
     /* continuecalibrate.js */
     "windows_continue_calibration_text": "Continue filling in the calibration table?",
 
-    /* llsnoconnect.js */
+    /* message.js */
     "windows_lls_no_connect_text": "The device is not connected",
     "button_test_mode": "Test Mode",
 

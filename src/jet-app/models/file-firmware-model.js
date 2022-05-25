@@ -13,15 +13,16 @@ class FileFirmwareModel {
         return this._lls;
     }
 
-    async promisteBootLoad(){
-        let resp = await this._lls.actions.promisteBootLoad();
-        if (resp == 0x00) {
-            Debug("BootLoad Welcome Send");
+    async promiseBootLoad(){
+        let resp = await this._lls.actions.promiseBootLoad();
             return "BootLoad Welcome Send";
-        } else {
-            Debug("BootLoad Welcome Send");
-            throw "BootLoad Welcome Send";
-        }
+        // if (resp == 0x00) {
+        //     Debug("BootLoad Welcome Send");
+        //     return "BootLoad Welcome Send";
+        // } else {
+        //     Debug("BootLoad Welcome Send");
+        //     throw "BootLoad Welcome Send";
+        // }
     }
 
     async runBootMode() {
@@ -45,7 +46,9 @@ class FileFirmwareModel {
     }
 
     async llsClose() {
-        return await this._lls.close();
+        await this._lls.close();
+        return;
+
     }
 
     async writeFirmware(firmwarePath, serialPortSettings, progressCB) {

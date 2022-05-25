@@ -160,9 +160,12 @@ export default class llsProtocol {
     };
 
     async promiseBootLoad(){
-        this.port.onceData((data)=>{
-            console.log(data);
-            return this._parseData(data);
+        return new Promise((resolve, reject)=>{
+            this.port.onceData((data)=>{
+                console.log(data);
+                resolve();
+                // resolve(this._parseData(data));
+            });
         });
     }
 

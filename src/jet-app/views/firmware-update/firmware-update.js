@@ -259,24 +259,24 @@ export default class FirmwareUpdate extends JetView {
         this.setModeBootLed(false);
         this.$$("buttonFirmwareWrite").disable();
 
-        pathOptions().then((list)=>{
+        pathOptions().then((list) => {
             this.$$("comport").define({options: list});
         });
-        this.$$("comport").attachEvent("onItemClick", ()=>{
-            pathOptions().then((list)=>{
+        this.$$("comport").attachEvent("onItemClick", () => {
+            pathOptions().then((list) => {
                 this.$$("comport").define({options: list});
             });
         });
 
-        this.$$('buttonPromise').attachEvent('onItemClick', ()=>{
-            llsModel.setStatusLlsStop()
+        this.$$('buttonPromise').attachEvent('onItemClick', () => {
+            llsModel.setStatusLlsStopPromise()
                 .then((resp) => {
-                    let path = this.this.$$("comport").getValue();
+                    let path = this.$$("comport").getValue();
                     this.portSettings = {path, baudRate: 19200};
-                    return fileFirmwareModel.llsConnect({path, baudRate});
+                    return fileFirmwareModel.llsConnect({path, baudRate: 19200});
                 })
-                .then(()=>{
-                    return fileFirmwareModel.promisteBootLoad();
+                .then(() => {
+                    return fileFirmwareModel.promiseBootLoad();
                 })
                 .then(() => {
                     return fileFirmwareModel.runBootMode();
@@ -296,6 +296,7 @@ export default class FirmwareUpdate extends JetView {
                 })
                 .catch((e) => {
                     webix.message("Boot Mode failed!");
+                    fileFirmwareModel.llsClose().then();
                 });
         });
 
@@ -332,6 +333,7 @@ export default class FirmwareUpdate extends JetView {
                 })
                 .catch((e) => {
                     webix.message("Boot Mode failed!");
+                    fileFirmwareModel.llsClose().then();
                 });
         })
 
@@ -347,10 +349,13 @@ export default class FirmwareUpdate extends JetView {
             fileFirmwareModel.writeFirmware(path, serialPortSettings, (progress) => {
                 this.$$("bar").setValue(progress);
             }).then(() => {
-                webix.message("Success");
-                message.showWindow("Файл прошивки успешно записан!");
-                this.$$("buttonSetBootMode").disable();
-            }).catch((e) => {
+                return fileFirmwareModel.llsClose();
+            })
+                .then(() => {
+                    webix.message("Success");
+                    message.showWindow("Файл прошивки успешно записан!");
+                    this.$$("buttonSetBootMode").disable();
+                }).catch((e) => {
                 webix.message("Failed: " + e);
                 message.showWindow("Сбой записи файла прошивки!");
                 this.$$("buttonSetBootMode").disable();

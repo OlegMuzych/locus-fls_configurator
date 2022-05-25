@@ -7,7 +7,7 @@ class MyEmitter extends EventEmitter {
 
 
 class LlsModel {
-    #statusLls = "noConnect"; //"findConnect", "connect"
+    #statusLls = "stop"; //"noConnect"; //"findConnect", "connect"
     _llsConnectSettings = {
         path: null,
         baudRate: null,
@@ -345,6 +345,24 @@ class LlsModel {
             }
         } else {
             throw "dontStop";
+        }
+    }
+
+    async setStatusLlsStopPromise() {
+        if (this._lls) {
+            // this.#statusLls = 'noConnect';
+            try {
+                await this._lls.close();
+                // delete this._lls;
+                this.#statusLls = "stop";
+                this._myEmitter.emit('isDisconnect');
+                return "stop";
+            } catch (e) {
+                // throw e;
+            }
+        } else {
+            this.#statusLls = 'stop';
+            return "stop";
         }
     }
 

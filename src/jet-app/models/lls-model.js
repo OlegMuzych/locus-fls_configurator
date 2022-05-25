@@ -7,7 +7,7 @@ class MyEmitter extends EventEmitter {
 
 
 class LlsModel {
-    #statusLls = "stop"; //"noConnect"; //"findConnect", "connect"
+    #statusLls = "noConnect"; //"findConnect", "connect"
     _llsConnectSettings = {
         path: null,
         baudRate: null,

@@ -46,9 +46,10 @@ class FileFirmwareModel {
     }
 
     async llsClose() {
-        await this._lls.close();
-        return;
-
+        // if(this._lls){
+            return await this._lls.close();
+        // }
+        // return;
     }
 
     async writeFirmware(firmwarePath, serialPortSettings, progressCB) {

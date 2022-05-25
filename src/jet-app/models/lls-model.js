@@ -207,23 +207,23 @@ class LlsModel {
         }
     }
 
-    async setBootMode() {
-        // if (this.#statusLls == 'connect') {
-        if (this.#statusLls == 'bootMode') {
-            let resp = await this._lls.actions.setBootMode();
-            if (resp.status == 0x00) {
-                console.log("Lls in Boot Mode!");
-                this._myEmitter.emit('bootloader', resp.status);
-            } else if (resp.status == 0x01) {
-                console.log('Lls response error!');
-            } else if (resp.status == 0x02) {
-                console.log("Lls in Boot Mode!");
-            }
-            return resp;
-        } else {
-            return 'LLS not connect';
-        }
-    }
+    // async setBootMode() {
+    //     // if (this.#statusLls == 'connect') {
+    //     if (this.#statusLls == 'bootMode') {
+    //         let resp = await this._lls.actions.setBootMode();
+    //         if (resp.status == 0x00) {
+    //             console.log("Lls in Boot Mode!");
+    //             this._myEmitter.emit('bootloader', resp.status);
+    //         } else if (resp.status == 0x01) {
+    //             console.log('Lls response error!');
+    //         } else if (resp.status == 0x02) {
+    //             console.log("Lls in Boot Mode!");
+    //         }
+    //         return resp;
+    //     } else {
+    //         return 'LLS not connect';
+    //     }
+    // }
 
     async getTable() {
         if (this.#statusLls == 'connect') {

@@ -3,9 +3,8 @@ import configFile from "../../config-app";
 import llsModel from "../../models/lls-model";
 import fileFirmwareModel from "../../models/file-firmware-model";
 import MessageWindow from "./windows/message";
-import {pathOptions} from "../../models/combo-model";
 
-export default class FirmwareUpdate extends JetView {
+export default class FirmwareUpdatePromise extends JetView {
     config() {
         const _ = this.app.getService("locale")._;
         let body = {
@@ -109,30 +108,6 @@ export default class FirmwareUpdate extends JetView {
                                             height: 70,
                                             css: "upload_config",
                                             localId: "buttonSetBootMode",
-                                        },
-                                        {
-                                            cols: [
-                                                {
-                                                    view: "combo",
-                                                    id: "comport",
-                                                    label: 'Path',
-                                                    name: "comport",
-                                                    value: 1,
-                                                    options: [
-                                                        {id: 1, value: "com_1"},
-                                                        {id: 2, value: "com_2"},
-                                                        {id: 3, value: "com_3"},
-                                                        {id: 4, value: "com_4"},
-                                                        {id: 5, value: "com_5"},
-                                                        {id: 6, value: "com_6"}
-                                                    ]
-                                                },
-                                                {
-                                                    view: "button",
-                                                    id: "buttonPromise",
-                                                    label: 'Promise'
-                                                }
-                                            ]
                                         },
                                         {
                                             height: 5,
@@ -259,46 +234,6 @@ export default class FirmwareUpdate extends JetView {
         this.setModeBootLed(false);
         this.$$("buttonFirmwareWrite").disable();
 
-        pathOptions().then((list)=>{
-            this.$$("comport").define({options: list});
-        });
-        this.$$("comport").attachEvent("onItemClick", ()=>{
-            pathOptions().then((list)=>{
-                this.$$("comport").define({options: list});
-            });
-        });
-
-        this.$$('buttonPromise').attachEvent('onItemClick', ()=>{
-            llsModel.setStatusLlsStop()
-                .then((resp) => {
-                    let path = this.this.$$("comport").getValue();
-                    this.portSettings = {path, baudRate: 19200};
-                    return fileFirmwareModel.llsConnect({path, baudRate});
-                })
-                .then(()=>{
-                    return fileFirmwareModel.promisteBootLoad();
-                })
-                .then(() => {
-                    return fileFirmwareModel.runBootMode();
-                })
-                .then(() => {
-                    return fileFirmwareModel.runDownloadApp();
-                })
-                .then(() => {
-                    return fileFirmwareModel.llsClose();
-                })
-                .then(() => {
-                    webix.message("Boot Mode success!");
-                    this.setModeBootLed(true);
-                    this.$$("buttonFirmwareWrite").enable();
-                    this.getParentView().action(false);
-                    this.$$("buttonSetBootMode").disable();
-                })
-                .catch((e) => {
-                    webix.message("Boot Mode failed!");
-                });
-        });
-
         const message = this.ui(MessageWindow);
 
         this.$$('textFirmwarePath').setValue("/Users/oleg/Documents/forTest/прошивки/tmk24_v1_207.bin");
@@ -358,7 +293,7 @@ export default class FirmwareUpdate extends JetView {
         })
     }
 
-    myRefresh() {
+    myRefresh(){
         this.refresh();
         llsModel.setStatusLlsNoConnect();
         this.getParentView().action(true);

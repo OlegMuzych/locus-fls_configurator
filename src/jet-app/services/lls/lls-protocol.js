@@ -159,6 +159,13 @@ export default class llsProtocol {
         });
     };
 
+    async promiseBootLoad(){
+        this.port.onceData((data)=>{
+            console.log(data);
+            return this._parseData(data);
+        });
+    }
+
     _commandCreate(command, data) {
         let llsAdr = this._settingPort.llsAdr;
         let dataBuffer = [0x31, llsAdr];

@@ -112,6 +112,14 @@ export default class llsAction {
         }
     };
 
+    async promiseBootLoad() {
+        let {llsAdr, code: status} = await this._llsProtocol.promiseBootLoad();
+        return {
+            llsAdr: llsAdr,
+            status: status,
+        }
+    }
+
 
     // set shortSetting({llsAdr, temperature, level, cnt}){
     //     this._shortSetting.llsAdr = llsAdr;

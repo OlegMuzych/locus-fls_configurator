@@ -10,6 +10,18 @@ class FileFirmwareModel {
     async llsConnect({path, baudRate, llsAdr = 0xFF}) {
         this._lls = await new Lls({path, baudRate, llsAdr});
         Debug(this._lls);
+        return this._lls;
+    }
+
+    async promisteBootLoad(){
+        let resp = await this._lls.actions.promisteBootLoad();
+        if (resp == 0x00) {
+            Debug("BootLoad Welcome Send");
+            return "BootLoad Welcome Send";
+        } else {
+            Debug("BootLoad Welcome Send");
+            throw "BootLoad Welcome Send";
+        }
     }
 
     async runBootMode() {

@@ -12,12 +12,27 @@ export default class WindowFirmwareUpdate extends JetView {
             height: 800,
             localId: "window_show",
             modal: true,
-            head: "Обновление прошивки ДУТ",
+            // head: "Обновление прошивки ДУТ",
+            head: {
+                rows: [
+                    {
+                        cols: [
+                            {template: _("window_firmware_header"), type: "header", borderless: true,},
+                            {
+                                view: "icon", icon: "wxi-close", tooltip: "Close window", localId: 'iconClose', click: () => {
+                                    this.getRoot().hide();
+                                    // this.getParentView().refresh();
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
             css: "window_show",
             position: "center",
-            close: true,
+            // close: true,
             body: {
-                rows:[FirmwareUpdate]
+                rows: [FirmwareUpdate]
             }
         }
         return win;
@@ -38,6 +53,15 @@ export default class WindowFirmwareUpdate extends JetView {
         }
         if (configFile.theme == 'light') {
             webix.html.addCss(this.$$("window_show").getNode(), "window_show");
+        }
+    }
+
+    action(flag) {
+        console.log("ACTION");
+        if (flag) {
+            this.$$("iconClose").show();
+        } else {
+            this.$$("iconClose").hide();
         }
     }
 }

@@ -115,11 +115,15 @@ export default class MyYModem {
             let data = this.#createSendFrame(dataFrame);
             let resp = 0;
             for(let errorCount = 0; errorCount < MyYModem.countError; errorCount ++){
-                resp = await this.#portWrite(data);
-                if (resp[0] == MyYModem.ack) {
-                    resolve(resp);
-                    break;
-                };
+                try{
+                    resp = await this.#portWrite(data);
+                    if (resp[0] == MyYModem.ack) {
+                        resolve(resp);
+                        break;
+                    };
+                }catch (e) {
+                    reject(e);
+                }
             }
             reject("Data Packet error! ( exceeded the number of attempts)");
         });
@@ -162,13 +166,16 @@ export default class MyYModem {
 
     #portWrite(packet) {
         return new Promise((resolve, reject)=>{
+            let timer;
             this.port.onceData((data)=>{
                 // console.log("once data: " +  data);
+                clearTimeout(timer);
                 resolve(data);
+
             });
             this.port.write(packet);
             // console.log("write data: " +  packet);
-            // setTimeout(()=>{reject("Error: timeout receive OnceData")}, 3000);
+            timer = setTimeout(()=>{reject("Error: timeout receive OnceData")}, 3000);
         });
     };
 }

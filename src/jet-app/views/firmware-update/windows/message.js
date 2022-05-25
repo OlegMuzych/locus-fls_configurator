@@ -72,12 +72,14 @@ export default class MessageWindow extends JetView {
         this.$$('buttonCancel').attachEvent("onItemClick", (id, e) => {
             console.log('click');
             this.getRoot().hide();
+            this.getRoot().getParentView().refresh();
         });
 
         this.$$('buttonOk').attachEvent("onItemClick", (id, e) => {
             console.log('click');
             this.getRoot().hide();
             this.show("win");
+            this.getParentView().myRefresh();
         });
 
         this.setTheme();
@@ -85,7 +87,7 @@ export default class MessageWindow extends JetView {
 
     showWindow(text) {
         this.getRoot().show();
-        this.$$("language_windows_modal_2").setValue(text);
+        this.$$("language_windows_modal_2").setValue(`<p style='font-size: 26px; position: relative; top: -20px; text-align: center;'>${text}</p>`);
     }
 
 

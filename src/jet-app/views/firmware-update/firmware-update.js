@@ -116,7 +116,7 @@ export default class FirmwareUpdate extends JetView {
                                             view: "button",
                                             width: 500,
                                             height: 70,
-                                            label: "Вкл",
+                                            label: "Режим загрузки включен",
                                             css: "rows_level_right_menu_switch_2",
                                             localId: "buttonBootModeOn"
                                         },
@@ -124,7 +124,7 @@ export default class FirmwareUpdate extends JetView {
                                             view: "button",
                                             width: 500,
                                             height: 70,
-                                            label: "Выкл",
+                                            label: "Режим загрузки выключен",
                                             css: "rows_level_right_menu_switch_define_2",
                                             localId: "buttonBootModeOff"
                                         },
@@ -246,6 +246,7 @@ export default class FirmwareUpdate extends JetView {
                 .then((resp) => {
                     console.log(resp);
                     const {path, baudRate} = resp;
+                    this.portSettings = {path, baudRate};
                     return fileFirmwareModel.llsConnect({path, baudRate});
                 })
                 .then(() => {
@@ -261,6 +262,8 @@ export default class FirmwareUpdate extends JetView {
                     webix.message("Boot Mode success!");
                     this.setModeBootLed(true);
                     this.$$("buttonFirmwareWrite").enable();
+                    this.getParentView().action(false);
+                    this.$$("buttonSetBootMode").disable();
                 })
                 .catch((e) => {
                     webix.message("Boot Mode failed!");
@@ -268,26 +271,33 @@ export default class FirmwareUpdate extends JetView {
         })
 
         this.$$('buttonFirmwareWrite').attachEvent("onItemClick", (id, e) => {
-
             const path = this.$$("textFirmwarePath").getValue();
             if (!path) {
                 return 0;
             }
             // const serialPortSettings = llsModel.getLlsConnectSettings();
-            const serialPortSettings = {path: "/dev/tty.usbserial-0001", baudRate: 19200};
+            // const serialPortSettings = {path: "/dev/tty.usbserial-0001", baudRate: 19200};
+            const serialPortSettings = this.portSettings;
+
             fileFirmwareModel.writeFirmware(path, serialPortSettings, (progress) => {
                 this.$$("bar").setValue(progress);
             }).then(() => {
                 webix.message("Success");
-                this.refresh();
-                message.showWindow("textTest");
+                message.showWindow("Файл прошивки успешно записан!");
+                this.$$("buttonSetBootMode").disable();
             }).catch((e) => {
                 webix.message("Failed: " + e);
-                this.refresh();
+                message.showWindow("Сбой записи файла прошивки!");
+                this.$$("buttonSetBootMode").disable();
             });
         })
     }
 
+    myRefresh(){
+        this.refresh();
+        llsModel.setStatusLlsNoConnect();
+        this.getParentView().action(true);
+    }
 
     setModeBootLed(flag) {
         if (flag) {

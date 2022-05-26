@@ -219,7 +219,8 @@ export default class CalibrationSettings extends JetView {
             this.app.callEvent("app:calibrationSettings:continueCalibrate", [volume, volumeStep]);
         });
 
-        this.on(this.app, "app:calibrationsubview:saveToFile", () => { //save to file
+        this.on(this.app, "app:calibrationsubview:saveToFile", async() => { //save to file
+            await llsModel.getTable();
             fileTableModel.write(this.currentTable).then();
         });
 

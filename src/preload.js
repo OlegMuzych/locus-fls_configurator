@@ -4,10 +4,7 @@ const {crc8, crc16} = require("easy-crc");
 const {writeFile, readFile, access} = require('fs/promises');
 const {writeFileSync, readFileSync} = require('fs');
 const CSV = require('csv-string');
-// const lightYModem = require('particle-ymodem');
-const {method} = require("@vercel/webpack-asset-relocator-loader");
-// const {YModem} = require("ymodem");
-// const {MyYModem} = require("my-ymodem/my-ymodem");
+// const {method} = require("@vercel/webpack-asset-relocator-loader");
 
 
 contextBridge.exposeInMainWorld('myAPI', {
@@ -110,33 +107,3 @@ contextBridge.exposeInMainWorld('Buffer', {
         concat: (list, totalLength) => Buffer.concat(list, totalLength),
     }
 );
-
-// contextBridge.exposeInMainWorld('particle-ymodem', {
-//         transfer: (filePath, progressCallback, serialPortSettings, logCallback = console.log) => {
-//             let file = readFileSync(filePath, 'utf8');
-//             const modem = new lightYModem();
-//             const port = new SerialPort(serialPortSettings);
-//             modem.transfer(file, port, progressCallback, logCallback);
-//         }
-//     }
-// );
-
-// contextBridge.exposeInMainWorld('my-ymodem', {
-//     yTransmit: (filePath, progressCallback, serialPortSettings, logCallback = console.log) => {
-//             let file = readFileSync(filePath, 'utf8');
-//             const modem = new MyYModem();
-//             const port = new SerialPort(serialPortSettings);
-//             modem.yTransmit(file, port, progressCallback, logCallback);
-//         }
-//     }
-// );
-
-// contextBridge.exposeInMainWorld('ymodem', {
-//         sendFile: (filePath, progressCallback, serialPortSettings, logCallback = console.log) => {
-//             const port = new SerialPort(serialPortSettings);
-//             let file = readFileSync(filePath);
-//             const ymodem = new YModem(port);
-//             ymodem.sendFile('MyNameFile', file, null, progressCallback);
-//         }
-//     }
-// );

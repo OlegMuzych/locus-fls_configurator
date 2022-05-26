@@ -1,6 +1,6 @@
 import Lls from "../services/lls/lls";
 import {readFileSync} from "fs";
-import MyYModem from "../assets/libraries/my-ymodem/my-ymodem";
+import MyYModem from "../services/my-ymodem/my-ymodem";
 
 const dbPre = "FU";
 const Debug = (str) => console.log(dbPre + ": " + str);

@@ -349,6 +349,8 @@ class LlsModel {
     }
 
     async setStatusLlsStopPromise() {
+        findPort.setStop();
+
         if (this._lls) {
             // this.#statusLls = 'noConnect';
             try {

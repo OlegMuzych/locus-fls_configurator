@@ -1,6 +1,7 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../../models/lls-model";
 import configFile from "../../../../config-app";
+import globalVariable from "../../../../global-variable-app";
 
 export default class FullEmptySubView extends JetView {
     config(){
@@ -152,7 +153,7 @@ export default class FullEmptySubView extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "full_window_text",
-                                                    readonly: true,
+                                                    // readonly: true,
                                                     id: "auto_calibration_set_1"
                                                 },
                                                 {
@@ -172,7 +173,7 @@ export default class FullEmptySubView extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "full_window_text",
-                                                    readonly: true,
+                                                    // readonly: true,
                                                     id: "auto_calibration_set_2"
                                                 },
                                                 {
@@ -247,26 +248,17 @@ export default class FullEmptySubView extends JetView {
         $$('auto_calibration_1').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             llsModel.setMaximum().then();
-            // $$("auto_calibration_1").disable();
-            // $$("auto_calibration_set_1").disable();
-            // $$("auto_calibration_2").enable();
-            // $$("auto_calibration_set_2").enable();
+
         });
 
         $$('auto_calibration_2').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             llsModel.setMinimum().then();
-            // $$("auto_calibration_2").disable();
-            // $$("auto_calibration_set_2").disable();
-            // $$("button_edit").enable();
+
         });
 
-        // $$("auto_calibration").disable();
         $$("auto_calibration_1").disable();
-        // $$("auto_calibration_set_1").disable();
         $$("auto_calibration_2").disable();
-        // $$("auto_calibration_set_2").disable();
-        // $$("button_edit").enable();
 
         $$("calibration_fuel").attachEvent("onChange", (newValue, oldValue, config)=>{
             if(newValue){
@@ -313,8 +305,39 @@ export default class FullEmptySubView extends JetView {
                 $$("auto_calibration_1").enable();
                 $$("auto_calibration_2").enable();
             }
-            // $$("auto_calibration_set_1").enable();
         });
+
+        $$('auto_calibration_set_1').attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                if (newValue >= 0 && newValue <= 4294967295) {
+                    llsModel.newLongData.fullTank = newValue;
+                    // globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({llsAdr: llsModel.newLongData.llsAdr}) : '');
+                    // this.setTextValue("textLlsAdr", 'llsAdr', "statusLlsAdr");
+                    llsModel.setLongData({fullTank: newValue }).then();
+                } else {
+                    $$('auto_calibration_set_1').setValue(oldValue);
+                    // llsModel.setLongData({fullTank: oldValue }).then();
+                }
+            }
+        })
+
+        $$('auto_calibration_set_2').attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                if (newValue >= 0 && newValue <= 4294967295) {
+                    llsModel.newLongData.emptyTank = newValue;
+                    // globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({llsAdr: llsModel.newLongData.llsAdr}) : '');
+                    // this.setTextValue("textLlsAdr", 'llsAdr', "statusLlsAdr");
+                    llsModel.setLongData({emptyTank: newValue }).then();
+                } else {
+                    $$('auto_calibration_set_2').setValue(oldValue);
+                    // llsModel.setLongData({fullTank: oldValue }).then();
+                }
+            }
+        })
 
         if(configFile.theme == 'light'){
             webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status");

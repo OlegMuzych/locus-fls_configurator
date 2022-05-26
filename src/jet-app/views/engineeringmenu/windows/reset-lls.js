@@ -74,7 +74,39 @@ export default class ResetLlsWindow extends JetView {
             console.log('click');
             this.getRoot().hide();
             //todo: command resetLls
+            const defaultSettings = {
+                llsAdr: 1,
+                emptyTank: 1000000,
+                fullTank: 45000000,
+                autoGetData: 0,
+                periodOfDataIssuance: 10,
+                minLevel: 0,
+                maxLevel: 4095,
+                outputParametersOfSensor: 0,
+                filtrationType: 0,
+                averagingLength: 21,
+                medianLength: 7,
+                coefficientQ: 0.001,
+                coefficientR: 5000,
+                thermalCompensationType: 0,
+                coefficientK1: 0,
+                coefficientK2: 0,
+                interpolationType: 0,
+                baudRate232: 3,
+                baudRate485: 3,
+                slaveMasterMode: 0,
+                countSlave: 0,
+                llsAdrSlave1: 2,
+                llsAdrSlave2: 3,
+                llsAdrSlave3: 4,
+                llsAdrSlave4: 5,
+                fuelWaterMode: 0,
+            }
+            llsModel.newLongData = defaultSettings;
+
+            llsModel.setLongData(defaultSettings).then();
         });
+
 
         this.setTheme();
     }

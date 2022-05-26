@@ -111,12 +111,16 @@ export default class FirmwareUpdate extends JetView {
                                             localId: "buttonSetBootMode",
                                         },
                                         {
+                                            localId: "manualBoot",
                                             cols: [
                                                 {
                                                     view: "combo",
                                                     id: "comport",
                                                     label: 'Path',
+                                                    labelPosition:"top",
+                                                    labelAlign: 'center',
                                                     name: "comport",
+                                                    css: "upload_config",
                                                     value: 1,
                                                     options: [
                                                         {id: 1, value: "com_1"},
@@ -130,7 +134,9 @@ export default class FirmwareUpdate extends JetView {
                                                 {
                                                     view: "button",
                                                     id: "buttonPromise",
-                                                    label: 'Promise'
+                                                    height: 70,
+                                                    label: 'Promise',
+                                                    css: "upload_config",
                                                 }
                                             ]
                                         },
@@ -236,10 +242,14 @@ export default class FirmwareUpdate extends JetView {
     }
 
     listenerConnect = () => {
+        this.$$("manualBoot").disable();
+        this.$$("buttonSetBootMode").enable();
         // this.setStatusConnect(true);
     }
 
     listenerDisconnect = () => {
+        this.$$("manualBoot").enable();
+        this.$$("buttonSetBootMode").disable();
         // this.setStatusConnect(false);
     }
 
@@ -258,6 +268,9 @@ export default class FirmwareUpdate extends JetView {
 
         this.setModeBootLed(false);
         this.$$("buttonFirmwareWrite").disable();
+
+        this.$$("manualBoot").enable();
+        this.$$("buttonSetBootMode").disable();
 
         pathOptions().then((list) => {
             this.$$("comport").define({options: list});
@@ -293,6 +306,7 @@ export default class FirmwareUpdate extends JetView {
                     this.$$("buttonFirmwareWrite").enable();
                     this.getParentView().action(false);
                     this.$$("buttonSetBootMode").disable();
+                    this.$$("manualBoot").disable();
                 })
                 .catch((e) => {
                     webix.message("Boot Mode failed!");
@@ -330,6 +344,7 @@ export default class FirmwareUpdate extends JetView {
                     this.$$("buttonFirmwareWrite").enable();
                     this.getParentView().action(false);
                     this.$$("buttonSetBootMode").disable();
+                    this.$$("manualBoot").disable();
                 })
                 .catch((e) => {
                     webix.message("Boot Mode failed!");
@@ -338,6 +353,7 @@ export default class FirmwareUpdate extends JetView {
         })
 
         this.$$('buttonFirmwareWrite').attachEvent("onItemClick", (id, e) => {
+            this.$$("buttonFirmwareWrite").disable();
             const path = this.$$("textFirmwarePath").getValue();
             if (!path) {
                 return 0;
@@ -354,11 +370,11 @@ export default class FirmwareUpdate extends JetView {
                 .then(() => {
                     webix.message("Success");
                     message.showWindow("Файл прошивки успешно записан!");
-                    this.$$("buttonSetBootMode").disable();
+                    this.$$("buttonSetBootMode").enable();
                 }).catch((e) => {
                 webix.message("Failed: " + e);
                 message.showWindow("Сбой записи файла прошивки!");
-                this.$$("buttonSetBootMode").disable();
+                this.$$("buttonSetBootMode").enable();
             });
         })
     }

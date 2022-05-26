@@ -15,14 +15,11 @@ class FileFirmwareModel {
 
     async promiseBootLoad(){
         let resp = await this._lls.actions.promiseBootLoad();
+            // return "BootLoad Welcome Send";
+        if (resp == 0x00) {
+            Debug("BootLoad Welcome Send");
             return "BootLoad Welcome Send";
-        // if (resp == 0x00) {
-        //     Debug("BootLoad Welcome Send");
-        //     return "BootLoad Welcome Send";
-        // } else {
-        //     Debug("BootLoad Welcome Send");
-        //     throw "BootLoad Welcome Send";
-        // }
+        }
     }
 
     async runBootMode() {

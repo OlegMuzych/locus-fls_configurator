@@ -1,6 +1,9 @@
 export default {
     /*  win.js */
     "version": "Версия",
+
+    "firmware_lls": "Прошивка ДУТ",
+
     "sensor_is_connected": "Датчик подключен",
     "sensor_is_not_connected": "Датчик не подключен",
 
@@ -104,8 +107,8 @@ export default {
     /* servicemenu.js */
     "service_service": "Сервис",
     "service_service_reset_sensor": "Сброс всех настроек",
-    "service_service_save_setting_file": "Сохраниить насторйки в файл",
-    "service_service_read_setting_file": "Прочитать настройкии из файла",
+    "service_service_save_setting_file": "Сохраниить настройки в файл",
+    "service_service_read_setting_file": "Прочитать настройки из файла",
 
     "service_password": "Пароль",
 
@@ -201,5 +204,19 @@ export default {
     "button_image_filter_rovn": "assets/images/filtration/filtr_Rovn.svg",
     "button_image_filter_rovn_dark": "assets/images/filtration/filtr_Rovn_inverse.svg",
 
+    /* firmware-update.js */
+    "upload_file": "Загрузить файл",
+    "mode_download": "Включить Загрузчик",
+    "promise": "Ожидать",
+    "mode_download_turn_on": "Режим прошивки включен",
+    "mode_download_turn_off": "Режим прошивки выкючен",
+    "to_write_file_in_device": "Записать файл прошивки",
+
+    "fail_entry_in_mode_download": "Сбой загрузчика!",
+    "success_write_file": "Прошивка записана!",
+    "fail_write_file": "Сбой записи прошивкки!",
+
+    /* windows-firmware-update.js */
+    "window_firmware_header": "Обновление прошивки",
     //
 };

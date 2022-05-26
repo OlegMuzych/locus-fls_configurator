@@ -43,7 +43,7 @@ class FileSettingsModel {
 
     async #saveDialog() {
         const dialogConfig = {
-            title: 'Выберите папку для сохранения файла с настройкамии',
+            title: 'Выберите папку для сохранения файла с настройками',
             buttonLabel: 'Сохранить',
         };
         let {filePath} = await window.electron.openDialog('showSaveDialog', dialogConfig);

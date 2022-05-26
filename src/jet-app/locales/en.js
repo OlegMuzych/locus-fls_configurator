@@ -1,6 +1,9 @@
 export default {
     /*  win.js */
     "version":  "Version",
+
+    "firmware_lls": "Firmware",
+
     "sensor_is_connected": "The device is connected",
     "sensor_is_not_connected": "The device is not connected",
 
@@ -96,7 +99,7 @@ export default {
     "button_save_setting": "Save Settings",
 
     /* statusmenu.js */
-    "status_sensor_is_connected": "The devive is connected",
+    "status_sensor_is_connected": "The device is connected",
     "status_fuel_is_stable": "Fuel level is stable",
     "status_calibration": "Calibration is not required",
     "status_thermal_compensation": "Thermal compensation",
@@ -127,7 +130,7 @@ export default {
 
     /* fueldrain.js , fuelfill.js*/
     "passport_volume_tank": "Factory tank volume",
-    "start_volume_tank": "Initial volume, lm",
+    "start_volume_tank": "Initial volume, L",
     "step_volume": "Step in liters",
     "step_count": "Number of steps",
 
@@ -203,4 +206,18 @@ export default {
     "button_image_filter_rovn": "assets/images/filtration/filtr_Rovn_en.svg",
     "button_image_filter_rovn_dark": "assets/images/filtration/filtr_Rovn_en_inverse.svg",
 
+    /* firmware-update.js */
+    "upload_file": "Download file",
+    "mode_download": "Download mode",
+    "promise": "Wait",
+    "mode_download_turn_on": "Boot Mode turn on",
+    "mode_download_turn_off": "Boot Mode turn off",
+    "to_write_file_in_device": "Write File",
+
+    "fail_entry_in_mode_download": "Fail mode",
+    "success_write_file": "Success record!",
+    "fail_write_file": "Fail record!",
+
+    /* windows-firmware-update.js */
+    "window_firmware_header": "Update firmware",
 };

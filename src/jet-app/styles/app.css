@@ -150,6 +150,7 @@ border: none;
 .upload_config_window.webix_list{
     background-color: #f3f3f3;
     border-radius: 5px;
+    font-size: 18px;
     box-shadow: inset 2px 2px 4px #c5c5c5,
     inset -2px -2px 4px #ffffff;
     color: #000;

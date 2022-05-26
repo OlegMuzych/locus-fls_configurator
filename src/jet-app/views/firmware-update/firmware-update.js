@@ -35,7 +35,7 @@ export default class FirmwareUpdate extends JetView {
                                     rows: [
                                         {
                                             view: "button",
-                                            value: "Загрузить файл",
+                                            value: _('upload_file'),
                                             name: "files",
                                             width: 500,
                                             height: 70,
@@ -62,7 +62,9 @@ export default class FirmwareUpdate extends JetView {
                                             width: 500,
                                             height: 70,
                                             autoheight: false,
-                                            css: "upload_config_window"
+                                            css: "upload_config_window",
+                                            // css: "window_type_2",
+
 
                                         },
                                         // {
@@ -104,7 +106,7 @@ export default class FirmwareUpdate extends JetView {
                                         {
                                             view: "button",
                                             type: "label",
-                                            label: "Режим перепрошивки ДУТ",
+                                            label: _("mode_download"),
                                             width: 500,
                                             height: 70,
                                             css: "upload_config",
@@ -135,7 +137,7 @@ export default class FirmwareUpdate extends JetView {
                                                     view: "button",
                                                     id: "buttonPromise",
                                                     height: 70,
-                                                    label: 'Promise',
+                                                    label: _('promise'),
                                                     css: "upload_config",
                                                 }
                                             ]
@@ -147,7 +149,7 @@ export default class FirmwareUpdate extends JetView {
                                             view: "button",
                                             width: 500,
                                             height: 70,
-                                            label: "Режим загрузки включен",
+                                            label: _("mode_download_turn_on"),
                                             css: "rows_level_right_menu_switch_2",
                                             localId: "buttonBootModeOn"
                                         },
@@ -155,7 +157,7 @@ export default class FirmwareUpdate extends JetView {
                                             view: "button",
                                             width: 500,
                                             height: 70,
-                                            label: "Режим загрузки выключен",
+                                            label: _("mode_download_turn_off"),
                                             css: "rows_level_right_menu_switch_define_2",
                                             localId: "buttonBootModeOff"
                                         },
@@ -190,7 +192,7 @@ export default class FirmwareUpdate extends JetView {
                                         {
                                             view: "button",
                                             type: "label",
-                                            label: "Записать файл в датчик",
+                                            label: _("to_write_file_in_device"),
                                             width: 500,
                                             height: 70,
                                             css: "upload_config",
@@ -312,7 +314,7 @@ export default class FirmwareUpdate extends JetView {
                     this.$$("manualBoot").disable();
                 })
                 .catch((e) => {
-                    message.showWindow("Сбой перехода в загрузчик!");
+                    message.showWindow(_("fail_entry_in_mode_download"));
                     webix.message("Boot Mode failed!");
                     fileFirmwareModel.llsClose().then();
                     this.$$("manualBoot").enable();
@@ -356,7 +358,7 @@ export default class FirmwareUpdate extends JetView {
                     this.$$("manualBoot").disable();
                 })
                 .catch((e) => {
-                    message.showWindow("Сбой перехода в загрузчик!");
+                    message.showWindow(_("fail_entry_in_mode_download"));
                     webix.message("Boot Mode failed!");
                     fileFirmwareModel.llsClose().then();
                     this.$$("buttonSetBootMode").enable();
@@ -381,11 +383,11 @@ export default class FirmwareUpdate extends JetView {
             })
                 .then(() => {
                     webix.message("Success");
-                    message.showWindow("Файл прошивки успешно записан!");
+                    message.showWindow(_("success_write_file"));
                     this.$$("buttonSetBootMode").enable();
                 }).catch((e) => {
                 webix.message("Failed: " + e);
-                message.showWindow("Сбой записи файла прошивки!");
+                message.showWindow(_("fail_write_file"));
                 this.$$("buttonSetBootMode").enable();
             });
         })
@@ -427,6 +429,7 @@ export default class FirmwareUpdate extends JetView {
 
     setTheme() {
         if (configFile.theme == 'dark') {
+            // webix.html.addCss(this.$$("window_show").getNode(), "window_show_dark");
             // webix.html.addCss(this.$$("window_show").getNode(), "window_show_dark");
             // // webix.html.addCss(this.$$("language_windows_modal").getNode(), "language_windows_modal_dark");
             // webix.html.addCss(this.$$("labelFontSize").getNode(), "language_windows_modal_dark");

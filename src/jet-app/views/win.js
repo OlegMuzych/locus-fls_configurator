@@ -39,7 +39,7 @@ export default class Page9View extends JetView {
                         {
                             view: "button",
                             type: "label",
-                            label: "Прошивка ДУТ",
+                            label: _("firmware_lls"),
                             width: 200,
                             height: 50,
                             css: "button_reload",

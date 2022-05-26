@@ -282,6 +282,8 @@ export default class FirmwareUpdate extends JetView {
         });
 
         this.$$('buttonPromise').attachEvent('onItemClick', () => {
+            this.$$("buttonSetBootMode").disable();
+            this.$$("manualBoot").disable();
             llsModel.setStatusLlsStopPromise()
                 .then((resp) => {
                     let path = this.$$("comport").getValue();
@@ -305,12 +307,16 @@ export default class FirmwareUpdate extends JetView {
                     this.setModeBootLed(true);
                     this.$$("buttonFirmwareWrite").enable();
                     this.getParentView().action(false);
+
                     this.$$("buttonSetBootMode").disable();
                     this.$$("manualBoot").disable();
                 })
                 .catch((e) => {
+                    message.showWindow("Сбой перехода в загрузчик!");
                     webix.message("Boot Mode failed!");
                     fileFirmwareModel.llsClose().then();
+                    this.$$("manualBoot").enable();
+                    this.getParentView().action(true);
                 });
         });
 
@@ -322,9 +328,12 @@ export default class FirmwareUpdate extends JetView {
         })
 
         this.$$('buttonSetBootMode').attachEvent("onItemClick", (id, e) => {
+            this.$$("buttonSetBootMode").disable();
+            this.$$("manualBoot").disable();
             llsModel.setStatusLlsStop()
                 .then((resp) => {
                     console.log(resp);
+                    this.$$("manualBoot").disable(); //что бы не активироваль с EventConnect
                     const {path, baudRate} = resp;
                     this.portSettings = {path, baudRate};
                     return fileFirmwareModel.llsConnect({path, baudRate});
@@ -347,8 +356,11 @@ export default class FirmwareUpdate extends JetView {
                     this.$$("manualBoot").disable();
                 })
                 .catch((e) => {
+                    message.showWindow("Сбой перехода в загрузчик!");
                     webix.message("Boot Mode failed!");
                     fileFirmwareModel.llsClose().then();
+                    this.$$("buttonSetBootMode").enable();
+                    this.getParentView().action(true);
                 });
         })
 

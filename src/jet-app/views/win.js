@@ -546,10 +546,11 @@ export default class Page9View extends JetView {
 
         // $$("button_define_define_2").hide();
 
-        const windowFirmwareUpdate = this.ui(WindowFirmwareUpdate);
+        this.windowFirmwareUpdate = this.ui(WindowFirmwareUpdate);
         this.$$("button_reload").attachEvent("onItemClick", (id, e) => {
             // $$("window_show_4").show();
-            windowFirmwareUpdate.showWindow();
+            this.refresh();
+            this.windowFirmwareUpdate.showWindow();
         });
 
         this.setStatusConnect(false);
@@ -595,6 +596,7 @@ export default class Page9View extends JetView {
         // $$("window_show_2").hide()
         this.windowsAbout = this.ui(WindowAbout);
         $$("reference").attachEvent("onItemClick", (id, e) => {
+            this.refresh();
            this.windowsAbout.showWindow();
         });
 

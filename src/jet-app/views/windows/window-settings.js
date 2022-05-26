@@ -2,6 +2,7 @@ import {JetView, plugins} from "webix-jet";
 import configFile from "../../config-app";
 import globalVariable from "../../global-variable-app";
 import {getStrLang} from "../../services/auxiliary-functions";
+import llsModel from "../../models/lls-model";
 
 export default class WindowSettings extends JetView {
     config() {
@@ -161,10 +162,16 @@ export default class WindowSettings extends JetView {
             // } else {
             //     configFile.theme = theme;
             // }
-
         });
 
-        this.setTheme();
+        // this.$$("right_menu_fuel_level").attachEvent("onAfterRender", webix.once(()=>{
+        //     llsModel.addListenerShortData(this.listenerShortData);
+        //     llsModel.addListenerLongData(this.listenerLongData);
+        // }));
+        // this.getRoot().attachEvent("onAfterRender", webix.once(()=>{
+        //         this.setTheme();
+        //     }));
+        // this.setTheme();
 
         this.$$("comboTheme").attachEvent("onChange", async (newValue, oldValue, config) => {
             globalVariable.theme = newValue;
@@ -178,6 +185,7 @@ export default class WindowSettings extends JetView {
             } else {
                 configFile.theme = newValue;
             }
+
             this.setTheme();
             this.getParentView().setTheme();
         });
@@ -211,8 +219,10 @@ export default class WindowSettings extends JetView {
 
     }
 
+
     showWindow() {
         this.getRoot().show();
+        this.setTheme();
     }
 
     async setLanguage(language) {

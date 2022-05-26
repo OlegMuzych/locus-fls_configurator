@@ -101,6 +101,7 @@ export default class WindowAbout extends JetView {
 
     showWindow() {
         this.getRoot().show();
+        this.setTheme();
     }
 
     setTheme() {

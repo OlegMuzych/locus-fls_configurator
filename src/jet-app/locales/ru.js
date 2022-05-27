@@ -209,12 +209,12 @@ export default {
     "mode_download": "Включить Загрузчик",
     "promise": "Ожидать",
     "mode_download_turn_on": "Режим прошивки включен",
-    "mode_download_turn_off": "Режим прошивки выкючен",
+    "mode_download_turn_off": "Режим прошивки выключен",
     "to_write_file_in_device": "Записать файл прошивки",
 
     "fail_entry_in_mode_download": "Сбой загрузчика!",
     "success_write_file": "Прошивка записана!",
-    "fail_write_file": "Сбой записи прошивкки!",
+    "fail_write_file": "Сбой записи прошивки!",
 
     /* windows-firmware-update.js */
     "window_firmware_header": "Обновление прошивки",

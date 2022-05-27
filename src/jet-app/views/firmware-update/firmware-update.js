@@ -125,12 +125,12 @@ export default class FirmwareUpdate extends JetView {
                                                     css: "upload_config",
                                                     value: 1,
                                                     options: [
-                                                        {id: 1, value: "com_1"},
-                                                        {id: 2, value: "com_2"},
-                                                        {id: 3, value: "com_3"},
-                                                        {id: 4, value: "com_4"},
-                                                        {id: 5, value: "com_5"},
-                                                        {id: 6, value: "com_6"}
+                                                        // {id: 1, value: "com_1"},
+                                                        // {id: 2, value: "com_2"},
+                                                        // {id: 3, value: "com_3"},
+                                                        // {id: 4, value: "com_4"},
+                                                        // {id: 5, value: "com_5"},
+                                                        // {id: 6, value: "com_6"}
                                                     ]
                                                 },
                                                 {
@@ -324,7 +324,7 @@ export default class FirmwareUpdate extends JetView {
 
         const message = this.ui(MessageWindow);
 
-        this.$$('textFirmwarePath').setValue("/Users/oleg/Documents/forTest/прошивки/tmk24_v1_207.bin");
+        // this.$$('textFirmwarePath').setValue("/Users/oleg/Documents/forTest/прошивки/tmk24_v1_207.bin");
         this.$$('buttonFirmwarePath').attachEvent("onItemClick", (id, e) => {
             fileFirmwareModel.choiceFirmware().then((str) => this.$$('textFirmwarePath').setValue(str));
         })

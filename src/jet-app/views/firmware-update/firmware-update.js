@@ -42,17 +42,6 @@ export default class FirmwareUpdate extends JetView {
                                             css: "upload_config",
                                             localId: "buttonFirmwarePath"
                                         },
-                                        // {
-                                        //     view: "uploader",
-                                        //     value: "Загрузить файл",
-                                        //     name: "files",
-                                        //     link: "upload_config_window_1",
-                                        //     upload: "https://docs.webix.com/samples/server/upload",
-                                        //     width: 500,
-                                        //     height: 70,
-                                        //     css: "upload_config",
-                                        //     id: "upload_config"
-                                        // },
                                         {
                                             height: 5,
                                         },
@@ -67,16 +56,6 @@ export default class FirmwareUpdate extends JetView {
 
 
                                         },
-                                        // {
-                                        //     view: "list",
-                                        //     id: "upload_config_window_1",
-                                        //     width: 500,
-                                        //     height: 70,
-                                        //     type: "uploader",
-                                        //     autoheight: false,
-                                        //     css: "upload_config_window"
-                                        //
-                                        // },
                                     ]
                                 },
                                 {}
@@ -125,12 +104,6 @@ export default class FirmwareUpdate extends JetView {
                                                     css: "upload_config",
                                                     value: 1,
                                                     options: [
-                                                        // {id: 1, value: "com_1"},
-                                                        // {id: 2, value: "com_2"},
-                                                        // {id: 3, value: "com_3"},
-                                                        // {id: 4, value: "com_4"},
-                                                        // {id: 5, value: "com_5"},
-                                                        // {id: 6, value: "com_6"}
                                                     ]
                                                 },
                                                 {
@@ -372,6 +345,9 @@ export default class FirmwareUpdate extends JetView {
             this.$$("buttonFirmwareWrite").disable();
             const path = this.$$("textFirmwarePath").getValue();
             if (!path) {
+                webix.message("Failed: " + e);
+                message.showWindow(_("fail_write_file"));
+                this.$$("buttonSetBootMode").enable();
                 return 0;
             }
             // const serialPortSettings = llsModel.getLlsConnectSettings();

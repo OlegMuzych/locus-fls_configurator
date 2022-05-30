@@ -28,8 +28,7 @@ const createWindow = () => {
       zoomFactor: 0.6,
     },
     fullscreenable: false,
-    // icon: __dirname + '/ie-logo.ico',
-    icon: __dirname + '/trademark/ie-logo.ico',
+    icon: __dirname + '/point-monitoring.ico',
     removeMenu: true,
     autoHideMenuBar: true,
   });

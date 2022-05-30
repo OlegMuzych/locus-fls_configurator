@@ -45,6 +45,7 @@ class FileFirmwareModel {
     async llsClose() {
         // if(this._lls){
             return await this._lls.close();
+        //     delete this._lls;
         // }
         // return;
     }
@@ -56,6 +57,9 @@ class FileFirmwareModel {
                 let progress = Math.round(val.current * 100 / val.total);
                 console.log(progress + '%');
                 progressCB(progress);
+            }
+            if(firmwarePath == ''){
+                throw "firmwarePath is not valid !";
             }
             let file = window.fs.readFileSync(firmwarePath);
             const ymodem = new MyYModem();

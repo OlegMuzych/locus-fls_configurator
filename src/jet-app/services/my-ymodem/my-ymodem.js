@@ -12,7 +12,7 @@ export default class MyYModem {
 
     async yTransmit(file, portSettings, progressCb = console.log, consoleOutput = console.log) {
         this.seq = 0;
-        this.port.new({path: "/dev/tty.usbserial-0001", baudRate: 19200});
+        this.port.new(portSettings);
         this.file = file;
         this.consoleOutput = consoleOutput;
         this.progressCb = progressCb;

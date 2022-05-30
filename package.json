@@ -1,10 +1,10 @@
 {
-  "name": "Ivanov-Engineering Configurator",
-  "productName": "Ivanov-Engineering Configurator",
-  "version": "1.0.7 beta",
-  "description": "Ivanov-Engineering Configurator",
+  "name": "Point-Monitoring Configurator",
+  "productName": "Point-Monitoring Configurator",
+  "version": "1.0.8 beta",
+  "description": "Configurator for lls",
   "main": ".webpack/main",
-  "trademark": "i-e",
+  "trademark": "p-m",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -23,7 +23,7 @@
     "forge": {
       "electronRebuildConfig": {},
       "packagerConfig": {
-        "icon": "./src/trademark/ie-logo.png"
+        "icon":"./src/point-monitoring.png"
       },
       "makers": [
         {
@@ -95,7 +95,6 @@
     "easy-crc": "^1.0.0",
     "electron-squirrel-startup": "^1.0.0",
     "papaparse": "^5.3.2",
-    "particle-ymodem": "^1.0.0",
     "webix-jet": "^2.1.3",
     "wipeclean": "^1.0.4"
   }

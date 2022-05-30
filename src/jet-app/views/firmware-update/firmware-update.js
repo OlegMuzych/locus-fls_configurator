@@ -263,6 +263,8 @@ export default class FirmwareUpdate extends JetView {
 
     init() {
 
+        const _ = this.app.getService("locale")._;
+
         this.setTheme();
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerIsDisconnect(this.listenerDisconnect);

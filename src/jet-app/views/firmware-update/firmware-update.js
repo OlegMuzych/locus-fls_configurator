@@ -236,6 +236,9 @@ export default class FirmwareUpdate extends JetView {
 
     init() {
 
+        this.$$("manualBoot").enable();
+        this.$$("buttonSetBootMode").disable();
+
         const _ = this.app.getService("locale")._;
 
         this.setTheme();
@@ -246,12 +249,14 @@ export default class FirmwareUpdate extends JetView {
         this.setModeBootLed(false);
         this.$$("buttonFirmwareWrite").disable();
 
-        this.$$("manualBoot").enable();
-        this.$$("buttonSetBootMode").disable();
+        this.getRoot().attachEvent("onViewShow", function(){
+            webix.message("Shhowwww");
+        });
 
         pathOptions().then((list) => {
             this.$$("comport").define({options: list});
         });
+
         this.$$("comport").attachEvent("onItemClick", () => {
             pathOptions().then((list) => {
                 this.$$("comport").define({options: list});
@@ -263,6 +268,7 @@ export default class FirmwareUpdate extends JetView {
             this.$$("manualBoot").disable();
             llsModel.setStatusLlsStopPromise()
                 .then((resp) => {
+                    this.$$("manualBoot").disable();
                     let path = this.$$("comport").getValue();
                     this.portSettings = {path, baudRate: 19200};
                     return fileFirmwareModel.llsConnect({path, baudRate: 19200});
@@ -348,7 +354,8 @@ export default class FirmwareUpdate extends JetView {
                 webix.message("Failed: " + e);
                 message.showWindow(_("fail_write_file"));
                 this.$$("buttonSetBootMode").enable();
-                return 0;
+                // return 0;
+                return fileFirmwareModel.llsClose();
             }
             // const serialPortSettings = llsModel.getLlsConnectSettings();
             // const serialPortSettings = {path: "/dev/tty.usbserial-0001", baudRate: 19200};

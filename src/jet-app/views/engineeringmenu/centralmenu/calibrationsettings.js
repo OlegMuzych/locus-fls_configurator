@@ -5,16 +5,16 @@ import fileTableModel from "../../../models/file-table-model";
 
 export default class CalibrationSettings extends JetView {
     config() {
-        let table = {
+        const _ = this.app.getService("locale")._;
 
+        let table = {
             view:"scrollview",
             scroll: "y",
-            minWidth: 600,
-            maxWidth: 850,
             css:"calib_rows",
             id:"calib_rows",
+            minWidth: 900,
+            maxWidth: 1300,
             body: {
-
                 cols: [
                     {
                         maxWidth: 10,
@@ -23,21 +23,21 @@ export default class CalibrationSettings extends JetView {
 
                         gravity: 2,
                         rows: [
-                            {view: 'label', label: "<p>Шагов</p>", css: "rowNumber_style_1", align: 'center', id:"top_text_1", height: 70,},
+                            {view: 'label', label: `<p>${_("column_steps_header")}</p>`, css: "rowNumber_style_1", align: 'center', id:"top_text_1", height: 70,},
                             {localId: 'rowNumber', css: "rowNumber_style_1", rows: []}
                         ]
                     },
                     {
                         gravity: 3,
                         rows: [
-                            {view: 'label', label: "<p>Уровень</p>", align: 'center', css: "rowNumber_style_1", id:"top_text_2", height: 70,},
+                            {view: 'label', label: `<p>${_("column_level_header")}</p>`, align: 'center', css: "rowNumber_style_1", id:"top_text_2", height: 70,},
                             {localId: 'rowLevel', css: "rowNumber_style", rows: []}
                         ]
                     },
                     {
                         gravity: 3,
                         rows: [
-                            {view: 'label', label: "<p>Объем</p>", align: 'center', css: "rowNumber_style_1", id:"top_text_3", height: 70,},
+                            {view: 'label', label: `<p>${_("column_volume_header")}</p>`, align: 'center', css: "rowNumber_style_1", id:"top_text_3", height: 70,},
                             {localId: 'rowVolume', css: "rowNumber_style",  rows: []}
                         ]
                     },
@@ -47,8 +47,6 @@ export default class CalibrationSettings extends JetView {
         }
 
         let body = {
-            // minWidth: 600,
-            // maxWidth: 850,
             // id: "central_menu_button_2",
             rows: [
                 // {cols:[
@@ -75,7 +73,6 @@ export default class CalibrationSettings extends JetView {
                 // },
                 table
             ],
-
         };
 
         return body;
@@ -112,7 +109,7 @@ export default class CalibrationSettings extends JetView {
 
 
 
-        if(configFile.theme.color == 'white'){
+        if(configFile.theme == 'light'){
             webix.html.addCss(this.$$("rowNumber").getNode(), "rowNumber_style_1");
             webix.html.addCss(this.$$("top_text_1").getNode(), "rowNumber_style_1");
             webix.html.addCss(this.$$("top_text_2").getNode(), "rowNumber_style_1");
@@ -122,7 +119,7 @@ export default class CalibrationSettings extends JetView {
             webix.html.addCss(this.$$("rowVolume").getNode(), "rowNumber_style");
 
         }
-        if(configFile.theme.color == 'black'){
+        if(configFile.theme == 'dark'){
             webix.html.addCss(this.$$("rowNumber").getNode(), "rowNumber_style_1_dark");
             webix.html.addCss(this.$$("top_text_1").getNode(), "rowNumber_style_1_dark");
             webix.html.addCss(this.$$("top_text_2").getNode(), "rowNumber_style_1_dark");
@@ -222,7 +219,8 @@ export default class CalibrationSettings extends JetView {
             this.app.callEvent("app:calibrationSettings:continueCalibrate", [volume, volumeStep]);
         });
 
-        this.on(this.app, "app:calibrationsubview:saveToFile", () => { //save to file
+        this.on(this.app, "app:calibrationsubview:saveToFile", async() => { //save to file
+            await llsModel.getTable();
             fileTableModel.write(this.currentTable).then();
         });
 

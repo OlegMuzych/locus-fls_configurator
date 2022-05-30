@@ -81,7 +81,7 @@ class FileTableModel {
 
     async #saveDialog() {
         const dialogConfig = {
-            title: 'Выберите папку для сохранения файла с таблцей',
+            title: 'Выберите папку для сохранения файла с таблицей',
             buttonLabel: 'Сохранить',
         };
         let {filePath} = await window.electron.openDialog('showSaveDialog', dialogConfig);

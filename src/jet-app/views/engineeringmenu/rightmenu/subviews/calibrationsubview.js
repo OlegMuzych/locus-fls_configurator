@@ -7,6 +7,8 @@ import llsModel from "../../../../models/lls-model";
 
 export default class CalibrationSubView extends JetView {
     config() {
+        const _ = this.app.getService("locale")._;
+
         let currentLevel = {
             rows: [
                 {
@@ -21,7 +23,7 @@ export default class CalibrationSubView extends JetView {
                             view: "text",
                             width: 470,
                             height: 70,
-                            css: "full_level_windows",
+                            css: "full_window_text",
                             readonly: true,
                             localId: "status_level_fuel",
                             inputAlign: "center",
@@ -34,7 +36,7 @@ export default class CalibrationSubView extends JetView {
                         {},
                         {
                             view: "label",
-                            label: "<p style='position: relative; top: -20px; '>Текущий уровень</p>",
+                            label: `<p style='position: relative; top: -20px; '>${_("current_level")}</p>`,
                             // width: 460,
                             // height: 100,
                             css: "right_menu_fuel_level",
@@ -79,8 +81,8 @@ export default class CalibrationSubView extends JetView {
             height: 70,
             multiview: true,
             options: [
-                {value: "Слив", id: "fuelDrain"},
-                {value: "Залив", id: "fuelFill"},
+                {value: _("tabbar_drain"), id: "fuelDrain"},
+                {value: _("tabbar_fill"), id: "fuelFill"},
             ]
         };
 
@@ -101,6 +103,7 @@ export default class CalibrationSubView extends JetView {
 
         let button_table = {
             css: "rows_right_menu_calibration_2",
+            id:"rows_export_import",
             rows: [
                 {
                     height: 10,
@@ -111,7 +114,7 @@ export default class CalibrationSubView extends JetView {
                         {
                             view: "button",
                             type: "label",
-                            label: "Экспортировать таблицу тарировки",
+                            label: _("button_save_table_file"),
                             localId: "button_export",
                             width: 480,
                             height: 50,
@@ -129,7 +132,7 @@ export default class CalibrationSubView extends JetView {
                         {
                             view: "button",
                             type: "label",
-                            label: "Импортировать таблицу тарировки",
+                            label: _("button_read_table_file"),
                             localId: "button_import",
                             width: 480,
                             height: 50,
@@ -205,11 +208,17 @@ export default class CalibrationSubView extends JetView {
             this.app.callEvent("app:calibrationsubview:saveToFile", []);
         });
 
-        if (configFile.theme.color == 'white') {
+        if (configFile.theme == 'light') {
             webix.html.addCss(this.$$("tabbar").getNode(), "button_type_calibration_1");
+            webix.html.addCss(this.$$("rows_export_import").getNode(), "rows_right_menu_calibration_2");
+            webix.html.addCss(this.$$("status_level_fuel").getNode(), "full_window_text");
+            webix.html.addCss(this.$$("progress_bar3").getNode(), "edit_values");
         }
-        if (configFile.theme.color == 'black') {
+        if (configFile.theme == 'dark') {
             webix.html.addCss(this.$$("tabbar").getNode(), "button_type_calibration_1_dark");
+            webix.html.addCss(this.$$("rows_export_import").getNode(), "rows_right_menu_calibration_2_dark");
+            webix.html.addCss(this.$$("status_level_fuel").getNode(), "full_window_text_dark");
+            webix.html.addCss(this.$$("progress_bar3").getNode(), "edit_values_dark");
         }
     }
 

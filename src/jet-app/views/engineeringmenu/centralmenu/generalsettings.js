@@ -5,68 +5,59 @@ import globalVariable from "../../../global-variable-app";
 
 export default class GeneralSettings extends JetView {
     config() {
-
+        const _ = this.app.getService("locale")._;
         let llsAdr = {
             localId: "llsAdr",
             rows: [
                 {
                     css: "window_type_2",
+                    id: "rows_number_2",
                     cols: [
                         {
                             view: "text",
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Сетевой адрес</p>',
+                            label: `<p>${_('address_lls')}</p>`,
                             labelWidth: 400,
-                            css: "window_type_2",
+                            // css: "window_type_2_dark",
                             readonly: false,
                             minWidth: 60,
                             type: 'number',
                             title: '1-254',
                             localId: "textLlsAdr",
+                            id:"textLlsAdr1"
                             // maxWidth: 600,
                         },
-                        // {
-                        //   width: 100,
-                        // },
                         {
                             align: "right",
                             rows: [
-                                {
-
-                                },
+                                {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
-                                    label: 'Применить',
+                                    css: "auto_calibration",
+                                    label: _('apply'),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonLlsAdr',
                                     hidden: false,
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:"status_define_button_yellow",
-                                    localId:"statusLlsAdr",
-                                    css:"status_define_button" //- скрытая кнопка
+                                    localId: "statusLlsAdr",
+                                    css: "status_define_button" //- скрытая кнопка
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -80,13 +71,14 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id: "rows_number_4",
                     cols: [
                         {
                             view: "text",
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Минимальный уровень</p>',
+                            label: `<p>${_("min_level")}</p>`,
                             labelWidth: 400,
                             css: "window_type_2",
                             readonly: false,
@@ -101,8 +93,8 @@ export default class GeneralSettings extends JetView {
                                 {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
-                                    label: 'Применить',
+                                    css: "auto_calibration",
+                                    label: _('apply'),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonMinLevel',
@@ -112,21 +104,17 @@ export default class GeneralSettings extends JetView {
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
-                                    localId:"statusMinLevel",
-                                    css:" status_define_button" //- скрытая кнопка
+                                    localId: "statusMinLevel",
+                                    css: " status_define_button" //- скрытая кнопка
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -140,13 +128,14 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id: "rows_number_5",
                     cols: [
                         {
                             view: "text",
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Максимальный уровень</p>',
+                            label: `<p>${_("max_level")}</p>`,
                             labelWidth: 400,
                             css: "window_type_2",
                             readonly: false,
@@ -162,8 +151,8 @@ export default class GeneralSettings extends JetView {
                                 {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
-                                    label: 'Применить',
+                                    css: "auto_calibration",
+                                    label: _('apply'),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonMaxLevel',
@@ -173,21 +162,17 @@ export default class GeneralSettings extends JetView {
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
                                     localId: 'statusMaxLevel',
-                                    css:" status_define_button"  // - скрытая кнопка
+                                    css: " status_define_button"  // - скрытая кнопка
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -204,7 +189,7 @@ export default class GeneralSettings extends JetView {
             cols: [
                 {
                     view: "label",
-                    label: '<p>Период выдачи данных, сек.</p>',
+                    label: `<p>${_("period_of_data_issuance")}</p>`,
                     width: 350,
                     height: 100,
                 },
@@ -234,13 +219,14 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id:"rows_number_8",
                     cols: [
                         {
                             view: "text",
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Тип топлива</p>',
+                            label: `<p>${_("fuel_type")}</p>`,
                             labelWidth: 400,
                             css: "window_type_2",
                             readonly: true,
@@ -254,8 +240,8 @@ export default class GeneralSettings extends JetView {
                                 {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
-                                    label: 'Выбрать',
+                                    css: "auto_calibration",
+                                    label: _('choose'),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonFuelType',
@@ -265,21 +251,17 @@ export default class GeneralSettings extends JetView {
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
-                                    css:" status_define_button", //- скрытая кнопка
-                                    localId:"statusFuelType"
+                                    css: " status_define_button", //- скрытая кнопка
+                                    localId: "statusFuelType"
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -293,13 +275,14 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id:"rows_rows_9",
                     cols: [
                         {
                             view: "text",
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Коэффициент К1</p>',
+                            label: `<p>${_("coefficient_k1")}</p>`,
                             labelWidth: 400,
                             css: "window_type_2",
                             readonly: false,
@@ -313,8 +296,8 @@ export default class GeneralSettings extends JetView {
                                 {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
-                                    label: 'Применить',
+                                    css: "auto_calibration",
+                                    label: _("apply"),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonCoefficientK1',
@@ -324,22 +307,18 @@ export default class GeneralSettings extends JetView {
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
-                                    css:" status_define_button", //- скрытая кнопка
-                                    localId:"statusCoefficientK1",
+                                    css: " status_define_button", //- скрытая кнопка
+                                    localId: "statusCoefficientK1",
 
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -353,13 +332,14 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id:"rows_number_10",
                     cols: [
                         {
                             view: "text",
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Коэффициент К2</p>',
+                            label: `<p>${_("coefficient_k2")}</p>`,
                             labelWidth: 400,
                             css: "window_type_2",
                             readonly: false,
@@ -373,8 +353,8 @@ export default class GeneralSettings extends JetView {
                                 {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
-                                    label: 'Применить',
+                                    css: "auto_calibration",
+                                    label: _("apply"),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonCoefficientK2',
@@ -384,21 +364,17 @@ export default class GeneralSettings extends JetView {
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
-                                    css:" status_define_button", //- скрытая кнопка
-                                    localId:"statusCoefficientK2",
+                                    css: " status_define_button", //- скрытая кнопка
+                                    localId: "statusCoefficientK2",
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -411,13 +387,14 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id:"rows_number_3",
                     cols: [
                         {
                             view: "text",
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Скорость подключения</p>',
+                            label: `<p>${_("baud_rate")}</p>`,
                             labelWidth: 400,
                             css: "window_type_2",
                             readonly: true,
@@ -431,8 +408,8 @@ export default class GeneralSettings extends JetView {
                                 {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
-                                    label: 'Выбрать',
+                                    css: "auto_calibration",
+                                    label: _('choose'),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonBaudRate',
@@ -442,21 +419,17 @@ export default class GeneralSettings extends JetView {
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
-                                    css:" status_define_button", //- скрытая кнопка
-                                    localId:"statusBaudRate",
+                                    css: "status_define_button", //- скрытая кнопка
+                                    localId: "statusBaudRate",
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -469,14 +442,14 @@ export default class GeneralSettings extends JetView {
             rows: [
                 {
                     css: "window_type_2",
+                    id:"rows_number_7",
                     cols: [
                         {
                             view: "text",
                             height: 100,
                             inputAlign: "center",
                             inputHeight: 100,
-                            label: '<p>Автоматическая выдача данных</p>',
-                            labelWidth: 400,
+                            label: `<p>${_("automatic_data_output")}</p>`, labelWidth: 400,
                             css: "window_type_2",
                             readonly: true,
                             minWidth: 60,
@@ -489,8 +462,8 @@ export default class GeneralSettings extends JetView {
                                 {},
                                 {
                                     view: "button",
-                                    css: "button_filter_set",
-                                    label: 'Выбрать',
+                                    css: "auto_calibration",
+                                    label: _('choose'),
                                     height: 60,
                                     width: 150,
                                     localId: 'buttonAutoGetData',
@@ -500,22 +473,18 @@ export default class GeneralSettings extends JetView {
                         },
                         {
                             paddingX: -1,
-                            rows:[
-                                {
-
-                                },
+                            rows: [
+                                {},
                                 {
                                     view: "button",
                                     height: 60,
                                     width: 10,
                                     // css:" status_define_button_yellow",
-                                    css:" status_define_button", //- скрытая кнопка
-                                    localId:"statusAutoGetData",
+                                    css: " status_define_button", //- скрытая кнопка
+                                    localId: "statusAutoGetData",
 
                                 },
-                                {
-
-                                }
+                                {}
                             ]
                         },
                         {width: 10},
@@ -525,16 +494,13 @@ export default class GeneralSettings extends JetView {
         }
 
         let general_config = {
-            minWidth: 600,
-            maxWidth: 850,
             view: "scrollview",
             scroll: "y",
-            maxHeight: 2000,
+            minWidth: 900,
+            maxWidth: 1300,
             body: {
                 id: "central_menu_button_1",
                 css: "style_general_rows",
-                minWidth: 600,
-                maxWidth: 850,
                 maxHeight: 1000,
                 rows: [
                     {
@@ -546,7 +512,7 @@ export default class GeneralSettings extends JetView {
                                 view: "text",
                                 width: 850,
                                 height: 100,
-                                label: '<p>Серийный номер</p>',
+                                label: `<p>${_("serial_number")}</p>`,
                                 labelWidth: 400,
                                 css: "window_type_1",
                                 inputAlign: "center",
@@ -556,7 +522,7 @@ export default class GeneralSettings extends JetView {
                         ]
                     },
 
-                    {height: 10,},
+                    {height: 20,},
                     llsAdr,
                     {height: 20},
                     baudRateSwitch,
@@ -566,18 +532,32 @@ export default class GeneralSettings extends JetView {
                     {height: 20},
 
                     {
-                        view: "radio",
-                        label: '<p>Выходное сообщение</p>',
+                        height: 100,
                         css: "window_type_2",
-                        id: "window_type_2_7",
-                        width: 850,
-                        height: 60,
-                        labelWidth: 400,
-                        value: 0,
-                        localId: 'outputParametersOfSensor',
-                        options: [
-                            {id: 0, value: "Уровень"}, // изначально выбранный элемент
-                            {id: 1, value: "Объем"}
+                        id:"rows_number_6",
+                        rows:[
+                            {
+
+                            },
+
+                            {
+                                view: "radio",
+                                label: `<p>${_("output_message_type")}</p>`,
+                                css: "window_type_2",
+                                id: "window_type_2_7",
+                                width: 850,
+                                // height: 80,
+                                labelWidth: 400,
+                                value: 0,
+                                localId: 'outputParametersOfSensor',
+                                options: [
+                                    {id: 0, value: _("output_message_type_is_level")}, // изначально выбранный элемент
+                                    {id: 1, value: _("output_message_type_is_volume")}
+                                ]
+                            },
+                            {
+
+                            }
                         ]
                     },
                     {height: 20},
@@ -593,14 +573,16 @@ export default class GeneralSettings extends JetView {
                                 cols: [
                                     {
                                         view: "label",
-                                        label: "<p>Температурная компенсация</p>",
+                                        label: `<p>${_("temperature_compensation")}</p>`,
                                         width: 400,
                                         height: 100,
+                                        css: "window_type_2",
+                                        id: "window_type_4_4",
                                     },
                                     {
                                         width: 50,
                                     },
-                                    {view: "switch", value: 0, id: "switch_temp_compensation", width: 68,},
+                                    {view: "switch", value: 0, id: "switch_temp_compensation", width: 68, css:"toggle_style" },
                                     {}
                                 ]
                             },
@@ -662,6 +644,7 @@ export default class GeneralSettings extends JetView {
     }
 
     init() {
+        const _ = this.app.getService("locale")._;
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerLongData(this.listenerLongData);
 
@@ -672,9 +655,7 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 if (newValue >= 1 && newValue <= 254) {
                     llsModel.newLongData.llsAdr = newValue;
-                    if(globalVariable.autoSaveMode){
-                        llsModel.setLongData({llsAdr: llsModel.newLongData.llsAdr});
-                    }
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({llsAdr: llsModel.newLongData.llsAdr}) : '');
                     this.setTextValue("textLlsAdr", 'llsAdr', "statusLlsAdr");
                 } else {
                     this.$$('textLlsAdr').setValue(oldValue);
@@ -721,12 +702,8 @@ export default class GeneralSettings extends JetView {
             console.log(obj);
             llsModel.newLongData.baudRate232 = obj.value;
             llsModel.newLongData.baudRate485 = obj.value;
-            if(globalVariable.autoSaveMode){
-                llsModel.setLongData({baudRate232: obj.value, baudRate485: obj.value});
-                this.setBaudRateValue();
-            }else{
-                this.setBaudRateValue();
-            }
+            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({baudRate232: obj.value, baudRate485: obj.value}) : '');
+            this.setBaudRateValue();
             // llsModel.setLongData({baudRate232: obj.value, baudRate485: obj.value});
         });
 
@@ -741,9 +718,9 @@ export default class GeneralSettings extends JetView {
             body: {
                 view: "list",
                 data: [
-                    {id: "0", location: "Выключена", name: "1", value: 0},
-                    {id: "1", location: "Бинарная", name: "2", value: 1},
-                    {id: "2", location: "Символьная", name: "3", value: 2},
+                    {id: "0", location: _("automatic_data_output_turned_off"), name: "1", value: 0},
+                    {id: "1", location: _("automatic_data_output_binary"), name: "2", value: 1},
+                    {id: "2", location: _("automatic_data_output_symbolic"), name: "3", value: 2},
                 ],
                 template: "#name# - #location#",
                 autoheight: true,
@@ -761,12 +738,9 @@ export default class GeneralSettings extends JetView {
             let obj = $$("listAutoGetData").getItem(id);
             console.log(obj);
             llsModel.newLongData.autoGetData = obj.value;
-            if(globalVariable.autoSaveMode){
-                llsModel.setLongData({autoGetData: obj.value});
-                this.setAutoGetDataValue();
-            }else{
-                this.setAutoGetDataValue();
-            }
+
+            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({autoGetData: obj.value}) : '');
+            this.setAutoGetDataValue();
         });
 
         // minLevel
@@ -776,9 +750,7 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 if (newValue >= 0 && newValue <= 1024) {
                     llsModel.newLongData.minLevel = newValue;
-                    if(globalVariable.autoSaveMode){
-                        llsModel.setLongData({minLevel: llsModel.newLongData.minLevel});
-                    }
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({minLevel: llsModel.newLongData.minLevel}) : '');
                     this.setTextValue("textMinLevel", 'minLevel', "statusMinLevel");
                 } else {
                     this.$$('textMinLevel').setValue(oldValue);
@@ -798,9 +770,7 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 if (newValue >= 1024 && newValue <= 4095) {
                     llsModel.newLongData.maxLevel = newValue;
-                    if(globalVariable.autoSaveMode){
-                        llsModel.setLongData({maxLevel: llsModel.newLongData.maxLevel});
-                    }
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({maxLevel: llsModel.newLongData.maxLevel}) : '');
                     this.setTextValue("textMaxLevel", 'maxLevel', "statusMaxLevel");
                 } else {
                     this.$$('textMaxLevel').setValue(oldValue);
@@ -857,14 +827,14 @@ export default class GeneralSettings extends JetView {
             body: {
                 view: "list",
                 data: [
-                    {id: "0", location: "Выключена", name: "1", value: 0},
-                    {id: "1", location: "АИ-95", name: "2", value: 1},
-                    {id: "2", location: "АИ-92", name: "3", value: 2},
-                    {id: "3", location: "АИ-80 (Лето)", name: "4", value: 3},
-                    {id: "4", location: "АИ-80 (Зима)", name: "5", value: 4},
-                    {id: "5", location: "ДТ (Лето)", name: "6", value: 5},
-                    {id: "6", location: "ДТ (Зима)", name: "7", value: 6},
-                    {id: "7", location: "Свои параметры", name: "8", value: 7},
+                    {id: "0", location: _("fuel_type_turned_off"), name: "1", value: 0},
+                    {id: "1", location: _("fuel_type_1"), name: "2", value: 1},
+                    {id: "2", location: _("fuel_type_2"), name: "3", value: 2},
+                    {id: "3", location: _("fuel_type_3"), name: "4", value: 3},
+                    {id: "4", location: _("fuel_type_4"), name: "5", value: 4},
+                    {id: "5", location: _("fuel_type_5"), name: "6", value: 5},
+                    {id: "6", location: _("fuel_type_6"), name: "7", value: 6},
+                    {id: "7", location: _("fuel_type_7"), name: "8", value: 7},
                 ],
                 template: "#name# - #location#",
                 autoheight: true,
@@ -882,12 +852,8 @@ export default class GeneralSettings extends JetView {
             let obj = $$("listFuelType").getItem(id);
             console.log(obj);
             llsModel.newLongData.thermalCompensationType = obj.value;
-            if(globalVariable.autoSaveMode){
-                llsModel.setLongData({thermalCompensationType: obj.value});
-                this.setThermalCompensationValue();
-            }else{
-                this.setThermalCompensationValue();
-            }
+            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({thermalCompensationType: obj.value}) : '');
+            this.setThermalCompensationValue();
         });
 
         // coefficientK1
@@ -898,9 +864,7 @@ export default class GeneralSettings extends JetView {
                 newValue = Number(newValue).toFixed(6);
                 if (newValue >= 0 && newValue < 1000) {
                     llsModel.newLongData.coefficientK1 = newValue;
-                    if(globalVariable.autoSaveMode){
-                        llsModel.setLongData({coefficientK1: llsModel.newLongData.coefficientK1});
-                    }
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({coefficientK1: llsModel.newLongData.coefficientK1}) : '');
                     this.setFloatValue("textCoefficientK1", 'coefficientK1', "statusCoefficientK1");
                 } else {
                     this.$$('textCoefficientK1').setValue(oldValue);
@@ -920,9 +884,7 @@ export default class GeneralSettings extends JetView {
                 newValue = Number(newValue).toFixed(6);
                 if (newValue >= 0 && newValue < 1000) {
                     llsModel.newLongData.coefficientK2 = newValue;
-                    if(globalVariable.autoSaveMode){
-                        llsModel.setLongData({coefficientK2: llsModel.newLongData.coefficientK2});
-                    }
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({coefficientK2: llsModel.newLongData.coefficientK2}) : '');
                     this.setFloatValue("textCoefficientK2", 'coefficientK2', "statusCoefficientK2");
                 } else {
                     this.$$('textCoefficientK2').setValue(oldValue);
@@ -935,30 +897,74 @@ export default class GeneralSettings extends JetView {
         });
 
 
-        if (configFile.theme.color == 'white') {
+        if (configFile.theme == 'light') {
+            webix.html.addCss($$("rows_number_2").getNode(), "window_type_2");
+            webix.html.addCss($$("central_menu_button_1").getNode(), "style_general_rows");
             webix.html.addCss($$("window_type_1").getNode(), "window_type_1");
-            webix.html.addCss($$("window_type_2_1").getNode(), "window_type_2");
-            webix.html.addCss($$("window_type_2_2").getNode(), "window_type_2");
-            webix.html.addCss($$("window_type_2_3").getNode(), "window_type_2");
-            webix.html.addCss($$("window_type_2_4").getNode(), "window_type_2");
-            webix.html.addCss($$("window_type_2_5").getNode(), "window_type_2");
-            webix.html.addCss($$("window_type_2_6").getNode(), "window_type_2");
-            webix.html.addCss($$("window_type_2_7").getNode(), "window_type_3");
-            webix.html.addCss($$("window_type_2_8").getNode(), "window_type_3");
-            webix.html.addCss($$("window_type_2_9").getNode(), "window_type_3");
+            webix.html.addCss($$("rows_number_4").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("textMinLevel").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("textMaxLevel").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("rows_number_5").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("counterPeriod").getNode(), "window_type_3");
+            webix.html.addCss(this.$$("counterCounterPeriod").getNode(), "window_type_3");
+            webix.html.addCss(this.$$("textBaudRate").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("rows_number_3").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("textAutoGetData").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("rows_number_7").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("window_type_2_7").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("rows_number_6").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("window_type_2_6").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("window_type_4_4").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("rows_number_10").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("textCoefficientK2").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("rows_rows_9").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("textCoefficientK1").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("rows_number_8").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("textFuelType").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("buttonAutoGetData").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("buttonBaudRate").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("buttonLlsAdr").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("buttonMinLevel").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("buttonMaxLevel").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("buttonCoefficientK2").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("buttonCoefficientK1").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("buttonFuelType").getNode(), "auto_calibration");
+            webix.html.addCss(this.$$("window_type_2_7").getNode(), "window_type_2");
         }
 
-        if (configFile.theme.color == 'black') {
+        if (configFile.theme == 'dark') {
+            webix.html.addCss($$("rows_number_2").getNode(), "window_type_2_dark");
+            webix.html.addCss($$("central_menu_button_1").getNode(), "style_general_rows_dark");
             webix.html.addCss($$("window_type_1").getNode(), "window_type_1_dark");
-            webix.html.addCss($$("window_type_2_1").getNode(), "window_type_2_dark");
-            webix.html.addCss($$("window_type_2_2").getNode(), "window_type_2_dark");
-            webix.html.addCss($$("window_type_2_3").getNode(), "window_type_2_dark");
-            webix.html.addCss($$("window_type_2_4").getNode(), "window_type_2_dark");
-            webix.html.addCss($$("window_type_2_5").getNode(), "window_type_2_dark");
-            webix.html.addCss($$("window_type_2_6").getNode(), "window_type_2_dark");
-            webix.html.addCss($$("window_type_2_7").getNode(), "window_type_3_dark");
-            webix.html.addCss($$("window_type_2_8").getNode(), "window_type_3_dark");
-            webix.html.addCss($$("window_type_2_9").getNode(), "window_type_3_dark");
+            webix.html.addCss($$("rows_number_4").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("textMinLevel").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("textMaxLevel").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("rows_number_5").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("counterPeriod").getNode(), "window_type_3_dark");
+            webix.html.addCss(this.$$("counterCounterPeriod").getNode(), "window_type_3_dark");
+            webix.html.addCss(this.$$("textBaudRate").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("rows_number_3").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("textAutoGetData").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("rows_number_7").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("window_type_2_7").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("rows_number_6").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("window_type_2_6").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("window_type_4_4").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("rows_number_10").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("textCoefficientK2").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("rows_rows_9").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("textCoefficientK1").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("rows_number_8").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("textFuelType").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("buttonAutoGetData").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("buttonBaudRate").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("buttonLlsAdr").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("buttonMinLevel").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("buttonMaxLevel").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("buttonCoefficientK2").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("buttonCoefficientK1").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("buttonFuelType").getNode(), "auto_calibration_dark");
+            webix.html.addCss(this.$$("window_type_2_7").getNode(), "window_type_2_dark");
         }
     }
 
@@ -1004,19 +1010,21 @@ export default class GeneralSettings extends JetView {
     }
 
     setAutoGetData(number) {
+        const _ = this.app.getService("locale")._;
+
         switch (number) {
             case 0: {
-                this.$$("textAutoGetData").setValue("Выключена");
+                this.$$("textAutoGetData").setValue(_("automatic_data_output_turned_off"));
                 this.$$("counterPeriod").hide();
                 break;
             }
             case 1: {
-                this.$$("textAutoGetData").setValue("Бинарная");
+                this.$$("textAutoGetData").setValue(_("automatic_data_output_binary"));
                 this.$$("counterPeriod").show();
                 break;
             }
             case 2: {
-                this.$$("textAutoGetData").setValue("Сивольная");
+                this.$$("textAutoGetData").setValue(_("automatic_data_output_symbolic"));
                 this.$$("counterPeriod").show();
                 break;
             }
@@ -1029,6 +1037,8 @@ export default class GeneralSettings extends JetView {
     }
 
     setThermalCompensation(value) {
+        const _ = this.app.getService("locale")._;
+
         switch (value) {
             case 0x00: {
                 $$('switch_temp_compensation').setValue(false);
@@ -1058,105 +1068,108 @@ export default class GeneralSettings extends JetView {
     }
 
     setTypeFuel(number) {
+        const _ = this.app.getService("locale")._;
+
         switch (number) {
             case 0: {
-                this.$$("textFuelType").setValue("Выключена");
+                this.$$("textFuelType").setValue(_("fuel_type_turned_off"));
                 break;
             }
             case 1: {
-                this.$$("textFuelType").setValue("АИ-95");
+                this.$$("textFuelType").setValue(_("fuel_type_1"));
                 break;
             }
             case 2: {
-                this.$$("textFuelType").setValue("АИ-92");
+                this.$$("textFuelType").setValue(_("fuel_type_2"));
                 break;
             }
             case 3: {
-                this.$$("textFuelType").setValue("АИ-80 (Лето)");
+                this.$$("textFuelType").setValue(_("fuel_type_3"));
                 break;
             }
             case 4: {
-                this.$$("textFuelType").setValue("АИ-80 (Зима)");
+                this.$$("textFuelType").setValue(_("fuel_type_4"));
                 break;
             }
             case 5: {
-                this.$$("textFuelType").setValue("ДТ (Лето)");
+                this.$$("textFuelType").setValue(_("fuel_type_5"));
                 break;
             }
             case 6: {
-                this.$$("textFuelType").setValue("ДТ (Зима)");
+                this.$$("textFuelType").setValue(_("fuel_type_6"));
                 break;
             }
             case 7: {
-                this.$$("textFuelType").setValue("Свои параметры");
+                this.$$("textFuelType").setValue(_("fuel_type_7"));
                 break;
             }
             default: {
-                this.$$("textFuelType").setValue("undefined");
+                this.$$("textFuelType").setValue(_("fuel_type_turned_off"));
                 break;
             }
         }
     }
 
-    setStatusNewValue(id, status){
+    setStatusNewValue(id, status) {
         webix.html.removeCss(this.$$(id).getNode(), "status_define_button_yellow");
         webix.html.removeCss(this.$$(id).getNode(), "status_define_button");
-        if(status){
+        if (status) {
             webix.html.addCss(this.$$(id).getNode(), "status_define_button_yellow");
-        }else{
+        } else {
             webix.html.addCss(this.$$(id).getNode(), "status_define_button");
         }
     }
 
     /* setters Values */
-    setTextValue(id, name, statusId){
-        if(llsModel.currentLongData[name] == llsModel.newLongData[name]){
+    setTextValue(id, name, statusId) {
+        if (llsModel.currentLongData[name] == llsModel.newLongData[name]) {
             this.$$(id).setValue(llsModel.currentLongData[name]);
             this.setStatusNewValue(statusId, false);
-        }else{
+        } else {
             this.$$(id).setValue(llsModel.newLongData[name]);
             this.setStatusNewValue(statusId, true);
         }
     }
-    setThermalCompensationValue(){
-        if(llsModel.currentLongData.thermalCompensationType == llsModel.newLongData.thermalCompensationType){
+
+    setThermalCompensationValue() {
+        if (llsModel.currentLongData.thermalCompensationType == llsModel.newLongData.thermalCompensationType) {
             this.setTypeFuel(llsModel.currentLongData.thermalCompensationType);
             this.setThermalCompensation(llsModel.currentLongData.thermalCompensationType);
             this.setStatusNewValue("statusFuelType", false);
-        }else{
+        } else {
             this.setTypeFuel(llsModel.newLongData.thermalCompensationType);
             this.setThermalCompensation(llsModel.newLongData.thermalCompensationType);
             this.setStatusNewValue("statusFuelType", true);
         }
     }
 
-    setAutoGetDataValue(){
-        if(llsModel.currentLongData.autoGetData == llsModel.newLongData.autoGetData){
+    setAutoGetDataValue() {
+        if (llsModel.currentLongData.autoGetData == llsModel.newLongData.autoGetData) {
             this.setAutoGetData(llsModel.currentLongData.autoGetData);
             this.setStatusNewValue("statusAutoGetData", false);
-        }else{
+        } else {
             this.setAutoGetData(llsModel.newLongData.autoGetData);
             this.setStatusNewValue("statusAutoGetData", true);
         }
     }
 
-    setBaudRateValue(){
-        if(llsModel.currentLongData.baudRate232 == llsModel.newLongData.baudRate232){
+    setBaudRateValue() {
+        if (llsModel.currentLongData.baudRate232 == llsModel.newLongData.baudRate232) {
             this.setBaudRate(llsModel.currentLongData.baudRate232);
             this.setStatusNewValue("statusBaudRate", false);
-        }else{
+        } else {
             this.setBaudRate(llsModel.newLongData.baudRate232);
             this.setStatusNewValue("statusBaudRate", true);
         }
     }
 
-    setFloatValue(id, name, statusId){
+    setFloatValue(id, name, statusId) {
         let oldFloat = Number(llsModel.currentLongData[name]).toFixed(4);
         let newFloat = Number(llsModel.newLongData[name]).toFixed(4);
-        if(oldFloat == newFloat){
+        if (oldFloat == newFloat) {
             this.$$(id).setValue(llsModel.currentLongData[name]);
             this.setStatusNewValue(statusId, false);
-        }else{
+        } else {
             this.$$(id).setValue(llsModel.newLongData[name]);
             this.setStatusNewValue(statusId, true);
         }
@@ -1171,5 +1184,9 @@ function sn2ascii(decArray) {
         newDecArray.push(decArray[i]);
     }
     let strAscii = String.fromCharCode(...newDecArray);
+    let num = Number(strAscii);
+    if(!num){
+        strAscii = "NA";
+    }
     return strAscii;
 }

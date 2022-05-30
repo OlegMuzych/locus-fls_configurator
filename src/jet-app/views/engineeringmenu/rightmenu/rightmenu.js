@@ -10,64 +10,85 @@ import FiltrationSubView from "./subviews/filteringsubview";
 export default class RightMenu extends JetView{
     config(){
         let myMultiview = {
-            view: "multiview",
-            cells: [
-                {
-                    id: 'calibrationSubView', rows: [CalibrationSubView],
-                },
-                {
-                    id: 'fullEmptySubView', rows: [FullEmptySubView],
-                },
-                {
-                    id: 'filteringSubView', rows: [FiltrationSubView],
-                }
-            ],
-            animate: false,
-        }
+            view: "scrollview",
+            scroll: "y",
+            maxHeight: 970,
+            minWidth: 530,
+            id: "rows_right_body",
+            css: "rows_right",
+            body: {
+                view: "multiview",
+                cells: [
+                    {
+                        id: 'calibrationSubView', rows: [CalibrationSubView],
+                    },
+                    {
+                        id: 'fullEmptySubView', rows: [FullEmptySubView],
+                    },
+                    {
+                        id: 'filteringSubView', rows: [FiltrationSubView],
+                    }
+                ],
+
+                animate: false,
+            }
+        };
 
         let body = {
             css: "rows_right",
             id: "rows_right_2",
-            rows: [
+            cols:[
                 {
-                    rows: [
-                        ServiceMenu,
-                    ]
-                },
-                {
-                    height: 20,
+                    minWidth: 25,
+                    maxWidth: 320,
                 },
                 {
                     rows: [
-                        StatusMenu,
+                        {
+                            rows: [
+                                ServiceMenu,
+                            ]
+                        },
+                        {
+                            height: 20,
+                        },
+                        {
+                            rows: [
+                                StatusMenu,
+                            ]
+                        },
+                        {
+                            height: 20,
+                        },
+                        {
+                            rows: [
+                                myMultiview,
+                            ]
+                        },
+                        {
+                            height: 1,
+                        },
+                        {
+                            rows: [
+                                //right_menu_filter
+                            ]
+                        },
+                        {
+                            rows: [
+                                // right_menu_calibration,
+                                // right_menu_calibration_setup,
+                                // right_menu_calibration_drain_2,
+                                // fuel_filling,
+                                // fuel_filling_2,
+                            ]
+                        },
                     ]
                 },
                 {
-                    height: 20,
-                },
-                {
-                    rows: [
-                        myMultiview,
-                    ]
-                },
-                {
-                    height: 1,
-                },
-                {
-                    rows: [
-                        //right_menu_filter
-                    ]
-                },
-                {
-                    rows: [
-                        // right_menu_calibration,
-                        // right_menu_calibration_setup,
-                        // right_menu_calibration_drain_2,
-                        // fuel_filling,
-                        // fuel_filling_2,
-                    ]
+                    width: 10,
                 }
             ]
+
         }
 
         return body;
@@ -91,11 +112,13 @@ export default class RightMenu extends JetView{
 
         $$('fullEmptySubView').show();
 
-        if(configFile.theme.color == 'white'){
+        if(configFile.theme == 'light'){
             webix.html.addCss( $$("rows_right_2").getNode(), "rows_right");
+            webix.html.addCss( $$("rows_right_body").getNode(), "rows_right");
         }
-        if(configFile.theme.color == 'black'){
+        if(configFile.theme == 'dark'){
             webix.html.addCss( $$("rows_right_2").getNode(), "rows_right_dark");
+            webix.html.addCss( $$("rows_right_body").getNode(), "rows_right_dark");
         }
     }
 }

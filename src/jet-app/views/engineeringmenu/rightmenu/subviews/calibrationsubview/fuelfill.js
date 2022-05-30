@@ -3,15 +3,19 @@ import configFile from "../../../../../config-app";
 
 export default class FuelFillView extends JetView {
     config() {
+        const _ = this.app.getService("locale")._;
+
         let passportVolume = {
             localId:'passportVolume',
             cols: [
                 {},
                 {
                     view: "label",
-                    label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Паспортный объем бака, л</p>",
+                    label: `<p style='font-weight:100; position: relative; top:-20px;'>${_("passport_volume_tank")}</p>`,
                     width: 190,
                     height: 50,
+                    css: "text_filtering_2",
+                    localId:"1"
                 },
                 {},
                 {view: "text", css: "full_window_text", width: 200, localId: "manual_volume_fuel_1"},
@@ -25,9 +29,11 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "label",
-                    label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Начальный объем, л</p>",
+                    label: `<p style='font-weight:100; position: relative; top:-20px;'>${_("start_volume_tank")}</p>`,
                     width: 190,
                     height: 50,
+                    css: "text_filtering_2",
+                    localId:"2"
                 },
                 {},
                 {view: "text", css: "full_window_text", width: 200, localId: "initial_volume_fuel_1"},
@@ -41,9 +47,11 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "label",
-                    label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Шаг, л</p>",
+                    label: `<p style=' font-weight:100; position: relative; top:-20px;'>${_("step_volume")}</p>`,
                     width: 190,
                     height: 50,
+                    css: "text_filtering_2",
+                    localId:"3"
                 },
                 {},
                 {view: "text", css: "full_window_text", width: 200, localId: "step_liters_1"},
@@ -57,9 +65,11 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "label",
-                    label: "<p style='font-size: 18px; color:#000; font-weight:100; position: relative; top:-20px;'>Количество шагов</p>",
+                    label: `<p style=' font-weight:100; position: relative; top:-20px;'>${_("step_count")}</p>`,
                     width: 190,
                     height: 50,
+                    css: "text_filtering_2",
+                    localId:"4"
                 },
                 {},
                 {view: "text", width: 200, css: "full_window_text", readonly: true, localId: "counts_step"},
@@ -73,7 +83,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "button",
-                    label: "Удалить шаг",
+                    label: _("button_remove_step"),
                     width: 480,
                     height: 50,
                     css: "set_step_drain_button_2",
@@ -90,7 +100,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "button",
-                    label: "Добавить шаг",
+                    label: _("button_add_step"),
                     width: 480,
                     height: 50,
                     css: "set_step_drain_button_2",
@@ -107,7 +117,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "button",
-                    label: "Очистить таблицу",
+                    label: _("button_clear_table"),
                     width: 480,
                     height: 50,
                     css: "clear_table_drain_button_2",
@@ -124,7 +134,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "button",
-                    label: "Завершить тарировку",
+                    label: _("button_finish_calibration"),
                     width: 480,
                     height: 50,
                     localId: "closed_calibration_button_window_2",
@@ -140,7 +150,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "button",
-                    label: "Продолжить",
+                    label: _("button_start_calibration"),
                     width: 480,
                     height: 50,
                     localId: "central_menu_and_right_menu_calibration_next_window_button",
@@ -230,7 +240,7 @@ export default class FuelFillView extends JetView {
             this.$$('step_liters_1').setValue(stepVolume);
         });
 
-        if(configFile.theme.color == 'white'){
+        if(configFile.theme == 'light'){
             webix.html.addCss( this.$$("manual_volume_fuel_1").getNode(), "full_window_text");
             webix.html.addCss( this.$$("initial_volume_fuel_1").getNode(), "full_window_text");
             webix.html.addCss( this.$$("step_liters_1").getNode(), "full_window_text");
@@ -241,9 +251,13 @@ export default class FuelFillView extends JetView {
             webix.html.addCss( this.$$("closed_calibration_button_window_2").getNode(), "button_next_drain_window_1_2");
             webix.html.addCss( this.$$("central_menu_and_right_menu_calibration_next_window_button").getNode(), "button_next_drain_window_1_2");
             webix.html.addCss( $$("right_menu_calibration_drain_2").getNode(), "rows_right_menu_calibration_2");
+            webix.html.addCss(this.$$("3").getNode(), "text_filtering_2");
+            webix.html.addCss(this.$$("2").getNode(), "text_filtering_2");
+            webix.html.addCss(this.$$("1").getNode(), "text_filtering_2");
+            webix.html.addCss(this.$$("4").getNode(), "text_filtering_2");
         }
 
-        if(configFile.theme.color == 'black'){
+        if(configFile.theme == 'dark'){
             webix.html.addCss( this.$$("manual_volume_fuel_1").getNode(), "full_window_text_dark");
             webix.html.addCss( this.$$("initial_volume_fuel_1").getNode(), "full_window_text_dark");
             webix.html.addCss( this.$$("step_liters_1").getNode(), "full_window_text_dark");
@@ -254,6 +268,10 @@ export default class FuelFillView extends JetView {
             webix.html.addCss( this.$$("closed_calibration_button_window_2").getNode(), "button_next_drain_window_1_2_dark");
             webix.html.addCss( this.$$("central_menu_and_right_menu_calibration_next_window_button").getNode(), "button_next_drain_window_1_2_dark");
             webix.html.addCss( $$("right_menu_calibration_drain_2").getNode(), "rows_right_menu_calibration_2_dark");
+            webix.html.addCss(this.$$("3").getNode(), "text_filtering_2_dark");
+            webix.html.addCss(this.$$("2").getNode(), "text_filtering_2_dark");
+            webix.html.addCss(this.$$("1").getNode(), "text_filtering_2_dark");
+            webix.html.addCss(this.$$("4").getNode(), "text_filtering_2_dark");
         }
     }
 

@@ -5,6 +5,8 @@ import FiltrationSettings from "./filtaringSettings";
 import configFile from "../../../config-app";
 export default class CentralMenu extends JetView{
     config(){
+        const _ = this.app.getService("locale")._;
+
         let central_menu_button = {
             minWidth: 600,
             maxWidth: 850,
@@ -16,9 +18,9 @@ export default class CentralMenu extends JetView{
                     cols: [
                         {
                             view: "button",
-                            label: "Основные настройки",
-                            maxWidth: 300,
-                            minWidth: 120,
+                            label: _("main_settings"),
+                            // maxWidth: 400,
+                            // minWidth: 120,
                             height: 100,
                             css: "button_central_menu",
                             id: "general",
@@ -26,9 +28,9 @@ export default class CentralMenu extends JetView{
                         },
                         {
                             view: "button",
-                            label: "Тарировка",
-                            maxWidth: 300,
-                            minWidth: 120,
+                            label: _("calibration"),
+                            // maxWidth: 400,
+                            // minWidth: 120,
                             height: 100,
                             css: "button_central_menu",
                             id: "calibration",
@@ -36,9 +38,9 @@ export default class CentralMenu extends JetView{
                         },
                         {
                             view: "button",
-                            label: "Фильтрация",
-                            maxWidth: 300,
-                            minWidth: 120,
+                            label: _("filtering"),
+                            // maxWidth: 400,
+                            // minWidth: 120,
                             height: 100,
                             css: "button_central_menu",
                             id: "filtering",
@@ -56,6 +58,8 @@ export default class CentralMenu extends JetView{
 
 
         let myMultiview = {
+            // minWidth: 900,
+            // maxWidth: 1300,
             view: "multiview",
             css:"style_general_rows",
             id:"style_general_rows_1",
@@ -74,8 +78,11 @@ export default class CentralMenu extends JetView{
         }
 
         let body = {
+            maxWidth: 1100,
+            minWidth: 900,
             rows: [
-                central_menu_button, myMultiview
+                central_menu_button,
+                myMultiview
             ],
         }
 
@@ -118,14 +125,14 @@ export default class CentralMenu extends JetView{
 
 
 
-        if(configFile.theme.color == 'white'){
+        if(configFile.theme == 'light'){
             webix.html.addCss( $$("central_cols_button").getNode(), "central_cols_button");
             webix.html.addCss( $$("general").getNode(), "button_central_menu");
             webix.html.addCss( $$("calibration").getNode(), "button_central_menu");
             webix.html.addCss( $$("filtering").getNode(), "button_central_menu");
             webix.html.addCss( $$("style_general_rows_1").getNode(), "style_general_rows");
         }
-        if(configFile.theme.color == 'black'){
+        if(configFile.theme == 'dark'){
             webix.html.addCss( $$("central_cols_button").getNode(), "central_cols_button_dark");
             webix.html.addCss( $$("general").getNode(), "button_central_menu_dark");
             webix.html.addCss( $$("calibration").getNode(), "button_central_menu_dark");

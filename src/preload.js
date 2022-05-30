@@ -1,9 +1,11 @@
-
-const { contextBridge, dialog, ipcRenderer } = require('electron');
+const {contextBridge, dialog, ipcRenderer} = require('electron');
 const {SerialPort} = require('serialport');
-const {crc8} = require("easy-crc");
-const { writeFile, readFile }  = require('fs/promises');
+const {crc8, crc16} = require("easy-crc");
+const {writeFile, readFile, access} = require('fs/promises');
+const {writeFileSync, readFileSync} = require('fs');
 const CSV = require('csv-string');
+// const {method} = require("@vercel/webpack-asset-relocator-loader");
+
 
 contextBridge.exposeInMainWorld('myAPI', {
     desktop: true
@@ -17,64 +19,91 @@ contextBridge.exposeInMainWorld(
             // console.log(portList);
             return portList;
         },
-        new: (options)=> {
+        new: (options) => {
             port = new SerialPort(options);
         },
         // on: (event, callback) => {
         //     port.on(event,callback);
         // },
-        onReadable: (callback)=>{
+        onReadable: (callback) => {
             port.on('readable', callback);
         },
-        onOpen: (callback)=>{
+        onOpen: (callback) => {
             port.on('open', callback);
         },
-        onError: (callback)=>{
+        onError: (callback) => {
             port.on('error', callback);
         },
-        onData: (callback)=>{
+        onData: (callback) => {
             port.on('data', callback);
         },
-        delete: ()=>{
+        onClose: (callback) => {
+            port.on('close', callback);
+        },
+        onceData: (callback) => {
+            port.once('data', callback);
+        },
+        delete: () => {
             delete port;
         },
-        pause: ()=>{
+        pause: () => {
             port.pause();
         },
-        resume: ()=>{
+        resume: () => {
             port.resume;
         },
-        write: (buffer)=>{
+        write: (buffer) => {
             port.write(buffer);
         },
-        read: () =>{
+        read: () => {
             return port.read();
         },
-        isOpen: ()=>{
+        isOpen: () => {
             return port.isOpen();
         },
-        close: (callback)=>{
+        close: (callback) => {
             return port.close(callback);
         }
     }
 );
 
 contextBridge.exposeInMainWorld('electron', {
-    openDialog: (method, config) => {return ipcRenderer.invoke('dialog', method, config);}
+    openDialog: (method, config) => {
+        return ipcRenderer.invoke('dialog', method, config);
+    },
+    app: (method, params) => {
+        return ipcRenderer.invoke('app', method, params);
+    },
+    nativeTheme: (properties) => {
+        return ipcRenderer.invoke('nativeTheme', properties);
+    },
 });
 
 contextBridge.exposeInMainWorld('checkSumm', {
-    crc8: (method, data) => {return crc8(method, data)}
+    crc8: (method, data) => {
+        return crc8(method, data);
+    },
+    crc16: (method, data) => {
+        return crc16(method, data);
+    }
 });
 
 contextBridge.exposeInMainWorld('fs', {
         writeFile: (file, data, options) => writeFile(file, data, options),
         readFile: (path, options) => readFile(path, options),
+        writeFileSync: (file, data, options) => writeFileSync(file, data, options),
+        readFileSync: (path, options) => readFileSync(path, options),
+        access: (path, mode) => access(path, mode),
     }
 );
 
 contextBridge.exposeInMainWorld('csv-string', {
-        parse: (string, options) => CSV.parse(string,options),
+        parse: (string, options) => CSV.parse(string, options),
         stringify: (arr, separator) => CSV.stringify(arr, separator),
+    }
+);
+
+contextBridge.exposeInMainWorld('Buffer', {
+        concat: (list, totalLength) => Buffer.concat(list, totalLength),
     }
 );

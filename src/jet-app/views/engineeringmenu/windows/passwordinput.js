@@ -1,26 +1,31 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
+import configFile from "../../../config-app";
 
 export default class PasswordInputWindow extends JetView {
     config() {
+        const _ = this.app.getService("locale")._;
+
         let elements = {
             rows: [
                 {
                     view: "segmented",
                     localId: 'tabbar_windows_password',
-                    css: "tabbar_windows_password",
+                    css: "tabbar_windows_password_1",
                     multiview: true,
                     height: 80,
                     options: [
-                        {value:'Ввести', id:'input_password'},
-                        // {value:'Сбросить настройки', id:'reset_password'},
+                        {value: _("window_passwordinput_segmented_current"), id:'input_password'},
+                        // {value: _("window_passwordinput_segmented_reset"), id:'reset_password'},
                     ],
                 },
 
                 {
-                    animate: {type: "show", delay: 10},
+                    // animate: {type: "show", delay: 10},
                     height: 300,
                     width: 400,
+                    css:"window_show_password",
+                    id: "rows_33",
                     cells: [
                         {
                             id: "input_password",
@@ -40,26 +45,20 @@ export default class PasswordInputWindow extends JetView {
                                             image: "assets/images/info_black.svg",
                                             localId: "closed_1",
                                             css: "set_password_button_icon",
-                                            width: 100,
-                                            height: 100,
+                                            width: 200,
+                                            height: 200,
                                         },
-                                        {
-                                            width: 14,
-                                        },
+
                                         {
                                             view: "label",
-                                            label: "<p style='position: relative; top: -25px'>Введите пароль для входа</p>",
-                                            width: 380,
+                                            label: `<p style='position: relative; font-size: 26px; top: -25px'>${_("window_passwordinput_segmented_current_text")}</p>`,
+                                            width: 390,
                                             localId: "windows_password_label",
                                             css: "language_windows_modal"
                                         },
                                         {
-
                                         }
                                     ]
-                                },
-                                {
-                                    height: 30,
                                 },
                                 {
                                     cols: [
@@ -73,7 +72,7 @@ export default class PasswordInputWindow extends JetView {
                                             css: "password_windows_set",
                                             inputAlign: "center",
                                             pattern: {mask: "########", allow: /[0-9]/g},
-                                            invalidMessage:"Неверный пароль",
+                                            invalidMessage: _("window_password_invalid_message"),
                                             name: 'test',
                                             validate: ()=>{return this.passValidFlag},
                                         },
@@ -88,7 +87,7 @@ export default class PasswordInputWindow extends JetView {
                                         {},
                                         {
                                             view: "button",
-                                            label: "OK",
+                                            label: _("button_ok"),
                                             localId: "buttonCurrentPassOk",
                                             css: "set_password_button"
                                         },
@@ -96,7 +95,7 @@ export default class PasswordInputWindow extends JetView {
                                         },
                                         {
                                             view: "button",
-                                            label: "Отмена",
+                                            label: _("button_cancel"),
                                             localId: "buttonCancel_1",
                                             css: "set_password_button"
                                         },
@@ -104,6 +103,9 @@ export default class PasswordInputWindow extends JetView {
                                     ]
                                 },
                             ]
+                        },
+                        {
+
                         },
 
                         {
@@ -119,14 +121,18 @@ export default class PasswordInputWindow extends JetView {
                                      height: 100,
                                  },
                                  {
-                                     view: "label",
-                                     label: "<p style='position: relative; top: -30px; color: #eb2323;'>Все настройки датчика будут стерты</p>",
-                                     css: "language_windows_modal",
-                                     height: 100,
-                                     width: 610,
+                                    width: 300,
                                  },
                                  {
-                                     height: 38,
+                                     view: "label",
+                                     label: `<p style='position: relative; top: -30px; color: #eb2323;'>${_("window_passwordinput_segmented_reset_text")}</p>`,
+                                     css: "language_windows_modal",
+                                     id:"text_win_5",
+                                     height: 200,
+                                     width: 100,
+                                 },
+                                 {
+
                                  },
                         {
                             cols: [
@@ -135,7 +141,7 @@ export default class PasswordInputWindow extends JetView {
                                 },
                                 {
                                     view: "button",
-                                    label: "OK",
+                                    label: _("button_ok"),
                                     localId: "buttonResetOk",
                                     css: "set_password_button"
                                 },
@@ -144,7 +150,7 @@ export default class PasswordInputWindow extends JetView {
                                 },
                                 {
                                     view: "button",
-                                    label: "Отмена",
+                                    label: _("button_cancel"),
                                     localId: "buttonResetCancel",
                                     css: "set_password_button"
                                 },
@@ -165,12 +171,16 @@ export default class PasswordInputWindow extends JetView {
             view:"form",
             scroll:false,
             elements: [elements],
+            css: "form_win",
+            id:"form_pass_1",
+            width: 850,
+            height: 400,
         };
 
         let body = {
             view: "window",
             position: "center",
-            width: 650,
+            width: 850,
             height: 400,
             id: "window_show_3",
             modal: true,
@@ -184,7 +194,7 @@ export default class PasswordInputWindow extends JetView {
     init() {
         this.passValidFlag = true;
 
-
+        this.setTheme();
 
         this.$$('buttonCancel_1').attachEvent("onItemClick", (id, e) => {
             console.log('click');
@@ -231,9 +241,45 @@ export default class PasswordInputWindow extends JetView {
                 this.$$('textCurrentPass').validate();
                 this.$$("textCurrentPass").setValue('');
             })
+
     }
+
 
     showWindow() {
         this.getRoot().show();
+    }
+
+
+    setTheme() {
+        if (configFile.theme == 'dark') {
+            webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_1_dark");
+            webix.html.addCss(this.$$("rows_33").getNode(), "window_show_password_dark");
+            webix.html.addCss(this.$$("form_pass_1").getNode(), "form_win_dark");
+            webix.html.addCss(this.$$("buttonCancel_1").getNode(), "set_password_button_dark");
+            webix.html.addCss(this.$$("buttonCurrentPassOk").getNode(), "set_password_button_dark");
+            webix.html.addCss(this.$$("windows_password_label").getNode(), "language_windows_modal_dark");
+            webix.html.addCss(this.$$("textCurrentPass").getNode(), "password_windows_set_dark");
+
+            this.$$("closed_1").define("image","assets/images/info_black_inverse.svg");
+            this.$$("closed_1").refresh();
+
+
+
+
+
+        }
+        if (configFile.theme == 'light') {
+            webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_1");
+            webix.html.addCss(this.$$("rows_33").getNode(), "window_show_password");
+            webix.html.addCss(this.$$("form_pass_1").getNode(), "form_win");
+            webix.html.addCss(this.$$("buttonCancel_1").getNode(), "set_password_button");
+            webix.html.addCss(this.$$("buttonCurrentPassOk").getNode(), "set_password_button");
+            webix.html.addCss(this.$$("windows_password_label").getNode(), "language_windows_modal");
+            webix.html.addCss(this.$$("textCurrentPass").getNode(), "password_windows_set");
+
+            this.$$("closed_1").define("image","assets/images/info_black.svg");
+            this.$$("closed_1").refresh();
+
+        }
     }
 }

@@ -6,7 +6,12 @@ import Lls from "./lls";
 class FindLls {
     testLls = null;
 
+    setStop(){
+        this.stopFlag = true;
+    }
+
     async findLls232() {
+        this.stopFlag = false;
         let listPath = await this.listPath();
         return await this.sortingPath(listPath);
     }
@@ -27,23 +32,25 @@ class FindLls {
     }
 
     async checkCommand(path, baudRate) {
-        if (this.testLls) {
-            await this.testLls.close();
-            this.testLls = null;
-        }
-        try {
-            this.testLls = await new Lls({path: path, baudRate: baudRate, llsAdr: 0xFF});
-            let data = await this.testLls.actions.checkPassword();
-            let settingPort = {
-                llsAdr: data.llsAdr,
-                path: path,
-                baudRate: baudRate
-            };
-            await this.testLls.close();
-            this.testLls = null;
-            return settingPort;
-        } catch (e) {
-            console.log(e);
+        if(!this.stopFlag){
+            if (this.testLls) {
+                await this.testLls.close();
+                this.testLls = null;
+            }
+            try {
+                this.testLls = await new Lls({path: path, baudRate: baudRate, llsAdr: 0xFF});
+                let data = await this.testLls.actions.checkPassword();
+                let settingPort = {
+                    llsAdr: data.llsAdr,
+                    path: path,
+                    baudRate: baudRate
+                };
+                await this.testLls.close();
+                this.testLls = null;
+                return settingPort;
+            } catch (e) {
+                // console.log(e);
+            }
         }
     }
 
@@ -51,7 +58,7 @@ class FindLls {
         try {
             // let portList = await SerialPort.list();
             let portList = await window.serialPort.portList();
-            console.log(portList);
+            // console.log(portList);
             return portList.map((item) => {
                 return item.path;
             });

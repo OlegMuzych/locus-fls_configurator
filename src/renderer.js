@@ -42,4 +42,10 @@ import  './jet-app/myapp.js';
 
 console.log(window.myAPI);
 window.serialPort.portList().then((list)=>console.log(list));
+
+window.electron.app('getPath','userData').then(path => console.log(path));
+window.electron.app('getLocale').then(str => console.log(str));
+window.electron.nativeTheme('shouldUseDarkColors').then(flag => console.log("Theme is dark: "+ flag));
+
+
 console.log('👋 This message is being logged by "renderer.js", included via webpack');

@@ -2,7 +2,7 @@ import {JetView} from "webix-jet";
 
 export default class ContinueCalibrateWindow extends JetView {
     config() {
-
+        const _ = this.app.getService("locale")._;
         let body = {
             view: "window",
             position: "center",
@@ -30,7 +30,7 @@ export default class ContinueCalibrateWindow extends JetView {
                             },
                             {
                                 view: "label",
-                                label: "<p style='font-size: 20px; position: relative; top: -10px; text-align: center;'>Продолжить заполнять таблицу тарировки?</p>",
+                                label: `<p style='font-size: 20px; position: relative; top: -10px; text-align: center;'>${_("windows_continue_calibration_text")}</p>`,
                                 css: "language_windows_modal",
                                 // id: "language_windows_modal_2",
                                 height: 100,
@@ -45,9 +45,9 @@ export default class ContinueCalibrateWindow extends JetView {
                     {
                         cols: [
                             {},
-                            {view: "button", label: "OK", localId: "buttonOk", css: "set_password_button"},
+                            {view: "button", label: _("button_ok"), localId: "buttonOk", css: "set_password_button"},
                             {},
-                            {view: "button", label: "Отмена", localId: "buttonCancel", css: "set_password_button"},
+                            {view: "button", label: _("button_cancel"), localId: "buttonCancel", css: "set_password_button"},
                             {}
                         ]
                     },

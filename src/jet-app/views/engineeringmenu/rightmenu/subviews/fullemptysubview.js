@@ -1,9 +1,12 @@
 import {JetView} from "webix-jet";
 import llsModel from "../../../../models/lls-model";
 import configFile from "../../../../config-app";
+import globalVariable from "../../../../global-variable-app";
 
 export default class FullEmptySubView extends JetView {
     config(){
+        const _ = this.app.getService("locale")._;
+
         let right_menu_setup = {
             css: "right_menu_status",
             id: "right_menu_setup",
@@ -11,13 +14,14 @@ export default class FullEmptySubView extends JetView {
             rows: [
                 {
                     disabled:true,
+                    // hidden: true,
                     cols: [
                         {
                             width: 50,
                         },
                         {
                             view: "label",
-                            label: "<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 30px; '>Автоматическая колибровка</p>",
+                            label: `<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 30px; '>${_("automatic_calibration")}</p>`,
                             width: 300,
                             height: 100,
                             css: "right_menu_status_text",
@@ -31,6 +35,7 @@ export default class FullEmptySubView extends JetView {
 
                 },
                 {
+                    hidden: true,
                     rows: [
                         {
                             cols: [
@@ -40,7 +45,7 @@ export default class FullEmptySubView extends JetView {
                                 {
                                     view: "button",
                                     type: "label",
-                                    label: "Откалибровать",
+                                    label: _("button_automatic_calibration"),
                                     width: 460,
                                     height: 50,
                                     css: "auto_calibration",
@@ -68,7 +73,7 @@ export default class FullEmptySubView extends JetView {
                                     view: "text",
                                     width: 470,
                                     height: 70,
-                                    css: "full_level_windows",
+                                    css: "full_window_text",
                                     readonly: true,
                                     localId: "status_level_fuel",
                                     inputAlign: "center",
@@ -86,7 +91,7 @@ export default class FullEmptySubView extends JetView {
                                 },
                                 {
                                     view: "label",
-                                    label: "<p style='position: relative; top: -20px; '>Текущий уровень</p>",
+                                    label: `<p style='position: relative; top: -20px; '>${_("current_level")}</p>`,
                                     // width: 460,
                                     // height: 100,
                                     css: "right_menu_fuel_level",
@@ -148,13 +153,13 @@ export default class FullEmptySubView extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "full_window_text",
-                                                    readonly: true,
+                                                    // readonly: true,
                                                     id: "auto_calibration_set_1"
                                                 },
                                                 {
                                                     view: "button",
                                                     type: "label",
-                                                    label: "Полный",
+                                                    label: _("button_set_full_tank"),
                                                     width: 200,
                                                     height: 50,
                                                     css: "auto_calibration",
@@ -168,17 +173,18 @@ export default class FullEmptySubView extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "full_window_text",
-                                                    readonly: true,
+                                                    // readonly: true,
                                                     id: "auto_calibration_set_2"
                                                 },
                                                 {
                                                     view: "button",
                                                     type: "label",
-                                                    label: "Пустой",
+                                                    label: _('button_set_empty_tank'),
                                                     width: 200,
                                                     height: 50,
                                                     css: "auto_calibration",
                                                     id: "auto_calibration_2"
+
                                                 },
                                             ]
                                         }
@@ -201,7 +207,7 @@ export default class FullEmptySubView extends JetView {
                                 {
                                     view: "button",
                                     type: "label",
-                                    label: "Редактировать значения",
+                                    label: _("button_enable_edit_values"),
                                     width: 460,
                                     height: 50,
                                     css: "edit_values",
@@ -242,26 +248,17 @@ export default class FullEmptySubView extends JetView {
         $$('auto_calibration_1').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             llsModel.setMaximum().then();
-            // $$("auto_calibration_1").disable();
-            // $$("auto_calibration_set_1").disable();
-            // $$("auto_calibration_2").enable();
-            // $$("auto_calibration_set_2").enable();
+
         });
 
         $$('auto_calibration_2').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             llsModel.setMinimum().then();
-            // $$("auto_calibration_2").disable();
-            // $$("auto_calibration_set_2").disable();
-            // $$("button_edit").enable();
+
         });
 
-        // $$("auto_calibration").disable();
         $$("auto_calibration_1").disable();
-        // $$("auto_calibration_set_1").disable();
         $$("auto_calibration_2").disable();
-        // $$("auto_calibration_set_2").disable();
-        // $$("button_edit").enable();
 
         $$("calibration_fuel").attachEvent("onChange", (newValue, oldValue, config)=>{
             if(newValue){
@@ -308,10 +305,41 @@ export default class FullEmptySubView extends JetView {
                 $$("auto_calibration_1").enable();
                 $$("auto_calibration_2").enable();
             }
-            // $$("auto_calibration_set_1").enable();
         });
 
-        if(configFile.theme.color == 'white'){
+        $$('auto_calibration_set_1').attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                if (newValue >= 0 && newValue <= 4294967295) {
+                    llsModel.newLongData.fullTank = newValue;
+                    // globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({llsAdr: llsModel.newLongData.llsAdr}) : '');
+                    // this.setTextValue("textLlsAdr", 'llsAdr', "statusLlsAdr");
+                    llsModel.setLongData({fullTank: newValue }).then();
+                } else {
+                    $$('auto_calibration_set_1').setValue(oldValue);
+                    // llsModel.setLongData({fullTank: oldValue }).then();
+                }
+            }
+        })
+
+        $$('auto_calibration_set_2').attachEvent("onChange", (newValue, oldValue, config) => {
+            console.log("change");
+            if (config != undefined) {
+                console.log(newValue);
+                if (newValue >= 0 && newValue <= 4294967295) {
+                    llsModel.newLongData.emptyTank = newValue;
+                    // globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({llsAdr: llsModel.newLongData.llsAdr}) : '');
+                    // this.setTextValue("textLlsAdr", 'llsAdr', "statusLlsAdr");
+                    llsModel.setLongData({emptyTank: newValue }).then();
+                } else {
+                    $$('auto_calibration_set_2').setValue(oldValue);
+                    // llsModel.setLongData({fullTank: oldValue }).then();
+                }
+            }
+        })
+
+        if(configFile.theme == 'light'){
             webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status");
             webix.html.addCss( $$("right_menu_status_text").getNode(), "right_menu_status_text");
             webix.html.addCss( $$("calibration_fuel").getNode(), "filter_toggle");
@@ -321,8 +349,10 @@ export default class FullEmptySubView extends JetView {
             webix.html.addCss( $$("auto_calibration_1").getNode(), "auto_calibration");
             webix.html.addCss( $$("auto_calibration_set_2").getNode(), "full_window_text");
             webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration");
+            webix.html.addCss( $$("button_edit").getNode(), "edit_values");
+            webix.html.addCss( this.$$("status_level_fuel").getNode(), "full_window_text");
         }
-        if(configFile.theme.color == 'black'){
+        if(configFile.theme == 'dark'){
             webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status_dark");
             webix.html.addCss( $$("right_menu_status_text").getNode(), "right_menu_status_text_dark");
             webix.html.addCss( $$("calibration_fuel").getNode(), "filter_toggle_dark");
@@ -333,6 +363,8 @@ export default class FullEmptySubView extends JetView {
             webix.html.addCss( $$("auto_calibration_set_2").getNode(), "full_window_text_dark");
             webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration_dark");
             webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration_dark");
+            webix.html.addCss( $$("button_edit").getNode(), "edit_values_dark");
+            webix.html.addCss( this.$$("status_level_fuel").getNode(), "full_window_text_dark");
         }
     }
 

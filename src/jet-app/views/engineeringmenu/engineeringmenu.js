@@ -18,29 +18,31 @@ export default class EngineeringMenu extends JetView{
             // view: "scrollview",
             // scroll: "y",
             // maxHeight: 1000,
-            // css: "style_body",
-            // id: "dark",
             // body: {
-                cols:[
-                    LeftMenu,
-                    {
-                        css: "style_body",
-                        id:"rows_left_1",
-                        width: 20,
-                    },
-                    CentralMenu,
-                    {
-                        css: "style_body",
-                        id:"rows_right_2",
-                        width: 25,
-                    },
-                    RightMenu,
+            css: "style_body",
+            id: "dark",
+            maxWidth: 500,
+            gravity: "1",
+            cols: [
+                LeftMenu,
+                // {
+                //     css: "style_body",
+                //     id: "rows_left_1",
+                //
+                //     // minWidth:20,
+                // },
+                        CentralMenu,
+                // {
+                //     css: "style_body",
+                //     id: "rows_right_2",
+                //
+                //     // minWidth: 20,
+                //     // maxWidth: 300,
+                // },
+                RightMenu,
 
-
-                ],
-
-            // }
-        }
+            ]
+        };
 
         return body;
     }
@@ -69,6 +71,7 @@ export default class EngineeringMenu extends JetView{
                     }
                     default:{
                         this.llsNoConnectWindow.showWindow(); //в случае если датчик не подключен
+
                         break;
                     }
             }
@@ -96,13 +99,15 @@ export default class EngineeringMenu extends JetView{
             this.saveSettingNotification.showWindow();
         });
 
-        if(configFile.theme.color == 'white'){
-            webix.html.addCss( $$("rows_left_1").getNode(), "style_body");
-            webix.html.addCss( $$("rows_right_2").getNode(), "style_body");
+        if(configFile.theme == 'light'){
+            // webix.html.addCss( $$("rows_left_1").getNode(), "style_body");
+            // webix.html.addCss( $$("rows_right_2").getNode(), "style_body");
+            webix.html.addCss( $$("dark").getNode(), "style_body");
         }
-        if(configFile.theme.color == 'black'){
-            webix.html.addCss( $$("rows_left_1").getNode(), "style_body_dark");
-            webix.html.addCss( $$("rows_right_2").getNode(), "style_body_dark");
+        if(configFile.theme == 'dark'){
+            // webix.html.addCss( $$("rows_left_1").getNode(), "style_body_dark");
+            // webix.html.addCss( $$("rows_right_2").getNode(), "style_body_dark");
+            webix.html.addCss( $$("dark").getNode(), "style_body_dark");
         }
     }
 

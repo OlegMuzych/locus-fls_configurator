@@ -4,6 +4,7 @@ import configFile from "../../../../config-app";
 
 export default class FiltrationSubView extends JetView {
     config() {
+        const _ = this.app.getService("locale")._;
         let right_menu_setup = {
             css: "right_menu_status",
             localId: "right_menu_setup",
@@ -23,7 +24,7 @@ export default class FiltrationSubView extends JetView {
                                     view: "text",
                                     width: 460,
                                     height: 70,
-                                    css: "full_level_windows",
+                                    css: "full_window_text",
                                     readonly: true,
                                     localId: "status_level_fuel",
                                     inputAlign: "center",
@@ -37,7 +38,7 @@ export default class FiltrationSubView extends JetView {
                                 {},
                                 {
                                     view: "label",
-                                    label: "<p style='position: relative; top: -20px; '>Текущий уровень</p>",
+                                    label: `<p style='position: relative; top: -20px;'>${_("current_level")}</p>`,
                                     // width: 460,
                                     // height: 100,
                                     css: "right_menu_fuel_level",
@@ -122,11 +123,15 @@ export default class FiltrationSubView extends JetView {
             llsModel.addListenerLongData(this.listenerLongData);
         }));
 
-        if (configFile.theme.color == 'white') {
+        if (configFile.theme == 'light') {
             webix.html.addCss(this.$$("progress_bar2").getNode(), "progress_bar");
+            webix.html.addCss(this.$$("status_level_fuel").getNode(), "full_window_text");
+            webix.html.addCss(this.$$("right_menu_setup").getNode(), "right_menu_status");
         }
-        if (configFile.theme.color == 'black') {
+        if (configFile.theme == 'dark') {
             webix.html.addCss(this.$$("progress_bar2").getNode(), "progress_bar_dark");
+            webix.html.addCss(this.$$("status_level_fuel").getNode(), "full_window_text_dark");
+            webix.html.addCss(this.$$("right_menu_setup").getNode(), "right_menu_status_dark");
         }
     }
 

@@ -3,6 +3,10 @@ import {JetView} from "webix-jet";
 import llsModel from "../models/lls-model";
 import configFile from "../config-app";
 import globalVariable from "../global-variable-app";
+import WindowSettings from "./windows/window-settings";
+import trademark from "../../trademark/trademark";
+import WindowAbout from "./windows/window-about";
+import WindowFirmwareUpdate from "./windows/window-firmware-update";
 //const SerialPort = eval(`require('serialport')`);
 // const findPort = require("../models/lls/findPort");
 
@@ -10,8 +14,9 @@ import globalVariable from "../global-variable-app";
 
 export default class Page9View extends JetView {
     config() {
+        const _t = trademark._t;
 
-
+        const _ = this.app.getService("locale")._;
         // Версия прошивки надпись
         var ver = {
             rows: [
@@ -22,16 +27,30 @@ export default class Page9View extends JetView {
                         },
                         {
                             view: "label",
-                            label: "Версия: " + VERSION,
+                            label: _("version") + ": " + VERSION,
                             align: "left",
                             css: "ver_soft",
-                            id: "ver_soft"
+                            id: "ver_soft",
+                            width: 200,
                         },
-                        {}
-                    ]
-                }
-            ]
+                        {
 
+                        },
+                        {
+                            view: "button",
+                            type: "label",
+                            label: _("firmware_lls"),
+                            width: 200,
+                            height: 50,
+                            css: "button_reload",
+                            localId:"button_reload"
+                        },
+                        {
+                            width: 10,
+                        }
+                    ]
+                },
+            ]
         };
 
 
@@ -39,9 +58,10 @@ export default class Page9View extends JetView {
         var logo = {
             view: "button",
             type: "image",
-            image: "assets/images/Logo_1.svg",
-            width: 500,
-            height: 600,
+            // image: "assets/images/Logo_1.svg",
+            image: _t("image_logo"),
+            width: 400,
+            height: 400,
             css: "logo_1",
             id: "logo_1",
         };
@@ -49,11 +69,15 @@ export default class Page9View extends JetView {
 
         // Статус подключения датчика
         var status_gage = {
+            width: 400,
+            // height: 100,
             rows: [
+                {height:10,},
                 {
+                    paddingX: 80,
                     cols: [
                         {
-                            width: 170, //170
+
                         },
                         {
                             view: "button",
@@ -72,7 +96,7 @@ export default class Page9View extends JetView {
                         {width: 20,},
                         {
                             view: "label",
-                            label: "Датчик подключен",
+                            label: _("sensor_is_connected"),
                             height: 30,
                             width: 300,
                             css: "label_status_gage_windows_start",
@@ -80,15 +104,19 @@ export default class Page9View extends JetView {
                         },
                         {
                             view: "label",
-                            label: "Датчик не подключен",
+                            // label: "Датчик не подключен",
+                            label: _('sensor_is_not_connected'),
                             height: 30,
                             width: 300,
                             css: "label_status_gage_windows_start",
                             id: "label_status_gage_windows_start_2"
                         },
-                        {}
+                        {
+
+                        }
                     ]
-                }
+                },
+                {height:30,}
             ]
 
         };
@@ -106,10 +134,11 @@ export default class Page9View extends JetView {
                         {
                             view: "button",
                             type: "image",
-                            image: "assets/images/master.svg",
+                            image: _("button_image_master"),
+                            // image: "assets/images/master.svg",
                             css: "button_1",
                             id: "master_setup",
-                            disabled: true,
+                            disabled: false,
 
                         },
                         {
@@ -118,7 +147,8 @@ export default class Page9View extends JetView {
                         {
                             view: "button",
                             type: "image",
-                            image: "assets/images/ingeneer.svg",
+                            image: _("button_image_engineering"),
+                            // image: "assets/images/ingeneer.svg",
                             css: "button_1",
                             id: "engineering_setup"
                         }
@@ -134,7 +164,7 @@ export default class Page9View extends JetView {
                         {
                             view: "button",
                             type: "image",
-                            image: "assets/images/info-win2.svg",
+                            image: _("button_image_info_win2"),
                             css: "button_1",
                             id: "reference"
                         },
@@ -144,7 +174,8 @@ export default class Page9View extends JetView {
                         {
                             view: "button",
                             type: "image",
-                            image: "assets/images/konfig.svg",
+                            image: _("button_image_konfig"),
+                            // image: "assets/images/konfig.svg",
                             align: "center",
                             css: "button_1",
                             id: "application_menu"
@@ -155,296 +186,326 @@ export default class Page9View extends JetView {
             ]
         };
 
-        var win = webix.ui({
+        // win.hide();
+        var win_4 =webix.ui({
             view: "window",
-            position: "center",
-            width: 850,
-            height: 500,
-            id: "window_show",
+            width: 1000,
+            height: 800,
+            id: "window_show_4",
             modal: true,
+            head:"Обновление прошивки ДУТ",
             css: "window_show",
-            head: {
-                rows: [
+            position: "center",
+            close:true,
+            body: {
+                width: 1000,
+                height: 800,
+                rows:[
                     {
-                        cols: [
-                            {template: "Настройки", type: "header", borderless: true,},
-                            {
-                                view: "icon", icon: "wxi-close", tooltip: "Close window", click: function () {
-                                    $$("window_show").hide()
-                                }
-                            }
-                        ]
+                        // height: 100,
                     },
                     {
-                        height: 20,
-                    },
-                    {
-                        disabled: true,
-                        height: 80,
-                        width: 200,
-                        cols: [
+                        height: 200,
+                        rows:[
                             {
-                                width: 20,
-                            },
-                            {
-                                view: "combo",
-                                width: 750,
-                                height: 100,
-                                label: '<p>Выбор языка</p>',
-                                labelWidth: 500,
-                                css: "window_type_4",
-                                inputAlign: "center",
-                                id: "language",
-                                value:"2",
-                                options: [
-                                    {value: "Русский", id: '2' },
-                                    {value: "English", id: '3'},
-
-                                ]
-                            },
-                            {
-
-                            }
-                        ]
-                    },
-                    {
-                        height: 20,
-                    },
-                    {
-                        width: 200,
-                        rows: [
-                            {
-
-                                disabled: true,
                                 cols: [
                                     {
-                                        width: 20,
-                                    },
-                                    {
-                                        view: "label",
-                                        label: "<p style='position: relative; top: -20px; text-align: left'>Выбор темы</p>",
-                                        width: 550,
-                                        id: "light_theme_label",
-                                        css:"language_windows_modal",
-                                    },
-                                    {view: "switch", value: 0, id: "dark_light_theme", width: 70, height: 100,},
-                                    {
-                                    },
-                                ]
-                            },
-                            {
-                                height: 20,
-                            },
-                            {
-                                disabled: true,
-                                height: 90,
-                                cols:[
-                                    {
-                                        width: 20,
-                                    },
-                                    {
-                                        view: "label",
-                                        label: "<p style='position: relative; top: -30px; text-align: left'>Размер шрифта</p>",
-                                        width: 300,
-                                        id: "light_theme_label_3",
-                                        css:"language_windows_modal",
-                                    },
-                                    { view:"slider", value:"0", step:10, min:0, max:30, name:"s1", width: 400, height: 30, title:"%", css:"text_size_slider",
-                                        on:{
-                                            onChange:function(){
-                                                this.define("title","%" + this.getValue());
-                                                this.refresh(); }
-                                        }},
-                                    {
+                                        width:20,
 
-
-                                    }
-                                ]
-                            },
-                            {
-                                height: 20,
-                            },
-                            {
-                                disabled: false,
-                                cols:[
-                                    {
-                                        width: 20,
                                     },
                                     {
-                                        view: "label",
-                                        label: "<p style='position: relative; top: -20px; text-align: left'>Автоматическое сохранение настроек</p>",
-                                        width: 550,
-                                        id: "light_theme_label_2",
-                                        css:"language_windows_modal",
+                                        view:"label",
+                                        label:"<p>1</p>",
+                                        css:"label_text_upload_window",
+                                        id:"label_text_upload_window_1",
                                     },
-                                    {view: "switch", value: 1, id: "switchAutoSaveMode", width: 70, height: 100,},
                                     {
+                                        rows: [
+                                            {
+                                                view: "uploader",
+                                                value: "Загрузить файл",
+                                                name:"files",
+                                                link:"upload_config_window_1",
+                                                upload:"https://docs.webix.com/samples/server/upload",
+                                                width: 500,
+                                                height: 70,
+                                                css: "upload_config",
+                                                id:"upload_config"
+                                            },
+                                            {
+                                                height: 5,
+                                            },
+                                            {
+                                                view:"list",
+                                                id:"upload_config_window_1",
+                                                width: 500,
+                                                height: 70,
+                                                type:"uploader",
+                                                autoheight:false,
+                                                css:"upload_config_window"
 
+                                            },
+                                        ]
+                                    },
+                                    {
 
                                     }
                                 ]
                             },
-
-
-
                         ]
                     },
-                ]
-            },
-
-        });
-
-
-        win.hide();
-
-
-        var win_2 = webix.ui({
-            view: "window",
-            position: "center",
-            width: 850,
-            height: 500,
-            id: "window_show_2",
-            modal: true,
-            css: "window_show",
-            head: {
-                rows: [
                     {
-                        cols: [
-                            {template: "Справка", type: "header", borderless: true,},
+                        height: 20,
+                    },
+                    {
+                        rows:[
                             {
-                                view: "icon", icon: "wxi-close", tooltip: "Close window", click: function () {
-                                    $$("window_show_2").hide()
-                                }
+                                cols:[
+                                    {
+                                        width: 20,
+                                    },
+                                    {
+                                        view:"label",
+                                        label:"<p>2</p>",
+                                        css:"label_text_upload_window",
+                                        id:"label_text_upload_window_2",
+                                    },
+                                    {
+                                        rows:[
+
+                                            {
+                                                view: "button",
+                                                type:"label",
+                                                label:"Режим перепрошивки ДУТ",
+                                                width: 500,
+                                                height: 70,
+                                                css: "upload_config",
+                                                id:"boot_loader",
+                                            },
+                                            {
+                                                height: 5,
+                                            },
+                                            {
+                                                view: "button",
+                                                width: 500,
+                                                height: 70,
+                                                label:"Вкл",
+                                                css: "rows_level_right_menu_switch_2",
+                                                id: "button_define_define_2"
+                                            },
+                                            {
+                                                view: "button",
+                                                width: 500,
+                                                height: 70,
+                                                label:"Выкл",
+                                                css: "rows_level_right_menu_switch_define_2",
+                                                id: "button_define_2"
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        width: 240,
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        height: 10,
-
+                        height: 70,
                     },
                     {
-                        cols: [
-                            {},
+                        height: 200,
+                        rows:[
                             {
+                                rows:[
+                                    {
+                                        cols:[
+                                            {
+                                                width: 20,
+                                            },
+                                            {
+                                                view:"label",
+                                                label:"<p>3</p>",
+                                                css:"label_text_upload_window",
+                                                id:"label_text_upload_window_3",
+                                            },
+                                            {
+                                                view: "button",
+                                                type: "label",
+                                                label: "Записать файл в датчик",
+                                                width: 500,
+                                                height: 70,
+                                                css: "upload_config",
+                                                id:"load_file"
+                                            },
+                                            {
 
-                                // hidden: false,
-                                height: 400,
-                                rows: [
-                                    {},
-                                    {
-                                        view: "label",
-                                        label: "<p>Торговая марка: 'Точка Мониторинга'</p>",
-                                        width: 700,
-                                        height: 80,
-                                        css: "language_windows_modal",
-                                        // id: "language_windows_modal_2"
+                                            }
+                                        ]
                                     },
                                     {
-                                        view: "label",
-                                        label: "<p>Разработчик: ООО 'Точка Mониторинга'</p>",
-                                        width: 700,
-                                        height: 80,
-                                        css: "language_windows_modal",
-                                        id: "language_windows_modal_3"
+                                        height: 5,
                                     },
                                     {
-                                        view: "label",
-                                        label: `<p>Версия конфигуратора: ${VERSION}</p>`,
-                                        width: 700,
-                                        height: 80,
-                                        css: "language_windows_modal",
-                                        id: "language_windows_modal_4"
+                                        cols:[
+                                            {
+                                                width: 40,
+                                            },
+                                            {
+
+                                            },
+                                            {
+                                                view:"bullet",
+                                                id:"b1",
+                                                minRange:0,
+                                                maxRange:100,
+                                                layout: "x",
+                                                height: 100,
+                                                width: 532,
+                                                barWidth: 60,
+                                                css: "progress_bar_2",
+                                                color:"#35a642",
+                                                bands:[
+                                                    { value:100, color:"#fff"},
+                                                ],
+                                                stroke:60,
+                                                scale:{
+                                                    step:20,
+                                                    template:"#value#%"
+                                                }
+                                            },
+                                            {
+
+                                            }
+                                        ]
                                     },
-                                    {
-                                        view: "label",
-                                        label: "<p>Point-Monitoring.ru</p>",
-                                        width: 700,
-                                        height: 80,
-                                        css: "language_windows_modal",
-                                        id: "language_windows_modal_6"
-                                    },
-                                    {
-                                        view: "label",
-                                        label: "<p>© 2022</p>",
-                                        width: 700,
-                                        height: 80,
-                                        css: "language_windows_modal",
-                                        id: "language_windows_modal_5"
-                                    },
-                                    {},
                                 ]
-                            },
-                            {}
-                        ]
+                            }
 
+                        ]
+                    },
+                    {
 
                     }
                 ]
-            },
+
+
+
+
+
+            }
 
         });
-        win_2.hide();
+        win_4.hide();
 
+
+        var win_3 =webix.ui({
+            view: "window",
+            width: 1000,
+            // height: 160,
+            id: "window_show_3",
+            modal: false,
+            css: "window_show_closed_master",
+            position: "top",
+            body: {
+                // rows:[
+                //     {
+                        cols:[
+                            {
+                                view: "label",
+                                label: `<p style='font-size: 26px;'>${_("function_is_not_available")}</p>`,
+                                css: "closed_windows_modal",
+                                height: 45,
+                            },
+                        ]
+                //     },
+                // ]
+            }
+        });
+        win_3.hide();
 
         return {
-            view: "scrollview",
-            scroll: "y",
-            body: {
+
+                view: "scrollview",
+                scroll: "y",
                 css: "color_rows_star_pages",
-                // css: {transform: scale(0.5)},
                 id: "color_rows_star_pages",
-                rows: [
+                // minHeight: 800,
+                body: {
+                    rows:[
+                        {
+                            height: 50,
+                            cols:[
+                                {
+                                    width: 10,
+                                },
+                                ver,
+                                {
+                                    width: 10,
+                                }
+                            ]
+                        },
+                        {
+                            rows:[
+                                {
+                                    height: 300,
+                                    paddingY: -50,
+                                    rows:[
+                                        {
+                                            cols:[
+                                                {
 
-                    {
-                        cols: [
-                            {
-                                width: 10,
-                            },
-                            ver,
-                            {
-                                height: 10,
-                            }
-                        ]
-                    },
-                    {
-                        maxHeight: 50,
-                    },
-                    {
-                        paddingY: -220,
-                        // height: 400,
-                        cols: [
-                            {
+                                                },
+                                                logo,
+                                                {
 
-                            },
-                            logo,
-                            {
+                                                }
+                                            ]
+                                        },
+                                    ]
+                                },
+                                {
+                                    rows: [
+                                        {
+                                            cols:[
+                                                {
 
-                            }
-                        ]
-                    },
-                    {
-                        height: 20,
-                    },
-                    {
-                        cols: [
-                            {},
-                            status_gage,
-                            {}
-                        ]
-                    },
-                    {
-                        height: 20,
-                    },
-                    {
-                        cols: [
-                            {},
-                            button_menu,
-                            {}
-                        ]
-                    }
-                ]
-            }
-        }
+                                                },
+                                                status_gage,
+                                                {
+
+                                                }
+                                            ]
+                                        },
+                                    ]
+                                },
+                                {
+                                    cols:[
+                                        {
+
+                                        },
+                                        button_menu,
+                                        {
+
+                                        }
+                                    ]
+                                },
+                            ]
+                        },
+                        {
+                            height: 20,
+                        }
+
+
+                    ]
+
+
+                }
+
+
+        };
+
+
     }
 
     listenerConnect = () => {
@@ -475,10 +536,24 @@ export default class Page9View extends JetView {
         }
     };
 
-    init(view) {
-        this.setStatusConnect(false);
 
-        // setTheme();
+    init(view) {
+
+        setInterval(function(){
+            var value = Math.floor(Math.random()*100);
+            $$("b1").setValue(value);
+        }, 3000);
+
+        // $$("button_define_define_2").hide();
+
+        this.windowFirmwareUpdate = this.ui(WindowFirmwareUpdate);
+        this.$$("button_reload").attachEvent("onItemClick", (id, e) => {
+            // $$("window_show_4").show();
+            this.refresh();
+            this.windowFirmwareUpdate.showWindow();
+        });
+
+        this.setStatusConnect(false);
 
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerIsDisconnect(this.listenerDisconnect);
@@ -495,10 +570,15 @@ export default class Page9View extends JetView {
 
         $$("logo_1").attachEvent("onKeyPress", goEngineering);
 
-        $$("master_setup").attachEvent("onItemClick", (id, e) => {
-            // this.show("1page");
 
+        $$("master_setup").attachEvent("onItemClick", (id, e) => {
+            $$("window_show_3").show();
+
+            setTimeout(() => {
+                $$("window_show_3").hide();
+            }, 1500);
         });
+
 
 
         $$("engineering_setup").attachEvent("onItemClick", (id, e) => {
@@ -507,205 +587,107 @@ export default class Page9View extends JetView {
 
         // $$("button_define_define_1").hide()
         // $$("label_status_gage_windows_start_1").hide()
+        this.windowsSettings = this.ui(WindowSettings);
 
         $$("application_menu").attachEvent("onItemClick", (id, e) => {
-            $$("window_show").show()
+            this.windowsSettings.showWindow();
         });
 
-        $$("window_show_2").hide()
-
+        // $$("window_show_2").hide()
+        this.windowsAbout = this.ui(WindowAbout);
         $$("reference").attachEvent("onItemClick", (id, e) => {
-            $$("window_show_2").show()
+            this.refresh();
+           this.windowsAbout.showWindow();
         });
 
-        // $$("dark_theme_label").hide()
 
-        if (configFile.theme.color == 'white') {
-            $$("dark_light_theme").setValue(1);
-        }
-
-        if (configFile.theme.color == 'black') {
-            $$("dark_light_theme").setValue(0);
-        }
-
-        $$("switchAutoSaveMode").setValue(globalVariable.autoSaveMode);
-        $$("switchAutoSaveMode").attachEvent("onChange",  (newValue, oldValue, config) => {
-            if (newValue) {
-                globalVariable.autoSaveMode = true;
+        globalVariable.theme.then(async theme => {
+            if (theme == 'like_system') {
+                let systemIsDark = await window.electron.nativeTheme('shouldUseDarkColors');
+                if (systemIsDark){
+                    configFile.theme = "dark";
+                }else{
+                    configFile.theme = 'light';
+                }
+                this.setTheme();
             } else {
-                globalVariable.autoSaveMode = false;
+                configFile.theme = theme;
+                this.setTheme();
             }
         });
+    }
+    setTheme(){
+        const _t = trademark._t;
+        const _ = this.app.getService("locale")._;
 
-        // $$("dark_light_theme").attachEvent("onChange", function (newValue, oldValue, config) {
-        //     if (newValue) {
-        //         configFile.theme.color = 'white';
-        //         setTheme();
-        //     } else {
-        //         configFile.theme.color = 'black';
-        //         setTheme();
-        //     }
-        // });
-        // $$("dark_light_theme").attachEvent("onItemClick", (id, e )=>{
-        //     if ($$("dark_light_theme").getValue()== 1) {
-        //         $$("light_theme_label").hide()
-        //         $$("dark_theme_label").show()
-        //         $$("logo_1").define("image", "assets/images/Logo_2.svg")
-        //         $$("master_setup").define("image", "assets/images/master_inverse.svg")
-        //         $$("engineering_setup").define("image", "assets/images/ingeneer_inverse.svg")
-        //         $$("reference").define("image", "assets/images/info_inverse.svg")
-        //         $$("application_menu").define("image", "assets/images/konfig_inverse.svg")
-        //         $$("logo_1").refresh()
-        //         $$("master_setup").refresh()
-        //         $$("engineering_setup").refresh()
-        //         $$("reference").refresh()
-        //         $$("application_menu").refresh()
-        //         setColor("white","white");
-        //         configFile.theme.color = 'black';
-        //     } else {
-        //
-        //         $$("dark_theme_label").hide()
-        //         $$("light_theme_label").show()
-        //         $$("logo_1").define("image", "assets/images/Logo_1.svg")
-        //         $$("master_setup").define("image", "assets/images/master.svg")
-        //         $$("engineering_setup").define("image", "assets/images/ingeneer.svg")
-        //         $$("reference").define("image", "assets/images/info.svg")
-        //         $$("application_menu").define("image", "assets/images/konfig.svg")
-        //         $$("logo_1").refresh()
-        //         $$("master_setup").refresh()
-        //         $$("engineering_setup").refresh()
-        //         $$("reference").refresh()
-        //         $$("application_menu").refresh()
-        //         setColor("dark","black");
-        //         configFile.theme.color = 'white';
-        //     }
-        //
-        // });
+        if (configFile.theme == 'dark') {
+            webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages_dark");
+            webix.html.addCss($$("logo_1").getNode(), "logo_1_dark");
+            webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start_dark");
+            webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start_dark");
+            webix.html.addCss($$("ver_soft").getNode(), "ver_soft_dark");
+            webix.html.addCss($$("master_setup").getNode(), "button_1_dark");
+            webix.html.addCss($$("engineering_setup").getNode(), "button_1_dark");
+            webix.html.addCss($$("reference").getNode(), "button_1_dark");
+            webix.html.addCss($$("application_menu").getNode(), "button_1_dark");
+            webix.html.addCss(this.$$("button_reload").getNode(), "button_reload_dark");
+            webix.html.addCss($$("window_show_4").getNode(), "window_show_dark");
+            webix.html.addCss($$("upload_config_window_1").getNode(), "upload_config_window_dark");
+            webix.html.addCss($$("boot_loader").getNode(), "upload_config_dark");
+            webix.html.addCss($$("upload_config").getNode(), "upload_config_dark");
+            webix.html.addCss($$("label_text_upload_window_2").getNode(), "label_text_upload_window_dark");
+            webix.html.addCss($$("label_text_upload_window_3").getNode(), "label_text_upload_window_dark");
+            webix.html.addCss($$("label_text_upload_window_1").getNode(), "label_text_upload_window_dark");
+            webix.html.addCss($$("load_file").getNode(), "upload_config_dark");
 
-        // function setColor(id, color)
-        // {
-        //     // webix.html.removeCss( $$("window_show").getNode(), "window_show");
-        //     // webix.html.removeCss( $$("window_show_2").getNode(), "window_show");
-        //     // webix.html.removeCss( $$("language_windows_modal").getNode(), "language_windows_modal");
-        //     // webix.html.removeCss( $$("language_windows_modal_2").getNode(), "language_windows_modal");
-        //     // webix.html.removeCss( $$("language_windows_modal_3").getNode(), "language_windows_modal");
-        //     // webix.html.removeCss( $$("language_windows_modal_4").getNode(), "language_windows_modal");
-        //     // webix.html.removeCss( $$("language_windows_modal_5").getNode(), "language_windows_modal");
-        //     // webix.html.removeCss( $$("color_rows_star_pages").getNode(), "color_rows_star_pages");
-        //     // webix.html.removeCss( $$("logo_1").getNode(), "logo_1");
-        //     // webix.html.removeCss( $$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start");
-        //     // webix.html.removeCss( $$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start");
-        //     // webix.html.removeCss( $$("ver_soft").getNode(), "ver_soft");
-        //     // webix.html.removeCss( $$("master_setup").getNode(), "button_1");
-        //     // webix.html.removeCss( $$("engineering_setup").getNode(), "button_1");
-        //     // webix.html.removeCss( $$("reference").getNode(), "button_1");
-        //     // webix.html.removeCss( $$("application_menu").getNode(), "button_1");
-        //
-        //     if (color == "white") {
-        //         webix.html.addCss( $$("window_show").getNode(), "window_show_dark");
-        //         webix.html.addCss( $$("window_show_2").getNode(), "window_show_dark");
-        //         webix.html.addCss( $$("language_windows_modal").getNode(), "language_windows_modal_dark");
-        //         webix.html.addCss( $$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
-        //         webix.html.addCss( $$("language_windows_modal_3").getNode(), "language_windows_modal_dark");
-        //         webix.html.addCss( $$("language_windows_modal_4").getNode(), "language_windows_modal_dark");
-        //         webix.html.addCss( $$("language_windows_modal_5").getNode(), "language_windows_modal_dark");
-        //         webix.html.addCss( $$("color_rows_star_pages").getNode(), "color_rows_star_pages_dark");
-        //         webix.html.addCss( $$("logo_1").getNode(), "logo_1_dark");
-        //         webix.html.addCss( $$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start_dark");
-        //         webix.html.addCss( $$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start_dark");
-        //         webix.html.addCss( $$("ver_soft").getNode(), "ver_soft_dark");
-        //         webix.html.addCss( $$("master_setup").getNode(), "button_1_dark");
-        //         webix.html.addCss( $$("engineering_setup").getNode(), "button_1_dark");
-        //         webix.html.addCss( $$("reference").getNode(), "button_1_dark");
-        //         webix.html.addCss( $$("application_menu").getNode(), "button_1_dark");
-        //
-        //     }
-        //     if (color == "black") {
-        //         webix.html.addCss( $$("window_show").getNode(), "window_show");
-        //         webix.html.addCss( $$("window_show_2").getNode(), "window_show");
-        //         webix.html.addCss( $$("language_windows_modal").getNode(), "language_windows_modal");
-        //         webix.html.addCss( $$("language_windows_modal_2").getNode(), "language_windows_modal");
-        //         webix.html.addCss( $$("language_windows_modal_3").getNode(), "language_windows_modal");
-        //         webix.html.addCss( $$("language_windows_modal_4").getNode(), "language_windows_modal");
-        //         webix.html.addCss( $$("language_windows_modal_5").getNode(), "language_windows_modal");
-        //         webix.html.addCss( $$("color_rows_star_pages").getNode(), "color_rows_star_pages");
-        //         webix.html.addCss( $$("logo_1").getNode(), "logo_1");
-        //         webix.html.addCss( $$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start");
-        //         webix.html.addCss( $$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start");
-        //         webix.html.addCss( $$("ver_soft").getNode(), "ver_soft");
-        //         webix.html.addCss( $$("master_setup").getNode(), "button_1");
-        //         webix.html.addCss( $$("engineering_setup").getNode(), "button_1");
-        //         webix.html.addCss( $$("reference").getNode(), "button_1");
-        //         webix.html.addCss( $$("application_menu").getNode(), "button_1");
-        //     }
-        //
-        // }
+            // $$("light_theme_label").hide()
+            // $$("dark_theme_label").show()
+            $$("logo_1").define("image", _t("image_logo_dark"));
+            $$("logo_1").refresh();
+            $$("master_setup").define("image", _("button_image_master_dark"));
+            $$("engineering_setup").define("image", _("button_image_engineering_dark"));
+            $$("reference").define("image", _("button_image_info_win2_dark"));
+            $$("application_menu").define("image", _("button_image_konfig_dark"));
+            // $$("logo_1").refresh();
+            $$("master_setup").refresh();
+            $$("engineering_setup").refresh();
+            $$("reference").refresh();
+            $$("application_menu").refresh();
+        }
+        if (configFile.theme == 'light') {
+            webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages");
+            webix.html.addCss($$("logo_1").getNode(), "logo_1");
+            webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start");
+            webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start");
+            webix.html.addCss($$("ver_soft").getNode(), "ver_soft");
+            webix.html.addCss($$("master_setup").getNode(), "button_1");
+            webix.html.addCss($$("engineering_setup").getNode(), "button_1");
+            webix.html.addCss($$("reference").getNode(), "button_1");
+            webix.html.addCss($$("application_menu").getNode(), "button_1");
+            webix.html.addCss(this.$$("button_reload").getNode(), "button_reload");
+            webix.html.addCss($$("window_show_4").getNode(), "window_show");
+            webix.html.addCss($$("upload_config_window_1").getNode(), "upload_config_window");
+            webix.html.addCss($$("boot_loader").getNode(), "upload_config");
+            webix.html.addCss($$("upload_config").getNode(), "upload_config");
+            webix.html.addCss($$("label_text_upload_window_2").getNode(), "label_text_upload_window");
+            webix.html.addCss($$("label_text_upload_window_3").getNode(), "label_text_upload_window");
+            webix.html.addCss($$("label_text_upload_window_1").getNode(), "label_text_upload_window");
+            webix.html.addCss($$("load_file").getNode(), "upload_config");
 
-        function setTheme() {
-            if (configFile.theme.color == 'black') {
-                webix.html.addCss($$("window_show").getNode(), "window_show_dark");
-                webix.html.addCss($$("window_show_2").getNode(), "window_show_dark");
-                webix.html.addCss($$("language_windows_modal").getNode(), "language_windows_modal_dark");
-                // webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
-                webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal_dark");
-                webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal_dark");
-                webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal_dark");
-                webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages_dark");
-                webix.html.addCss($$("logo_1").getNode(), "logo_1_dark");
-                webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start_dark");
-                webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start_dark");
-                webix.html.addCss($$("ver_soft").getNode(), "ver_soft_dark");
-                webix.html.addCss($$("master_setup").getNode(), "button_1_dark");
-                webix.html.addCss($$("engineering_setup").getNode(), "button_1_dark");
-                webix.html.addCss($$("reference").getNode(), "button_1_dark");
-                webix.html.addCss($$("application_menu").getNode(), "button_1_dark");
-
-                // $$("light_theme_label").hide()
-                // $$("dark_theme_label").show()
-                $$("logo_1").define("image", "assets/images/Logo_2.svg")
-                $$("master_setup").define("image", "assets/images/master_inverse.svg")
-                $$("engineering_setup").define("image", "assets/images/ingeneer_inverse.svg")
-                $$("reference").define("image", "assets/images/info_inverse.svg")
-                $$("application_menu").define("image", "assets/images/konfig_inverse.svg")
-                $$("logo_1").refresh()
-                $$("master_setup").refresh()
-                $$("engineering_setup").refresh()
-                $$("reference").refresh()
-                $$("application_menu").refresh()
-            }
-            if (configFile.theme.color == 'white') {
-                webix.html.addCss($$("window_show").getNode(), "window_show");
-                webix.html.addCss($$("window_show_2").getNode(), "window_show");
-                webix.html.addCss($$("language_windows_modal").getNode(), "language_windows_modal");
-                // webix.html.addCss($$("language_windows_modal_2").getNode(), "language_windows_modal");
-                webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal");
-                webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal");
-                webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal");
-                webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages");
-                webix.html.addCss($$("logo_1").getNode(), "logo_1");
-                webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start");
-                webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start");
-                webix.html.addCss($$("ver_soft").getNode(), "ver_soft");
-                webix.html.addCss($$("master_setup").getNode(), "button_1");
-                webix.html.addCss($$("engineering_setup").getNode(), "button_1");
-                webix.html.addCss($$("reference").getNode(), "button_1");
-                webix.html.addCss($$("application_menu").getNode(), "button_1");
-
-                // $$("dark_theme_label").hide()
-                // $$("light_theme_label").show()
-                $$("logo_1").define("image", "assets/images/Logo_1.svg")
-                $$("master_setup").define("image", "assets/images/master.svg")
-                $$("engineering_setup").define("image", "assets/images/ingeneer.svg")
-                $$("reference").define("image", "assets/images/info-win2.svg")
-                $$("application_menu").define("image", "assets/images/konfig.svg")
-                $$("logo_1").refresh()
-                $$("master_setup").refresh()
-                $$("engineering_setup").refresh()
-                $$("reference").refresh()
-                $$("application_menu").refresh()
-            }
+            // $$("dark_theme_label").hide()
+            // $$("light_theme_label").show()
+            $$("logo_1").define("image", _t("image_logo"));
+            $$("logo_1").refresh();
+            $$("master_setup").define("image", _("button_image_master"));
+            $$("engineering_setup").define("image", _("button_image_engineering"));
+            $$("reference").define("image", _("button_image_info_win2"));
+            $$("application_menu").define("image", _("button_image_konfig"));
+            // $$("logo_1").refresh();
+            $$("master_setup").refresh();
+            $$("engineering_setup").refresh();
+            $$("reference").refresh();
+            $$("application_menu").refresh();
         }
     }
-
 }
 

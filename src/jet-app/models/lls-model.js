@@ -93,6 +93,17 @@ class LlsModel {
         this._myEmitter.removeListener('readCnt', listener);
     }
 
+    /*** Event BootLoader ***/
+
+    /***/
+    addListenerBootLoader(listener) {
+        this._myEmitter.on("bootloader", listener);
+    }
+
+    clearListenerBootLoader(listener) {
+        this._myEmitter.removeListener('bootloader', listener);
+    }
+
     /*** Event Command Error ***/
 
     /***/
@@ -118,7 +129,7 @@ class LlsModel {
         if (this.#statusLls == 'connect') {
             let dataLong = await this._lls.data.getLong();
             this.currentLongData = dataLong;
-            if(this.newLongData == null){
+            if (this.newLongData == null) {
                 this.newLongData = {...dataLong};
             }
             this._myEmitter.emit('longData', dataLong);
@@ -196,6 +207,24 @@ class LlsModel {
         }
     }
 
+    // async setBootMode() {
+    //     // if (this.#statusLls == 'connect') {
+    //     if (this.#statusLls == 'bootMode') {
+    //         let resp = await this._lls.actions.setBootMode();
+    //         if (resp.status == 0x00) {
+    //             console.log("Lls in Boot Mode!");
+    //             this._myEmitter.emit('bootloader', resp.status);
+    //         } else if (resp.status == 0x01) {
+    //             console.log('Lls response error!');
+    //         } else if (resp.status == 0x02) {
+    //             console.log("Lls in Boot Mode!");
+    //         }
+    //         return resp;
+    //     } else {
+    //         return 'LLS not connect';
+    //     }
+    // }
+
     async getTable() {
         if (this.#statusLls == 'connect') {
             let table = await this._lls.table.get();
@@ -262,15 +291,15 @@ class LlsModel {
             if (this.#statusLls == 'connect') {
                 let resp = await this._lls.actions.setNewPassword(currentPassword, newPassword);
                 if (resp.status == 0x00) {
-                    this._myEmitter.emit('commandError', resp.status);
+                    // this._myEmitter.emit('commandError', resp.status);
                     resolve();
                 } else if (resp.status == 0x01) {
                     console.log('Lls response error!');
-                    this._myEmitter.emit('commandError', resp.status);
+                    // this._myEmitter.emit('commandError', resp.status);
                     reject();
                 } else if (resp.status == 0x02) {
                     console.log("Lls password error!");
-                    this._myEmitter.emit('commandError', resp.status);
+                    // this._myEmitter.emit('commandError', resp.status);
                     reject();
                 }
             } else {
@@ -300,15 +329,76 @@ class LlsModel {
         });
     }
 
+    async setStatusLlsStop() {
+        // this.#statusLls = "stop";
+        // return "stop";
+        if (this._lls) {
+            this.#statusLls = 'noConnect';
+            try {
+                await this._lls.close();
+                // delete this._lls;
+                this.#statusLls = "stop";
+                this._myEmitter.emit('isDisconnect');
+                return this._llsConnectSettings;
+            } catch (e) {
+                throw e;
+            }
+        } else {
+            throw "dontStop";
+        }
+    }
+
+    async setStatusLlsStopPromise() {
+        findPort.setStop();
+
+        if (this._lls) {
+            // this.#statusLls = 'noConnect';
+            try {
+                await this._lls.close();
+                // delete this._lls;
+                this.#statusLls = "stop";
+                this._myEmitter.emit('isDisconnect');
+                return "stop";
+            } catch (e) {
+                // throw e;
+            }
+        } else {
+            this.#statusLls = 'stop';
+            return "stop";
+        }
+    }
+
+    setStatusLlsNoConnect() {
+        this.#statusLls = "noConnect";
+    }
+
+    getLlsConnectSettings() {
+        return this._llsConnectSettings;
+    }
+
     async #loop() {
         for (; ;) {
             switch (this.#statusLls) {
+                case 'stop': {
+                    console.log("stop");
+                    await this.#delay(5000);
+                    break;
+                }
                 case 'noConnect': {
-                    let settings = await this.#findLls();
-                    if (settings != undefined) {
-                        this._llsConnectSettings = settings;
-                        this.#statusLls = 'findConnect';
+                    try {
+                        let settings = await this.#findLls();
+                        if (settings != undefined) {
+                            this._llsConnectSettings = settings;
+                            this.#statusLls = 'findConnect';
+                        }
+                    } catch (e) {
+                        console.log(e);
                     }
+                    // let settings = await this.#findLls();
+                    // if (settings != undefined) {
+                    //     this._llsConnectSettings = settings;
+                    //     this.#statusLls = 'findConnect';
+                    // }
                     break;
                 }
                 case 'findConnect': {
@@ -334,19 +424,20 @@ class LlsModel {
                         await this.getCnt();
                         let dataShort = await this._lls.data.getShort();
                         console.log(dataShort);
-                        if(dataShort.llsAdr){
+                        if (dataShort.llsAdr) {
                             this._myEmitter.emit('shortData', dataShort);
                         }
                     } catch (e) {
                         console.log(e);
-                        this.#statusLls = 'noConnect';
+                        if (this.#statusLls != "stop") {
+                            this.#statusLls = 'noConnect';
+                        }
                         this._myEmitter.emit('isDisconnect');
                         try {
                             await this._lls.close();
                         } catch (e) {
-                            close()
+                            console.log(e);
                         }
-                        ;
                         this.newLongData = null;
                         break;
                     }
@@ -372,7 +463,7 @@ class LlsModel {
     async #findLls() {
         try {
             let settings = await findPort.findLls232();
-            console.log(settings);
+            // console.log(settings);
             return settings;
         } catch (e) {
             console.log(e);

@@ -133,12 +133,12 @@ export default class llsProtocol {
     open() {
         return new Promise(((resolve, reject) => {
             this.port.onError((err) => {
-                console.log('Error: ', err.message);
+                // console.log('Error: ', err.message);
                 reject(err.message);
             });
             this.port.onOpen(() => {
                 // open logic
-                console.log("serialPort is Open");
+                console.log(`serialPort [${this._settingPort.portName}: ${this._settingPort.baudRate}] is Open`);
                 this._listenerResponseData();
                 resolve();
             });
@@ -158,6 +158,18 @@ export default class llsProtocol {
             }
         });
     };
+
+    async promiseBootLoad(){
+        return new Promise((resolve, reject)=>{
+            this.port.onceData((data)=>{
+                console.log(data);
+                let startIndex = data.indexOf(0x3E);
+                data = data.slice(startIndex);
+                // resolve();
+                resolve(this._parseData(data));
+            });
+        });
+    }
 
     _commandCreate(command, data) {
         let llsAdr = this._settingPort.llsAdr;
@@ -235,6 +247,10 @@ export default class llsProtocol {
                 dataBuffer.push(0x19);
                 break;
             }
+            case 0x68:{ //download_applications
+                dataBuffer.push(command);
+                break;
+            }
             case "reset": { //сброс к заводским настойкам
                 dataBuffer.push(0x67);
                 dataBuffer.push(0x69);
@@ -277,7 +293,7 @@ export default class llsProtocol {
     _getCRC8(buffer) {
         // let checksum = crc8('MAXIM', buffer);
         let checksum = window.checkSumm.crc8('MAXIM', buffer);
-        console.log("CRC8: " + checksum.toString(16));
+        // console.log("CRC8: " + checksum.toString(16));
         return checksum;
     };
 
@@ -396,6 +412,12 @@ export default class llsProtocol {
                     goBootloader.command = dataView.getUint8(2);
                     goBootloader.code = dataView.getUint8(3);
                     return goBootloader;
+                    break;
+                }
+                case 0x68: {// download_applications
+                    let downloadApp = {};
+                    downloadApp.code = dataView.getUint8(0);
+                    return downloadApp;
                     break;
                 }
                 case 0x16: {

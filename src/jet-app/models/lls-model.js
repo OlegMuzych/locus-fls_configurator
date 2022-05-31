@@ -349,18 +349,18 @@ class LlsModel {
     }
 
     async setStatusLlsStopPromise() {
-        findPort.setStop();
-        // await this.#delay(1000);
+        this.#statusLls = "stop";
+        await findPort.setStop();
+
         if (this._lls) {
-            // this.#statusLls = 'noConnect';
+            this.#statusLls = "stop";
             try {
                 await this._lls.close();
-                // delete this._lls;
                 this.#statusLls = "stop";
                 this._myEmitter.emit('isDisconnect');
                 return "stop";
             } catch (e) {
-                // throw e;
+                throw e;
             }
         } else {
             this.#statusLls = 'stop';

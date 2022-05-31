@@ -1,11 +1,12 @@
 import {JetView} from "webix-jet";
 import configFile from "../../config-app";
 import FirmwareUpdate from "../firmware-update/firmware-update";
+import fileFirmwareModel from "../../models/file-firmware-model";
+import llsModel from "../../models/lls-model";
 
 export default class WindowFirmwareUpdate extends JetView {
     config() {
         const _ = this.app.getService("locale")._;
-
         let win = {
             view: "window",
             width: 1000,
@@ -39,7 +40,10 @@ export default class WindowFirmwareUpdate extends JetView {
     }
 
     init() {
-
+        this.getRoot().attachEvent("onHide", function(){
+            fileFirmwareModel.llsClose().then();
+            llsModel.setStatusLlsNoConnect();
+        });
         this.setTheme();
     }
 

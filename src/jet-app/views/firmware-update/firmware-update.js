@@ -232,10 +232,15 @@ export default class FirmwareUpdate extends JetView {
         super.destroy();
         llsModel.clearListenerIsConnect(this.listenerConnect);
         llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
+        fileFirmwareModel.llsClose().then();
+        llsModel.setStatusLlsNoConnect();
     }
 
     init() {
-
+        this.$$("body").attachEvent("onBlur", function(prev_view){
+            // prev_view - это таблица с id="datatable1"
+            webix.message("uiuiui");
+        });
         this.$$("manualBoot").enable();
         this.$$("buttonSetBootMode").disable();
 
@@ -295,6 +300,7 @@ export default class FirmwareUpdate extends JetView {
                     this.$$("manualBoot").disable();
                 })
                 .catch((e) => {
+                    console.log(e);
                     message.showWindow(_("fail_entry_in_mode_download"));
                     webix.message("Boot Mode failed!");
                     fileFirmwareModel.llsClose().then();

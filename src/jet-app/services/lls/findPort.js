@@ -3,11 +3,21 @@
 // const {SerialPort} = eval(`require('serialport')`);
 import config from "../../config-app";
 import Lls from "./lls";
+
 class FindLls {
     testLls = null;
+    flag = false;
 
-    setStop(){
+    async setStop() {
         this.stopFlag = true;
+        return new Promise(resolve => {
+            let interval = setInterval(() => {
+                if (!this.flag) {
+                    clearInterval(interval);
+                    resolve();
+                }
+            }, 1000);
+        });
     }
 
     async findLls232() {
@@ -17,22 +27,26 @@ class FindLls {
     }
 
     async sortingPath(listPath) {
-        for(let i = 0; i < listPath.length; i++){
+        for (let i = 0; i < listPath.length; i++) {
+            if(this.stopFlag) break;
             let data = await this.sortingBaudrate(listPath[i]);
-            if(data) return data;
+            if (data) return data;
         }
     }
 
     async sortingBaudrate(path) {
         let baudRateArr = [...config.serialPort.baudRateArr];
-        for(let i = 0; i < baudRateArr.length; i++){
-           let data = await this.checkCommand(path,baudRateArr[i]);
-           if(data) return data;
+        for (let i = 0; i < baudRateArr.length; i++) {
+            if(this.stopFlag) break;
+            let data = await this.checkCommand(path, baudRateArr[i]);
+            if (data) return data;
         }
+
     }
 
     async checkCommand(path, baudRate) {
-        if(!this.stopFlag){
+        if (!this.stopFlag) {
+            this.flag = false;
             if (this.testLls) {
                 await this.testLls.close();
                 this.testLls = null;
@@ -47,8 +61,11 @@ class FindLls {
                 };
                 await this.testLls.close();
                 this.testLls = null;
+
+                this.flag = false;
                 return settingPort;
             } catch (e) {
+                this.flag = false;
                 // console.log(e);
             }
         }

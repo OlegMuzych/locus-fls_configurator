@@ -525,3 +525,13 @@ export default class llsProtocol {
     };
 
 }
+
+// //Commands BootLoader
+// #define F_BOOTLOADER_ENABLE			0x67
+// #define F_DOWNLOAD_APPLICATION	0x68
+// #define F_UPLOAD_APPLICATION		0x69
+// #define F_RUN_APPLICATION				0x6A
+// #define F_DOWNLOAD_SETTINGS			0x6B
+// #define F_UPLOAD_SETTINGS				0x6C
+// #define F_CLEAR_SETTINGS				0x6D
+// #define F_FLASH_UNPROTECT				0x6F

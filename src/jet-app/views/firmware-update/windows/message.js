@@ -47,7 +47,7 @@ export default class MessageWindow extends JetView {
                     {
                         cols: [
                             {},
-                            {view: "button", label: _("button_ok") , localId: "buttonOk", css: "set_password_button",},
+                            {view: "button", label: _("button_ok") , localId: "buttonOk", css: "set_password_button",hotkey: "enter",},
                             {view: "button", label: _("button_test_mode"), localId: "buttonCancel", css: "set_password_button",
                                 disabled: false,
                                 hidden: false,

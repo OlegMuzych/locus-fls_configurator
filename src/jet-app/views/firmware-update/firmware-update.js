@@ -17,6 +17,17 @@ export default class FirmwareUpdate extends JetView {
                     // height: 100,
                 },
                 {
+                    view: "label",
+                    label: "<p>Current firmware version: </p>",
+                    // label: "Version Firmware:",
+                    align: "center",
+                    css: "label_text_upload_window",
+                    localId: 'labelCurrentFirmwareVersion',
+                    hidden: true
+                    // css: "upload_config",
+                },
+                {},
+                {
                     height: 200,
                     rows: [
                         {
@@ -50,8 +61,9 @@ export default class FirmwareUpdate extends JetView {
                                             localId: "textFirmwarePath",
                                             width: 500,
                                             height: 70,
+                                            inputAlign:"left",
                                             autoheight: false,
-                                            css: "upload_config_window",
+                                            css: "my_text",
                                             // css: "window_type_2",
 
 
@@ -95,16 +107,17 @@ export default class FirmwareUpdate extends JetView {
                                             localId: "manualBoot",
                                             cols: [
                                                 {
-                                                    view: "combo",
+                                                    view: "richselect",
                                                     id: "comport",
-                                                    label: 'Path',
-                                                    labelPosition:"top",
+                                                    placeholder:"COM Port",
+                                                    // label: 'Path',
+                                                    labelPosition: "top",
                                                     labelAlign: 'center',
                                                     name: "comport",
-                                                    css: "upload_config",
+                                                    // css: "upload_config",
+                                                    css: "my_richselect",
                                                     value: 1,
-                                                    options: [
-                                                    ]
+                                                    options: []
                                                 },
                                                 {
                                                     view: "button",
@@ -217,6 +230,7 @@ export default class FirmwareUpdate extends JetView {
     }
 
     listenerConnect = () => {
+        llsModel.getLongData();
         this.$$("manualBoot").disable();
         this.$$("buttonSetBootMode").enable();
         // this.setStatusConnect(true);
@@ -228,19 +242,35 @@ export default class FirmwareUpdate extends JetView {
         // this.setStatusConnect(false);
     }
 
+    listenerLongData = (longData) => {
+        let strVersion = new TextDecoder().decode(new Uint8Array(longData.softwareVersion));
+        this.$$('labelCurrentFirmwareVersion').setValue(`<p>Current firmware version: ${strVersion}</p>`);
+    }
+
     destroy() {
         super.destroy();
         llsModel.clearListenerIsConnect(this.listenerConnect);
         llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
+        llsModel.clearListenerLongData(this.listenerLongData);
+        webix.UIManager.removeHotKey("shift-d", this.devModeTurnOn);
         // fileFirmwareModel.llsClose().then();
         // llsModel.setStatusLlsNoConnect();
     }
 
+    devModeTurnOn = () => {
+        webix.message("DevMode");
+        this.devModeFlag = true;
+        this.$$('labelCurrentFirmwareVersion').show();
+
+        // this.$$('buttonPromise').define({hotkey: "space",});
+        // this.$$('buttonFirmwareWrite').define({hotkey: "space",});
+    }
+
     init() {
-        this.$$("body").attachEvent("onBlur", function(prev_view){
-            // prev_view - это таблица с id="datatable1"
-            webix.message("uiuiui");
-        });
+
+        this.devModeFlag = false;
+        webix.UIManager.addHotKey("shift-d", this.devModeTurnOn);
+
         this.$$("manualBoot").enable();
         this.$$("buttonSetBootMode").disable();
 
@@ -249,12 +279,13 @@ export default class FirmwareUpdate extends JetView {
         this.setTheme();
         llsModel.addListenerIsConnect(this.listenerConnect);
         llsModel.addListenerIsDisconnect(this.listenerDisconnect);
+        llsModel.addListenerLongData(this.listenerLongData);
         llsModel.getStatusConnect();
 
         this.setModeBootLed(false);
         this.$$("buttonFirmwareWrite").disable();
 
-        this.getRoot().attachEvent("onViewShow", function(){
+        this.getRoot().attachEvent("onViewShow", function () {
             webix.message("Shhowwww");
         });
 
@@ -328,12 +359,15 @@ export default class FirmwareUpdate extends JetView {
                     return fileFirmwareModel.llsConnect({path, baudRate});
                 })
                 .then(() => {
+                    this.$$("manualBoot").disable(); //что бы не активироваль с EventConnect
                     return fileFirmwareModel.runBootMode();
                 })
                 .then(() => {
+                    this.$$("manualBoot").disable(); //что бы не активироваль с EventConnect
                     return fileFirmwareModel.runDownloadApp();
                 })
                 .then(() => {
+                    this.$$("manualBoot").disable(); //что бы не активироваль с EventConnect
                     return fileFirmwareModel.llsClose();
                 })
                 .then(() => {
@@ -363,15 +397,14 @@ export default class FirmwareUpdate extends JetView {
                 // return 0;
                 return fileFirmwareModel.llsClose();
             }
-            // const serialPortSettings = llsModel.getLlsConnectSettings();
-            // const serialPortSettings = {path: "/dev/tty.usbserial-0001", baudRate: 19200};
             const serialPortSettings = this.portSettings;
 
             fileFirmwareModel.writeFirmware(path, serialPortSettings, (progress) => {
                 this.$$("bar").setValue(progress);
-            }).then(() => {
-                return fileFirmwareModel.llsClose();
             })
+                .then(() => {
+                    return fileFirmwareModel.llsClose();
+                })
                 .then(() => {
                     webix.message("Success");
                     message.showWindow(_("success_write_file"));
@@ -385,7 +418,15 @@ export default class FirmwareUpdate extends JetView {
     }
 
     myRefresh() {
-        this.refresh();
+        if (this.devModeFlag) {
+            this.$$("bar").setValue(0);
+            this.$$("bar").refresh();
+            this.$$("manualBoot").enable();
+            this.$$("buttonSetBootMode").disable();
+            this.$$("labelCurrentFirmwareVersion").setValue("<p>Current firmware version: </p>");
+        } else {
+            this.refresh();
+        }
         llsModel.setStatusLlsNoConnect();
         this.getParentView().action(true);
     }

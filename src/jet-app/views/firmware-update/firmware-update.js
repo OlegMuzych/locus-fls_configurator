@@ -232,8 +232,8 @@ export default class FirmwareUpdate extends JetView {
         super.destroy();
         llsModel.clearListenerIsConnect(this.listenerConnect);
         llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
-        fileFirmwareModel.llsClose().then();
-        llsModel.setStatusLlsNoConnect();
+        // fileFirmwareModel.llsClose().then();
+        // llsModel.setStatusLlsNoConnect();
     }
 
     init() {

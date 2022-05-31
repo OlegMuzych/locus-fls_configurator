@@ -369,7 +369,9 @@ class LlsModel {
     }
 
     setStatusLlsNoConnect() {
-        this.#statusLls = "noConnect";
+        if(this.#statusLls == "stop"){
+            this.#statusLls = "noConnect";
+        }
     }
 
     getLlsConnectSettings() {

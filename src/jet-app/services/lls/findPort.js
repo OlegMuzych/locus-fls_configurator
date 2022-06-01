@@ -11,9 +11,13 @@ class FindLls {
     async setStop() {
         this.stopFlag = true;
         return new Promise(resolve => {
-            let interval = setInterval(() => {
+            let interval = setInterval(async () => {
                 if (!this.flag) {
                     clearInterval(interval);
+                    if (this.testLls) {
+                        await this.testLls.close();
+                        this.testLls = null;
+                    }
                     resolve();
                 }
             }, 1000);

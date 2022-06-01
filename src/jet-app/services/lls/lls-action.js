@@ -118,7 +118,7 @@ export default class llsAction {
     // }
 
     async promiseBootLoad() {
-        let {llsAdr, code: status} = await this._llsProtocol.promiseBootLoad();
+        let {llsAdr = 0xff, code: status} = await this._llsProtocol.promiseBootLoad();
         return {
             llsAdr: llsAdr,
             status: status,

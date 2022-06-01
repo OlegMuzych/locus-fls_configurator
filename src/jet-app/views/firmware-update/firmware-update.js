@@ -424,6 +424,7 @@ export default class FirmwareUpdate extends JetView {
             this.$$("manualBoot").enable();
             this.$$("buttonSetBootMode").disable();
             this.$$("labelCurrentFirmwareVersion").setValue("<p>Current firmware version: </p>");
+            this.setModeBootLed(false);
         } else {
             this.refresh();
         }

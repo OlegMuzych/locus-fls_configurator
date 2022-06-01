@@ -21,7 +21,7 @@ export default {
     /* window-settings.js */
     "language_selection": "Выбор языка",
     "theme_selection": "Выбор темы",
-    "font_size": "Размер шрфта",
+    "font_size": "Размер шрифта",
     "auto_save_mode": "Автоматическое  сохранение настроек",
 
     "dark_theme": 'Темная',

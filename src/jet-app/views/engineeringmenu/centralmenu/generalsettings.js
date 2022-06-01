@@ -1184,9 +1184,12 @@ function sn2ascii(decArray) {
         newDecArray.push(decArray[i]);
     }
     let strAscii = String.fromCharCode(...newDecArray);
-    let num = Number(strAscii);
+    // let num = Number(strAscii);
+    let num = parseInt(strAscii);
     if(!num){
-        strAscii = "NA";
+        // strAscii = "NA";
+        return "NA";
     }
-    return strAscii;
+
+    return num.toString();
 }

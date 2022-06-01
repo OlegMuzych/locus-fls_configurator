@@ -13,7 +13,7 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    maxWidth: 1300 +1000,
+    maxWidth: 1300,
     minWidth: 990,
     minHeight: 700,
     maxHeight: 1000,
@@ -28,7 +28,7 @@ const createWindow = () => {
       zoomFactor: 0.6,
     },
     fullscreenable: false,
-    icon: __dirname + '/trademark/ie-logo.ico',
+    icon: __dirname + '/trademark/pm-logo.ico',
     removeMenu: true,
     autoHideMenuBar: true,
   });

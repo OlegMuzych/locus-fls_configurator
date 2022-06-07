@@ -104,7 +104,8 @@ export default class ResetLlsWindow extends JetView {
             }
             llsModel.newLongData = defaultSettings;
 
-            llsModel.setLongData(defaultSettings).then();
+            // llsModel.setLongData(defaultSettings).then();
+            llsModel.setLongData(llsModel.newLongData).then();
         });
 
 

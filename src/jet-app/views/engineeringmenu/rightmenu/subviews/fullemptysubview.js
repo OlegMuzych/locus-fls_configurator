@@ -234,8 +234,10 @@ export default class FullEmptySubView extends JetView {
     }
 
     listenerLongData = (longData) => {
-        $$('auto_calibration_set_2').setValue(longData.emptyTank.toString());
-        $$('auto_calibration_set_1').setValue(longData.fullTank.toString());
+        // $$('auto_calibration_set_2').setValue(longData.emptyTank.toString());
+        // $$('auto_calibration_set_1').setValue(longData.fullTank.toString());
+        this.setEmptyTank(longData.emptyTank.toString());
+        this.setFullTank(longData.fullTank.toString());
         this.setMinBar(longData.minLevel);
         this.setMaxBar(longData.maxLevel);
     }
@@ -366,6 +368,16 @@ export default class FullEmptySubView extends JetView {
             webix.html.addCss( $$("button_edit").getNode(), "edit_values_dark");
             webix.html.addCss( this.$$("status_level_fuel").getNode(), "full_window_text_dark");
         }
+    }
+
+    setEmptyTank(newValue){
+        $$('auto_calibration_set_2').setValue(newValue);
+        llsModel.newLongData.emptyTank = newValue;
+    }
+
+    setFullTank(newValue){
+        $$('auto_calibration_set_1').setValue(newValue);
+        llsModel.newLongData.fullTank = newValue;
     }
 
     setMaxBar(value){

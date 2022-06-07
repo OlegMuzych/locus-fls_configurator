@@ -520,6 +520,10 @@ export default class Page9View extends JetView {
         super.destroy();
         llsModel.clearListenerIsConnect(this.listenerConnect);
         llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
+
+        $$("window_show_3").hide();
+
+        clearTimeout(this.timeoutMasterSettup);
     }
 
     setStatusConnect(status) {
@@ -572,9 +576,11 @@ export default class Page9View extends JetView {
 
 
         $$("master_setup").attachEvent("onItemClick", (id, e) => {
+                $$("window_show_3").hide();
+            clearTimeout(this.timeoutMasterSetup);
             $$("window_show_3").show();
 
-            setTimeout(() => {
+            this.timeoutMasterSetup = setTimeout(() => {
                 $$("window_show_3").hide();
             }, 1500);
         });

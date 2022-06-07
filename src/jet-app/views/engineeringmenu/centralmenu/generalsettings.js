@@ -811,7 +811,11 @@ export default class GeneralSettings extends JetView {
                     // llsModel.setLongData({thermalCompensationType: 0x05}); //DT winter
                     this.$$("fuelTypeSwitch").show();
                 } else {
+                    // llsModel.setLongData({thermalCompensationType: 0x00});
+                    llsModel.newLongData.thermalCompensationType = 0x00;
+                    // globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({thermalCompensationType: obj.value}) : '');
                     llsModel.setLongData({thermalCompensationType: 0x00});
+                    this.setThermalCompensationValue();
                     this.$$("fuelTypeSwitch").hide();
                 }
             }

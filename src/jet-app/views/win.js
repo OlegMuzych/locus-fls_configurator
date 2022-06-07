@@ -521,7 +521,6 @@ export default class Page9View extends JetView {
         llsModel.clearListenerIsConnect(this.listenerConnect);
         llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
 
-        $$("window_show_3").hide();
 
         clearTimeout(this.timeoutMasterSettup);
     }

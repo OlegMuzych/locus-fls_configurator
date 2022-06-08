@@ -784,11 +784,16 @@ export default class GeneralSettings extends JetView {
         });
 
         this.$$('counterCounterPeriod').attachEvent("onChange", (newValue, oldValue, config) => {
-            console.log("change");
+            let value = Number(newValue);
             if (config != undefined) {
-                console.log(newValue);
-                let value = Number(newValue);
-                llsModel.setLongData({periodOfDataIssuance: value});
+                if (value >= 5 && value <= 254) {
+                    llsModel.newLongData.periodOfDataIssuance = value;
+
+                    this.$$("counterCounterPeriod").setValue(value);
+                    llsModel.setLongData({periodOfDataIssuance: value});
+                } else {
+                    this.$$("counterCounterPeriod").setValue(oldValue);
+                }
             }
         });
 
@@ -798,6 +803,7 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 let value = Number(newValue);
+                llsModel.newLongData.outputParametersOfSensor = value;
                 llsModel.setLongData({outputParametersOfSensor: value});
             }
         });

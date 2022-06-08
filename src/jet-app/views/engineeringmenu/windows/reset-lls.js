@@ -87,7 +87,7 @@ export default class ResetLlsWindow extends JetView {
                 averagingLength: 21,
                 medianLength: 7,
                 coefficientQ: 0.001,
-                coefficientR: 5000,
+                coefficientR: 4095,
                 thermalCompensationType: 0,
                 coefficientK1: 0,
                 coefficientK2: 0,
@@ -122,16 +122,13 @@ export default class ResetLlsWindow extends JetView {
             webix.html.addCss(this.$$("language_windows_modal_3").getNode(), "language_windows_modal_dark");
             webix.html.addCss(this.$$("buttonOk").getNode(), "set_password_button_dark");
             webix.html.addCss(this.$$("buttonCancel").getNode(), "set_password_button_dark");
-
         }
+
         if (configFile.theme == 'light') {
             webix.html.addCss(this.$$("window_show_5").getNode(), "window_show");
             webix.html.addCss(this.$$("language_windows_modal_3").getNode(), "language_windows_modal");
             webix.html.addCss(this.$$("buttonOk").getNode(), "set_password_button");
             webix.html.addCss(this.$$("buttonCancel").getNode(), "set_password_button");
-
-
-
         }
     }
 }

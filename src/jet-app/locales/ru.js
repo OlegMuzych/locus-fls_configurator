@@ -152,7 +152,7 @@ export default {
     "button_test_mode": "Тестовый Режим",
 
     /* reset-lls.js */
-    "windows_reset-lls_text": "Все настройки датчика будут сброшенны",
+    "windows_reset-lls_text": "Все настройки будут сброшенны",
 
     /* save-setting-notification.js */
     "window_save-setting-notification_text": "Настройки записаны в датчик",

@@ -204,7 +204,7 @@ export default class FiltrationSettings extends JetView {
                                                         value: "0",
                                                         name: "s1",
                                                         minWidth: 120,
-                                                        min: 0,
+                                                        min: 1,
                                                         max: 21,
                                                         css: "slider_1",
                                                         id: "slider_filter_1",

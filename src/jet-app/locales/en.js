@@ -173,6 +173,7 @@ export default {
     "window_passwordinput_segmented_reset": "Reset Settings",
     "window_passwordinput_segmented_current_text": "Enter password",
     "window_passwordinput_segmented_reset_text":"All settings will be erased",
+    "window_password_placeholder": "empty",
 
     /*  win.js Images */
     "button_image_master": "assets/images/win1/settingsWizard_en_light.svg",

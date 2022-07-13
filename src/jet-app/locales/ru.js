@@ -173,6 +173,8 @@ export default {
     "window_passwordinput_segmented_reset": "Сбросить настройки",
     "window_passwordinput_segmented_current_text": "Введите пароль для входа",
     "window_passwordinput_segmented_reset_text": "Все настройки датчика будут стерты",
+    "window_password_placeholder": "без пароля",
+
 
     /*  win.js Images */
     "button_image_master": "assets/images/win1/settingsWizard_ru_light.svg",

@@ -508,10 +508,12 @@ export default class FiltrationSettings extends JetView {
         // $$('slider_filter_1').setValue(longData.averagingLength.toString());
         // $$('window_text_time').setValue(longData.averagingLength.toString());
         this.setSliderValue('window_text_time', 'averagingLength', 'statusAveragingLength');
+        this.setSliderValue('slider_filter_1', 'averagingLength', 'statusAveragingLength');
 
         // $$('slider_filter_2').setValue(longData.medianLength.toString());
         // $$('window_text_mediana').setValue(longData.medianLength.toString());
         this.setSliderValue('window_text_mediana', 'medianLength', 'statusMedianLength');
+        this.setSliderValue('slider_filter_2', 'medianLength', 'statusMedianLength');
 
         // $$('text_q').setValue(longData.coefficientQ.toString());
         this.setFloatValue('text_q', "coefficientQ", "statusCoefficientQ");

@@ -22,7 +22,7 @@ export default class llsTable {
             countPoint: countPoint
         }
 
-        let {code: status} = await this._llsProtocol.send(0x27, newTable,3000);
+        let {code: status} = await this._llsProtocol.send(0x27, newTable, 3000); //3000
         return {
             status: status,
         }

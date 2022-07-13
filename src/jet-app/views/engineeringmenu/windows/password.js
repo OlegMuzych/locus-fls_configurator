@@ -18,8 +18,8 @@ export default class PasswordWindow extends JetView {
                     multiview: true,
                     height: 80,
                     options: [
-                        {value: _("window_password_segmented_current"), id: 'rows_22'},
                         {value: _("window_password_segmented_new"), id: 'rows_21'},
+                        {value: _("window_password_segmented_current"), id: 'rows_22'},
                     ],
                 },
 
@@ -71,6 +71,7 @@ export default class PasswordWindow extends JetView {
                                         {},
                                         {
                                             view: "text",
+                                            placeholder: _("window_password_placeholder"),
                                             height: 50,
                                             localId: "textCurrentPass",
                                             css: "password_windows_set",
@@ -133,6 +134,7 @@ export default class PasswordWindow extends JetView {
                                                 },
                                                 {
                                                     view: "text",
+                                                    placeholder: _("window_password_placeholder"),
                                                     height: 50,
                                                     width: 300,
                                                     localId: "textCurrentPass_2",
@@ -164,6 +166,7 @@ export default class PasswordWindow extends JetView {
                                                 },
                                                 {
                                                     view: "text",
+                                                    placeholder: _("window_password_placeholder"),
                                                     height: 50,
                                                     width: 300,
                                                     localId: "textNewPass",
@@ -234,7 +237,6 @@ export default class PasswordWindow extends JetView {
 
     init() {
         this.passValidFlag = true;
-
 
         this.$$('buttonCancel_1').attachEvent("onItemClick", (id, e) => {
             console.log('click');
@@ -331,7 +333,6 @@ export default class PasswordWindow extends JetView {
 
             $$("closed_35").define("image","assets/images/info_black.svg");
             $$("closed_35").refresh();
-
 
 
         }

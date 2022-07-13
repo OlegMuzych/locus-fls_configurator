@@ -109,7 +109,8 @@ export default class llsProtocol {
                 let obj = this.#shiftQueueWrite();
                 let dataBuffer = this._commandCreate(obj.command, obj.data);
 
-                if(dataBuffer[50] != 0x00) {
+                if(dataBuffer[2] == 0x48 && dataBuffer[50] == 0x00) {
+                }else{
                     this.port.write(dataBuffer);
                 }
             }

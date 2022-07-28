@@ -872,7 +872,7 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 newValue = Number(newValue).toFixed(6);
-                if (newValue >= 0 && newValue < 1000) {
+                if (newValue >= -1 && newValue < 1) {
                     llsModel.newLongData.coefficientK1 = newValue;
                     globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({coefficientK1: llsModel.newLongData.coefficientK1}) : '');
                     this.setFloatValue("textCoefficientK1", 'coefficientK1', "statusCoefficientK1");
@@ -892,7 +892,7 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 newValue = Number(newValue).toFixed(6);
-                if (newValue >= 0 && newValue < 1000) {
+                if (newValue >= -1 && newValue < 1) {
                     llsModel.newLongData.coefficientK2 = newValue;
                     globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({coefficientK2: llsModel.newLongData.coefficientK2}) : '');
                     this.setFloatValue("textCoefficientK2", 'coefficientK2', "statusCoefficientK2");

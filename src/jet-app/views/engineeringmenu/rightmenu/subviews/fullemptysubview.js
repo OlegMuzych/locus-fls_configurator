@@ -2,6 +2,8 @@ import {JetView} from "webix-jet";
 import llsModel from "../../../../models/lls-model";
 import configFile from "../../../../config-app";
 import globalVariable from "../../../../global-variable-app";
+import WindowFirmwareUpdate from "../../../windows/window-firmware-update";
+import AutoLevelWindow from "../../windows/auto-level";
 
 export default class FullEmptySubView extends JetView {
     config(){
@@ -35,7 +37,7 @@ export default class FullEmptySubView extends JetView {
 
                 },
                 {
-                    hidden: true,
+                    hidden: false,
                     rows: [
                         {
                             cols: [
@@ -340,6 +342,14 @@ export default class FullEmptySubView extends JetView {
                 }
             }
         })
+
+        // add window auto-level
+        this.windowAutoLevel = this.ui(AutoLevelWindow);
+        // this.windowAutoLevel.showWindow();
+        $$('auto_calibration').attachEvent("onItemClick", (id, e)=>{
+            console.log('click');
+            this.windowAutoLevel.showWindow();
+        });
 
         if(configFile.theme == 'light'){
             webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status");

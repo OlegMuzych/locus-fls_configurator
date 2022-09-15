@@ -114,7 +114,7 @@ export default {
 
     /* fullemptysubview.js , filteringsubview.js */
     "automatic_calibration": "Automatic calibration",
-    "button_automatic_calibration": "Calibrate",
+    "button_automatic_calibration": " Auto calibrate",
     "current_level": "Current level",
     "current_volume": "Current volume",
 
@@ -221,4 +221,11 @@ export default {
 
     /* windows-firmware-update.js */
     "window_firmware_header": "Update firmware",
+
+    /* auto-level.js */
+    "level_auto_calculate": "Automatic calculation of levels",
+    "length_measuring_part": "Length of the measuring part, cm",
+    "calculate": "Calculate",
+    "message_auto_level_alert": "The results of the automatic calculation increase the measurement error of the LLS to 3%",
+    //
 };

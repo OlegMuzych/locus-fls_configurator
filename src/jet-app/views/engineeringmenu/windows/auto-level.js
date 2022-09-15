@@ -15,7 +15,7 @@ export default class AutoLevelWindow extends JetView {
                        {},
                        {
                            view: "label",
-                           label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_("Автоматическй рассчет уровней")}</p>`,
+                           label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_("level_auto_calculate")}</p>`,
                            width: 550,
                            localId: "header_label",
                            css: "windows_password_label",
@@ -30,7 +30,7 @@ export default class AutoLevelWindow extends JetView {
 
                         {
                             view: "label",
-                            label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_("Длина измерительной части, см")}</p>`,
+                            label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_("length_measuring_part")}</p>`,
                             width: 550,
                             localId: "windows_password_label",
                             css: "windows_password_label",
@@ -53,9 +53,9 @@ export default class AutoLevelWindow extends JetView {
                     view: "template",
                     localId: "templateMessage",
                     height:100,
-                    template: `<p style='font-size: 20px; position: relative; top: -26px; font-weight: 100;'>${_("Результаты автоматического " +
-                        "расчета увеличивают погрешность измерения ДУТ до 3%")}</p>`,
-                    css: "windows_password_label",
+                    template: `<p style='font-size: 20px; position: relative; top: -26px; font-weight: 100;'>&nbsp;&nbsp;&nbsp;&nbsp;${_('message_auto_level_alert')}</p>`,
+                    // template: '123',
+                    css: "mytemplate"
                 },
                 {},
                 {
@@ -63,7 +63,7 @@ export default class AutoLevelWindow extends JetView {
                         {},
                         {
                             view: "button",
-                            label: _('Посчитать'),
+                            label: _('calculate'),
                             localId: "buttonCalculate",
                             css: "set_password_button"
                         },
@@ -184,6 +184,7 @@ export default class AutoLevelWindow extends JetView {
             webix.html.addCss(this.$$("buttonCancel").getNode(), "set_password_button_dark");
             webix.html.addCss($$("window_show_5").getNode(), "window_show_password_dark");
             webix.html.addCss(this.$$("form").getNode(), "form_win_dark");
+            webix.html.addCss(this.$$("templateMessage").getNode(), "my_template_dark");
 
             // $$("closed_35").define("image", "assets/images/info_black_inverse.svg");
             // $$("closed_35").refresh();
@@ -197,6 +198,7 @@ export default class AutoLevelWindow extends JetView {
             webix.html.addCss(this.$$("buttonCancel").getNode(), "set_password_button");
             webix.html.addCss($$("window_show_5").getNode(), "window_show_password");
             webix.html.addCss(this.$$("form").getNode(), "form_win");
+            webix.html.addCss(this.$$("templateMessage").getNode(), "my_template");
 
             // $$("closed_35").define("image", "assets/images/info_black.svg");
             // $$("closed_35").refresh();

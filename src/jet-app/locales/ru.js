@@ -113,8 +113,8 @@ export default {
     "service_password": "Пароль",
 
     /* fullemptysubview.js , filteringsubview.js */
-    "automatic_calibration": "Автоматическая колибровка",
-    "button_automatic_calibration": "Откалибровать",
+    "automatic_calibration": "Автоматическая калибровка",
+    "button_automatic_calibration": 'Автоматическая калибровка',//"Откалибровать",
     "current_level": "Текущий уровень",
     "current_volume": "Текущий объем",
 
@@ -220,5 +220,11 @@ export default {
 
     /* windows-firmware-update.js */
     "window_firmware_header": "Обновление прошивки",
+
+    /* auto-level.js */
+    "level_auto_calculate": "Автоматическй рассчет уровней",
+    "length_measuring_part": "Длина измерительной части, см",
+    "calculate": "Посчитать",
+    "message_auto_level_alert": "Результаты автоматического расчета увеличивают погрешность измерения ДУТ до 3%",
     //
 };

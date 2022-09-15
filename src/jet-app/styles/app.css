@@ -2747,3 +2747,16 @@ border: none;
 .my_text .webix_el_box input{
     font-size: 24px;
 }
+
+/*Темплате-----------------------------------------------*/
+.my_template .webix_template{
+    background-color: var(--c-white-color-background-light_general_windows);
+    color: var(--c-color-text-light);
+}
+
+.my_template_dark .webix_template{
+    background-color: var(--c-white-color-background-dark_left_menu);
+    color: var(--c-color-text-dark);
+
+}
+/*//////--------------------------------------------------------*/

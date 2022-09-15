@@ -53,7 +53,8 @@ export default class LeftMenu extends JetView{
                                 image: _t('image_button_2'),
                                 width: 155,
                                 height: 200,
-                                css: "left_menu_button_2",
+                                // css: "left_menu_button_2",
+                                css: "left_menu_button",
                                 id: "left_menu_button_2",
                                 // hidden: true,
                             },
@@ -174,7 +175,8 @@ export default class LeftMenu extends JetView{
         if(configFile.theme == 'dark'){
             webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols_dark");
             webix.html.addCss( $$("left_menu_button_1").getNode(), "left_menu_button_dark");
-            webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_2_dark");
+            webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_dark");
+            // webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_2_dark");
             webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button_2_dark");
             webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference_dark");
             webix.html.addCss( this.$$("button_back").getNode(), "left_menu_button_reference_dark");

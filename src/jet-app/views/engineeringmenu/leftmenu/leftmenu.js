@@ -196,7 +196,6 @@ export default class LeftMenu extends JetView{
             $$("left_menu_button_3").refresh();
             $$("button_back").refresh();
             $$("button_reference").refresh();
-
         }
     }
 }

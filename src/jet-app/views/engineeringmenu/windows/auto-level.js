@@ -1,6 +1,7 @@
 import {JetView} from "webix-jet";
 import configFile from "../../../config-app";
 import llsModel from "../../../models/lls-model";
+// import {setTheme} from "@vercel/webpack-asset-relocator-loader";
 
 export default class AutoLevelWindow extends JetView {
     config() {
@@ -10,8 +11,23 @@ export default class AutoLevelWindow extends JetView {
             rows: [
                 {},
                 {
+                   cols:[
+                       {},
+                       {
+                           view: "label",
+                           label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_("Автоматическй рассчет уровней")}</p>`,
+                           width: 550,
+                           localId: "header_label",
+                           css: "windows_password_label",
+                       },
+                       {}
+                   ]
+                },
+                {},
+                {
                     cols: [
                         {},
+
                         {
                             view: "label",
                             label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_("Длина измерительной части, см")}</p>`,
@@ -32,42 +48,12 @@ export default class AutoLevelWindow extends JetView {
                     ]
                 },
                 {},
-                // {
-                //     cols: [
-                //         {
-                //             view: "label",
-                //             label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_("Результат,CNT Full")}</p>`,
-                //             width: 550,
-                //             css: "windows_password_label",
-                //         },
-                //         {
-                //             view: "text",
-                //             css: "password_windows_set",
-                //             localId: "cntFullText"
-                //
-                //         },
-                //     ]
-                // },
-                // {
-                //     cols: [
-                //         {
-                //             view: "label",
-                //             label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_("Результат,CNT Empty")}</p>`,
-                //             width: 550,
-                //             css: "windows_password_label",
-                //         },
-                //         {
-                //             view: "text",
-                //             css: "password_windows_set",
-                //             localId: "cntEmptyText"
-                //
-                //         },
-                //     ]
-                // },
                 {
-                    view: "label",
-                    label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_("Результаты автоматического расчета не дают высокой точности")}</p>`,
-                    // width: 550,
+                    view: "template",
+                    localId: "templateMessage",
+                    height:100,
+                    template: `<p style='font-size: 20px; position: relative; top: -26px; font-weight: 100;'>${_("Результаты автоматического " +
+                        "расчета увеличивают погрешность измерения ДУТ до 3%")}</p>`,
                     css: "windows_password_label",
                 },
                 {},
@@ -99,9 +85,9 @@ export default class AutoLevelWindow extends JetView {
             view: "form",
             scroll: false,
             elements: [elements],
-            rules:{
-                "lengthText":webix.rules.isEmail,
-            },
+            // rules:{
+            //     "lengthText":webix.rules.isEmail,
+            // },
             css: "form_win",
             localId: "form",
             width: 850,
@@ -114,7 +100,7 @@ export default class AutoLevelWindow extends JetView {
             position: "center",
             width: 850,
             height: 400,
-            id: "window_show_4",
+            id: "window_show_5",
             modal: true,
             css: "window_show_password",
             head: form,
@@ -151,6 +137,7 @@ export default class AutoLevelWindow extends JetView {
                 this.getRoot().hide();
             }
         });
+        this.setTheme();
     }
 
     showWindow() {
@@ -176,46 +163,35 @@ export default class AutoLevelWindow extends JetView {
         llsModel.newLongData.fullTank = newValue;
     }
 
-    // setTheme() {
-    //     if (configFile.theme == 'dark') {
-    //         webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_1_dark");
-    //         webix.html.addCss(this.$$("window_show_3").getNode(), "window_show_password_dark");
-    //         webix.html.addCss(this.$$("windows_password_label").getNode(), "windows_password_label_dark");
-    //         webix.html.addCss(this.$$("windows_password_label_2").getNode(), "windows_password_label_dark");
-    //         webix.html.addCss(this.$$("windows_password_label_3").getNode(), "windows_password_label_dark");
-    //         webix.html.addCss(this.$$("buttonCurrentPassOk").getNode(), "set_password_button_dark");
-    //         webix.html.addCss(this.$$("buttonCancel_1").getNode(), "set_password_button_dark");
-    //         webix.html.addCss(this.$$("buttonCancel_2").getNode(), "set_password_button_dark");
-    //         webix.html.addCss(this.$$("buttonNewPassOk").getNode(), "set_password_button_dark");
-    //         webix.html.addCss(this.$$("textCurrentPass").getNode(), "password_windows_set_dark");
-    //         webix.html.addCss(this.$$("textCurrentPass_2").getNode(), "password_windows_set_dark");
-    //         webix.html.addCss(this.$$("textNewPass").getNode(), "password_windows_set_dark");
-    //         webix.html.addCss(this.$$("rows_11").getNode(), "window_show_password_dark");
-    //         webix.html.addCss(this.$$("form_pass_1").getNode(), "form_win_dark");
-    //
-    //         $$("closed_35").define("image","assets/images/info_black_inverse.svg");
-    //         $$("closed_35").refresh();
-    //     }
-    //
-    //     if (configFile.theme == 'light') {
-    //         webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_1");
-    //         webix.html.addCss(this.$$("window_show_3").getNode(), "window_show_password");
-    //         webix.html.addCss(this.$$("windows_password_label").getNode(), "windows_password_label");
-    //         webix.html.addCss(this.$$("windows_password_label_2").getNode(), "windows_password_label");
-    //         webix.html.addCss(this.$$("windows_password_label_3").getNode(), "windows_password_label");
-    //         webix.html.addCss(this.$$("buttonCurrentPassOk").getNode(), "set_password_button");
-    //         webix.html.addCss(this.$$("buttonCancel_1").getNode(), "set_password_button");
-    //         webix.html.addCss(this.$$("buttonCancel_2").getNode(), "set_password_button");
-    //         webix.html.addCss(this.$$("buttonNewPassOk").getNode(), "set_password_button");
-    //         webix.html.addCss(this.$$("textCurrentPass").getNode(), "password_windows_set");
-    //         webix.html.addCss(this.$$("textCurrentPass_2").getNode(), "password_windows_set");
-    //         webix.html.addCss(this.$$("textNewPass").getNode(), "password_windows_set");
-    //         webix.html.addCss(this.$$("rows_11").getNode(), "window_show_password");
-    //         webix.html.addCss(this.$$("form_pass_1").getNode(), "form_win");
-    //
-    //         $$("closed_35").define("image","assets/images/info_black.svg");
-    //         $$("closed_35").refresh();
-    //     }
+
+
+    setTheme() {
+        if (configFile.theme == 'dark') {
+            webix.html.addCss(this.$$("windows_password_label").getNode(), "windows_password_label_dark");
+            webix.html.addCss(this.$$("header_label").getNode(), "windows_password_label_dark");
+            webix.html.addCss(this.$$("lengthLabel").getNode(), "windows_password_label_dark");
+            webix.html.addCss(this.$$("buttonCalculate").getNode(), "set_password_button_dark");
+            webix.html.addCss(this.$$("buttonCancel").getNode(), "set_password_button_dark");
+            webix.html.addCss($$("window_show_5").getNode(), "window_show_password_dark");
+            webix.html.addCss(this.$$("form").getNode(), "form_win_dark");
+
+            // $$("closed_35").define("image", "assets/images/info_black_inverse.svg");
+            // $$("closed_35").refresh();
+        }
+
+        if (configFile.theme == 'light') {
+            webix.html.addCss(this.$$("windows_password_label").getNode(), "windows_password_label");
+            webix.html.addCss(this.$$("header_label").getNode(), "windows_password_label");
+            webix.html.addCss(this.$$("lengthLabel").getNode(), "windows_password_label");
+            webix.html.addCss(this.$$("buttonCalculate").getNode(), "set_password_button");
+            webix.html.addCss(this.$$("buttonCancel").getNode(), "set_password_button");
+            webix.html.addCss($$("window_show_5").getNode(), "window_show_password");
+            webix.html.addCss(this.$$("form").getNode(), "form_win");
+
+            // $$("closed_35").define("image", "assets/images/info_black.svg");
+            // $$("closed_35").refresh();
+        }
+    }
 }
 
 const lengthArr = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];

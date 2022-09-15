@@ -42,7 +42,8 @@ export default class AutoLevelWindow extends JetView {
                             css: "password_windows_set",
                             validate: ()=>{return this.passValidFlag},
                             invalidMessage: _("window_password_invalid_message"),
-                            localId: "lengthLabel"
+                            localId: "lengthLabel",
+                            pattern:{ mask:"###", allow:/[0-9]/g}
                         },
                         {}
                     ]
@@ -137,6 +138,15 @@ export default class AutoLevelWindow extends JetView {
                 this.getRoot().hide();
             }
         });
+
+        this.$$("lengthLabel").attachEvent("onChange", (newValue, oldValue, config)=>{
+           if( newValue < 10 || newValue > 100){
+               this.$$("lengthLabel").setValue(oldValue);
+           }else{
+               this.$$("lengthLabel").setValue(Math.trunc(newValue));
+           }
+        });
+
         this.setTheme();
     }
 

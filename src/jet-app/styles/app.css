@@ -1668,15 +1668,24 @@ border: none;
     border:none;
     background-color: rgba(0, 0, 0, 0);
 }
+
+.window_temp_dark .webix_el_box input{
+    color: #ffff;
+    font-size: 20px;
+    border:none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
 .thermometer_image .webix_button{
     background-color: rgba(0, 0, 0, 0);
     cursor: default;
+
 }
 .thermometer_image .webix_button:hover {
-    background-color: #f8f8f8;
+    background-color: rgba(255, 255, 255, 0);
 }
 .thermometer_image .webix_button:focus {
-    background-color: #f8f8f8;
+    background-color: rgba(255, 255, 255, 0);
 }
 .thermometer_image .webix_image{
     width: 80%;

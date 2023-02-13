@@ -37,12 +37,15 @@ export default class FullEmptySubView extends JetView {
 
                 },
                 {
+                    height: 12,
+                },
+                {
                     hidden: false,
                     rows: [
                         {
                             cols: [
                                 {
-                                    // width: 40,
+                                 height: 10,
                                 },
                                 {
                                     view: "button",
@@ -54,7 +57,6 @@ export default class FullEmptySubView extends JetView {
                                     id: "auto_calibration"
                                 },
                                 {
-
 
                                 },
                             ]
@@ -155,8 +157,8 @@ export default class FullEmptySubView extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "full_window_text",
-                                                    // readonly: true,
-                                                    id: "auto_calibration_set_1"
+                                                    id: "auto_calibration_set_1",
+                                                    readonly: true,
                                                 },
                                                 {
                                                     view: "button",
@@ -175,8 +177,8 @@ export default class FullEmptySubView extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "full_window_text",
-                                                    // readonly: true,
-                                                    id: "auto_calibration_set_2"
+                                                    id: "auto_calibration_set_2",
+                                                    readonly: true,
                                                 },
                                                 {
                                                     view: "button",
@@ -197,24 +199,48 @@ export default class FullEmptySubView extends JetView {
                     ]
                 },
                 {
-                    height: 50,
+                    height: 10,
                 },
                 {
+                    height: 200,
                     rows: [
+
+                        {
+                            view: "label",
+                            label: `<p style=' font-size:20px; text-align: center; '>${_("button_enable_edit_values")}</p>`,
+                            wight: 300,
+                            height: 80,
+                            // css: "right_menu_fuel_level",
+                            id: "right_menu_fuel_level",
+                            css:"rows_level_right_menu_info",
+                        },
+
                         {
                             cols: [
                                 {
-                                    width: 40,
+
+                                },
+                                // {
+                                //     view: "button",
+                                //     type: "label",
+                                //     label: _("button_enable_edit_values"),
+                                //     width: 460,
+                                //     height: 50,
+                                //     css: "edit_values",
+                                //     id: "button_edit",
+                                // },
+                                {
+                                    view: "switch",
+                                    value: 0,
+                                    id: "button_edit",
+                                    width: 68,
+                                    height: 100,
+                                    css:"toggle_style"
                                 },
                                 {
-                                    view: "button",
-                                    type: "label",
-                                    label: _("button_enable_edit_values"),
-                                    width: 460,
-                                    height: 50,
-                                    css: "edit_values",
-                                    id: "button_edit",
+
                                 }
+
                             ]
                         }
                     ]
@@ -304,11 +330,21 @@ export default class FullEmptySubView extends JetView {
                 this.flagCalibrationEdit = false;
                 $$("auto_calibration_1").disable();
                 $$("auto_calibration_2").disable();
+                $$("auto_calibration_set_1").define("readonly", true);
+                $$("auto_calibration_set_2").define("readonly", true);
+                $$("auto_calibration").enable();
+
             }else{
                 this.flagCalibrationEdit = true;
                 $$("auto_calibration_1").enable();
                 $$("auto_calibration_2").enable();
+                $$("auto_calibration_set_1").define("readonly", false);
+                $$("auto_calibration_set_2").define("readonly", false);
+                $$("auto_calibration").disable();
             }
+
+            $$("auto_calibration_set_1").refresh();
+            $$("auto_calibration_set_2").refresh();
         });
 
         $$('auto_calibration_set_1').attachEvent("onChange", (newValue, oldValue, config) => {
@@ -351,6 +387,8 @@ export default class FullEmptySubView extends JetView {
             this.windowAutoLevel.showWindow();
         });
 
+        // right_menu_fuel_level
+
         if(configFile.theme == 'light'){
             webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status");
             webix.html.addCss( $$("right_menu_status_text").getNode(), "right_menu_status_text");
@@ -363,6 +401,7 @@ export default class FullEmptySubView extends JetView {
             webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration");
             webix.html.addCss( $$("button_edit").getNode(), "edit_values");
             webix.html.addCss( this.$$("status_level_fuel").getNode(), "full_window_text");
+            webix.html.addCss( $$("right_menu_fuel_level").getNode(), "rows_level_right_menu_info");
         }
         if(configFile.theme == 'dark'){
             webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status_dark");
@@ -377,6 +416,7 @@ export default class FullEmptySubView extends JetView {
             webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration_dark");
             webix.html.addCss( $$("button_edit").getNode(), "edit_values_dark");
             webix.html.addCss( this.$$("status_level_fuel").getNode(), "full_window_text_dark");
+            webix.html.addCss( $$("right_menu_fuel_level").getNode(), "rows_level_right_menu_info_dark");
         }
     }
 

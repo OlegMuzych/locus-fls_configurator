@@ -120,7 +120,7 @@ export default {
 
     "button_set_full_tank": "Full",
     "button_set_empty_tank": "Empty",
-    "button_enable_edit_values": "Edit Values",
+    "button_enable_edit_values": "Manual Calibration",
 
     /* calibrationsubview.js */
     "button_save_table_file": "Save calibration data",

@@ -131,19 +131,19 @@ export default class Page9View extends JetView {
 
                     maxHeight: 400,
                     cols: [
-                        {
-                            view: "button",
-                            type: "image",
-                            image: _("button_image_master"),
-                            // image: "assets/images/master.svg",
-                            css: "button_1",
-                            id: "master_setup",
-                            disabled: false,
-
-                        },
-                        {
-                            width: 20,
-                        },
+                        // {
+                        //     view: "button",
+                        //     type: "image",
+                        //     image: _("button_image_master"),
+                        //     // image: "assets/images/master.svg",
+                        //     css: "button_1",
+                        //     id: "master_setup",
+                        //     disabled: false,
+                        //
+                        // },
+                        // {
+                        //     width: 20,
+                        // },
                         {
                             view: "button",
                             type: "image",
@@ -574,15 +574,15 @@ export default class Page9View extends JetView {
         $$("logo_1").attachEvent("onKeyPress", goEngineering);
 
 
-        $$("master_setup").attachEvent("onItemClick", (id, e) => {
-                $$("window_show_3").hide();
-            clearTimeout(this.timeoutMasterSetup);
-            $$("window_show_3").show();
-
-            this.timeoutMasterSetup = setTimeout(() => {
-                $$("window_show_3").hide();
-            }, 1500);
-        });
+        // $$("master_setup").attachEvent("onItemClick", (id, e) => {
+        //         $$("window_show_3").hide();
+        //     clearTimeout(this.timeoutMasterSetup);
+        //     $$("window_show_3").show();
+        //
+        //     this.timeoutMasterSetup = setTimeout(() => {
+        //         $$("window_show_3").hide();
+        //     }, 1500);
+        // });
 
 
 
@@ -631,7 +631,7 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start_dark");
             webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start_dark");
             webix.html.addCss($$("ver_soft").getNode(), "ver_soft_dark");
-            webix.html.addCss($$("master_setup").getNode(), "button_1_dark");
+            // webix.html.addCss($$("master_setup").getNode(), "button_1_dark");
             webix.html.addCss($$("engineering_setup").getNode(), "button_1_dark");
             webix.html.addCss($$("reference").getNode(), "button_1_dark");
             webix.html.addCss($$("application_menu").getNode(), "button_1_dark");
@@ -649,12 +649,12 @@ export default class Page9View extends JetView {
             // $$("dark_theme_label").show()
             $$("logo_1").define("image", _t("image_logo_dark"));
             $$("logo_1").refresh();
-            $$("master_setup").define("image", _("button_image_master_dark"));
+            // $$("master_setup").define("image", _("button_image_master_dark"));
             $$("engineering_setup").define("image", _("button_image_engineering_dark"));
             $$("reference").define("image", _("button_image_info_win2_dark"));
             $$("application_menu").define("image", _("button_image_konfig_dark"));
             // $$("logo_1").refresh();
-            $$("master_setup").refresh();
+            // $$("master_setup").refresh();
             $$("engineering_setup").refresh();
             $$("reference").refresh();
             $$("application_menu").refresh();
@@ -665,7 +665,7 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start");
             webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start");
             webix.html.addCss($$("ver_soft").getNode(), "ver_soft");
-            webix.html.addCss($$("master_setup").getNode(), "button_1");
+            // webix.html.addCss($$("master_setup").getNode(), "button_1");
             webix.html.addCss($$("engineering_setup").getNode(), "button_1");
             webix.html.addCss($$("reference").getNode(), "button_1");
             webix.html.addCss($$("application_menu").getNode(), "button_1");
@@ -683,12 +683,12 @@ export default class Page9View extends JetView {
             // $$("light_theme_label").show()
             $$("logo_1").define("image", _t("image_logo"));
             $$("logo_1").refresh();
-            $$("master_setup").define("image", _("button_image_master"));
+            // $$("master_setup").define("image", _("button_image_master"));
             $$("engineering_setup").define("image", _("button_image_engineering"));
             $$("reference").define("image", _("button_image_info_win2"));
             $$("application_menu").define("image", _("button_image_konfig"));
             // $$("logo_1").refresh();
-            $$("master_setup").refresh();
+            // $$("master_setup").refresh();
             $$("engineering_setup").refresh();
             $$("reference").refresh();
             $$("application_menu").refresh();

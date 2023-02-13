@@ -120,7 +120,7 @@ export default {
 
     "button_set_full_tank": "Полный",
     "button_set_empty_tank": "Пустой",
-    "button_enable_edit_values": "Редактировать значения",
+    "button_enable_edit_values": "Ручная калибровка",
 
     /* calibrationsubview.js */
     "button_save_table_file": "Экспортировать таблицу тарировки",

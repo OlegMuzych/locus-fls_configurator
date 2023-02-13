@@ -31,7 +31,7 @@ export default class LeftMenu extends JetView{
                                 id:"save_settings"
                             },
                             {
-                                height: 9,
+                                height: 10,
                             },
                             {
                                 view: "button",
@@ -59,6 +59,9 @@ export default class LeftMenu extends JetView{
                                 // hidden: true,
                             },
                             {
+                                height: 8,
+                            },
+                            {
                                 view: "button",
                                 type: "image",
                                 image: _t('image_button_3'),
@@ -69,7 +72,7 @@ export default class LeftMenu extends JetView{
                                 // hidden: true,
                             },
                             {
-                                height: 180,
+                                height: 280,
                             },
 
                             {
@@ -81,18 +84,18 @@ export default class LeftMenu extends JetView{
                                 id: "button_back",
                                 css: "left_menu_button_reference",
                             },
-                            {
-                                height: 30,
-                            },
-                            {
-                                view: "button",
-                                type: "image",
-                                image: _("button_image_back_dark"),
-                                width: 160,
-                                height: 120,
-                                id: "button_reference",
-                                css: "left_menu_button_reference",
-                            },
+                            // {
+                            //     height: 30,
+                            // },
+                            // {
+                            //     view: "button",
+                            //     type: "image",
+                            //     image: _("button_image_back_dark"),
+                            //     width: 160,
+                            //     height: 120,
+                            //     id: "button_reference",
+                            //     css: "left_menu_button_reference",
+                            // },
                         ]
                     },
                     {
@@ -136,20 +139,20 @@ export default class LeftMenu extends JetView{
         });
         const _ = this.app.getService("locale")._;
 
-        $$("button_reference").attachEvent("onItemClick", (id, e) => {
-            if ($$("rows_info").isVisible()){
-                $$("rows_info").hide();
-            } else {
-                $$("rows_info").show();
-            }
-        })
+        // $$("button_reference").attachEvent("onItemClick", (id, e) => {
+        //     if ($$("rows_info").isVisible()){
+        //         $$("rows_info").hide();
+        //     } else {
+        //         $$("rows_info").show();
+        //     }
+        // })
 
         if(configFile.theme == 'light'){
             webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols");
             webix.html.addCss( $$("left_menu_button_1").getNode(), "left_menu_button");
             webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button");
             webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button");
-            webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference");
+            // webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference");
             webix.html.addCss( this.$$("button_back").getNode(), "left_menu_button_reference");
             // webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2");
             webix.html.addCss( this.$$("save_settings").getNode(), "edit_values");
@@ -162,13 +165,13 @@ export default class LeftMenu extends JetView{
             // $$("left_menu_button_3").define("image", "assets/images//MODEL_301_BLE.svg");
             $$("left_menu_button_3").define("image", _t("image_button_3"));
             $$("button_back").define("image", _("button_image_back"));
-            $$("button_reference").define("image", _("button_image_info"));
+            // $$("button_reference").define("image", _("button_image_info"));
 
             $$("left_menu_button_1").refresh();
             $$("left_menu_button_2").refresh();
             $$("left_menu_button_3").refresh();
             $$("button_back").refresh();
-            $$("button_reference").refresh();
+            // $$("button_reference").refresh();
 
 
         }
@@ -178,7 +181,7 @@ export default class LeftMenu extends JetView{
             webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_dark");
             // webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_2_dark");
             webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button_2_dark");
-            webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference_dark");
+            // webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference_dark");
             webix.html.addCss( this.$$("button_back").getNode(), "left_menu_button_reference_dark");
             // webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2_dark");
             webix.html.addCss( this.$$("save_settings").getNode(), "edit_values_dark");
@@ -191,13 +194,13 @@ export default class LeftMenu extends JetView{
             // $$("left_menu_button_3").define("image", "assets/images/MODEL_301_BLE_inverse.svg")
             $$("left_menu_button_3").define("image", _t("image_button_3_dark"));
             $$("button_back").define("image", _("button_image_back_dark"));
-            $$("button_reference").define("image", _("button_image_info_dark"));
+            // $$("button_reference").define("image", _("button_image_info_dark"));
 
             $$("left_menu_button_1").refresh();
             $$("left_menu_button_2").refresh();
             $$("left_menu_button_3").refresh();
             $$("button_back").refresh();
-            $$("button_reference").refresh();
+            // $$("button_reference").refresh();
         }
     }
 }

@@ -50,7 +50,7 @@ export default class RightMenu extends JetView{
                             ]
                         },
                         {
-                            height: 20,
+                            height: 50,
                         },
                         {
                             rows: [

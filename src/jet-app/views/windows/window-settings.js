@@ -110,41 +110,41 @@ export default class WindowSettings extends JetView {
                     {
                       height: 20,
                     },
-                    {
-                        disabled: true,
-                        height: 90,
-                        cols: [
-                            {
-                                width: 20,
-                            },
-                            {
-                                view: "label",
-                                label: `<p style='position: relative; top: -30px; text-align: left'>${_("font_size")}</p>`,
-                                width: 300,
-                                localId: "labelFontSize",
-                                css: "language_windows_modal",
-                            },
-                            {
-                                view: "slider",
-                                value: "0",
-                                step: 10,
-                                min: 0,
-                                max: 30,
-                                name: "s1",
-                                width: 400,
-                                height: 30,
-                                title: "%",
-                                css: "text_size_slider",
-                                on: {
-                                    onChange: function () {
-                                        this.define("title", "%" + this.getValue());
-                                        this.refresh();
-                                    }
-                                }
-                            },
-                            {}
-                        ]
-                    },
+                    // {
+                    //     disabled: true,
+                    //     height: 90,
+                    //     cols: [
+                    //         {
+                    //             width: 20,
+                    //         },
+                    //         {
+                    //             view: "label",
+                    //             label: `<p style='position: relative; top: -30px; text-align: left'>${_("font_size")}</p>`,
+                    //             width: 300,
+                    //             localId: "labelFontSize",
+                    //             css: "language_windows_modal",
+                    //         },
+                    //         {
+                    //             view: "slider",
+                    //             value: "0",
+                    //             step: 10,
+                    //             min: 0,
+                    //             max: 30,
+                    //             name: "s1",
+                    //             width: 400,
+                    //             height: 30,
+                    //             title: "%",
+                    //             css: "text_size_slider",
+                    //             on: {
+                    //                 onChange: function () {
+                    //                     this.define("title", "%" + this.getValue());
+                    //                     this.refresh();
+                    //                 }
+                    //             }
+                    //         },
+                    //         {}
+                    //     ]
+                    // },
                 ]
             },
 
@@ -245,7 +245,7 @@ export default class WindowSettings extends JetView {
         if (configFile.theme == 'dark') {
             webix.html.addCss(this.$$("window_show").getNode(), "window_show_dark");
             // webix.html.addCss(this.$$("language_windows_modal").getNode(), "language_windows_modal_dark");
-            webix.html.addCss(this.$$("labelFontSize").getNode(), "language_windows_modal_dark");
+            // webix.html.addCss(this.$$("labelFontSize").getNode(), "language_windows_modal_dark");
             webix.html.addCss(this.$$("labelAutoSaveMode").getNode(), "language_windows_modal_dark");
             webix.html.addCss(this.$$("language").getNode(), "window_type_4_dark");
             webix.html.addCss(this.$$("comboTheme").getNode(), "window_type_4_dark");
@@ -253,7 +253,7 @@ export default class WindowSettings extends JetView {
         if (configFile.theme == 'light') {
             webix.html.addCss(this.$$("window_show").getNode(), "window_show");
             // webix.html.addCss(this.$$("language_windows_modal").getNode(), "language_windows_modal");
-            webix.html.addCss(this.$$("labelFontSize").getNode(), "language_windows_modal");
+            // webix.html.addCss(this.$$("labelFontSize").getNode(), "language_windows_modal");
             webix.html.addCss(this.$$("labelAutoSaveMode").getNode(), "language_windows_modal");
             webix.html.addCss(this.$$("language").getNode(), "window_type_4");
             webix.html.addCss(this.$$("comboTheme").getNode(), "window_type_4");

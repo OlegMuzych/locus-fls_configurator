@@ -12,8 +12,8 @@ export default class RightMenu extends JetView{
         let myMultiview = {
             view: "scrollview",
             scroll: "y",
-            maxHeight: 970,
-            minWidth: 530,
+            // maxHeight: 970,
+            // minWidth: 530,
             id: "rows_right_body",
             css: "rows_right",
             body: {
@@ -35,12 +35,13 @@ export default class RightMenu extends JetView{
         };
 
         let body = {
+            width: 550,
             css: "rows_right",
             id: "rows_right_2",
             cols:[
                 {
-                    minWidth: 25,
-                    maxWidth: 320,
+                    // minWidth: 25,
+                    // maxWidth: 320,
                 },
                 {
                     rows: [
@@ -50,7 +51,7 @@ export default class RightMenu extends JetView{
                             ]
                         },
                         {
-                            height: 50,
+                            height: 40,
                         },
                         {
                             rows: [
@@ -58,7 +59,7 @@ export default class RightMenu extends JetView{
                             ]
                         },
                         {
-                            height: 20,
+                            height: 40,
                         },
                         {
                             rows: [
@@ -85,7 +86,7 @@ export default class RightMenu extends JetView{
                     ]
                 },
                 {
-                    width: 10,
+                    // width: 20,
                 }
             ]
 

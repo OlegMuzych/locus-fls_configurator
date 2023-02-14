@@ -9,10 +9,6 @@ export default class LeftMenu extends JetView{
         const _t = trademark._t;
 
         let left_menu = {
-            // view: "scrollview",
-            // scroll: "y",
-            // id: "1",
-            // body: {
                 id: "style_left_cols",
                 css: "style_left_cols",
                 cols:[
@@ -84,27 +80,12 @@ export default class LeftMenu extends JetView{
                                 id: "button_back",
                                 css: "left_menu_button_reference",
                             },
-                            // {
-                            //     height: 30,
-                            // },
-                            // {
-                            //     view: "button",
-                            //     type: "image",
-                            //     image: _("button_image_back_dark"),
-                            //     width: 160,
-                            //     height: 120,
-                            //     id: "button_reference",
-                            //     css: "left_menu_button_reference",
-                            // },
                         ]
                     },
                     {
-                        // minWidth: 20,
-                        // maxWidth: 100,
                         width: 20,
                     },
                     {
-                        width: 200,
                         id: "rows_info",
                         hidden: true,
                         rows:[

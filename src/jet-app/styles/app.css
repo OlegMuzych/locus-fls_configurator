@@ -535,14 +535,14 @@ border: none;
 
 .label_status_gage_windows_start .webix_el_box{
     color: #000;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 100;
 
 }
 
 .label_status_gage_windows_start_dark .webix_el_box{
     color: #fff;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 100;
 
 }
@@ -905,130 +905,6 @@ border: none;
 
 @media screen and (max-width: 1500px){
 
-    /*.window_type_1 p{*/
-    /*    color: #000;*/
-    /*    text-align: left;*/
-    /*    padding-right: 50px;*/
-    /*    padding-left: 20px;*/
-    /*    font-size: 18px;*/
-    /*    font-weight: 100;*/
-    /*    position: relative;*/
-    /*    top: -20px;*/
-    /*}*/
-
-
-    /*.window_type_1_dark p{*/
-    /*    color: #fff;*/
-    /*    text-align: left;*/
-    /*    padding-right: 50px;*/
-    /*    padding-left: 20px;*/
-    /*    font-size: 18px;*/
-    /*    font-weight: 100;*/
-    /*    position: relative;*/
-    /*    top: -20px;*/
-    /*}*/
-
-    /*.window_type_1  input {*/
-    /*    color: var(--white-style-text-color);*/
-    /*    font-size: var(--font-size);*/
-    /*    font-weight: var(--font-weight);*/
-    /*    height: 60%;*/
-    /*    width: 50%;*/
-    /*    background-color: #fff;*/
-    /*    border: 1px solid #ececec;*/
-    /*    border-radius: 10px;*/
-    /*    position: relative;*/
-    /*    top: 20%;*/
-    /*    right: 80px;*/
-    /*}*/
-
-    /*.window_type_1_dark  input {*/
-    /*    color: #c1c4c6;*/
-    /*    font-size: var(--font-size);*/
-    /*    font-weight: var(--font-weight);*/
-    /*    height: 60%;*/
-    /*    width: 50%;*/
-    /*    background-color: var(--c-white-color-background-dark_general_windows);*/
-    /*    border: 1px solid var(--c-white-color-background-dark_general_rows);*/
-    /*    border-radius: 10px;*/
-    /*    position: relative;*/
-    /*    top: 20%;*/
-    /*    right: 80px;*/
-    /*    box-shadow: inset 1px 1px 1px #212121;*/
-    /*}*/
-
-
-    /*!*.window_type_2_dark .webix_el_group{*!*/
-    /*!*    position: relative;*!*/
-    /*!*    top: 50px;*!*/
-    /*!*    left: 100px;*!*/
-    /*!*    margin-top: 100px;*!*/
-    /*!*}*!*/
-
-
-    /*.window_type_2 p{*/
-    /*    color: #000;*/
-    /*    text-align: left;*/
-    /*    padding-left: -110px;*/
-    /*    font-size: 18px;*/
-    /*    font-weight: 100;*/
-    /*    position: relative;*/
-    /*    top: -20px;*/
-
-    /*}*/
-
-
-    /*.window_type_2 .webix_el_box{*/
-    /*   width: 500px;*/
-    /*}*/
-
-
-    /*.window_type_2_dark p{*/
-    /*    color: #fff;*/
-    /*    text-align: left;*/
-    /*    padding-right: 50px;*/
-    /*    padding-left: 20px;*/
-    /*    font-size: 18px;*/
-    /*    font-weight: 100;*/
-    /*    position: relative;*/
-    /*    top: -20px;*/
-    /*}*/
-
-    /*.window_type_2  input {*/
-    /*    color: var(--white-style-text-color);*/
-    /*    font-size: var(--font-size);*/
-    /*    font-weight: var(--font-weight);*/
-    /*    height: 60%;*/
-    /*    width: 150%;*/
-    /*    background-color: #fff;*/
-    /*    border: 1px solid #ececec;*/
-    /*    border-radius: 0;*/
-    /*    position: relative;*/
-    /*    top: 20%;*/
-    /*    right: 80px;*/
-    /*}*/
-
-    /*.window_type_2_dark  input {*/
-    /*    color: #c1c4c6;*/
-    /*    font-size: var(--font-size);*/
-    /*    font-weight: var(--font-weight);*/
-    /*    height: 60%;*/
-    /*    width: 50%;*/
-    /*    background-color: var(--c-white-color-background-dark_general_windows);*/
-    /*    border: 1px solid var(--c-white-color-background-dark_general_rows);*/
-    /*    border-radius: 0;*/
-    /*    position: relative;*/
-    /*    top: 20%;*/
-    /*    right: 80px;*/
-    /*    box-shadow: inset 1px 1px 1px #212121;*/
-    /*}*/
-
-
-    /*.text_color_filter p{*/
-    /*    font-size: 16px;*/
-    /*}*/
-
-
 
 }
 /*///////////------------------------------------------------------------------*/
@@ -1174,71 +1050,6 @@ border: none;
 	color:#ddd;
 }
 
-
-
-
-/* кнопки в левом меню на странице №2 -------------------------------------------------- */
-
-/*.left_menu_button .webix_button{*/
-/*    background-color: #f3f3f3;*/
-/*    border-right: 0 solid #fff;*/
-/*    border-top-right-radius: 10px;*/
-/*    border-bottom-right-radius: 10px;*/
-/*    border-left: 8px solid #fff;*/
-/*}*/
-
-/*.left_menu_button_dark .webix_button{*/
-/*    background-color: var(--c-white-color-background-dark_left_menu_button);*/
-/*    border-right: 0 solid #fff;*/
-/*    border-top-right-radius: 10px;*/
-/*    border-bottom-right-radius: 10px;*/
-/*    border-left: 8px solid var(--c-white-color-background-dark_left_menu_button);*/
-/*}*/
-
-/*.left_menu_button_dark .webix_image{*/
-/*    width: 80%;*/
-/*}*/
-
-/*.left_menu_button .webix_image{*/
-/*    width: 80%;*/
-/*}*/
-
-
-/*.left_menu_button .webix_button:hover{*/
-/*    background-color: #fff;*/
-/*    border-right: 2px solid rgba(255, 255, 255, 0);*/
-/*    border-top: 2px solid rgba(255, 255, 255, 0);*/
-/*    border-bottom: 2px solid rgba(255, 255, 255, 0);*/
-/*    border-left: 8px solid #fff;*/
-/*    position: relative;*/
-/*    top: -2px;*/
-/*    width: 101%;*/
-/*}*/
-
-/*.left_menu_button_dark .webix_button:hover{*/
-/*    background-color: var(--c-white-color-background-dark_left_menu_button_hover);*/
-/*    border-left: 8px solid #fff;*/
-/*    border-right: 2px solid #fff;*/
-/*    border-top: 2px solid #fff;*/
-/*    border-bottom: 2px solid #fff;*/
-/*    position: relative;*/
-/*    top: -2px;*/
-/*    width: 101%;*/
-
-/*}*/
-
-
-/*.left_menu_button .webix_button:focus{*/
-/*    background-color: #fff;*/
-/*    border-right: 2px solid rgba(255, 255, 255, 0);*/
-/*    border-top: 2px solid rgba(255, 255, 255, 0);*/
-/*    border-bottom: 2px solid rgba(255, 255, 255, 0);*/
-/*    border-left: 8px solid #628cbb;*/
-/*    position: relative;*/
-/*    top: -2px;*/
-/*    width: 101%;*/
-
-/*}*/
 
 .left_menu_button .webix_button:focus {
     background-color: #fff;

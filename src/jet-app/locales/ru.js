@@ -186,8 +186,8 @@ export default {
     "button_image_info_win2": "assets/images/win1/about_ru_light.svg",
     "button_image_info_win2_dark": "assets/images/win1/about_ru_black.svg",
 
-    "button_image_engineering": "assets/images/win1/mainSettings_ru_light.svg",
-    "button_image_engineering_dark": "assets/images/win1/mainSettings_ru_black.svg",
+    "button_image_engineering": "assets/images/win1/mainSettings_ru_light_2.svg",
+    "button_image_engineering_dark": "assets/images/win1/mainSettings_ru_black_2.svg",
 
     /* leftmenu.js Images */
     "button_image_back": "assets/images/left_menu/mainMenu_ru_light.svg",

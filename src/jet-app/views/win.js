@@ -19,8 +19,10 @@ export default class Page9View extends JetView {
         const _ = this.app.getService("locale")._;
         // Версия прошивки надпись
         var ver = {
+
             rows: [
                 {
+                    paddingY: 10,
                     cols: [
                         {
                             width: 10,
@@ -40,8 +42,7 @@ export default class Page9View extends JetView {
                             view: "button",
                             type: "label",
                             label: _("firmware_lls"),
-                            width: 200,
-                            height: 50,
+                            width: 300,
                             css: "button_reload",
                             localId:"button_reload"
                         },
@@ -58,7 +59,6 @@ export default class Page9View extends JetView {
         var logo = {
             view: "button",
             type: "image",
-            // image: "assets/images/Logo_1.svg",
             image: _t("image_logo"),
             width: 400,
             height: 400,
@@ -69,10 +69,10 @@ export default class Page9View extends JetView {
 
         // Статус подключения датчика
         var status_gage = {
-            width: 400,
-            // height: 100,
+            height: 100,
             rows: [
-                {height:10,},
+                {
+                },
                 {
                     paddingX: 80,
                     cols: [
@@ -81,20 +81,23 @@ export default class Page9View extends JetView {
                         },
                         {
                             view: "button",
-                            width: 30,
-                            height: 30,
+                            width: 50,
+                            height: 50,
                             css: "rows_level_right_menu_switch",
                             id: "button_define_define_1"
                         },
                         {
                             view: "button",
-                            width: 30,
-                            height: 30,
+                            width: 50,
+                            height: 50,
                             css: "rows_level_right_menu_switch_define",
                             id: "button_define_1"
                         },
-                        {width: 20,},
                         {
+                            width: 20,
+                        },
+                        {
+                            // label: "Датчик подключен",
                             view: "label",
                             label: _("sensor_is_connected"),
                             height: 30,
@@ -103,8 +106,8 @@ export default class Page9View extends JetView {
                             id: "label_status_gage_windows_start_1",
                         },
                         {
-                            view: "label",
                             // label: "Датчик не подключен",
+                            view: "label",
                             label: _('sensor_is_not_connected'),
                             height: 30,
                             width: 300,
@@ -125,32 +128,19 @@ export default class Page9View extends JetView {
         // Кнопки меню
         var button_menu = {
 
-            width: 1000,
+            width: 1100,
             rows: [
                 {
 
                     maxHeight: 400,
                     cols: [
-                        // {
-                        //     view: "button",
-                        //     type: "image",
-                        //     image: _("button_image_master"),
-                        //     // image: "assets/images/master.svg",
-                        //     css: "button_1",
-                        //     id: "master_setup",
-                        //     disabled: false,
-                        //
-                        // },
-                        // {
-                        //     width: 20,
-                        // },
                         {
                             view: "button",
                             type: "image",
                             image: _("button_image_engineering"),
-                            // image: "assets/images/ingeneer.svg",
                             css: "button_1",
-                            id: "engineering_setup"
+                            id: "engineering_setup",
+                            width: 1120,
                         }
                     ]
                 },
@@ -175,7 +165,6 @@ export default class Page9View extends JetView {
                             view: "button",
                             type: "image",
                             image: _("button_image_konfig"),
-                            // image: "assets/images/konfig.svg",
                             align: "center",
                             css: "button_1",
                             id: "application_menu"
@@ -430,7 +419,6 @@ export default class Page9View extends JetView {
                 scroll: "y",
                 css: "color_rows_star_pages",
                 id: "color_rows_star_pages",
-                // minHeight: 800,
                 body: {
                     rows:[
                         {

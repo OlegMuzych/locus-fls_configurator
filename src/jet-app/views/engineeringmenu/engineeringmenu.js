@@ -15,30 +15,17 @@ export default class EngineeringMenu extends JetView{
     config() {
 
         let body = {
-            // view: "scrollview",
-            // scroll: "y",
-            // maxHeight: 1000,
-            // body: {
             css: "style_body",
             id: "dark",
-            maxWidth: 500,
-            gravity: "1",
             cols: [
                 LeftMenu,
-                // {
-                //     css: "style_body",
-                //     id: "rows_left_1",
-                //
-                //     // minWidth:20,
-                // },
-                        CentralMenu,
-                // {
-                //     css: "style_body",
-                //     id: "rows_right_2",
-                //
-                //     // minWidth: 20,
-                //     // maxWidth: 300,
-                // },
+                {
+                    width: 10,
+                },
+                CentralMenu,
+                {
+                    width: 10,
+                },
                 RightMenu,
 
             ]

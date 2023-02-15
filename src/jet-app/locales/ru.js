@@ -222,7 +222,7 @@ export default {
     "window_firmware_header": "Обновление прошивки",
 
     /* auto-level.js */
-    "level_auto_calculate": "Автоматическй рассчет уровней",
+    "level_auto_calculate": "Автоматический расчет уровней",
     "length_measuring_part": "Длина измерительной части, см",
     "calculate": "Посчитать",
     "message_auto_level_alert": "Результаты автоматического расчета увеличивают погрешность измерения ДУТ до 3%",

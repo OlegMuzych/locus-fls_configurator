@@ -107,7 +107,7 @@ export default {
     /* servicemenu.js */
     "service_service": "Сервис",
     "service_service_reset_sensor": "Сброс всех настроек",
-    "service_service_save_setting_file": "Сохраниить настройки в файл",
+    "service_service_save_setting_file": "Сохранить настройки в файл",
     "service_service_read_setting_file": "Прочитать настройки из файла",
 
     "service_password": "Пароль",

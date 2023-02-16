@@ -12,12 +12,12 @@ export default class CalibrationSettings extends JetView {
             scroll: "y",
             css:"calib_rows",
             id:"calib_rows",
-            minWidth: 900,
-            maxWidth: 1300,
+            // minWidth: 900,
+            // maxWidth: 1300,
             body: {
                 cols: [
                     {
-                        maxWidth: 10,
+
                     },
                     {
 
@@ -41,36 +41,15 @@ export default class CalibrationSettings extends JetView {
                             {localId: 'rowVolume', css: "rowNumber_style",  rows: []}
                         ]
                     },
-                    {}
+                    {
+
+                    }
                 ],
             }
         }
 
         let body = {
-            // id: "central_menu_button_2",
             rows: [
-                // {cols:[
-                //         {view:'button', label:'addNumber',click:()=>this.addNumber('number')},
-                //         {view:'button', label:'addLevel',click:()=>this.addLevel('level')},
-                //         {view:'button', label:'addVolume',click:()=>this.addVolume('volume')},
-                //     ]},
-                // {cols:[
-                //         {view:'button', label:'deleteNumber',click:()=>this.removeNumber()},
-                //         {view:'button', label:'deleteLevel',click:()=>this.removeLevel()},
-                //         {view:'button', label:'deleteVolume',click:()=>this.removeVolume()},
-                //     ]},
-                // {
-                //     cols: [
-                //         {view: 'button', label: 'addRow', click: () => this.addRow(123, 123, 123)},
-                //         {view: 'button', label: 'deleteRow', click: () => this.removeRow()},
-                //         {view: 'button', label: 'delAll', click: () => this.removeAll()},
-                //         {view: 'button', label: 'parseAll', click: () => {
-                //             let table = this.parseTable();
-                //             llsModel.setTable(table).then();
-                //             console.log(table);
-                //             }},
-                //     ]
-                // },
                 table
             ],
         };
@@ -176,6 +155,7 @@ export default class CalibrationSettings extends JetView {
                 this.addNumber(number);
             }
             this.saveTable();
+
         });
 
         this.on(this.app, "app:calibrationsubview:finishCalibrate", () => {
@@ -188,6 +168,7 @@ export default class CalibrationSettings extends JetView {
                 }
             }
             this.saveTable();
+
         });
 
         this.on(this.app, "app:continueCalibrateWindow:continueCalibrate", () => {
@@ -213,8 +194,7 @@ export default class CalibrationSettings extends JetView {
             let volume = volumeStep * countStep;
 
             for(let i = 0; i < (countStep - countStepNoEmpty); i++){
-                // this.removeLevel();
-                // this.removeVolume();
+
             }
             this.app.callEvent("app:calibrationSettings:continueCalibrate", [volume, volumeStep]);
         });
@@ -243,7 +223,7 @@ export default class CalibrationSettings extends JetView {
                 view: 'label',
                 align: 'center',
                 label: value,
-                // css: "rowNumber_style_1",
+
 
             });
             this.addChangeEvent(id);
@@ -337,8 +317,10 @@ export default class CalibrationSettings extends JetView {
     }
 
     createTable(countStep, levels, volumes) {
+
         for (let i = 0; i < countStep; i++) {
             this.addRow(i + 1, levels[i], volumes[i]);
+
         }
     }
 

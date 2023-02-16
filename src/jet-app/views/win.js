@@ -562,18 +562,6 @@ export default class Page9View extends JetView {
         $$("logo_1").attachEvent("onKeyPress", goEngineering);
 
 
-        // $$("master_setup").attachEvent("onItemClick", (id, e) => {
-        //         $$("window_show_3").hide();
-        //     clearTimeout(this.timeoutMasterSetup);
-        //     $$("window_show_3").show();
-        //
-        //     this.timeoutMasterSetup = setTimeout(() => {
-        //         $$("window_show_3").hide();
-        //     }, 1500);
-        // });
-
-
-
         $$("engineering_setup").attachEvent("onItemClick", (id, e) => {
             this.show("./engineeringmenu/engineeringmenu");
         });
@@ -633,8 +621,7 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("label_text_upload_window_1").getNode(), "label_text_upload_window_dark");
             webix.html.addCss($$("load_file").getNode(), "upload_config_dark");
 
-            // $$("light_theme_label").hide()
-            // $$("dark_theme_label").show()
+
             $$("logo_1").define("image", _t("image_logo_dark"));
             $$("logo_1").refresh();
             // $$("master_setup").define("image", _("button_image_master_dark"));
@@ -667,8 +654,6 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("label_text_upload_window_1").getNode(), "label_text_upload_window");
             webix.html.addCss($$("load_file").getNode(), "upload_config");
 
-            // $$("dark_theme_label").hide()
-            // $$("light_theme_label").show()
             $$("logo_1").define("image", _t("image_logo"));
             $$("logo_1").refresh();
             // $$("master_setup").define("image", _("button_image_master"));

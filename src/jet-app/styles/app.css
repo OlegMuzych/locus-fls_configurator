@@ -1915,11 +1915,6 @@ border: none;
 
 /*-------------*/
 
-/*.rowNumber_style .webix_el_label .webix_el_box{*/
-/*    font-size: 16px;*/
-/*    font-weight: 100;*/
-/*}*/
-
 .rowNumber_style .webix_el_label.webix_el_box {
     font-size: 16px;
     font-weight: 100;
@@ -1938,22 +1933,6 @@ border: none;
     font-weight: 100;
     color: var(--c-color-text-dark);
 }
-
-
-/*.rowNumber_style_1 p .webix_inp_label, .webix_inp_top_label, legend.webix_forminput_label, .webix_el_label .webix_el_box{*/
-/*    font-size: 18px;*/
-/*    font-weight: 100;*/
-/*    !*color: var(--white-style-text-color);*!*/
-/*    color: #90383e;*/
-/*}*/
-
-/*.rowNumber_style_1_dark p .webix_inp_label, .webix_inp_top_label, legend.webix_forminput_label, .webix_el_label .webix_el_box{*/
-/*    font-size: 18px;*/
-/*    font-weight: 100;*/
-/*    !*color: var(--c-color-text-dark);*!*/
-/*    color: #fff;*/
-/*}*/
-
 
 /*--------------*/
 

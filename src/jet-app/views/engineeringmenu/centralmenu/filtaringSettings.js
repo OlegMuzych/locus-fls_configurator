@@ -12,8 +12,7 @@ export default class FiltrationSettings extends JetView {
             maxHeight: 1960,
             id: "central_menu_button_3",
             css: "style_general_rows",
-            minWidth: 900,
-            maxWidth: 1300,
+            maxWidth: 1420,
             body: {
 
                 rows: [

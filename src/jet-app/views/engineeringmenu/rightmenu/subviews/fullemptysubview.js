@@ -387,8 +387,6 @@ export default class FullEmptySubView extends JetView {
             this.windowAutoLevel.showWindow();
         });
 
-        // right_menu_fuel_level
-
         if(configFile.theme == 'light'){
             webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status");
             webix.html.addCss( $$("right_menu_status_text").getNode(), "right_menu_status_text");

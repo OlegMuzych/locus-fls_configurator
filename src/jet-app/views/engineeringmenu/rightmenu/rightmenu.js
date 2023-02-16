@@ -40,8 +40,7 @@ export default class RightMenu extends JetView{
             id: "rows_right_2",
             cols:[
                 {
-                    // minWidth: 25,
-                    // maxWidth: 320,
+
                 },
                 {
                     rows: [
@@ -69,24 +68,10 @@ export default class RightMenu extends JetView{
                         {
                             height: 1,
                         },
-                        {
-                            rows: [
-                                //right_menu_filter
-                            ]
-                        },
-                        {
-                            rows: [
-                                // right_menu_calibration,
-                                // right_menu_calibration_setup,
-                                // right_menu_calibration_drain_2,
-                                // fuel_filling,
-                                // fuel_filling_2,
-                            ]
-                        },
                     ]
                 },
                 {
-                    // width: 20,
+                  width: 8,
                 }
             ]
 

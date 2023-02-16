@@ -15,6 +15,8 @@ export default class EngineeringMenu extends JetView{
     config() {
 
         let body = {
+            maxWidth: 1300,
+            minWidth: 990,
             css: "style_body",
             id: "dark",
             cols: [

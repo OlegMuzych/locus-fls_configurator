@@ -62,7 +62,6 @@ export default class CentralMenu extends JetView{
         }
 
         let body = {
-            // width: 1420,
             maxWidth: 1420,
             rows: [
                 central_menu_button,

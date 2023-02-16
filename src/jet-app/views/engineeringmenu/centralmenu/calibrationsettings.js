@@ -162,7 +162,8 @@ export default class CalibrationSettings extends JetView {
             let  count = this.#number.length
             for(let i = 0; i < count; i++){
                 if(this.#number.length > this.#level.length){
-                    this.$$(this.#number.pop()).destructor();
+                    // this.$$(this.#number.pop()).destructor();
+                    this.$$(this.#number.pop()).hide();
                 }else{
                     break;
                 }

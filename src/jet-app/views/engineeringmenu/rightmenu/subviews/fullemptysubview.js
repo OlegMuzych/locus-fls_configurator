@@ -220,15 +220,6 @@ export default class FullEmptySubView extends JetView {
                                 {
 
                                 },
-                                // {
-                                //     view: "button",
-                                //     type: "label",
-                                //     label: _("button_enable_edit_values"),
-                                //     width: 460,
-                                //     height: 50,
-                                //     css: "edit_values",
-                                //     id: "button_edit",
-                                // },
                                 {
                                     view: "switch",
                                     value: 0,

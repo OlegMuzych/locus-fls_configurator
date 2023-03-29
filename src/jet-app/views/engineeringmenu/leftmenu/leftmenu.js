@@ -9,6 +9,11 @@ export default class LeftMenu extends JetView{
         const _t = trademark._t;
 
         let left_menu = {
+            view:"scrollview",
+
+            body:{
+
+
                 id: "style_left_cols",
                 css: "style_left_cols",
                 cols:[
@@ -93,8 +98,10 @@ export default class LeftMenu extends JetView{
                         ]
                     }
                 ]
+            }
 
         };
+
         return left_menu;
     }
 

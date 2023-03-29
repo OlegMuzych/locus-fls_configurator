@@ -496,11 +496,12 @@ export default class GeneralSettings extends JetView {
         let general_config = {
             view: "scrollview",
             scroll: "y",
-            maxWidth: 1420,
+            // maxHeight: 1050,
+            // minHeight: 550,
             body: {
+                height: 1480,
                 id: "central_menu_button_1",
                 css: "style_general_rows",
-                maxHeight: 1000,
                 rows: [
                     {
                         rows: [

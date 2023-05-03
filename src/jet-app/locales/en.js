@@ -104,6 +104,9 @@ export default {
     "status_calibration": "Calibration is not required",
     "status_thermal_compensation": "Thermal compensation",
 
+    /* errorStatus.js */
+    "errorStatus_text": "error code",
+
     /* servicemenu.js */
     "service_service": "Service",
     "service_service_reset_sensor": "Reset all settings",
@@ -120,7 +123,9 @@ export default {
 
     "button_set_full_tank": "Full",
     "button_set_empty_tank": "Empty",
-    "button_enable_edit_values": "Manual Calibration",
+    "button_enable_edit_values": "Calibration mode",
+    "Label_enable_calibration_mode_auto": "Auto",
+    "Label_enable_calibration_mode_manual": "Manual",
 
     /* calibrationsubview.js */
     "button_save_table_file": "Save calibration data",

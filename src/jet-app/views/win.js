@@ -157,6 +157,7 @@ export default class Page9View extends JetView {
                             image: _("button_image_info_win2"),
                             css: "button_1",
                             id: "reference"
+
                         },
                         {
                             width: 20,

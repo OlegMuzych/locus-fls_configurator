@@ -1,6 +1,7 @@
 import {JetView} from "webix-jet";
 import StatusMenu from "./statusmenu";
 import ServiceMenu from "./servicemenu";
+import errorStatus from "./errorStatus";
 
 import CalibrationSubView from "./subviews/calibrationsubview";
 import FullEmptySubView from "./subviews/fullemptysubview";
@@ -52,9 +53,18 @@ export default class RightMenu extends JetView{
                         {
                             height: 40,
                         },
+
                         {
                             rows: [
                                 StatusMenu,
+                            ]
+                        },
+                        {
+                            height: 1,
+                        },
+                        {
+                            rows:[
+                                errorStatus,
                             ]
                         },
                         {

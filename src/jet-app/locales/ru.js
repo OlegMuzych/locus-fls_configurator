@@ -104,6 +104,9 @@ export default {
     "status_calibration": "Калибровка не требуется",
     "status_thermal_compensation": "Термокомпенсация",
 
+    /* errorStatus.js */
+    "errorStatus_text": "Код ошибки",
+
     /* servicemenu.js */
     "service_service": "Сервис",
     "service_service_reset_sensor": "Сброс всех настроек",
@@ -120,7 +123,9 @@ export default {
 
     "button_set_full_tank": "Полный",
     "button_set_empty_tank": "Пустой",
-    "button_enable_edit_values": "Ручная калибровка",
+    "button_enable_edit_values": "Режим калибровки",
+    "Label_enable_calibration_mode_auto": "Авто",
+    "Label_enable_calibration_mode_manual": "Ручная",
 
     /* calibrationsubview.js */
     "button_save_table_file": "Экспортировать таблицу тарировки",

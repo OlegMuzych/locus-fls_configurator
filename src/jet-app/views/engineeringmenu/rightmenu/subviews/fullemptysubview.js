@@ -212,14 +212,19 @@ export default class FullEmptySubView extends JetView {
                             id: "right_menu_fuel_level",
                             css:"rows_level_right_menu_info",
                         },
+                        {
+                            height: 20,
+                        },
 
                         {
+
+                            height: 50,
                             cols: [
                                 {
                                     view: "label",
                                     label: `<p style=' font-size:20px; text-align: center; position:relative; top:-15px; '>${_("Label_enable_calibration_mode_auto")}</p>`,
                                     wight: 300,
-                                    height: 100,
+                                    // height: 100,
                                     // css: "right_menu_fuel_level",
                                     id: "status_mode_auto",
                                     css:"rows_level_right_menu_info",
@@ -229,7 +234,7 @@ export default class FullEmptySubView extends JetView {
                                     view: "label",
                                     label: `<p style=' font-size:20px; text-align: center; position:relative; top:-15px; '>${_("Label_enable_calibration_mode_auto")}</p>`,
                                     wight: 300,
-                                    height: 100,
+                                    // height: 100,
                                     // css: "right_menu_fuel_level",
                                     id: "status_mode_auto_hidden",
                                     css:"rows_level_right_menu_info_hidden",
@@ -239,15 +244,17 @@ export default class FullEmptySubView extends JetView {
                                     view: "switch",
                                     value: 0,
                                     id: "button_edit",
-                                    width: 68,
-                                    height: 100,
-                                    css:"toggle_style"
+                                    width: 66,
+                                    height: 50,
+                                    css:"toggle_style",
+                                    paddingX: 100,
+
                                 },
                                 {
                                     view: "label",
                                     label: `<p style=' font-size:20px; text-align: center; position:relative; top:-15px;'>${_("Label_enable_calibration_mode_manual")}</p>`,
                                     wight: 300,
-                                    height: 100,
+                                    // height: 100,
                                     id: "status_mode_manual",
                                     css:"rows_level_right_menu_info",
                                     hidden: false,
@@ -257,7 +264,7 @@ export default class FullEmptySubView extends JetView {
                                     view: "label",
                                     label: `<p style=' font-size:20px; text-align: center; position:relative; top:-15px;'>${_("Label_enable_calibration_mode_manual")}</p>`,
                                     wight: 300,
-                                    height: 100,
+                                    // height: 100,
                                     id: "status_mode_manual_hidden",
                                     css:"rows_level_right_menu_info_hidden",
                                     hidden: true,
@@ -347,7 +354,7 @@ export default class FullEmptySubView extends JetView {
             }
         });
 
-        $$('button_edit').attachEvent("onItemClick", (id, e)=>{
+        $$('button_edit').attachEvent("onChange", (id, e)=>{
             console.log('click');
             if(this.flagCalibrationEdit){
                 this.flagCalibrationEdit = false;
@@ -361,9 +368,6 @@ export default class FullEmptySubView extends JetView {
                 $$("status_mode_manual").show()
                 $$("status_mode_auto_hidden").show()
                 $$("status_mode_auto").hide()
-
-
-
 
             }else{
                 this.flagCalibrationEdit = true;

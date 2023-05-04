@@ -23,6 +23,9 @@ export default class LeftMenu extends JetView{
                     {
                         rows: [
                             {
+                                height: 5,
+                            },
+                            {
                                 view: "button",
                                 type:"label",
                                 label:_("button_save_setting"),
@@ -38,7 +41,7 @@ export default class LeftMenu extends JetView{
                                 view: "button",
                                 type: "image",
                                 image: _t('image_button_1'),
-                                width: 155,
+                                width: 160,
                                 height: 200,
                                 css: "left_menu_button",
                                 id: "left_menu_button_1",
@@ -52,7 +55,7 @@ export default class LeftMenu extends JetView{
                                 type: "image",
                                 // image: "assets/images/ONE.MAX.svg",
                                 image: _t('image_button_2'),
-                                width: 155,
+                                width: 160,
                                 height: 200,
                                 // css: "left_menu_button_2",
                                 css: "left_menu_button",
@@ -60,22 +63,20 @@ export default class LeftMenu extends JetView{
                                 // hidden: true,
                             },
                             {
-                                height: 8,
+                                height: 10,
                             },
                             {
                                 view: "button",
                                 type: "image",
                                 image: _t('image_button_3'),
-                                width: 155,
+                                width: 160,
                                 height: 200,
                                 css: "left_menu_button_2",
                                 id: "left_menu_button_3",
                                 // hidden: true,
                             },
                             {
-                                height: 280,
                             },
-
                             {
                                 view: "button",
                                 type: "image",

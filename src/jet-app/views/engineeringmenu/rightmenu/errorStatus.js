@@ -30,22 +30,22 @@ export default class FullEmptySubView extends JetView {
 				},
 				{
 					cols:[
-						{
-
-						},
+						// {
+						//
+						// },
 						{
 							view: "text",
-							width: 550,
+							// width: 570,
 							height: 70,
-							css: "full_window_text",
+							css: "full_window_text_error_windows",
 							readonly: true,
 							inputAlign: "center",
 							value: "Ошибок нет",
 							id: "window_status_error"
 						},
-						{
-
-						},
+						// {
+						//
+						// },
 					]
 				}
 
@@ -62,12 +62,12 @@ export default class FullEmptySubView extends JetView {
 
 
 		if(configFile.theme == 'light'){
-			webix.html.addCss( $$("window_status_error").getNode(), "full_window_text");
+			webix.html.addCss( $$("window_status_error").getNode(), "full_window_text_error_windows");
 
 
 		}
 		if(configFile.theme == 'dark'){
-			webix.html.addCss( $$("window_status_error").getNode(), "full_window_text_dark");
+			webix.html.addCss( $$("window_status_error").getNode(), "full_window_text_error_windows_dark");
 
 		}
 

@@ -10,6 +10,7 @@ export default class StatusMenu extends JetView{
         let right_menu_status={
             css:"right_menu_status",
             id:"right_menu_status",
+            width: 550,
             rows:[
                 {
                     height: 20,

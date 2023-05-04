@@ -44,6 +44,7 @@ border: none;
     --c-color-text-dark: #fff;
     --modal_windows_dark: 0.4em 0.4em 6px rgba(13, 13, 13, 0.6);
     --button_shodow_dark: 0.2em 0.2em 2px rgba(13, 13, 13, 2.8);
+    --c-dark-color-bacground-text-window: rgba(166, 53, 60, 0.1);
 
 
 }
@@ -915,6 +916,18 @@ border: none;
 
 /*Поле правого меню------------------------------------------------*/
 
+right_menu_fuel_level_error_windows input{
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 4px #c5c5c5,
+    inset -2px -2px 4px #ffffff;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 20px;
+    height: 100%;
+    border: 1px solid #fff;
+}
+
+
 
 .right_menu_fuel_level p{
     color:  var(--c-white-color-background-dark_left_menu_button_hover);
@@ -1058,8 +1071,9 @@ border: none;
     border-bottom: 2px solid rgba(255, 255, 255, 0);
     border-left: 8px solid #628cbb;
     position: relative;
-    top: -2px;
-    width: 101%;
+    top: 0px;
+    width: 100%;
+    cursor: default;
 }
 
 .left_menu_button .webix_button:hover {
@@ -1069,8 +1083,10 @@ border: none;
     border-bottom: 2px solid rgba(255, 255, 255, 0);
     border-left: 8px solid #628cbb;
     position: relative;
-    top: -2px;
-    width: 101%;
+    top: 0px;
+    width: 100%;
+    cursor: default;
+
 }
 
 
@@ -1081,8 +1097,9 @@ border: none;
     border-bottom: 2px solid rgba(255, 255, 255, 0);
     border-left: 8px solid #628cbb;
     position: relative;
-    top: -2px;
-    width: 101%;
+    top: 0px;
+    width: 100%;
+    cursor: default;
 }
 
 .left_menu_button_dark .webix_button{
@@ -1094,8 +1111,9 @@ border: none;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     position: relative;
-    top: -2px;
-    width: 101%;
+    top: 0px;
+    width: 100%;
+    cursor: default;
 }
 
 
@@ -1113,8 +1131,8 @@ border: none;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     position: relative;
-    top: -2px;
-    width: 101%;
+    top: 0px;
+    width: 100%;
 }
 
 .left_menu_button_dark .webix_button:active{
@@ -1126,8 +1144,8 @@ border: none;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     position: relative;
-    top: -2px;
-    width: 101%;
+    top: 0px;
+    width: 100%;
 }
 
 .left_menu_button_dark .webix_button:hover{
@@ -1139,8 +1157,8 @@ border: none;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     position: relative;
-    top: -2px;
-    width: 101%;
+    top: 0px;
+    width: 100%;
 }
 /*-------------------------------*/
 
@@ -1602,6 +1620,31 @@ border: none;
     inset -2px -2px 5px #373737;
     height: 100%;
 }
+
+
+.full_window_text_error_windows .webix_el_box input{
+    /*background-color: #f3f3f3;*/
+    background-color: var(--c-dark-color-bacground-text-window);
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 4px #c5c5c5,
+    inset -2px -2px 4px #ffffff;
+    color: #000;
+    font-size: 18px;
+    height: 100%;
+    border: 1px solid #fff;
+}
+
+.full_window_text_error_windows_dark .webix_el_box input{
+    background-color: var(--c-dark-color-bacground-text-window);
+    border-radius: 5px;
+    color: var(--c-color-text-dark);
+    font-size: 18px;
+    border: none;
+    box-shadow: inset 2px 2px 5px #212121,
+    inset -2px -2px 5px #373737;
+    height: 100%;
+}
+
 
 .right_menu_status_text p{
     color: #000;

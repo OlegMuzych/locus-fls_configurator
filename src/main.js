@@ -15,11 +15,15 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     maxWidth: 1300,
     minWidth: 990,
-    minHeight: 550,
+    minHeight: 750,
     maxHeight: 1000,
-    height: 550,
+    height: 750,
     width: 990,
-    // maxHeight: 750,
+
+    // Для Беларуссии минимальное разрешение под их ПК
+    // height: 550,
+    // minHeight: 550,
+
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: false,

@@ -36,7 +36,7 @@ export default class RightMenu extends JetView{
         };
 
         let body = {
-            width: 550,
+            width: 570,
             css: "rows_right",
             id: "rows_right_2",
             cols:[
@@ -51,9 +51,16 @@ export default class RightMenu extends JetView{
                             ]
                         },
                         {
-                            height: 40,
+                            height: 1,
                         },
-
+                        {
+                            rows:[
+                                errorStatus,
+                            ]
+                        },
+                        {
+                            height: 8,
+                        },
                         {
                             rows: [
                                 StatusMenu,
@@ -63,12 +70,7 @@ export default class RightMenu extends JetView{
                             height: 1,
                         },
                         {
-                            rows:[
-                                errorStatus,
-                            ]
-                        },
-                        {
-                            height: 40,
+                            height: 30,
                         },
                         {
                             rows: [

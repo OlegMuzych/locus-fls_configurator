@@ -162,7 +162,6 @@ export default class llsProtocol {
             }
         });
     };
-
     async promiseBootLoad(){
         return new Promise((resolve, reject)=>{
             this.port.onceData((data)=>{

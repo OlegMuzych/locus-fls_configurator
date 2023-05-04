@@ -1,5 +1,9 @@
+import * as buffer from "buffer";
+
 const serialPort = window.serialPort;
 const Buffer = window.Buffer;
+
+
 
 export default class MyYModem {
     port = 0;
@@ -38,6 +42,8 @@ export default class MyYModem {
                 }
             })
         });
+        // this.#testStartAction68();
+        setTimeout(()=>{}, 1000);
         return await this.#sendFile();
     }
 
@@ -168,7 +174,7 @@ export default class MyYModem {
         return new Promise((resolve, reject)=>{
             let timer;
             this.port.onceData((data)=>{
-                // console.log("once data: " +  data);
+                console.log("once data: " +  data);
                 clearTimeout(timer);
                 resolve(data);
 
@@ -178,6 +184,11 @@ export default class MyYModem {
             timer = setTimeout(()=>{reject("Error: timeout receive OnceData")}, 3000);
         });
     };
+
+    #testStartAction68() {
+        let command = [0x31,0xff,0x68, 0x53];
+        this.port.write(command);
+    }
 }
 
 MyYModem.soh = 1;     // 128 byte blocks

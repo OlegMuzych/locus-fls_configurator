@@ -31,6 +31,13 @@ export default class FirmwareUpdate extends JetView {
                     height: 200,
                     rows: [
                         {
+                            view: "label",
+                            label: "<p> ДУТ 301 Test Y-Modem </p>",
+                            css: "label_text_upload_window",
+                            id: "label_text_upload_window_1",
+                            align: "center",
+                        },
+                        {
                             cols: [
                                 {
                                     width: 20,
@@ -356,12 +363,12 @@ export default class FirmwareUpdate extends JetView {
                     this.$$("manualBoot").disable(); //что бы не активироваль с EventConnect
                     const {path, baudRate} = resp;
                     this.portSettings = {path, baudRate};
-                    return fileFirmwareModel.llsConnect({path, baudRate});
+                    return fileFirmwareModel.llsConnect({path, baudRate, llsAdr: 0x01});
                 })
-                .then(() => {
-                    this.$$("manualBoot").disable(); //что бы не активироваль с EventConnect
-                    return fileFirmwareModel.runBootMode();
-                })
+                // .then(() => {
+                //     this.$$("manualBoot").disable(); //что бы не активироваль с EventConnect
+                //     return fileFirmwareModel.runBootMode();
+                // })
                 .then(() => {
                     this.$$("manualBoot").disable(); //что бы не активироваль с EventConnect
                     return fileFirmwareModel.runDownloadApp();

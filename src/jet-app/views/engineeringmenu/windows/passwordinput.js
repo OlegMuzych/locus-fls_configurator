@@ -14,22 +14,24 @@ export default class PasswordInputWindow extends JetView {
                     css: "tabbar_windows_password_1",
                     multiview: true,
                     height: 80,
+
                     options: [
                         {value: _("window_passwordinput_segmented_current"), id:'input_password'},
                         // {value: _("window_passwordinput_segmented_reset"), id:'reset_password'},
                     ],
                 },
-
                 {
-                    // animate: {type: "show", delay: 10},
+
                     height: 300,
                     width: 400,
-                    css:"window_show_password",
+                    css: "window_show_password",
                     id: "rows_33",
                     cells: [
+
+
                         {
                             id: "input_password",
-                            rows:[
+                            rows: [
                                 {
                                     height: 30,
                                 },
@@ -56,15 +58,12 @@ export default class PasswordInputWindow extends JetView {
                                             localId: "windows_password_label",
                                             css: "language_windows_modal"
                                         },
-                                        {
-                                        }
+                                        {}
                                     ]
                                 },
                                 {
                                     cols: [
-                                        {
-
-                                        },
+                                        {},
                                         {
                                             view: "text",
                                             height: 60,
@@ -74,7 +73,9 @@ export default class PasswordInputWindow extends JetView {
                                             pattern: {mask: "########", allow: /[0-9]/g},
                                             invalidMessage: _("window_password_invalid_message"),
                                             name: 'test',
-                                            validate: ()=>{return this.passValidFlag},
+                                            validate: () => {
+                                                return this.passValidFlag
+                                            },
                                         },
                                         {}
                                     ]
@@ -91,8 +92,7 @@ export default class PasswordInputWindow extends JetView {
                                             localId: "buttonCurrentPassOk",
                                             css: "set_password_button"
                                         },
-                                        {
-                                        },
+                                        {},
                                         {
                                             view: "button",
                                             label: _("button_cancel"),
@@ -104,68 +104,57 @@ export default class PasswordInputWindow extends JetView {
                                 },
                             ]
                         },
-                        {
-
-                        },
+                        {},
 
                         {
                             id: "reset_password",
                             height: 500,
-                             rows: [
-                                 {
-                                     view: "button",
-                                     type: "image",
-                                     image: "assets/images/Warning.png",
-                                     id: "closed_3",
-                                     css: "set_password_button_icon",
-                                     height: 100,
-                                 },
-                                 {
+                            rows: [
+                                {
+                                    view: "button",
+                                    type: "image",
+                                    image: "assets/images/Warning.png",
+                                    id: "closed_3",
+                                    css: "set_password_button_icon",
+                                    height: 100,
+                                },
+                                {
                                     width: 300,
-                                 },
-                                 {
-                                     view: "label",
-                                     label: `<p style='position: relative; top: -30px; color: #eb2323;'>${_("window_passwordinput_segmented_reset_text")}</p>`,
-                                     css: "language_windows_modal",
-                                     id:"text_win_5",
-                                     height: 200,
-                                     width: 100,
-                                 },
-                                 {
-
-                                 },
-                        {
-                            cols: [
-                                {
-
                                 },
                                 {
-                                    view: "button",
-                                    label: _("button_ok"),
-                                    localId: "buttonResetOk",
-                                    css: "set_password_button"
+                                    view: "label",
+                                    label: `<p style='position: relative; top: -30px; color: #eb2323;'>${_("window_passwordinput_segmented_reset_text")}</p>`,
+                                    css: "language_windows_modal",
+                                    id: "text_win_5",
+                                    height: 200,
+                                    width: 100,
                                 },
+                                {},
                                 {
-
-                                },
-                                {
-                                    view: "button",
-                                    label: _("button_cancel"),
-                                    localId: "buttonResetCancel",
-                                    css: "set_password_button"
-                                },
-                                {
-
+                                    cols: [
+                                        {},
+                                        {
+                                            view: "button",
+                                            label: _("button_ok"),
+                                            localId: "buttonResetOk",
+                                            css: "set_password_button"
+                                        },
+                                        {},
+                                        {
+                                            view: "button",
+                                            label: _("button_cancel"),
+                                            localId: "buttonResetCancel",
+                                            css: "set_password_button"
+                                        },
+                                        {}
+                                    ]
                                 }
                             ]
                         }
                     ]
-                 }
-                ]
-
                 }
             ]
-        };
+         };
 
         let form = {
             view:"form",

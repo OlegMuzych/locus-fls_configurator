@@ -82,6 +82,7 @@ export default class CentralMenu extends JetView{
             $$('calibrationSettings').show();
             this.app.callEvent("app:setting:calibration", []);
 
+
         });
 
         $$("filtering").attachEvent("onItemClick", (id)=>{

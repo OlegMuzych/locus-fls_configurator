@@ -160,6 +160,25 @@ export default class FuelFillView extends JetView {
             ]
         };
 
+        let errorCountStepMessage = {
+            localId: "errorCountStepMessage",
+            rows:[
+                {height:50},
+                {cols:[
+                        {gravity: 1},
+                        {
+                            view: "label",
+                            // label: _("error_count_step_message"),
+                            label: `<p style='font-weight:300; position: relative; top:-20px;'>${_("error_count_step_message")}</p>`,
+                            css: "text_error_count_step",
+                            gravity: 6
+                        },
+                        {gravity: 1},
+                    ]}
+            ]
+
+        }
+
         let calibrationFuelFill = {
             id: "right_menu_calibration_drain_2",
             css: "rows_right_menu_calibration_2",
@@ -175,6 +194,7 @@ export default class FuelFillView extends JetView {
                     height: 30,
                 },
                 buttonNext,
+                errorCountStepMessage,
                 countStep,
                 {
                     height: 20,
@@ -210,6 +230,8 @@ export default class FuelFillView extends JetView {
                 this.app.callEvent("app:calibrationsubview:countStep", [countStep, 0]);
                 this.nextShow();
                 this.app.callEvent("app:calibrationSubview:startCalibrate", ['fill']);
+            }else{
+                this.errorShow();
             }
         });
 
@@ -285,6 +307,13 @@ export default class FuelFillView extends JetView {
         this.$$('buttonRemoveStep').hide();
         this.$$('buttonClearTable').hide();
         this.$$('buttonStopCalibrate').hide();
+        this.$$("errorCountStepMessage").hide();
+    }
+
+    errorShow(){
+        this.$$("errorCountStepMessage").show();
+        this.$$('step_liters_1').setValue("");
+        this.$$('step_liters_1').refresh();
     }
 
     nextShow(){
@@ -297,6 +326,7 @@ export default class FuelFillView extends JetView {
         this.$$('buttonRemoveStep').show();
         this.$$('buttonClearTable').show();
         this.$$('buttonStopCalibrate').show();
+        this.$$("errorCountStepMessage").hide();
     }
 
     calcCountStep(volumeTank, volumeStep){

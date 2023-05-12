@@ -145,6 +145,8 @@ export default {
     "button_finish_calibration": "Complete calibration",
     "button_start_calibration": "Continue",
 
+    "error_count_step_message": "Exceeded the number of steps",
+
     /* windows buttons */
     "button_ok": "Ok",
     "button_cancel": "Cancel",

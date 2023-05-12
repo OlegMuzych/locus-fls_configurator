@@ -2591,6 +2591,16 @@ right_menu_fuel_level_error_windows input{
     font-size: 20px;
 }
 
+.text_error_count_step p{
+    /*color: var(--c-color-text-light);*/
+    color: red;
+    font-size: 25px;
+}
+
+.text_error_count_step_dark p{
+    color: var(--c-color-text-dark);
+    font-size: 25px;
+}
 /****************************/
 
 .my_richselect .webix_control.webix_el_richselect{}

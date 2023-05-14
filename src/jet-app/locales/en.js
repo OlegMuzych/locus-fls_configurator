@@ -234,5 +234,12 @@ export default {
     "length_measuring_part": "Length of the measuring part, cm",
     "calculate": "Calculate",
     "message_auto_level_alert": "The results of the automatic calculation increase the measurement error of the LLS to 3%",
-    //
+
+    /* errorStatus.js */
+    "no_error": "No error",
+    "error_full_empty": "Full/Empty error",
+    "error_short_circuit": "Short circuit error",
+    "error_size_table": "Size table calibration error",
+    "error_value_table": "Table calibrate not valid error",
+
 };

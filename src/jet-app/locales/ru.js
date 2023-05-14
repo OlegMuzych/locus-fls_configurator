@@ -233,5 +233,11 @@ export default {
     "length_measuring_part": "Длина измерительной части, см",
     "calculate": "Посчитать",
     "message_auto_level_alert": "Результаты автоматического расчета увеличивают погрешность измерения ДУТ до 3%",
-    //
+
+    /* errorStatus.js */
+    "no_error": "Ошибок нет",
+    "error_full_empty": "Пустой больше полного",
+    "error_short_circuit": "Короткое замыкание",
+    "error_size_table": "В таблице тарировки меньше 2 строк",
+    "error_value_table": "Некорректная таблица тарировки",
 };

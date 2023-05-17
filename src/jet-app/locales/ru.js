@@ -5,7 +5,8 @@ export default {
     "firmware_lls": "Прошивка ДУТ",
 
     "sensor_is_connected": "Датчик подключен",
-    "sensor_is_not_connected": "Датчик не подключен",
+    "sensor_is_not_connected": "#1 Датчик  не подключен",
+    "sensor_is_not_connected_2":"#2 Датчик  не подключен",
 
     "function_is_not_available": "Функция не доступна",
 
@@ -31,6 +32,10 @@ export default {
     "language_ru": 'Русский',
     "language_en": 'English',
     "language_like_system": "Как в системе",
+    "text_two_gage": "Режим работы конфигуратора:",
+    "number_gage_1": "1 датчик",
+    "number_gage_2": "2 датчика",
+
 
     /* generalsettings.js */
     "choose": 'Выбрать',
@@ -99,10 +104,14 @@ export default {
     "button_save_setting": "Сохранить настройки",
 
     /* statusmenu.js */
-    "status_sensor_is_connected": "Датчик подключен",
+    "status_sensor_is_connected": "#1 Датчик подключен",
+    "status_sensor_is_connected_2": "#2 Датчик подключен",
     "status_fuel_is_stable": "Топливо стабильно",
     "status_calibration": "Калибровка не требуется",
     "status_thermal_compensation": "Термокомпенсация",
+
+    "warning_text_configurator_mode":
+        "Данная функция предназначена для подключения и настройки одного <wbr>или двух датчиков к конфигуратору одновременно. </wbr>Подключения датчиков происходит автоматически и отображается на дисплее.",
 
     /* errorStatus.js */
     "errorStatus_text": "Код ошибки",
@@ -144,6 +153,8 @@ export default {
     "button_clear_table": "Очистить таблицу",
     "button_finish_calibration": "Завершить тарировку",
     "button_start_calibration": "Продолжить",
+
+    "error_count_step_message": "Привышено количество шагов",
 
     /* windows buttons */
     "button_ok": "Ok",
@@ -231,5 +242,11 @@ export default {
     "length_measuring_part": "Длина измерительной части, см",
     "calculate": "Посчитать",
     "message_auto_level_alert": "Результаты автоматического расчета увеличивают погрешность измерения ДУТ до 3%",
-    //
+
+    /* errorStatus.js */
+    "no_error": "Ошибок нет",
+    "error_full_empty": "Пустой больше полного",
+    "error_short_circuit": "Короткое замыкание",
+    "error_size_table": "В таблице тарировки меньше 2 строк",
+    "error_value_table": "Некорректная таблица тарировки",
 };

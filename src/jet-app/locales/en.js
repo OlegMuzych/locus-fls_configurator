@@ -5,7 +5,8 @@ export default {
     "firmware_lls": "Firmware",
 
     "sensor_is_connected": "The device is connected",
-    "sensor_is_not_connected": "The device is not connected",
+    "sensor_is_not_connected": "#1 The device is not connected",
+    "sensor_is_not_connected_2": "#2 The device is not connected",
 
     "function_is_not_available": "The function is not available",
 
@@ -31,6 +32,9 @@ export default {
     "language_ru":  'Русский',
     "language_en": 'English',
     "language_like_system": "Native",
+    "text_two_gage": "Configurator mode:",
+    "number_gage_1": "1 sensor",
+    "number_gage_2": "2 sensors",
 
     /* generalsettings.js */
     "choose": 'Choose',
@@ -99,7 +103,8 @@ export default {
     "button_save_setting": "Save Settings",
 
     /* statusmenu.js */
-    "status_sensor_is_connected": "The device is connected",
+    "status_sensor_is_connected": "The device #1 is connected",
+    "status_sensor_is_connected_2": "The device #2 is connected",
     "status_fuel_is_stable": "Fuel level is stable",
     "status_calibration": "Calibration is not required",
     "status_thermal_compensation": "Thermal compensation",

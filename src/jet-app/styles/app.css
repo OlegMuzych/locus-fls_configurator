@@ -32,11 +32,13 @@ border: none;
     --c-white-color-background-light_general_windows: #f0f0f0;
     --modal_windows: 0.4em 0.4em 5px rgba(122,122,122,0.5);
     --modal_windows_background: #f3f3f3;
+    --swich_on_text: #35a642;
 
 
     /*dark*/
     --c-white-color-background-dark: #424242;
     --c-white-color-background-dark_left_menu: #2c2c2c;
+    --c-white-color-background-dark_left_menu_focus: #333333;
     --c-white-color-background-dark_general_rows: #424242;
     --c-white-color-background-dark_general_windows: #4d4d4d;
     --c-white-color-background-dark_left_menu_button: rgba(111, 111, 111, 0.0);
@@ -268,9 +270,11 @@ border: none;
     text-align: center;
     position: relative;
     top: -40px;
-
-
-
+    hyphens: auto;
+    white-space: pre;
+    word-wrap: normal;
+    line-break: auto;
+    
 }
 
 .text_size_slider .webix_slider_box .webix_slider_right{
@@ -353,6 +357,8 @@ border: none;
 
 .button_1 .webix_button:hover{
     position: relative;
+    transition-delay: 0.1s;
+
     /*box-shadow: rgb(190, 192, 195) 0.9px 0.9px 4px, rgb(255, 255, 255) -1.9px -1.9px 4px;*/
 }
 
@@ -378,19 +384,116 @@ border: none;
 
 .button_1_dark .webix_button:hover{
     position: relative;
-    background-color: var(--c-white-color-background-dark_general_rows);
-    /*box-shadow: rgb(190, 192, 195) 0.9px 0.9px 4px, rgb(255, 255, 255) -1.9px -1.9px 4px;*/
+    background-color: var(--c-white-color-background-dark_left_menu_focus);
+    transition-delay: 0.09s;
+
 }
 
 
 .button_1_dark .webix_button:focus{
-    background-color: var(--c-white-color-background-dark_general_rows);
+    background-color: var(--c-white-color-background-dark_left_menu_focus);
     position: relative;
     top: 2px;
     left: 2px;
     box-shadow: none;
     /*box-shadow: rgb(190, 192, 195) 0.9px 0.9px 4px, rgb(255, 255, 255) -1.9px -1.9px 4px;*/
 }
+
+
+/*////////////////////////////////////////////////*/
+
+.text_two_gage p{
+    font-size: 24px;
+    color: var(--c-color-text-light);
+
+}
+
+.text_two_gage_dark p{
+    font-size: 24px;
+    color: var(--c-color-text-dark);
+}
+
+.button_text_config_two_gage{
+    border-radius: 10px;
+    border: 1px solid rgba(243, 243, 243, 7);
+    background-color: #fff;
+    color: var(--c-color-text-light);
+    font-size: 20px;
+    box-shadow: rgb(190, 192, 195) 2.9px 2.9px 4px, rgb(255, 255, 255) -0.9px -0.9px 2px;
+    width: 98%;
+    height: 98%;
+}
+
+.button_text_config_two_gage_dark{
+    border-radius: 10px;
+    border: 1px solid rgba(243, 243, 243, 0.1);
+    background-color: var(--c-white-color-background-dark_general_rows);
+    color: var(--c-color-text-dark);
+    font-size: 20px;
+    box-shadow: var(--button_shodow_dark);
+    width: 98%;
+    height: 98%;
+}
+
+.text_label_question .webix_button {
+    border-radius: 50px;
+    border: 1px solid var(--c-white-color-background);
+    height: 60px;
+    width: 60px;
+    position: relative;
+    top: 5px;
+    font-size: 40px;
+    font-weight: 100;
+    background-color: var(--c-white-color-background);
+    box-shadow: inset 5px 5px 8px #bebebe,
+    inset -5px -5px 8px #ffffff;
+    color: var(--c-color-text-light);
+}
+
+.text_label_question_dark .webix_button{
+    border-radius: 50px;
+    border: 1px solid var(--c-white-color-background-dark_general_rows);
+    height: 60px;
+    width: 60px;
+    position: relative;
+    top: 5px;
+    font-size: 40px;
+    font-weight: 100;
+    background-color: var(--c-white-color-background-dark_left_menu);
+    box-shadow: inset 7px 7px 14px #191919,
+    inset -7px -7px 14px #3f3f3f;
+    color: var(--c-color-text-dark);
+
+}
+
+.text_label_question_dark .webix_button:hover{
+    border-radius: 50px;
+    border: 1px solid var(--c-white-color-background-dark_general_rows);
+    height: 60px;
+    width: 60px;
+    position: relative;
+    top: 5px;
+    font-size: 40px;
+    background-color: var(--c-white-color-background-dark_left_menu_focus);
+    color: var(--c-color-text-dark);
+
+}
+
+.text_label_question_dark .webix_button:focus{
+    border-radius: 50px;
+    border: 1px solid var(--c-white-color-background-dark_general_rows);
+    height: 60px;
+    width: 60px;
+    position: relative;
+    top: 5px;
+    font-size: 40px;
+    background-color: var(--c-white-color-background-dark_left_menu_focus);
+    color: var(--c-color-text-dark);
+
+}
+
+/*////////////////////////////////////////////////*/
+
 
 
 .status_define_button .webix_button{
@@ -1347,6 +1450,17 @@ right_menu_fuel_level_error_windows input{
     background-color: var(--c-white-color-background-dark_general_rows);
     color: #fff;
 }
+.button_central_menu_dark2 .webix_button{
+    background-color: var(--c-white-color-background-dark_general_rows);
+    color: #fff;
+}
+
+.button_central_menu_dark3 .webix_button{
+    background-color: rgba(1, 1, 1, 0.0);
+    /*background-color: red;*/
+    color: #fff;
+}
+
 
 .central_cols_button {
     background: linear-gradient(45deg, #628cbb, #b7c7dd) ;
@@ -2591,6 +2705,20 @@ right_menu_fuel_level_error_windows input{
     font-size: 20px;
 }
 
+.text_error_count_step p {
+    /*color: var(--c-color-text-light);*/
+    color: red;
+    font-size: 25px;
+    white-space: normal;
+    height: 600px;
+}
+
+.text_error_count_step_dark p{
+    color: var(--c-color-text-dark);
+    font-size: 25px;
+    white-space: normal;
+    height: 600px;
+}
 /****************************/
 
 .my_richselect .webix_control.webix_el_richselect{}

@@ -74,10 +74,8 @@ export default class Page9View extends JetView {
                 {
                 },
                 {
-                    paddingX: 80,
                     cols: [
                         {
-
                         },
                         {
                             view: "button",
@@ -114,12 +112,60 @@ export default class Page9View extends JetView {
                             css: "label_status_gage_windows_start",
                             id: "label_status_gage_windows_start_2"
                         },
+
+                             //Режим работы двух датчиков
+                        {
+                            id:"status_gage_show",
+                            cols:[
+                                {
+                                    width: 100,
+                                },
+                                {
+                                    view: "button",
+                                    width: 50,
+                                    height: 50,
+                                    css: "rows_level_right_menu_switch",
+                                    id: "button_define_define_2"
+                                },
+                                {
+                                    view: "button",
+                                    width: 50,
+                                    height: 50,
+                                    css: "rows_level_right_menu_switch_define",
+                                    id: "button_define_2"
+                                },
+                                {
+                                    width: 20,
+                                },
+
+                                {
+                                    // label: "Датчик подключен",
+                                    view: "label",
+                                    label: _("sensor_is_connected_2"),
+                                    height: 30,
+                                    width: 300,
+                                    css: "label_status_gage_windows_start",
+                                    id: "label_status_gage_windows_start_3",
+                                },
+                                {
+                                    // label: "Датчик не подключен",
+                                    view: "label",
+                                    label: _('sensor_is_not_connected_2'),
+                                    height: 30,
+                                    width: 300,
+                                    css: "label_status_gage_windows_start",
+                                    id: "label_status_gage_windows_start_4"
+                                },
+                            ]},
+
                         {
 
                         }
                     ]
                 },
-                {height:30,}
+                {
+
+                }
             ]
 
         };
@@ -131,6 +177,60 @@ export default class Page9View extends JetView {
             width: 1100,
             rows: [
                 {
+                    width: 1119,
+                    height: 70,
+                    css: "button_text_config_two_gage",
+                    id: "rows_config_status_gage",
+                    cols:[
+                        {
+                            width: 30,
+                        },
+                        {
+                            view: "label",
+                            width: 400,
+                            label: `<p style='position: relative; top:-20px;'>${_('text_two_gage')}</p>`,
+                            css: "text_two_gage",
+                            id:"status_config_two_gage_3",
+                        },
+                        {
+                            width: 90,
+                        },
+                        {
+                            view: "switch",
+                            id:"switcher_config_gage"
+
+                        },
+                        {
+                            view: "label",
+                            label: `<p style='position: relative; top:-20px;'>${_('number_gage_1')}</p>`,
+                            css: "text_two_gage",
+                            id:"status_config_two_gage_1"
+
+                        },
+                        {
+                            view: "label",
+                            label: `<p style='position: relative; top:-20px; color: #35a642;'>${_('number_gage_2')}</p>`,
+                            css: "text_two_gage",
+                            id:"status_config_two_gage_2"
+
+                        },
+                        {
+                            view: "button",
+                            type: "label",
+                            label: "?",
+                            css: "text_label_question",
+                            id:"text_label_question",
+                            width: 60,
+                        },
+                        {
+                            width: 30,
+                        }
+                    ]
+                },
+                {
+                  height: 20,
+                },
+                {
 
                     maxHeight: 400,
                     cols: [
@@ -140,8 +240,8 @@ export default class Page9View extends JetView {
                             image: _("button_image_engineering"),
                             css: "button_1",
                             id: "engineering_setup",
-                            width: 1120,
-                        }
+                            width: 1119,
+                        },
                     ]
                 },
                 {
@@ -398,8 +498,6 @@ export default class Page9View extends JetView {
             css: "window_show_closed_master",
             position: "top",
             body: {
-                // rows:[
-                //     {
                         cols:[
                             {
                                 view: "label",
@@ -408,11 +506,39 @@ export default class Page9View extends JetView {
                                 height: 45,
                             },
                         ]
-                //     },
-                // ]
             }
         });
+
         win_3.hide();
+
+
+
+        var win_5 =webix.ui({
+            view: "window",
+            width: 1000,
+            height: 500,
+            id: "window_show_5",
+            modal: true,
+            head:"Режим работы конфигуратора",
+            css: "window_show",
+            position: "center",
+            close:true,
+            body: {
+                cols:[
+                    {
+                        view: "label",
+                        label: `<p style='font-size: 26px; white-space: normal; width: 700px; height: 500px;'>${_("warning_text_configurator_mode")}</p>`,
+                        css: "closed_windows_modal",
+                        height: 500,
+                    },
+                ]
+            }
+        });
+
+
+        win_5.hide();
+
+
 
         return {
 
@@ -517,19 +643,55 @@ export default class Page9View extends JetView {
     setStatusConnect(status) {
         if (status) {
             $$("button_define_define_1").show();
+            $$("button_define_define_2").show()
             $$("label_status_gage_windows_start_1").show();
-            $$("button_define_1").hide();
             $$("label_status_gage_windows_start_2").hide();
+            $$("label_status_gage_windows_start_3").show();
+            $$("label_status_gage_windows_start_4").hide();
+            $$("button_define_1").hide();
+            $$("button_define_2").hide()
         } else {
             $$("button_define_define_1").hide();
+            $$("button_define_define_2").hide()
             $$("label_status_gage_windows_start_1").hide();
-            $$("button_define_1").show();
             $$("label_status_gage_windows_start_2").show();
+            $$("label_status_gage_windows_start_3").hide();
+            $$("label_status_gage_windows_start_4").show();
+            $$("button_define_1").show();
+            $$("button_define_2").show()
         }
     };
 
 
     init(view) {
+
+        $$("text_label_question").attachEvent("onItemClick", (id, e) => {
+            $$("window_show_5").show()
+         });
+
+
+
+        $$("status_gage_show").hide();
+        $$("status_config_two_gage_1").show()
+        $$("status_config_two_gage_2").hide();
+        // $$("status_gage_show_two").hide()
+        $$("switcher_config_gage").attachEvent("onChange", (newValue, oldValue, config)=>{
+
+            if(newValue) {
+                $$("status_config_two_gage_2").show();
+                $$("status_config_two_gage_1").hide()
+                $$("status_gage_show").show();
+                // $$("status_gage_show_two").show()
+            }else{
+                $$("status_config_two_gage_1").show()
+                $$("status_config_two_gage_2").hide();
+                $$("status_gage_show").hide();
+                // $$("status_gage_show_two").hide()
+
+
+            }
+        });
+
 
         setInterval(function(){
             var value = Math.floor(Math.random()*100);
@@ -607,6 +769,8 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("logo_1").getNode(), "logo_1_dark");
             webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start_dark");
             webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start_dark");
+            webix.html.addCss($$("label_status_gage_windows_start_3").getNode(), "label_status_gage_windows_start_dark");
+            webix.html.addCss($$("label_status_gage_windows_start_4").getNode(), "label_status_gage_windows_start_dark");
             webix.html.addCss($$("ver_soft").getNode(), "ver_soft_dark");
             // webix.html.addCss($$("master_setup").getNode(), "button_1_dark");
             webix.html.addCss($$("engineering_setup").getNode(), "button_1_dark");
@@ -614,6 +778,7 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("application_menu").getNode(), "button_1_dark");
             webix.html.addCss(this.$$("button_reload").getNode(), "button_reload_dark");
             webix.html.addCss($$("window_show_4").getNode(), "window_show_dark");
+            webix.html.addCss($$("window_show_5").getNode(), "window_show_dark");
             webix.html.addCss($$("upload_config_window_1").getNode(), "upload_config_window_dark");
             webix.html.addCss($$("boot_loader").getNode(), "upload_config_dark");
             webix.html.addCss($$("upload_config").getNode(), "upload_config_dark");
@@ -621,6 +786,11 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("label_text_upload_window_3").getNode(), "label_text_upload_window_dark");
             webix.html.addCss($$("label_text_upload_window_1").getNode(), "label_text_upload_window_dark");
             webix.html.addCss($$("load_file").getNode(), "upload_config_dark");
+            webix.html.addCss($$("rows_config_status_gage").getNode(), "button_text_config_two_gage_dark");
+            webix.html.addCss($$("status_config_two_gage_1").getNode(), "text_two_gage_dark");
+            webix.html.addCss($$("status_config_two_gage_2").getNode(), "text_two_gage_dark");
+            webix.html.addCss($$("status_config_two_gage_3").getNode(), "text_two_gage_dark");
+            webix.html.addCss($$("text_label_question").getNode(), "text_label_question_dark");
 
 
             $$("logo_1").define("image", _t("image_logo_dark"));
@@ -634,12 +804,19 @@ export default class Page9View extends JetView {
             $$("engineering_setup").refresh();
             $$("reference").refresh();
             $$("application_menu").refresh();
+
+
+            //////////////////////////////////
+
+
         }
         if (configFile.theme == 'light') {
             webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages");
             webix.html.addCss($$("logo_1").getNode(), "logo_1");
             webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start");
             webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start");
+            webix.html.addCss($$("label_status_gage_windows_start_3").getNode(), "label_status_gage_windows_start");
+            webix.html.addCss($$("label_status_gage_windows_start_4").getNode(), "label_status_gage_windows_start");
             webix.html.addCss($$("ver_soft").getNode(), "ver_soft");
             // webix.html.addCss($$("master_setup").getNode(), "button_1");
             webix.html.addCss($$("engineering_setup").getNode(), "button_1");
@@ -647,6 +824,7 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("application_menu").getNode(), "button_1");
             webix.html.addCss(this.$$("button_reload").getNode(), "button_reload");
             webix.html.addCss($$("window_show_4").getNode(), "window_show");
+            webix.html.addCss($$("window_show_5").getNode(), "window_show");
             webix.html.addCss($$("upload_config_window_1").getNode(), "upload_config_window");
             webix.html.addCss($$("boot_loader").getNode(), "upload_config");
             webix.html.addCss($$("upload_config").getNode(), "upload_config");
@@ -654,6 +832,12 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("label_text_upload_window_3").getNode(), "label_text_upload_window");
             webix.html.addCss($$("label_text_upload_window_1").getNode(), "label_text_upload_window");
             webix.html.addCss($$("load_file").getNode(), "upload_config");
+            webix.html.addCss($$("rows_config_status_gage").getNode(), "button_text_config_two_gage");
+            webix.html.addCss($$("status_config_two_gage_1").getNode(), "text_two_gage");
+            webix.html.addCss($$("status_config_two_gage_2").getNode(), "text_two_gage");
+            webix.html.addCss($$("status_config_two_gage_3").getNode(), "text_two_gage");
+            webix.html.addCss($$("text_label_question").getNode(), "text_label_question");
+
 
             $$("logo_1").define("image", _t("image_logo"));
             $$("logo_1").refresh();

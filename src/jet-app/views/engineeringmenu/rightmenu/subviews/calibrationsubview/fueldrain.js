@@ -160,6 +160,27 @@ export default class FuelDrainView extends JetView {
             ]
         };
 
+        let errorCountStepMessage = {
+            localId: "errorCountStepMessage",
+            rows:[
+                {
+                    cols:[
+                        {},
+                        {
+                            view: "label",
+                            label: `<p>">${_("error_count_step_message")}</p>`,
+                            css: "text_error_count_step",
+                        },
+                        {
+
+                        },
+
+                 ]
+
+                }
+            ]
+        };
+
 
         let calibrationFuelDrain = {
             id: "right_menu_calibration_drain_2",
@@ -176,6 +197,7 @@ export default class FuelDrainView extends JetView {
                     height: 30,
                 },
                 buttonNext,
+                errorCountStepMessage,
                 countStep,
                 {
                     height: 20,
@@ -288,7 +310,15 @@ export default class FuelDrainView extends JetView {
         this.$$('buttonRemoveStep').hide();
         this.$$('buttonClearTable').hide();
         this.$$('buttonStopCalibrate').hide();
+        this.$$("errorCountStepMessage").hide();
     }
+
+    errorShow(){
+        this.$$("errorCountStepMessage").show();
+        this.$$('step_liters_1').setValue("");
+        this.$$('step_liters_1').refresh();
+    }
+
 
     nextShow(){
         this.$$('passportVolume').show();
@@ -300,6 +330,7 @@ export default class FuelDrainView extends JetView {
         this.$$('buttonRemoveStep').show();
         this.$$('buttonClearTable').show();
         this.$$('buttonStopCalibrate').show();
+        this.$$("errorCountStepMessage").hide();
     }
 
     calcCountStep(volumeTank, volumeStep){

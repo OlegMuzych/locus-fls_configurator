@@ -524,13 +524,53 @@ export default class Page9View extends JetView {
             position: "center",
             close:true,
             body: {
+
+
                 cols:[
                     {
-                        view: "label",
-                        label: `<p style='font-size: 26px; white-space: normal; width: 700px; height: 500px;'>${_("warning_text_configurator_mode")}</p>`,
-                        css: "closed_windows_modal",
-                        height: 500,
+                        width:30,
                     },
+                    {
+                        rows:[
+                            {
+
+                            },
+                            {
+                                view: "label",
+                                label: `<p>${_("warning_text_configurator_mode")}</p>`,
+                                css: "closed_windows_modal",
+                                id: "closed_windows_modal",
+                                height: 80,
+                            },
+                            {
+                                view: "label",
+                                label: `<p>${_("warning_text_configurator_mode_2")}</p>`,
+                                css: "closed_windows_modal",
+                                id: "closed_windows_modal_2",
+                                height: 80,
+                            },
+                            {
+                                view: "label",
+                                label: `<p>${_("warning_text_configurator_mode_3")}</p>`,
+                                css: "closed_windows_modal",
+                                id: "closed_windows_modal_3",
+                                height: 80,
+                            },
+                            {
+                                view: "label",
+                                label: `<p>${_("warning_text_configurator_mode_4")}</p>`,
+                                css: "closed_windows_modal",
+                                id: "closed_windows_modal_4",
+                                height: 80,
+                            },
+                            {
+
+                            }
+                        ]
+                    },
+                    {
+                        width:10,
+                    }
                 ]
             }
         });
@@ -791,6 +831,11 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("status_config_two_gage_2").getNode(), "text_two_gage_dark");
             webix.html.addCss($$("status_config_two_gage_3").getNode(), "text_two_gage_dark");
             webix.html.addCss($$("text_label_question").getNode(), "text_label_question_dark");
+            webix.html.addCss($$("closed_windows_modal").getNode(), "closed_windows_modal_dark");
+            webix.html.addCss($$("closed_windows_modal_2").getNode(), "closed_windows_modal_dark");
+            webix.html.addCss($$("closed_windows_modal_3").getNode(), "closed_windows_modal_dark");
+            webix.html.addCss($$("closed_windows_modal_4").getNode(), "closed_windows_modal_dark");
+
 
 
             $$("logo_1").define("image", _t("image_logo_dark"));
@@ -837,6 +882,11 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("status_config_two_gage_2").getNode(), "text_two_gage");
             webix.html.addCss($$("status_config_two_gage_3").getNode(), "text_two_gage");
             webix.html.addCss($$("text_label_question").getNode(), "text_label_question");
+            webix.html.addCss($$("closed_windows_modal").getNode(), "closed_windows_modal");
+            webix.html.addCss($$("closed_windows_modal_2").getNode(), "closed_windows_modal");
+            webix.html.addCss($$("closed_windows_modal_3").getNode(), "closed_windows_modal");
+            webix.html.addCss($$("closed_windows_modal_4").getNode(), "closed_windows_modal");
+
 
 
             $$("logo_1").define("image", _t("image_logo"));

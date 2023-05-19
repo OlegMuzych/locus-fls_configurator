@@ -267,14 +267,22 @@ border: none;
 
 .closed_windows_modal p {
     color: var(--c-color-text-light);
+    font-weight: 100;
     text-align: center;
     position: relative;
     top: -40px;
-    hyphens: auto;
-    white-space: pre;
-    word-wrap: normal;
-    line-break: auto;
-    
+    text-align: left;
+    font-size: 26px;
+}
+
+.closed_windows_modal_dark p {
+    color: var(--c-color-text-dark);
+    font-weight: 100;
+    text-align: center;
+    position: relative;
+    top: -40px;
+    text-align: left;
+    font-size: 26px;
 }
 
 .text_size_slider .webix_slider_box .webix_slider_right{

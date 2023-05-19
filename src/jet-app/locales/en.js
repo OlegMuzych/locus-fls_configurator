@@ -109,6 +109,13 @@ export default {
     "status_calibration": "Calibration is not required",
     "status_thermal_compensation": "Thermal compensation",
 
+    /*  text info config  */
+    "warning_text_configurator_mode": "Данная функция предназначена для подключения и настройки",
+    "warning_text_configurator_mode_2": "одного или двух датчиков к конфигуратору одновременно.",
+    "warning_text_configurator_mode_3": "Подключения датчиков происходит автоматически.",
+    "warning_text_configurator_mode_4": "Статус подключения отоброжается на главном экране.",
+
+
     /* errorStatus.js */
     "errorStatus_text": "error code",
 

@@ -1477,7 +1477,100 @@ right_menu_fuel_level_error_windows input{
 
 .central_cols_button_dark {
     background: linear-gradient(45deg, #414e72, #628cbb) ;
+    color: var(--c-color-text-dark);
 }
+
+
+
+.central_cols_button_dark .webix_segment_0{
+    color: var(--c-color-text-dark);
+    background-color: rgba(102, 61, 61, 0.1);
+    font-size: 22px;
+    font-weight: 100;
+
+}
+.central_cols_button .webix_segment_0{
+    color: var(--c-color-text-dark);
+    background-color: rgba(102, 61, 61, 0.1);
+    font-size: 22px;
+    font-weight: 100;
+}
+
+
+
+.central_cols_button_dark .webix_segment_1{
+    color: var(--c-color-text-dark);
+    background-color: rgba(102, 61, 61, 0.1);
+    font-size: 22px;
+    font-weight: 100;
+}
+.central_cols_button .webix_segment_1{
+    color: var(--c-color-text-dark);
+    background-color: rgba(102, 61, 61, 0.1);
+    font-size: 22px;
+    font-weight: 100;
+}
+
+
+
+.central_cols_button_dark .webix_segment_N{
+    color: var(--c-color-text-dark);
+    background-color: rgba(102, 61, 61, 0.1);
+    font-size: 22px;
+    font-weight: 100;
+}
+.central_cols_button .webix_segment_N{
+    color: var(--c-color-text-dark);
+    background-color: rgba(102, 61, 61, 0.1);
+    font-size: 22px;
+    font-weight: 100;
+}
+
+
+
+
+
+.central_cols_button_dark .webix_segment_0.webix_selected{
+    background: #2c2c2c;
+    color: var(--c-color-text-dark);
+}
+
+.central_cols_button .webix_segment_0.webix_selected {
+    background: var(--white-bacground-central-menu);
+    color: var(--c-color-text-light);
+}
+
+
+
+
+
+.central_cols_button_dark .webix_segment_1.webix_selected{
+    background: #2c2c2c;
+    color: var(--c-color-text-dark);
+}
+.central_cols_button .webix_segment_1.webix_selected {
+    background: var(--white-bacground-central-menu);
+    color: var(--c-color-text-light);
+}
+
+
+
+
+
+.central_cols_button_dark .webix_segment_N.webix_selected{
+    background: #2c2c2c;
+    color: var(--c-color-text-dark);
+}
+.central_cols_button .webix_segment_N.webix_selected {
+    background: var(--white-bacground-central-menu);
+    color: var(--c-color-text-light);
+}
+
+/*central_cols_button_dark.webix_all_segments{*/
+/*    background: linear-gradient(45deg, #414e72, #628cbb) ;*/
+
+/*}*/
+
 /*/////------------------------------------------------------------*/
 
 
@@ -2757,4 +2850,3 @@ right_menu_fuel_level_error_windows input{
 }
 
 
-/*background-color: #35a642;*/

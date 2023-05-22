@@ -118,7 +118,7 @@ export default class Page9View extends JetView {
                             id:"status_gage_show",
                             cols:[
                                 {
-                                    width: 100,
+                                    width: 250,
                                 },
                                 {
                                     view: "button",

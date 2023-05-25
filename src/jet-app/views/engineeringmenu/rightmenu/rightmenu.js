@@ -92,6 +92,7 @@ export default class RightMenu extends JetView{
         return body;
     }
     init(){
+
         this.on(this.app, "app:setting:general", ()=>{
                 console.log('Click');
                 $$('fullEmptySubView').show();

@@ -24,16 +24,16 @@ export default class CentralMenu extends JetView {
                     value: 1,
                     height: 100,
                     options: [
-                        {value: _("main_settings"), id: '1',},
-                        {value: _("calibration"), id: '2'},
-                        {value: _("filtering"), id: '3'},
+                        {value: _("main_settings"), id: 'button_1',},
+                        {value: _("calibration"), id: 'button_2'},
+                        {value: _("filtering"), id: 'button_3'},
                     ],
                 },
                 {
                     animate: false,
                     cells: [
                         {
-                            id: '1',
+                            id: 'button_1',
                             rows: [
                                 {
                                     id: "general",
@@ -42,7 +42,7 @@ export default class CentralMenu extends JetView {
                             ]
                         },
                         {
-                            id: '2',
+                            id: 'button_2',
                             rows: [
                                 {
                                     id: "calibration",
@@ -52,7 +52,7 @@ export default class CentralMenu extends JetView {
 
                         },
                         {
-                            id: '3',
+                            id: 'button_3',
                             rows: [
                                 {
                                     id: "filtering",
@@ -88,6 +88,24 @@ export default class CentralMenu extends JetView {
 
     init() {
 
+
+        $$("style_general_rows_1").attachEvent("onChange", (newValue, oldValue, config)=>{
+            // webix.message(newValue);
+            switch(newValue){
+                case "button_1":{
+                    this.app.callEvent("app:setting:general",[]);
+                    break;
+                }
+                case "button_2":{
+                    this.app.callEvent("app:setting:calibration",[]);
+                    break;
+                }
+                case "button_3":{
+                    this.app.callEvent("app:setting:filtering",[]);
+                    break;
+                }
+            }
+        });
 
 
 

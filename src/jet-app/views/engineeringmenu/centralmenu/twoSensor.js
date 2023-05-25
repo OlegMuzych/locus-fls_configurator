@@ -17,7 +17,7 @@ export default class TwoSensor extends JetView {
 					value: 1,
 					height: 50,
 					options: [
-						{value: _("one_sensor_button"), id: 'one_sensor',},
+						{value: _("one_sensor_button"), id: 'one_sensor'},
 						{value: _("two_sensor_button"), id: 'two_sensor'},
 					],
 				},

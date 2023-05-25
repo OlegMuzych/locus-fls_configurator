@@ -1,6 +1,4 @@
 import {JetView} from "webix-jet";
-import CentralMenu from "./centralMenu";
-import configFile from "../../../config-app";
 
 
 

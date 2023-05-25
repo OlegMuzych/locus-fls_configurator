@@ -709,24 +709,29 @@ export default class Page9View extends JetView {
             $$("window_show_5").show()
          });
 
-
-
         $$("status_gage_show").hide();
         $$("status_config_two_gage_1").show()
         $$("status_config_two_gage_2").hide();
-        // $$("status_gage_show_two").hide()
+
+
         $$("switcher_config_gage").attachEvent("onChange", (newValue, oldValue, config)=>{
+
+
+            // $$("switcher_config_gage").bind($$("configuration_general_settings_sensor"));
 
             if(newValue) {
                 $$("status_config_two_gage_2").show();
                 $$("status_config_two_gage_1").hide()
                 $$("status_gage_show").show();
-                // $$("status_gage_show_two").show()
+                $$("configuration_general_settings_sensor").hide();
+
+
             }else{
                 $$("status_config_two_gage_1").show()
                 $$("status_config_two_gage_2").hide();
                 $$("status_gage_show").hide();
-                // $$("status_gage_show_two").hide()
+                $$("configuration_general_settings_sensor").hide();
+
 
 
             }
@@ -812,7 +817,6 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("label_status_gage_windows_start_3").getNode(), "label_status_gage_windows_start_dark");
             webix.html.addCss($$("label_status_gage_windows_start_4").getNode(), "label_status_gage_windows_start_dark");
             webix.html.addCss($$("ver_soft").getNode(), "ver_soft_dark");
-            // webix.html.addCss($$("master_setup").getNode(), "button_1_dark");
             webix.html.addCss($$("engineering_setup").getNode(), "button_1_dark");
             webix.html.addCss($$("reference").getNode(), "button_1_dark");
             webix.html.addCss($$("application_menu").getNode(), "button_1_dark");
@@ -836,19 +840,15 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("closed_windows_modal_3").getNode(), "closed_windows_modal_dark");
             webix.html.addCss($$("closed_windows_modal_4").getNode(), "closed_windows_modal_dark");
 
-
-
             $$("logo_1").define("image", _t("image_logo_dark"));
             $$("logo_1").refresh();
-            // $$("master_setup").define("image", _("button_image_master_dark"));
             $$("engineering_setup").define("image", _("button_image_engineering_dark"));
             $$("reference").define("image", _("button_image_info_win2_dark"));
             $$("application_menu").define("image", _("button_image_konfig_dark"));
-            // $$("logo_1").refresh();
-            // $$("master_setup").refresh();
             $$("engineering_setup").refresh();
             $$("reference").refresh();
             $$("application_menu").refresh();
+            $$("window_show_5").refresh();
 
 
             //////////////////////////////////
@@ -863,7 +863,6 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("label_status_gage_windows_start_3").getNode(), "label_status_gage_windows_start");
             webix.html.addCss($$("label_status_gage_windows_start_4").getNode(), "label_status_gage_windows_start");
             webix.html.addCss($$("ver_soft").getNode(), "ver_soft");
-            // webix.html.addCss($$("master_setup").getNode(), "button_1");
             webix.html.addCss($$("engineering_setup").getNode(), "button_1");
             webix.html.addCss($$("reference").getNode(), "button_1");
             webix.html.addCss($$("application_menu").getNode(), "button_1");
@@ -887,19 +886,15 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("closed_windows_modal_3").getNode(), "closed_windows_modal");
             webix.html.addCss($$("closed_windows_modal_4").getNode(), "closed_windows_modal");
 
-
-
             $$("logo_1").define("image", _t("image_logo"));
             $$("logo_1").refresh();
-            // $$("master_setup").define("image", _("button_image_master"));
             $$("engineering_setup").define("image", _("button_image_engineering"));
             $$("reference").define("image", _("button_image_info_win2"));
             $$("application_menu").define("image", _("button_image_konfig"));
-            // $$("logo_1").refresh();
-            // $$("master_setup").refresh();
             $$("engineering_setup").refresh();
             $$("reference").refresh();
             $$("application_menu").refresh();
+            $$("window_show_5").refresh();
         }
     }
 }

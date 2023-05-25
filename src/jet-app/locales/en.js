@@ -99,6 +99,10 @@ export default {
     "column_level_header": "Level",
     "column_volume_header": "Volume",
 
+    /*  text button menu config sensor  */
+    "one_sensor_button": "Sensor #1",
+    "two_sensor_button": "Sensor #2",
+
     /* leftmenu.js */
     "button_save_setting": "Save Settings",
 

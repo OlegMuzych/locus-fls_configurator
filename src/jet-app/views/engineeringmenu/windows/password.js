@@ -24,9 +24,9 @@ export default class PasswordWindow extends JetView {
                 },
 
                 {
-                    // animate: {type: true, delay: 10},
                     css:"window_show_password",
                     id: "rows_11",
+                    animate: false,
                     cells: [
                         {
                             id: "rows_22",

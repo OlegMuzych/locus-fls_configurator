@@ -117,6 +117,9 @@ export default {
     "warning_text_configurator_mode_3": "Подключения датчиков происходит автоматически.",
     "warning_text_configurator_mode_4": "Статус подключения отоброжается на главном экране.",
 
+    /*  text button menu config sensor  */
+    "one_sensor_button": "Датчик #1",
+    "two_sensor_button": "Датчик #2",
 
     /* errorStatus.js */
     "errorStatus_text": "Код ошибки",

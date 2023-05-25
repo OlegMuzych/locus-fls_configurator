@@ -1470,13 +1470,15 @@ right_menu_fuel_level_error_windows input{
 }
 
 
-.central_cols_button {
+.central_cols_button .webix_all_segments{
     background: linear-gradient(45deg, #628cbb, #b7c7dd) ;
-    border-top-left-radius: 8px;
+    border-top-left-radius: 12px;
+    color: var(--c-color-text-light);
 }
 
-.central_cols_button_dark {
+.central_cols_button_dark .webix_all_segments{
     background: linear-gradient(45deg, #414e72, #628cbb) ;
+    border-top-left-radius: 12px;
     color: var(--c-color-text-dark);
 }
 
@@ -1487,6 +1489,7 @@ right_menu_fuel_level_error_windows input{
     background-color: rgba(102, 61, 61, 0.1);
     font-size: 22px;
     font-weight: 100;
+    border-top-left-radius: 12px;
 
 }
 .central_cols_button .webix_segment_0{
@@ -1494,6 +1497,7 @@ right_menu_fuel_level_error_windows input{
     background-color: rgba(102, 61, 61, 0.1);
     font-size: 22px;
     font-weight: 100;
+    border-top-left-radius: 12px;
 }
 
 
@@ -1518,12 +1522,14 @@ right_menu_fuel_level_error_windows input{
     background-color: rgba(102, 61, 61, 0.1);
     font-size: 22px;
     font-weight: 100;
+    width: 110%;
 }
 .central_cols_button .webix_segment_N{
     color: var(--c-color-text-dark);
     background-color: rgba(102, 61, 61, 0.1);
     font-size: 22px;
     font-weight: 100;
+    width: 110%;
 }
 
 

@@ -240,4 +240,6 @@ export default {
     "error_short_circuit": "Короткое замыкание",
     "error_size_table": "В таблице тарировки меньше 2 строк",
     "error_value_table": "Некорректная таблица тарировки",
+    "error_undefined": "Неопределенная ошибка",
+
 };

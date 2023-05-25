@@ -241,5 +241,5 @@ export default {
     "error_short_circuit": "Short circuit error",
     "error_size_table": "Size table calibration error",
     "error_value_table": "Table calibrate not valid error",
-
+    "error_undefined": "Undefined error",
 };

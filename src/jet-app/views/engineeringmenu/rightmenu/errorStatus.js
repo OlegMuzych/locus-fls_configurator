@@ -5,6 +5,7 @@ import {
     ERROR_SHORT_CIRCUIT,
     ERROR_SIZE_TABLE,
     ERROR_VALUE_TABLE,
+    ERROR_UNDEFINED,
     NO_ERROR
 } from "../../../error-codes";
 import llsModel from "../../../models/lls-model";
@@ -58,10 +59,7 @@ export default class FullEmptySubView extends JetView {
 
             ]
         }
-
         return errorStatus;
-
-
     }
 
     listenerLongData = (longData) => {
@@ -70,21 +68,31 @@ export default class FullEmptySubView extends JetView {
         } else {
             this.deleteError(ERROR_FULL_EMPTY);
         }
-
     }
 
     listenerShortData = (shortData) => {
         // console.log(shortData);
-        if (shortData.level == 65531 || shortData.level == 65532) {
+        // if (shortData.level == 65531 || shortData.level == 65532) {
+        //     this.addError(ERROR_SHORT_CIRCUIT);
+        // } else {
+        //     this.deleteError(ERROR_SHORT_CIRCUIT);
+        // }
+
+        // if (shortData.level == 65533) {
+        //     this.addError(ERROR_SIZE_TABLE);
+        // } else {
+        //     this.deleteError(ERROR_SIZE_TABLE);
+        // }
+        if (shortData.level > 4095 && shortData.level < 65535) {
+            this.addError(ERROR_UNDEFINED);
+        } else {
+            this.deleteError(ERROR_UNDEFINED);
+        }
+
+        if (shortData.level == 65535) {
             this.addError(ERROR_SHORT_CIRCUIT);
         } else {
             this.deleteError(ERROR_SHORT_CIRCUIT);
-        }
-
-        if (shortData.level == 65533) {
-            this.addError(ERROR_SIZE_TABLE);
-        } else {
-            this.deleteError(ERROR_SIZE_TABLE);
         }
 
         this.setErrors(); // Выполняю здесь, так этот колбэк происходит раз в 1 сек
@@ -92,7 +100,7 @@ export default class FullEmptySubView extends JetView {
 
     listenerTable = (table) => {
         console.log(table);
-        if(table.countPoint <= 1)
+        if(table.countPoint >= 1)
         for (let i = 0; i < (table.countPoint - 1); i++) {
             if ((table.volumes[i] >= table.volumes[i + 1]) || table.levels[i] >= table.levels[i + 1]) {
                 this.addError(ERROR_VALUE_TABLE);
@@ -101,6 +109,12 @@ export default class FullEmptySubView extends JetView {
                 this.deleteError(ERROR_VALUE_TABLE);
             }
         }
+
+         if(table.countPoint >0 && table.countPoint <=2){
+             this.addError(ERROR_SIZE_TABLE);
+         }else{
+             this.deleteError(ERROR_SIZE_TABLE);
+         }
     }
 
     destroy() {
@@ -162,6 +176,10 @@ export default class FullEmptySubView extends JetView {
             }
             case ERROR_VALUE_TABLE: {
                 this.$$("window_status_error").setValue(_("error_value_table"));
+                break;
+            }
+            case ERROR_UNDEFINED:{
+                this.$$("window_status_error").setValue(_("error_undefined"));
                 break;
             }
             default: {

@@ -33,6 +33,7 @@ border: none;
     --modal_windows: 0.4em 0.4em 5px rgba(122,122,122,0.5);
     --modal_windows_background: #f3f3f3;
     --swich_on_text: #35a642;
+    --swich_button_status: #414e72;
 
 
     /*dark*/
@@ -188,7 +189,7 @@ border: none;
 
 
 .upload_config .webix_button {
-    background-color: #414e72;
+    background-color: var(--swich_button_status);
     color: #fff;
     font-weight: 100;
     font-size: 24px;
@@ -197,7 +198,7 @@ border: none;
 }
 
 .upload_config .webix_button:hover{
-    background-color: #48587a;
+    background-color: var(--swich_button_status);
     color: #fff;
 
 }
@@ -1101,15 +1102,37 @@ right_menu_fuel_level_error_windows input{
 .right_menu_status{
     background-color: var(--white-bacground-central-menu);
     border-radius: 8px;
-    /*box-shadow: var(--shadow-element);*/
-
 }
 
 .right_menu_status_dark{
     background-color: var(--c-white-color-background-dark_general_rows);
     border-radius: 8px;
-    /*box-shadow: var(--shadow-element);*/
+}
 
+
+
+
+.right_menu_status_windows{
+    background-color: var(--white-bacground-central-menu);
+    border-radius: 8px;
+}
+
+.right_menu_status_windows_dark{
+    background-color: var(--c-white-color-background-dark_general_rows);
+    border-radius: 8px;
+}
+
+.show_choice_sensor .webix_button{
+    background-color: var(--swich_button_status);
+    cursor: default;
+}
+.show_choice_sensor .webix_button:focus{
+    background-color: var(--swich_button_status);
+    cursor: default;
+}
+.show_choice_sensor .webix_button:hover{
+    background-color: var(--swich_button_status);
+    cursor: default;
 }
 
 .rows_right{

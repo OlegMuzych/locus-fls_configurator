@@ -198,7 +198,6 @@ export default class Page9View extends JetView {
                         {
                             view: "switch",
                             id:"switcher_config_gage"
-
                         },
                         {
                             view: "label",
@@ -704,6 +703,20 @@ export default class Page9View extends JetView {
 
 
     init(view) {
+
+
+
+
+        $$("switcher_config_gage").attachEvent("onChange", (newValue, oldValue, config)=>{
+            webix.message(newValue);
+            if(newValue) {
+
+            }else{
+
+            }
+
+
+        });
 
         $$("text_label_question").attachEvent("onItemClick", (id, e) => {
             $$("window_show_5").show()

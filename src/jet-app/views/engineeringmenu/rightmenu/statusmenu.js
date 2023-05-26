@@ -2,118 +2,195 @@ import {JetView} from "webix-jet";
 import llsModel from "../../../models/lls-model";
 import configFile from "../../../config-app";
 import configApp from "../../../config-app";
+import StatusmenuTwoSensor from "./statusmenuTwoSensor"
 
 export default class StatusMenu extends JetView{
-    config(){
+    config() {
         const _ = this.app.getService("locale")._;
 
-        let right_menu_status={
-            css:"right_menu_status",
-            id:"right_menu_status",
+        let right_menu_status = {
+            css: "right_menu_status",
+            id: "right_menu_status",
             width: 550,
-            rows:[
+            rows: [
                 {
                     height: 20,
-
                 },
                 {
-                    cols:[
+                    cols: [
                         {width: 70,},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_1"},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_1",},
-                        {width: 20,},
-                        {view:"label", label:_("status_sensor_is_connected"), height: 30, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_1"}
-                    ]
-                },
-                {
-                    height: 10,
-                },
-                {
-                    cols:[
-                        {width: 70,},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_2",},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_2",},
-                        {width: 20,},
-                        {view:"label", label:_("status_fuel_is_stable"), height: 30, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_2"}
-                    ]
-                },
-                {
-                    height: 10,
-                },
-                {
-                    cols:[
-                        {width: 70,},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_3"},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_3",},
-                        {width: 20,},
-                        {view:"label", label:_("status_calibration"), height: 30, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_3"}
-                    ]
-                },
-                {
-                    height: 10,
-                },
-                {
-                    cols:[
-                        {width: 70,},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_4_base", },
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_4",},
-                        {width: 20,},
-                        {view:"label", label:_("status_thermal_compensation"), height: 30, width:200, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_4"},
                         {
-                            width:5,
-                        },
-                        {view:"button", type:"image", image:"assets/images/temperature_2.svg", width:30, height:30, css:"thermometer_image",},
-                        {view:"text", width: 60, height:30, css:"window_temp", id:"window_temp", readonly:true, value:"__°"},
-
-                    ]
-                },
-                {
-                    height: 10,
-                },
-                {
-                    // disabled: true,
-                    height: 60,
-                    hidden: true,
-                    rows:[
-                        {
+                            view: "button",
+                            width: 30,
                             height: 30,
-                            disabled: true,
-                            cols:[
-                                {
-                                    width: 70,
-                                },
-                                {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_5_base", },
-                                {
-                                    width: 20,
-                                },
-                                {
-                                    cols:[
-                                        {
-                                            view: "text",
-                                            width: 300,
-                                            height: 60,
-                                            css: "full_level_windows_status",
-                                            readonly: true,
-                                            localId: "status_level_fuel",
-                                            inputAlign: "center",
-                                            value: "Ошибок нет",
-                                        },
-                                    ]
-                                }
-                            ]
+                            css: "rows_level_right_menu_switch",
+                            id: "button_define_define_1"
+                        },
+                        {
+                            view: "button",
+                            width: 30,
+                            height: 30,
+                            css: "rows_level_right_menu_switch_define",
+                            id: "button_define_1",
+                        },
+                        {width: 20,},
+                        {
+                            view: "label",
+                            label: _("status_sensor_is_connected"),
+                            height: 30,
+                            css: "rows_level_right_menu_info",
+                            id: "rows_level_right_menu_info_1"
                         }
-
+                    ]
+                },
+                {
+                    height: 10,
+                },
+                {
+                    cols: [
+                        {width: 70,},
+                        {
+                            view: "button",
+                            width: 30,
+                            height: 30,
+                            css: "rows_level_right_menu_switch",
+                            id: "button_define_define_2",
+                        },
+                        {
+                            view: "button",
+                            width: 30,
+                            height: 30,
+                            css: "rows_level_right_menu_switch_define",
+                            id: "button_define_2",
+                        },
+                        {width: 20,},
+                        {
+                            view: "label",
+                            label: _("status_fuel_is_stable"),
+                            height: 30,
+                            css: "rows_level_right_menu_info",
+                            id: "rows_level_right_menu_info_2"
+                        }
+                    ]
+                },
+                {
+                    height: 10,
+                },
+                {
+                    cols: [
+                        {width: 70,},
+                        {
+                            view: "button",
+                            width: 30,
+                            height: 30,
+                            css: "rows_level_right_menu_switch",
+                            id: "button_define_define_3"
+                        },
+                        {
+                            view: "button",
+                            width: 30,
+                            height: 30,
+                            css: "rows_level_right_menu_switch_define",
+                            id: "button_define_3",
+                        },
+                        {width: 20,},
+                        {
+                            view: "label",
+                            label: _("status_calibration"),
+                            height: 30,
+                            css: "rows_level_right_menu_info",
+                            id: "rows_level_right_menu_info_3"
+                        }
+                    ]
+                },
+                {
+                    height: 10,
+                },
+                {
+                    cols: [
+                        {width: 70,},
+                        {
+                            view: "button",
+                            width: 30,
+                            height: 30,
+                            css: "rows_level_right_menu_switch",
+                            id: "button_define_4_base",
+                        },
+                        {
+                            view: "button",
+                            width: 30,
+                            height: 30,
+                            css: "rows_level_right_menu_switch_define",
+                            id: "button_define_4",
+                        },
+                        {width: 20,},
+                        {
+                            view: "label",
+                            label: _("status_thermal_compensation"),
+                            height: 30,
+                            width: 200,
+                            css: "rows_level_right_menu_info",
+                            id: "rows_level_right_menu_info_4"
+                        },
+                        {
+                            width: 5,
+                        },
+                        {
+                            view: "button",
+                            type: "image",
+                            image: "assets/images/temperature_2.svg",
+                            width: 30,
+                            height: 30,
+                            css: "thermometer_image",
+                        },
+                        {
+                            view: "text",
+                            width: 60,
+                            height: 30,
+                            css: "window_temp",
+                            id: "window_temp",
+                            readonly: true,
+                            value: "__°"
+                        },
 
                     ]
                 },
                 {
-                    height: 18,
+                    height: 13,
+                },
+                {
+                    view:"button",
+                    css: "show_choice_sensor",
+                    id:"show_choice_sensor",
+                    height:12,
+                },
+                {
+                    height: 12,
+                    id:"empty_rows"
                 }
             ]
         };
 
-        return right_menu_status;
-    }
+        let two_status ={
+            rows: [StatusmenuTwoSensor],
+            id: "status_two_show",
+        };
+
+
+            let body={
+          rows:[
+              right_menu_status,
+              {
+                  height:10,
+              },
+              two_status
+          ]};
+
+            return body;
+
+        }
+
+
 
     destroy() {
         super.destroy();
@@ -122,7 +199,6 @@ export default class StatusMenu extends JetView{
         llsModel.clearListenerShortData(this.listenerShortData);
         llsModel.clearListenerLongData(this.listenerLongData);
         llsModel.clearListenerReadCnt(this.listenerReadCnt);
-        llsModel.cle
     }
 
     listenerShortData = (shortData)=>{
@@ -152,6 +228,11 @@ export default class StatusMenu extends JetView{
     }
 
     init(){
+
+        $$("show_choice_sensor").hide();
+
+
+
         setStatusConnect(false);
         setFuelState(false);
         setCalibrateState(false);

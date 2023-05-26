@@ -40,8 +40,13 @@ export default class ServiceMenu extends JetView {
                 }
             ]
         };
+
         return right_menu_button;
+
     }
+
+
+
 
     init() {
         const _ = this.app.getService("locale")._;

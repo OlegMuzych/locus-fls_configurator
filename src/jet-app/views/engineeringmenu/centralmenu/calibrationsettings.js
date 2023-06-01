@@ -169,6 +169,7 @@ export default class CalibrationSettings extends JetView {
                 }
             }
             this.saveTable();
+            llsModel.getTable().then();
 
         });
 
@@ -361,6 +362,7 @@ export default class CalibrationSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 this.saveTable();
+                llsModel.getTable().then();
             }
         });
     }

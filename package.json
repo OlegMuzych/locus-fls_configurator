@@ -1,7 +1,7 @@
 {
   "name": "Point-Monitoring Configurator",
   "productName": "Point-Monitoring Configurator",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Configurator for lls",
   "main": ".webpack/main",
   "trademark": "p-m",

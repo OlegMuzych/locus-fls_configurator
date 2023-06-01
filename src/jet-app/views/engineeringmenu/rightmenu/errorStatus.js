@@ -202,7 +202,6 @@ export default class FullEmptySubView extends JetView {
             this.errorCollections.splice(index, 1);
         }
     }
-
 };
 
 

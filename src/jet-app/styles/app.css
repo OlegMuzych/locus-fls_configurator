@@ -1180,6 +1180,8 @@ right_menu_fuel_level_error_windows input{
     border-top: 2px solid rgba(255, 255, 255, 0);
     border-bottom: 2px solid rgba(255, 255, 255, 0);
     border-left: 8px solid #628cbb;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     position: relative;
     top: 0px;
     width: 100%;
@@ -1192,6 +1194,8 @@ right_menu_fuel_level_error_windows input{
     border-top: 2px solid rgba(255, 255, 255, 0);
     border-bottom: 2px solid rgba(255, 255, 255, 0);
     border-left: 8px solid #628cbb;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     position: relative;
     top: 0px;
     width: 100%;
@@ -1206,6 +1210,8 @@ right_menu_fuel_level_error_windows input{
     border-top: 2px solid rgba(255, 255, 255, 0);
     border-bottom: 2px solid rgba(255, 255, 255, 0);
     border-left: 8px solid #628cbb;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     position: relative;
     top: 0px;
     width: 100%;

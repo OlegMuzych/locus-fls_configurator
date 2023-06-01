@@ -1,7 +1,6 @@
 import {JetView} from "webix-jet";
 import configFile from "../../../config-app";
-// import llsModel from "../../../models/lls-model";
-import {llsModelOne} from "../../../models/lls-test-models";
+import llsModel from "../../../models/lls-model";
 import trademark from "../../../../trademark/trademark";
 
 const llsModel = llsModelOne;
@@ -66,6 +65,7 @@ export default class LeftMenu extends JetView{
                                 css: "left_menu_button",
                                 localId: "left_menu_button_2",
                                 // hidden: true,
+                                hidden: true,
                             },
                             {
                                 height: 10,
@@ -79,19 +79,8 @@ export default class LeftMenu extends JetView{
                                 css: "left_menu_button",
                                 localId: "left_menu_button_3",
                                 // hidden: true,
+                                hidden: true,
                             },
-                            // {
-                            //     view: "button",
-                            //     type: "image",
-                            //     // image: "assets/images/ONE.MAX.svg",
-                            //     image: _t('image_button_3'),
-                            //     width: 160,
-                            //     height: 200,
-                            //     // css: "left_menu_button_2",
-                            //     css: "left_menu_button",
-                            //     localId: "left_menu_button_3",
-                            //     // hidden: true,
-                            // },
                             {
                             },
                             {

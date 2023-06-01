@@ -23,7 +23,7 @@
     "forge": {
       "electronRebuildConfig": {},
       "packagerConfig": {
-        "icon": "./src/jet-app/assets/images/montrans/montrans_icon.png"
+        "icon": "./src/trademark/montrans_icon.png"
       },
       "makers": [
         {

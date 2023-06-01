@@ -33,7 +33,8 @@ const createWindow = () => {
       zoomFactor: 0.6,
     },
     fullscreenable: false,
-    icon: __dirname + '/jet-app/assets/images/montrans/montrans_icon.ico',
+    // icon: __dirname + '/jet-app/assets/images/montrans/montrans_icon.ico',
+    icon: __dirname + '/trademark/montrans_icon.ico',
     removeMenu: true,
     autoHideMenuBar: true,
   });

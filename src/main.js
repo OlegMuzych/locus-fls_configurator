@@ -33,7 +33,7 @@ const createWindow = () => {
       zoomFactor: 0.6,
     },
     fullscreenable: false,
-    icon: __dirname + '/trademark/pm-logo.ico',
+    icon: __dirname + '/jet-app/assets/images/montrans/montrans_icon.ico',
     removeMenu: true,
     autoHideMenuBar: true,
   });

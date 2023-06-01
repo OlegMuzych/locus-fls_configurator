@@ -83,13 +83,14 @@ export default class FullEmptySubView extends JetView {
         // } else {
         //     this.deleteError(ERROR_SIZE_TABLE);
         // }
-        if (shortData.level > 4095 && shortData.level < 65535) {
-            this.addError(ERROR_UNDEFINED);
-        } else {
-            this.deleteError(ERROR_UNDEFINED);
-        }
 
-        if (shortData.level == 65535) {
+        // if (shortData.level > 4095 && shortData.level < 65535) {
+        //     this.addError(ERROR_UNDEFINED);
+        // } else {
+        //     this.deleteError(ERROR_UNDEFINED);
+        // }
+
+        if ((shortData.level == 65532 || shortData.level == 65531) && !this.errorCollections.includes(ERROR_FULL_EMPTY)) { //&& !this.errorCollections.includes(ERROR_FULL_EMPTY) --> Это наша заплатка на случай двойной ошибки
             this.addError(ERROR_SHORT_CIRCUIT);
         } else {
             this.deleteError(ERROR_SHORT_CIRCUIT);

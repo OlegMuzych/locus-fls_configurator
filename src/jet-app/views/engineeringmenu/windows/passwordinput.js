@@ -71,7 +71,7 @@ export default class PasswordInputWindow extends JetView {
                                             localId: "textCurrentPass",
                                             css: "password_windows_set",
                                             inputAlign: "center",
-                                            pattern: {mask: "########", allow: /[0-9]/g},
+                                            pattern: {mask: "####", allow: /[A-Za-z0-9]/g},
                                             invalidMessage: _("window_password_invalid_message"),
                                             name: 'test',
                                             validate: ()=>{return this.passValidFlag},

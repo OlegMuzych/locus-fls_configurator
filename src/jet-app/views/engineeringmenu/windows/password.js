@@ -76,7 +76,7 @@ export default class PasswordWindow extends JetView {
                                             localId: "textCurrentPass",
                                             css: "password_windows_set",
                                             inputAlign: "center",
-                                            pattern: {mask: "########", allow: /[0-9]/g},
+                                            pattern: {mask: "####", allow: /[A-Za-z0-9]/g},
                                             invalidMessage: _("window_password_invalid_message"),
                                             name: 'test',
                                             validate: ()=>{return this.passValidFlag},
@@ -140,7 +140,7 @@ export default class PasswordWindow extends JetView {
                                                     localId: "textCurrentPass_2",
                                                     css: "password_windows_set",
                                                     inputAlign: "center",
-                                                    pattern: {mask: "########", allow: /[0-9]/g},
+                                                    pattern: {mask: "####", allow: /[A-Za-z0-9]/g},
                                                     invalidMessage: _("window_password_invalid_message"),
                                                     name: "test2",
                                                     validate: ()=>{return this.passValidFlag},
@@ -172,7 +172,7 @@ export default class PasswordWindow extends JetView {
                                                     localId: "textNewPass",
                                                     css: "password_windows_set",
                                                     inputAlign: "center",
-                                                    pattern: {mask: "########", allow: /[0-9]/g}
+                                                    pattern: {mask: "####", allow: /[A-Za-z0-9]/g}
                                                 },
                                                 {}
                                             ]

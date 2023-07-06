@@ -6,6 +6,7 @@ import globalVariable from "../../../global-variable-app";
 export default class GeneralSettings extends JetView {
     config() {
         const _ = this.app.getService("locale")._;
+
         let llsAdr = {
             localId: "llsAdr",
             rows: [

@@ -5,7 +5,8 @@ export default {
     "firmware_lls": "Прошивка ДУТ",
 
     "sensor_is_connected": "Датчик подключен",
-    "sensor_is_not_connected": "Датчик не подключен",
+    "sensor_is_not_connected": "#1 Датчик  не подключен",
+    "sensor_is_not_connected_2":"#2 Датчик  не подключен",
 
     "function_is_not_available": "Функция не доступна",
 
@@ -31,6 +32,10 @@ export default {
     "language_ru": 'Русский',
     "language_en": 'English',
     "language_like_system": "Как в системе",
+    "text_two_gage": "Режим работы конфигуратора:",
+    "number_gage_1": "1 датчик",
+    "number_gage_2": "2 датчика",
+
 
     /* generalsettings.js */
     "choose": 'Выбрать',
@@ -99,10 +104,22 @@ export default {
     "button_save_setting": "Сохранить настройки",
 
     /* statusmenu.js */
-    "status_sensor_is_connected": "Датчик подключен",
+    "status_sensor_is_connected": "#1 Датчик подключен",
+    "status_sensor_is_connected_2": "#2 Датчик подключен",
     "status_fuel_is_stable": "Топливо стабильно",
     "status_calibration": "Калибровка не требуется",
     "status_thermal_compensation": "Термокомпенсация",
+
+
+    /*  text info config  */
+    "warning_text_configurator_mode": "Данная функция предназначена для подключения и настройки",
+    "warning_text_configurator_mode_2": "одного или двух датчиков к конфигуратору одновременно.",
+    "warning_text_configurator_mode_3": "Подключения датчиков происходит автоматически.",
+    "warning_text_configurator_mode_4": "Статус подключения отоброжается на главном экране.",
+
+    /*  text button menu config sensor  */
+    "one_sensor_button": "Датчик #1",
+    "two_sensor_button": "Датчик #2",
 
     /* errorStatus.js */
     "errorStatus_text": "Код ошибки",

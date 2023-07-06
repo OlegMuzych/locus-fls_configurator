@@ -67,6 +67,10 @@ contextBridge.exposeInMainWorld(
     }
 );
 
+contextBridge.exposeInMainWorld('SP', {
+    new: (options)=>{return new SerialPort(options)},
+});
+
 contextBridge.exposeInMainWorld('electron', {
     openDialog: (method, config) => {
         return ipcRenderer.invoke('dialog', method, config);

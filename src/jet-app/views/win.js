@@ -1,6 +1,7 @@
 // webix.ui.fullScreen();
 import {JetView} from "webix-jet";
-import lsModel from "../models/lls-model";
+// import llsModel from "../models/lls-model";
+import {llsModelOne} from "../models/lls-test-mpdels";
 import configFile from "../config-app";
 import globalVariable from "../global-variable-app";
 import WindowSettings from "./windows/window-settings";
@@ -673,11 +674,11 @@ export default class Page9View extends JetView {
 
     destroy() {
         super.destroy();
-        llsModel.clearListenerIsConnect(this.listenerConnect);
-        llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
+        llsModelOne.clearListenerIsConnect(this.listenerConnect);
+        llsModelOne.clearListenerIsDisconnect(this.listenerDisconnect);
 
 
-        clearTimeout(this.timeoutMasterSettup);
+        // clearTimeout(this.timeoutMasterSettup);
     }
 
     setStatusConnect(status) {
@@ -737,25 +738,25 @@ export default class Page9View extends JetView {
             // onePage();
         }
 
-        setInterval(function(){
-            var value = Math.floor(Math.random()*100);
-            $$("b1").setValue(value);
-        }, 3000);
+        // setInterval(function(){
+        //     var value = Math.floor(Math.random()*100);
+        //     $$("b1").setValue(value);
+        // }, 3000);
 
         // $$("button_define_define_2").hide();
 
-        this.windowFirmwareUpdate = this.ui(WindowFirmwareUpdate);
-        this.$$("button_reload").attachEvent("onItemClick", (id, e) => {
-            // $$("window_show_4").show();
-            this.refresh();
-            this.windowFirmwareUpdate.showWindow();
-        });
+        // this.windowFirmwareUpdate = this.ui(WindowFirmwareUpdate);
+        // this.$$("button_reload").attachEvent("onItemClick", (id, e) => {
+        //     // $$("window_show_4").show();
+        //     this.refresh();
+        //     this.windowFirmwareUpdate.showWindow();
+        // });
 
         this.setStatusConnect(false);
 
-        llsModel.addListenerIsConnect(this.listenerConnect);
-        llsModel.addListenerIsDisconnect(this.listenerDisconnect);
-        llsModel.getStatusConnect();
+        llsModelOne.addListenerIsConnect(this.listenerConnect);
+        llsModelOne.addListenerIsDisconnect(this.listenerDisconnect);
+        llsModelOne.getStatusConnect();
 
         let goEngineering = (code, e) => {
             console.log(e);

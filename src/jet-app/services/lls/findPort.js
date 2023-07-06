@@ -89,7 +89,8 @@ class FindLls {
     }
 }
 
-let findPort = new FindLls();
-export default findPort;
+// let findPort = new FindLls();
+
+export default FindLls;
 
 

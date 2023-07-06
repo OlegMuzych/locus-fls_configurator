@@ -1,12 +1,13 @@
 import EventEmitter from "events"
 import Lls from "../services/lls/lls";
-import findPort from "../services/lls/findPort";
+// import findPort from "../services/lls/findPort";
+import FindLls from "../services/lls/findPort";
 
 class MyEmitter extends EventEmitter {
 }
 
-
 class LlsModel {
+    findPort = new FindLls();
     #statusLls = "noConnect"; //"findConnect", "connect"
     _llsConnectSettings = {
         path: null,
@@ -350,7 +351,7 @@ class LlsModel {
 
     async setStatusLlsStopPromise() {
         this.#statusLls = "stop";
-        await findPort.setStop();
+        await this.findPort.setStop();
 
         if (this._lls) {
             this.#statusLls = "stop";
@@ -464,7 +465,7 @@ class LlsModel {
 
     async #findLls() {
         try {
-            let settings = await findPort.findLls232();
+            let settings = await this.findPort.findLls232();
             // console.log(settings);
             return settings;
         } catch (e) {
@@ -473,6 +474,6 @@ class LlsModel {
     }
 }
 
-const llsModel = new LlsModel();
+// const llsModel = new LlsModel();
 
-export default llsModel;
+export default LlsModel;

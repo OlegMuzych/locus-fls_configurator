@@ -44,6 +44,8 @@ export default class llsProtocol {
         this._settingPort.llsAdr = llsAdr;
         this._settingPort.name = name;
 
+        this.portTest = window.SP.new();
+        this.portTest.
         // this.port = new SerialPort({path: portName, baudRate: baudRate});
         this.port = window.serialPort;
         this.port.new({path: portName, baudRate: baudRate});

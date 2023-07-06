@@ -1,6 +1,6 @@
 // webix.ui.fullScreen();
 import {JetView} from "webix-jet";
-import llsModel from "../models/lls-model";
+import lsModel from "../models/lls-model";
 import configFile from "../config-app";
 import globalVariable from "../global-variable-app";
 import WindowSettings from "./windows/window-settings";
@@ -13,6 +13,7 @@ import WindowFirmwareUpdate from "./windows/window-firmware-update";
 // return screen > 1210 ? "wide" : (screen > 1060 ? "mid" : "small");
 
 export default class Page9View extends JetView {
+
     config() {
         const _t = trademark._t;
 
@@ -482,7 +483,6 @@ export default class Page9View extends JetView {
 
 
 
-
             }
 
         });
@@ -714,29 +714,28 @@ export default class Page9View extends JetView {
         $$("status_config_two_gage_2").hide();
 
 
+
         $$("switcher_config_gage").attachEvent("onChange", (newValue, oldValue, config)=>{
-
-
             // $$("switcher_config_gage").bind($$("configuration_general_settings_sensor"));
-
+            webix.storage.local.put("switcher", newValue);
             if(newValue) {
-                $$("status_config_two_gage_2").show();
-                $$("status_config_two_gage_1").hide()
-                $$("status_gage_show").show();
-                $$("configuration_general_settings_sensor").hide();
-
-
+                twoPage();
             }else{
-                $$("status_config_two_gage_1").show()
-                $$("status_config_two_gage_2").hide();
-                $$("status_gage_show").hide();
-                $$("configuration_general_settings_sensor").hide();
-
-
-
+                onePage();
             }
         });
 
+        if(webix.storage.local.get("switcher")) {
+            $$("switcher_config_gage").setValue(true);
+            // this.refresh();
+            // $$("switcher_config_gage").refresh();
+            // twoPage();
+        }else{
+            $$("switcher_config_gage").setValue(false);
+            // $$("switcher_config_gage").refresh();
+            // this.refresh();
+            // onePage();
+        }
 
         setInterval(function(){
             var value = Math.floor(Math.random()*100);
@@ -804,7 +803,22 @@ export default class Page9View extends JetView {
                 this.setTheme();
             }
         });
+
+        function onePage(){
+            $$("status_config_two_gage_1").show()
+            $$("status_config_two_gage_2").hide();
+            $$("status_gage_show").hide();
+            // $$("configuration_general_settings_sensor").hide();
+        }
+        function twoPage(){
+            $$("status_config_two_gage_2").show();
+            $$("status_config_two_gage_1").hide()
+            $$("status_gage_show").show();
+            // $$("configuration_general_settings_sensor").hide();
+        }
     }
+
+
     setTheme(){
         const _t = trademark._t;
         const _ = this.app.getService("locale")._;

@@ -1,7 +1,7 @@
 // webix.ui.fullScreen();
 import {JetView} from "webix-jet";
 // import llsModel from "../models/lls-model";
-import {llsModelOne} from "../models/lls-test-mpdels";
+import {llsModelOne, llsModelTwo} from "../models/lls-test-models";
 import configFile from "../config-app";
 import globalVariable from "../global-variable-app";
 import WindowSettings from "./windows/window-settings";
@@ -490,7 +490,7 @@ export default class Page9View extends JetView {
         win_4.hide();
 
 
-        var win_3 =webix.ui({
+        var win_3 = webix.ui({
             view: "window",
             width: 1000,
             // height: 160,
@@ -514,7 +514,7 @@ export default class Page9View extends JetView {
 
 
 
-        var win_5 =webix.ui({
+        var win_5 = webix.ui({
             view: "window",
             width: 1000,
             height: 500,
@@ -667,42 +667,69 @@ export default class Page9View extends JetView {
     listenerConnect = () => {
         this.setStatusConnect(true);
     }
+    listenerConnectTwo = () => {
+        this.setStatusConnectTwo(true);
+    }
 
     listenerDisconnect = () => {
         this.setStatusConnect(false);
+    }
+    listenerDisconnectTwo = () => {
+        this.setStatusConnectTwo(false);
     }
 
     destroy() {
         super.destroy();
         llsModelOne.clearListenerIsConnect(this.listenerConnect);
         llsModelOne.clearListenerIsDisconnect(this.listenerDisconnect);
-
-
+        llsModelTwo.clearListenerIsConnect(this.listenerConnectTwo);
+        llsModelTwo.clearListenerIsDisconnect(this.listenerDisconnectTwo);
         // clearTimeout(this.timeoutMasterSettup);
     }
 
     setStatusConnect(status) {
         if (status) {
             $$("button_define_define_1").show();
-            $$("button_define_define_2").show()
+            // $$("button_define_define_2").show()
             $$("label_status_gage_windows_start_1").show();
             $$("label_status_gage_windows_start_2").hide();
-            $$("label_status_gage_windows_start_3").show();
-            $$("label_status_gage_windows_start_4").hide();
+            // $$("label_status_gage_windows_start_3").show();
+            // $$("label_status_gage_windows_start_4").hide();
             $$("button_define_1").hide();
-            $$("button_define_2").hide()
+            // $$("button_define_2").hide()
         } else {
             $$("button_define_define_1").hide();
-            $$("button_define_define_2").hide()
+            // $$("button_define_define_2").hide()
             $$("label_status_gage_windows_start_1").hide();
             $$("label_status_gage_windows_start_2").show();
-            $$("label_status_gage_windows_start_3").hide();
-            $$("label_status_gage_windows_start_4").show();
+            // $$("label_status_gage_windows_start_3").hide();
+            // $$("label_status_gage_windows_start_4").show();
             $$("button_define_1").show();
-            $$("button_define_2").show()
+            // $$("button_define_2").show();
         }
     };
 
+    setStatusConnectTwo(status) {
+        if (status) {
+            // $$("button_define_define_1").show();
+            $$("button_define_define_2").show()
+            // $$("label_status_gage_windows_start_1").show();
+            // $$("label_status_gage_windows_start_2").hide();
+            $$("label_status_gage_windows_start_3").show();
+            $$("label_status_gage_windows_start_4").hide();
+            // $$("button_define_1").hide();
+            $$("button_define_2").hide()
+        } else {
+            // $$("button_define_define_1").hide();
+            $$("button_define_define_2").hide()
+            // $$("label_status_gage_windows_start_1").hide();
+            // $$("label_status_gage_windows_start_2").show();
+            $$("label_status_gage_windows_start_3").hide();
+            $$("label_status_gage_windows_start_4").show();
+            // $$("button_define_1").show();
+            $$("button_define_2").show();
+        }
+    };
 
     init(view) {
 
@@ -713,8 +740,6 @@ export default class Page9View extends JetView {
         $$("status_gage_show").hide();
         $$("status_config_two_gage_1").show()
         $$("status_config_two_gage_2").hide();
-
-
 
         $$("switcher_config_gage").attachEvent("onChange", (newValue, oldValue, config)=>{
             // $$("switcher_config_gage").bind($$("configuration_general_settings_sensor"));
@@ -753,10 +778,16 @@ export default class Page9View extends JetView {
         // });
 
         this.setStatusConnect(false);
+        this.setStatusConnectTwo(false);
 
         llsModelOne.addListenerIsConnect(this.listenerConnect);
         llsModelOne.addListenerIsDisconnect(this.listenerDisconnect);
         llsModelOne.getStatusConnect();
+
+        llsModelTwo.addListenerIsConnect(this.listenerConnectTwo);
+        llsModelTwo.addListenerIsDisconnect(this.listenerDisconnectTwo);
+        llsModelTwo.getStatusConnect();
+
 
         let goEngineering = (code, e) => {
             console.log(e);

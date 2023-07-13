@@ -1,8 +1,9 @@
 import {JetView} from "webix-jet";
-import CentralMenu from "./centralmenu/centralmenu";
+// import CentralMenu from "./centralmenu/centralmenu";
 import RightMenu from "./rightmenu/rightmenu";
 import LeftMenu from "./leftmenu/leftmenu";
-import llsModel from "../../models/lls-model";
+// import llsModel from "../../models/lls-model";
+import {llsModelOne} from "../../models/lls-test-models";
 import PasswordWindow from "./windows/password";
 import ContinueCalibrateWindow from "./windows/continuecalibrate";
 import configFile from "../../config-app";
@@ -10,6 +11,7 @@ import PasswordInputWindow from "./windows/passwordinput";
 import LlsNoConnectWindow from "./windows/llsnoconnect";
 import TablePreviewWindow from "./windows/table-preview";
 import SaveSettingNotificationWindow from "./windows/save-setting-notification";
+import TwoSensor from "./centralmenu/twoSensor";
 
 export default class EngineeringMenu extends JetView{
     config() {
@@ -24,11 +26,12 @@ export default class EngineeringMenu extends JetView{
                 {
                     width: 10,
                 },
-                CentralMenu,
+                // CentralMenu,
+                TwoSensor,
                 {
                     width: 10,
                 },
-                RightMenu,
+                // RightMenu,
 
             ]
         };
@@ -39,12 +42,12 @@ export default class EngineeringMenu extends JetView{
 
     destroy() {
         super.destroy();
-        llsModel.clearListenerCommandError(this.listenerCommandError);
-        llsModel.clearListenerIsDisconnect(this.listenerIsDisconnect);
+        llsModelOne.clearListenerCommandError(this.listenerCommandError);
+        llsModelOne.clearListenerIsDisconnect(this.listenerIsDisconnect);
     }
 
     init(){
-        llsModel.checkPassword()
+        llsModelOne.checkPassword()
             .then(()=>{
 
             })
@@ -60,14 +63,13 @@ export default class EngineeringMenu extends JetView{
                     }
                     default:{
                         this.llsNoConnectWindow.showWindow(); //в случае если датчик не подключен
-
                         break;
                     }
             }
             });
 
-        llsModel.addListenerCommandError(this.listenerCommandError);
-        llsModel.addListenerIsDisconnect(this.listenerIsDisconnect);
+        llsModelOne.addListenerCommandError(this.listenerCommandError);
+        llsModelOne.addListenerIsDisconnect(this.listenerIsDisconnect);
 
         this.passwordWindow = this.ui(PasswordWindow);
         this.continueWindow = this.ui(ContinueCalibrateWindow);
@@ -107,7 +109,6 @@ export default class EngineeringMenu extends JetView{
                 break;
             }
             case 0x01: {
-
                 break;
             }
             case 0x02: {

@@ -1,7 +1,7 @@
 import {JetView} from "webix-jet";
-import llsModel from "../../../models/lls-model";
-import configFile from "../../../config-app";
-import globalVariable from "../../../global-variable-app";
+import {llsModelOne} from "../../../../models/lls-test-models";
+import configFile from "../../../../config-app";
+import globalVariable from "../../../../global-variable-app";
 
 export default class FiltrationSettings extends JetView {
     config() {
@@ -526,7 +526,7 @@ export default class FiltrationSettings extends JetView {
 
     destroy() {
         super.destroy();
-        llsModel.clearListenerLongData(this.listenerLongData);
+        llsModelOne.clearListenerLongData(this.listenerLongData);
     }
 
     init() {
@@ -549,14 +549,14 @@ export default class FiltrationSettings extends JetView {
         });
 
 
-        llsModel.addListenerLongData(this.listenerLongData);
+        llsModelOne.addListenerLongData(this.listenerLongData);
 
         $$('slider_filter_1').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                llsModel.newLongData.averagingLength = newValue;
-                if (newValue == llsModel.currentLongData.averagingLength) {
+                llsModelOne.newLongData.averagingLength = newValue;
+                if (newValue == llsModelOne.currentLongData.averagingLength) {
                     this.setStatusNewValue('statusAveragingLength', false);
                 } else {
                     this.setStatusNewValue('statusAveragingLength', true);
@@ -565,15 +565,15 @@ export default class FiltrationSettings extends JetView {
         })
         $$('button_slider_gen_value_1').attachEvent("onItemClick", (id, e) => {
             this.setStatusNewValue('statusAveragingLength', false);
-            llsModel.setLongData({averagingLength: $$('slider_filter_1').getValue()});
+            llsModelOne.setLongData({averagingLength: $$('slider_filter_1').getValue()});
         });
 
         $$('slider_filter_2').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
-                llsModel.newLongData.medianLength = newValue;
-                if (newValue == llsModel.currentLongData.medianLength) {
+                llsModelOne.newLongData.medianLength = newValue;
+                if (newValue == llsModelOne.currentLongData.medianLength) {
                     this.setStatusNewValue('statusMedianLength', false);
                 } else {
                     this.setStatusNewValue('statusMedianLength', true);
@@ -582,7 +582,7 @@ export default class FiltrationSettings extends JetView {
         })
         $$('button_slider_gen_value_2').attachEvent("onItemClick", (id, e) => {
             this.setStatusNewValue('statusAveragingLength', false);
-            llsModel.setLongData({medianLength: $$('slider_filter_2').getValue()});
+            llsModelOne.setLongData({medianLength: $$('slider_filter_2').getValue()});
         });
 
         $$('text_q').attachEvent("onChange", (newValue, oldValue, config) => {
@@ -592,8 +592,8 @@ export default class FiltrationSettings extends JetView {
                 newValue = Number(newValue).toFixed(6);
                 // newValue = this.fixed(Number(newValue));
                 if (newValue >= 0 && newValue < 1000) {
-                    llsModel.newLongData.coefficientQ = newValue;
-                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({coefficientQ: llsModel.newLongData.coefficientQ}) : '');
+                    llsModelOne.newLongData.coefficientQ = newValue;
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({coefficientQ: llsModelOne.newLongData.coefficientQ}) : '');
                     this.setFloatValue('text_q', "coefficientQ", "statusCoefficientQ");
                 } else {
                     this.$$('text_q').setValue(oldValue);
@@ -603,7 +603,7 @@ export default class FiltrationSettings extends JetView {
         $$('button_slider_gen_value_3').attachEvent("onItemClick", (id, e) => {
             this.setStatusNewValue('statusCoefficientQ', false);
             let test = parseFloat($$('text_q').getValue());
-            llsModel.setLongData({coefficientQ: test});
+            llsModelOne.setLongData({coefficientQ: test});
         });
 
         $$('text_r').attachEvent("onChange", (newValue, oldValue, config) => {
@@ -612,8 +612,8 @@ export default class FiltrationSettings extends JetView {
                 console.log(newValue);
                 newValue = Number(newValue).toFixed(6);
                 if (newValue >= 0 && newValue < 1000) {
-                    llsModel.newLongData.coefficientR = newValue;
-                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({coefficientR: llsModel.newLongData.coefficientR}) : '');
+                    llsModelOne.newLongData.coefficientR = newValue;
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({coefficientR: llsModelOne.newLongData.coefficientR}) : '');
                     this.setFloatValue('text_r', "coefficientR", "statusCoefficientR");
                 } else {
                     this.$$('text_r').setValue(oldValue);
@@ -623,38 +623,38 @@ export default class FiltrationSettings extends JetView {
         $$('button_slider_gen_value_4').attachEvent("onItemClick", (id, e) => {
             this.setStatusNewValue('statusCoefficientR', false);
             let test = parseFloat($$('text_r').getValue());
-            llsModel.setLongData({coefficientR: test});
+            llsModelOne.setLongData({coefficientR: test});
         });
 
         $$('image_button_filter_1').attachEvent("onItemClick", (id, e) => {
             $$('slider_filter_1').setValue(5);
-            llsModel.newLongData.filtrationType = 1;
-            llsModel.newLongData.averagingLength = 5;
+            llsModelOne.newLongData.filtrationType = 1;
+            llsModelOne.newLongData.averagingLength = 5;
             this.setSliderValue('window_text_time', 'averagingLength', 'statusAveragingLength');
             this.setFiltrationTypeValue();
             // llsModel.setLongData({filtrationType: 1, averagingLength: $$('slider_filter_1').getValue()});  // усреднение
-            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({filtrationType: 1, averagingLength: 5}) : '');
+            globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({filtrationType: 1, averagingLength: 5}) : '');
         });
 
         $$('image_button_filter_2').attachEvent("onItemClick", (id, e) => {
             $$('slider_filter_2').setValue(3);
-            llsModel.newLongData.filtrationType = 2;
-            llsModel.newLongData.medianLenght = 3;
+            llsModelOne.newLongData.filtrationType = 2;
+            llsModelOne.newLongData.medianLenght = 3;
             this.setFiltrationTypeValue();
             this.setSliderValue('window_text_mediana', 'medianLength', 'statusMedianLength');
             // llsModel.setLongData({filtrationType: 2, medianLength: $$('slider_filter_2').getValue()}); //медиана
-            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({filtrationType: 2, medianLength: 3}) : '');
+            globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({filtrationType: 2, medianLength: 3}) : '');
         });
 
         $$('image_button_filter_3').attachEvent("onItemClick", (id, e) => {
-            llsModel.newLongData.coefficientR = 1;
-            llsModel.newLongData.coefficientQ = 437;
-            llsModel.newLongData.filtrationType = 3;
+            llsModelOne.newLongData.coefficientR = 1;
+            llsModelOne.newLongData.coefficientQ = 437;
+            llsModelOne.newLongData.filtrationType = 3;
             this.setFiltrationTypeValue();
             this.setFloatValue('text_q', "coefficientQ", "statusCoefficientQ");
             this.setFloatValue('text_r', "coefficientR", "statusCoefficientR");
             // llsModel.setLongData({coefficientR: 1, coefficientQ: 437, filtrationType: 3 });
-            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({coefficientR: 1, coefficientQ: 437, filtrationType: 3 }) : '');
+            globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({coefficientR: 1, coefficientQ: 437, filtrationType: 3 }) : '');
         });
 
 
@@ -691,8 +691,8 @@ export default class FiltrationSettings extends JetView {
             console.log("click");
             let obj = $$("listFilterType").getItem(id);
             console.log(obj);
-            llsModel.newLongData.filtrationType = obj.value;
-            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({filtrationType: obj.value}) : '');
+            llsModelOne.newLongData.filtrationType = obj.value;
+            globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({filtrationType: obj.value}) : '');
             this.setFiltrationTypeValue();
         });
 
@@ -792,33 +792,33 @@ export default class FiltrationSettings extends JetView {
     }
 
     setFiltrationTypeValue() {
-        if (llsModel.currentLongData.filtrationType == llsModel.newLongData.filtrationType) {
-            this.setFiltrationType(llsModel.currentLongData.filtrationType);
+        if (llsModelOne.currentLongData.filtrationType == llsModelOne.newLongData.filtrationType) {
+            this.setFiltrationType(llsModelOne.currentLongData.filtrationType);
             this.setStatusNewValue("statusFiltrationType", false);
         } else {
-            this.setFiltrationType(llsModel.newLongData.filtrationType);
+            this.setFiltrationType(llsModelOne.newLongData.filtrationType);
             this.setStatusNewValue("statusFiltrationType", true);
         }
     }
 
     setSliderValue(id, name, statusId) {
-        if (llsModel.currentLongData[name] == llsModel.newLongData[name]) {
-            this.$$(id).setValue(llsModel.currentLongData[name]);
+        if (llsModelOne.currentLongData[name] == llsModelOne.newLongData[name]) {
+            this.$$(id).setValue(llsModelOne.currentLongData[name]);
             this.setStatusNewValue(statusId, false);
         } else {
-            this.$$(id).setValue(llsModel.newLongData[name]);
+            this.$$(id).setValue(llsModelOne.newLongData[name]);
             this.setStatusNewValue(statusId, true);
         }
     }
 
     setFloatValue(id, name, statusId) {
-        let oldFloat = Number(llsModel.currentLongData[name]).toFixed(4);
-        let newFloat = Number(llsModel.newLongData[name]).toFixed(4);
+        let oldFloat = Number(llsModelOne.currentLongData[name]).toFixed(4);
+        let newFloat = Number(llsModelOne.newLongData[name]).toFixed(4);
         if (oldFloat == newFloat) {
-            this.$$(id).setValue(llsModel.currentLongData[name]);
+            this.$$(id).setValue(llsModelOne.currentLongData[name]);
             this.setStatusNewValue(statusId, false);
         } else {
-            this.$$(id).setValue(llsModel.newLongData[name]);
+            this.$$(id).setValue(llsModelOne.newLongData[name]);
             this.setStatusNewValue(statusId, true);
         }
     }

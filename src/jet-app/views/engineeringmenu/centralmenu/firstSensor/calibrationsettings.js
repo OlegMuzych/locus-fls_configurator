@@ -1,7 +1,7 @@
 import {JetView} from "webix-jet";
-import llsModel from "../../../models/lls-model";
-import configFile from "../../../config-app";
-import fileTableModel from "../../../models/file-table-model";
+import {llsModelOne} from "../../../../models/lls-test-models";
+import configFile from "../../../../config-app";
+import fileTableModel from "../../../../models/file-table-model";
 
 export default class CalibrationSettings extends JetView {
     config() {
@@ -66,7 +66,7 @@ export default class CalibrationSettings extends JetView {
     }
 
     listenerConnect = () => {
-        llsModel.getTable().then();
+        llsModelOne.getTable().then();
     }
 
     listenerShortData = (shortData) => {
@@ -75,16 +75,16 @@ export default class CalibrationSettings extends JetView {
 
     destroy() {
         super.destroy();
-        llsModel.clearListenerTable(this.listenerTable);
-        llsModel.clearListenerIsConnect(this.listenerConnect);
-        llsModel.clearListenerShortData(this.listenerShortData);
+        llsModelOne.clearListenerTable(this.listenerTable);
+        llsModelOne.clearListenerIsConnect(this.listenerConnect);
+        llsModelOne.clearListenerShortData(this.listenerShortData);
     }
 
     init() {
-        llsModel.addListenerTable(this.listenerTable);
-        llsModel.addListenerIsConnect(this.listenerConnect);
-        llsModel.addListenerShortData(this.listenerShortData);
-        llsModel.getTable().then();
+        llsModelOne.addListenerTable(this.listenerTable);
+        llsModelOne.addListenerIsConnect(this.listenerConnect);
+        llsModelOne.addListenerShortData(this.listenerShortData);
+        llsModelOne.getTable().then();
 
 
 
@@ -169,7 +169,7 @@ export default class CalibrationSettings extends JetView {
                 }
             }
             this.saveTable();
-            llsModel.getTable().then();
+            llsModelOne.getTable().then();
 
         });
 
@@ -202,7 +202,7 @@ export default class CalibrationSettings extends JetView {
         });
 
         this.on(this.app, "app:calibrationsubview:saveToFile", async() => { //save to file
-            await llsModel.getTable();
+            await llsModelOne.getTable();
             fileTableModel.write(this.currentTable).then();
         });
 
@@ -362,14 +362,14 @@ export default class CalibrationSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 this.saveTable();
-                llsModel.getTable().then();
+                llsModelOne.getTable().then();
             }
         });
     }
 
     saveTable(){
         let table = this.parseTable();
-        llsModel.setTable(table).then();
+        llsModelOne.setTable(table).then();
         console.log(table);
     }
 

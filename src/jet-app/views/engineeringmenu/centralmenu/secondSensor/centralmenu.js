@@ -1,17 +1,15 @@
 import {JetView} from "webix-jet";
-import configFile from "../../../config-app";
+// import configFile from "../../../../../config-app";
+import configFile from "../../../../config-app";
 import GeneralSettings from "./generalsettings";
 import Calibrationsettings from "./calibrationsettings";
 import FiltrationSettings from "./filtaringSettings";
-import TwoSensor from "./twoSensor";
 
-import globalVariable from "../../../global-variable-app";
+// import globalVariable from "../../../global-variable-app";
 
-export default class CentralMenu extends JetView {
+export default class CentralMenuSecond extends JetView {
     config() {
         const _ = this.app.getService("locale")._;
-
-
         let myMultiview ={
             css: "central_cols_button",
             id: "central_cols_button",
@@ -19,7 +17,7 @@ export default class CentralMenu extends JetView {
                 {
                     view: "segmented",
                     css: "central_cols_button",
-                    id: "style_general_rows_1",
+                    id: "style_general_rows_1_two",
                     multiview: true,
                     value: 1,
                     height: 100,
@@ -36,7 +34,7 @@ export default class CentralMenu extends JetView {
                             id: '1',
                             rows: [
                                 {
-                                    id: "general",
+                                    // id: "general",
                                     rows: [GeneralSettings],
                                 },
                             ]
@@ -45,7 +43,7 @@ export default class CentralMenu extends JetView {
                             id: '2',
                             rows: [
                                 {
-                                    id: "calibration",
+                                    // id: "calibration",
                                     rows: [Calibrationsettings],
                                 },
                             ]
@@ -55,16 +53,14 @@ export default class CentralMenu extends JetView {
                             id: '3',
                             rows: [
                                 {
-                                    id: "filtering",
+                                    // id: "filtering",
                                     rows: [FiltrationSettings],
                                 }
                             ]
                         },
                     ],
                 }
-
             ]
-
         };
 
 
@@ -74,7 +70,7 @@ export default class CentralMenu extends JetView {
                 {
                     height: 20,
                 },
-                TwoSensor,
+                // TwoSensor,
                 {
                     height: 20,
                 },
@@ -87,24 +83,18 @@ export default class CentralMenu extends JetView {
     }
 
     init() {
-
-
-
-
-        if (configFile.theme == 'light') {
-            webix.html.addCss($$("style_general_rows_1").getNode(), "central_cols_button");
-            webix.html.addCss($$("central_cols_button").getNode(), "central_cols_button");
-
-            $$("style_general_rows_1").refresh();
-
-        }
-        if (configFile.theme == 'dark') {
-            webix.html.addCss($$("style_general_rows_1").getNode(), "central_cols_button_dark");
-            webix.html.addCss($$("central_cols_button").getNode(), "central_cols_button_dark");
-
-            $$("style_general_rows_1").refresh();
-
-        }
+        // if (configFile.theme == 'light') {
+        //     webix.html.addCss($$("style_general_rows_1").getNode(), "central_cols_button");
+        //     webix.html.addCss($$("central_cols_button").getNode(), "central_cols_button");
+        //
+        //     $$("style_general_rows_1").refresh();
+        // }
+        // if (configFile.theme == 'dark') {
+        //     webix.html.addCss($$("style_general_rows_1").getNode(), "central_cols_button_dark");
+        //     webix.html.addCss($$("central_cols_button").getNode(), "central_cols_button_dark");
+        //
+        //     $$("style_general_rows_1").refresh();
+        // }
     }
 }
 

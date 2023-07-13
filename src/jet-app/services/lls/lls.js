@@ -10,15 +10,16 @@ export default class Lls{
     data = {};
     table = {};
     actions = {};
+    _port = null;
 
-    constructor({path, baudRate = 19200, llsAdr = 1, name = "test"}) {
+    constructor({path, baudRate = 19200, llsAdr = 1, name = "test"},port) {
         this._settingPort.portName = path;
         this._settingPort.baudRate = baudRate;
         this._settingPort.llsAdr = llsAdr;
         this._settingPort.name = name;
 
         return new Promise((resolve, reject) => {
-            new llsProtocol(this._settingPort.portName, this._settingPort.baudRate, this._settingPort.llsAdr, this._settingPort.name).then(llsProtocol=>{
+            new llsProtocol(this._settingPort.portName, this._settingPort.baudRate, this._settingPort.llsAdr, this._settingPort.name, port).then(llsProtocol=>{
                 this._llsProtocol = llsProtocol;
                 this.data = new llsData(this._llsProtocol);
                 this.actions = new llsAction(this._llsProtocol);

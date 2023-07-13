@@ -7,7 +7,8 @@ class MyEmitter extends EventEmitter {
 }
 
 class LlsModel {
-    findPort = new FindLls();
+    // findPort = new FindLls();
+    findPort = null;
     #statusLls = "noConnect"; //"findConnect", "connect"
     _llsConnectSettings = {
         path: null,
@@ -17,9 +18,12 @@ class LlsModel {
     _myEmitter = new MyEmitter();
     _lls = null;
     _intervalShortDataId = null;
+    _port = null;
 
-    constructor(timeout = 1000) {
+    constructor(port,timeout = 1000) {
+        this._port = port;
         this.#init(timeout).then().catch();
+        this.findPort = new FindLls();
     }
 
     currentLongData = {};
@@ -408,7 +412,7 @@ class LlsModel {
                     console.log("Lls is find!");
                     console.log(this._llsConnectSettings);
                     try {
-                        this._lls = await new Lls(this._llsConnectSettings);
+                        this._lls = await new Lls(this._llsConnectSettings, this._port);
                         this.#statusLls = 'connect';
                         this._myEmitter.emit('isConnect');
                         break;
@@ -465,7 +469,7 @@ class LlsModel {
 
     async #findLls() {
         try {
-            let settings = await this.findPort.findLls232();
+            let settings = await this.findPort.findLls232(this._port);
             // console.log(settings);
             return settings;
         } catch (e) {

@@ -1,3 +1,3 @@
 import LlsModel from "./lls-model";
-export const llsModelOne = new LlsModel();
-export const llsModelTwo = new LlsModel();
+export const llsModelOne = new LlsModel(window.serialPort);
+export const llsModelTwo = new LlsModel(window.serialPort2);

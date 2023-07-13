@@ -7,6 +7,7 @@ import Lls from "./lls";
 class FindLls {
     testLls = null;
     flag = false;
+    _port = null;
 
     async setStop() {
         this.stopFlag = true;
@@ -24,7 +25,8 @@ class FindLls {
         });
     }
 
-    async findLls232() {
+    async findLls232( port) {
+        this._port = port;
         this.stopFlag = false;
         let listPath = await this.listPath();
         return await this.sortingPath(listPath);
@@ -45,7 +47,6 @@ class FindLls {
             let data = await this.checkCommand(path, baudRateArr[i]);
             if (data) return data;
         }
-
     }
 
     async checkCommand(path, baudRate) {
@@ -56,7 +57,7 @@ class FindLls {
                 this.testLls = null;
             }
             try {
-                this.testLls = await new Lls({path: path, baudRate: baudRate, llsAdr: 0xFF});
+                this.testLls = await new Lls({path: path, baudRate: baudRate, llsAdr: 0xFF}, this._port);
                 let data = await this.testLls.actions.checkPassword();
                 let settingPort = {
                     llsAdr: data.llsAdr,

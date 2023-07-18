@@ -1,7 +1,7 @@
 import {JetView} from "webix-jet";
-import llsModel from "../../../models/lls-model";
-import configFile from "../../../config-app";
-import configApp from "../../../config-app";
+import llsModel from "../../../../models/lls-model";
+import configFile from "../../../../config-app";
+import configApp from "../../../../config-app";
 
 export default class StatusMenu extends JetView{
     config(){

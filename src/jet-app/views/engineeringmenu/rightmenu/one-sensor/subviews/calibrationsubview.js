@@ -2,8 +2,8 @@ import {JetView} from "webix-jet";
 import FuelFillView from "./calibrationsubview/fuelfill";
 import FuelDrainView from "./calibrationsubview/fueldrain";
 
-import configFile from "../../../../config-app";
-import llsModel from "../../../../models/lls-model";
+import configFile from "../../../../../config-app";
+import llsModel from "../../../../../models/lls-model";
 
 export default class CalibrationSubView extends JetView {
     config() {

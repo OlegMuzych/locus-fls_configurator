@@ -1,9 +1,9 @@
 import {JetView} from "webix-jet";
-import llsModel from "../../../../models/lls-model";
-import configFile from "../../../../config-app";
-import globalVariable from "../../../../global-variable-app";
-import WindowFirmwareUpdate from "../../../windows/window-firmware-update";
-import AutoLevelWindow from "../../windows/auto-level";
+import llsModel from "../../../../../models/lls-model";
+import configFile from "../../../../../config-app";
+import globalVariable from "../../../../../global-variable-app";
+import WindowFirmwareUpdate from "../../../../windows/window-firmware-update";
+import AutoLevelWindow from "../../../windows/auto-level";
 
 export default class FullEmptySubView extends JetView {
     config(){

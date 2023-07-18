@@ -1,6 +1,6 @@
 import {JetView} from "webix-jet";
 // import CentralMenu from "./centralmenu/centralmenu";
-import RightMenu from "./rightmenu/rightmenu";
+import RightMenu from "./rightmenu/one-sensor/rightmenu";
 import LeftMenu from "./leftmenu/leftmenu";
 // import llsModel from "../../models/lls-model";
 import {llsModelOne} from "../../models/lls-test-models";
@@ -12,6 +12,7 @@ import LlsNoConnectWindow from "./windows/llsnoconnect";
 import TablePreviewWindow from "./windows/table-preview";
 import SaveSettingNotificationWindow from "./windows/save-setting-notification";
 import TwoSensor from "./centralmenu/twoSensor";
+import RightTwoSensor from "./rightmenu/right-two-sensorr";
 
 export default class EngineeringMenu extends JetView{
     config() {
@@ -32,7 +33,7 @@ export default class EngineeringMenu extends JetView{
                     width: 10,
                 },
                 // RightMenu,
-
+                RightTwoSensor
             ]
         };
 

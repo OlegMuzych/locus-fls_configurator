@@ -1,9 +1,9 @@
 import {JetView} from "webix-jet";
-import ResetLlsWindow from "../windows/reset-lls";
-import llsModel from "../../../models/lls-model";
-import PasswordWindow from "../windows/password";
-import configFile from "../../../config-app";
-import fileSettingsModel from "../../../models/file-settings-model";
+import ResetLlsWindow from "../../windows/reset-lls";
+import llsModel from "../../../../models/lls-model";
+import PasswordWindow from "../../windows/password";
+import configFile from "../../../../config-app";
+import fileSettingsModel from "../../../../models/file-settings-model";
 
 export default class ServiceMenu extends JetView {
     config() {

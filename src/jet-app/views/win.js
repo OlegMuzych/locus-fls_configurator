@@ -837,12 +837,15 @@ export default class Page9View extends JetView {
         });
 
         function onePage(){
+            globalVariable.twoSensorMode = false;
             $$("status_config_two_gage_1").show()
             $$("status_config_two_gage_2").hide();
             $$("status_gage_show").hide();
             // $$("configuration_general_settings_sensor").hide();
         }
         function twoPage(){
+            globalVariable.twoSensorMode = true;
+
             $$("status_config_two_gage_2").show();
             $$("status_config_two_gage_1").hide()
             $$("status_gage_show").show();

@@ -5,7 +5,7 @@ import errorStatus from "./errorStatus";
 
 import CalibrationSubView from "./subviews/calibrationsubview";
 import FullEmptySubView from "./subviews/fullemptysubview";
-import configFile from "../../../config-app";
+import configFile from "../../../../config-app";
 import FiltrationSubView from "./subviews/filteringsubview";
 
 export default class RightMenu extends JetView{

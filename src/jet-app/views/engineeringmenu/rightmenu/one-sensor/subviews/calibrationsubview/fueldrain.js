@@ -1,7 +1,7 @@
 import {JetView} from "webix-jet";
-import configFile from "../../../../../config-app";
+import configFile from "../../../../../../config-app";
 
-export default class FuelFillView extends JetView {
+export default class FuelDrainView extends JetView {
     config() {
         const _ = this.app.getService("locale")._;
 
@@ -47,7 +47,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "label",
-                    label: `<p style=' font-weight:100; position: relative; top:-20px;'>${_("step_volume")}</p>`,
+                    label: `<p style='font-weight:100; position: relative; top:-20px;'>${_("step_volume")}</p>`,
                     width: 190,
                     height: 50,
                     css: "text_filtering_2",
@@ -65,7 +65,7 @@ export default class FuelFillView extends JetView {
                 {},
                 {
                     view: "label",
-                    label: `<p style=' font-weight:100; position: relative; top:-20px;'>${_("step_count")}</p>`,
+                    label: `<p style='font-weight:100; position: relative; top:-20px;'>${_("step_count")}</p>`,
                     width: 190,
                     height: 50,
                     css: "text_filtering_2",
@@ -86,7 +86,7 @@ export default class FuelFillView extends JetView {
                     label: _("button_remove_step"),
                     width: 480,
                     height: 50,
-                    css: "set_step_drain_button_2",
+                    css: "text_filtering_2",
                     localId: "button_add_step_2"
                 },
                 {}
@@ -171,7 +171,7 @@ export default class FuelFillView extends JetView {
                             // label: _("error_count_step_message"),
                             label: `<p style='font-weight:300; position: relative; top:-20px;'>${_("error_count_step_message")}</p>`,
                             css: "text_error_count_step",
-                            gravity: 6
+                            gravity: 3
                         },
                         {gravity: 1},
                     ]}
@@ -179,7 +179,8 @@ export default class FuelFillView extends JetView {
 
         }
 
-        let calibrationFuelFill = {
+
+        let calibrationFuelDrain = {
             id: "right_menu_calibration_drain_2",
             css: "rows_right_menu_calibration_2",
             height: 570,
@@ -212,10 +213,17 @@ export default class FuelFillView extends JetView {
                     height: 10,
                 },
                 buttonStopCalibrate,
+                {
+                    height: 10,
+                },
+
+
+
             ]
+
         };
 
-        let body = calibrationFuelFill;
+        let body = calibrationFuelDrain;
 
         return body;
     }
@@ -225,11 +233,12 @@ export default class FuelFillView extends JetView {
 
         this.$$("central_menu_and_right_menu_calibration_next_window_button").attachEvent("onItemClick", (id, e) => {
             let countStep = this.calcCountStep(this.$$("manual_volume_fuel_1").getValue(), this.$$("step_liters_1").getValue());
+            let firsVolume = Number(this.$$("manual_volume_fuel_1").getValue());
             if(countStep > 0 && countStep <= 30){
                 this.$$('counts_step').setValue(countStep);
-                this.app.callEvent("app:calibrationsubview:countStep", [countStep, 0]);
+                this.app.callEvent("app:calibrationsubview:countStep", [countStep, firsVolume]);
                 this.nextShow();
-                this.app.callEvent("app:calibrationSubview:startCalibrate", ['fill']);
+                this.app.callEvent("app:calibrationSubview:startCalibrate", ['drain']);
             }else{
                 this.errorShow();
             }
@@ -246,20 +255,15 @@ export default class FuelFillView extends JetView {
 
         this.$$("button_add_step_1").attachEvent("onItemClick", (id, e) => {
             let  volumeStep = this.$$('step_liters_1').getValue();
-            this.app.callEvent("app:calibrationsubview:addStep", [Number(volumeStep)]);
+            this.app.callEvent("app:calibrationsubview:drain:addStep", [Number(volumeStep)]);
         });
 
         this.$$("button_add_step_2").attachEvent("onItemClick", (id, e) => {
             this.app.callEvent("app:calibrationsubview:removeRow", []);
         });
 
-        // this.$$("closed_calibration_button_window_2").attachEvent("onItemClick", (id, e) => {
-        //     this.app.callEvent("app:calibrationsubview:finishCalibrate", []);
-        // });
-
-        this.on(this.app, "app:calibrationSettings:continueCalibrate", (volume, stepVolume) => {
-            this.$$('manual_volume_fuel_1').setValue(volume);
-            this.$$('step_liters_1').setValue(stepVolume);
+        this.$$("closed_calibration_button_window_2").attachEvent("onItemClick", (id, e) => {
+            this.app.callEvent("app:calibrationsubview:finishCalibrate", []);
         });
 
         if(configFile.theme == 'light'){
@@ -278,7 +282,6 @@ export default class FuelFillView extends JetView {
             webix.html.addCss(this.$$("1").getNode(), "text_filtering_2");
             webix.html.addCss(this.$$("4").getNode(), "text_filtering_2");
         }
-
         if(configFile.theme == 'dark'){
             webix.html.addCss( this.$$("manual_volume_fuel_1").getNode(), "full_window_text_dark");
             webix.html.addCss( this.$$("initial_volume_fuel_1").getNode(), "full_window_text_dark");
@@ -299,7 +302,7 @@ export default class FuelFillView extends JetView {
 
     startShow(){
         this.$$('passportVolume').show();
-        this.$$('startVolume').hide();
+        this.$$('startVolume').show();
         this.$$('stepVolume').show();
         this.$$('countStep').hide();
         this.$$('buttonNext').show();
@@ -316,9 +319,10 @@ export default class FuelFillView extends JetView {
         this.$$('step_liters_1').refresh();
     }
 
+
     nextShow(){
         this.$$('passportVolume').show();
-        this.$$('startVolume').hide();
+        this.$$('startVolume').show();
         this.$$('stepVolume').show();
         this.$$('countStep').show();
         this.$$('buttonNext').hide();

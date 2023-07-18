@@ -2,6 +2,7 @@ import {JetView} from "webix-jet";
 // import CentralMenu from "./centralmenu";
 import CentralMenuSecond from "./secondSensor/centralmenu";
 import CentralMenuFirst from "./firstSensor/centralmenu";
+import globalVariable from "../../../global-variable-app";
 export default class TwoSensor extends JetView {
 	config() {
 		const _ = this.app.getService("locale")._;
@@ -45,5 +46,11 @@ export default class TwoSensor extends JetView {
 	};
 
 	init() {
+		if(globalVariable.twoSensorMode){
+			console.log();
+			$$("configuration_general_settings_sensor").define({hidden:false});
+		}else{
+			$$("configuration_general_settings_sensor").define({hidden:true});
+		}
 	}
 }

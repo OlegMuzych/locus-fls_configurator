@@ -1,5 +1,5 @@
 import {JetView} from "webix-jet";
-import configFile from "../../../config-app";
+import configFile from "../../../../config-app";
 import {
     ERROR_FULL_EMPTY,
     ERROR_SHORT_CIRCUIT,
@@ -7,8 +7,8 @@ import {
     ERROR_VALUE_TABLE,
     ERROR_UNDEFINED,
     NO_ERROR
-} from "../../../error-codes";
-import llsModel from "../../../models/lls-model";
+} from "../../../../error-codes";
+import llsModel from "../../../../models/lls-model";
 
 
 export default class FullEmptySubView extends JetView {

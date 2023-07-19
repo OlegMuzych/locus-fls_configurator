@@ -1,9 +1,9 @@
 import {JetView} from "webix-jet";
-import {llsModelOne} from "../../../../models/lls-test-models";
-import configFile from "../../../../config-app";
-import configApp from "../../../../config-app";
+import {llsModelTwo} from "../../../../../models/lls-test-models";
+import configFile from "../../../../../config-app";
+import configApp from "../../../../../config-app";
 
-export default class StatusMenu extends JetView{
+export default class StatusMenuTwo extends JetView{
     config(){
         const _ = this.app.getService("locale")._;
 
@@ -117,12 +117,12 @@ export default class StatusMenu extends JetView{
 
     destroy() {
         super.destroy();
-        llsModelOne.clearListenerIsConnect(this.listenerConnect);
-        llsModelOne.clearListenerIsDisconnect(this.listenerDisconnect);
-        llsModelOne.clearListenerShortData(this.listenerShortData);
-        llsModelOne.clearListenerLongData(this.listenerLongData);
-        llsModelOne.clearListenerReadCnt(this.listenerReadCnt);
-        // llsModelOne.clear;
+        llsModelTwo.clearListenerIsConnect(this.listenerConnect);
+        llsModelTwo.clearListenerIsDisconnect(this.listenerDisconnect);
+        llsModelTwo.clearListenerShortData(this.listenerShortData);
+        llsModelTwo.clearListenerLongData(this.listenerLongData);
+        llsModelTwo.clearListenerReadCnt(this.listenerReadCnt);
+        // llsModelTwo.clear;
     }
 
     listenerShortData = (shortData)=>{
@@ -157,12 +157,12 @@ export default class StatusMenu extends JetView{
         setCalibrateState(false);
         setTermoState(false);
 
-        llsModelOne.addListenerIsConnect(this.listenerConnect);
-        llsModelOne.addListenerIsDisconnect(this.listenerDisconnect);
-        llsModelOne.addListenerShortData(this.listenerShortData);
-        llsModelOne.addListenerLongData(this.listenerLongData);
-        llsModelOne.addListenerReadCnt(this.listenerReadCnt);
-        llsModelOne.getStatusConnect();
+        llsModelTwo.addListenerIsConnect(this.listenerConnect);
+        llsModelTwo.addListenerIsDisconnect(this.listenerDisconnect);
+        llsModelTwo.addListenerShortData(this.listenerShortData);
+        llsModelTwo.addListenerLongData(this.listenerLongData);
+        llsModelTwo.addListenerReadCnt(this.listenerReadCnt);
+        llsModelTwo.getStatusConnect();
 
         this.fullLevelDefault = false;
         this.emptyLevelDefault = false;

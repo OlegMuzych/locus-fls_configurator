@@ -2,6 +2,7 @@ import {JetView} from "webix-jet";
 // import CentralMenu from "./centralmenu";
 import globalVariable from "../../../global-variable-app";
 import RightMenu from "./one-sensor/rightmenu";
+import RightmenuTwoSensor from "./two-sensors/rightmenu-two-sensor";
 export default class RightTwoSensor extends JetView {
     config() {
         return {
@@ -12,7 +13,7 @@ export default class RightTwoSensor extends JetView {
                 },
                 {
                     localId: "twoSensor",
-                    rows:[]
+                    rows:[RightmenuTwoSensor]
                 },
                 // RightMenu,
             ]
@@ -20,7 +21,7 @@ export default class RightTwoSensor extends JetView {
     };
 
     init() {
-        if(globalVariable.twoSensorMode){
+        if(!globalVariable.twoSensorMode){
             this.$$("oneSensor").define({hidden:false});
             this.$$("twoSensor").define({hidden:true});
         }else{

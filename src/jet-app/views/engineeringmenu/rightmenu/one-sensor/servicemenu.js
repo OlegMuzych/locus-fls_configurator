@@ -1,6 +1,6 @@
 import {JetView} from "webix-jet";
 import ResetLlsWindow from "../../windows/reset-lls";
-import llsModel from "../../../../models/lls-model";
+import {llsModelOne} from "../../../../models/lls-test-models";
 import PasswordWindow from "../../windows/password";
 import configFile from "../../../../config-app";
 import fileSettingsModel from "../../../../models/file-settings-model";
@@ -86,13 +86,13 @@ export default class ServiceMenu extends JetView {
             }
 
             if (id == 'saveSettings') {
-                fileSettingsModel.write(llsModel.currentLongData).then();
+                fileSettingsModel.write(llsModelOne.currentLongData).then();
             }
 
             if (id == 'readSettings') {
                 fileSettingsModel.read().then((settings)=>{
-                    llsModel.newLongData = {...settings};
-                    llsModel.getLongData().then();
+                    llsModelOne.newLongData = {...settings};
+                    llsModelOne.getLongData().then();
                 });
             }
         });

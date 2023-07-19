@@ -1,9 +1,9 @@
 import {JetView} from "webix-jet";
-import {llsModelOne} from "../../../../models/lls-test-models";
-import configFile from "../../../../config-app";
-import configApp from "../../../../config-app";
+import {llsModelOne} from "../../../../../models/lls-test-models";
+import configFile from "../../../../../config-app";
+import configApp from "../../../../../config-app";
 
-export default class StatusMenu extends JetView{
+export default class StatusMenuOne extends JetView{
     config(){
         const _ = this.app.getService("locale")._;
 

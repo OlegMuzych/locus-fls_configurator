@@ -3,7 +3,7 @@ import FuelFillView from "./calibrationsubview/fuelfill";
 import FuelDrainView from "./calibrationsubview/fueldrain";
 
 import configFile from "../../../../../config-app";
-import llsModel from "../../../../../models/lls-model";
+import {llsModelOne} from "../../../../../models/lls-test-models";
 
 export default class CalibrationSubView extends JetView {
     config() {
@@ -171,14 +171,14 @@ export default class CalibrationSubView extends JetView {
 
     destroy() {
         super.destroy();
-        llsModel.clearListenerShortData(this.listenerShortData);
-        llsModel.clearListenerLongData(this.listenerLongData);
+        llsModelOne.clearListenerShortData(this.listenerShortData);
+        llsModelOne.clearListenerLongData(this.listenerLongData);
     }
 
     init() {
         this.$$("right_menu_fuel_level").attachEvent("onAfterRender", webix.once(()=>{
-            llsModel.addListenerShortData(this.listenerShortData);
-            llsModel.addListenerLongData(this.listenerLongData);
+            llsModelOne.addListenerShortData(this.listenerShortData);
+            llsModelOne.addListenerLongData(this.listenerLongData);
         }));
         // llsModel.addListenerLongData(this.listenerLongData);
         this.on(this.app, "app:calibrationSettings:continueCalibrate", () => {

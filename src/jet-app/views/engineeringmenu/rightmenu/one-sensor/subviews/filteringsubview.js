@@ -1,5 +1,5 @@
 import {JetView} from "webix-jet";
-import llsModel from "../../../../../models/lls-model";
+import {llsModelOne} from "../../../../../models/lls-test-models";
 import configFile from "../../../../../config-app";
 
 export default class FiltrationSubView extends JetView {
@@ -99,8 +99,8 @@ export default class FiltrationSubView extends JetView {
 
     destroy() {
         super.destroy();
-        llsModel.clearListenerShortData(this.listenerShortData);
-        llsModel.clearListenerLongData(this.listenerLongData);
+        llsModelOne.clearListenerShortData(this.listenerShortData);
+        llsModelOne.clearListenerLongData(this.listenerLongData);
     }
 
     listenerShortData = (shortData) => {
@@ -119,8 +119,8 @@ export default class FiltrationSubView extends JetView {
 
     init() {
         this.$$("status_level_fuel").attachEvent("onAfterRender", webix.once(()=>{
-            llsModel.addListenerShortData(this.listenerShortData);
-            llsModel.addListenerLongData(this.listenerLongData);
+            llsModelOne.addListenerShortData(this.listenerShortData);
+            llsModelOne.addListenerLongData(this.listenerLongData);
         }));
 
         if (configFile.theme == 'light') {

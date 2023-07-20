@@ -106,9 +106,23 @@ export default class StatusMenuTwo extends JetView{
 
                     ]
                 },
+                // {
+                //     height: 18,
+                // },
                 {
-                    height: 18,
+                    height: 13,
+                },
+                {
+                    view:"button",
+                    css: "show_choice_sensor",
+                    id:"show_choice_sensor_two",
+                    height:12,
+                },
+                {
+                    height: 12,
+                    id:"empty_rows_two"
                 }
+
             ]
         };
 

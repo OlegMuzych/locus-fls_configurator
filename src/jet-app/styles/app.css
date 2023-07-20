@@ -2840,3 +2840,16 @@ right_menu_fuel_level_error_windows input{
 }
 
 
+
+.show_choice_sensor .webix_button{
+    background-color: var(--swich_button_status);
+    cursor: default;
+}
+.show_choice_sensor .webix_button:focus{
+    background-color: var(--swich_button_status);
+    cursor: default;
+}
+.show_choice_sensor .webix_button:hover{
+    background-color: var(--swich_button_status);
+    cursor: default;
+}

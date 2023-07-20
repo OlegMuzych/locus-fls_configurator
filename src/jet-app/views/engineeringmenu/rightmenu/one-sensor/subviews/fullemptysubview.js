@@ -1,8 +1,6 @@
 import {JetView} from "webix-jet";
 import {llsModelOne} from "../../../../../models/lls-test-models";
 import configFile from "../../../../../config-app";
-import globalVariable from "../../../../../global-variable-app";
-import WindowFirmwareUpdate from "../../../../windows/window-firmware-update";
 import AutoLevelWindow from "../../../windows/auto-level";
 
 export default class FullEmptySubView extends JetView {

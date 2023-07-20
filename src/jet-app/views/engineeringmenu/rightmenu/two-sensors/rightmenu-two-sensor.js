@@ -8,6 +8,8 @@ import {JetView} from "webix-jet";
 import configFile from "../../../../config-app";
 // import FiltrationSubView from "./subviews/filteringsubview";
 import StatusMenuTwoSensor from "./statusmenuTwoSensor";
+import ServiceMenuTwoSensor from "./servicemenu-two-sensor";
+import ErrorStatusTwoSensor from "./errorStatus-two-sensor";
 
 export default class RightmenuTwoSensor extends JetView{
     config(){
@@ -49,6 +51,7 @@ export default class RightmenuTwoSensor extends JetView{
                         {
                             rows: [
                                 // ServiceMenu,
+                                ServiceMenuTwoSensor
                             ]
                         },
                         {
@@ -57,6 +60,7 @@ export default class RightmenuTwoSensor extends JetView{
                         {
                             rows:[
                                 // errorStatus,
+                                ErrorStatusTwoSensor
                             ]
                         },
                         {

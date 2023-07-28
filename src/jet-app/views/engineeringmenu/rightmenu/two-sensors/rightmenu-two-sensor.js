@@ -3,41 +3,19 @@ import {JetView} from "webix-jet";
 // import ServiceMenu from "./servicemenu";
 // import errorStatus from "./errorStatus";
 //
-// import CalibrationSubView from "./subviews/calibrationsubview";
-// import FullEmptySubView from "./subviews/fullemptysubview";
-import configFile from "../../../../config-app";
+// import CalibrationsubviewOne from "./subviews/calibrationsubview";
+// import FullemptysubviewOne from "./subviews/fullemptysubview";
+// import configFile from "../../../../config-app";
 // import FiltrationSubView from "./subviews/filteringsubview";
 import StatusMenuTwoSensor from "./statusmenuTwoSensor";
-import ServiceMenuTwoSensor from "./servicemenu-two-sensor";
-import ErrorStatusTwoSensor from "./errorStatus-two-sensor";
+import ServiceMenuTwoSensor from "./servicemenuTwoSensor";
+// import ErrorStatusTwo from "./errorStatusTwoSensor/errorStatus-two";
+import ErrorStatusTwoSensor from "./errorStatusTwoSensor";
+import SubviewsTwoSensor from "./subviewsTwoSensor";
+import configFile from "../../../../config-app";
 
 export default class RightmenuTwoSensor extends JetView{
     config(){
-        // let myMultiview = {
-        //     view: "scrollview",
-        //     scroll: "y",
-        //     // maxHeight: 970,
-        //     // minWidth: 530,
-        //     id: "rows_right_body",
-        //     css: "rows_right",
-        //     body: {
-        //         view: "multiview",
-        //         cells: [
-        //             {
-        //                 id: 'calibrationSubView', rows: [CalibrationSubView],
-        //             },
-        //             {
-        //                 id: 'fullEmptySubView', rows: [FullEmptySubView],
-        //             },
-        //             {
-        //                 id: 'filteringSubView', rows: [FiltrationSubView],
-        //             }
-        //         ],
-        //
-        //         animate: false,
-        //     }
-        // };
-
         let body = {
             width: 570,
             css: "rows_right",
@@ -60,6 +38,7 @@ export default class RightmenuTwoSensor extends JetView{
                         {
                             rows:[
                                 // errorStatus,
+                                // ErrorStatusTwo
                                 ErrorStatusTwoSensor
                             ]
                         },
@@ -81,6 +60,7 @@ export default class RightmenuTwoSensor extends JetView{
                         {
                             rows: [
                                 // myMultiview,
+                                SubviewsTwoSensor,
                             ]
                         },
                         {
@@ -116,13 +96,13 @@ export default class RightmenuTwoSensor extends JetView{
         //
         // $$('fullEmptySubView').show();
         //
-        // if(configFile.theme == 'light'){
-        //     webix.html.addCss( $$("rows_right_2").getNode(), "rows_right");
-        //     webix.html.addCss( $$("rows_right_body").getNode(), "rows_right");
-        // }
-        // if(configFile.theme == 'dark'){
-        //     webix.html.addCss( $$("rows_right_2").getNode(), "rows_right_dark");
-        //     webix.html.addCss( $$("rows_right_body").getNode(), "rows_right_dark");
-        // }
+        if(configFile.theme == 'light'){
+            webix.html.addCss( $$("rows_right_2").getNode(), "rows_right");
+            webix.html.addCss( $$("rows_right_body").getNode(), "rows_right");
+        }
+        if(configFile.theme == 'dark'){
+            webix.html.addCss( $$("rows_right_2").getNode(), "rows_right_dark");
+            webix.html.addCss( $$("rows_right_body").getNode(), "rows_right_dark");
+        }
     }
 }

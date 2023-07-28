@@ -1,11 +1,12 @@
 import {JetView} from "webix-jet";
-import ResetLlsWindow from "../../windows/reset-lls";
-import fileSettingsModel from "../../../../models/file-settings-model";
-import {llsModelOne} from "../../../../models/lls-test-models";
-import PasswordWindow from "../../windows/password";
-import configFile from "../../../../config-app";
+import ResetLlsWindow from "../../../windows/reset-lls";
+import fileSettingsModel from "../../../../../models/file-settings-model";
+import {llsModelOne} from "../../../../../models/lls-test-models";
+const llsModel = llsModelOne;
+import PasswordWindow from "../../../windows/password";
+import configFile from "../../../../../config-app";
 
-export default class ServiceMenuTwoSensor extends JetView {
+export default class ServiceMenuOne extends JetView {
     config() {
         const _ = this.app.getService("locale")._;
         let right_menu_button = {
@@ -86,13 +87,13 @@ export default class ServiceMenuTwoSensor extends JetView {
             }
 
             if (id == 'saveSettings') {
-                fileSettingsModel.write(llsModelOne.currentLongData).then();
+                fileSettingsModel.write(llsModel.currentLongData).then();
             }
 
             if (id == 'readSettings') {
                 fileSettingsModel.read().then((settings)=>{
-                    llsModelOne.newLongData = {...settings};
-                    llsModelOne.getLongData().then();
+                    llsModel.newLongData = {...settings};
+                    llsModel.getLongData().then();
                 });
             }
         });

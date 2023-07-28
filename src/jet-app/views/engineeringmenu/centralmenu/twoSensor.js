@@ -52,5 +52,30 @@ export default class TwoSensor extends JetView {
 		}else{
 			$$("configuration_general_settings_sensor").define({hidden:true});
 		}
+
+		$$("configuration_general_settings_sensor").attachEvent("onChange", (newValue, oldValue, config)=>{
+			webix.message(newValue);
+			switch(newValue) {
+
+				case "one_sensor": {
+					this.app.callEvent("app:select_sensor:number", ["first"]);
+					// $$("show_choice_sensor").show();
+					// $$("show_choice_sensor_two").hide();
+					// $$("empty_rows").hide();
+					// $$("empty_rows_two").show()
+
+					break;
+				}
+				case "two_sensor": {
+					this.app.callEvent("app:select_sensor:number", ["second"]);
+					// $$("show_choice_sensor").hide();
+					// $$("show_choice_sensor_two").show();
+					// $$("empty_rows_two").hide()
+					// $$("empty_rows").show()
+
+					break;
+				}
+			}
+		});
 	}
 }

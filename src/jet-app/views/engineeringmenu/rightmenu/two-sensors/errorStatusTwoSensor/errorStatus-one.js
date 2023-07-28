@@ -5,11 +5,11 @@ import {
     ERROR_SIZE_TABLE, ERROR_UNDEFINED,
     ERROR_VALUE_TABLE,
     NO_ERROR
-} from "../../../../error-codes";
-import {llsModelOne} from "../../../../models/lls-test-models";
-import configFile from "../../../../config-app";
+} from "../../../../../error-codes";
+import {llsModelOne} from "../../../../../models/lls-test-models";
+import configFile from "../../../../../config-app";
 
-export default class ErrorStatusTwoSensor extends JetView {
+export default class ErrorStatusOne extends JetView {
     errorCollections = new Array();
 
     config() {
@@ -17,7 +17,6 @@ export default class ErrorStatusTwoSensor extends JetView {
         const _ = this.app.getService("locale")._;
 
         let errorStatus = {
-
             rows: [
                 {
                     cols: [
@@ -54,7 +53,6 @@ export default class ErrorStatusTwoSensor extends JetView {
                         // },
                     ]
                 }
-
             ]
         }
         return errorStatus;
@@ -132,15 +130,10 @@ export default class ErrorStatusTwoSensor extends JetView {
 
         if (configFile.theme == 'light') {
             webix.html.addCss(this.$$("window_status_error").getNode(), "full_window_text_error_windows");
-
-
         }
         if (configFile.theme == 'dark') {
             webix.html.addCss(this.$$("window_status_error").getNode(), "full_window_text_error_windows_dark");
-
         }
-
-
     }
 
     setErrors() {

@@ -115,7 +115,7 @@ export default class StatusMenuTwo extends JetView{
                 {
                     view:"button",
                     css: "show_choice_sensor",
-                    id:"show_choice_sensor_two",
+                    localId:"show_choice_sensor_two",
                     height:12,
                 },
                 {
@@ -191,8 +191,19 @@ export default class StatusMenuTwo extends JetView{
             setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
         });
 
-
-
+        this.on(this.app, "app:select_sensor:number", (value) => {
+            console.log("dsdsd");
+            switch(value){
+                case "first": {
+                    this.$$("show_choice_sensor_two").hide();
+                    break;
+                }
+                case "second": {
+                    this.$$("show_choice_sensor_two").show();
+                    break;
+                }
+            }
+        });
 
         if(configFile.theme == 'light'){
             webix.html.addCss( $$("right_menu_status").getNode(), "right_menu_status");
@@ -201,7 +212,6 @@ export default class StatusMenuTwo extends JetView{
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("window_temp").getNode(), "window_temp");
-
         }
         if(configFile.theme == 'dark'){
             webix.html.addCss( $$("right_menu_status").getNode(), "right_menu_status_dark");
@@ -210,7 +220,6 @@ export default class StatusMenuTwo extends JetView{
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("window_temp").getNode(), "window_temp_dark");
-
         }
     }
 

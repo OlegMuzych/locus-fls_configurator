@@ -131,7 +131,7 @@ export default {
 
     "service_password": "Password",
 
-    /* fullemptysubview.js , filteringsubview.js */
+    /* fullemptysubview-one.js , filteringsubview-one.js */
     "automatic_calibration": "Automatic calibration",
     "button_automatic_calibration": " Auto calibrate",
     "current_level": "Current level",
@@ -143,7 +143,7 @@ export default {
     "Label_enable_calibration_mode_auto": "Auto",
     "Label_enable_calibration_mode_manual": "Manual",
 
-    /* calibrationsubview.js */
+    /* calibrationsubview-one.js */
     "button_save_table_file": "Save calibration data",
     "button_read_table_file": "Load calibration data",
     "tabbar_fill": "Tank fill mode",

@@ -34,7 +34,7 @@ export default class CentralMenuFirst extends JetView {
                             id: '11',
                             rows: [
                                 {
-                                    // id: "general",
+                                    id: "general",
                                     rows: [GeneralSettings],
                                 },
                             ]
@@ -43,7 +43,7 @@ export default class CentralMenuFirst extends JetView {
                             id: '21',
                             rows: [
                                 {
-                                    // id: "calibration",
+                                    id: "calibration",
                                     rows: [Calibrationsettings],
                                 },
                             ]
@@ -53,7 +53,7 @@ export default class CentralMenuFirst extends JetView {
                             id: '31',
                             rows: [
                                 {
-                                    // id: "filtering",
+                                    id: "filtering",
                                     rows: [FiltrationSettings],
                                 }
                             ]
@@ -95,23 +95,43 @@ export default class CentralMenuFirst extends JetView {
         //
         //     $$("style_general_rows_1_one").refresh();
         // }
+
+        $$("general").attachEvent("onItemClick", (id)=>{
+            // $$('generalSettings').show();
+            console.log("click");
+            this.app.callEvent("app:setting:general",[]);
+        });
+
+        $$("calibration").attachEvent("onItemClick", (id)=>{
+            // $$('calibrationSettings').show();
+            console.log("click2");
+            this.app.callEvent("app:setting:calibration", []);
+
+
+        });
+
+        $$("filtering").attachEvent("onItemClick", (id)=>{
+            // $$('filteringSettings').show();
+            console.log("click3");
+            this.app.callEvent("app:setting:filtering", []);
+        });
     }
 }
 
-// $$("general_1").attachEvent("onItemClick", (id)=>{
-//     $$('generalSettings').show();
+// $$("general").attachEvent("onItemClick", (id)=>{
+//     // $$('generalSettings').show();
 //     this.app.callEvent("app:setting:general",[]);
 // });
-// //
-// $$("calibration_2").attachEvent("onItemClick", (id)=>{
-//     $$('calibrationSettings').show();
+//
+// $$("calibration").attachEvent("onItemClick", (id)=>{
+//     // $$('calibrationSettings').show();
 //     this.app.callEvent("app:setting:calibration", []);
 //
 //
 // });
 //
-// $$("filtering_3").attachEvent("onItemClick", (id)=>{
-//     $$('filteringSettings').show();
+// $$("filtering").attachEvent("onItemClick", (id)=>{
+//     // $$('filteringSettings').show();
 //     this.app.callEvent("app:setting:filtering", []);
 // });
 //

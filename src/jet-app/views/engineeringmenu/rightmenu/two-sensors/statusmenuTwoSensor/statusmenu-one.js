@@ -115,7 +115,7 @@ export default class StatusMenuOne extends JetView{
                 {
                     view:"button",
                     css: "show_choice_sensor",
-                    id:"show_choice_sensor_two",
+                    localId:"show_choice_sensor_two",
                     height:12,
                 },
                 {
@@ -190,7 +190,18 @@ export default class StatusMenuOne extends JetView{
             setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
         });
 
-
+        this.on(this.app, "app:select_sensor:number", (value) => {
+            switch(value){
+                case "first": {
+                    this.$$("show_choice_sensor_two").show();
+                    break;
+                }
+                case "second": {
+                    this.$$("show_choice_sensor_two").hide();
+                    break;
+                }
+            }
+        });
 
 
         if(configFile.theme == 'light'){

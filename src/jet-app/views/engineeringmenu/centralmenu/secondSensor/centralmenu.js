@@ -17,7 +17,7 @@ export default class CentralMenuSecond extends JetView {
                 {
                     view: "segmented",
                     css: "central_cols_button",
-                    id: "style_general_rows_1_two",
+                    localId: "style_general_rows_1_two",
                     multiview: true,
                     value: 1,
                     height: 100,
@@ -83,7 +83,7 @@ export default class CentralMenuSecond extends JetView {
     }
 
     init() {
-        $$("style_general_rows_1_one").attachEvent("onChange", (newValue, oldValue, config)=>{
+        this.$$("style_general_rows_1_two").attachEvent("onChange", (newValue, oldValue, config)=>{
             switch (newValue) {
                 case "1":{
                     this.app.callEvent("app:setting:general",[]);

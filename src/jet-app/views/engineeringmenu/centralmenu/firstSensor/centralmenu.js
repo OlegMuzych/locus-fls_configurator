@@ -1,5 +1,4 @@
 import {JetView} from "webix-jet";
-// import configFile from "../../../../../config-app";
 import configFile from "../../../../config-app";
 import GeneralSettings from "./generalsettings";
 import Calibrationsettings from "./calibrationsettings";
@@ -17,7 +16,7 @@ export default class CentralMenuFirst extends JetView {
                 {
                     view: "segmented",
                     css: "central_cols_button_one",
-                    id: "style_general_rows_1_one",
+                    localId: "style_general_rows_1_one",
                     multiview: true,
                     value: 1,
                     height: 100,
@@ -81,7 +80,7 @@ export default class CentralMenuFirst extends JetView {
     }
 
     init() {
-        $$("style_general_rows_1_one").attachEvent("onChange", (newValue, oldValue, config)=>{
+        this.$$("style_general_rows_1_one").attachEvent("onChange", (newValue, oldValue, config)=>{
             switch (newValue) {
                 case "11":{
                     this.app.callEvent("app:setting:general",[]);

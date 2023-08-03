@@ -83,6 +83,22 @@ export default class CentralMenuSecond extends JetView {
     }
 
     init() {
+        $$("style_general_rows_1_one").attachEvent("onChange", (newValue, oldValue, config)=>{
+            switch (newValue) {
+                case "1":{
+                    this.app.callEvent("app:setting:general",[]);
+                    break;}
+                case "2":{
+                    this.app.callEvent("app:setting:calibration", []);
+                    break;}
+                case "3":{
+                    this.app.callEvent("app:setting:filtering", []);
+                    break;}
+            }
+            webix.message(
+                `Value changed from ${oldValue} to ${newValue}. Source: ${config}`
+            );
+        });
         // if (configFile.theme == 'light') {
         //     webix.html.addCss($$("style_general_rows_1").getNode(), "central_cols_button");
         //     webix.html.addCss($$("central_cols_button").getNode(), "central_cols_button");

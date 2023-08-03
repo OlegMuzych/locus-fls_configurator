@@ -1,13 +1,13 @@
 import {JetView} from "webix-jet";
 import FuelFillView from "./calibrationsubview/fuelfill";
 import FuelDrainView from "./calibrationsubview/fueldrain";
-import {llsModelOne} from "../../../../../../models/lls-test-models";
+import {llsModelTwo} from "../../../../../../models/lls-test-models";
 import configFile from '../../../../../../config-app'
 
 
-const llsModel = llsModelOne;
+const llsModel = llsModelTwo;
 
-export default class CalibrationsubviewOne extends JetView {
+export default class CalibrationsubviewTwo extends JetView {
     config() {
         const _ = this.app.getService("locale")._;
 

@@ -20,7 +20,8 @@ export default class TwoSensor extends JetView {
 					],
 				},
 				{
-					animate:true,
+					// animate:true,
+					animate:false,
 					keepViews:true,
 					cells: [
 						{

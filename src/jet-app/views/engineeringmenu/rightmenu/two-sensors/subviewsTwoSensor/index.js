@@ -1,7 +1,10 @@
 import {JetView} from "webix-jet";
-// import {CalibrationsubviewOne} from "./subview-one/calibrationsubview-one"
+import CalibrationsubviewOne from "./subview-one/calibrationsubview-one"
 import FiltrationSubViewOne from "./subview-one/filteringsubview-one"
 import FullemptysubviewOne from "./subview-one/fullemptysubview-one"
+import CalibrationsubviewTwo from "./subview-two/calibrationsubview-two";
+import FullemptysubviewTwo from "./subview-two/fullemptysubview-two";
+import FiltrationSubViewTwo from "./subview-two/filteringsubview-two";
 export default class SubviewsTwoSensor extends JetView {
 
     config() {
@@ -13,39 +16,40 @@ export default class SubviewsTwoSensor extends JetView {
             body: {
                 view: "multiview",
                 cells: [
-                    // {
-                    //     // id: 'calibrationSubView', rows: [ColibrationsubviewOne],
-                    // },
                     {
-                        id: 'fullEmptySubView', rows: [FiltrationSubViewOne],
+                        id: 'calibrationSubView', rows: [CalibrationsubviewOne],
                     },
                     {
-                        id: 'filteringSubView', rows: [FullemptysubviewOne],
+                        id: 'fullEmptySubView', rows: [FullemptysubviewOne],
+                    },
+                    {
+                        id: 'filteringSubView', rows: [FiltrationSubViewOne],
                     }
                 ],
                 animate: false,
             }
         }
-        // const multiviewTwo = {view: "scrollview",
-        //     scroll: "y",
-        //     id: "rows_right_body",
-        //     css: "rows_right",
-        //     body: {
-        //         view: "multiview",
-        //         // cells: [
-        //         //     {
-        //         //         id: 'calibrationSubView', rows: [CalibrationsubviewOne],
-        //         //     },
-        //         //     {
-        //         //         id: 'fullEmptySubView', rows: [FullemptysubviewOne],
-        //         //     },
-        //         //     {
-        //         //         id: 'filteringSubView', rows: [FiltrationSubView],
-        //         //     }
-        //         // ],
-        //
-        //         animate: false,
-        //     }}
+        const multiviewTwo = {
+            view: "scrollview",
+            scroll: "y",
+            id: "rows_right_body",
+            css: "rows_right",
+            body: {
+                view: "multiview",
+                cells: [
+                    {
+                        id: 'calibrationSubViewTwo', rows: [CalibrationsubviewTwo],
+                    },
+                    {
+                        id: 'fullEmptySubViewTwo', rows: [FullemptysubviewTwo],
+                    },
+                    {
+                        id: 'filteringSubViewTwo', rows: [FiltrationSubViewTwo],
+                    }
+                ],
+
+                animate: false,
+            }}
         return {
             rows: [
                 {
@@ -54,7 +58,7 @@ export default class SubviewsTwoSensor extends JetView {
                 },
                 {
                     localId:"secondView",
-                    // rows: [multiviewTwo]
+                    rows: [multiviewTwo]
                 }
             ]
         }
@@ -79,21 +83,25 @@ export default class SubviewsTwoSensor extends JetView {
         this.on(this.app, "app:setting:general", ()=>{
                 console.log('Click1');
                 $$('fullEmptySubView').show();
+                $$('fullEmptySubViewTwo').show();
             }
         );
 
         this.on(this.app, "app:setting:filtering", ()=>{
                 console.log('Click2');
                 $$('filteringSubView').show();
+                $$('filteringSubViewTwo').show();
             }
         );
 
-        // this.on(this.app, "app:setting:calibration", ()=>{
-        //         console.log('Click3');
-        //         $$('calibrationSubView').show();
-        //     }
-        // );
+        this.on(this.app, "app:setting:calibration", ()=>{
+                console.log('Click3');
+                $$('calibrationSubView').show();
+                $$('calibrationSubViewTwo').show();
+            }
+        );
 
         $$('fullEmptySubView').show();
+        $$('fullEmptySubViewTwo').show();
     }
 }

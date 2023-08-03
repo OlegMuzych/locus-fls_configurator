@@ -46,8 +46,7 @@ export default class CentralMenuFirst extends JetView {
                                     id: "calibration",
                                     rows: [Calibrationsettings],
                                 },
-                            ]
-
+                            ],
                         },
                         {
                             id: '31',
@@ -62,7 +61,6 @@ export default class CentralMenuFirst extends JetView {
                 }
             ]
         };
-
 
         let body = {
             maxWidth: 1420,
@@ -83,6 +81,22 @@ export default class CentralMenuFirst extends JetView {
     }
 
     init() {
+        $$("style_general_rows_1_one").attachEvent("onChange", (newValue, oldValue, config)=>{
+            switch (newValue) {
+                case "11":{
+                    this.app.callEvent("app:setting:general",[]);
+                    break;}
+                case "21":{
+                    this.app.callEvent("app:setting:calibration", []);
+                    break;}
+                case "31":{
+                    this.app.callEvent("app:setting:filtering", []);
+                    break;}
+            }
+            webix.message(
+                `Value changed from ${oldValue} to ${newValue}. Source: ${config}`
+            );
+        });
         // if (configFile.theme == 'light') {
         //     webix.html.addCss($$("style_general_rows_1_one").getNode(), "central_cols_button");
         //     webix.html.addCss($$("central_cols_button_one").getNode(), "central_cols_button");
@@ -96,30 +110,31 @@ export default class CentralMenuFirst extends JetView {
         //     $$("style_general_rows_1_one").refresh();
         // }
 
-        $$("general").attachEvent("onItemClick", (id)=>{
-            // $$('generalSettings').show();
-            console.log("click");
-            this.app.callEvent("app:setting:general",[]);
-        });
-
-        $$("calibration").attachEvent("onItemClick", (id)=>{
-            // $$('calibrationSettings').show();
-            console.log("click2");
-            this.app.callEvent("app:setting:calibration", []);
-
-
-        });
-
-        $$("filtering").attachEvent("onItemClick", (id)=>{
-            // $$('filteringSettings').show();
-            console.log("click3");
-            this.app.callEvent("app:setting:filtering", []);
-        });
+        // $$("general").attachEvent("onItemClick", (id)=>{
+        //     // $$('generalSettings').show();
+        //     console.log("click");
+        //     this.app.callEvent("app:setting:general",[]);
+        // });
+        //
+        // $$("calibration").attachEvent("onItemClick", (id)=>{
+        //     // $$('calibrationSettings').show();
+        //     console.log("click2");
+        //     this.app.callEvent("app:setting:calibration", []);
+        //
+        //
+        // });
+        //
+        // $$("filtering").attachEvent("onItemClick", (id)=>{
+        //     // $$('filteringSettings').show();
+        //     console.log("click3");
+        //     this.app.callEvent("app:setting:filtering", []);
+        // });
     }
 }
 
 // $$("general").attachEvent("onItemClick", (id)=>{
 //     // $$('generalSettings').show();
+//     console.log("test");
 //     this.app.callEvent("app:setting:general",[]);
 // });
 //

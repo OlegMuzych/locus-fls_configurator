@@ -132,7 +132,7 @@ export default {
 
     "service_password": "Пароль",
 
-    /* fullemptysubview-one.js , filteringsubview-one.js */
+    /* fullemptysubview-two.js , filteringsubview-two.js */
     "automatic_calibration": "Автоматическая калибровка",
     "button_automatic_calibration": 'Автоматическая калибровка',//"Откалибровать",
     "current_level": "Текущий уровень",
@@ -144,7 +144,7 @@ export default {
     "Label_enable_calibration_mode_auto": "Авто",
     "Label_enable_calibration_mode_manual": "Ручная",
 
-    /* calibrationsubview-one.js */
+    /* calibrationsubview-two.js */
     "button_save_table_file": "Экспортировать таблицу тарировки",
     "button_read_table_file": "Импортировать таблицу тарировки",
     "tabbar_fill": "Залив",

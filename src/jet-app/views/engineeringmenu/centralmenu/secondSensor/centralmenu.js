@@ -26,8 +26,10 @@ export default class CentralMenuSecond extends JetView {
                         {value: _("calibration"), id: '2'},
                         {value: _("filtering"), id: '3'},
                     ],
+                    hidden: true,
                 },
                 {
+                    localId: "multiview",
                     animate: false,
                     cells: [
                         {
@@ -83,22 +85,38 @@ export default class CentralMenuSecond extends JetView {
     }
 
     init() {
-        this.$$("style_general_rows_1_two").attachEvent("onChange", (newValue, oldValue, config)=>{
-            switch (newValue) {
-                case "1":{
-                    this.app.callEvent("app:setting:general",[]);
-                    break;}
-                case "2":{
-                    this.app.callEvent("app:setting:calibration", []);
-                    break;}
-                case "3":{
-                    this.app.callEvent("app:setting:filtering", []);
-                    break;}
+        this.on(this.app, "app:setting:general", ()=>{
+                this.$$('multiview').setValue("1");
             }
-            webix.message(
-                `Value changed from ${oldValue} to ${newValue}. Source: ${config}`
-            );
-        });
+        );
+
+        this.on(this.app, "app:setting:calibration", ()=>{
+                this.$$('multiview').setValue("2");
+            }
+        );
+
+        this.on(this.app, "app:setting:filtering", ()=>{
+                this.$$('multiview').setValue("3");
+            }
+        );
+
+        // this.$$("style_general_rows_1_two").attachEvent("onChange", (newValue, oldValue, config)=>{
+        //     switch (newValue) {
+        //         case "1":{
+        //             this.app.callEvent("app:setting:general",[]);
+        //             break;}
+        //         case "2":{
+        //             this.app.callEvent("app:setting:calibration", []);
+        //             break;}
+        //         case "3":{
+        //             this.app.callEvent("app:setting:filtering", []);
+        //             break;}
+        //     }
+        //     webix.message(
+        //         `Value changed from ${oldValue} to ${newValue}. Source: ${config}`
+        //     );
+        // });
+
         // if (configFile.theme == 'light') {
         //     webix.html.addCss($$("style_general_rows_1").getNode(), "central_cols_button");
         //     webix.html.addCss($$("central_cols_button").getNode(), "central_cols_button");

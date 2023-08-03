@@ -190,6 +190,7 @@ export default class StatusMenuOne extends JetView{
             setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
         });
 
+        this.$$("show_choice_sensor_two").show();
         this.on(this.app, "app:select_sensor:number", (value) => {
             switch(value){
                 case "first": {

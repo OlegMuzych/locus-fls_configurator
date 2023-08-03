@@ -22,9 +22,10 @@ export default class FiltrationSettings extends JetView {
                         cols: [
                             {
                                 view: "label",
-                                label: `<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 105px;'>${_("switch_filtering")}</p>`,
+                                // label: `<p style='font-size: 18px; font-weight: 100; position: relative; top: -20px; left: 105px;'>${_("switch_filtering")}</p>`,
+                                label: `hello`,
                                 css: "text_color_filter",
-                                id: "text_color_filter_1_0",
+                                id: "text_color_filter_1_01",
                             },
                             {
                                 width: 30,
@@ -531,176 +532,176 @@ export default class FiltrationSettings extends JetView {
 
     init() {
         const _ = this.app.getService("locale")._;
-
-        //Выключатель фитрации
-        $$("filtering_switch_top").attachEvent("onItemClick", (id, e) => {
-            if ($$("filtering_switch_top").getValue() == 0) {
-                $$("degree of filtration").disable()
-                $$("degree_of_filtration").disable()
-                $$("degree_of_filtration_2").disable()
-            } else {
-                if
-                ($$("filtering_switch_top").getValue() == 1) {
-                    $$("degree of filtration").enable()
-                    $$("degree_of_filtration").enable()
-                    $$("degree_of_filtration_2").enable()
-                }
-            }
-        });
-
-
-        llsModelOne.addListenerLongData(this.listenerLongData);
-
-        $$('slider_filter_1').attachEvent("onChange", (newValue, oldValue, config) => {
-            console.log("change");
-            if (config != undefined) {
-                console.log(newValue);
-                llsModelOne.newLongData.averagingLength = newValue;
-                if (newValue == llsModelOne.currentLongData.averagingLength) {
-                    this.setStatusNewValue('statusAveragingLength', false);
-                } else {
-                    this.setStatusNewValue('statusAveragingLength', true);
-                }
-            }
-        })
-        $$('button_slider_gen_value_1').attachEvent("onItemClick", (id, e) => {
-            this.setStatusNewValue('statusAveragingLength', false);
-            llsModelOne.setLongData({averagingLength: $$('slider_filter_1').getValue()});
-        });
-
-        $$('slider_filter_2').attachEvent("onChange", (newValue, oldValue, config) => {
-            console.log("change");
-            if (config != undefined) {
-                console.log(newValue);
-                llsModelOne.newLongData.medianLength = newValue;
-                if (newValue == llsModelOne.currentLongData.medianLength) {
-                    this.setStatusNewValue('statusMedianLength', false);
-                } else {
-                    this.setStatusNewValue('statusMedianLength', true);
-                }
-            }
-        })
-        $$('button_slider_gen_value_2').attachEvent("onItemClick", (id, e) => {
-            this.setStatusNewValue('statusAveragingLength', false);
-            llsModelOne.setLongData({medianLength: $$('slider_filter_2').getValue()});
-        });
-
-        $$('text_q').attachEvent("onChange", (newValue, oldValue, config) => {
-            console.log("change");
-            if (config != undefined) {
-                console.log(newValue);
-                newValue = Number(newValue).toFixed(6);
-                // newValue = this.fixed(Number(newValue));
-                if (newValue >= 0 && newValue < 1000) {
-                    llsModelOne.newLongData.coefficientQ = newValue;
-                    globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({coefficientQ: llsModelOne.newLongData.coefficientQ}) : '');
-                    this.setFloatValue('text_q', "coefficientQ", "statusCoefficientQ");
-                } else {
-                    this.$$('text_q').setValue(oldValue);
-                }
-            }
-        })
-        $$('button_slider_gen_value_3').attachEvent("onItemClick", (id, e) => {
-            this.setStatusNewValue('statusCoefficientQ', false);
-            let test = parseFloat($$('text_q').getValue());
-            llsModelOne.setLongData({coefficientQ: test});
-        });
-
-        $$('text_r').attachEvent("onChange", (newValue, oldValue, config) => {
-            console.log("change");
-            if (config != undefined) {
-                console.log(newValue);
-                newValue = Number(newValue).toFixed(6);
-                if (newValue >= 0 && newValue < 1000) {
-                    llsModelOne.newLongData.coefficientR = newValue;
-                    globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({coefficientR: llsModelOne.newLongData.coefficientR}) : '');
-                    this.setFloatValue('text_r', "coefficientR", "statusCoefficientR");
-                } else {
-                    this.$$('text_r').setValue(oldValue);
-                }
-            }
-        })
-        $$('button_slider_gen_value_4').attachEvent("onItemClick", (id, e) => {
-            this.setStatusNewValue('statusCoefficientR', false);
-            let test = parseFloat($$('text_r').getValue());
-            llsModelOne.setLongData({coefficientR: test});
-        });
-
-        $$('image_button_filter_1').attachEvent("onItemClick", (id, e) => {
-            $$('slider_filter_1').setValue(5);
-            llsModelOne.newLongData.filtrationType = 1;
-            llsModelOne.newLongData.averagingLength = 5;
-            this.setSliderValue('window_text_time', 'averagingLength', 'statusAveragingLength');
-            this.setFiltrationTypeValue();
-            // llsModel.setLongData({filtrationType: 1, averagingLength: $$('slider_filter_1').getValue()});  // усреднение
-            globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({filtrationType: 1, averagingLength: 5}) : '');
-        });
-
-        $$('image_button_filter_2').attachEvent("onItemClick", (id, e) => {
-            $$('slider_filter_2').setValue(3);
-            llsModelOne.newLongData.filtrationType = 2;
-            llsModelOne.newLongData.medianLenght = 3;
-            this.setFiltrationTypeValue();
-            this.setSliderValue('window_text_mediana', 'medianLength', 'statusMedianLength');
-            // llsModel.setLongData({filtrationType: 2, medianLength: $$('slider_filter_2').getValue()}); //медиана
-            globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({filtrationType: 2, medianLength: 3}) : '');
-        });
-
-        $$('image_button_filter_3').attachEvent("onItemClick", (id, e) => {
-            llsModelOne.newLongData.coefficientR = 1;
-            llsModelOne.newLongData.coefficientQ = 437;
-            llsModelOne.newLongData.filtrationType = 3;
-            this.setFiltrationTypeValue();
-            this.setFloatValue('text_q', "coefficientQ", "statusCoefficientQ");
-            this.setFloatValue('text_r', "coefficientR", "statusCoefficientR");
-            // llsModel.setLongData({coefficientR: 1, coefficientQ: 437, filtrationType: 3 });
-            globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({coefficientR: 1, coefficientQ: 437, filtrationType: 3 }) : '');
-        });
-
-
-        $$('degree_of_filtration_3').hide();
-        const popupFilterType = {
-            // Кнопка выбрать в окне фильтрация -------------------------------//
-            view: "popup",
-            multi: true,
-            id: "my_pop",
-            css: "service_button",
-            width: 300,
-            height: 400,
-            // data:['123','123','123'],
-            body: {
-                view: "list",
-                data: [
-                    {id: "0", location: _("filtering_type_turned_off"), name: "0", value: 0},
-                    {id: "1", location: _("filtering_type_averaging"), name: "1", value: 1},
-                    {id: "2", location: _("filtering_type_median"), name: "2", value: 2},
-                    {id: "3", location: _("filtering_type_adaptive"), name: "3", value: 3},
-                ],
-                template: "#name# - #location#",
-                autoheight: true,
-                id: 'listFilterType',
-                select: true
-            }
-        }
-        this.pop = this.ui(popupFilterType);
-        this.$$('buttonFilterType').attachEvent("onItemClick", (id, e) => {
-            console.log('click');
-            this.pop.show($$(id).getNode());
-        });
-        $$("listFilterType").attachEvent("onItemClick", (id, name, e) => {
-            console.log("click");
-            let obj = $$("listFilterType").getItem(id);
-            console.log(obj);
-            llsModelOne.newLongData.filtrationType = obj.value;
-            globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({filtrationType: obj.value}) : '');
-            this.setFiltrationTypeValue();
-        });
-
+    //
+    //     //Выключатель фитрации
+    //     $$("filtering_switch_top").attachEvent("onItemClick", (id, e) => {
+    //         if ($$("filtering_switch_top").getValue() == 0) {
+    //             $$("degree of filtration").disable()
+    //             $$("degree_of_filtration").disable()
+    //             $$("degree_of_filtration_2").disable()
+    //         } else {
+    //             if
+    //             ($$("filtering_switch_top").getValue() == 1) {
+    //                 $$("degree of filtration").enable()
+    //                 $$("degree_of_filtration").enable()
+    //                 $$("degree_of_filtration_2").enable()
+    //             }
+    //         }
+    //     });
+    //
+    //
+    //     llsModelOne.addListenerLongData(this.listenerLongData);
+    //
+    //     $$('slider_filter_1').attachEvent("onChange", (newValue, oldValue, config) => {
+    //         console.log("change");
+    //         if (config != undefined) {
+    //             console.log(newValue);
+    //             llsModelOne.newLongData.averagingLength = newValue;
+    //             if (newValue == llsModelOne.currentLongData.averagingLength) {
+    //                 this.setStatusNewValue('statusAveragingLength', false);
+    //             } else {
+    //                 this.setStatusNewValue('statusAveragingLength', true);
+    //             }
+    //         }
+    //     })
+    //     $$('button_slider_gen_value_1').attachEvent("onItemClick", (id, e) => {
+    //         this.setStatusNewValue('statusAveragingLength', false);
+    //         llsModelOne.setLongData({averagingLength: $$('slider_filter_1').getValue()});
+    //     });
+    //
+    //     $$('slider_filter_2').attachEvent("onChange", (newValue, oldValue, config) => {
+    //         console.log("change");
+    //         if (config != undefined) {
+    //             console.log(newValue);
+    //             llsModelOne.newLongData.medianLength = newValue;
+    //             if (newValue == llsModelOne.currentLongData.medianLength) {
+    //                 this.setStatusNewValue('statusMedianLength', false);
+    //             } else {
+    //                 this.setStatusNewValue('statusMedianLength', true);
+    //             }
+    //         }
+    //     })
+    //     $$('button_slider_gen_value_2').attachEvent("onItemClick", (id, e) => {
+    //         this.setStatusNewValue('statusAveragingLength', false);
+    //         llsModelOne.setLongData({medianLength: $$('slider_filter_2').getValue()});
+    //     });
+    //
+    //     $$('text_q').attachEvent("onChange", (newValue, oldValue, config) => {
+    //         console.log("change");
+    //         if (config != undefined) {
+    //             console.log(newValue);
+    //             newValue = Number(newValue).toFixed(6);
+    //             // newValue = this.fixed(Number(newValue));
+    //             if (newValue >= 0 && newValue < 1000) {
+    //                 llsModelOne.newLongData.coefficientQ = newValue;
+    //                 globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({coefficientQ: llsModelOne.newLongData.coefficientQ}) : '');
+    //                 this.setFloatValue('text_q', "coefficientQ", "statusCoefficientQ");
+    //             } else {
+    //                 this.$$('text_q').setValue(oldValue);
+    //             }
+    //         }
+    //     })
+    //     $$('button_slider_gen_value_3').attachEvent("onItemClick", (id, e) => {
+    //         this.setStatusNewValue('statusCoefficientQ', false);
+    //         let test = parseFloat($$('text_q').getValue());
+    //         llsModelOne.setLongData({coefficientQ: test});
+    //     });
+    //
+    //     $$('text_r').attachEvent("onChange", (newValue, oldValue, config) => {
+    //         console.log("change");
+    //         if (config != undefined) {
+    //             console.log(newValue);
+    //             newValue = Number(newValue).toFixed(6);
+    //             if (newValue >= 0 && newValue < 1000) {
+    //                 llsModelOne.newLongData.coefficientR = newValue;
+    //                 globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({coefficientR: llsModelOne.newLongData.coefficientR}) : '');
+    //                 this.setFloatValue('text_r', "coefficientR", "statusCoefficientR");
+    //             } else {
+    //                 this.$$('text_r').setValue(oldValue);
+    //             }
+    //         }
+    //     })
+    //     $$('button_slider_gen_value_4').attachEvent("onItemClick", (id, e) => {
+    //         this.setStatusNewValue('statusCoefficientR', false);
+    //         let test = parseFloat($$('text_r').getValue());
+    //         llsModelOne.setLongData({coefficientR: test});
+    //     });
+    //
+    //     $$('image_button_filter_1').attachEvent("onItemClick", (id, e) => {
+    //         $$('slider_filter_1').setValue(5);
+    //         llsModelOne.newLongData.filtrationType = 1;
+    //         llsModelOne.newLongData.averagingLength = 5;
+    //         this.setSliderValue('window_text_time', 'averagingLength', 'statusAveragingLength');
+    //         this.setFiltrationTypeValue();
+    //         // llsModel.setLongData({filtrationType: 1, averagingLength: $$('slider_filter_1').getValue()});  // усреднение
+    //         globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({filtrationType: 1, averagingLength: 5}) : '');
+    //     });
+    //
+    //     $$('image_button_filter_2').attachEvent("onItemClick", (id, e) => {
+    //         $$('slider_filter_2').setValue(3);
+    //         llsModelOne.newLongData.filtrationType = 2;
+    //         llsModelOne.newLongData.medianLenght = 3;
+    //         this.setFiltrationTypeValue();
+    //         this.setSliderValue('window_text_mediana', 'medianLength', 'statusMedianLength');
+    //         // llsModel.setLongData({filtrationType: 2, medianLength: $$('slider_filter_2').getValue()}); //медиана
+    //         globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({filtrationType: 2, medianLength: 3}) : '');
+    //     });
+    //
+    //     $$('image_button_filter_3').attachEvent("onItemClick", (id, e) => {
+    //         llsModelOne.newLongData.coefficientR = 1;
+    //         llsModelOne.newLongData.coefficientQ = 437;
+    //         llsModelOne.newLongData.filtrationType = 3;
+    //         this.setFiltrationTypeValue();
+    //         this.setFloatValue('text_q', "coefficientQ", "statusCoefficientQ");
+    //         this.setFloatValue('text_r', "coefficientR", "statusCoefficientR");
+    //         // llsModel.setLongData({coefficientR: 1, coefficientQ: 437, filtrationType: 3 });
+    //         globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({coefficientR: 1, coefficientQ: 437, filtrationType: 3 }) : '');
+    //     });
+    //
+    //
+    //     $$('degree_of_filtration_3').hide();
+    //     const popupFilterType = {
+    //         // Кнопка выбрать в окне фильтрация -------------------------------//
+    //         view: "popup",
+    //         multi: true,
+    //         id: "my_pop",
+    //         css: "service_button",
+    //         width: 300,
+    //         height: 400,
+    //         // data:['123','123','123'],
+    //         body: {
+    //             view: "list",
+    //             data: [
+    //                 {id: "0", location: _("filtering_type_turned_off"), name: "0", value: 0},
+    //                 {id: "1", location: _("filtering_type_averaging"), name: "1", value: 1},
+    //                 {id: "2", location: _("filtering_type_median"), name: "2", value: 2},
+    //                 {id: "3", location: _("filtering_type_adaptive"), name: "3", value: 3},
+    //             ],
+    //             template: "#name# - #location#",
+    //             autoheight: true,
+    //             id: 'listFilterType',
+    //             select: true
+    //         }
+    //     }
+    //     this.pop = this.ui(popupFilterType);
+    //     this.$$('buttonFilterType').attachEvent("onItemClick", (id, e) => {
+    //         console.log('click');
+    //         this.pop.show($$(id).getNode());
+    //     });
+    //     $$("listFilterType").attachEvent("onItemClick", (id, name, e) => {
+    //         console.log("click");
+    //         let obj = $$("listFilterType").getItem(id);
+    //         console.log(obj);
+    //         llsModelOne.newLongData.filtrationType = obj.value;
+    //         globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({filtrationType: obj.value}) : '');
+    //         this.setFiltrationTypeValue();
+    //     });
+    //
         if (configFile.theme == 'light') {
             webix.html.addCss($$("text_color_filter_1").getNode(), "text_color_filter");
             webix.html.addCss($$("text_color_filter_2").getNode(), "text_color_filter");
             webix.html.addCss($$("text_color_filter_3").getNode(), "text_color_filter");
-            webix.html.addCss($$("text_color_filter_1_0").getNode(), "text_color_filter");
+            webix.html.addCss($$("text_color_filter_1_01").getNode(), "text_color_filter");
             webix.html.addCss($$("text_color_filter_1_1").getNode(), "text_color_filter");
             webix.html.addCss($$("text_color_filter_4").getNode(), "text_color_filter");
             webix.html.addCss($$("text_color_filter_5").getNode(), "text_color_filter");
@@ -742,7 +743,7 @@ export default class FiltrationSettings extends JetView {
             webix.html.addCss($$("text_color_filter_1").getNode(), "text_color_filter_dark");
             webix.html.addCss($$("text_color_filter_2").getNode(), "text_color_filter_dark");
             webix.html.addCss($$("text_color_filter_3").getNode(), "text_color_filter_dark");
-            webix.html.addCss($$("text_color_filter_1_0").getNode(), "text_color_filter_dark");
+            webix.html.addCss($$("text_color_filter_1_01").getNode(), "text_color_filter_dark");
             webix.html.addCss($$("text_color_filter_1_1").getNode(), "text_color_filter_dark");
             webix.html.addCss($$("text_color_filter_4").getNode(), "text_color_filter_dark");
             webix.html.addCss($$("text_color_filter_5").getNode(), "text_color_filter_dark");

@@ -23,7 +23,7 @@ export default class ServiceMenuOne extends JetView {
                             height: 70,
                             label: _("service_service"),
                             css: "button_right_menu_top_1",
-                            id: "buttonService"
+                            localId: "buttonService"
                         },
                         {
                             width: 30,
@@ -72,7 +72,7 @@ export default class ServiceMenuOne extends JetView {
 
         this.$$('buttonService').attachEvent("onItemClick", (id, e) => {
             console.log('click');
-            this.popService.show($$(id).getNode());
+            this.popService.show(this.$$(id).getNode());
         });
 
         this.resetLlsWindow = this.ui(ResetLlsWindow);
@@ -105,22 +105,22 @@ export default class ServiceMenuOne extends JetView {
         });
 
         this.on(this.app, "app:calibrationSubview:startCalibrate", (type) => {
-            $$('buttonService').disable();
+            this.$$('buttonService').disable();
             $$('buttonPassword').disable();
         });
 
         this.on(this.app, "app:calibrationSubview:finishCalibrate", () => {
-            $$('buttonService').enable();
+            this.$$('buttonService').enable();
             $$('buttonPassword').enable();
         });
 
         if(configFile.theme == 'light'){
-            webix.html.addCss( $$("buttonService").getNode(), "button_right_menu_top_1");
+            webix.html.addCss( this.$$("buttonService").getNode(), "button_right_menu_top_1");
             webix.html.addCss( $$("buttonPassword").getNode(), "button_right_menu_top_1");
             webix.html.addCss( $$("popService").getNode(), "service_button");
         }
         if(configFile.theme == 'dark'){
-            webix.html.addCss( $$("buttonService").getNode(), "button_right_menu_top_1_dark");
+            webix.html.addCss( this.$$("buttonService").getNode(), "button_right_menu_top_1_dark");
             webix.html.addCss( $$("buttonPassword").getNode(), "button_right_menu_top_1_dark");
             webix.html.addCss( $$("popService").getNode(), "service_button_dark");
         }

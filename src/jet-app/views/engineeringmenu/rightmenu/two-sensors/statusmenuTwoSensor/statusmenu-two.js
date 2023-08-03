@@ -191,6 +191,7 @@ export default class StatusMenuTwo extends JetView{
             setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
         });
 
+        this.$$("show_choice_sensor_two").hide();
         this.on(this.app, "app:select_sensor:number", (value) => {
             console.log("dsdsd");
             switch(value){

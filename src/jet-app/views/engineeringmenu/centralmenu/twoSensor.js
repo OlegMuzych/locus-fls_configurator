@@ -6,6 +6,20 @@ import globalVariable from "../../../global-variable-app";
 export default class TwoSensor extends JetView {
 	config() {
 		const _ = this.app.getService("locale")._;
+		const segmentedCentralMenu = {
+				view: "segmented",
+				css: "central_cols_button",
+				localId: "style_general_rows",
+				multiview: true,
+				value: 1,
+				height: 100,
+				options: [
+					{value: _("main_settings"), id: '1',},
+					{value: _("calibration"), id: '2'},
+					{value: _("filtering"), id: '3'},
+				],
+			};
+
 		let configurationTwoSensor = {
 			rows: [
 				{
@@ -19,6 +33,7 @@ export default class TwoSensor extends JetView {
 						{value: _("two_sensor_button"), id: 'two_sensor'},
 					],
 				},
+				segmentedCentralMenu,
 				{
 					// animate:true,
 					animate:false,
@@ -54,6 +69,9 @@ export default class TwoSensor extends JetView {
 			$$("configuration_general_settings_sensor").define({hidden:true});
 		}
 
+		$$("configuration_general_settings_sensor").setValue("one_sensor");
+		// this.app.callEvent("app:select_sensor:number", ["first"]);
+
 		$$("configuration_general_settings_sensor").attachEvent("onChange", (newValue, oldValue, config)=>{
 			webix.message(newValue);
 			switch(newValue) {
@@ -77,6 +95,23 @@ export default class TwoSensor extends JetView {
 					break;
 				}
 			}
+		});
+
+		this.$$("style_general_rows").attachEvent("onChange", (newValue, oldValue, config)=>{
+			switch (newValue) {
+				case "1":{
+					this.app.callEvent("app:setting:general",[]);
+					break;}
+				case "2":{
+					this.app.callEvent("app:setting:calibration", []);
+					break;}
+				case "3":{
+					this.app.callEvent("app:setting:filtering", []);
+					break;}
+			}
+			// webix.message(
+			// 	`Value changed from ${oldValue} to ${newValue}. Source: ${config}`
+			// );
 		});
 	}
 }

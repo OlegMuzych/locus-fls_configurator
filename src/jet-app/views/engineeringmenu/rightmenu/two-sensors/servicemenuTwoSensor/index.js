@@ -19,6 +19,8 @@ export default class ServicemenuTwoSensor extends JetView {
     }
 
     init(){
+        this.$$("firstView").show();
+        this.$$("secondView").hide();
         this.on(this.app, "app:select_sensor:number", (value) => {
             switch(value){
                 case "first": {

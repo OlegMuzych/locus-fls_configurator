@@ -21,13 +21,13 @@ export default class RightMenu extends JetView{
                 view: "multiview",
                 cells: [
                     {
-                        id: 'calibrationSubView', rows: [CalibrationSubView],
+                        localId: 'calibrationSubView1', rows: [CalibrationSubView],
                     },
                     {
-                        id: 'fullEmptySubView', rows: [FullEmptySubView],
+                        localId: 'fullEmptySubView1', rows: [FullEmptySubView],
                     },
                     {
-                        id: 'filteringSubView', rows: [FiltrationSubView],
+                        localId: 'filteringSubView1', rows: [FiltrationSubView],
                     }
                 ],
 
@@ -92,23 +92,24 @@ export default class RightMenu extends JetView{
         return body;
     }
     init(){
+        console.log("Я здесь!!!");
         this.on(this.app, "app:setting:general", ()=>{
                 console.log('Click');
-                $$('fullEmptySubView').show();
+                this.$$('fullEmptySubView1').show();
             }
         );
 
         this.on(this.app, "app:setting:filtering", ()=>{
-                $$('filteringSubView').show();
+                this.$$('filteringSubView1').show();
             }
         );
 
         this.on(this.app, "app:setting:calibration", ()=>{
-                $$('calibrationSubView').show();
+                this.$$('calibrationSubView1').show();
             }
         );
 
-        $$('fullEmptySubView').show();
+        this.$$('fullEmptySubView1').show();
 
         if(configFile.theme == 'light'){
             webix.html.addCss( $$("rows_right_2").getNode(), "rows_right");

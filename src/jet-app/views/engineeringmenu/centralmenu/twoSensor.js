@@ -62,12 +62,12 @@ export default class TwoSensor extends JetView {
 	};
 
 	init() {
-		if(globalVariable.twoSensorMode){
-			console.log();
-			$$("configuration_general_settings_sensor").define({hidden:false});
-		}else{
-			$$("configuration_general_settings_sensor").define({hidden:true});
-		}
+		// if(globalVariable.twoSensorMode){
+		// 	console.log();
+		// 	$$("configuration_general_settings_sensor").define({hidden:false});
+		// }else{
+		// 	$$("configuration_general_settings_sensor").define({hidden:true});
+		// }
 
 		$$("configuration_general_settings_sensor").setValue("one_sensor");
 		// this.app.callEvent("app:select_sensor:number", ["first"]);

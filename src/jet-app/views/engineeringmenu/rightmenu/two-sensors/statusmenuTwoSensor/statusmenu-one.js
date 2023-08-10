@@ -153,7 +153,7 @@ export default class StatusMenuOne extends JetView{
 
     listenerConnect = ()=>{
         setStatusConnect(true);
-        llsModel.getLongData();
+        llsModelOne.getLongData();
     }
 
     listenerDisconnect = ()=>{

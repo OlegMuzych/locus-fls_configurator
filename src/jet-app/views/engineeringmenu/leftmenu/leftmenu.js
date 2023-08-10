@@ -1,8 +1,10 @@
 import {JetView} from "webix-jet";
 import configFile from "../../../config-app";
-import llsModel from "../../../models/lls-model";
+// import llsModel from "../../../models/lls-model";
+import {llsModelOne} from "../../../models/lls-test-models";
 import trademark from "../../../../trademark/trademark";
 
+const llsModel = llsModelOne;
 export default class LeftMenu extends JetView{
     config(){
         const _ = this.app.getService("locale")._;

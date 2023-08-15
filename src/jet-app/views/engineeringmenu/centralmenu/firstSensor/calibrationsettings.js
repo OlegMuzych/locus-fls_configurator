@@ -110,7 +110,7 @@ export default class CalibrationSettings extends JetView {
         }
 
         
-        this.on(this.app, "app:calibrationsubview:addStep", (volumeStep) => {
+        this.on(this.app, "app:calibrationsubview:one:addStep", (volumeStep) => {
             if(this.#volume.length){
                 let volumes = [ ...this.#volume];
                 let lastVolumeStep = this.$$(volumes.pop()).getValue();
@@ -122,7 +122,7 @@ export default class CalibrationSettings extends JetView {
             this.saveTable();
         });
 
-        this.on(this.app, "app:calibrationsubview:drain:addStep", (volumeStep) => {
+        this.on(this.app, "app:calibrationsubview:one:drain:addStep", (volumeStep) => {
             if(this.#volume.length){
                 let volumes = [ ...this.#volume];
                 let lastVolumeStep = this.$$(volumes.pop()).getValue();
@@ -137,17 +137,17 @@ export default class CalibrationSettings extends JetView {
             this.saveTable();
         });
 
-        this.on(this.app, "app:calibrationsubview:removeRow", () => {
+        this.on(this.app, "app:calibrationsubview:one:removeRow", () => {
             this.removeStep();
             this.saveTable();
         });
 
-        this.on(this.app, "app:calibrationsubview:clearTable", () => {
+        this.on(this.app, "app:calibrationsubview:one:clearTable", () => {
             this.removeAll();
             this.saveTable();
         });
 
-        this.on(this.app, "app:calibrationsubview:countStep", (countStep, firstVolume) => {
+        this.on(this.app, "app:calibrationsubview:one:countStep", (countStep, firstVolume) => {
             this.removeAll();
             this.addRow(1,0, firstVolume);
             for(let i = 0; i < (countStep); i++){
@@ -158,7 +158,7 @@ export default class CalibrationSettings extends JetView {
 
         });
 
-        this.on(this.app, "app:calibrationsubview:finishCalibrate", () => {
+        this.on(this.app, "app:calibrationsubview:one:finishCalibrate", () => {
             let  count = this.#number.length
             for(let i = 0; i < count; i++){
                 if(this.#number.length > this.#level.length){
@@ -173,7 +173,7 @@ export default class CalibrationSettings extends JetView {
 
         });
 
-        this.on(this.app, "app:continueCalibrateWindow:continueCalibrate", () => {
+        this.on(this.app, "app:continueCalibrateWindow:one:continueCalibrate", () => {
             let countStep = this.#number.length;
             let maxVolume = 0;
             for(let i = 1; i< countStep; i++){
@@ -198,18 +198,18 @@ export default class CalibrationSettings extends JetView {
             for(let i = 0; i < (countStep - countStepNoEmpty); i++){
 
             }
-            this.app.callEvent("app:calibrationSettings:continueCalibrate", [volume, volumeStep]);
+            this.app.callEvent("app:calibrationSettings:one:continueCalibrate", [volume, volumeStep]);
         });
 
-        this.on(this.app, "app:calibrationsubview:saveToFile", async() => { //save to file
+        this.on(this.app, "app:calibrationsubview:one:saveToFile", async() => { //save to file
             await llsModelOne.getTable();
             fileTableModel.write(this.currentTable).then();
         });
 
-        this.on(this.app, "app:calibrationsubview:readFromFile", () => { // read from file
+        this.on(this.app, "app:calibrationsubview:one:readFromFile", () => { // read from file
             fileTableModel.read()
                 .then((table)=>{
-                    this.app.callEvent("app:calibrationSettings:openTableFromFile", [table]);
+                    this.app.callEvent("app:calibrationSettings:one:openTableFromFile", [table]);
                 })
                 .catch((err)=>{console.log(err)});
         });

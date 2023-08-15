@@ -180,12 +180,12 @@ export default class StatusMenuOne extends JetView{
         this.fullLevelDefault = false;
         this.emptyLevelDefault = false;
 
-        this.on(this.app, "app:fullemptysubview:fullTankDefault", (status) => {
+        this.on(this.app, "app:fullemptysubview:one:fullTankDefault", (status) => {
             this.fullLevelDefault = status;
             setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
         });
 
-        this.on(this.app, "app:fullemptysubview:emptyTankDefault", (status) => {
+        this.on(this.app, "app:fullemptysubview:one:emptyTankDefault", (status) => {
             this.emptyLevelDefault = status;
             setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
         });

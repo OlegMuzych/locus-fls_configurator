@@ -83,8 +83,8 @@ export default class CalibrationsubviewOne extends JetView {
             height: 70,
             multiview: true,
             options: [
-                {value: _("tabbar_drain"), id: "fuelDrain"},
-                {value: _("tabbar_fill"), id: "fuelFill"},
+                {value: _("tabbar_drain"), id: "fuelDrain_one"},
+                {value: _("tabbar_fill"), id: "fuelFill_one"},
             ]
         };
 
@@ -92,10 +92,10 @@ export default class CalibrationsubviewOne extends JetView {
             view: "multiview",
             cells: [
                 {
-                    id: 'fuelDrain', rows: [FuelDrainView],
+                    id: 'fuelDrain_one', rows: [FuelDrainView],
                 },
                 {
-                    id: "fuelFill", rows: [FuelFillView],
+                    id: "fuelFill_one", rows: [FuelFillView],
                 },
 
             ],
@@ -184,22 +184,22 @@ export default class CalibrationsubviewOne extends JetView {
         }));
         // llsModel.addListenerLongData(this.listenerLongData);
         this.on(this.app, "app:calibrationSettings:continueCalibrate", () => {
-            this.$$('tabbar').setValue("fuelFill");
+            this.$$('tabbar').setValue("fuelFill_one");
         });
 
         this.on(this.app, "app:calibrationSubview:startCalibrate", (type) => {
             if (type == 'fill') {
-                this.$$('tabbar').disableOption('fuelDrain');
+                this.$$('tabbar').disableOption('fuelDrain_one');
             }
 
             if (type == 'drain') {
-                this.$$('tabbar').disableOption('fuelFill');
+                this.$$('tabbar').disableOption('fuelFill_one');
             }
         });
 
         this.on(this.app, "app:calibrationSubview:finishCalibrate", () => {
-            this.$$('tabbar').enableOption('fuelFill');
-            this.$$('tabbar').enableOption('fuelDrain');
+            this.$$('tabbar').enableOption('fuelFill_one');
+            this.$$('tabbar').enableOption('fuelDrain_one');
         });
 
         this.$$('button_import').attachEvent("onItemClick", (id, e) => {

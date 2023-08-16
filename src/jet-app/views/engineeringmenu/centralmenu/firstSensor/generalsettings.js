@@ -518,7 +518,7 @@ export default class GeneralSettings extends JetView {
                                 css: "window_type_1",
                                 inputAlign: "center",
                                 readonly: true,
-                                id: "window_type_1",
+                                id: "window_type_1_one",
                             },
                         ]
                     },
@@ -603,7 +603,7 @@ export default class GeneralSettings extends JetView {
 
     listenerLongData = (longData) => {
         let serialNumber = sn2ascii(longData.serialNumber);
-        $$('window_type_1').setValue(serialNumber);
+        $$('window_type_1_one').setValue(serialNumber);
 
         this.setTextValue("textLlsAdr", 'llsAdr', "statusLlsAdr");
 
@@ -912,7 +912,7 @@ export default class GeneralSettings extends JetView {
         if (configFile.theme == 'light') {
             webix.html.addCss($$("rows_number_2").getNode(), "window_type_2");
             webix.html.addCss($$("central_menu_button_1").getNode(), "style_general_rows");
-            webix.html.addCss($$("window_type_1").getNode(), "window_type_1");
+            webix.html.addCss($$("window_type_1_one").getNode(), "window_type_1");
             webix.html.addCss($$("rows_number_4").getNode(), "window_type_2");
             webix.html.addCss(this.$$("textMinLevel").getNode(), "window_type_2");
             webix.html.addCss(this.$$("textMaxLevel").getNode(), "window_type_2");
@@ -923,7 +923,7 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss(this.$$("rows_number_3").getNode(), "window_type_2");
             webix.html.addCss(this.$$("textAutoGetData").getNode(), "window_type_2");
             webix.html.addCss(this.$$("rows_number_7").getNode(), "window_type_2");
-            webix.html.addCss(this.$$("window_type_2_7").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("outputParametersOfSensor_one").getNode(), "window_type_2");
             webix.html.addCss(this.$$("rows_number_6_one").getNode(), "window_type_2");
             webix.html.addCss(this.$$("window_type_2_6").getNode(), "window_type_2");
             webix.html.addCss(this.$$("window_type_4_4").getNode(), "window_type_2");
@@ -941,13 +941,13 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss(this.$$("buttonCoefficientK2").getNode(), "auto_calibration");
             webix.html.addCss(this.$$("buttonCoefficientK1").getNode(), "auto_calibration");
             webix.html.addCss(this.$$("buttonFuelType").getNode(), "auto_calibration");
-            webix.html.addCss(this.$$("window_type_2_7").getNode(), "window_type_2");
+            webix.html.addCss(this.$$("outputParametersOfSensor_one").getNode(), "window_type_2");
         }
 
         if (configFile.theme == 'dark') {
             webix.html.addCss($$("rows_number_2").getNode(), "window_type_2_dark");
             webix.html.addCss($$("central_menu_button_1").getNode(), "style_general_rows_dark");
-            webix.html.addCss($$("window_type_1").getNode(), "window_type_1_dark");
+            webix.html.addCss($$("window_type_1_one").getNode(), "window_type_1_dark");
             webix.html.addCss($$("rows_number_4").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("textMinLevel").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("textMaxLevel").getNode(), "window_type_2_dark");
@@ -958,7 +958,7 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss(this.$$("rows_number_3").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("textAutoGetData").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("rows_number_7").getNode(), "window_type_2_dark");
-            webix.html.addCss(this.$$("window_type_2_7").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("outputParametersOfSensor_one").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("rows_number_6_one").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("window_type_2_6").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("window_type_4_4").getNode(), "window_type_2_dark");
@@ -976,7 +976,7 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss(this.$$("buttonCoefficientK2").getNode(), "auto_calibration_dark");
             webix.html.addCss(this.$$("buttonCoefficientK1").getNode(), "auto_calibration_dark");
             webix.html.addCss(this.$$("buttonFuelType").getNode(), "auto_calibration_dark");
-            webix.html.addCss(this.$$("window_type_2_7").getNode(), "window_type_2_dark");
+            webix.html.addCss(this.$$("outputParametersOfSensor_one").getNode(), "window_type_2_dark");
         }
     }
 

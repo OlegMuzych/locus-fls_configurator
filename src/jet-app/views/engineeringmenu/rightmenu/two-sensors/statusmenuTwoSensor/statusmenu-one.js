@@ -9,7 +9,7 @@ export default class StatusMenuOne extends JetView{
 
         let right_menu_status={
             css:"right_menu_status",
-            id:"right_menu_status",
+            id:"right_menu_status_one",
             width: 550,
             rows:[
                 {
@@ -43,8 +43,8 @@ export default class StatusMenuOne extends JetView{
                 {
                     cols:[
                         {width: 70,},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_3"},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_3",},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", localId:"button_define_define_3_one"},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", localId:"button_define_3_one",},
                         {width: 20,},
                         {view:"label", label:_("status_calibration"), height: 30, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_3"}
                     ]
@@ -55,8 +55,8 @@ export default class StatusMenuOne extends JetView{
                 {
                     cols:[
                         {width: 70,},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_4_base", },
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_4",},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", localId:"button_define_4_base_one", },
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", localId:"button_define_4_one",},
                         {width: 20,},
                         {view:"label", label:_("status_thermal_compensation"), height: 30, width:200, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_4"},
                         {
@@ -145,19 +145,19 @@ export default class StatusMenuOne extends JetView{
 
     listenerLongData = (longData)=>{
         if(longData.thermalCompensationType){
-            setTermoState(true);
+            this.setTermoStateOne(true);
         }else{
-            setTermoState(false);
+            this.setTermoStateOne(false);
         }
     }
 
     listenerConnect = ()=>{
-        setStatusConnect(true);
+        this.setStatusConnect(true);
         llsModelOne.getLongData();
     }
 
     listenerDisconnect = ()=>{
-        setStatusConnect(false);
+        this.setStatusConnect(false);
     }
 
     listenerReadCnt= (readCnt)=>{
@@ -165,10 +165,10 @@ export default class StatusMenuOne extends JetView{
     }
 
     init(){
-        setStatusConnect(false);
-        setFuelState(false);
-        setCalibrateState(false);
-        setTermoState(false);
+        this.setStatusConnect(false);
+        this.setFuelState(false);
+        this.setCalibrateStateOne(false);
+        this.setTermoStateOne(false);
 
         llsModelOne.addListenerIsConnect(this.listenerConnect);
         llsModelOne.addListenerIsDisconnect(this.listenerDisconnect);
@@ -182,12 +182,12 @@ export default class StatusMenuOne extends JetView{
 
         this.on(this.app, "app:fullemptysubview:one:fullTankDefault", (status) => {
             this.fullLevelDefault = status;
-            setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
+            this.setCalibrateStateOne(this.fullLevelDefault && this.emptyLevelDefault);
         });
 
         this.on(this.app, "app:fullemptysubview:one:emptyTankDefault", (status) => {
             this.emptyLevelDefault = status;
-            setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
+            this.setCalibrateStateOne(this.fullLevelDefault && this.emptyLevelDefault);
         });
 
         this.$$("show_choice_sensor_two").show();
@@ -206,7 +206,7 @@ export default class StatusMenuOne extends JetView{
 
 
         if(configFile.theme == 'light'){
-            webix.html.addCss( $$("right_menu_status").getNode(), "right_menu_status");
+            webix.html.addCss( $$("right_menu_status_one").getNode(), "right_menu_status");
             webix.html.addCss( $$("rows_level_right_menu_info_1").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info");
@@ -215,7 +215,7 @@ export default class StatusMenuOne extends JetView{
 
         }
         if(configFile.theme == 'dark'){
-            webix.html.addCss( $$("right_menu_status").getNode(), "right_menu_status_dark");
+            webix.html.addCss( $$("right_menu_status_one").getNode(), "right_menu_status_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_1").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info_dark");
@@ -230,50 +230,90 @@ export default class StatusMenuOne extends JetView{
         let difference = Math.abs(this.lastCnt - currentLevel);
         this.lastCnt = currentLevel;
         if(difference > configApp.settings.differenceFuelForStable){
-            setFuelState(false);
+            this.setFuelState(false);
         }else{
-            setFuelState(true);
+            this.setFuelState(true);
         }
     }
+
+    setStatusConnect(status){
+        if(status){
+            $$("button_define_define_1").show();
+            $$("button_define_1").hide();
+        }else{
+            $$("button_define_define_1").hide();
+            $$("button_define_1").show();
+        }
+    };
+
+    setFuelState(status){
+        if(status){
+            $$("button_define_define_2").show();
+            $$("button_define_2").hide();
+        }else{
+            $$("button_define_define_2").hide();
+            $$("button_define_2").show();
+        }
+    };
+
+    setCalibrateStateOne(status){
+        if(status){
+            this.$$("button_define_define_3_one").show();
+            this.$$("button_define_3_one").hide();
+        }else{
+            this.$$("button_define_define_3_one").hide();
+            this.$$("button_define_3_one").show();
+        }
+    };
+
+    setTermoStateOne(status){
+        if(status){
+            this.$$("button_define_4_base_one").show();
+            this.$$("button_define_4_one").hide();
+        }else{
+            this.$$("button_define_4_base_one").hide();
+            this.$$("button_define_4_one").show();
+        }
+    };
 }
 
-function setStatusConnect(status){
-    if(status){
-        $$("button_define_define_1").show();
-        $$("button_define_1").hide();
-    }else{
-        $$("button_define_define_1").hide();
-        $$("button_define_1").show();
-    }
-};
+// function setStatusConnect(status){
+//     if(status){
+//         $$("button_define_define_1").show();
+//         $$("button_define_1").hide();
+//     }else{
+//         $$("button_define_define_1").hide();
+//         $$("button_define_1").show();
+//     }
+// };
+//
+// function setFuelState(status){
+//     if(status){
+//         $$("button_define_define_2").show();
+//         $$("button_define_2").hide();
+//     }else{
+//         $$("button_define_define_2").hide();
+//         $$("button_define_2").show();
+//     }
+// };
+//
+// function setCalibrateState(status){
+//     if(status){
+//         $$("button_define_define_3").show();
+//         $$("button_define_3").hide();
+//     }else{
+//         $$("button_define_define_3").hide();
+//         $$("button_define_3").show();
+//     }
+// };
 
-function setFuelState(status){
-    if(status){
-        $$("button_define_define_2").show();
-        $$("button_define_2").hide();
-    }else{
-        $$("button_define_define_2").hide();
-        $$("button_define_2").show();
-    }
-};
 
-function setCalibrateState(status){
-    if(status){
-        $$("button_define_define_3").show();
-        $$("button_define_3").hide();
-    }else{
-        $$("button_define_define_3").hide();
-        $$("button_define_3").show();
-    }
-};
-
-
-function setTermoState(status){
-    if(status){
-        $$("button_define_4_base").show();
-        $$("button_define_4").hide();
-    }else{
-        $$("button_define_4_base").hide();
-        $$("button_define_4").show();
-    }
-};
+// function setTermoState(status){
+//     if(status){
+//         $$("button_define_4_base_one").show();
+//         $$("button_define_4_one").hide();
+//     }else{
+//         $$("button_define_4_base_one").hide();
+//         $$("button_define_4_one").show();
+//     }
+// };

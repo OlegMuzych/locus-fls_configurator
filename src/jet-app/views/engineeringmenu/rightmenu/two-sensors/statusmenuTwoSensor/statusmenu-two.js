@@ -9,7 +9,7 @@ export default class StatusMenuTwo extends JetView{
 
         let right_menu_status={
             css:"right_menu_status",
-            id:"right_menu_status",
+            id:"right_menu_status_two",
             width: 550,
             rows:[
                 {
@@ -22,7 +22,7 @@ export default class StatusMenuTwo extends JetView{
                         {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_1"},
                         {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_1",},
                         {width: 20,},
-                        {view:"label", label:_("status_sensor_is_connected"), height: 30, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_1"}
+                        {view:"label", label:_("status_sensor_is_connected_2"), height: 30, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_1"}
                     ]
                 },
                 {
@@ -43,8 +43,8 @@ export default class StatusMenuTwo extends JetView{
                 {
                     cols:[
                         {width: 70,},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_3"},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_3",},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", localId:"button_define_define_3"},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", localId:"button_define_3",},
                         {width: 20,},
                         {view:"label", label:_("status_calibration"), height: 30, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_3"}
                     ]
@@ -55,8 +55,8 @@ export default class StatusMenuTwo extends JetView{
                 {
                     cols:[
                         {width: 70,},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_4_base", },
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_4",},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", localId:"button_define_4_base", },
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", localId:"button_define_4",},
                         {width: 20,},
                         {view:"label", label:_("status_thermal_compensation"), height: 30, width:200, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_4"},
                         {
@@ -146,19 +146,19 @@ export default class StatusMenuTwo extends JetView{
 
     listenerLongData = (longData)=>{
         if(longData.thermalCompensationType){
-            setTermoState(true);
+            this.setTermoState(true);
         }else{
-            setTermoState(false);
+            this.setTermoState(false);
         }
     }
 
     listenerConnect = ()=>{
-        setStatusConnect(true);
+        this.setStatusConnect(true);
         llsModelTwo.getLongData();
     }
 
     listenerDisconnect = ()=>{
-        setStatusConnect(false);
+        this.setStatusConnect(false);
     }
 
     listenerReadCnt= (readCnt)=>{
@@ -166,10 +166,10 @@ export default class StatusMenuTwo extends JetView{
     }
 
     init(){
-        setStatusConnect(false);
-        setFuelState(false);
-        setCalibrateState(false);
-        setTermoState(false);
+        this.setStatusConnect(false);
+        this.setFuelState(false);
+        this.setCalibrateState(false);
+        this.setTermoState(false);
 
         llsModelTwo.addListenerIsConnect(this.listenerConnect);
         llsModelTwo.addListenerIsDisconnect(this.listenerDisconnect);
@@ -183,12 +183,12 @@ export default class StatusMenuTwo extends JetView{
 
         this.on(this.app, "app:fullemptysubview:fullTankDefault", (status) => {
             this.fullLevelDefault = status;
-            setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
+            this.setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
         });
 
         this.on(this.app, "app:fullemptysubview:emptyTankDefault", (status) => {
             this.emptyLevelDefault = status;
-            setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
+            this.setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
         });
 
         this.$$("show_choice_sensor_two").hide();
@@ -207,7 +207,7 @@ export default class StatusMenuTwo extends JetView{
         });
 
         if(configFile.theme == 'light'){
-            webix.html.addCss( $$("right_menu_status").getNode(), "right_menu_status");
+            webix.html.addCss( $$("right_menu_status_two").getNode(), "right_menu_status");
             webix.html.addCss( $$("rows_level_right_menu_info_1").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info");
@@ -215,7 +215,7 @@ export default class StatusMenuTwo extends JetView{
             webix.html.addCss( $$("window_temp").getNode(), "window_temp");
         }
         if(configFile.theme == 'dark'){
-            webix.html.addCss( $$("right_menu_status").getNode(), "right_menu_status_dark");
+            webix.html.addCss( $$("right_menu_status_two").getNode(), "right_menu_status_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_1").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info_dark");
@@ -229,50 +229,92 @@ export default class StatusMenuTwo extends JetView{
         let difference = Math.abs(this.lastCnt - currentLevel);
         this.lastCnt = currentLevel;
         if(difference > configApp.settings.differenceFuelForStable){
-            setFuelState(false);
+            this.setFuelState(false);
         }else{
-            setFuelState(true);
+            this.setFuelState(true);
         }
     }
+
+    setStatusConnect(status){
+        if(status){
+            $$("button_define_define_1").show();
+            $$("button_define_1").hide();
+        }else{
+            $$("button_define_define_1").hide();
+            $$("button_define_1").show();
+        }
+    };
+
+    setFuelState(status){
+        if(status){
+            $$("button_define_define_2").show();
+            $$("button_define_2").hide();
+        }else{
+            $$("button_define_define_2").hide();
+            $$("button_define_2").show();
+        }
+    };
+
+    setCalibrateState(status){
+        if(status){
+            this.$$("button_define_define_3").show();
+            this.$$("button_define_3").hide();
+        }else{
+            this.$$("button_define_define_3").hide();
+            this.$$("button_define_3").show();
+        }
+    };
+
+
+    setTermoState(status){
+        if(status){
+            this.$$("button_define_4_base").show();
+            this.$$("button_define_4").hide();
+        }else{
+            this.$$("button_define_4_base").hide();
+            this.$$("button_define_4").show();
+        }
+    };
+
 }
 
-function setStatusConnect(status){
-    if(status){
-        $$("button_define_define_1").show();
-        $$("button_define_1").hide();
-    }else{
-        $$("button_define_define_1").hide();
-        $$("button_define_1").show();
-    }
-};
-
-function setFuelState(status){
-    if(status){
-        $$("button_define_define_2").show();
-        $$("button_define_2").hide();
-    }else{
-        $$("button_define_define_2").hide();
-        $$("button_define_2").show();
-    }
-};
-
-function setCalibrateState(status){
-    if(status){
-        $$("button_define_define_3").show();
-        $$("button_define_3").hide();
-    }else{
-        $$("button_define_define_3").hide();
-        $$("button_define_3").show();
-    }
-};
-
-
-function setTermoState(status){
-    if(status){
-        $$("button_define_4_base").show();
-        $$("button_define_4").hide();
-    }else{
-        $$("button_define_4_base").hide();
-        $$("button_define_4").show();
-    }
-};
+// function setStatusConnect(status){
+//     if(status){
+//         $$("button_define_define_1").show();
+//         $$("button_define_1").hide();
+//     }else{
+//         $$("button_define_define_1").hide();
+//         $$("button_define_1").show();
+//     }
+// };
+//
+// function setFuelState(status){
+//     if(status){
+//         $$("button_define_define_2").show();
+//         $$("button_define_2").hide();
+//     }else{
+//         $$("button_define_define_2").hide();
+//         $$("button_define_2").show();
+//     }
+// };
+//
+// function setCalibrateState(status){
+//     if(status){
+//         $$("button_define_define_3").show();
+//         $$("button_define_3").hide();
+//     }else{
+//         $$("button_define_define_3").hide();
+//         $$("button_define_3").show();
+//     }
+// };
+//
+//
+// function setTermoState(status){
+//     if(status){
+//         $$("button_define_4_base").show();
+//         $$("button_define_4").hide();
+//     }else{
+//         $$("button_define_4_base").hide();
+//         $$("button_define_4").show();
+//     }
+// };

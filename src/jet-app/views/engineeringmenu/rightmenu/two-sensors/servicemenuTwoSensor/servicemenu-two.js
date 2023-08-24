@@ -79,7 +79,8 @@ export default class ServiceMenuTwo extends JetView {
         $$("list").attachEvent("onItemClick", (id, name, e) => {
             console.log("click");
             if (id == 'resetLls') {
-                this.resetLlsWindow.showWindow();
+                // this.resetLlsWindow.showWindow();
+                this.resetLlsWindow.showWindow(llsModel);
             }
 
             if (id == 'updateFramework') {

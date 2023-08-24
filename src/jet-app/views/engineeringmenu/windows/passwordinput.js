@@ -1,8 +1,9 @@
 import {JetView} from "webix-jet";
-import llsModel from "../../../models/lls-model";
+// import llsModel from "../../../models/lls-model";
 import configFile from "../../../config-app";
 
 export default class PasswordInputWindow extends JetView {
+    llsModel = undefined;
     config() {
         const _ = this.app.getService("locale")._;
 
@@ -199,7 +200,7 @@ export default class PasswordInputWindow extends JetView {
 
         this.$$('buttonResetOk').attachEvent("onItemClick", (id, e) => {
             console.log('click');
-            llsModel.resetLls().then();
+            this.llsModel.resetLls().then();
             this.getRoot().hide();
             //todo: command resetLls
         });
@@ -219,7 +220,7 @@ export default class PasswordInputWindow extends JetView {
 
     pressOk = ()=>{
         let pass = this.$$("textCurrentPass").getValue();
-        llsModel.setCurrentPassword(pass)
+        this.llsModel.setCurrentPassword(pass)
             .then(()=>{
                 this.passValidFlag = true;
                 this.$$('textCurrentPass').validate();
@@ -234,7 +235,8 @@ export default class PasswordInputWindow extends JetView {
     }
 
 
-    showWindow() {
+    showWindow(llsModel) {
+        this.llsModel = llsModel
         this.getRoot().show();
     }
 

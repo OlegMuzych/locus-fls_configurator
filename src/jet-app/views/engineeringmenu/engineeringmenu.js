@@ -3,7 +3,7 @@ import {JetView} from "webix-jet";
 import RightMenu from "./rightmenu/one-sensor/rightmenu";
 import LeftMenu from "./leftmenu/leftmenu";
 // import llsModel from "../../models/lls-model";
-import {llsModelOne} from "../../models/lls-test-models";
+import {llsModelOne, llsModelTwo} from "../../models/lls-test-models";
 import PasswordWindow from "./windows/password";
 import ContinueCalibrateWindow from "./windows/continuecalibrate";
 import configFile from "../../config-app";
@@ -59,7 +59,7 @@ export default class EngineeringMenu extends JetView{
                         break;
                     }
                     case 0x02:{
-                        this.passwordInput.showWindow();
+                        this.passwordInput.showWindow(llsModelOne);
                         break;
                     }
                     default:{

@@ -3,12 +3,9 @@ import llsModel from "../../../models/lls-model";
 import configFile from "../../../config-app";
 
 export default class PasswordWindow extends JetView {
+    llsModel = undefined;
     config() {
         const _ = this.app.getService("locale")._;
-
-
-
-
         let elements = {
             rows: [
                 {
@@ -18,18 +15,18 @@ export default class PasswordWindow extends JetView {
                     multiview: true,
                     height: 80,
                     options: [
-                        {value: _("window_password_segmented_new"), id: 'rows_21'},
-                        {value: _("window_password_segmented_current"), id: 'rows_22'},
+                        {value: _("window_password_segmented_new"), localId: 'rows_21'},
+                        {value: _("window_password_segmented_current"), localId: 'rows_22'},
                     ],
                 },
 
                 {
                     css:"window_show_password",
-                    id: "rows_11",
+                    localId: "rows_11",
                     animate: false,
                     cells: [
                         {
-                            id: "rows_22",
+                            localId: "rows_22",
                             rows: [
                                 {
                                     height: 30,
@@ -113,9 +110,8 @@ export default class PasswordWindow extends JetView {
                         {
 
                         },
-
                         {
-                            id: "rows_21",
+                            localId: "rows_21",
                             cols: [
                                 {
                                     rows: [
@@ -238,6 +234,24 @@ export default class PasswordWindow extends JetView {
     init() {
         this.passValidFlag = true;
 
+        this.$$("tabbar_windows_password").attachEvent("onChange", (newValue, oldValue, config)=>{
+            webix.message(newValue);
+            switch(newValue){
+                case "Ввести":{
+                    // console.log("111");
+                    this.$$("rows_21").hide();
+                    this.$$("rows_22").show();
+                    break;
+                }
+                case "Задать новый":{
+                    // console.log("2222");
+                    this.$$("rows_21").show();
+                    this.$$("rows_22").hide();
+                    break;
+                }
+            }
+        });
+
         this.$$('buttonCancel_1').attachEvent("onItemClick", (id, e) => {
             console.log('click');
             this.getRoot().hide();
@@ -252,7 +266,7 @@ export default class PasswordWindow extends JetView {
             console.log('click');
 
             let pass = this.$$("textCurrentPass").getValue();
-            llsModel.setCurrentPassword(pass)
+            this.llsModel.setCurrentPassword(pass)
                 .then(()=>{
                     this.passValidFlag = true;
                     this.$$('textCurrentPass').validate();
@@ -269,7 +283,7 @@ export default class PasswordWindow extends JetView {
             console.log('click');
             let currentPass = this.$$("textCurrentPass_2").getValue();
             let newPass = this.$$('textNewPass').getValue();
-            llsModel.setNewPassword(currentPass, newPass)
+            this.llsModel.setNewPassword(currentPass, newPass)
                 .then(()=>{
                     this.passValidFlag = true;
                     this.$$('textCurrentPass_2').validate();
@@ -287,7 +301,8 @@ export default class PasswordWindow extends JetView {
     }
 
 
-    showWindow() {
+    showWindow(llsModel) {
+        this.llsModel = llsModel;
         this.getRoot().show();
     }
 

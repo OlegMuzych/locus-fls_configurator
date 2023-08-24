@@ -34,7 +34,7 @@ export default class ServiceMenuOne extends JetView {
                             height: 70,
                             label: _("service_password"),
                             css: "button_right_menu_top_1",
-                            id: "buttonPassword"
+                            localId: "buttonPassword"
                         },
                         {}
                     ]
@@ -100,29 +100,29 @@ export default class ServiceMenuOne extends JetView {
         });
 
         this.passwordWindow = this.ui(PasswordWindow);
-        $$("buttonPassword").attachEvent("onItemClick", (id, name, e) => {
+        this.$$("buttonPassword").attachEvent("onItemClick", (id, name, e) => {
             console.log("click");
-            this.passwordWindow.showWindow();
+            this.passwordWindow.showWindow(llsModel);
         });
 
         this.on(this.app, "app:calibrationSubview:startCalibrate", (type) => {
             this.$$('buttonService').disable();
-            $$('buttonPassword').disable();
+            this.$$('buttonPassword').disable();
         });
 
         this.on(this.app, "app:calibrationSubview:finishCalibrate", () => {
             this.$$('buttonService').enable();
-            $$('buttonPassword').enable();
+            this.$$('buttonPassword').enable();
         });
 
         if(configFile.theme == 'light'){
             webix.html.addCss( this.$$("buttonService").getNode(), "button_right_menu_top_1");
-            webix.html.addCss( $$("buttonPassword").getNode(), "button_right_menu_top_1");
+            webix.html.addCss( this.$$("buttonPassword").getNode(), "button_right_menu_top_1");
             webix.html.addCss( $$("popService").getNode(), "service_button");
         }
         if(configFile.theme == 'dark'){
             webix.html.addCss( this.$$("buttonService").getNode(), "button_right_menu_top_1_dark");
-            webix.html.addCss( $$("buttonPassword").getNode(), "button_right_menu_top_1_dark");
+            webix.html.addCss( this.$$("buttonPassword").getNode(), "button_right_menu_top_1_dark");
             webix.html.addCss( $$("popService").getNode(), "service_button_dark");
         }
     }

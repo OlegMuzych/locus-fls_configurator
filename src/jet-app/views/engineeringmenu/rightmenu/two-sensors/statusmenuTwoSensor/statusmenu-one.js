@@ -31,8 +31,8 @@ export default class StatusMenuOne extends JetView{
                 {
                     cols:[
                         {width: 70,},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_2",},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_2",},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", localId:"button_define_define_2",},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", localId:"button_define_2",},
                         {width: 20,},
                         {view:"label", label:_("status_fuel_is_stable"), height: 30, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_2"}
                     ]
@@ -248,11 +248,11 @@ export default class StatusMenuOne extends JetView{
 
     setFuelState(status){
         if(status){
-            $$("button_define_define_2").show();
-            $$("button_define_2").hide();
+            this.$$("button_define_define_2").show();
+            this.$$("button_define_2").hide();
         }else{
-            $$("button_define_define_2").hide();
-            $$("button_define_2").show();
+            this.$$("button_define_define_2").hide();
+            this.$$("button_define_2").show();
         }
     };
 

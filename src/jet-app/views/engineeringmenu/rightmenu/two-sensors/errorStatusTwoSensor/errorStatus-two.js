@@ -6,7 +6,7 @@ import {
     ERROR_VALUE_TABLE,
     NO_ERROR
 } from "../../../../../error-codes";
-import {llsModelOne} from "../../../../../models/lls-test-models";
+import {llsModelTwo} from "../../../../../models/lls-test-models";
 import configFile from "../../../../../config-app";
 
 export default class ErrorStatusTwo extends JetView {
@@ -119,15 +119,15 @@ export default class ErrorStatusTwo extends JetView {
 
     destroy() {
         super.destroy();
-        llsModelOne.clearListenerLongData(this.listenerLongData);
-        llsModelOne.clearListenerShortData(this.listenerShortData);
-        llsModelOne.clearListenerTable(this.listenerTable);
+        llsModelTwo.clearListenerLongData(this.listenerLongData);
+        llsModelTwo.clearListenerShortData(this.listenerShortData);
+        llsModelTwo.clearListenerTable(this.listenerTable);
     }
 
     init() {
-        llsModelOne.addListenerLongData(this.listenerLongData);
-        llsModelOne.addListenerShortData(this.listenerShortData);
-        llsModelOne.addListenerTable(this.listenerTable);
+        llsModelTwo.addListenerLongData(this.listenerLongData);
+        llsModelTwo.addListenerShortData(this.listenerShortData);
+        llsModelTwo.addListenerTable(this.listenerTable);
 
         this.setErrorStatus(NO_ERROR);
 

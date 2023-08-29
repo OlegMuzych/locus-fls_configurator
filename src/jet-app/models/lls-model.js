@@ -34,6 +34,12 @@ class LlsModel {
 
     /*** Event Short Data ***/
 
+    start(){
+        this.findFlag = true;
+    }
+    async stop(){
+        await this.findPort.setStop();
+    }
     /***/
     addListenerShortData(listener) {
         this._myEmitter.on('shortData', listener);
@@ -371,6 +377,28 @@ class LlsModel {
             this.#statusLls = 'stop';
             return "stop";
         }
+    }
+
+    async setStatusLlsStartPromise() {
+        if(this.#statusLls === 'stop'){
+            this.#statusLls = "noConnect";
+        }
+        // await this.findPort.setStop();
+
+        // if (this._lls) {
+        //     this.#statusLls = "stop";
+        //     try {
+        //         await this._lls.close();
+        //         this.#statusLls = "stop";
+        //         this._myEmitter.emit('isDisconnect');
+        //         return "stop";
+        //     } catch (e) {
+        //         throw e;
+        //     }
+        // } else {
+        //     this.#statusLls = 'stop';
+        //     return "stop";
+        // }
     }
 
     setStatusLlsNoConnect() {

@@ -837,6 +837,8 @@ export default class Page9View extends JetView {
         });
 
         function onePage(){
+            llsModelTwo.setStatusLlsStopPromise().then();
+
             globalVariable.twoSensorMode = false;
             $$("status_config_two_gage_1").show()
             $$("status_config_two_gage_2").hide();
@@ -844,8 +846,9 @@ export default class Page9View extends JetView {
             // $$("configuration_general_settings_sensor").hide();
         }
         function twoPage(){
-            globalVariable.twoSensorMode = true;
+            llsModelTwo.setStatusLlsStartPromise().then();
 
+            globalVariable.twoSensorMode = true;
             $$("status_config_two_gage_2").show();
             $$("status_config_two_gage_1").hide()
             $$("status_gage_show").show();

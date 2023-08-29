@@ -952,7 +952,7 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss(this.$$("textMinLevel").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("textMaxLevel").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("rows_number_5").getNode(), "window_type_2_dark");
-            webix.html.addCss(this.$$("counterPeriod_one").getNode(), "window_type_3_dark");
+            webix.html.addCss(this.$$("counterPeriod").getNode(), "window_type_3_dark");
             webix.html.addCss(this.$$("counterCounterPeriod_one").getNode(), "window_type_3_dark");
             webix.html.addCss(this.$$("textBaudRate").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("rows_number_3").getNode(), "window_type_2_dark");

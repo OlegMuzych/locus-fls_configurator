@@ -13,6 +13,7 @@ import TablePreviewWindow from "./windows/table-preview";
 import SaveSettingNotificationWindow from "./windows/save-setting-notification";
 import TwoSensor from "./centralmenu/twoSensor";
 import RightTwoSensor from "./rightmenu/right-two-sensorr";
+import globalVariable from "../../global-variable-app";
 
 export default class EngineeringMenu extends JetView{
     config() {
@@ -48,29 +49,77 @@ export default class EngineeringMenu extends JetView{
     }
 
     init(){
-        llsModelOne.checkPassword()
-            .then(()=>{
+        if(globalVariable.twoSensorMode === false){
+            llsModelOne.checkPassword()
+                .then(()=>{
 
-            })
-            .catch((status)=>{
-                switch(status){
-                    case 0x01:{
-                        this.llsNoConnectWindow.showWindow(); //в случае ошибки передачи команды
-                        break;
+                })
+                .catch((status)=>{
+                    switch(status){
+                        case 0x01:{
+                            this.llsNoConnectWindow.showWindow("1"); //в случае ошибки передачи команды
+                            break;
+                        }
+                        case 0x02:{
+                            this.passwordInput.showWindow(llsModelOne);
+                            break;
+                        }
+                        default:{
+                            this.llsNoConnectWindow.showWindow("1"); //в случае если датчик не подключен
+                            break;
+                        }
                     }
-                    case 0x02:{
-                        this.passwordInput.showWindow(llsModelOne);
-                        break;
+                });
+        }else{
+            llsModelOne.checkPassword()
+                .then(()=>{
+
+                })
+                .catch((status)=>{
+                    switch(status){
+                        case 0x01:{
+                            this.llsNoConnectWindow.showWindow("1"); //в случае ошибки передачи команды
+                            break;
+                        }
+                        case 0x02:{
+                            this.passwordInput.showWindow(llsModelOne);
+                            break;
+                        }
+                        default:{
+                            this.llsNoConnectWindow.showWindow("1"); //в случае если датчик не подключен
+                            break;
+                        }
                     }
-                    default:{
-                        this.llsNoConnectWindow.showWindow(); //в случае если датчик не подключен
-                        break;
+                });
+
+            llsModelTwo.checkPassword()
+                .then(()=>{
+
+                })
+                .catch((status)=>{
+                    switch(status){
+                        case 0x01:{
+                            this.llsNoConnectWindow.showWindow('2'); //в случае ошибки передачи команды
+                            break;
+                        }
+                        case 0x02:{
+                            this.passwordInput.showWindow(llsModelTwo);
+                            break;
+                        }
+                        default:{
+                            this.llsNoConnectWindow.showWindow("2"); //в случае если датчик не подключен
+                            break;
+                        }
                     }
-            }
-            });
+                });
+        }
+
 
         llsModelOne.addListenerCommandError(this.listenerCommandError);
         llsModelOne.addListenerIsDisconnect(this.listenerIsDisconnect);
+
+        llsModelTwo.addListenerCommandError(this.listenerCommandError);
+        llsModelTwo.addListenerIsDisconnect(this.listenerIsDisconnect);
 
         this.passwordWindow = this.ui(PasswordWindow);
         this.continueWindow = this.ui(ContinueCalibrateWindow);
@@ -123,7 +172,7 @@ export default class EngineeringMenu extends JetView{
     }
 
     listenerIsDisconnect = ()=>{
-        this.llsNoConnectWindow.showWindow();
+        this.llsNoConnectWindow.showWindow('1');
     }
 }
 

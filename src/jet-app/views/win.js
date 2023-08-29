@@ -514,7 +514,7 @@ export default class Page9View extends JetView {
 
 
 
-        var win_5 = webix.ui({
+        let win_5 = {
             view: "window",
             width: 1000,
             height: 500,
@@ -574,10 +574,10 @@ export default class Page9View extends JetView {
                     }
                 ]
             }
-        });
+        }
 
 
-        win_5.hide();
+        // win_5.hide();
 
 
 
@@ -734,7 +734,7 @@ export default class Page9View extends JetView {
     init(view) {
 
         $$("text_label_question").attachEvent("onItemClick", (id, e) => {
-            $$("window_show_5").show()
+            // $$("window_show_5").show()
          });
 
         $$("status_gage_show").hide();
@@ -760,9 +760,8 @@ export default class Page9View extends JetView {
             $$("switcher_config_gage").setValue(false);
             // $$("switcher_config_gage").refresh();
             // this.refresh();
-            // onePage();
+            onePage();
         }
-
         // setInterval(function(){
         //     var value = Math.floor(Math.random()*100);
         //     $$("b1").setValue(value);
@@ -873,8 +872,8 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("reference").getNode(), "button_1_dark");
             webix.html.addCss($$("application_menu").getNode(), "button_1_dark");
             webix.html.addCss(this.$$("button_reload").getNode(), "button_reload_dark");
-            webix.html.addCss($$("window_show_4").getNode(), "window_show_dark");
-            webix.html.addCss($$("window_show_5").getNode(), "window_show_dark");
+            // webix.html.addCss($$("window_show_4").getNode(), "window_show_dark");
+            // webix.html.addCss($$("window_show_5").getNode(), "window_show_dark");
             webix.html.addCss($$("upload_config_window_1").getNode(), "upload_config_window_dark");
             webix.html.addCss($$("boot_loader").getNode(), "upload_config_dark");
             webix.html.addCss($$("upload_config").getNode(), "upload_config_dark");
@@ -887,10 +886,10 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("status_config_two_gage_2").getNode(), "text_two_gage_dark");
             webix.html.addCss($$("status_config_two_gage_3").getNode(), "text_two_gage_dark");
             webix.html.addCss($$("text_label_question").getNode(), "text_label_question_dark");
-            webix.html.addCss($$("closed_windows_modal").getNode(), "closed_windows_modal_dark");
-            webix.html.addCss($$("closed_windows_modal_2").getNode(), "closed_windows_modal_dark");
-            webix.html.addCss($$("closed_windows_modal_3").getNode(), "closed_windows_modal_dark");
-            webix.html.addCss($$("closed_windows_modal_4").getNode(), "closed_windows_modal_dark");
+            // webix.html.addCss($$("closed_windows_modal").getNode(), "closed_windows_modal_dark");
+            // webix.html.addCss($$("closed_windows_modal_2").getNode(), "closed_windows_modal_dark");
+            // webix.html.addCss($$("closed_windows_modal_3").getNode(), "closed_windows_modal_dark");
+            // webix.html.addCss($$("closed_windows_modal_4").getNode(), "closed_windows_modal_dark");
 
             $$("logo_1").define("image", _t("image_logo_dark"));
             $$("logo_1").refresh();
@@ -900,7 +899,7 @@ export default class Page9View extends JetView {
             $$("engineering_setup").refresh();
             $$("reference").refresh();
             $$("application_menu").refresh();
-            $$("window_show_5").refresh();
+            // $$("window_show_5").refresh();
 
 
             //////////////////////////////////
@@ -919,8 +918,8 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("reference").getNode(), "button_1");
             webix.html.addCss($$("application_menu").getNode(), "button_1");
             webix.html.addCss(this.$$("button_reload").getNode(), "button_reload");
-            webix.html.addCss($$("window_show_4").getNode(), "window_show");
-            webix.html.addCss($$("window_show_5").getNode(), "window_show");
+            // webix.html.addCss($$("window_show_4").getNode(), "window_show");
+            // webix.html.addCss($$("window_show_5").getNode(), "window_show");
             webix.html.addCss($$("upload_config_window_1").getNode(), "upload_config_window");
             webix.html.addCss($$("boot_loader").getNode(), "upload_config");
             webix.html.addCss($$("upload_config").getNode(), "upload_config");
@@ -933,10 +932,10 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("status_config_two_gage_2").getNode(), "text_two_gage");
             webix.html.addCss($$("status_config_two_gage_3").getNode(), "text_two_gage");
             webix.html.addCss($$("text_label_question").getNode(), "text_label_question");
-            webix.html.addCss($$("closed_windows_modal").getNode(), "closed_windows_modal");
-            webix.html.addCss($$("closed_windows_modal_2").getNode(), "closed_windows_modal");
-            webix.html.addCss($$("closed_windows_modal_3").getNode(), "closed_windows_modal");
-            webix.html.addCss($$("closed_windows_modal_4").getNode(), "closed_windows_modal");
+            // webix.html.addCss($$("closed_windows_modal").getNode(), "closed_windows_modal");
+            // webix.html.addCss($$("closed_windows_modal_2").getNode(), "closed_windows_modal");
+            // webix.html.addCss($$("closed_windows_modal_3").getNode(), "closed_windows_modal");
+            // webix.html.addCss($$("closed_windows_modal_4").getNode(), "closed_windows_modal");
 
             $$("logo_1").define("image", _t("image_logo"));
             $$("logo_1").refresh();
@@ -946,7 +945,7 @@ export default class Page9View extends JetView {
             $$("engineering_setup").refresh();
             $$("reference").refresh();
             $$("application_menu").refresh();
-            $$("window_show_5").refresh();
+            // $$("window_show_5").refresh();
         }
     }
 }

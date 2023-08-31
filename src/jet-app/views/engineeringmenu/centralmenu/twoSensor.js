@@ -3,6 +3,7 @@ import {JetView} from "webix-jet";
 import CentralMenuSecond from "./secondSensor/centralmenu";
 import CentralMenuFirst from "./firstSensor/centralmenu";
 import globalVariable from "../../../global-variable-app";
+import configFile from "../../../config-app";
 export default class TwoSensor extends JetView {
 	config() {
 		const _ = this.app.getService("locale")._;
@@ -26,8 +27,9 @@ export default class TwoSensor extends JetView {
 					view: "segmented",
 					id: "configuration_general_settings_sensor",
 					multiview: true,
+					css: "configuration_two_sensor_button",
 					value: 1,
-					height: 50,
+					height: 80,
 					options: [
 						{value: _("one_sensor_button"), id: 'one_sensor',},
 						{value: _("two_sensor_button"), id: 'two_sensor'},
@@ -35,15 +37,11 @@ export default class TwoSensor extends JetView {
 				},
 				segmentedCentralMenu,
 				{
-					// animate:true,
 					animate:false,
 					keepViews:true,
 					cells: [
 						{
 							id: "one_sensor",
-							// view: "label",
-							// label: "Test"
-							// CentralMenu
 							rows:[
 								CentralMenuFirst
 							]
@@ -113,5 +111,17 @@ export default class TwoSensor extends JetView {
 			// 	`Value changed from ${oldValue} to ${newValue}. Source: ${config}`
 			// );
 		});
+
+
+		if(configFile.theme == 'light'){
+			webix.html.addCss( $$("configuration_general_settings_sensor").getNode(), "configuration_two_sensor_button");
+
+
+		}
+		if(configFile.theme == 'dark'){
+			webix.html.addCss( $$("configuration_general_settings_sensor").getNode(), "configuration_two_sensor_button_dark");
+
+		}
+
 	}
 }

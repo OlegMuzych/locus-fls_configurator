@@ -1521,14 +1521,14 @@ right_menu_fuel_level_error_windows input{
     background-color: rgba(102, 61, 61, 0.1);
     font-size: 22px;
     font-weight: 100;
-    width: 110%;
+    width: 100%;
 }
 .central_cols_button .webix_segment_N{
     color: var(--c-color-text-dark);
     background-color: rgba(102, 61, 61, 0.1);
     font-size: 22px;
     font-weight: 100;
-    width: 110%;
+    width: 100%;
 }
 
 
@@ -2853,4 +2853,89 @@ right_menu_fuel_level_error_windows input{
 .show_choice_sensor .webix_button:hover{
     background-color: var(--swich_button_status);
     cursor: default;
+}
+
+
+
+.configuration_two_sensor_button_dark .webix_all_segments{
+    background: var(--c-white-color-background-dark_left_menu);
+}
+
+.configuration_two_sensor_button .webix_all_segments{
+    background: var(--c-white-color-background-light_general_windows);
+}
+
+
+
+
+.configuration_two_sensor_button .webix_segment_0{
+    background: var(--c-white-color-background-light_general_windows);
+    color: #000;
+    border-bottom-left-radius: 20px;
+}
+.configuration_two_sensor_button_dark .webix_segment_0{
+    background: var(--c-white-color-background-dark_left_menu);
+    color: #fff;
+    border-bottom-left-radius: 20px;
+}
+
+
+.configuration_two_sensor_button .webix_segment_N{
+    background: var(--c-white-color-background-light_general_windows);
+    color: #000;
+}
+.configuration_two_sensor_button_dark .webix_segment_N{
+    background: var(--c-white-color-background-dark_left_menu);
+    color: #fff;
+}
+
+
+
+
+.configuration_two_sensor_button .webix_segment_0:hover{
+    background: var(--c-white-color-background-light_general_windows);
+    color: #000;
+}
+.configuration_two_sensor_button_dark .webix_segment_0:hover{
+    background: var(--c-white-color-background-dark_left_menu);
+    color: #fff;
+}
+
+
+
+.configuration_two_sensor_button .webix_segment_0:focus{
+    background: #fff;
+    color: #000;
+    font-size: 22px;
+    font-weight: 100;
+}
+.configuration_two_sensor_button_dark .webix_segment_0:focus{
+    background: var(--c-white-color-background-dark_general_windows);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 100;
+}
+
+
+.configuration_two_sensor_button .webix_segment_N:hover{
+    background: var(--c-white-color-background-light_general_windows);
+    color: #000;
+}
+.configuration_two_sensor_button_dark .webix_segment_N:hover{
+    background: var(--c-white-color-background-dark_left_menu);
+    color: #fff;
+}
+
+
+.configuration_two_sensor_button .webix_segment_N:focus{
+    background: #fff;
+    color: #000;
+    font-size: 22px;
+    font-weight: 100;
+}
+.configuration_two_sensor_button_dark .webix_segment_N:focus{
+    background: var(--c-white-color-background-dark_general_windows);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 100;
 }

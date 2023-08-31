@@ -14,6 +14,7 @@ import SaveSettingNotificationWindow from "./windows/save-setting-notification";
 import TwoSensor from "./centralmenu/twoSensor";
 import RightTwoSensor from "./rightmenu/right-two-sensorr";
 import globalVariable from "../../global-variable-app";
+import PasswordInputTwoWindow from "./windows/passwordinput-two";
 
 export default class EngineeringMenu extends JetView{
     config() {
@@ -82,7 +83,7 @@ export default class EngineeringMenu extends JetView{
                             break;
                         }
                         case 0x02:{
-                            this.passwordInput.showWindow(llsModelOne);
+                            this.passwordInput.showWindow(llsModelOne, "LLS 1");
                             break;
                         }
                         default:{
@@ -103,7 +104,7 @@ export default class EngineeringMenu extends JetView{
                             break;
                         }
                         case 0x02:{
-                            this.passwordInput.showWindow(llsModelTwo);
+                            this.passwordInputTwo.showWindow(llsModelTwo, "LLS 2");
                             break;
                         }
                         default:{
@@ -124,6 +125,7 @@ export default class EngineeringMenu extends JetView{
         this.passwordWindow = this.ui(PasswordWindow);
         this.continueWindow = this.ui(ContinueCalibrateWindow);
         this.passwordInput = this.ui(PasswordInputWindow);
+        this.passwordInputTwo = this.ui(PasswordInputTwoWindow);
         this.llsNoConnectWindow = this.ui(LlsNoConnectWindow);
         this.tablePreviewWindow = this.ui(TablePreviewWindow);
         this.saveSettingNotification = this.ui(SaveSettingNotificationWindow);

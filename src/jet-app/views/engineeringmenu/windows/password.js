@@ -233,6 +233,8 @@ export default class PasswordWindow extends JetView {
 
     init() {
         this.passValidFlag = true;
+        this.$$("rows_21").show();
+        this.$$("rows_22").hide();
 
         this.$$("tabbar_windows_password").attachEvent("onChange", (newValue, oldValue, config)=>{
             webix.message(newValue);

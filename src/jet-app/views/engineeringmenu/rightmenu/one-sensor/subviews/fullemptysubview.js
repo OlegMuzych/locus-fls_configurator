@@ -311,7 +311,6 @@ export default class FullEmptySubView extends JetView {
         $$('auto_calibration_2').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             llsModelOne.setMinimum().then();
-
         });
 
         $$("auto_calibration_1").disable();

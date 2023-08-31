@@ -16,10 +16,6 @@ export default class FullemptysubviewOne extends JetView {
             height: 750,
             rows: [
                 {
-                    view:"button",
-                    label:"One lls"
-                },
-                {
                     disabled:true,
                     hidden: true,
                     cols: [

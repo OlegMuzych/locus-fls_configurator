@@ -2,7 +2,7 @@ import {JetView} from "webix-jet";
 // import llsModel from "../../../models/lls-model";
 import configFile from "../../../config-app";
 
-export default class PasswordInputWindow extends JetView {
+export default class PasswordInputTwoWindow extends JetView {
     llsModel = undefined;
     config() {
         const _ = this.app.getService("locale")._;
@@ -155,7 +155,7 @@ export default class PasswordInputWindow extends JetView {
                     ]
                 }
             ]
-         };
+        };
 
         let form = {
             view:"form",
@@ -235,10 +235,9 @@ export default class PasswordInputWindow extends JetView {
     }
 
 
-    showWindow(llsModel, text = '') {
+    showWindow(llsModel, text='') {
         const _ = this.app.getService("locale")._;
         this.llsModel = llsModel
-        console.log(llsModel.currentLongData);
         this.$$('windows_password_label').define({
             label: `<p style='position: relative; font-size: 26px; top: -25px'>${text} ${_("window_passwordinput_segmented_current_text")}</p>`,
         });

@@ -19,8 +19,8 @@ export default class StatusMenuTwo extends JetView{
                 {
                     cols:[
                         {width: 70,},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_1"},
-                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_1",},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", localId:"round_for_select_green"},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", localId:"round_for_select_red",},
                         {width: 20,},
                         {view:"label", label:_("status_sensor_select_sensor"), height: 30, css:"rows_level_right_menu_info", id:"status_sensor_select_sensor"}
                     ]
@@ -201,20 +201,26 @@ export default class StatusMenuTwo extends JetView{
             this.setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
         });
 
+        this.$$("round_for_select_green").hide();
+        this.$$("round_for_select_red").show();
         // this.$$("show_choice_sensor_two").hide();
-        // this.on(this.app, "app:select_sensor:number", (value) => {
-        //     console.log("dsdsd");
-        //     switch(value){
-        //         case "first": {
-        //             this.$$("show_choice_sensor_two").hide();
-        //             break;
-        //         }
-        //         case "second": {
-        //             this.$$("show_choice_sensor_two").show();
-        //             break;
-        //         }
-        //     }
-        // });
+        this.on(this.app, "app:select_sensor:number", (value) => {
+            console.log(value);
+            switch(value){
+                case "first": {
+                    // this.$$("show_choice_sensor_two").hide();
+                    this.$$("round_for_select_green").hide();
+                    this.$$("round_for_select_red").show();
+                    break;
+                }
+                case "second": {
+                    // this.$$("show_choice_sensor_two").show();
+                    this.$$("round_for_select_green").show();
+                    this.$$("round_for_select_red").hide();
+                    break;
+                }
+            }
+        });
 
         if(configFile.theme == 'light'){
             webix.html.addCss( $$("right_menu_status_two").getNode(), "right_menu_status");

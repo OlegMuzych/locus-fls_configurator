@@ -97,7 +97,7 @@ export default class RightmenuTwoSensor extends JetView{
         // $$('fullEmptySubView').show();
         //
         if(configFile.theme == 'light'){
-            webix.html.addCss( $$("rows_right_2").getNode(), "rows_right_dark");
+            webix.html.addCss( $$("rows_right_2").getNode(), "rows_right");
             webix.html.addCss( $$("rows_right_body").getNode(), "rows_right");
         }
         if(configFile.theme == 'dark'){

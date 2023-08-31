@@ -5,6 +5,7 @@ import FullemptysubviewOne from "./subview-one/fullemptysubview-one"
 import CalibrationsubviewTwo from "./subview-two/calibrationsubview-two";
 import FullemptysubviewTwo from "./subview-two/fullemptysubview-two";
 import FiltrationSubViewTwo from "./subview-two/filteringsubview-two";
+import configFile from "../../../../../config-app";
 export default class SubviewsTwoSensor extends JetView {
 
     config() {
@@ -105,5 +106,14 @@ export default class SubviewsTwoSensor extends JetView {
 
         $$('fullEmptySubView').show();
         $$('fullEmptySubViewTwo').show();
+
+        if(configFile.theme == 'light'){
+            webix.html.addCss( $$("rows_right_body").getNode(), "rows_right");
+            webix.html.addCss( $$("rows_right_body_two").getNode(), "rows_right");
+        }
+        if(configFile.theme == 'dark'){
+            webix.html.addCss( $$("rows_right_body").getNode(), "rows_right_dark");
+            webix.html.addCss( $$("rows_right_body_two").getNode(), "rows_right_dark");
+        }
     }
 }

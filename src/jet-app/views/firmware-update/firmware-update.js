@@ -1,10 +1,12 @@
 import {JetView} from "webix-jet";
 import configFile from "../../config-app";
-import llsModel from "../../models/lls-model";
+// import llsModel from "../../models/lls-model";
+import {llsModelOne} from "../../models/lls-test-models";
 import fileFirmwareModel from "../../models/file-firmware-model";
 import MessageWindow from "./windows/message";
 import {pathOptions} from "../../models/combo-model";
 
+const llsModel = llsModelOne;
 export default class FirmwareUpdate extends JetView {
     config() {
         const _ = this.app.getService("locale")._;

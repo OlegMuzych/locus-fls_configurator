@@ -742,10 +742,16 @@ export default class Page9View extends JetView {
             webix.storage.local.put("switcher", newValue);
             if(newValue) {
                 twoPage();
+                this.$$("button_reload").disable();
+
             }else{
                 onePage();
+                this.$$("button_reload").enable();
+
             }
         });
+
+
 
         if(webix.storage.local.get("switcher")) {
             $$("switcher_config_gage").setValue(true);
@@ -766,12 +772,12 @@ export default class Page9View extends JetView {
 
         // $$("button_define_define_2").hide();
 
-        // this.windowFirmwareUpdate = this.ui(WindowFirmwareUpdate);
-        // this.$$("button_reload").attachEvent("onItemClick", (id, e) => {
-        //     // $$("window_show_4").show();
-        //     this.refresh();
-        //     this.windowFirmwareUpdate.showWindow();
-        // });
+        this.windowFirmwareUpdate = this.ui(WindowFirmwareUpdate);
+        this.$$("button_reload").attachEvent("onItemClick", (id, e) => {
+            // $$("window_show_4").show();
+            this.refresh();
+            this.windowFirmwareUpdate.showWindow();
+        });
 
         this.setStatusConnect(false);
         this.setStatusConnectTwo(false);
@@ -839,10 +845,13 @@ export default class Page9View extends JetView {
         function onePage(){
             llsModelTwo.setStatusLlsStopPromise().then();
 
+
             globalVariable.twoSensorMode = false;
             $$("status_config_two_gage_1").show()
             $$("status_config_two_gage_2").hide();
             $$("status_gage_show").hide();
+
+            // this.$$("button_reload").enable();
             // $$("configuration_general_settings_sensor").hide();
         }
         function twoPage(){
@@ -852,6 +861,8 @@ export default class Page9View extends JetView {
             $$("status_config_two_gage_2").show();
             $$("status_config_two_gage_1").hide()
             $$("status_gage_show").show();
+
+            // this.$$("button_reload").disable();
             // $$("configuration_general_settings_sensor").hide();
         }
     }

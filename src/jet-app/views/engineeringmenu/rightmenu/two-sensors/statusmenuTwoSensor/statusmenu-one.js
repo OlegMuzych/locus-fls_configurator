@@ -22,6 +22,18 @@ export default class StatusMenuOne extends JetView{
                         {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_1"},
                         {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_1",},
                         {width: 20,},
+                        {view:"label", label:_("status_sensor_select_sensor"), height: 30, css:"rows_level_right_menu_info", id:"status_sensor_select_sensor"}
+                    ]
+                },
+                {
+                    height: 20,
+                },
+                {
+                    cols:[
+                        {width: 70,},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_1"},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_1",},
+                        {width: 20,},
                         {view:"label", label:_("status_sensor_is_connected"), height: 30, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_1"}
                     ]
                 },
@@ -112,16 +124,16 @@ export default class StatusMenuOne extends JetView{
                 {
                     height: 13,
                 },
-                {
-                    view:"button",
-                    css: "show_choice_sensor",
-                    localId:"show_choice_sensor_two",
-                    height:12,
-                },
-                {
-                    height: 12,
-                    id:"empty_rows_two"
-                }
+                // {
+                //     view:"button",
+                //     css: "show_choice_sensor",
+                //     localId:"show_choice_sensor_two",
+                //     height:12,
+                // },
+                // {
+                //     height: 12,
+                //     id:"empty_rows_two"
+                // }
             ]
         };
 
@@ -190,19 +202,19 @@ export default class StatusMenuOne extends JetView{
             this.setCalibrateStateOne(this.fullLevelDefault && this.emptyLevelDefault);
         });
 
-        this.$$("show_choice_sensor_two").show();
-        this.on(this.app, "app:select_sensor:number", (value) => {
-            switch(value){
-                case "first": {
-                    this.$$("show_choice_sensor_two").show();
-                    break;
-                }
-                case "second": {
-                    this.$$("show_choice_sensor_two").hide();
-                    break;
-                }
-            }
-        });
+        // this.$$("show_choice_sensor_two").show();
+        // this.on(this.app, "app:select_sensor:number", (value) => {
+        //     switch(value){
+        //         case "first": {
+        //             this.$$("show_choice_sensor_two").show();
+        //             break;
+        //         }
+        //         case "second": {
+        //             this.$$("show_choice_sensor_two").hide();
+        //             break;
+        //         }
+        //     }
+        // });
 
 
         if(configFile.theme == 'light'){
@@ -212,7 +224,7 @@ export default class StatusMenuOne extends JetView{
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("window_temp").getNode(), "window_temp");
-
+            webix.html.addCss( $$("status_sensor_select_sensor").getNode(), "rows_level_right_menu_info");
         }
         if(configFile.theme == 'dark'){
             webix.html.addCss( $$("right_menu_status_one").getNode(), "right_menu_status_dark");
@@ -221,6 +233,7 @@ export default class StatusMenuOne extends JetView{
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("window_temp").getNode(), "window_temp_dark");
+            webix.html.addCss( $$("status_sensor_select_sensor").getNode(), "rows_level_right_menu_info_dark");
 
         }
     }

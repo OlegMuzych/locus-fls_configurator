@@ -107,6 +107,8 @@ export default {
     /* statusmenu.js */
     "status_sensor_is_connected": "#1 Датчик подключен",
     "status_sensor_is_connected_2": "#2 Датчик подключен",
+    "status_sensor_select_sensor": "Датчик активен",
+
     "status_fuel_is_stable": "Топливо стабильно",
     "status_calibration": "Калибровка не требуется",
     "status_thermal_compensation": "Термокомпенсация",

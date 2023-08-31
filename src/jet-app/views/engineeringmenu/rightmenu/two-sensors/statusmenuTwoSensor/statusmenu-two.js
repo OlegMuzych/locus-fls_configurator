@@ -22,6 +22,18 @@ export default class StatusMenuTwo extends JetView{
                         {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_1"},
                         {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_1",},
                         {width: 20,},
+                        {view:"label", label:_("status_sensor_select_sensor"), height: 30, css:"rows_level_right_menu_info", id:"status_sensor_select_sensor"}
+                    ]
+                },
+                {
+                    height: 20,
+                },
+                {
+                    cols:[
+                        {width: 70,},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch", id:"button_define_define_1"},
+                        {view:"button", width: 30, height: 30, css:"rows_level_right_menu_switch_define", id:"button_define_1",},
+                        {width: 20,},
                         {view:"label", label:_("status_sensor_is_connected_2"), height: 30, css:"rows_level_right_menu_info", id:"rows_level_right_menu_info_1"}
                     ]
                 },
@@ -109,17 +121,17 @@ export default class StatusMenuTwo extends JetView{
                 {
                     height: 13,
                 },
-
-                {
-                    view:"button",
-                    css: "show_choice_sensor",
-                    localId:"show_choice_sensor_two",
-                    height:12,
-                },
-                {
-                    height: 12,
-                    id:"empty_rows_two"
-                }
+                //
+                // {
+                //     view:"button",
+                //     css: "show_choice_sensor",
+                //     localId:"show_choice_sensor_two",
+                //     height:12,
+                // },
+                // {
+                //     height: 12,
+                //     id:"empty_rows_two"
+                // }
 
             ]
         };
@@ -189,20 +201,20 @@ export default class StatusMenuTwo extends JetView{
             this.setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
         });
 
-        this.$$("show_choice_sensor_two").hide();
-        this.on(this.app, "app:select_sensor:number", (value) => {
-            console.log("dsdsd");
-            switch(value){
-                case "first": {
-                    this.$$("show_choice_sensor_two").hide();
-                    break;
-                }
-                case "second": {
-                    this.$$("show_choice_sensor_two").show();
-                    break;
-                }
-            }
-        });
+        // this.$$("show_choice_sensor_two").hide();
+        // this.on(this.app, "app:select_sensor:number", (value) => {
+        //     console.log("dsdsd");
+        //     switch(value){
+        //         case "first": {
+        //             this.$$("show_choice_sensor_two").hide();
+        //             break;
+        //         }
+        //         case "second": {
+        //             this.$$("show_choice_sensor_two").show();
+        //             break;
+        //         }
+        //     }
+        // });
 
         if(configFile.theme == 'light'){
             webix.html.addCss( $$("right_menu_status_two").getNode(), "right_menu_status");
@@ -211,6 +223,7 @@ export default class StatusMenuTwo extends JetView{
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("window_temp").getNode(), "window_temp");
+            webix.html.addCss( $$("status_sensor_select_sensor").getNode(), "rows_level_right_menu_info");
         }
         if(configFile.theme == 'dark'){
             webix.html.addCss( $$("right_menu_status_two").getNode(), "right_menu_status_dark");
@@ -219,6 +232,7 @@ export default class StatusMenuTwo extends JetView{
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("window_temp").getNode(), "window_temp_dark");
+            webix.html.addCss( $$("status_sensor_select_sensor").getNode(), "rows_level_right_menu_info_dark");
         }
     }
 

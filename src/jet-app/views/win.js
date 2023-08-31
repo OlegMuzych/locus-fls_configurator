@@ -8,6 +8,7 @@ import WindowSettings from "./windows/window-settings";
 import trademark from "../../trademark/trademark";
 import WindowAbout from "./windows/window-about";
 import WindowFirmwareUpdate from "./windows/window-firmware-update";
+import WindowInfo from "./windows/window-info";
 //const SerialPort = eval(`require('serialport')`);
 // const findPort = require("../models/lls/findPort");
 
@@ -514,67 +515,67 @@ export default class Page9View extends JetView {
 
 
 
-        let win_5 = {
-            view: "window",
-            width: 1000,
-            height: 500,
-            id: "window_show_5",
-            modal: true,
-            head:"Режим работы конфигуратора",
-            css: "window_show",
-            position: "center",
-            close:true,
-            body: {
-
-
-                cols:[
-                    {
-                        width:30,
-                    },
-                    {
-                        rows:[
-                            {
-
-                            },
-                            {
-                                view: "label",
-                                label: `<p>${_("warning_text_configurator_mode")}</p>`,
-                                css: "closed_windows_modal",
-                                id: "closed_windows_modal",
-                                height: 80,
-                            },
-                            {
-                                view: "label",
-                                label: `<p>${_("warning_text_configurator_mode_2")}</p>`,
-                                css: "closed_windows_modal",
-                                id: "closed_windows_modal_2",
-                                height: 80,
-                            },
-                            {
-                                view: "label",
-                                label: `<p>${_("warning_text_configurator_mode_3")}</p>`,
-                                css: "closed_windows_modal",
-                                id: "closed_windows_modal_3",
-                                height: 80,
-                            },
-                            {
-                                view: "label",
-                                label: `<p>${_("warning_text_configurator_mode_4")}</p>`,
-                                css: "closed_windows_modal",
-                                id: "closed_windows_modal_4",
-                                height: 80,
-                            },
-                            {
-
-                            }
-                        ]
-                    },
-                    {
-                        width:10,
-                    }
-                ]
-            }
-        }
+        // let win_5 = {
+        //     view: "window",
+        //     width: 1000,
+        //     height: 500,
+        //     id: "window_show_5",
+        //     modal: true,
+        //     head:"Режим работы конфигуратора",
+        //     css: "window_show",
+        //     position: "center",
+        //     close:true,
+        //     body: {
+        //
+        //
+        //         cols:[
+        //             {
+        //                 width:30,
+        //             },
+        //             {
+        //                 rows:[
+        //                     {
+        //
+        //                     },
+        //                     {
+        //                         view: "label",
+        //                         label: `<p>${_("warning_text_configurator_mode")}</p>`,
+        //                         css: "closed_windows_modal",
+        //                         id: "closed_windows_modal",
+        //                         height: 80,
+        //                     },
+        //                     {
+        //                         view: "label",
+        //                         label: `<p>${_("warning_text_configurator_mode_2")}</p>`,
+        //                         css: "closed_windows_modal",
+        //                         id: "closed_windows_modal_2",
+        //                         height: 80,
+        //                     },
+        //                     {
+        //                         view: "label",
+        //                         label: `<p>${_("warning_text_configurator_mode_3")}</p>`,
+        //                         css: "closed_windows_modal",
+        //                         id: "closed_windows_modal_3",
+        //                         height: 80,
+        //                     },
+        //                     {
+        //                         view: "label",
+        //                         label: `<p>${_("warning_text_configurator_mode_4")}</p>`,
+        //                         css: "closed_windows_modal",
+        //                         id: "closed_windows_modal_4",
+        //                         height: 80,
+        //                     },
+        //                     {
+        //
+        //                     }
+        //                 ]
+        //             },
+        //             {
+        //                 width:10,
+        //             }
+        //         ]
+        //     }
+        // }
 
 
         // win_5.hide();
@@ -732,11 +733,6 @@ export default class Page9View extends JetView {
     };
 
     init(view) {
-
-        $$("text_label_question").attachEvent("onItemClick", (id, e) => {
-            // $$("window_show_5").show()
-         });
-
         $$("status_gage_show").hide();
         $$("status_config_two_gage_1").show()
         $$("status_config_two_gage_2").hide();
@@ -762,6 +758,7 @@ export default class Page9View extends JetView {
             // this.refresh();
             onePage();
         }
+
         // setInterval(function(){
         //     var value = Math.floor(Math.random()*100);
         //     $$("b1").setValue(value);
@@ -819,6 +816,10 @@ export default class Page9View extends JetView {
            this.windowsAbout.showWindow();
         });
 
+        this.windowsInfo = this.ui(WindowInfo);
+        $$("text_label_question").attachEvent("onItemClick", (id, e) => {
+            this.windowsInfo.showWindow();
+        });
 
         globalVariable.theme.then(async theme => {
             if (theme == 'like_system') {

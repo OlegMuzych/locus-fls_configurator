@@ -32,7 +32,7 @@ export default class SubviewsTwoSensor extends JetView {
         const multiviewTwo = {
             view: "scrollview",
             scroll: "y",
-            id: "rows_right_body",
+            id: "rows_right_body_two",
             css: "rows_right",
             body: {
                 view: "multiview",

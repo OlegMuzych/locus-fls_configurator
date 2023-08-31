@@ -278,7 +278,7 @@ export default class FiltrationSettings extends JetView {
                                                 label: `<p>${_("median_length")}</p>`,
                                                 width: 280,
                                                 css: "text_color_filter",
-                                                id: "text_color_filter_3",
+                                                id: "text_color_filter_3_one",
                                             },
                                             {
                                                 // width: 30,
@@ -310,7 +310,7 @@ export default class FiltrationSettings extends JetView {
                                                         inputAlign: "center",
                                                         inputHeight: 50,
                                                         css: "full_window_text",
-                                                        id: "window_text_mediana",
+                                                        id: "window_text_mediana_one",
                                                         readonly: true,
                                                         height: 50,
                                                     },
@@ -367,7 +367,7 @@ export default class FiltrationSettings extends JetView {
                                                         label: `<p style='position: relative; top: -20px;'>${_("coefficient_q")}</p>`,
                                                         width: 240,
                                                         css: "text_color_filter",
-                                                        id: "text_color_filter_4",
+                                                        id: "text_color_filter_4_one",
                                                     }
                                                 ]
 
@@ -441,7 +441,7 @@ export default class FiltrationSettings extends JetView {
                                                         label: `<p style='position: relative; top: -20px;'>${_("coefficient_r")}</p>`,
                                                         width: 240,
                                                         css: "text_color_filter",
-                                                        id: "text_color_filter_5",
+                                                        id: "text_color_filter_5_one",
                                                     }
                                                 ]
 
@@ -512,7 +512,7 @@ export default class FiltrationSettings extends JetView {
 
         // $$('slider_filter_2').setValue(longData.medianLength.toString());
         // $$('window_text_mediana').setValue(longData.medianLength.toString());
-        this.setSliderValue('window_text_mediana', 'medianLength', 'statusMedianLength');
+        this.setSliderValue('window_text_mediana_one', 'medianLength', 'statusMedianLength');
         this.setSliderValue('slider_filter_2_one', 'medianLength', 'statusMedianLength');
 
         // $$('text_q').setValue(longData.coefficientQ.toString());
@@ -642,7 +642,7 @@ export default class FiltrationSettings extends JetView {
             llsModelOne.newLongData.filtrationType = 2;
             llsModelOne.newLongData.medianLenght = 3;
             this.setFiltrationTypeValue();
-            this.setSliderValue('window_text_mediana', 'medianLength', 'statusMedianLength');
+            this.setSliderValue('window_text_mediana_one', 'medianLength', 'statusMedianLength');
             // llsModel.setLongData({filtrationType: 2, medianLength: $$('slider_filter_2').getValue()}); //медиана
             globalVariable.autoSaveMode.then(flag => flag ? llsModelOne.setLongData({filtrationType: 2, medianLength: 3}) : '');
         });
@@ -700,11 +700,11 @@ export default class FiltrationSettings extends JetView {
         if (configFile.theme == 'light') {
             webix.html.addCss($$("text_color_filter_1_one").getNode(), "text_color_filter");
             webix.html.addCss($$("text_color_filter_2").getNode(), "text_color_filter");
-            webix.html.addCss($$("text_color_filter_3").getNode(), "text_color_filter");
+            webix.html.addCss($$("text_color_filter_3_one").getNode(), "text_color_filter");
             webix.html.addCss($$("text_color_filter_1_01_one").getNode(), "text_color_filter");
             webix.html.addCss($$("text_color_filter_1_1_one").getNode(), "text_color_filter");
-            webix.html.addCss($$("text_color_filter_4").getNode(), "text_color_filter");
-            webix.html.addCss($$("text_color_filter_5").getNode(), "text_color_filter");
+            webix.html.addCss($$("text_color_filter_4_one").getNode(), "text_color_filter");
+            webix.html.addCss($$("text_color_filter_5_one").getNode(), "text_color_filter");
             webix.html.addCss($$("filtering_switch_top_one").getNode(), "filter_toggle");
             webix.html.addCss($$("degree_of_filtration_one").getNode(), "filter_toggle");
             webix.html.addCss($$("image_button_filter_1_one").getNode(), "image_button_filter");
@@ -719,7 +719,7 @@ export default class FiltrationSettings extends JetView {
             webix.html.addCss($$("window_text_time").getNode(), "full_window_text");
             webix.html.addCss($$("button_slider_gen_value_1_one").getNode(), "button_slider_gen_value");
             webix.html.addCss($$("slider_filter_2_one").getNode(), "slider_1");
-            webix.html.addCss($$("window_text_mediana").getNode(), "full_window_text");
+            webix.html.addCss($$("window_text_mediana_one").getNode(), "full_window_text");
             webix.html.addCss($$("button_slider_gen_value_2_one").getNode(), "button_slider_gen_value");
             webix.html.addCss($$("central_menu_button_3_one").getNode(), "style_general_rows");
             webix.html.addCss($$("button_slider_gen_value_4_one").getNode(), "button_slider_gen_value");
@@ -742,11 +742,11 @@ export default class FiltrationSettings extends JetView {
         if (configFile.theme == 'dark') {
             webix.html.addCss($$("text_color_filter_1_one").getNode(), "text_color_filter_dark");
             webix.html.addCss($$("text_color_filter_2").getNode(), "text_color_filter_dark");
-            webix.html.addCss($$("text_color_filter_3").getNode(), "text_color_filter_dark");
+            webix.html.addCss($$("text_color_filter_3_one").getNode(), "text_color_filter_dark");
             webix.html.addCss($$("text_color_filter_1_01_one").getNode(), "text_color_filter_dark");
             webix.html.addCss($$("text_color_filter_1_1_one").getNode(), "text_color_filter_dark");
-            webix.html.addCss($$("text_color_filter_4").getNode(), "text_color_filter_dark");
-            webix.html.addCss($$("text_color_filter_5").getNode(), "text_color_filter_dark");
+            webix.html.addCss($$("text_color_filter_4_one").getNode(), "text_color_filter_dark");
+            webix.html.addCss($$("text_color_filter_5_one").getNode(), "text_color_filter_dark");
             webix.html.addCss($$("filtering_switch_top_one").getNode(), "filter_toggle_dark");
             webix.html.addCss($$("degree_of_filtration_one").getNode(), "degree_of_filtration_dark");
             webix.html.addCss($$("image_button_filter_1_one").getNode(), "image_button_filter_dark");
@@ -761,7 +761,7 @@ export default class FiltrationSettings extends JetView {
             webix.html.addCss($$("window_text_time").getNode(), "full_window_text_dark");
             webix.html.addCss($$("button_slider_gen_value_1_one").getNode(), "button_slider_gen_value_dark");
             webix.html.addCss($$("slider_filter_2_one").getNode(), "slider_1_dark");
-            webix.html.addCss($$("window_text_mediana").getNode(), "full_window_text_dark");
+            webix.html.addCss($$("window_text_mediana_one").getNode(), "full_window_text_dark");
             webix.html.addCss($$("button_slider_gen_value_2_one").getNode(), "button_slider_gen_value_dark");
             webix.html.addCss($$("central_menu_button_3_one").getNode(), "style_general_rows_dark");
             webix.html.addCss($$("button_slider_gen_value_4_one").getNode(), "button_slider_gen_value_dark");

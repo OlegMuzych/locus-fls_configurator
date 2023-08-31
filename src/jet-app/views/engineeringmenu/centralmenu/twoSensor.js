@@ -120,8 +120,6 @@ export default class TwoSensor extends JetView {
 		}
 		if(configFile.theme == 'dark'){
 			webix.html.addCss( $$("configuration_general_settings_sensor").getNode(), "configuration_two_sensor_button_dark");
-
 		}
-
 	}
 }

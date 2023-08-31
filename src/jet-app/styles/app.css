@@ -2855,18 +2855,14 @@ right_menu_fuel_level_error_windows input{
     cursor: default;
 }
 
+/*--------------------кнопкки переключения датчиков 1/2---------------------------------*/
 
-
-.configuration_two_sensor_button_dark .webix_all_segments{
-    background: var(--c-white-color-background-dark_left_menu);
-}
-
-.configuration_two_sensor_button .webix_all_segments{
-    background: var(--c-white-color-background-light_general_windows);
-}
-
-
-
+/*.configuration_two_sensor_button_dark .webix_control.webix_el_segmented{*/
+/*    background: var(--c-white-color-background-dark_left_menu);*/
+/*}*/
+/*.configuration_two_sensor_button .webix_control.webix_el_segmented{*/
+/*    background: var(--c-white-color-background-light_general_windows);*/
+/*}*/
 
 .configuration_two_sensor_button .webix_segment_0{
     background: var(--c-white-color-background-light_general_windows);
@@ -2878,8 +2874,6 @@ right_menu_fuel_level_error_windows input{
     color: #fff;
     border-bottom-left-radius: 20px;
 }
-
-
 .configuration_two_sensor_button .webix_segment_N{
     background: var(--c-white-color-background-light_general_windows);
     color: #000;
@@ -2888,10 +2882,6 @@ right_menu_fuel_level_error_windows input{
     background: var(--c-white-color-background-dark_left_menu);
     color: #fff;
 }
-
-
-
-
 .configuration_two_sensor_button .webix_segment_0:hover{
     background: var(--c-white-color-background-light_general_windows);
     color: #000;
@@ -2900,9 +2890,6 @@ right_menu_fuel_level_error_windows input{
     background: var(--c-white-color-background-dark_left_menu);
     color: #fff;
 }
-
-
-
 .configuration_two_sensor_button .webix_segment_0:focus{
     background: #fff;
     color: #000;
@@ -2915,8 +2902,18 @@ right_menu_fuel_level_error_windows input{
     font-size: 22px;
     font-weight: 100;
 }
-
-
+.configuration_two_sensor_button .webix_segment_0.webix_selected{
+    background: #fff;
+    color: #000;
+    font-size: 22px;
+    font-weight: 100;
+}
+.configuration_two_sensor_button_dark .webix_segment_0.webix_selected{
+    background: var(--c-white-color-background-dark_general_windows);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 100;
+}
 .configuration_two_sensor_button .webix_segment_N:hover{
     background: var(--c-white-color-background-light_general_windows);
     color: #000;
@@ -2925,8 +2922,6 @@ right_menu_fuel_level_error_windows input{
     background: var(--c-white-color-background-dark_left_menu);
     color: #fff;
 }
-
-
 .configuration_two_sensor_button .webix_segment_N:focus{
     background: #fff;
     color: #000;
@@ -2939,3 +2934,16 @@ right_menu_fuel_level_error_windows input{
     font-size: 22px;
     font-weight: 100;
 }
+.configuration_two_sensor_button .webix_segment_N.webix_selected{
+    background: #fff;
+    color: #000;
+    font-size: 22px;
+    font-weight: 100;
+}
+.configuration_two_sensor_button_dark .webix_segment_N.webix_selected{
+    background: var(--c-white-color-background-dark_general_windows);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 100;
+}
+/*-----------------------------------------------------------------------------*/

@@ -109,7 +109,7 @@ export default class CalibrationSettings extends JetView {
 
         }
 
-        
+
         this.on(this.app, "app:calibrationsubview:one:addStep", (volumeStep) => {
             if(this.#volume.length){
                 let volumes = [ ...this.#volume];
@@ -205,11 +205,15 @@ export default class CalibrationSettings extends JetView {
             await llsModelOne.getTable();
             fileTableModel.write(this.currentTable).then();
         });
+        this.on(this.app, "app:calibrationsubview:one:saveToFile:xml", async() => { //save to file
+            await llsModelOne.getTable();
+            fileTableModel.writeXML(this.currentTable).then();
+        });
 
         this.on(this.app, "app:calibrationsubview:one:readFromFile", () => { // read from file
             fileTableModel.read()
                 .then((table)=>{
-                    this.app.callEvent("app:calibrationSettings:one:openTableFromFile", [table]);
+                    this.app.callEvent("app:calibrationSettings:openTableFromFile", [table, llsModelOne]);
                 })
                 .catch((err)=>{console.log(err)});
         });

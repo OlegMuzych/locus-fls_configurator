@@ -145,7 +145,8 @@ export default {
     "Label_enable_calibration_mode_manual": "Manual",
 
     /* calibrationsubview-two.js */
-    "button_save_table_file": "Save calibration data",
+    "button_save_table_file": "Save calibration data JSON",
+    "button_save_table_file_xml": "Save calibration data XML",
     "button_read_table_file": "Load calibration data",
     "tabbar_fill": "Tank fill mode",
     "tabbar_drain": "Tank drain mode",

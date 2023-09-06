@@ -149,7 +149,8 @@ export default {
     "Label_enable_calibration_mode_manual": "Ручная",
 
     /* calibrationsubview-two.js */
-    "button_save_table_file": "Экспортировать таблицу тарировки",
+    "button_save_table_file": "Экспортировать таблицу тарировки JSON",
+    "button_save_table_file_xml": "Экспортировать таблицу тарировки XML",
     "button_read_table_file": "Импортировать таблицу тарировки",
     "tabbar_fill": "Залив",
     "tabbar_drain": "Слив",

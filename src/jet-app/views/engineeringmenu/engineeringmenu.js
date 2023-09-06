@@ -134,8 +134,8 @@ export default class EngineeringMenu extends JetView{
             this.continueWindow.showWindow();
         });
 
-        this.on(this.app, "app:calibrationSettings:openTableFromFile", (table) => {
-            this.tablePreviewWindow.showWindow(table);
+        this.on(this.app, "app:calibrationSettings:openTableFromFile", (table, llsModel) => {
+            this.tablePreviewWindow.showWindow(table, llsModel);
         });
 
         this.on(this.app, "app:settings:setToLls", () => {

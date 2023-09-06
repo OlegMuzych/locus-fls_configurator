@@ -132,6 +132,24 @@ export default class CalibrationSubView extends JetView {
                         {
                             view: "button",
                             type: "label",
+                            label: _("button_save_table_file_xml"),
+                            localId: "button_export_xml",
+                            width: 480,
+                            height: 50,
+                            css: "set_step_drain_button_2"
+                        },
+                        {}
+                    ]
+                },
+                {
+                    height: 5,
+                },
+                {
+                    cols: [
+                        {},
+                        {
+                            view: "button",
+                            type: "label",
                             label: _("button_read_table_file"),
                             localId: "button_import",
                             width: 480,
@@ -201,11 +219,15 @@ export default class CalibrationSubView extends JetView {
         });
 
         this.$$('button_import').attachEvent("onItemClick", (id, e) => {
-            this.app.callEvent("app:calibrationsubview:readFromFile", []);
+            this.app.callEvent("app:calibrationsubview:one:readFromFile", []);
         });
 
         this.$$('button_export').attachEvent("onItemClick", (id, e) => {
-            this.app.callEvent("app:calibrationsubview:saveToFile", []);
+            this.app.callEvent("app:calibrationsubview:one:saveToFile", []);
+        });
+
+        this.$$('button_export_xml').attachEvent("onItemClick", (id, e) => {
+            this.app.callEvent("app:calibrationsubview:one:saveToFile:xml", []);
         });
 
         if (configFile.theme == 'light') {

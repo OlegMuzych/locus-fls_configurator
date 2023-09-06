@@ -1,7 +1,8 @@
 import {JetView} from "webix-jet";
-import llsModel from "../../../models/lls-model";
+// import llsModel from "../../../models/lls-model";
 
 export default class TablePreviewWindow extends JetView {
+    llsModel = null;
     config() {
         const _ = this.app.getService("locale")._;
 
@@ -125,7 +126,8 @@ export default class TablePreviewWindow extends JetView {
         });
     }
 
-    showWindow(table) {
+    showWindow(table, llsModel) {
+        this.llsModel = llsModel;
         this.getRoot().show();
         if (table) {
             this.removeAll();
@@ -285,9 +287,9 @@ export default class TablePreviewWindow extends JetView {
 
     saveTable() {
         let table = this.parseTable();
-        llsModel.setTable(table)
+        this.llsModel.setTable(table)
             .then(() => {
-                return llsModel.getTable();
+                return this.llsModel.getTable();
             })
             .then()
         console.log(table);

@@ -58,7 +58,9 @@ export default class ServiceMenu extends JetView {
                     // {id: "updateFramework", location: "Обновить прошивку", name: ""},
                     {id: "resetLls", location: _("service_service_reset_sensor"), name: ""},
                     {id: "saveSettings", location: _("service_service_save_setting_file"), name: ""},
+                    {id: "saveSettingsXML", location: _("service_service_save_setting_file_xml"), name: ""},
                     {id: "readSettings", location: _("service_service_read_setting_file"), name: ""},
+
                 ],
                 id: "list",
                 template: "#name# - #location#",
@@ -87,6 +89,10 @@ export default class ServiceMenu extends JetView {
 
             if (id == 'saveSettings') {
                 fileSettingsModel.write(llsModelOne.currentLongData).then();
+            }
+
+            if (id == 'saveSettingsXML') {
+                fileSettingsModel.writeXML(llsModelOne.currentLongData).then();
             }
 
             if (id == 'readSettings') {

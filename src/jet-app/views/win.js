@@ -22,7 +22,6 @@ export default class Page9View extends JetView {
         const _ = this.app.getService("locale")._;
         // Версия прошивки надпись
         var ver = {
-
             rows: [
                 {
                     paddingY: 10, //test comment

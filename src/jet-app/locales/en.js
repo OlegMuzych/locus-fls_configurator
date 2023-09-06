@@ -126,7 +126,8 @@ export default {
     /* servicemenu.js */
     "service_service": "Service",
     "service_service_reset_sensor": "Reset all settings",
-    "service_service_save_setting_file": "Save the settings to a file",
+    "service_service_save_setting_file": "Save the settings to a file JSON",
+    "service_service_save_setting_file_xml": "Save the settings to a file XML",
     "service_service_read_setting_file": "Read the settings from the file",
 
     "service_password": "Password",

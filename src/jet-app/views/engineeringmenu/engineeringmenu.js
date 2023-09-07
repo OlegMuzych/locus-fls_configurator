@@ -15,6 +15,7 @@ import TwoSensor from "./centralmenu/twoSensor";
 import RightTwoSensor from "./rightmenu/right-two-sensorr";
 import globalVariable from "../../global-variable-app";
 import PasswordInputTwoWindow from "./windows/passwordinput-two";
+import LeftMenuTwo from "./leftmenu/leftmenu-two";
 
 export default class EngineeringMenu extends JetView{
     config() {
@@ -26,6 +27,7 @@ export default class EngineeringMenu extends JetView{
             id: "dark",
             cols: [
                 LeftMenu,
+                LeftMenuTwo,
                 {
                     width: 10,
                 },
@@ -45,8 +47,10 @@ export default class EngineeringMenu extends JetView{
 
     destroy() {
         super.destroy();
-        llsModelOne.clearListenerCommandError(this.listenerCommandError);
-        llsModelOne.clearListenerIsDisconnect(this.listenerIsDisconnect);
+        llsModelOne.clearListenerCommandError(this.listenerCommandErrorOne);
+        llsModelTwo.clearListenerCommandError(this.listenerCommandErrorTwo);
+        llsModelOne.clearListenerIsDisconnect(this.listenerIsDisconnectOne);
+        llsModelOne.clearListenerIsDisconnect(this.listenerIsDisconnectTwo);
     }
 
     init(){
@@ -116,11 +120,11 @@ export default class EngineeringMenu extends JetView{
         }
 
 
-        llsModelOne.addListenerCommandError(this.listenerCommandError);
-        llsModelOne.addListenerIsDisconnect(this.listenerIsDisconnect);
+        llsModelOne.addListenerCommandError(this.listenerCommandErrorOne);
+        llsModelOne.addListenerIsDisconnect(this.listenerIsDisconnectOne);
 
-        llsModelTwo.addListenerCommandError(this.listenerCommandError);
-        llsModelTwo.addListenerIsDisconnect(this.listenerIsDisconnect);
+        llsModelTwo.addListenerCommandError(this.listenerCommandErrorTwo);
+        llsModelTwo.addListenerIsDisconnect(this.listenerIsDisconnectTwo);
 
         this.passwordWindow = this.ui(PasswordWindow);
         this.continueWindow = this.ui(ContinueCalibrateWindow);
@@ -154,7 +158,7 @@ export default class EngineeringMenu extends JetView{
         }
     }
 
-    listenerCommandError = (status)=> {
+    listenerCommandErrorOne = (status)=> {
         switch (status) {
             case 0x00: {
                 this.saveSettingNotification.showWindow();
@@ -173,8 +177,30 @@ export default class EngineeringMenu extends JetView{
         }
     }
 
-    listenerIsDisconnect = ()=>{
+    listenerCommandErrorTwo = (status)=> {
+        switch (status) {
+            case 0x00: {
+                this.saveSettingNotification.showWindow();
+                break;
+            }
+            case 0x01: {
+                break;
+            }
+            case 0x02: {
+                this.passwordWindow.showWindow();
+                break;
+            }
+            default: {
+
+            }
+        }
+    }
+
+    listenerIsDisconnectOne = ()=>{
         this.llsNoConnectWindow.showWindow('1');
+    }
+    listenerIsDisconnectTwo = ()=>{
+        this.llsNoConnectWindow.showWindow('2');
     }
 }
 

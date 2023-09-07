@@ -1,11 +1,11 @@
 import {JetView} from "webix-jet";
 import configFile from "../../../config-app";
 // import llsModel from "../../../models/lls-model";
-import {llsModelOne} from "../../../models/lls-test-models";
+import {llsModelTwo} from "../../../models/lls-test-models";
 import trademark from "../../../../trademark/trademark";
 
-const llsModel = llsModelOne;
-export default class LeftMenu extends JetView{
+const llsModel = llsModelTwo;
+export default class LeftMenuTwo extends JetView{
     config(){
         const _ = this.app.getService("locale")._;
         const _t = trademark._t;
@@ -25,6 +25,9 @@ export default class LeftMenu extends JetView{
                     },
                     {
                         rows: [
+                            {view:'button',
+                                label:"Two"
+                            },
                             {
                                 height: 5,
                             },
@@ -111,15 +114,15 @@ export default class LeftMenu extends JetView{
 
     init(){
         const _t = trademark._t;
-
+        this.$$("leftMenu").hide();
         this.on(this.app, "app:select_sensor:number", (value) => {
             switch(value){
                 case "first": {
-                    this.$$("leftMenu").show();
+                    this.$$("leftMenu").hide();
                     break;
                 }
                 case "second": {
-                    this.$$("leftMenu").hide();
+                    this.$$("leftMenu").show();
                     break;
                 }
             }

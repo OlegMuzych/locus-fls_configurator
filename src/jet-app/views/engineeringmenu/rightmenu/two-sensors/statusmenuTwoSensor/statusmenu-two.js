@@ -75,7 +75,7 @@ export default class StatusMenuTwo extends JetView{
                             width:5,
                         },
                         {view:"button", type:"image", image:"assets/images/temperature_2.svg", width:30, height:30, css:"thermometer_image",},
-                        {view:"text", width: 60, height:30, css:"window_temp", id:"window_temp", readonly:true, value:"__°"},
+                        {view:"text", width: 60, height:30, css:"window_temp", localId:"window_temp", readonly:true, value:"__°"},
 
                     ]
                 },
@@ -151,7 +151,7 @@ export default class StatusMenuTwo extends JetView{
 
     listenerShortData = (shortData)=>{
         // console.log(shortData);
-        $$("window_temp").setValue(shortData.temperature.toString());
+        this.$$("window_temp").setValue(shortData.temperature.toString());
     }
 
     listenerLongData = (longData)=>{
@@ -228,7 +228,7 @@ export default class StatusMenuTwo extends JetView{
             webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info");
-            webix.html.addCss( $$("window_temp").getNode(), "window_temp");
+            webix.html.addCss( this.$$("window_temp").getNode(), "window_temp");
             webix.html.addCss( $$("status_sensor_select_sensor").getNode(), "rows_level_right_menu_info");
         }
         if(configFile.theme == 'dark'){
@@ -237,7 +237,7 @@ export default class StatusMenuTwo extends JetView{
             webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info_dark");
-            webix.html.addCss( $$("window_temp").getNode(), "window_temp_dark");
+            webix.html.addCss( this.$$("window_temp").getNode(), "window_temp_dark");
             webix.html.addCss( $$("status_sensor_select_sensor").getNode(), "rows_level_right_menu_info_dark");
         }
     }

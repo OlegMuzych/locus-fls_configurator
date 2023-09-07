@@ -52,7 +52,7 @@ export default class FullEmptySubView extends JetView {
                                     width: 460,
                                     height: 50,
                                     css: "auto_calibration",
-                                    id: "auto_calibration"
+                                    localId: "auto_calibration"
                                 },
                                 {
 
@@ -153,7 +153,7 @@ export default class FullEmptySubView extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "full_window_text",
-                                                    id: "auto_calibration_set_1",
+                                                    localId: "auto_calibration_set_1",
                                                     readonly: true,
                                                 },
                                                 {
@@ -163,7 +163,7 @@ export default class FullEmptySubView extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "auto_calibration",
-                                                    id: "auto_calibration_1"
+                                                    localId: "auto_calibration_1"
                                                 },
                                                 {
                                                     height: 130,
@@ -173,7 +173,7 @@ export default class FullEmptySubView extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "full_window_text",
-                                                    id: "auto_calibration_set_2",
+                                                    localId: "auto_calibration_set_2",
                                                     readonly: true,
                                                 },
                                                 {
@@ -183,7 +183,7 @@ export default class FullEmptySubView extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "auto_calibration",
-                                                    id: "auto_calibration_2"
+                                                    localId: "auto_calibration_2"
 
                                                 },
                                             ]
@@ -224,7 +224,7 @@ export default class FullEmptySubView extends JetView {
                                     wight: 300,
                                     // height: 100,
                                     // css: "right_menu_fuel_level",
-                                    id: "status_mode_auto",
+                                    localId: "status_mode_auto",
                                     css:"rows_level_right_menu_info",
                                     hidden: true,
                                 },
@@ -234,14 +234,14 @@ export default class FullEmptySubView extends JetView {
                                     wight: 300,
                                     // height: 100,
                                     // css: "right_menu_fuel_level",
-                                    id: "status_mode_auto_hidden",
+                                    localId: "status_mode_auto_hidden",
                                     css:"rows_level_right_menu_info_hidden",
                                     hidden: false,
                                 },
                                 {
                                     view: "switch",
                                     value: 0,
-                                    id: "button_edit",
+                                    localId: "button_edit",
                                     width: 66,
                                     height: 50,
                                     css:"toggle_style",
@@ -253,7 +253,7 @@ export default class FullEmptySubView extends JetView {
                                     label: `<p style=' font-size:20px; text-align: center; position:relative; top:-15px;'>${_("Label_enable_calibration_mode_manual")}</p>`,
                                     wight: 300,
                                     // height: 100,
-                                    id: "status_mode_manual",
+                                    localId: "status_mode_manual",
                                     css:"rows_level_right_menu_info",
                                     hidden: false,
 
@@ -263,7 +263,7 @@ export default class FullEmptySubView extends JetView {
                                     label: `<p style=' font-size:20px; text-align: center; position:relative; top:-15px;'>${_("Label_enable_calibration_mode_manual")}</p>`,
                                     wight: 300,
                                     // height: 100,
-                                    id: "status_mode_manual_hidden",
+                                    localId: "status_mode_manual_hidden",
                                     css:"rows_level_right_menu_info_hidden",
                                     hidden: true,
                                 }
@@ -302,40 +302,40 @@ export default class FullEmptySubView extends JetView {
         llsModelOne.addListenerShortData(this.listenerShortData);
         llsModelOne.addListenerLongData(this.listenerLongData);
 
-        $$('auto_calibration_1').attachEvent("onItemClick", (id, e)=>{
+        this.$$('auto_calibration_1').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             llsModelOne.setMaximum().then();
 
         });
 
-        $$('auto_calibration_2').attachEvent("onItemClick", (id, e)=>{
+        this.$$('auto_calibration_2').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             llsModelOne.setMinimum().then();
         });
 
-        $$("auto_calibration_1").disable();
-        $$("auto_calibration_2").disable();
+        this.$$("auto_calibration_1").disable();
+        this.$$("auto_calibration_2").disable();
 
         $$("calibration_fuel").attachEvent("onChange", (newValue, oldValue, config)=>{
             if(newValue){
-                $$("auto_calibration").disable();
-                $$("auto_calibration_1").disable();
-                $$("auto_calibration_set_1").disable();
-                $$("auto_calibration_2").disable();
-                $$("auto_calibration_set_2").disable();
-                $$("button_edit").enable();
+                this.$$("auto_calibration").disable();
+                this.$$("auto_calibration_1").disable();
+                this.$$("auto_calibration_set_1").disable();
+                this.$$("auto_calibration_2").disable();
+                this.$$("auto_calibration_set_2").disable();
+                this.$$("button_edit").enable();
             }else{
-                $$("auto_calibration").enable();
-                $$("auto_calibration_1").disable();
-                $$("auto_calibration_set_1").disable();
-                $$("auto_calibration_2").disable();
-                $$("auto_calibration_set_2").disable();
+                this.$$("auto_calibration").enable();
+                this.$$("auto_calibration_1").disable();
+                this.$$("auto_calibration_set_1").disable();
+                this.$$("auto_calibration_2").disable();
+                this.$$("auto_calibration_set_2").disable();
 
-                $$("button_edit").disable();
+                this.$$("button_edit").disable();
             }
         });
 
-        $$("auto_calibration_set_1").attachEvent("onChange", (newValue, oldValue, config)=>{
+        this.$$("auto_calibration_set_1").attachEvent("onChange", (newValue, oldValue, config)=>{
             if(newValue == "45000000"){
                 this.app.callEvent("app:fullemptysubview:one:fullTankDefault", [false]);
             }else{
@@ -343,7 +343,7 @@ export default class FullEmptySubView extends JetView {
             }
         });
 
-        $$("auto_calibration_set_2").attachEvent("onChange", (newValue, oldValue, config)=>{
+        this.$$("auto_calibration_set_2").attachEvent("onChange", (newValue, oldValue, config)=>{
             if(newValue == "1000000"){
                 this.app.callEvent("app:fullemptysubview:one:emptyTankDefault", [false]);
             }else{
@@ -351,44 +351,44 @@ export default class FullEmptySubView extends JetView {
             }
         });
 
-        $$('button_edit').attachEvent("onChange", (id, e)=>{
+        this.$$('button_edit').attachEvent("onChange", (id, e)=>{
             console.log('click');
             if(this.flagCalibrationEdit){
                 this.flagCalibrationEdit = false;
 
-                $$("auto_calibration_1").disable();
-                $$("auto_calibration_2").disable();
-                $$("auto_calibration_set_1").define("readonly", true);
-                $$("auto_calibration_set_2").define("readonly", true);
-                $$("auto_calibration").enable();
-                $$("status_mode_manual_hidden").hide()
-                $$("status_mode_manual").show()
-                $$("status_mode_auto_hidden").show()
-                $$("status_mode_auto").hide()
+                this.$$("auto_calibration_1").disable();
+                this.$$("auto_calibration_2").disable();
+                this.$$("auto_calibration_set_1").define("readonly", true);
+                this.$$("auto_calibration_set_2").define("readonly", true);
+                this.$$("auto_calibration").enable();
+                this.$$("status_mode_manual_hidden").hide()
+                this.$$("status_mode_manual").show()
+                this.$$("status_mode_auto_hidden").show()
+                this.$$("status_mode_auto").hide()
 
             }else{
                 this.flagCalibrationEdit = true;
-                $$("auto_calibration_1").enable();
-                $$("auto_calibration_2").enable();
-                $$("auto_calibration_set_1").define("readonly", false);
-                $$("auto_calibration_set_2").define("readonly", false);
-                $$("auto_calibration").disable();
-                $$("status_mode_manual_hidden").show()
-                $$("status_mode_manual").hide()
-                $$("status_mode_auto_hidden").hide()
-                $$("status_mode_auto").show()
+                this.$$("auto_calibration_1").enable();
+                this.$$("auto_calibration_2").enable();
+                this.$$("auto_calibration_set_1").define("readonly", false);
+                this.$$("auto_calibration_set_2").define("readonly", false);
+                this.$$("auto_calibration").disable();
+                this.$$("status_mode_manual_hidden").show()
+                this.$$("status_mode_manual").hide()
+                this.$$("status_mode_auto_hidden").hide()
+                this.$$("status_mode_auto").show()
 
             }
 
-            $$("auto_calibration_set_1").refresh();
-            $$("auto_calibration_set_2").refresh();
+            this.$$("auto_calibration_set_1").refresh();
+            this.$$("auto_calibration_set_2").refresh();
         });
 
 
 
 
 
-        $$('auto_calibration_set_1').attachEvent("onChange", (newValue, oldValue, config) => {
+        this.$$('auto_calibration_set_1').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
@@ -398,13 +398,13 @@ export default class FullEmptySubView extends JetView {
                     // this.setTextValue("textLlsAdr", 'llsAdr', "statusLlsAdr");
                     llsModelOne.setLongData({fullTank: newValue }).then();
                 } else {
-                    $$('auto_calibration_set_1').setValue(oldValue);
+                    this.$$('auto_calibration_set_1').setValue(oldValue);
                     // llsModel.setLongData({fullTank: oldValue }).then();
                 }
             }
         })
 
-        $$('auto_calibration_set_2').attachEvent("onChange", (newValue, oldValue, config) => {
+        this.$$('auto_calibration_set_2').attachEvent("onChange", (newValue, oldValue, config) => {
             console.log("change");
             if (config != undefined) {
                 console.log(newValue);
@@ -414,7 +414,7 @@ export default class FullEmptySubView extends JetView {
                     // this.setTextValue("textLlsAdr", 'llsAdr', "statusLlsAdr");
                     llsModelOne.setLongData({emptyTank: newValue }).then();
                 } else {
-                    $$('auto_calibration_set_2').setValue(oldValue);
+                    this.$$('auto_calibration_set_2').setValue(oldValue);
                     // llsModel.setLongData({fullTank: oldValue }).then();
                 }
             }
@@ -424,7 +424,7 @@ export default class FullEmptySubView extends JetView {
         this.windowAutoLevel = this.ui(AutoLevelWindow);
         // this.windowAutoLevel.showWindow();
 
-        $$('auto_calibration').attachEvent("onItemClick", (id, e)=>{
+        this.$$('auto_calibration').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             this.windowAutoLevel.showWindow();
         });
@@ -433,47 +433,47 @@ export default class FullEmptySubView extends JetView {
             webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status");
             webix.html.addCss( $$("right_menu_status_text").getNode(), "right_menu_status_text");
             webix.html.addCss( $$("calibration_fuel").getNode(), "filter_toggle");
-            webix.html.addCss( $$("auto_calibration").getNode(), "auto_calibration");
+            webix.html.addCss( this.$$("auto_calibration").getNode(), "auto_calibration");
             webix.html.addCss( $$("progress_bar").getNode(), "progress_bar");
-            webix.html.addCss( $$("auto_calibration_set_1").getNode(), "full_window_text");
-            webix.html.addCss( $$("auto_calibration_1").getNode(), "auto_calibration");
-            webix.html.addCss( $$("auto_calibration_set_2").getNode(), "full_window_text");
-            webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration");
-            webix.html.addCss( $$("button_edit").getNode(), "edit_values");
+            webix.html.addCss( this.$$("auto_calibration_set_1").getNode(), "full_window_text");
+            webix.html.addCss( this.$$("auto_calibration_1").getNode(), "auto_calibration");
+            webix.html.addCss( this.$$("auto_calibration_set_2").getNode(), "full_window_text");
+            webix.html.addCss( this.$$("auto_calibration_2").getNode(), "auto_calibration");
+            webix.html.addCss( this.$$("button_edit").getNode(), "edit_values");
             webix.html.addCss( this.$$("status_level_fuel").getNode(), "full_window_text");
             webix.html.addCss( $$("right_menu_fuel_level").getNode(), "rows_level_right_menu_info");
 
-            webix.html.addCss( $$("status_mode_auto").getNode(), "rows_level_right_menu_info");
-            webix.html.addCss( $$("status_mode_manual").getNode(), "rows_level_right_menu_info");
+            webix.html.addCss( this.$$("status_mode_auto").getNode(), "rows_level_right_menu_info");
+            webix.html.addCss( this.$$("status_mode_manual").getNode(), "rows_level_right_menu_info");
 
         }
         if(configFile.theme == 'dark'){
             webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status_dark");
             webix.html.addCss( $$("right_menu_status_text").getNode(), "right_menu_status_text_dark");
             webix.html.addCss( $$("calibration_fuel").getNode(), "filter_toggle_dark");
-            webix.html.addCss( $$("auto_calibration").getNode(), "auto_calibration_dark");
+            webix.html.addCss( this.$$("auto_calibration").getNode(), "auto_calibration_dark");
             webix.html.addCss( $$("progress_bar").getNode(), "progress_bar_dark");
-            webix.html.addCss( $$("auto_calibration_set_1").getNode(), "full_window_text_dark");
-            webix.html.addCss( $$("auto_calibration_1").getNode(), "auto_calibration_dark");
-            webix.html.addCss( $$("auto_calibration_set_2").getNode(), "full_window_text_dark");
-            webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration_dark");
-            webix.html.addCss( $$("auto_calibration_2").getNode(), "auto_calibration_dark");
-            webix.html.addCss( $$("button_edit").getNode(), "edit_values_dark");
+            webix.html.addCss( this.$$("auto_calibration_set_1").getNode(), "full_window_text_dark");
+            webix.html.addCss( this.$$("auto_calibration_1").getNode(), "auto_calibration_dark");
+            webix.html.addCss( this.$$("auto_calibration_set_2").getNode(), "full_window_text_dark");
+            webix.html.addCss( this.$$("auto_calibration_2").getNode(), "auto_calibration_dark");
+            webix.html.addCss( this.$$("auto_calibration_2").getNode(), "auto_calibration_dark");
+            webix.html.addCss( this.$$("button_edit").getNode(), "edit_values_dark");
             webix.html.addCss( this.$$("status_level_fuel").getNode(), "full_window_text_dark");
             webix.html.addCss( $$("right_menu_fuel_level").getNode(), "rows_level_right_menu_info_dark");
 
-            webix.html.addCss( $$("status_mode_auto").getNode(), "rows_level_right_menu_info_dark");
-            webix.html.addCss( $$("status_mode_manual").getNode(), "rows_level_right_menu_info_dark");
+            webix.html.addCss( this.$$("status_mode_auto").getNode(), "rows_level_right_menu_info_dark");
+            webix.html.addCss( this.$$("status_mode_manual").getNode(), "rows_level_right_menu_info_dark");
         }
     }
 
     setEmptyTank(newValue){
-        $$('auto_calibration_set_2').setValue(newValue);
+        this.$$('auto_calibration_set_2').setValue(newValue);
         llsModelOne.newLongData.emptyTank = newValue;
     }
 
     setFullTank(newValue){
-        $$('auto_calibration_set_1').setValue(newValue);
+        this.$$('auto_calibration_set_1').setValue(newValue);
         llsModelOne.newLongData.fullTank = newValue;
     }
 

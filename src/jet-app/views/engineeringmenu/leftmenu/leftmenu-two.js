@@ -25,9 +25,6 @@ export default class LeftMenuTwo extends JetView{
                     },
                     {
                         rows: [
-                            {view:'button',
-                                label:"Two"
-                            },
                             {
                                 height: 5,
                             },

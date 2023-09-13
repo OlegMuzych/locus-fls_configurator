@@ -1,7 +1,7 @@
 import {JetView} from "webix-jet";
-import llsModel from "../../../models/lls-model";
-import configFile from "../../../config-app";
-import configApp from "../../../config-app";
+import {llsModelOne} from "../../../../models/lls-test-models";
+import configFile from "../../../../config-app";
+import configApp from "../../../../config-app";
 
 export default class StatusMenu extends JetView{
     config(){
@@ -63,7 +63,7 @@ export default class StatusMenu extends JetView{
                             width:5,
                         },
                         {view:"button", type:"image", image:"assets/images/temperature_2.svg", width:30, height:30, css:"thermometer_image",},
-                        {view:"text", width: 60, height:30, css:"window_temp", id:"window_temp", readonly:true, value:"__°"},
+                        {view:"text", width: 60, height:30, css:"window_temp", localId:"window_temp", readonly:true, value:"__°"},
 
                     ]
                 },
@@ -108,7 +108,7 @@ export default class StatusMenu extends JetView{
                 },
                 {
                     height: 18,
-                }
+                },
             ]
         };
 
@@ -117,17 +117,17 @@ export default class StatusMenu extends JetView{
 
     destroy() {
         super.destroy();
-        llsModel.clearListenerIsConnect(this.listenerConnect);
-        llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
-        llsModel.clearListenerShortData(this.listenerShortData);
-        llsModel.clearListenerLongData(this.listenerLongData);
-        llsModel.clearListenerReadCnt(this.listenerReadCnt);
-        llsModel.cle
+        llsModelOne.clearListenerIsConnect(this.listenerConnect);
+        llsModelOne.clearListenerIsDisconnect(this.listenerDisconnect);
+        llsModelOne.clearListenerShortData(this.listenerShortData);
+        llsModelOne.clearListenerLongData(this.listenerLongData);
+        llsModelOne.clearListenerReadCnt(this.listenerReadCnt);
+        // llsModelOne.clear;
     }
 
     listenerShortData = (shortData)=>{
         // console.log(shortData);
-        $$("window_temp").setValue(shortData.temperature.toString());
+        this.$$("window_temp").setValue(shortData.temperature.toString());
     }
 
     listenerLongData = (longData)=>{
@@ -140,7 +140,7 @@ export default class StatusMenu extends JetView{
 
     listenerConnect = ()=>{
         setStatusConnect(true);
-        llsModel.getLongData();
+        llsModelOne.getLongData();
     }
 
     listenerDisconnect = ()=>{
@@ -157,22 +157,22 @@ export default class StatusMenu extends JetView{
         setCalibrateState(false);
         setTermoState(false);
 
-        llsModel.addListenerIsConnect(this.listenerConnect);
-        llsModel.addListenerIsDisconnect(this.listenerDisconnect);
-        llsModel.addListenerShortData(this.listenerShortData);
-        llsModel.addListenerLongData(this.listenerLongData);
-        llsModel.addListenerReadCnt(this.listenerReadCnt);
-        llsModel.getStatusConnect();
+        llsModelOne.addListenerIsConnect(this.listenerConnect);
+        llsModelOne.addListenerIsDisconnect(this.listenerDisconnect);
+        llsModelOne.addListenerShortData(this.listenerShortData);
+        llsModelOne.addListenerLongData(this.listenerLongData);
+        llsModelOne.addListenerReadCnt(this.listenerReadCnt);
+        llsModelOne.getStatusConnect();
 
         this.fullLevelDefault = false;
         this.emptyLevelDefault = false;
 
-        this.on(this.app, "app:fullemptysubview:fullTankDefault", (status) => {
+        this.on(this.app, "app:fullemptysubview:one:fullTankDefault", (status) => {
             this.fullLevelDefault = status;
             setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
         });
 
-        this.on(this.app, "app:fullemptysubview:emptyTankDefault", (status) => {
+        this.on(this.app, "app:fullemptysubview:one:emptyTankDefault", (status) => {
             this.emptyLevelDefault = status;
             setCalibrateState(this.fullLevelDefault && this.emptyLevelDefault);
         });
@@ -186,7 +186,7 @@ export default class StatusMenu extends JetView{
             webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info");
             webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info");
-            webix.html.addCss( $$("window_temp").getNode(), "window_temp");
+            webix.html.addCss( this.$$("window_temp").getNode(), "window_temp");
 
         }
         if(configFile.theme == 'dark'){
@@ -195,7 +195,7 @@ export default class StatusMenu extends JetView{
             webix.html.addCss( $$("rows_level_right_menu_info_2").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_3").getNode(), "rows_level_right_menu_info_dark");
             webix.html.addCss( $$("rows_level_right_menu_info_4").getNode(), "rows_level_right_menu_info_dark");
-            webix.html.addCss( $$("window_temp").getNode(), "window_temp_dark");
+            webix.html.addCss( this.$$("window_temp").getNode(), "window_temp_dark");
 
         }
     }

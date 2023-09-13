@@ -1,7 +1,7 @@
 import {JetView} from "webix-jet";
-import llsModel from "../../../models/lls-model";
-import configFile from "../../../config-app";
-import fileTableModel from "../../../models/file-table-model";
+import {llsModelTwo} from "../../../../models/lls-test-models";
+import configFile from "../../../../config-app";
+import fileTableModel from "../../../../models/file-table-model";
 
 export default class CalibrationSettings extends JetView {
     config() {
@@ -66,7 +66,7 @@ export default class CalibrationSettings extends JetView {
     }
 
     listenerConnect = () => {
-        llsModel.getTable().then();
+        llsModelTwo.getTable().then();
     }
 
     listenerShortData = (shortData) => {
@@ -75,16 +75,16 @@ export default class CalibrationSettings extends JetView {
 
     destroy() {
         super.destroy();
-        llsModel.clearListenerTable(this.listenerTable);
-        llsModel.clearListenerIsConnect(this.listenerConnect);
-        llsModel.clearListenerShortData(this.listenerShortData);
+        llsModelTwo.clearListenerTable(this.listenerTable);
+        llsModelTwo.clearListenerIsConnect(this.listenerConnect);
+        llsModelTwo.clearListenerShortData(this.listenerShortData);
     }
 
     init() {
-        llsModel.addListenerTable(this.listenerTable);
-        llsModel.addListenerIsConnect(this.listenerConnect);
-        llsModel.addListenerShortData(this.listenerShortData);
-        llsModel.getTable().then();
+        llsModelTwo.addListenerTable(this.listenerTable);
+        llsModelTwo.addListenerIsConnect(this.listenerConnect);
+        llsModelTwo.addListenerShortData(this.listenerShortData);
+        llsModelTwo.getTable().then();
 
 
 
@@ -109,7 +109,7 @@ export default class CalibrationSettings extends JetView {
 
         }
 
-        
+
         this.on(this.app, "app:calibrationsubview:addStep", (volumeStep) => {
             if(this.#volume.length){
                 let volumes = [ ...this.#volume];
@@ -169,7 +169,7 @@ export default class CalibrationSettings extends JetView {
                 }
             }
             this.saveTable();
-            llsModel.getTable().then();
+            llsModelTwo.getTable().then();
 
         });
 
@@ -202,14 +202,19 @@ export default class CalibrationSettings extends JetView {
         });
 
         this.on(this.app, "app:calibrationsubview:saveToFile", async() => { //save to file
-            await llsModel.getTable();
+            await llsModelTwo.getTable();
             fileTableModel.write(this.currentTable).then();
+        });
+
+        this.on(this.app, "app:calibrationsubview:saveToFile:xml", async() => { //save to file
+            await llsModelTwo.getTable();
+            fileTableModel.writeXML(this.currentTable).then();
         });
 
         this.on(this.app, "app:calibrationsubview:readFromFile", () => { // read from file
             fileTableModel.read()
                 .then((table)=>{
-                    this.app.callEvent("app:calibrationSettings:openTableFromFile", [table]);
+                    this.app.callEvent("app:calibrationSettings:openTableFromFile", [table, llsModelTwo]);
                 })
                 .catch((err)=>{console.log(err)});
         });
@@ -362,14 +367,14 @@ export default class CalibrationSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 this.saveTable();
-                llsModel.getTable().then();
+                llsModelTwo.getTable().then();
             }
         });
     }
 
     saveTable(){
         let table = this.parseTable();
-        llsModel.setTable(table).then();
+        llsModelTwo.setTable(table).then();
         console.log(table);
     }
 

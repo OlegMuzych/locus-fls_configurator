@@ -5,7 +5,8 @@ export default {
     "firmware_lls": "Firmware",
 
     "sensor_is_connected": "The device is connected",
-    "sensor_is_not_connected": "The device is not connected",
+    "sensor_is_not_connected": "#1 The device is not connected",
+    "sensor_is_not_connected_2": "#2 The device is not connected",
 
     "function_is_not_available": "The function is not available",
 
@@ -31,6 +32,9 @@ export default {
     "language_ru":  'Русский',
     "language_en": 'English',
     "language_like_system": "Native",
+    "text_two_gage": "Configurator mode:",
+    "number_gage_1": "1 sensor",
+    "number_gage_2": "2 sensors",
 
     /* generalsettings.js */
     "choose": 'Choose',
@@ -95,14 +99,26 @@ export default {
     "column_level_header": "Level",
     "column_volume_header": "Volume",
 
+    /*  text button menu config sensor  */
+    "one_sensor_button": "Sensor #1",
+    "two_sensor_button": "Sensor #2",
+
     /* leftmenu.js */
     "button_save_setting": "Save Settings",
 
     /* statusmenu.js */
-    "status_sensor_is_connected": "The device is connected",
+    "status_sensor_is_connected": "The device #1 is connected",
+    "status_sensor_is_connected_2": "The device #2 is connected",
     "status_fuel_is_stable": "Fuel level is stable",
     "status_calibration": "Calibration is not required",
     "status_thermal_compensation": "Thermal compensation",
+
+    /*  text info config  */
+    "warning_text_configurator_mode": "Данная функция предназначена для подключения и настройки",
+    "warning_text_configurator_mode_2": "одного или двух датчиков к конфигуратору одновременно.",
+    "warning_text_configurator_mode_3": "Подключения датчиков происходит автоматически.",
+    "warning_text_configurator_mode_4": "Статус подключения отоброжается на главном экране.",
+
 
     /* errorStatus.js */
     "errorStatus_text": "error code",
@@ -110,12 +126,13 @@ export default {
     /* servicemenu.js */
     "service_service": "Service",
     "service_service_reset_sensor": "Reset all settings",
-    "service_service_save_setting_file": "Save the settings to a file",
+    "service_service_save_setting_file": "Save the settings to a file JSON",
+    "service_service_save_setting_file_xml": "Save the settings to a file XML",
     "service_service_read_setting_file": "Read the settings from the file",
 
     "service_password": "Password",
 
-    /* fullemptysubview.js , filteringsubview.js */
+    /* fullemptysubview-two.js , filteringsubview-two.js */
     "automatic_calibration": "Automatic calibration",
     "button_automatic_calibration": " Auto calibrate",
     "current_level": "Current level",
@@ -127,8 +144,9 @@ export default {
     "Label_enable_calibration_mode_auto": "Auto",
     "Label_enable_calibration_mode_manual": "Manual",
 
-    /* calibrationsubview.js */
-    "button_save_table_file": "Save calibration data",
+    /* calibrationsubview-two.js */
+    "button_save_table_file": "Save calibration data JSON",
+    "button_save_table_file_xml": "Save calibration data XML",
     "button_read_table_file": "Load calibration data",
     "tabbar_fill": "Tank fill mode",
     "tabbar_drain": "Tank drain mode",

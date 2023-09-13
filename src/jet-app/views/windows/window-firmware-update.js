@@ -2,7 +2,9 @@ import {JetView} from "webix-jet";
 import configFile from "../../config-app";
 import FirmwareUpdate from "../firmware-update/firmware-update";
 import fileFirmwareModel from "../../models/file-firmware-model";
-import llsModel from "../../models/lls-model";
+import {llsModelOne} from "../../models/lls-test-models"
+
+const llsModel = llsModelOne;
 
 export default class WindowFirmwareUpdate extends JetView {
     config() {

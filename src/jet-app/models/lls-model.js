@@ -1,12 +1,14 @@
 import EventEmitter from "events"
 import Lls from "../services/lls/lls";
-import findPort from "../services/lls/findPort";
+// import findPort from "../services/lls/findPort";
+import FindLls from "../services/lls/findPort";
 
 class MyEmitter extends EventEmitter {
 }
 
-
 class LlsModel {
+    // findPort = new FindLls();
+    findPort = null;
     #statusLls = "noConnect"; //"findConnect", "connect"
     _llsConnectSettings = {
         path: null,
@@ -16,9 +18,12 @@ class LlsModel {
     _myEmitter = new MyEmitter();
     _lls = null;
     _intervalShortDataId = null;
+    _port = null;
 
-    constructor(timeout = 1000) {
+    constructor(port,timeout = 1000) {
+        this._port = port;
         this.#init(timeout).then().catch();
+        this.findPort = new FindLls();
     }
 
     currentLongData = {};
@@ -29,6 +34,12 @@ class LlsModel {
 
     /*** Event Short Data ***/
 
+    start(){
+        this.findFlag = true;
+    }
+    async stop(){
+        await this.findPort.setStop();
+    }
     /***/
     addListenerShortData(listener) {
         this._myEmitter.on('shortData', listener);
@@ -350,7 +361,7 @@ class LlsModel {
 
     async setStatusLlsStopPromise() {
         this.#statusLls = "stop";
-        await findPort.setStop();
+        await this.findPort.setStop();
 
         if (this._lls) {
             this.#statusLls = "stop";
@@ -366,6 +377,28 @@ class LlsModel {
             this.#statusLls = 'stop';
             return "stop";
         }
+    }
+
+    async setStatusLlsStartPromise() {
+        if(this.#statusLls === 'stop'){
+            this.#statusLls = "noConnect";
+        }
+        // await this.findPort.setStop();
+
+        // if (this._lls) {
+        //     this.#statusLls = "stop";
+        //     try {
+        //         await this._lls.close();
+        //         this.#statusLls = "stop";
+        //         this._myEmitter.emit('isDisconnect');
+        //         return "stop";
+        //     } catch (e) {
+        //         throw e;
+        //     }
+        // } else {
+        //     this.#statusLls = 'stop';
+        //     return "stop";
+        // }
     }
 
     setStatusLlsNoConnect() {
@@ -407,7 +440,7 @@ class LlsModel {
                     console.log("Lls is find!");
                     console.log(this._llsConnectSettings);
                     try {
-                        this._lls = await new Lls(this._llsConnectSettings);
+                        this._lls = await new Lls(this._llsConnectSettings, this._port);
                         this.#statusLls = 'connect';
                         this._myEmitter.emit('isConnect');
                         break;
@@ -464,7 +497,7 @@ class LlsModel {
 
     async #findLls() {
         try {
-            let settings = await findPort.findLls232();
+            let settings = await this.findPort.findLls232(this._port);
             // console.log(settings);
             return settings;
         } catch (e) {
@@ -473,6 +506,6 @@ class LlsModel {
     }
 }
 
-const llsModel = new LlsModel();
+// const llsModel = new LlsModel();
 
-export default llsModel;
+export default LlsModel;

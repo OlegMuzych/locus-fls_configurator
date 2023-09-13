@@ -67,6 +67,10 @@ contextBridge.exposeInMainWorld(
     }
 );
 
+contextBridge.exposeInMainWorld('SP', {
+    new: (options)=>{return new SerialPort(options)},
+});
+
 contextBridge.exposeInMainWorld('electron', {
     openDialog: (method, config) => {
         return ipcRenderer.invoke('dialog', method, config);
@@ -105,5 +109,63 @@ contextBridge.exposeInMainWorld('csv-string', {
 
 contextBridge.exposeInMainWorld('Buffer', {
         concat: (list, totalLength) => Buffer.concat(list, totalLength),
+    }
+);
+
+let port2 = {};
+contextBridge.exposeInMainWorld(
+    'serialPort2',
+    {
+        portList: async () => {
+            let portList = await SerialPort.list();
+            // console.log(portList);
+            return portList;
+        },
+        new: (options) => {
+            port2 = new SerialPort(options);
+        },
+        // on: (event, callback) => {
+        //     port.on(event,callback);
+        // },
+        onReadable: (callback) => {
+            port2.on('readable', callback);
+        },
+        onOpen: (callback) => {
+            port2.on('open', callback);
+        },
+        onError: (callback) => {
+            port2.on('error', callback);
+        },
+        onData: (callback) => {
+            port2.on('data', callback);
+        },
+        onClose: (callback) => {
+            port2.on('close', callback);
+        },
+        onceData: (callback) => {
+            port2.once('data', callback);
+        },
+        delete: () => {
+            delete port2;
+        },
+        pause: () => {
+            port2.pause();
+        },
+        resume: () => {
+            port2.resume;
+        },
+        write: (buffer) => {
+            port2.write(buffer);
+        },
+        read: () => {
+            return port2.read();
+        },
+        isOpen: () => {
+            return port2.isOpen();
+        },
+        close: (callback) => {
+            return port2.close(callback);
+        },
+        sp_PORT_2: ()=>{},
     }
 );

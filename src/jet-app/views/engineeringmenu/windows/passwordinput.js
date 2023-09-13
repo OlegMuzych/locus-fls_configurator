@@ -1,8 +1,9 @@
 import {JetView} from "webix-jet";
-import llsModel from "../../../models/lls-model";
+// import llsModel from "../../../models/lls-model";
 import configFile from "../../../config-app";
 
 export default class PasswordInputWindow extends JetView {
+    llsModel = undefined;
     config() {
         const _ = this.app.getService("locale")._;
 
@@ -199,7 +200,7 @@ export default class PasswordInputWindow extends JetView {
 
         this.$$('buttonResetOk').attachEvent("onItemClick", (id, e) => {
             console.log('click');
-            llsModel.resetLls().then();
+            this.llsModel.resetLls().then();
             this.getRoot().hide();
             //todo: command resetLls
         });
@@ -219,7 +220,7 @@ export default class PasswordInputWindow extends JetView {
 
     pressOk = ()=>{
         let pass = this.$$("textCurrentPass").getValue();
-        llsModel.setCurrentPassword(pass)
+        this.llsModel.setCurrentPassword(pass)
             .then(()=>{
                 this.passValidFlag = true;
                 this.$$('textCurrentPass').validate();
@@ -234,7 +235,14 @@ export default class PasswordInputWindow extends JetView {
     }
 
 
-    showWindow() {
+    showWindow(llsModel, text = '') {
+        const _ = this.app.getService("locale")._;
+        this.llsModel = llsModel
+        console.log(llsModel.currentLongData);
+        this.$$('windows_password_label').define({
+            label: `<p style='position: relative; font-size: 26px; top: -25px'>${text} ${_("window_passwordinput_segmented_current_text")}</p>`,
+        });
+        this.$$('windows_password_label').refresh();
         this.getRoot().show();
     }
 

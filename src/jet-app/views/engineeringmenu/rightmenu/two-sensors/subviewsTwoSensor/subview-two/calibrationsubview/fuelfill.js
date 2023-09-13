@@ -1,5 +1,5 @@
 import {JetView} from "webix-jet";
-import configFile from "../../../../../config-app";
+import configFile from "../../../../../../../config-app";
 
 export default class FuelFillView extends JetView {
     config() {

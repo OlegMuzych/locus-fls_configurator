@@ -1,8 +1,9 @@
 import {JetView} from "webix-jet";
-import CentralMenu from "./centralmenu/centralmenu";
-import RightMenu from "./rightmenu/rightmenu";
+// import CentralMenu from "./centralmenu/centralmenu";
+import RightMenu from "./rightmenu/one-sensor/rightmenu";
 import LeftMenu from "./leftmenu/leftmenu";
-import llsModel from "../../models/lls-model";
+// import llsModel from "../../models/lls-model";
+import {llsModelOne, llsModelTwo} from "../../models/lls-test-models";
 import PasswordWindow from "./windows/password";
 import ContinueCalibrateWindow from "./windows/continuecalibrate";
 import configFile from "../../config-app";
@@ -10,6 +11,11 @@ import PasswordInputWindow from "./windows/passwordinput";
 import LlsNoConnectWindow from "./windows/llsnoconnect";
 import TablePreviewWindow from "./windows/table-preview";
 import SaveSettingNotificationWindow from "./windows/save-setting-notification";
+import TwoSensor from "./centralmenu/twoSensor";
+import RightTwoSensor from "./rightmenu/right-two-sensorr";
+import globalVariable from "../../global-variable-app";
+import PasswordInputTwoWindow from "./windows/passwordinput-two";
+import LeftMenuTwo from "./leftmenu/leftmenu-two";
 
 export default class EngineeringMenu extends JetView{
     config() {
@@ -21,15 +27,17 @@ export default class EngineeringMenu extends JetView{
             id: "dark",
             cols: [
                 LeftMenu,
+                LeftMenuTwo,
                 {
                     width: 10,
                 },
-                CentralMenu,
+                // CentralMenu,
+                TwoSensor,
                 {
                     width: 10,
                 },
-                RightMenu,
-
+                // RightMenu,
+                RightTwoSensor
             ]
         };
 
@@ -39,39 +47,89 @@ export default class EngineeringMenu extends JetView{
 
     destroy() {
         super.destroy();
-        llsModel.clearListenerCommandError(this.listenerCommandError);
-        llsModel.clearListenerIsDisconnect(this.listenerIsDisconnect);
+        llsModelOne.clearListenerCommandError(this.listenerCommandErrorOne);
+        llsModelTwo.clearListenerCommandError(this.listenerCommandErrorTwo);
+        llsModelOne.clearListenerIsDisconnect(this.listenerIsDisconnectOne);
+        llsModelOne.clearListenerIsDisconnect(this.listenerIsDisconnectTwo);
     }
 
     init(){
-        llsModel.checkPassword()
-            .then(()=>{
+        if(globalVariable.twoSensorMode === false){
+            llsModelOne.checkPassword()
+                .then(()=>{
 
-            })
-            .catch((status)=>{
-                switch(status){
-                    case 0x01:{
-                        this.llsNoConnectWindow.showWindow(); //в случае ошибки передачи команды
-                        break;
+                })
+                .catch((status)=>{
+                    switch(status){
+                        case 0x01:{
+                            this.llsNoConnectWindow.showWindow("1"); //в случае ошибки передачи команды
+                            break;
+                        }
+                        case 0x02:{
+                            this.passwordInput.showWindow(llsModelOne);
+                            break;
+                        }
+                        default:{
+                            this.llsNoConnectWindow.showWindow("1"); //в случае если датчик не подключен
+                            break;
+                        }
                     }
-                    case 0x02:{
-                        this.passwordInput.showWindow();
-                        break;
-                    }
-                    default:{
-                        this.llsNoConnectWindow.showWindow(); //в случае если датчик не подключен
+                });
+        }else{
+            llsModelOne.checkPassword()
+                .then(()=>{
 
-                        break;
+                })
+                .catch((status)=>{
+                    switch(status){
+                        case 0x01:{
+                            this.llsNoConnectWindow.showWindow("1"); //в случае ошибки передачи команды
+                            break;
+                        }
+                        case 0x02:{
+                            this.passwordInput.showWindow(llsModelOne, "LLS 1");
+                            break;
+                        }
+                        default:{
+                            this.llsNoConnectWindow.showWindow("1"); //в случае если датчик не подключен
+                            break;
+                        }
                     }
-            }
-            });
+                });
 
-        llsModel.addListenerCommandError(this.listenerCommandError);
-        llsModel.addListenerIsDisconnect(this.listenerIsDisconnect);
+            llsModelTwo.checkPassword()
+                .then(()=>{
+
+                })
+                .catch((status)=>{
+                    switch(status){
+                        case 0x01:{
+                            this.llsNoConnectWindow.showWindow('2'); //в случае ошибки передачи команды
+                            break;
+                        }
+                        case 0x02:{
+                            this.passwordInputTwo.showWindow(llsModelTwo, "LLS 2");
+                            break;
+                        }
+                        default:{
+                            this.llsNoConnectWindow.showWindow("2"); //в случае если датчик не подключен
+                            break;
+                        }
+                    }
+                });
+        }
+
+
+        llsModelOne.addListenerCommandError(this.listenerCommandErrorOne);
+        llsModelOne.addListenerIsDisconnect(this.listenerIsDisconnectOne);
+
+        llsModelTwo.addListenerCommandError(this.listenerCommandErrorTwo);
+        llsModelTwo.addListenerIsDisconnect(this.listenerIsDisconnectTwo);
 
         this.passwordWindow = this.ui(PasswordWindow);
         this.continueWindow = this.ui(ContinueCalibrateWindow);
         this.passwordInput = this.ui(PasswordInputWindow);
+        this.passwordInputTwo = this.ui(PasswordInputTwoWindow);
         this.llsNoConnectWindow = this.ui(LlsNoConnectWindow);
         this.tablePreviewWindow = this.ui(TablePreviewWindow);
         this.saveSettingNotification = this.ui(SaveSettingNotificationWindow);
@@ -80,8 +138,8 @@ export default class EngineeringMenu extends JetView{
             this.continueWindow.showWindow();
         });
 
-        this.on(this.app, "app:calibrationSettings:openTableFromFile", (table) => {
-            this.tablePreviewWindow.showWindow(table);
+        this.on(this.app, "app:calibrationSettings:openTableFromFile", (table, llsModel) => {
+            this.tablePreviewWindow.showWindow(table, llsModel);
         });
 
         this.on(this.app, "app:settings:setToLls", () => {
@@ -100,14 +158,13 @@ export default class EngineeringMenu extends JetView{
         }
     }
 
-    listenerCommandError = (status)=> {
+    listenerCommandErrorOne = (status)=> {
         switch (status) {
             case 0x00: {
                 this.saveSettingNotification.showWindow();
                 break;
             }
             case 0x01: {
-
                 break;
             }
             case 0x02: {
@@ -120,8 +177,30 @@ export default class EngineeringMenu extends JetView{
         }
     }
 
-    listenerIsDisconnect = ()=>{
-        this.llsNoConnectWindow.showWindow();
+    listenerCommandErrorTwo = (status)=> {
+        switch (status) {
+            case 0x00: {
+                this.saveSettingNotification.showWindow();
+                break;
+            }
+            case 0x01: {
+                break;
+            }
+            case 0x02: {
+                this.passwordWindow.showWindow();
+                break;
+            }
+            default: {
+
+            }
+        }
+    }
+
+    listenerIsDisconnectOne = ()=>{
+        this.llsNoConnectWindow.showWindow('1');
+    }
+    listenerIsDisconnectTwo = ()=>{
+        this.llsNoConnectWindow.showWindow('2');
     }
 }
 

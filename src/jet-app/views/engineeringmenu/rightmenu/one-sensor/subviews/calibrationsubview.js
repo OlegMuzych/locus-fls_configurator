@@ -2,8 +2,8 @@ import {JetView} from "webix-jet";
 import FuelFillView from "./calibrationsubview/fuelfill";
 import FuelDrainView from "./calibrationsubview/fueldrain";
 
-import configFile from "../../../../config-app";
-import llsModel from "../../../../models/lls-model";
+import configFile from "../../../../../config-app";
+import {llsModelOne} from "../../../../../models/lls-test-models";
 
 export default class CalibrationSubView extends JetView {
     config() {
@@ -132,6 +132,24 @@ export default class CalibrationSubView extends JetView {
                         {
                             view: "button",
                             type: "label",
+                            label: _("button_save_table_file_xml"),
+                            localId: "button_export_xml",
+                            width: 480,
+                            height: 50,
+                            css: "set_step_drain_button_2"
+                        },
+                        {}
+                    ]
+                },
+                {
+                    height: 5,
+                },
+                {
+                    cols: [
+                        {},
+                        {
+                            view: "button",
+                            type: "label",
                             label: _("button_read_table_file"),
                             localId: "button_import",
                             width: 480,
@@ -171,14 +189,14 @@ export default class CalibrationSubView extends JetView {
 
     destroy() {
         super.destroy();
-        llsModel.clearListenerShortData(this.listenerShortData);
-        llsModel.clearListenerLongData(this.listenerLongData);
+        llsModelOne.clearListenerShortData(this.listenerShortData);
+        llsModelOne.clearListenerLongData(this.listenerLongData);
     }
 
     init() {
         this.$$("right_menu_fuel_level").attachEvent("onAfterRender", webix.once(()=>{
-            llsModel.addListenerShortData(this.listenerShortData);
-            llsModel.addListenerLongData(this.listenerLongData);
+            llsModelOne.addListenerShortData(this.listenerShortData);
+            llsModelOne.addListenerLongData(this.listenerLongData);
         }));
         // llsModel.addListenerLongData(this.listenerLongData);
         this.on(this.app, "app:calibrationSettings:continueCalibrate", () => {
@@ -201,11 +219,15 @@ export default class CalibrationSubView extends JetView {
         });
 
         this.$$('button_import').attachEvent("onItemClick", (id, e) => {
-            this.app.callEvent("app:calibrationsubview:readFromFile", []);
+            this.app.callEvent("app:calibrationsubview:one:readFromFile", []);
         });
 
         this.$$('button_export').attachEvent("onItemClick", (id, e) => {
-            this.app.callEvent("app:calibrationsubview:saveToFile", []);
+            this.app.callEvent("app:calibrationsubview:one:saveToFile", []);
+        });
+
+        this.$$('button_export_xml').attachEvent("onItemClick", (id, e) => {
+            this.app.callEvent("app:calibrationsubview:one:saveToFile:xml", []);
         });
 
         if (configFile.theme == 'light') {

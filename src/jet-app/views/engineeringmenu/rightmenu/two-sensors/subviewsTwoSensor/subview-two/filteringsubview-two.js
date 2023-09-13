@@ -1,8 +1,10 @@
 import {JetView} from "webix-jet";
-import llsModel from "../../../../models/lls-model";
-import configFile from "../../../../config-app";
+import {llsModelTwo} from "../../../../../../models/lls-test-models";
+import configFile from '../../../../../../config-app'
 
-export default class FiltrationSubView extends JetView {
+const llsModel = llsModelTwo;
+
+export default class FiltrationSubViewTwo extends JetView {
     config() {
         const _ = this.app.getService("locale")._;
         let right_menu_setup = {

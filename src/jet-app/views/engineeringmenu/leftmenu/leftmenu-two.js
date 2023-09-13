@@ -50,7 +50,7 @@ export default class LeftMenuTwo extends JetView{
                                 width: 160,
                                 height: 200,
                                 css: "left_menu_button",
-                                id: "left_menu_button_1",
+                                localId: "left_menu_button_1",
                                 // hidden: true,
                             },
                             {
@@ -65,7 +65,7 @@ export default class LeftMenuTwo extends JetView{
                                 height: 200,
                                 // css: "left_menu_button_2",
                                 css: "left_menu_button",
-                                id: "left_menu_button_2",
+                                localId: "left_menu_button_2",
                                 // hidden: true,
                             },
                             {
@@ -77,8 +77,8 @@ export default class LeftMenuTwo extends JetView{
                                 image: _t('image_button_3'),
                                 width: 160,
                                 height: 200,
-                                css: "left_menu_button_2",
-                                id: "left_menu_button_3",
+                                css: "left_menu_button",
+                                localId: "left_menu_button_3",
                                 // hidden: true,
                             },
                             {
@@ -111,9 +111,24 @@ export default class LeftMenuTwo extends JetView{
 
         return left_menu;
     }
+    listenerLongData = (longData)=>{
+        if(longData.typeLls === 0x01){
+            this.setModel201_101(configFile.theme);
+        }else if(longData.typeLls === 0x31){
+            this.setModel301(configFile.theme);
+        }
+    }
+
+    destroy() {
+        super.destroy();
+        llsModel.clearListenerLongData(this.listenerLongData);
+    }
 
     init(){
         const _t = trademark._t;
+
+        llsModel.addListenerLongData(this.listenerLongData);
+
         this.$$("leftMenu").hide();
         this.on(this.app, "app:select_sensor:number", (value) => {
             switch(value){
@@ -157,9 +172,9 @@ export default class LeftMenuTwo extends JetView{
 
         if(configFile.theme == 'light'){
             webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols");
-            webix.html.addCss( $$("left_menu_button_1").getNode(), "left_menu_button");
-            webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button");
-            webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button");
+            webix.html.addCss( this.$$("left_menu_button_1").getNode(), "left_menu_button_2");
+            webix.html.addCss( this.$$("left_menu_button_2").getNode(), "left_menu_button_2");
+            webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2");
             // webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference");
             webix.html.addCss( this.$$("button_back").getNode(), "left_menu_button_reference");
             // webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2");
@@ -167,17 +182,17 @@ export default class LeftMenuTwo extends JetView{
 
 
 
-            $$("left_menu_button_1").define("image", _t("image_button_1"));
+            this.$$("left_menu_button_1").define("image", _t("image_button_1"));
             // $$("left_menu_button_2").define("image", "assets/images//MODEL_201.svg");
-            $$("left_menu_button_2").define("image", _t("image_button_2"));
+            this.$$("left_menu_button_2").define("image", _t("image_button_2"));
             // $$("left_menu_button_3").define("image", "assets/images//MODEL_301_BLE.svg");
-            $$("left_menu_button_3").define("image", _t("image_button_3"));
+            this.$$("left_menu_button_3").define("image", _t("image_button_3"));
             $$("button_back").define("image", _("button_image_back"));
             // $$("button_reference").define("image", _("button_image_info"));
 
-            $$("left_menu_button_1").refresh();
-            $$("left_menu_button_2").refresh();
-            $$("left_menu_button_3").refresh();
+            this.$$("left_menu_button_1").refresh();
+            this.$$("left_menu_button_2").refresh();
+            this.$$("left_menu_button_3").refresh();
             $$("button_back").refresh();
             // $$("button_reference").refresh();
 
@@ -185,10 +200,10 @@ export default class LeftMenuTwo extends JetView{
         }
         if(configFile.theme == 'dark'){
             webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols_dark");
-            webix.html.addCss( $$("left_menu_button_1").getNode(), "left_menu_button_dark");
-            webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_dark");
+            webix.html.addCss( this.$$("left_menu_button_1").getNode(), "left_menu_button_2_dark");
+            webix.html.addCss( this.$$("left_menu_button_2").getNode(), "left_menu_button_2_dark");
             // webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_2_dark");
-            webix.html.addCss( $$("left_menu_button_3").getNode(), "left_menu_button_2_dark");
+            webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2_dark");
             // webix.html.addCss( $$("button_reference").getNode(), "left_menu_button_reference_dark");
             webix.html.addCss( this.$$("button_back").getNode(), "left_menu_button_reference_dark");
             // webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2_dark");
@@ -196,19 +211,59 @@ export default class LeftMenuTwo extends JetView{
 
 
 
-            $$("left_menu_button_1").define("image", _t("image_button_1_dark"));
+            this.$$("left_menu_button_1").define("image", _t("image_button_1_dark"));
             // $$("left_menu_button_2").define("image", "assets/images/MODEL_201_inverse.svg")
-            $$("left_menu_button_2").define("image", _t("image_button_2_dark"));
+            this.$$("left_menu_button_2").define("image", _t("image_button_2_dark"));
             // $$("left_menu_button_3").define("image", "assets/images/MODEL_301_BLE_inverse.svg")
-            $$("left_menu_button_3").define("image", _t("image_button_3_dark"));
+            this.$$("left_menu_button_3").define("image", _t("image_button_3_dark"));
             $$("button_back").define("image", _("button_image_back_dark"));
             // $$("button_reference").define("image", _("button_image_info_dark"));
 
-            $$("left_menu_button_1").refresh();
-            $$("left_menu_button_2").refresh();
-            $$("left_menu_button_3").refresh();
+            this.$$("left_menu_button_1").refresh();
+            this.$$("left_menu_button_2").refresh();
+            this.$$("left_menu_button_3").refresh();
             $$("button_back").refresh();
             // $$("button_reference").refresh();
         }
+    }
+    setModel201_101(theme){
+        if(theme === 'dark'){
+            webix.html.removeCss( this.$$("left_menu_button_1").getNode(), "left_menu_button_2_dark");
+            webix.html.removeCss( this.$$("left_menu_button_2").getNode(), "left_menu_button_2_dark");
+            webix.html.removeCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2_dark");
+            webix.html.addCss( this.$$("left_menu_button_1").getNode(), "left_menu_button_dark");
+            webix.html.addCss( this.$$("left_menu_button_2").getNode(), "left_menu_button_dark");
+            webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2_dark");
+        }else{
+            webix.html.removeCss( this.$$("left_menu_button_1").getNode(), "left_menu_button_2");
+            webix.html.removeCss( this.$$("left_menu_button_2").getNode(), "left_menu_button_2");
+            webix.html.removeCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2");
+            webix.html.addCss( this.$$("left_menu_button_1").getNode(), "left_menu_button");
+            webix.html.addCss( this.$$("left_menu_button_2").getNode(), "left_menu_button");
+            webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2");
+        }
+        this.$$("left_menu_button_1").refresh();
+        this.$$("left_menu_button_2").refresh();
+        this.$$("left_menu_button_3").refresh();
+    }
+    setModel301(theme){
+        if(theme === 'dark'){
+            webix.html.removeCss( this.$$("left_menu_button_1").getNode(), "left_menu_button_2_dark");
+            webix.html.removeCss( this.$$("left_menu_button_2").getNode(), "left_menu_button_2_dark");
+            webix.html.removeCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2_dark");
+            webix.html.addCss( this.$$("left_menu_button_1").getNode(), "left_menu_button_2_dark");
+            webix.html.addCss( this.$$("left_menu_button_2").getNode(), "left_menu_button_2_dark");
+            webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_dark");
+        }else{
+            webix.html.removeCss( this.$$("left_menu_button_1").getNode(), "left_menu_button_2");
+            webix.html.removeCss( this.$$("left_menu_button_2").getNode(), "left_menu_button_2");
+            webix.html.removeCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2");
+            webix.html.addCss( this.$$("left_menu_button_1").getNode(), "left_menu_button_2");
+            webix.html.addCss( this.$$("left_menu_button_2").getNode(), "left_menu_button_2");
+            webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button");
+        }
+        this.$$("left_menu_button_1").refresh();
+        this.$$("left_menu_button_2").refresh();
+        this.$$("left_menu_button_3").refresh();
     }
 }

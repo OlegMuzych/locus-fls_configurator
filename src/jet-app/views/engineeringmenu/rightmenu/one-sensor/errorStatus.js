@@ -63,11 +63,20 @@ export default class FullEmptySubView extends JetView {
     }
 
     listenerLongData = (longData) => {
-        if (longData.emptyTank > longData.fullTank) {
-            this.addError(ERROR_FULL_EMPTY);
-        } else {
-            this.deleteError(ERROR_FULL_EMPTY);
+        if(longData.typeLls === 0x01){
+            if (longData.emptyTank > longData.fullTank) {
+                this.addError(ERROR_FULL_EMPTY);
+            } else {
+                this.deleteError(ERROR_FULL_EMPTY);
+            }
+        }else if(longData.typeLls === 0x31){
+            if (longData.emptyTank > longData.fullTank) {
+                this.deleteError(ERROR_FULL_EMPTY);
+            } else {
+                this.addError(ERROR_FULL_EMPTY);
+            }
         }
+
     }
 
     listenerShortData = (shortData) => {

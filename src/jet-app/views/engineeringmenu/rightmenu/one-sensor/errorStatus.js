@@ -1,5 +1,5 @@
 import {JetView} from "webix-jet";
-import configFile from "../../../config-app";
+import configFile from "../../../../config-app";
 import {
     ERROR_FULL_EMPTY,
     ERROR_SHORT_CIRCUIT,
@@ -7,8 +7,8 @@ import {
     ERROR_VALUE_TABLE,
     ERROR_UNDEFINED,
     NO_ERROR
-} from "../../../error-codes";
-import llsModel from "../../../models/lls-model";
+} from "../../../../error-codes";
+import {llsModelOne} from "../../../../models/lls-test-models";
 
 
 export default class FullEmptySubView extends JetView {
@@ -63,11 +63,20 @@ export default class FullEmptySubView extends JetView {
     }
 
     listenerLongData = (longData) => {
-        if (longData.emptyTank > longData.fullTank) {
-            this.addError(ERROR_FULL_EMPTY);
-        } else {
-            this.deleteError(ERROR_FULL_EMPTY);
+        if(longData.typeLls === 0x01){
+            if (longData.emptyTank > longData.fullTank) {
+                this.addError(ERROR_FULL_EMPTY);
+            } else {
+                this.deleteError(ERROR_FULL_EMPTY);
+            }
+        }else if(longData.typeLls === 0x31){
+            if (longData.emptyTank > longData.fullTank) {
+                this.deleteError(ERROR_FULL_EMPTY);
+            } else {
+                this.addError(ERROR_FULL_EMPTY);
+            }
         }
+
     }
 
     listenerShortData = (shortData) => {
@@ -120,15 +129,15 @@ export default class FullEmptySubView extends JetView {
 
     destroy() {
         super.destroy();
-        llsModel.clearListenerLongData(this.listenerLongData);
-        llsModel.clearListenerShortData(this.listenerShortData);
-        llsModel.clearListenerTable(this.listenerTable);
+        llsModelOne.clearListenerLongData(this.listenerLongData);
+        llsModelOne.clearListenerShortData(this.listenerShortData);
+        llsModelOne.clearListenerTable(this.listenerTable);
     }
 
     init() {
-        llsModel.addListenerLongData(this.listenerLongData);
-        llsModel.addListenerShortData(this.listenerShortData);
-        llsModel.addListenerTable(this.listenerTable);
+        llsModelOne.addListenerLongData(this.listenerLongData);
+        llsModelOne.addListenerShortData(this.listenerShortData);
+        llsModelOne.addListenerTable(this.listenerTable);
 
         this.setErrorStatus(NO_ERROR);
 

@@ -6,9 +6,11 @@ const EventEmitter = require('events');
 class MyEmitter extends EventEmitter {
 }
 
-const myEmitter = new MyEmitter();
+// const myEmitter = new MyEmitter();
 
 export default class llsProtocol {
+
+    #myEmitter = new MyEmitter();
 
     PR_RECEIVE = 0x3E;
     PR_TRANSMIT = 0x31;
@@ -38,14 +40,17 @@ export default class llsProtocol {
         name: null,
     };
 
-    constructor(portName, baudRate, llsAdr, name) {
+    constructor(portName, baudRate, llsAdr, name, port) {
         this._settingPort.portName = portName;
         this._settingPort.baudRate = baudRate;
         this._settingPort.llsAdr = llsAdr;
         this._settingPort.name = name;
 
+        // this.portTest = window.SP.new({path: "/dev/tty.usbserial-14210", baudRate: 9800});
+        // this.portTest.find();
         // this.port = new SerialPort({path: portName, baudRate: baudRate});
-        this.port = window.serialPort;
+        this.port = port;
+        // this.port = window.serialPort;
         this.port.new({path: portName, baudRate: baudRate});
         this.#loopPortWrite();
         return new Promise(async (resolve, reject) => {
@@ -127,7 +132,7 @@ export default class llsProtocol {
                 console.log('Data:', data);
                 let dataPars = this._parseData(data);
                 if (dataPars) {
-                    myEmitter.emit(`data:${dataPars.command}`, dataPars);
+                    this.#myEmitter.emit(`data:${dataPars.command}`, dataPars);
                 }
                 // this.port.resume();
             }, 200); //100
@@ -521,7 +526,7 @@ export default class llsProtocol {
 
     _eventDataParse(command) {
         return new Promise((resolve, reject) => {
-            myEmitter.once(`data:${command}`, (data) => {
+            this.#myEmitter.once(`data:${command}`, (data) => {
                 // console.log(data);
                 resolve(data);
             });

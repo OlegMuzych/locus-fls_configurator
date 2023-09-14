@@ -1,11 +1,12 @@
 import {JetView} from "webix-jet";
-import llsModel from "../../../models/lls-model";
-import configFile from "../../../config-app";
-import globalVariable from "../../../global-variable-app";
+import {llsModelTwo} from "../../../../models/lls-test-models";
+import configFile from "../../../../config-app";
+import globalVariable from "../../../../global-variable-app";
 
 export default class GeneralSettings extends JetView {
     config() {
         const _ = this.app.getService("locale")._;
+
         let llsAdr = {
             localId: "llsAdr",
             rows: [
@@ -630,7 +631,7 @@ export default class GeneralSettings extends JetView {
     }
 
     listenerConnect = () => {
-        llsModel.getLongData();
+        llsModelTwo.getLongData();
     }
 
     listenerDisconnect = () => {
@@ -638,15 +639,16 @@ export default class GeneralSettings extends JetView {
 
     destroy() {
         super.destroy();
-        llsModel.clearListenerIsConnect(this.listenerConnect);
-        llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
-        llsModel.clearListenerLongData(this.listenerLongData);
+        llsModelTwo.clearListenerIsConnect(this.listenerConnect);
+        llsModelTwo.clearListenerIsDisconnect(this.listenerDisconnect);
+        llsModelTwo.clearListenerLongData(this.listenerLongData);
     }
 
     init() {
         const _ = this.app.getService("locale")._;
-        llsModel.addListenerIsConnect(this.listenerConnect);
-        llsModel.addListenerLongData(this.listenerLongData);
+        llsModelTwo.addListenerIsConnect(this.listenerConnect);
+        llsModelTwo.addListenerLongData(this.listenerLongData);
+        llsModelTwo.getStatusConnect();
 
         // llsAdr
         this.$$('textLlsAdr').attachEvent("onChange", (newValue, oldValue, config) => {
@@ -654,8 +656,8 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue >= 1 && newValue <= 254) {
-                    llsModel.newLongData.llsAdr = newValue;
-                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({llsAdr: llsModel.newLongData.llsAdr}) : '');
+                    llsModelTwo.newLongData.llsAdr = newValue;
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModelTwo.setLongData({llsAdr: llsModelTwo.newLongData.llsAdr}) : '');
                     this.setTextValue("textLlsAdr", 'llsAdr', "statusLlsAdr");
                 } else {
                     this.$$('textLlsAdr').setValue(oldValue);
@@ -665,7 +667,7 @@ export default class GeneralSettings extends JetView {
         this.$$('buttonLlsAdr').attachEvent("onItemClick", (id, e) => {
             let test = this.$$('textLlsAdr').getValue();
             let value = Number(test);
-            llsModel.setLongData({llsAdr: value});
+            llsModelTwo.setLongData({llsAdr: value});
         });
 
         // baudRate
@@ -700,9 +702,9 @@ export default class GeneralSettings extends JetView {
             console.log("click");
             let obj = $$("listBaudRate").getItem(id);
             console.log(obj);
-            llsModel.newLongData.baudRate232 = obj.value;
-            llsModel.newLongData.baudRate485 = obj.value;
-            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({baudRate232: obj.value, baudRate485: obj.value}) : '');
+            llsModelTwo.newLongData.baudRate232 = obj.value;
+            llsModelTwo.newLongData.baudRate485 = obj.value;
+            globalVariable.autoSaveMode.then(flag => flag ? llsModelTwo.setLongData({baudRate232: obj.value, baudRate485: obj.value}) : '');
             this.setBaudRateValue();
             // llsModel.setLongData({baudRate232: obj.value, baudRate485: obj.value});
         });
@@ -737,9 +739,9 @@ export default class GeneralSettings extends JetView {
             console.log("click");
             let obj = $$("listAutoGetData").getItem(id);
             console.log(obj);
-            llsModel.newLongData.autoGetData = obj.value;
+            llsModelTwo.newLongData.autoGetData = obj.value;
 
-            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({autoGetData: obj.value}) : '');
+            globalVariable.autoSaveMode.then(flag => flag ? llsModelTwo.setLongData({autoGetData: obj.value}) : '');
             this.setAutoGetDataValue();
         });
 
@@ -749,8 +751,8 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue >= 0 && newValue <= 1024) {
-                    llsModel.newLongData.minLevel = newValue;
-                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({minLevel: llsModel.newLongData.minLevel}) : '');
+                    llsModelTwo.newLongData.minLevel = newValue;
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModelTwo.setLongData({minLevel: llsModelTwo.newLongData.minLevel}) : '');
                     this.setTextValue("textMinLevel", 'minLevel', "statusMinLevel");
                 } else {
                     this.$$('textMinLevel').setValue(oldValue);
@@ -760,7 +762,7 @@ export default class GeneralSettings extends JetView {
         this.$$('buttonMinLevel').attachEvent("onItemClick", (id, e) => {
             let test = this.$$('textMinLevel').getValue();
             let value = Number(test);
-            llsModel.setLongData({minLevel: value});
+            llsModelTwo.setLongData({minLevel: value});
         });
 
         // maxLevel
@@ -769,8 +771,8 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 if (newValue >= 1024 && newValue <= 4095) {
-                    llsModel.newLongData.maxLevel = newValue;
-                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({maxLevel: llsModel.newLongData.maxLevel}) : '');
+                    llsModelTwo.newLongData.maxLevel = newValue;
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModelTwo.setLongData({maxLevel: llsModelTwo.newLongData.maxLevel}) : '');
                     this.setTextValue("textMaxLevel", 'maxLevel', "statusMaxLevel");
                 } else {
                     this.$$('textMaxLevel').setValue(oldValue);
@@ -780,17 +782,17 @@ export default class GeneralSettings extends JetView {
         this.$$('buttonMaxLevel').attachEvent("onItemClick", (id, e) => {
             let test = this.$$('textMaxLevel').getValue();
             let value = Number(test);
-            llsModel.setLongData({maxLevel: value});
+            llsModelTwo.setLongData({maxLevel: value});
         });
 
         this.$$('counterCounterPeriod').attachEvent("onChange", (newValue, oldValue, config) => {
             let value = Number(newValue);
             if (config != undefined) {
                 if (value >= 5 && value <= 254) {
-                    llsModel.newLongData.periodOfDataIssuance = value;
+                    llsModelTwo.newLongData.periodOfDataIssuance = value;
 
                     this.$$("counterCounterPeriod").setValue(value);
-                    llsModel.setLongData({periodOfDataIssuance: value});
+                    llsModelTwo.setLongData({periodOfDataIssuance: value});
                 } else {
                     this.$$("counterCounterPeriod").setValue(oldValue);
                 }
@@ -803,8 +805,8 @@ export default class GeneralSettings extends JetView {
             if (config != undefined) {
                 console.log(newValue);
                 let value = Number(newValue);
-                llsModel.newLongData.outputParametersOfSensor = value;
-                llsModel.setLongData({outputParametersOfSensor: value});
+                llsModelTwo.newLongData.outputParametersOfSensor = value;
+                llsModelTwo.setLongData({outputParametersOfSensor: value});
             }
         });
 
@@ -818,9 +820,9 @@ export default class GeneralSettings extends JetView {
                     this.$$("fuelTypeSwitch").show();
                 } else {
                     // llsModel.setLongData({thermalCompensationType: 0x00});
-                    llsModel.newLongData.thermalCompensationType = 0x00;
+                    llsModelTwo.newLongData.thermalCompensationType = 0x00;
                     // globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({thermalCompensationType: obj.value}) : '');
-                    llsModel.setLongData({thermalCompensationType: 0x00});
+                    llsModelTwo.setLongData({thermalCompensationType: 0x00});
                     this.setThermalCompensationValue();
                     this.$$("fuelTypeSwitch").hide();
                 }
@@ -861,8 +863,8 @@ export default class GeneralSettings extends JetView {
             console.log("click");
             let obj = $$("listFuelType").getItem(id);
             console.log(obj);
-            llsModel.newLongData.thermalCompensationType = obj.value;
-            globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({thermalCompensationType: obj.value}) : '');
+            llsModelTwo.newLongData.thermalCompensationType = obj.value;
+            globalVariable.autoSaveMode.then(flag => flag ? llsModelTwo.setLongData({thermalCompensationType: obj.value}) : '');
             this.setThermalCompensationValue();
         });
 
@@ -873,8 +875,8 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 newValue = Number(newValue).toFixed(6);
                 if (newValue >= -1 && newValue < 1) {
-                    llsModel.newLongData.coefficientK1 = newValue;
-                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({coefficientK1: llsModel.newLongData.coefficientK1}) : '');
+                    llsModelTwo.newLongData.coefficientK1 = newValue;
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModelTwo.setLongData({coefficientK1: llsModelTwo.newLongData.coefficientK1}) : '');
                     this.setFloatValue("textCoefficientK1", 'coefficientK1', "statusCoefficientK1");
                 } else {
                     this.$$('textCoefficientK1').setValue(oldValue);
@@ -883,7 +885,7 @@ export default class GeneralSettings extends JetView {
         })
         this.$$('buttonCoefficientK1').attachEvent("onItemClick", (id, e) => {
             let test = parseFloat(this.$$('textCoefficientK1').getValue());
-            llsModel.setLongData({coefficientK1: test});
+            llsModelTwo.setLongData({coefficientK1: test});
         });
 
         // coefficientK2
@@ -893,8 +895,8 @@ export default class GeneralSettings extends JetView {
                 console.log(newValue);
                 newValue = Number(newValue).toFixed(6);
                 if (newValue >= -1 && newValue < 1) {
-                    llsModel.newLongData.coefficientK2 = newValue;
-                    globalVariable.autoSaveMode.then(flag => flag ? llsModel.setLongData({coefficientK2: llsModel.newLongData.coefficientK2}) : '');
+                    llsModelTwo.newLongData.coefficientK2 = newValue;
+                    globalVariable.autoSaveMode.then(flag => flag ? llsModelTwo.setLongData({coefficientK2: llsModelTwo.newLongData.coefficientK2}) : '');
                     this.setFloatValue("textCoefficientK2", 'coefficientK2', "statusCoefficientK2");
                 } else {
                     this.$$('textCoefficientK2').setValue(oldValue);
@@ -903,7 +905,7 @@ export default class GeneralSettings extends JetView {
         })
         this.$$('buttonCoefficientK2').attachEvent("onItemClick", (id, e) => {
             let test = parseFloat(this.$$('textCoefficientK2').getValue());
-            llsModel.setLongData({coefficientK2: test});
+            llsModelTwo.setLongData({coefficientK2: test});
         });
 
 
@@ -1132,55 +1134,55 @@ export default class GeneralSettings extends JetView {
 
     /* setters Values */
     setTextValue(id, name, statusId) {
-        if (llsModel.currentLongData[name] == llsModel.newLongData[name]) {
-            this.$$(id).setValue(llsModel.currentLongData[name]);
+        if (llsModelTwo.currentLongData[name] == llsModelTwo.newLongData[name]) {
+            this.$$(id).setValue(llsModelTwo.currentLongData[name]);
             this.setStatusNewValue(statusId, false);
         } else {
-            this.$$(id).setValue(llsModel.newLongData[name]);
+            this.$$(id).setValue(llsModelTwo.newLongData[name]);
             this.setStatusNewValue(statusId, true);
         }
     }
 
     setThermalCompensationValue() {
-        if (llsModel.currentLongData.thermalCompensationType == llsModel.newLongData.thermalCompensationType) {
-            this.setTypeFuel(llsModel.currentLongData.thermalCompensationType);
-            this.setThermalCompensation(llsModel.currentLongData.thermalCompensationType);
+        if (llsModelTwo.currentLongData.thermalCompensationType == llsModelTwo.newLongData.thermalCompensationType) {
+            this.setTypeFuel(llsModelTwo.currentLongData.thermalCompensationType);
+            this.setThermalCompensation(llsModelTwo.currentLongData.thermalCompensationType);
             this.setStatusNewValue("statusFuelType", false);
         } else {
-            this.setTypeFuel(llsModel.newLongData.thermalCompensationType);
-            this.setThermalCompensation(llsModel.newLongData.thermalCompensationType);
+            this.setTypeFuel(llsModelTwo.newLongData.thermalCompensationType);
+            this.setThermalCompensation(llsModelTwo.newLongData.thermalCompensationType);
             this.setStatusNewValue("statusFuelType", true);
         }
     }
 
     setAutoGetDataValue() {
-        if (llsModel.currentLongData.autoGetData == llsModel.newLongData.autoGetData) {
-            this.setAutoGetData(llsModel.currentLongData.autoGetData);
+        if (llsModelTwo.currentLongData.autoGetData == llsModelTwo.newLongData.autoGetData) {
+            this.setAutoGetData(llsModelTwo.currentLongData.autoGetData);
             this.setStatusNewValue("statusAutoGetData", false);
         } else {
-            this.setAutoGetData(llsModel.newLongData.autoGetData);
+            this.setAutoGetData(llsModelTwo.newLongData.autoGetData);
             this.setStatusNewValue("statusAutoGetData", true);
         }
     }
 
     setBaudRateValue() {
-        if (llsModel.currentLongData.baudRate232 == llsModel.newLongData.baudRate232) {
-            this.setBaudRate(llsModel.currentLongData.baudRate232);
+        if (llsModelTwo.currentLongData.baudRate232 == llsModelTwo.newLongData.baudRate232) {
+            this.setBaudRate(llsModelTwo.currentLongData.baudRate232);
             this.setStatusNewValue("statusBaudRate", false);
         } else {
-            this.setBaudRate(llsModel.newLongData.baudRate232);
+            this.setBaudRate(llsModelTwo.newLongData.baudRate232);
             this.setStatusNewValue("statusBaudRate", true);
         }
     }
 
     setFloatValue(id, name, statusId) {
-        let oldFloat = Number(llsModel.currentLongData[name]).toFixed(4);
-        let newFloat = Number(llsModel.newLongData[name]).toFixed(4);
+        let oldFloat = Number(llsModelTwo.currentLongData[name]).toFixed(4);
+        let newFloat = Number(llsModelTwo.newLongData[name]).toFixed(4);
         if (oldFloat == newFloat) {
-            this.$$(id).setValue(llsModel.currentLongData[name]);
+            this.$$(id).setValue(llsModelTwo.currentLongData[name]);
             this.setStatusNewValue(statusId, false);
         } else {
-            this.$$(id).setValue(llsModel.newLongData[name]);
+            this.$$(id).setValue(llsModelTwo.newLongData[name]);
             this.setStatusNewValue(statusId, true);
         }
     }

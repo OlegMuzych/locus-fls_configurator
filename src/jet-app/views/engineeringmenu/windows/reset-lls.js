@@ -1,9 +1,10 @@
 import {JetView} from "webix-jet";
-import llsModel from "../../../models/lls-model";
+// import llsModel from "../../../models/lls-model";
 import configFile from "../../../config-app";
 
 export default class ResetLlsWindow extends JetView {
 
+    llsModel = undefined;
     config() {
         const _ = this.app.getService("locale")._;
 
@@ -28,7 +29,7 @@ export default class ResetLlsWindow extends JetView {
                                 view: "button",
                                 type: "image",
                                 image: "assets/images/Warning.png",
-                                id: "closed_2",
+                                localId: "closed_2",
                                 css: "set_password_button_icon",
                                 height: 200,
                             },
@@ -37,7 +38,7 @@ export default class ResetLlsWindow extends JetView {
                                 label: `<p style='font-size: 26px; position: relative; top: -20px; text-align: center;'>${_("windows_reset-lls_text")}</p>`,
                                 // label: `<p style='font-size: 20px; position: relative; top: -10px; text-align: center;'>Все настройки будут сброшены</p>`,
                                 css: "language_windows_modal",
-                                id: "language_windows_modal_3",
+                                localId: "language_windows_modal_3",
                                 height: 100,
                                 width: 420,//420,
                             },
@@ -128,17 +129,18 @@ export default class ResetLlsWindow extends JetView {
                 // llsAdrSlave4: 0,
                 // fuelWaterMode: 0,
             }
-            llsModel.newLongData = defaultSettings;
+            this.llsModel.newLongData = defaultSettings;
 
             // llsModel.setLongData(defaultSettings).then();
-            llsModel.setLongData(llsModel.newLongData).then();
+            this.llsModel.setLongData(this.llsModel.newLongData).then();
         });
 
 
         this.setTheme();
     }
 
-    showWindow() {
+    showWindow(llsModel) {
+        this.llsModel = llsModel;
         this.getRoot().show();
     }
 

@@ -1,40 +1,21 @@
 import {JetView} from "webix-jet";
-import StatusMenu from "./statusmenu";
-import ServiceMenu from "./servicemenu";
-import errorStatus from "./errorStatus";
+// import StatusMenu from "./statusmenu";
+// import ServiceMenu from "./servicemenu";
+// import errorStatus from "./errorStatus";
+//
+// import CalibrationsubviewOne from "./subviews/calibrationsubview";
+// import FullemptysubviewOne from "./subviews/fullemptysubview";
+// import configFile from "../../../../config-app";
+// import FiltrationSubView from "./subviews/filteringsubview";
+import StatusMenuTwoSensor from "./statusmenuTwoSensor";
+import ServiceMenuTwoSensor from "./servicemenuTwoSensor";
+// import ErrorStatusTwo from "./errorStatusTwoSensor/errorStatus-two";
+import ErrorStatusTwoSensor from "./errorStatusTwoSensor";
+import SubviewsTwoSensor from "./subviewsTwoSensor";
+import configFile from "../../../../config-app";
 
-import CalibrationSubView from "./subviews/calibrationsubview";
-import FullEmptySubView from "./subviews/fullemptysubview";
-import configFile from "../../../config-app";
-import FiltrationSubView from "./subviews/filteringsubview";
-
-export default class RightMenu extends JetView{
+export default class RightmenuTwoSensor extends JetView{
     config(){
-        let myMultiview = {
-            view: "scrollview",
-            scroll: "y",
-            // maxHeight: 970,
-            // minWidth: 530,
-            id: "rows_right_body",
-            css: "rows_right",
-            body: {
-                view: "multiview",
-                cells: [
-                    {
-                        id: 'calibrationSubView', rows: [CalibrationSubView],
-                    },
-                    {
-                        id: 'fullEmptySubView', rows: [FullEmptySubView],
-                    },
-                    {
-                        id: 'filteringSubView', rows: [FiltrationSubView],
-                    }
-                ],
-
-                animate: false,
-            }
-        };
-
         let body = {
             width: 570,
             css: "rows_right",
@@ -47,7 +28,8 @@ export default class RightMenu extends JetView{
                     rows: [
                         {
                             rows: [
-                                ServiceMenu,
+                                // ServiceMenu,
+                                ServiceMenuTwoSensor
                             ]
                         },
                         {
@@ -55,7 +37,9 @@ export default class RightMenu extends JetView{
                         },
                         {
                             rows:[
-                                errorStatus,
+                                // errorStatus,
+                                // ErrorStatusTwo
+                                ErrorStatusTwoSensor
                             ]
                         },
                         {
@@ -63,7 +47,8 @@ export default class RightMenu extends JetView{
                         },
                         {
                             rows: [
-                                StatusMenu,
+                                // StatusMenu,
+                                StatusMenuTwoSensor
                             ]
                         },
                         {
@@ -74,7 +59,8 @@ export default class RightMenu extends JetView{
                         },
                         {
                             rows: [
-                                myMultiview,
+                                // myMultiview,
+                                SubviewsTwoSensor,
                             ]
                         },
                         {
@@ -92,24 +78,24 @@ export default class RightMenu extends JetView{
         return body;
     }
     init(){
-        this.on(this.app, "app:setting:general", ()=>{
-                console.log('Click');
-                $$('fullEmptySubView').show();
-            }
-        );
-
-        this.on(this.app, "app:setting:filtering", ()=>{
-                $$('filteringSubView').show();
-            }
-        );
-
-        this.on(this.app, "app:setting:calibration", ()=>{
-                $$('calibrationSubView').show();
-            }
-        );
-
-        $$('fullEmptySubView').show();
-
+        // this.on(this.app, "app:setting:general", ()=>{
+        //         console.log('Click');
+        //         $$('fullEmptySubView').show();
+        //     }
+        // );
+        //
+        // this.on(this.app, "app:setting:filtering", ()=>{
+        //         $$('filteringSubView').show();
+        //     }
+        // );
+        //
+        // this.on(this.app, "app:setting:calibration", ()=>{
+        //         $$('calibrationSubView').show();
+        //     }
+        // );
+        //
+        // $$('fullEmptySubView').show();
+        //
         if(configFile.theme == 'light'){
             webix.html.addCss( $$("rows_right_2").getNode(), "rows_right");
             webix.html.addCss( $$("rows_right_body").getNode(), "rows_right");

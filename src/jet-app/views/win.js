@@ -1,28 +1,30 @@
 // webix.ui.fullScreen();
 import {JetView} from "webix-jet";
-import llsModel from "../models/lls-model";
+// import llsModel from "../models/lls-model";
+import {llsModelOne, llsModelTwo} from "../models/lls-test-models";
 import configFile from "../config-app";
 import globalVariable from "../global-variable-app";
 import WindowSettings from "./windows/window-settings";
 import trademark from "../../trademark/trademark";
 import WindowAbout from "./windows/window-about";
 import WindowFirmwareUpdate from "./windows/window-firmware-update";
+import WindowInfo from "./windows/window-info";
 //const SerialPort = eval(`require('serialport')`);
 // const findPort = require("../models/lls/findPort");
 
 // return screen > 1210 ? "wide" : (screen > 1060 ? "mid" : "small");
 
 export default class Page9View extends JetView {
+
     config() {
         const _t = trademark._t;
 
         const _ = this.app.getService("locale")._;
         // Версия прошивки надпись
         var ver = {
-
             rows: [
                 {
-                    paddingY: 10,
+                    paddingY: 10, //test comment
                     cols: [
                         {
                             width: 10,
@@ -74,10 +76,8 @@ export default class Page9View extends JetView {
                 {
                 },
                 {
-                    paddingX: 80,
                     cols: [
                         {
-
                         },
                         {
                             view: "button",
@@ -114,12 +114,60 @@ export default class Page9View extends JetView {
                             css: "label_status_gage_windows_start",
                             id: "label_status_gage_windows_start_2"
                         },
+
+                             //Режим работы двух датчиков
+                        {
+                            id:"status_gage_show",
+                            cols:[
+                                {
+                                    width: 250,
+                                },
+                                {
+                                    view: "button",
+                                    width: 50,
+                                    height: 50,
+                                    css: "rows_level_right_menu_switch",
+                                    id: "button_define_define_2"
+                                },
+                                {
+                                    view: "button",
+                                    width: 50,
+                                    height: 50,
+                                    css: "rows_level_right_menu_switch_define",
+                                    id: "button_define_2"
+                                },
+                                {
+                                    width: 20,
+                                },
+
+                                {
+                                    // label: "Датчик подключен",
+                                    view: "label",
+                                    label: _("sensor_is_connected_2"),
+                                    height: 30,
+                                    width: 300,
+                                    css: "label_status_gage_windows_start",
+                                    id: "label_status_gage_windows_start_3",
+                                },
+                                {
+                                    // label: "Датчик не подключен",
+                                    view: "label",
+                                    label: _('sensor_is_not_connected_2'),
+                                    height: 30,
+                                    width: 300,
+                                    css: "label_status_gage_windows_start",
+                                    id: "label_status_gage_windows_start_4"
+                                },
+                            ]},
+
                         {
 
                         }
                     ]
                 },
-                {height:30,}
+                {
+
+                }
             ]
 
         };
@@ -131,6 +179,60 @@ export default class Page9View extends JetView {
             width: 1100,
             rows: [
                 {
+                    width: 1119,
+                    height: 70,
+                    css: "button_text_config_two_gage",
+                    id: "rows_config_status_gage",
+                    cols:[
+                        {
+                            width: 30,
+                        },
+                        {
+                            view: "label",
+                            width: 400,
+                            label: `<p style='position: relative; top:-20px;'>${_('text_two_gage')}</p>`,
+                            css: "text_two_gage",
+                            id:"status_config_two_gage_3",
+                        },
+                        {
+                            width: 90,
+                        },
+                        {
+                            view: "switch",
+                            id:"switcher_config_gage"
+
+                        },
+                        {
+                            view: "label",
+                            label: `<p style='position: relative; top:-20px;'>${_('number_gage_1')}</p>`,
+                            css: "text_two_gage",
+                            id:"status_config_two_gage_1"
+
+                        },
+                        {
+                            view: "label",
+                            label: `<p style='position: relative; top:-20px; color: #35a642;'>${_('number_gage_2')}</p>`,
+                            css: "text_two_gage",
+                            id:"status_config_two_gage_2"
+
+                        },
+                        {
+                            view: "button",
+                            type: "label",
+                            label: "?",
+                            css: "text_label_question",
+                            id:"text_label_question",
+                            width: 60,
+                        },
+                        {
+                            width: 30,
+                        }
+                    ]
+                },
+                {
+                  height: 20,
+                },
+                {
 
                     maxHeight: 400,
                     cols: [
@@ -140,8 +242,8 @@ export default class Page9View extends JetView {
                             image: _("button_image_engineering"),
                             css: "button_1",
                             id: "engineering_setup",
-                            width: 1120,
-                        }
+                            width: 1119,
+                        },
                     ]
                 },
                 {
@@ -382,14 +484,13 @@ export default class Page9View extends JetView {
 
 
 
-
             }
 
         });
         win_4.hide();
 
 
-        var win_3 =webix.ui({
+        var win_3 = webix.ui({
             view: "window",
             width: 1000,
             // height: 160,
@@ -398,8 +499,6 @@ export default class Page9View extends JetView {
             css: "window_show_closed_master",
             position: "top",
             body: {
-                // rows:[
-                //     {
                         cols:[
                             {
                                 view: "label",
@@ -408,11 +507,79 @@ export default class Page9View extends JetView {
                                 height: 45,
                             },
                         ]
-                //     },
-                // ]
             }
         });
+
         win_3.hide();
+
+
+
+        // let win_5 = {
+        //     view: "window",
+        //     width: 1000,
+        //     height: 500,
+        //     id: "window_show_5",
+        //     modal: true,
+        //     head:"Режим работы конфигуратора",
+        //     css: "window_show",
+        //     position: "center",
+        //     close:true,
+        //     body: {
+        //
+        //
+        //         cols:[
+        //             {
+        //                 width:30,
+        //             },
+        //             {
+        //                 rows:[
+        //                     {
+        //
+        //                     },
+        //                     {
+        //                         view: "label",
+        //                         label: `<p>${_("warning_text_configurator_mode")}</p>`,
+        //                         css: "closed_windows_modal",
+        //                         id: "closed_windows_modal",
+        //                         height: 80,
+        //                     },
+        //                     {
+        //                         view: "label",
+        //                         label: `<p>${_("warning_text_configurator_mode_2")}</p>`,
+        //                         css: "closed_windows_modal",
+        //                         id: "closed_windows_modal_2",
+        //                         height: 80,
+        //                     },
+        //                     {
+        //                         view: "label",
+        //                         label: `<p>${_("warning_text_configurator_mode_3")}</p>`,
+        //                         css: "closed_windows_modal",
+        //                         id: "closed_windows_modal_3",
+        //                         height: 80,
+        //                     },
+        //                     {
+        //                         view: "label",
+        //                         label: `<p>${_("warning_text_configurator_mode_4")}</p>`,
+        //                         css: "closed_windows_modal",
+        //                         id: "closed_windows_modal_4",
+        //                         height: 80,
+        //                     },
+        //                     {
+        //
+        //                     }
+        //                 ]
+        //             },
+        //             {
+        //                 width:10,
+        //             }
+        //         ]
+        //     }
+        // }
+
+
+        // win_5.hide();
+
+
 
         return {
 
@@ -500,41 +667,107 @@ export default class Page9View extends JetView {
     listenerConnect = () => {
         this.setStatusConnect(true);
     }
+    listenerConnectTwo = () => {
+        this.setStatusConnectTwo(true);
+    }
 
     listenerDisconnect = () => {
         this.setStatusConnect(false);
     }
+    listenerDisconnectTwo = () => {
+        this.setStatusConnectTwo(false);
+    }
 
     destroy() {
         super.destroy();
-        llsModel.clearListenerIsConnect(this.listenerConnect);
-        llsModel.clearListenerIsDisconnect(this.listenerDisconnect);
-
-
-        clearTimeout(this.timeoutMasterSettup);
+        llsModelOne.clearListenerIsConnect(this.listenerConnect);
+        llsModelOne.clearListenerIsDisconnect(this.listenerDisconnect);
+        llsModelTwo.clearListenerIsConnect(this.listenerConnectTwo);
+        llsModelTwo.clearListenerIsDisconnect(this.listenerDisconnectTwo);
+        // clearTimeout(this.timeoutMasterSettup);
     }
 
     setStatusConnect(status) {
         if (status) {
             $$("button_define_define_1").show();
+            // $$("button_define_define_2").show()
             $$("label_status_gage_windows_start_1").show();
-            $$("button_define_1").hide();
             $$("label_status_gage_windows_start_2").hide();
+            // $$("label_status_gage_windows_start_3").show();
+            // $$("label_status_gage_windows_start_4").hide();
+            $$("button_define_1").hide();
+            // $$("button_define_2").hide()
         } else {
             $$("button_define_define_1").hide();
+            // $$("button_define_define_2").hide()
             $$("label_status_gage_windows_start_1").hide();
-            $$("button_define_1").show();
             $$("label_status_gage_windows_start_2").show();
+            // $$("label_status_gage_windows_start_3").hide();
+            // $$("label_status_gage_windows_start_4").show();
+            $$("button_define_1").show();
+            // $$("button_define_2").show();
         }
     };
 
+    setStatusConnectTwo(status) {
+        if (status) {
+            // $$("button_define_define_1").show();
+            $$("button_define_define_2").show()
+            // $$("label_status_gage_windows_start_1").show();
+            // $$("label_status_gage_windows_start_2").hide();
+            $$("label_status_gage_windows_start_3").show();
+            $$("label_status_gage_windows_start_4").hide();
+            // $$("button_define_1").hide();
+            $$("button_define_2").hide()
+        } else {
+            // $$("button_define_define_1").hide();
+            $$("button_define_define_2").hide()
+            // $$("label_status_gage_windows_start_1").hide();
+            // $$("label_status_gage_windows_start_2").show();
+            $$("label_status_gage_windows_start_3").hide();
+            $$("label_status_gage_windows_start_4").show();
+            // $$("button_define_1").show();
+            $$("button_define_2").show();
+        }
+    };
 
     init(view) {
+        $$("status_gage_show").hide();
+        $$("status_config_two_gage_1").show()
+        $$("status_config_two_gage_2").hide();
 
-        setInterval(function(){
-            var value = Math.floor(Math.random()*100);
-            $$("b1").setValue(value);
-        }, 3000);
+        $$("switcher_config_gage").attachEvent("onChange", (newValue, oldValue, config)=>{
+            // $$("switcher_config_gage").bind($$("configuration_general_settings_sensor"));
+            webix.storage.local.put("switcher", newValue);
+            if(newValue) {
+                twoPage();
+                this.$$("button_reload").disable();
+
+            }else{
+                onePage();
+                this.$$("button_reload").enable();
+
+            }
+        });
+
+
+
+        if(webix.storage.local.get("switcher")) {
+            $$("switcher_config_gage").setValue(true);
+            // this.refresh();
+            // $$("switcher_config_gage").refresh();
+            // twoPage();
+        }else{
+            $$("switcher_config_gage").setValue(false);
+            // $$("switcher_config_gage").refresh();
+            // this.refresh();
+            onePage();
+        }
+
+        // setInterval(function(){
+        //     var value = Math.floor(Math.random()*100);
+        //     $$("b1").setValue(value);
+        // }, 3000);
 
         // $$("button_define_define_2").hide();
 
@@ -546,10 +779,16 @@ export default class Page9View extends JetView {
         });
 
         this.setStatusConnect(false);
+        this.setStatusConnectTwo(false);
 
-        llsModel.addListenerIsConnect(this.listenerConnect);
-        llsModel.addListenerIsDisconnect(this.listenerDisconnect);
-        llsModel.getStatusConnect();
+        llsModelOne.addListenerIsConnect(this.listenerConnect);
+        llsModelOne.addListenerIsDisconnect(this.listenerDisconnect);
+        llsModelOne.getStatusConnect();
+
+        llsModelTwo.addListenerIsConnect(this.listenerConnectTwo);
+        llsModelTwo.addListenerIsDisconnect(this.listenerDisconnectTwo);
+        llsModelTwo.getStatusConnect();
+
 
         let goEngineering = (code, e) => {
             console.log(e);
@@ -582,6 +821,10 @@ export default class Page9View extends JetView {
            this.windowsAbout.showWindow();
         });
 
+        this.windowsInfo = this.ui(WindowInfo);
+        $$("text_label_question").attachEvent("onItemClick", (id, e) => {
+            this.windowsInfo.showWindow();
+        });
 
         globalVariable.theme.then(async theme => {
             if (theme == 'like_system') {
@@ -597,7 +840,33 @@ export default class Page9View extends JetView {
                 this.setTheme();
             }
         });
+
+        function onePage(){
+            llsModelTwo.setStatusLlsStopPromise().then();
+
+
+            globalVariable.twoSensorMode = false;
+            $$("status_config_two_gage_1").show()
+            $$("status_config_two_gage_2").hide();
+            $$("status_gage_show").hide();
+
+            // this.$$("button_reload").enable();
+            // $$("configuration_general_settings_sensor").hide();
+        }
+        function twoPage(){
+            llsModelTwo.setStatusLlsStartPromise().then();
+
+            globalVariable.twoSensorMode = true;
+            $$("status_config_two_gage_2").show();
+            $$("status_config_two_gage_1").hide()
+            $$("status_gage_show").show();
+
+            // this.$$("button_reload").disable();
+            // $$("configuration_general_settings_sensor").hide();
+        }
     }
+
+
     setTheme(){
         const _t = trademark._t;
         const _ = this.app.getService("locale")._;
@@ -607,13 +876,15 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("logo_1").getNode(), "logo_1_dark");
             webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start_dark");
             webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start_dark");
+            webix.html.addCss($$("label_status_gage_windows_start_3").getNode(), "label_status_gage_windows_start_dark");
+            webix.html.addCss($$("label_status_gage_windows_start_4").getNode(), "label_status_gage_windows_start_dark");
             webix.html.addCss($$("ver_soft").getNode(), "ver_soft_dark");
-            // webix.html.addCss($$("master_setup").getNode(), "button_1_dark");
             webix.html.addCss($$("engineering_setup").getNode(), "button_1_dark");
             webix.html.addCss($$("reference").getNode(), "button_1_dark");
             webix.html.addCss($$("application_menu").getNode(), "button_1_dark");
             webix.html.addCss(this.$$("button_reload").getNode(), "button_reload_dark");
-            webix.html.addCss($$("window_show_4").getNode(), "window_show_dark");
+            // webix.html.addCss($$("window_show_4").getNode(), "window_show_dark");
+            // webix.html.addCss($$("window_show_5").getNode(), "window_show_dark");
             webix.html.addCss($$("upload_config_window_1").getNode(), "upload_config_window_dark");
             webix.html.addCss($$("boot_loader").getNode(), "upload_config_dark");
             webix.html.addCss($$("upload_config").getNode(), "upload_config_dark");
@@ -621,32 +892,45 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("label_text_upload_window_3").getNode(), "label_text_upload_window_dark");
             webix.html.addCss($$("label_text_upload_window_1").getNode(), "label_text_upload_window_dark");
             webix.html.addCss($$("load_file").getNode(), "upload_config_dark");
-
+            webix.html.addCss($$("rows_config_status_gage").getNode(), "button_text_config_two_gage_dark");
+            webix.html.addCss($$("status_config_two_gage_1").getNode(), "text_two_gage_dark");
+            webix.html.addCss($$("status_config_two_gage_2").getNode(), "text_two_gage_dark");
+            webix.html.addCss($$("status_config_two_gage_3").getNode(), "text_two_gage_dark");
+            webix.html.addCss($$("text_label_question").getNode(), "text_label_question_dark");
+            // webix.html.addCss($$("closed_windows_modal").getNode(), "closed_windows_modal_dark");
+            // webix.html.addCss($$("closed_windows_modal_2").getNode(), "closed_windows_modal_dark");
+            // webix.html.addCss($$("closed_windows_modal_3").getNode(), "closed_windows_modal_dark");
+            // webix.html.addCss($$("closed_windows_modal_4").getNode(), "closed_windows_modal_dark");
 
             $$("logo_1").define("image", _t("image_logo_dark"));
             $$("logo_1").refresh();
-            // $$("master_setup").define("image", _("button_image_master_dark"));
             $$("engineering_setup").define("image", _("button_image_engineering_dark"));
             $$("reference").define("image", _("button_image_info_win2_dark"));
             $$("application_menu").define("image", _("button_image_konfig_dark"));
-            // $$("logo_1").refresh();
-            // $$("master_setup").refresh();
             $$("engineering_setup").refresh();
             $$("reference").refresh();
             $$("application_menu").refresh();
+            // $$("window_show_5").refresh();
+
+
+            //////////////////////////////////
+
+
         }
         if (configFile.theme == 'light') {
             webix.html.addCss($$("color_rows_star_pages").getNode(), "color_rows_star_pages");
             webix.html.addCss($$("logo_1").getNode(), "logo_1");
             webix.html.addCss($$("label_status_gage_windows_start_1").getNode(), "label_status_gage_windows_start");
             webix.html.addCss($$("label_status_gage_windows_start_2").getNode(), "label_status_gage_windows_start");
+            webix.html.addCss($$("label_status_gage_windows_start_3").getNode(), "label_status_gage_windows_start");
+            webix.html.addCss($$("label_status_gage_windows_start_4").getNode(), "label_status_gage_windows_start");
             webix.html.addCss($$("ver_soft").getNode(), "ver_soft");
-            // webix.html.addCss($$("master_setup").getNode(), "button_1");
             webix.html.addCss($$("engineering_setup").getNode(), "button_1");
             webix.html.addCss($$("reference").getNode(), "button_1");
             webix.html.addCss($$("application_menu").getNode(), "button_1");
             webix.html.addCss(this.$$("button_reload").getNode(), "button_reload");
-            webix.html.addCss($$("window_show_4").getNode(), "window_show");
+            // webix.html.addCss($$("window_show_4").getNode(), "window_show");
+            // webix.html.addCss($$("window_show_5").getNode(), "window_show");
             webix.html.addCss($$("upload_config_window_1").getNode(), "upload_config_window");
             webix.html.addCss($$("boot_loader").getNode(), "upload_config");
             webix.html.addCss($$("upload_config").getNode(), "upload_config");
@@ -654,18 +938,25 @@ export default class Page9View extends JetView {
             webix.html.addCss($$("label_text_upload_window_3").getNode(), "label_text_upload_window");
             webix.html.addCss($$("label_text_upload_window_1").getNode(), "label_text_upload_window");
             webix.html.addCss($$("load_file").getNode(), "upload_config");
+            webix.html.addCss($$("rows_config_status_gage").getNode(), "button_text_config_two_gage");
+            webix.html.addCss($$("status_config_two_gage_1").getNode(), "text_two_gage");
+            webix.html.addCss($$("status_config_two_gage_2").getNode(), "text_two_gage");
+            webix.html.addCss($$("status_config_two_gage_3").getNode(), "text_two_gage");
+            webix.html.addCss($$("text_label_question").getNode(), "text_label_question");
+            // webix.html.addCss($$("closed_windows_modal").getNode(), "closed_windows_modal");
+            // webix.html.addCss($$("closed_windows_modal_2").getNode(), "closed_windows_modal");
+            // webix.html.addCss($$("closed_windows_modal_3").getNode(), "closed_windows_modal");
+            // webix.html.addCss($$("closed_windows_modal_4").getNode(), "closed_windows_modal");
 
             $$("logo_1").define("image", _t("image_logo"));
             $$("logo_1").refresh();
-            // $$("master_setup").define("image", _("button_image_master"));
             $$("engineering_setup").define("image", _("button_image_engineering"));
             $$("reference").define("image", _("button_image_info_win2"));
             $$("application_menu").define("image", _("button_image_konfig"));
-            // $$("logo_1").refresh();
-            // $$("master_setup").refresh();
             $$("engineering_setup").refresh();
             $$("reference").refresh();
             $$("application_menu").refresh();
+            // $$("window_show_5").refresh();
         }
     }
 }

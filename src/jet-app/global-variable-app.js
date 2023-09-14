@@ -153,6 +153,7 @@ class GlobalVariableApp {
     //         return null;
     //     }
     // }
+    twoSensorMode = false;
 }
 let globalVariable = new GlobalVariableApp();
 

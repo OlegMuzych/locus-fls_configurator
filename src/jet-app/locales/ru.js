@@ -4,8 +4,10 @@ export default {
 
     "firmware_lls": "Прошивка ДУТ",
 
-    "sensor_is_connected": "Датчик подключен",
-    "sensor_is_not_connected": "Датчик не подключен",
+    "sensor_is_connected": "1# Датчик подключен",
+    "sensor_is_connected_2": "#2 Датчик подключен",
+    "sensor_is_not_connected": "#1 Датчик  не подключен",
+    "sensor_is_not_connected_2":"#2 Датчик  не подключен",
 
     "function_is_not_available": "Функция не доступна",
 
@@ -31,6 +33,10 @@ export default {
     "language_ru": 'Русский',
     "language_en": 'English',
     "language_like_system": "Как в системе",
+    "text_two_gage": "Режим работы конфигуратора:",
+    "number_gage_1": "1 датчик",
+    "number_gage_2": "2 датчика",
+
 
     /* generalsettings.js */
     "choose": 'Выбрать',
@@ -99,10 +105,24 @@ export default {
     "button_save_setting": "Сохранить настройки",
 
     /* statusmenu.js */
-    "status_sensor_is_connected": "Датчик подключен",
+    "status_sensor_is_connected": "#1 Датчик подключен",
+    "status_sensor_is_connected_2": "#2 Датчик подключен",
+    "status_sensor_select_sensor": "Датчик активен",
+
     "status_fuel_is_stable": "Топливо стабильно",
     "status_calibration": "Калибровка не требуется",
     "status_thermal_compensation": "Термокомпенсация",
+
+
+    /*  text info config  */
+    "warning_text_configurator_mode": "Данная функция предназначена для подключения и настройки",
+    "warning_text_configurator_mode_2": "одного или двух датчиков к конфигуратору одновременно.",
+    "warning_text_configurator_mode_3": "Подключения датчиков происходит автоматически.",
+    "warning_text_configurator_mode_4": "Статус подключения отоброжается на главном экране.",
+
+    /*  text button menu config sensor  */
+    "one_sensor_button": "Датчик #1",
+    "two_sensor_button": "Датчик #2",
 
     /* errorStatus.js */
     "errorStatus_text": "Код ошибки",
@@ -110,12 +130,13 @@ export default {
     /* servicemenu.js */
     "service_service": "Сервис",
     "service_service_reset_sensor": "Сброс всех настроек",
-    "service_service_save_setting_file": "Сохранить настройки в файл",
+    "service_service_save_setting_file": "Сохранить настройки в файл JSON",
+    "service_service_save_setting_file_xml": "Сохранить настройки в файл XML",
     "service_service_read_setting_file": "Прочитать настройки из файла",
 
     "service_password": "Пароль",
 
-    /* fullemptysubview.js , filteringsubview.js */
+    /* fullemptysubview-two.js , filteringsubview-two.js */
     "automatic_calibration": "Автоматическая калибровка",
     "button_automatic_calibration": 'Автоматическая калибровка',//"Откалибровать",
     "current_level": "Текущий уровень",
@@ -127,8 +148,9 @@ export default {
     "Label_enable_calibration_mode_auto": "Авто",
     "Label_enable_calibration_mode_manual": "Ручная",
 
-    /* calibrationsubview.js */
-    "button_save_table_file": "Экспортировать таблицу тарировки",
+    /* calibrationsubview-two.js */
+    "button_save_table_file": "Экспортировать таблицу тарировки JSON",
+    "button_save_table_file_xml": "Экспортировать таблицу тарировки XML",
     "button_read_table_file": "Импортировать таблицу тарировки",
     "tabbar_fill": "Залив",
     "tabbar_drain": "Слив",

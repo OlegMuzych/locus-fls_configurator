@@ -25,16 +25,46 @@ class FileTableModel {
         });
     }
 
+    async writeXML(table) {
+        return new Promise(async (resolve, reject)=>{
+            let tableArr = this.#tableToArray(table);
+            if (tableArr == undefined) {
+                reject();
+            }
+            // let str = CSV.stringify(tableArr, ';');
+            let str = this.#createXML(tableArr);
+            let filePath = await this.#saveDialog();
+            if (!filePath) {
+                reject();
+            }
+            filePath = this.#pathAddDotXml(filePath); //add '.xml' if need
+            let ret = await fs.writeFile(filePath, str);
+
+            if(ret == undefined){
+                resolve();
+            }else{
+                reject();
+            }
+        });
+    }
     async read() {
         return new Promise(async (resolve, reject)=>{
             let filePath = await this.#openDialog();
             if (!filePath) {
                 reject();
             }
-            let str = await fs.readFile(filePath, 'UTF-8');
-            console.log(str);
-            let tableArr = CSV.parse(str, {comma:';'});
-            console.log(tableArr);
+            let tableArr = [];
+            if(filePath.split('.').pop() === 'csv'){
+                let str = await fs.readFile(filePath, 'UTF-8');
+                console.log(str);
+                tableArr = CSV.parse(str, {comma:';'});
+                console.log(tableArr);
+            }
+            if(filePath.split('.').pop() === 'xml'){
+                let strXml = await fs.readFile(filePath, 'UTF-8');
+                tableArr = this.#readXML(strXml);
+            }
+
             if(!Array.isArray(tableArr)){
                 reject();
             }
@@ -95,7 +125,8 @@ class FileTableModel {
             buttonLabel: 'Импортировать',
             properties: ['openFile'],
             filters: [
-                {name: 'Файл таблицы', extensions: ['csv']},
+                {name: 'Файл таблицы JSON', extensions: ['csv']},
+                {name: 'Файл таблицы XML', extensions: ['xml']},
                 {name: 'Все файлы', extensions: ['*']}
             ]
         };
@@ -119,6 +150,43 @@ class FileTableModel {
         }else{
             return (path + '.csv');
         }
+    }
+
+    #pathAddDotXml(path){
+        let pathArr = path.split('.');
+        if(pathArr[pathArr.length - 1] == 'xml'){
+            return path;
+        }else{
+            return (path + '.xml');
+        }
+    }
+    #createXML(tableArr){
+        const doc = document.implementation.createDocument("", "", null);
+        const peopleElem = doc.createElement("people");
+        tableArr.forEach( item =>{
+            const personElem1 = doc.createElement("person");
+            personElem1.setAttribute("step", item[0]);
+            personElem1.setAttribute("value", item[1]);
+            personElem1.setAttribute("volume", item[2]);
+            peopleElem.appendChild(personElem1);
+        });
+        doc.appendChild(peopleElem);
+        const serializer = new XMLSerializer();
+        const xmlStr = serializer.serializeToString(doc);
+        console.log(xmlStr);
+        return xmlStr;
+    }
+    #readXML(xmlStr){
+        const oParser = new DOMParser();
+        const oDOM = oParser.parseFromString(xmlStr, "application/xml");
+        let tableArr = [];
+        oDOM.childNodes[0].childNodes.forEach(item=>{
+            if(item.localName === 'person'){
+                tableArr.push([item.attributes[0].value,item.attributes[1].value,item.attributes[2].value]);
+            }
+        })
+        console.log(tableArr);
+        return tableArr;
     }
 
 }

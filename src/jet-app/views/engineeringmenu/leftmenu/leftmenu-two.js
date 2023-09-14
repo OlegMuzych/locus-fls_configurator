@@ -17,7 +17,7 @@ export default class LeftMenuTwo extends JetView{
             body:{
 
 
-                id: "style_left_cols",
+                localId: "style_left_cols",
                 css: "style_left_cols",
                 cols:[
                     {
@@ -111,7 +111,7 @@ export default class LeftMenuTwo extends JetView{
     listenerLongData = (longData)=>{
         if(longData.typeLls === 0x01){
             this.setModel201_101(configFile.theme);
-        }else if(longData.typeLls === 0x31){
+        }else if(longData.typeLls === 0x03){
             this.setModel301(configFile.theme);
         }
     }
@@ -168,7 +168,7 @@ export default class LeftMenuTwo extends JetView{
         // })
 
         if(configFile.theme == 'light'){
-            webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols");
+            webix.html.addCss( this.$$("style_left_cols").getNode(), "style_left_cols");
             webix.html.addCss( this.$$("left_menu_button_1").getNode(), "left_menu_button_2");
             webix.html.addCss( this.$$("left_menu_button_2").getNode(), "left_menu_button_2");
             webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2");
@@ -196,7 +196,7 @@ export default class LeftMenuTwo extends JetView{
 
         }
         if(configFile.theme == 'dark'){
-            webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols_dark");
+            webix.html.addCss( this.$$("style_left_cols").getNode(), "style_left_cols_dark");
             webix.html.addCss( this.$$("left_menu_button_1").getNode(), "left_menu_button_2_dark");
             webix.html.addCss( this.$$("left_menu_button_2").getNode(), "left_menu_button_2_dark");
             // webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_2_dark");

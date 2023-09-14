@@ -4,6 +4,8 @@ export default {
 
     "firmware_lls": "Прошивка ДУТ",
 
+    "sensor_is_connected_one": "Датчик подключен",
+    "sensor_is_not_connected_one": "Датчик не подключен",
     "sensor_is_connected": "1# Датчик подключен",
     "sensor_is_connected_2": "#2 Датчик подключен",
     "sensor_is_not_connected": "#1 Датчик  не подключен",

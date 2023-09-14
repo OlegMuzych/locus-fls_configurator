@@ -732,6 +732,8 @@ export default class Page9View extends JetView {
     };
 
     init(view) {
+        const _ = this.app.getService("locale")._;
+
         $$("status_gage_show").hide();
         $$("status_config_two_gage_1").show()
         $$("status_config_two_gage_2").hide();
@@ -850,7 +852,10 @@ export default class Page9View extends JetView {
             $$("status_config_two_gage_2").hide();
             $$("status_gage_show").hide();
 
-            // this.$$("button_reload").enable();
+            $$("label_status_gage_windows_start_1").setValue(_('sensor_is_connected_one'));
+            $$("label_status_gage_windows_start_2").setValue(_('sensor_is_not_connected_one'));
+
+            // this.$$("button_reload").enable();s
             // $$("configuration_general_settings_sensor").hide();
         }
         function twoPage(){
@@ -860,6 +865,9 @@ export default class Page9View extends JetView {
             $$("status_config_two_gage_2").show();
             $$("status_config_two_gage_1").hide()
             $$("status_gage_show").show();
+
+            $$("label_status_gage_windows_start_1").setValue(_('sensor_is_connected'));
+            $$("label_status_gage_windows_start_2").setValue(_('sensor_is_not_connected'));
 
             // this.$$("button_reload").disable();
             // $$("configuration_general_settings_sensor").hide();

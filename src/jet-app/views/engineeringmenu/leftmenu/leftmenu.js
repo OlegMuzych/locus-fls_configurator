@@ -113,7 +113,7 @@ export default class LeftMenu extends JetView{
     listenerLongData = (longData)=>{
         if(longData.typeLls === 0x01){
             this.setModel201_101(configFile.theme);
-        }else if(longData.typeLls === 0x31){
+        }else if(longData.typeLls === 0x03){
             this.setModel301(configFile.theme);
         }
     }

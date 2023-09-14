@@ -63,7 +63,7 @@ export default class LeftMenuTwo extends JetView{
                                 // css: "left_menu_button_2",
                                 css: "left_menu_button",
                                 localId: "left_menu_button_2",
-                                // hidden: true,
+                                hidden: true,
                             },
                             {
                                 height: 10,
@@ -76,7 +76,7 @@ export default class LeftMenuTwo extends JetView{
                                 height: 200,
                                 css: "left_menu_button",
                                 localId: "left_menu_button_3",
-                                // hidden: true,
+                                hidden: true,
                             },
                             {
                             },
@@ -111,7 +111,7 @@ export default class LeftMenuTwo extends JetView{
     listenerLongData = (longData)=>{
         if(longData.typeLls === 0x01){
             this.setModel201_101(configFile.theme);
-        }else if(longData.typeLls === 0x31){
+        }else if(longData.typeLls === 0x03){
             this.setModel301(configFile.theme);
         }
     }

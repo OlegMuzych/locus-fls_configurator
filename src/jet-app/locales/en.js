@@ -4,9 +4,12 @@ export default {
 
     "firmware_lls": "Firmware",
 
-    "sensor_is_connected": "The device is connected",
-    "sensor_is_not_connected": "#1 The device is not connected",
-    "sensor_is_not_connected_2": "#2 The device is not connected",
+    "sensor_is_connected_one": "Device is connected",
+    "sensor_is_not_connected_one": "Device not connected",
+    "sensor_is_connected": "1# Device is connected",
+    "sensor_is_connected_2": "#2 Device is connected",
+    "sensor_is_not_connected": "#1 Device not connected",
+    "sensor_is_not_connected_2":"#2 Device not connected",
 
     "function_is_not_available": "The function is not available",
 

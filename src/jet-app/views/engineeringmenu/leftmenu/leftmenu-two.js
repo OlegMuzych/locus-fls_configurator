@@ -17,7 +17,7 @@ export default class LeftMenuTwo extends JetView{
             body:{
 
 
-                id: "style_left_cols",
+                localId: "style_left_cols",
                 css: "style_left_cols",
                 cols:[
                     {
@@ -63,7 +63,7 @@ export default class LeftMenuTwo extends JetView{
                                 // css: "left_menu_button_2",
                                 css: "left_menu_button",
                                 localId: "left_menu_button_2",
-                                hidden: true,
+                                // hidden: true,
                             },
                             {
                                 height: 10,
@@ -76,7 +76,7 @@ export default class LeftMenuTwo extends JetView{
                                 height: 200,
                                 css: "left_menu_button",
                                 localId: "left_menu_button_3",
-                                hidden: true,
+                                // hidden: true,
                             },
                             {
                             },
@@ -168,7 +168,7 @@ export default class LeftMenuTwo extends JetView{
         // })
 
         if(configFile.theme == 'light'){
-            webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols");
+            webix.html.addCss( this.$$("style_left_cols").getNode(), "style_left_cols");
             webix.html.addCss( this.$$("left_menu_button_1").getNode(), "left_menu_button_2");
             webix.html.addCss( this.$$("left_menu_button_2").getNode(), "left_menu_button_2");
             webix.html.addCss( this.$$("left_menu_button_3").getNode(), "left_menu_button_2");
@@ -196,7 +196,7 @@ export default class LeftMenuTwo extends JetView{
 
         }
         if(configFile.theme == 'dark'){
-            webix.html.addCss( $$("style_left_cols").getNode(), "style_left_cols_dark");
+            webix.html.addCss( this.$$("style_left_cols").getNode(), "style_left_cols_dark");
             webix.html.addCss( this.$$("left_menu_button_1").getNode(), "left_menu_button_2_dark");
             webix.html.addCss( this.$$("left_menu_button_2").getNode(), "left_menu_button_2_dark");
             // webix.html.addCss( $$("left_menu_button_2").getNode(), "left_menu_button_2_dark");

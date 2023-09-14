@@ -64,7 +64,7 @@ export default class LeftMenuTwo extends JetView{
                                 // css: "left_menu_button_2",
                                 css: "left_menu_button",
                                 localId: "left_menu_button_2",
-                                // hidden: true,
+                                hidden: true,
                             },
                             {
                                 height: 10,
@@ -77,7 +77,7 @@ export default class LeftMenuTwo extends JetView{
                                 height: 200,
                                 css: "left_menu_button",
                                 localId: "left_menu_button_3",
-                                // hidden: true,
+                                hidden: true,
                             },
                             {
                             },

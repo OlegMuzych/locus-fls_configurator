@@ -112,6 +112,7 @@ export default {
     /* statusmenu.js */
     "status_sensor_is_connected": "The device #1 is connected",
     "status_sensor_is_connected_2": "The device #2 is connected",
+    "status_sensor_select_sensor": "Active sensor",
     "status_fuel_is_stable": "Fuel level is stable",
     "status_calibration": "Calibration is not required",
     "status_thermal_compensation": "Thermal compensation",

@@ -163,7 +163,8 @@ export default class FullEmptySubView extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "auto_calibration",
-                                                    localId: "auto_calibration_1"
+                                                    localId: "auto_calibration_1",
+                                                    hotkey: "shift+pitch-up",
                                                 },
                                                 {
                                                     height: 130,
@@ -183,7 +184,8 @@ export default class FullEmptySubView extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "auto_calibration",
-                                                    localId: "auto_calibration_2"
+                                                    localId: "auto_calibration_2",
+                                                    hotkey: "shift+pitch-down",
 
                                                 },
                                             ]
@@ -244,9 +246,8 @@ export default class FullEmptySubView extends JetView {
                                     localId: "button_edit",
                                     width: 66,
                                     height: 50,
-                                    css:"toggle_style",
+                                    css: "toggle_style",
                                     paddingX: 100,
-
                                 },
                                 {
                                     view: "label",

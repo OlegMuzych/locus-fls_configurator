@@ -82,6 +82,8 @@ export default class ServiceMenu extends JetView {
             console.log("click");
             if (id == 'resetLls') {
                 this.resetLlsWindow.showWindow();
+
+
             }
 
             if (id == 'updateFramework') {

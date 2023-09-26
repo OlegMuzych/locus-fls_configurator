@@ -91,14 +91,16 @@ export default class PasswordInputWindow extends JetView {
                                             view: "button",
                                             label: _("button_ok"),
                                             localId: "buttonCurrentPassOk",
-                                            css: "set_password_button"
+                                            css: "set_password_button",
+                                            hotkey:"enter",
                                         },
                                         {},
                                         {
                                             view: "button",
                                             label: _("button_cancel"),
                                             localId: "buttonCancel_1",
-                                            css: "set_password_button"
+                                            css: "set_password_button",
+                                            hotkey:"esc"
                                         },
                                         {}
                                     ]
@@ -138,14 +140,16 @@ export default class PasswordInputWindow extends JetView {
                                             view: "button",
                                             label: _("button_ok"),
                                             localId: "buttonResetOk",
-                                            css: "set_password_button"
+                                            css: "set_password_button",
+                                            hotkey:"enter"
                                         },
                                         {},
                                         {
                                             view: "button",
                                             label: _("button_cancel"),
                                             localId: "buttonResetCancel",
-                                            css: "set_password_button"
+                                            css: "set_password_button",
+                                            hotkey:"esc"
                                         },
                                         {}
                                     ]
@@ -203,6 +207,7 @@ export default class PasswordInputWindow extends JetView {
             this.llsModel.resetLls().then();
             this.getRoot().hide();
             //todo: command resetLls
+
         });
 
         this.$$('textCurrentPass').attachEvent("onEnter",(ev)=>{

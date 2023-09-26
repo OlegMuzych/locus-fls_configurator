@@ -73,10 +73,15 @@ export default class ResetLlsWindow extends JetView {
         });
 
 
-
         this.$$('buttonOk').attachEvent("onItemClick", (id, e) => {
             console.log('Reset settings');
             this.getRoot().hide();
+
+            webix.message({
+                text:"<p style='font-size:20px;'>Настройки сброшены<p/>",
+                type:"success",
+                expire:5000,
+            });
 
             //todo: command resetLls
             const defaultSettings = {

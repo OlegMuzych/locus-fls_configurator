@@ -91,14 +91,16 @@ export default class PasswordWindow extends JetView {
                                             view: "button",
                                             label: _('button_ok'),
                                             localId: "buttonCurrentPassOk",
-                                            css: "set_password_button"
+                                            css: "set_password_button",
+                                            hotkey:"enter"
                                         },
                                         {},
                                         {
                                             view: "button",
                                             label: _('button_cancel'),
                                             localId: "buttonCancel_1",
-                                            css: "set_password_button"
+                                            css: "set_password_button",
+                                            hotkey:"esc"
                                         },
                                         {
                                             height: 80,
@@ -183,14 +185,16 @@ export default class PasswordWindow extends JetView {
                                                     view: "button",
                                                     label: _("window_password_button_edit"),
                                                     localId: "buttonNewPassOk",
-                                                    css: "set_password_button"
+                                                    css: "set_password_button",
+                                                    hotkey:"enter"
                                                 },
                                                 {},
                                                 {
                                                     view: "button",
                                                     label: _("button_cancel"),
                                                     localId: "buttonCancel_2",
-                                                    css: "set_password_button"
+                                                    css: "set_password_button",
+                                                    hotkey:"esc"
                                                 },
                                                 {
                                                     height: 80,
@@ -237,16 +241,15 @@ export default class PasswordWindow extends JetView {
         this.$$("rows_22").hide();
 
         this.$$("tabbar_windows_password").attachEvent("onChange", (newValue, oldValue, config)=>{
-            webix.message(newValue);
             switch(newValue){
                 case "Ввести":{
-                    // console.log("111");
+
                     this.$$("rows_21").hide();
                     this.$$("rows_22").show();
                     break;
                 }
                 case "Задать новый":{
-                    // console.log("2222");
+
                     this.$$("rows_21").show();
                     this.$$("rows_22").hide();
                     break;
@@ -290,12 +293,22 @@ export default class PasswordWindow extends JetView {
                     this.passValidFlag = true;
                     this.$$('textCurrentPass_2').validate();
                     this.getRoot().hide();
+                    webix.message({
+                        text:"<p style='font-size:20px;'>Пароль был изменен<p/>",
+                        type:"success",
+                        expire:5000,
+                    });
                 })
                 .catch(()=>{
                     this.passValidFlag = false;
                     this.$$('textCurrentPass_2').validate();
                     this.$$("textCurrentPass_2").setValue('');
                     this.$$("textNewPass").setValue('');
+                    webix.message({
+                        text:"<p style='font-size:20px;'>Неверный пароль<p/>",
+                        type:"error",
+                        expire:5000,
+                    });
                 })
         });
 

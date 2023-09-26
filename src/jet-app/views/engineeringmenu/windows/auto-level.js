@@ -65,14 +65,16 @@ export default class AutoLevelWindow extends JetView {
                             view: "button",
                             label: _('calculate'),
                             localId: "buttonCalculate",
-                            css: "set_password_button"
+                            css: "set_password_button",
+                            hotkey: "enter",
                         },
                         {},
                         {
                             view: "button",
                             label: _('button_cancel'),
                             localId: "buttonCancel",
-                            css: "set_password_button"
+                            css: "set_password_button",
+                            hotkey: "esc",
                         },
                         {
                             height: 80,
@@ -120,6 +122,11 @@ export default class AutoLevelWindow extends JetView {
 
         this.$$('buttonCalculate').attachEvent("onItemClick", (id, e) => {
             console.log('click');
+            webix.message({
+                text:"<p style='font-size:18px;'>Калибровка выполнена<p/>",
+                type:"success",
+                expire:5000,
+            });
 
             this.$$("lengthLabel").validate();
 

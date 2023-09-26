@@ -303,15 +303,26 @@ export default class FullEmptySubView extends JetView {
         llsModelOne.addListenerShortData(this.listenerShortData);
         llsModelOne.addListenerLongData(this.listenerLongData);
 
-        this.$$('auto_calibration_1').attachEvent("onItemClick", (id, e)=>{
+        this.$$('auto_calibration_1').attachEvent("onItemClick", (id, e)=> {
             console.log('click');
             llsModelOne.setMaximum().then();
+            webix.message({
+                text:"<p style='font-size:20px;'>Полный откалиброван<p/>",
+                type:"success",
+                expire:5000,
+            });
 
         });
+
 
         this.$$('auto_calibration_2').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             llsModelOne.setMinimum().then();
+            webix.message({
+                text:"<p style='font-size:20px;'>Пустой откалиброван<p/>",
+                type:"success",
+                expire:5000,
+            });
         });
 
         this.$$("auto_calibration_1").disable();

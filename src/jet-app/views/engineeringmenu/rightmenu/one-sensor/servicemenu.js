@@ -65,7 +65,7 @@ export default class ServiceMenu extends JetView {
                 id: "list",
                 template: "#name# - #location#",
                 autoheight: true,
-                select: true
+                select: true,
             }
         };
 
@@ -76,11 +76,14 @@ export default class ServiceMenu extends JetView {
             this.popService.show($$(id).getNode());
         });
 
+
         this.resetLlsWindow = this.ui(ResetLlsWindow);
         $$("list").attachEvent("onItemClick", (id, name, e) => {
             console.log("click");
             if (id == 'resetLls') {
                 this.resetLlsWindow.showWindow();
+
+
             }
 
             if (id == 'updateFramework') {

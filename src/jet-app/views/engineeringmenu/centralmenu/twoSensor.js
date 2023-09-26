@@ -76,19 +76,13 @@ export default class TwoSensor extends JetView {
 
 				case "one_sensor": {
 					this.app.callEvent("app:select_sensor:number", ["first"]);
-					// $$("show_choice_sensor").show();
-					// $$("show_choice_sensor_two").hide();
-					// $$("empty_rows").hide();
-					// $$("empty_rows_two").show()
+
 
 					break;
 				}
 				case "two_sensor": {
 					this.app.callEvent("app:select_sensor:number", ["second"]);
-					// $$("show_choice_sensor").hide();
-					// $$("show_choice_sensor_two").show();
-					// $$("empty_rows_two").hide()
-					// $$("empty_rows").show()
+
 
 					break;
 				}
@@ -107,9 +101,6 @@ export default class TwoSensor extends JetView {
 					this.app.callEvent("app:setting:filtering", []);
 					break;}
 			}
-			// webix.message(
-			// 	`Value changed from ${oldValue} to ${newValue}. Source: ${config}`
-			// );
 		});
 
 

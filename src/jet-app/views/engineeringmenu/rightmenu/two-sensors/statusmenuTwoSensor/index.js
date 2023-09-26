@@ -7,6 +7,9 @@ export default class StatusMenuTwoSensor extends JetView{
         return{
             rows:[
                 StatusMenuOne,
+                {
+                    height: 30,
+                },
                 StatusMenuTwo
             ]
         }

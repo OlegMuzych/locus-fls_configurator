@@ -15,6 +15,7 @@ export default class ResetLlsWindow extends JetView {
             height: 400,
             id: "window_show_5",
             modal: true,
+            move:true,
             css: "window_show",
             head: {
                 height: 400,
@@ -51,9 +52,9 @@ export default class ResetLlsWindow extends JetView {
                     {
                         cols: [
                             {},
-                            {view: "button", label: _("button_ok"), localId: "buttonOk", css: "set_password_button"},
+                            {view: "button", label: _("button_ok"), localId: "buttonOk", css: "set_password_button", hotkey: "enter",},
                             {},
-                            {view: "button", label: _("button_cancel"), localId: "buttonCancel", css: "set_password_button"},
+                            {view: "button", label: _("button_cancel"), localId: "buttonCancel", css: "set_password_button", hotkey: "esc"},
                             {}
                         ]
                     },
@@ -67,13 +68,21 @@ export default class ResetLlsWindow extends JetView {
 
     init(){
         this.$$('buttonCancel').attachEvent("onItemClick", (id, e) => {
-            console.log('click');
+            console.log('closed');
             this.getRoot().hide();
         });
 
+
         this.$$('buttonOk').attachEvent("onItemClick", (id, e) => {
-            console.log('click');
+            console.log('Reset settings');
             this.getRoot().hide();
+
+            webix.message({
+                text:"<p style='font-size:20px;'>Настройки сброшены<p/>",
+                type:"success",
+                expire:5000,
+            });
+
             //todo: command resetLls
             const defaultSettings = {
                 llsAdr: 1,

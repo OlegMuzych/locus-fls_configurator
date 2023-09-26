@@ -35,7 +35,9 @@ export default class LeftMenu extends JetView{
                                 css: "edit_values",
                                 width: 160,
                                 height: 103,
-                                localId:"save_settings"
+                                localId:"save_settings",
+                                hotkey: "s",
+
                             },
                             {
                                 height: 10,

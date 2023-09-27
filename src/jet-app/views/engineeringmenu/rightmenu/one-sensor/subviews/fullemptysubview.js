@@ -306,23 +306,12 @@ export default class FullEmptySubView extends JetView {
         this.$$('auto_calibration_1').attachEvent("onItemClick", (id, e)=> {
             console.log('click');
             llsModelOne.setMaximum().then();
-            webix.message({
-                text:"<p style='font-size:20px;'>Полный откалиброван<p/>",
-                type:"success",
-                expire:5000,
-            });
-
         });
 
 
         this.$$('auto_calibration_2').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
             llsModelOne.setMinimum().then();
-            webix.message({
-                text:"<p style='font-size:20px;'>Пустой откалиброван<p/>",
-                type:"success",
-                expire:5000,
-            });
         });
 
         this.$$("auto_calibration_1").disable();
@@ -350,16 +339,37 @@ export default class FullEmptySubView extends JetView {
         this.$$("auto_calibration_set_1").attachEvent("onChange", (newValue, oldValue, config)=>{
             if(newValue == "45000000"){
                 this.app.callEvent("app:fullemptysubview:one:fullTankDefault", [false]);
+                webix.message({
+                    text:"<p style='font-size:20px;'>Данные полный сброшены<p/>",
+                    type:"debug",
+                    expire:5000,
+                });
             }else{
                 this.app.callEvent("app:fullemptysubview:one:fullTankDefault", [true]);
+                webix.message({
+                    text:"<p style='font-size:20px;'>Полный откалиброван<p/>",
+                    type:"success",
+                    expire:5000,
+                });
             }
         });
 
         this.$$("auto_calibration_set_2").attachEvent("onChange", (newValue, oldValue, config)=>{
             if(newValue == "1000000"){
                 this.app.callEvent("app:fullemptysubview:one:emptyTankDefault", [false]);
+                webix.message({
+                    text:"<p style='font-size:20px;'>Данные пустой сброшены<p/>",
+                    type:"debug",
+                    expire:5000,
+                });
+
             }else{
                 this.app.callEvent("app:fullemptysubview:one:emptyTankDefault", [true]);
+                webix.message({
+                    text:"<p style='font-size:20px;'>Пустой откалиброван<p/>",
+                    type:"success",
+                    expire:5000,
+                });
             }
         });
 

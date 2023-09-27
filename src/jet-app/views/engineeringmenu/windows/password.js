@@ -276,11 +276,23 @@ export default class PasswordWindow extends JetView {
                     this.passValidFlag = true;
                     this.$$('textCurrentPass').validate();
                     this.getRoot().hide();
+
+                    webix.message({
+                        text:"<p style='font-size:20px;'>Пароль был изменен<p/>",
+                        type:"success",
+                        expire:5000,
+                    });
                 })
                 .catch(()=>{
                     this.passValidFlag = false;
                     this.$$('textCurrentPass').validate();
                     this.$$("textCurrentPass").setValue('');
+
+                    webix.message({
+                        text:"<p style='font-size:20px;'>Неверный пароль<p/>",
+                        type:"error",
+                        expire:5000,
+                    });
                 })
         });
 
@@ -293,6 +305,7 @@ export default class PasswordWindow extends JetView {
                     this.passValidFlag = true;
                     this.$$('textCurrentPass_2').validate();
                     this.getRoot().hide();
+
                     webix.message({
                         text:"<p style='font-size:20px;'>Пароль был изменен<p/>",
                         type:"success",
@@ -304,6 +317,7 @@ export default class PasswordWindow extends JetView {
                     this.$$('textCurrentPass_2').validate();
                     this.$$("textCurrentPass_2").setValue('');
                     this.$$("textNewPass").setValue('');
+
                     webix.message({
                         text:"<p style='font-size:20px;'>Неверный пароль<p/>",
                         type:"error",

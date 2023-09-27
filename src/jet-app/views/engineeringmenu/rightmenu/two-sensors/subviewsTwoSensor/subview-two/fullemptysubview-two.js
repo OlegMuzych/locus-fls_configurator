@@ -166,7 +166,8 @@ export default class FullemptysubviewTwo extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "auto_calibration",
-                                                    id: "auto_calibration_1"
+                                                    id: "auto_calibration_1",
+                                                    hotkey: "shift+pitch-up",
                                                 },
                                                 {
                                                     height: 130,
@@ -186,7 +187,8 @@ export default class FullemptysubviewTwo extends JetView {
                                                     width: 200,
                                                     height: 50,
                                                     css: "auto_calibration",
-                                                    id: "auto_calibration_2"
+                                                    id: "auto_calibration_2",
+                                                    hotkey: "shift+pitch-down",
 
                                                 },
                                             ]
@@ -342,16 +344,36 @@ export default class FullemptysubviewTwo extends JetView {
         this.$$("auto_calibration_set_1").attachEvent("onChange", (newValue, oldValue, config)=>{
             if(newValue == "45000000"){
                 this.app.callEvent("app:fullemptysubview:fullTankDefault", [false]);
+                webix.message({
+                    text:"<p style='font-size:20px;'>Данные полный сброшены<p/>",
+                    type:"debug",
+                    expire:5000,
+                });
             }else{
                 this.app.callEvent("app:fullemptysubview:fullTankDefault", [true]);
+                webix.message({
+                    text:"<p style='font-size:17px;'>Полный откалиброван #2<p/>",
+                    type:"success",
+                    expire:5000,
+                });
             }
         });
 
         this.$$("auto_calibration_set_2").attachEvent("onChange", (newValue, oldValue, config)=>{
             if(newValue == "1000000"){
                 this.app.callEvent("app:fullemptysubview:emptyTankDefault", [false]);
+                webix.message({
+                    text:"<p style='font-size:20px;'>Данные пустой сброшены<p/>",
+                    type:"debug",
+                    expire:5000,
+                });
             }else{
                 this.app.callEvent("app:fullemptysubview:emptyTankDefault", [true]);
+                webix.message({
+                    text:"<p style='font-size:18px;'>Пустой откалиброван #2<p/>",
+                    type:"success",
+                    expire:5000,
+                });
             }
         });
 

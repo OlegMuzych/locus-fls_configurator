@@ -202,7 +202,7 @@ export default class GeneralSettings extends JetView {
                         {
                             view: "counter",
                             css: "window_type_3",
-                            id: "window_type_2_9",
+                            // id: "window_type_2_9",
                             localId: 'counterCounterPeriod',
                             step: 1,
                             value: 5,

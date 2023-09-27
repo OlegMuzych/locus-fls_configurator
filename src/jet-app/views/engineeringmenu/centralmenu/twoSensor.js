@@ -68,13 +68,11 @@ export default class TwoSensor extends JetView {
 		}
 
 		$$("configuration_general_settings_sensor").setValue("one_sensor");
+		// this.app.callEvent("app:select_sensor:number", ["first"]);
 
 		$$("configuration_general_settings_sensor").attachEvent("onChange", (newValue, oldValue, config)=>{
-			webix.message(newValue);
-			switch(newValue)
-
-				{
-
+			// webix.message(newValue);
+			switch(newValue) {
 
 				case "one_sensor": {
 					this.app.callEvent("app:select_sensor:number", ["first"]);

@@ -202,7 +202,7 @@ export default class GeneralSettings extends JetView {
                         {
                             view: "counter",
                             css: "window_type_3",
-                            id: "window_type_2_9",
+                            // id: "window_type_2_9",
                             localId: 'counterCounterPeriod_one',
                             step: 1,
                             value: 5,
@@ -917,7 +917,7 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss(this.$$("textMinLevel").getNode(), "window_type_2");
             webix.html.addCss(this.$$("textMaxLevel").getNode(), "window_type_2");
             webix.html.addCss(this.$$("rows_number_5").getNode(), "window_type_2");
-            webix.html.addCss(this.$$("counterPeriod").getNode(), "window_type_3");
+            webix.html.addCss(this.$$("counterPeriod_one").getNode(), "window_type_3");
             webix.html.addCss(this.$$("counterCounterPeriod_one").getNode(), "window_type_3");
             webix.html.addCss(this.$$("textBaudRate").getNode(), "window_type_2");
             webix.html.addCss(this.$$("rows_number_3").getNode(), "window_type_2");
@@ -952,7 +952,7 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss(this.$$("textMinLevel").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("textMaxLevel").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("rows_number_5").getNode(), "window_type_2_dark");
-            webix.html.addCss(this.$$("counterPeriod").getNode(), "window_type_3_dark");
+            webix.html.addCss(this.$$("counterPeriod_one").getNode(), "window_type_3_dark");
             webix.html.addCss(this.$$("counterCounterPeriod_one").getNode(), "window_type_3_dark");
             webix.html.addCss(this.$$("textBaudRate").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("rows_number_3").getNode(), "window_type_2_dark");
@@ -1027,22 +1027,22 @@ export default class GeneralSettings extends JetView {
         switch (number) {
             case 0: {
                 this.$$("textAutoGetData").setValue(_("automatic_data_output_turned_off"));
-                this.$$("counterPeriod").hide();
+                this.$$("counterPeriod_one").hide();
                 break;
             }
             case 1: {
                 this.$$("textAutoGetData").setValue(_("automatic_data_output_binary"));
-                this.$$("counterPeriod").show();
+                this.$$("counterPeriod_one").show();
                 break;
             }
             case 2: {
                 this.$$("textAutoGetData").setValue(_("automatic_data_output_symbolic"));
-                this.$$("counterPeriod").show();
+                this.$$("counterPeriod_one").show();
                 break;
             }
             default: {
                 this.$$("textAutoGetData").setValue("undefined");
-                this.$$("counterPeriod").show();
+                this.$$("counterPeriod_one").show();
                 break;
             }
         }

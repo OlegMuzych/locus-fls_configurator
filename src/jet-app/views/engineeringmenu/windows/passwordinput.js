@@ -230,11 +230,25 @@ export default class PasswordInputWindow extends JetView {
                 this.passValidFlag = true;
                 this.$$('textCurrentPass').validate();
                 this.getRoot().hide();
+
+                webix.message({
+                    text:"<p style='font-size:20px;'>Пароль был изменен<p/>",
+                    type:"success",
+                    expire:5000,
+                });
+
+
             })
             .catch(()=>{
                 this.passValidFlag = false;
                 this.$$('textCurrentPass').validate();
                 this.$$("textCurrentPass").setValue('');
+
+                webix.message({
+                    text:"<p style='font-size:20px;'>Неверный пароль<p/>",
+                    type:"error",
+                    expire:5000,
+                });
             })
 
     }

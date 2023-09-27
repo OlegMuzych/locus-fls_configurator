@@ -91,14 +91,17 @@ export default class PasswordInputTwoWindow extends JetView {
                                             view: "button",
                                             label: _("button_ok"),
                                             localId: "buttonCurrentPassOk",
-                                            css: "set_password_button"
+                                            css: "set_password_button",
+                                            hotkey:"enter"
                                         },
                                         {},
                                         {
                                             view: "button",
                                             label: _("button_cancel"),
                                             localId: "buttonCancel_1",
-                                            css: "set_password_button"
+                                            css: "set_password_button",
+                                            hotkey:"esc"
+
                                         },
                                         {}
                                     ]
@@ -138,14 +141,16 @@ export default class PasswordInputTwoWindow extends JetView {
                                             view: "button",
                                             label: _("button_ok"),
                                             localId: "buttonResetOk",
-                                            css: "set_password_button"
+                                            css: "set_password_button",
+                                            hotkey:"enter"
                                         },
                                         {},
                                         {
                                             view: "button",
                                             label: _("button_cancel"),
                                             localId: "buttonResetCancel",
-                                            css: "set_password_button"
+                                            css: "set_password_button",
+                                            hotkey:"esc"
                                         },
                                         {}
                                     ]
@@ -203,6 +208,7 @@ export default class PasswordInputTwoWindow extends JetView {
             this.llsModel.resetLls().then();
             this.getRoot().hide();
             //todo: command resetLls
+
         });
 
         this.$$('textCurrentPass').attachEvent("onEnter",(ev)=>{
@@ -225,15 +231,26 @@ export default class PasswordInputTwoWindow extends JetView {
                 this.passValidFlag = true;
                 this.$$('textCurrentPass').validate();
                 this.getRoot().hide();
+
+                webix.message({
+                    text:"<p style='font-size:20px;'>Пароль был изменен<p/>",
+                    type:"success",
+                    expire:5000,
+                });
             })
             .catch(()=>{
                 this.passValidFlag = false;
                 this.$$('textCurrentPass').validate();
                 this.$$("textCurrentPass").setValue('');
+
+                webix.message({
+                    text:"<p style='font-size:20px;'>Неверный пароль<p/>",
+                    type:"error",
+                    expire:5000,
+                });
             })
 
     }
-
 
     showWindow(llsModel, text='') {
         const _ = this.app.getService("locale")._;
@@ -245,7 +262,6 @@ export default class PasswordInputTwoWindow extends JetView {
         this.getRoot().show();
     }
 
-
     setTheme() {
         if (configFile.theme == 'dark') {
             webix.html.addCss(this.$$("tabbar_windows_password").getNode(), "tabbar_windows_password_1_dark");
@@ -255,13 +271,8 @@ export default class PasswordInputTwoWindow extends JetView {
             webix.html.addCss(this.$$("buttonCurrentPassOk").getNode(), "set_password_button_dark");
             webix.html.addCss(this.$$("windows_password_label").getNode(), "language_windows_modal_dark");
             webix.html.addCss(this.$$("textCurrentPass").getNode(), "password_windows_set_dark");
-
             this.$$("closed_1").define("image","assets/images/info_black_inverse.svg");
             this.$$("closed_1").refresh();
-
-
-
-
 
         }
         if (configFile.theme == 'light') {
@@ -272,10 +283,8 @@ export default class PasswordInputTwoWindow extends JetView {
             webix.html.addCss(this.$$("buttonCurrentPassOk").getNode(), "set_password_button");
             webix.html.addCss(this.$$("windows_password_label").getNode(), "language_windows_modal");
             webix.html.addCss(this.$$("textCurrentPass").getNode(), "password_windows_set");
-
             this.$$("closed_1").define("image","assets/images/info_black.svg");
             this.$$("closed_1").refresh();
-
         }
     }
 }

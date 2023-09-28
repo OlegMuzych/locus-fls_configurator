@@ -172,6 +172,11 @@ class LlsModel {
             let resp = await this._lls.actions.setMaximum();
             if (resp.status == 0x00) {
                 this.getLongData().then();
+                webix.message({
+                    text:"<p style='font-size:18px;'>Полный откалиброван<p/>",
+                    type:"success",
+                    expire:5000,
+                });
                 this._myEmitter.emit('commandError', resp.status);
             } else if (resp.status == 0x01) {
                 console.log('Lls response error!');
@@ -190,6 +195,11 @@ class LlsModel {
             let resp = await this._lls.actions.setMinimum();
             if (resp.status == 0x00) {
                 this.getLongData().then();
+                webix.message({
+                    text:"<p style='font-size:18px;'>Пустой откалиброван<p/>",
+                    type:"success",
+                    expire:5000,
+                });
                 this._myEmitter.emit('commandError', resp.status);
             } else if (resp.status == 0x01) {
                 console.log('Lls response error!');
@@ -303,13 +313,28 @@ class LlsModel {
                 let resp = await this._lls.actions.setNewPassword(currentPassword, newPassword);
                 if (resp.status == 0x00) {
                     // this._myEmitter.emit('commandError', resp.status);
+                    webix.message({
+                        text:"<p style='font-size:20px;'>Пароль был изменен<p/>",
+                        type:"success",
+                        expire:5000,
+                    });
                     resolve();
                 } else if (resp.status == 0x01) {
                     console.log('Lls response error!');
+                    webix.message({
+                        text:"<p style='font-size:20px;'>Неверный пароль<p/>",
+                        type:"error",
+                        expire:5000,
+                    });
                     // this._myEmitter.emit('commandError', resp.status);
                     reject();
                 } else if (resp.status == 0x02) {
                     console.log("Lls password error!");
+                    webix.message({
+                        text:"<p style='font-size:20px;'>Неверный пароль<p/>",
+                        type:"error",
+                        expire:5000,
+                    });
                     // this._myEmitter.emit('commandError', resp.status);
                     reject();
                 }
@@ -325,12 +350,27 @@ class LlsModel {
             if (this.#statusLls == 'connect') {
                 let resp = await this._lls.actions.setCurrentPassword(str);
                 if (resp.status == 0x00) {
+                    webix.message({
+                        text:"<p style='font-size:20px;'>Пароль верный<p/>",
+                        type:"success",
+                        expire:5000,
+                    });
                     resolve();
                 } else if (resp.status == 0x01) {
                     console.log('Lls response error!');
+                    webix.message({
+                        text:"<p style='font-size:20px;'>Неверный пароль<p/>",
+                        type:"error",
+                        expire:5000,
+                    });
                     reject();
                 } else if (resp.status == 0x02) {
                     console.log("Lls password error!");
+                    webix.message({
+                        text:"<p style='font-size:20px;'>Неверный пароль<p/>",
+                        type:"error",
+                        expire:5000,
+                    });
                     reject();
                 }
             } else {

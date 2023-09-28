@@ -1,9 +1,10 @@
 import {JetView} from "webix-jet";
 import configFile from "../../../config-app";
-import llsModel from "../../../models/lls-model";
+// import llsModel from "../../../models/lls-model";
 // import {setTheme} from "@vercel/webpack-asset-relocator-loader";
 
 export default class AutoLevelWindow extends JetView {
+    llsModel = null;
     config() {
         const _ = this.app.getService("locale")._;
 
@@ -135,13 +136,13 @@ export default class AutoLevelWindow extends JetView {
             if( this.validLength(length) ) {
                 let cntFull = calculateCntFull(length);
                 // this.$$("cntFullText").setValue(cntFull);
-                llsModel.newLongData.fullTank = cntFull;
+                this.llsModel.newLongData.fullTank = cntFull;
 
                 let cntEmpty =  calculateCntEmpty(length);
                 // this.$$("cntEmptyText").setValue(cntEmpty);
-                llsModel.newLongData.emptyTank = cntEmpty;
+                this.llsModel.newLongData.emptyTank = cntEmpty;
 
-                llsModel.setLongData(llsModel.newLongData);
+                this.llsModel.setLongData(this.llsModel.newLongData);
                 this.getRoot().hide();
             }
         });
@@ -157,7 +158,8 @@ export default class AutoLevelWindow extends JetView {
         this.setTheme();
     }
 
-    showWindow() {
+    showWindow(llsModel) {
+        this.llsModel = llsModel;
         this.getRoot().show();
     }
 
@@ -172,12 +174,12 @@ export default class AutoLevelWindow extends JetView {
 
     setEmptyTank(newValue){
         // $$('auto_calibration_set_2').setValue(newValue);
-        llsModel.newLongData.emptyTank = newValue;
+        this.llsModel.newLongData.emptyTank = newValue;
     }
 
     setFullTank(newValue){
         // $$('auto_calibration_set_1').setValue(newValue);
-        llsModel.newLongData.fullTank = newValue;
+        this.llsModel.newLongData.fullTank = newValue;
     }
 
 

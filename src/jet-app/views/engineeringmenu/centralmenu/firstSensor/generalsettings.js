@@ -1027,22 +1027,22 @@ export default class GeneralSettings extends JetView {
         switch (number) {
             case 0: {
                 this.$$("textAutoGetData").setValue(_("automatic_data_output_turned_off"));
-                this.$$("counterPeriod_one").hide();
+                this.$$("counterPeriod").hide();
                 break;
             }
             case 1: {
                 this.$$("textAutoGetData").setValue(_("automatic_data_output_binary"));
-                this.$$("counterPeriod_one").show();
+                this.$$("counterPeriod").show();
                 break;
             }
             case 2: {
                 this.$$("textAutoGetData").setValue(_("automatic_data_output_symbolic"));
-                this.$$("counterPeriod_one").show();
+                this.$$("counterPeriod").show();
                 break;
             }
             default: {
                 this.$$("textAutoGetData").setValue("undefined");
-                this.$$("counterPeriod_one").show();
+                this.$$("counterPeriod").show();
                 break;
             }
         }

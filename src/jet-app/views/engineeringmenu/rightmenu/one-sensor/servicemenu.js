@@ -81,7 +81,7 @@ export default class ServiceMenu extends JetView {
         $$("list").attachEvent("onItemClick", (id, name, e) => {
             console.log("click");
             if (id == 'resetLls') {
-                this.resetLlsWindow.showWindow();
+                this.resetLlsWindow.showWindow(llsModelOne);
 
 
             }
@@ -109,7 +109,7 @@ export default class ServiceMenu extends JetView {
         this.passwordWindow = this.ui(PasswordWindow);
         $$("buttonPassword").attachEvent("onItemClick", (id, name, e) => {
             console.log("click");
-            this.passwordWindow.showWindow();
+            this.passwordWindow.showWindow(llsModelOne);
         });
 
         this.on(this.app, "app:calibrationSubview:startCalibrate", (type) => {

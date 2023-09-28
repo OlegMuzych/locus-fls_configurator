@@ -346,11 +346,11 @@ export default class FullEmptySubView extends JetView {
                 });
             }else{
                 this.app.callEvent("app:fullemptysubview:one:fullTankDefault", [true]);
-                webix.message({
-                    text:"<p style='font-size:20px;'>Полный откалиброван<p/>",
-                    type:"success",
-                    expire:5000,
-                });
+                // webix.message({
+                //     text:"<p style='font-size:20px;'>Полный откалиброван<p/>",
+                //     type:"success",
+                //     expire:5000,
+                // });
             }
         });
 
@@ -365,11 +365,11 @@ export default class FullEmptySubView extends JetView {
 
             }else{
                 this.app.callEvent("app:fullemptysubview:one:emptyTankDefault", [true]);
-                webix.message({
-                    text:"<p style='font-size:20px;'>Пустой откалиброван<p/>",
-                    type:"success",
-                    expire:5000,
-                });
+                // webix.message({
+                //     text:"<p style='font-size:20px;'>Пустой откалиброван<p/>",
+                //     type:"success",
+                //     expire:5000,
+                // });
             }
         });
 
@@ -448,7 +448,7 @@ export default class FullEmptySubView extends JetView {
 
         this.$$('auto_calibration').attachEvent("onItemClick", (id, e)=>{
             console.log('click');
-            this.windowAutoLevel.showWindow();
+            this.windowAutoLevel.showWindow(llsModelOne);
         });
 
         if(configFile.theme == 'light'){

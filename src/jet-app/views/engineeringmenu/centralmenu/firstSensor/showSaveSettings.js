@@ -8,7 +8,7 @@ export default class ShowSaveSettings extends JetView {
 			view: "label",
 			label: `<p style="position: relative; top: -20px;">${_("save_settings_text_show")}</p>`,
 			height: 50,
-			css: "show_save_settings",
+			css: "show_save_settings_dark",
 			id:"show_save_settings",
 		};
 
@@ -24,16 +24,13 @@ export default class ShowSaveSettings extends JetView {
 
 	init() {
 
-
 		if(configFile.theme == 'light'){
+			// webix.html.removeCss( $$("show_save_settings").getNode(), "show_save_settings_dark");
 			webix.html.addCss( $$("show_save_settings").getNode(), "show_save_settings");
-
 		}
 		if(configFile.theme == 'dark'){
+			// webix.html.removeCss( $$("show_save_settings").getNode(), "show_save_settings_dark");
 			webix.html.addCss( $$("show_save_settings").getNode(), "show_save_settings_dark");
-
 		}
-
-
 	};
 }

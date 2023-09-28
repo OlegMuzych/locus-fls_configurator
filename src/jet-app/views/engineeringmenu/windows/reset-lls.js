@@ -77,12 +77,6 @@ export default class ResetLlsWindow extends JetView {
             console.log('Reset settings');
             this.getRoot().hide();
 
-            webix.message({
-                text:"<p style='font-size:20px;'>Настройки сброшены<p/>",
-                type:"success",
-                expire:5000,
-            });
-
             //todo: command resetLls
             const defaultSettings = {
                 llsAdr: 1,
@@ -141,7 +135,29 @@ export default class ResetLlsWindow extends JetView {
             this.llsModel.newLongData = defaultSettings;
 
             // llsModel.setLongData(defaultSettings).then();
-            this.llsModel.setLongData(this.llsModel.newLongData).then();
+            this.llsModel.setLongData(this.llsModel.newLongData).then(()=>{
+                webix.message({
+                    text:"<p style='font-size:20px;'>Настройки сброшены<p/>",
+                    type:"success",
+                    expire:5000,
+                });
+                webix.message({
+                    text:"<p style='font-size:20px;'>Данные полный сброшены<p/>",
+                    type:"debug",
+                    expire:5000,
+                });
+                webix.message({
+                    text:"<p style='font-size:20px;'>Данные пустой сброшены<p/>",
+                    type:"debug",
+                    expire:5000,
+                });
+            }).catch(()=>{
+                webix.message({
+                    text:"<p style='font-size:20px;'>Настройки не сброшены<p/>",
+                    type:"error",
+                    expire:5000,
+                });
+            });
         });
 
 

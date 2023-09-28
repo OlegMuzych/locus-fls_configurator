@@ -343,36 +343,16 @@ export default class FullemptysubviewOne extends JetView {
         this.$$("auto_calibration_set_1_one").attachEvent("onChange", (newValue, oldValue, config)=>{
             if(newValue == "45000000"){
                 this.app.callEvent("app:fullemptysubview:one:fullTankDefault", [false]);
-                webix.message({
-                    text:"<p style='font-size:20px;'>Данные полный сброшены<p/>",
-                    type:"debug",
-                    expire:5000,
-                });
             }else{
                 this.app.callEvent("app:fullemptysubview:one:fullTankDefault", [true]);
-                // webix.message({
-                //     text:"<p style='font-size:17px;'>Полный откалиброван #1<p/>",
-                //     type:"success",
-                //     expire:5000,
-                // });
             }
         });
 
         this.$$("auto_calibration_set_2_one").attachEvent("onChange", (newValue, oldValue, config)=>{
             if(newValue == "1000000"){
                 this.app.callEvent("app:fullemptysubview:one:emptyTankDefault", [false]);
-                webix.message({
-                    text:"<p style='font-size:20px;'>Данные пустой сброшены<p/>",
-                    type:"debug",
-                    expire:5000,
-                });
             }else{
                 this.app.callEvent("app:fullemptysubview:one:emptyTankDefault", [true]);
-                // webix.message({
-                //     text:"<p style='font-size:18px;'>Пустой откалиброван #1<p/>",
-                //     type:"success",
-                //     expire:5000,
-                // });
             }
         });
 

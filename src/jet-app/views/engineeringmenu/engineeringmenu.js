@@ -145,7 +145,6 @@ export default class EngineeringMenu extends JetView{
         this.on(this.app, "app:settings:setToLls", () => {
             this.saveSettingNotification.showWindow();
         });
-
         if(configFile.theme == 'light'){
             // webix.html.addCss( $$("rows_left_1").getNode(), "style_body");
             // webix.html.addCss( $$("rows_right_2").getNode(), "style_body");

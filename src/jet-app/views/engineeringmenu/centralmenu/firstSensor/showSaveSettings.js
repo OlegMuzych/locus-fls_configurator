@@ -27,9 +27,7 @@ export default class ShowSaveSettings extends JetView {
 		this.on(this.app, "app:settings:setToLls", () => {
 			webix.html.removeCss($$("show_save_settings").getNode(), "show_save_settings");
 			webix.html.addCss($$("show_save_settings").getNode(), "show_save_settings_dark_green")
-			$$("show_save_settings").refrash();
-
-
+			// $$("show_save_settings").refrash();
 			webix.message({
 				    text:"<p style='font-size:20px;'>test<p/>",
 				    type:"success",

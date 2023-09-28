@@ -161,6 +161,7 @@ export default class EngineeringMenu extends JetView{
         switch (status) {
             case 0x00: {
                 this.saveSettingNotification.showWindow();
+                this.app.callEvent('app:settings:setToLls', []);
                 break;
             }
             case 0x01: {
@@ -180,6 +181,7 @@ export default class EngineeringMenu extends JetView{
         switch (status) {
             case 0x00: {
                 this.saveSettingNotification.showWindow();
+                this.app.callEvent('app:settings:setToLls', []);
                 break;
             }
             case 0x01: {

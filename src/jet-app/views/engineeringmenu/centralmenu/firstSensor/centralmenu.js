@@ -3,7 +3,7 @@ import configFile from "../../../../config-app";
 import GeneralSettings from "./generalsettings";
 import Calibrationsettings from "./calibrationsettings";
 import FiltrationSettings from "./filtaringSettings";
-import ShowSaveSettings from "./showSaveSettings.js";
+import ShowSaveSettings from "./showSaveSettings";
 
 // import globalVariable from "../../../global-variable-app";
 
@@ -28,6 +28,7 @@ export default class CentralMenuFirst extends JetView {
                     ],
                     hidden:true,
                 },
+                ShowSaveSettings,
                 {
                     animate: false,
                     view: "multiview",
@@ -81,7 +82,6 @@ export default class CentralMenuFirst extends JetView {
                 {
                     height: 20,
                 },
-                [ShowSaveSettings],
                 {
                     height: 10,
                 },

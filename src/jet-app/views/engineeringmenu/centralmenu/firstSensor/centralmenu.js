@@ -3,6 +3,7 @@ import configFile from "../../../../config-app";
 import GeneralSettings from "./generalsettings";
 import Calibrationsettings from "./calibrationsettings";
 import FiltrationSettings from "./filtaringSettings";
+import ShowSaveSettings from "./showSaveSettings.js";
 
 // import globalVariable from "../../../global-variable-app";
 
@@ -64,11 +65,25 @@ export default class CentralMenuFirst extends JetView {
             ]
         };
 
+
+        // let show_save_settings ={
+        //     view: "label",
+        //     label: `<p style="position: relative; top: -20px;">${_("save_settings_text_show")}</p>`,
+        //     height: 50,
+        //     css: "show_save_settings",
+        // };
+
+
+
         let body = {
             maxWidth: 1420,
             rows: [
                 {
                     height: 20,
+                },
+                [ShowSaveSettings],
+                {
+                    height: 10,
                 },
                 // TwoSensor,
                 {

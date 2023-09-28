@@ -266,4 +266,7 @@ export default {
     "error_value_table": "Некорректная таблица тарировки",
     "error_undefined": "Неопределенная ошибка",
 
+    /*show_save_settings */
+    "save_settings_text_show": "Настройки записаны в датчик"
+
 };

@@ -17,7 +17,6 @@ export default class SaveSettingNotificationWindow extends JetView {
                         view: "label",
                         label: `<p>${_('window_save-setting-notification_text')}</p>`,
                         css: "save_windows_modal",
-                        // localId: "language_windows_modal_2",
                         width: 1000,
                         height: 50,
                     },
@@ -25,6 +24,7 @@ export default class SaveSettingNotificationWindow extends JetView {
                 ]
             },
         }
+
 
         return body;
     }

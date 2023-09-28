@@ -3,6 +3,7 @@ import configFile from "../../../../config-app";
 
 export default class ShowSaveSettings extends JetView {
 	config() {
+		const _ = this.app.getService("locale")._;
 		let show_save_settings = {
 			view: "label",
 			label: `<p style="position: relative; top: -20px;">${_("save_settings_text_show")}</p>`,

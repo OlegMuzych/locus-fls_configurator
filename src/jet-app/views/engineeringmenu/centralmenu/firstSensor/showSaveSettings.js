@@ -1,6 +1,5 @@
 import {JetView} from "webix-jet";
-
-
+import configFile from "../../../../config-app";
 
 export default class ShowSaveSettings extends JetView {
 	config() {
@@ -16,12 +15,24 @@ export default class ShowSaveSettings extends JetView {
 			rows:[
 				show_save_settings
 			]
-		}
+		};
 
 		return body;
+
 	}
 
 	init() {
 
-	}
+
+		if(configFile.theme == 'light'){
+			webix.html.addCss( $$("show_save_settings").getNode(), "show_save_settings");
+
+		}
+		if(configFile.theme == 'dark'){
+			webix.html.addCss( $$("show_save_settings").getNode(), "show_save_settings_dark");
+
+		}
+
+
+	};
 }

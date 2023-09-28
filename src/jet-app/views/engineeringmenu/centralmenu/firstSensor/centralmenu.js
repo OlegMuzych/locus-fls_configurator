@@ -28,7 +28,6 @@ export default class CentralMenuFirst extends JetView {
                     ],
                     hidden:true,
                 },
-                ShowSaveSettings,
                 {
                     animate: false,
                     view: "multiview",
@@ -82,6 +81,7 @@ export default class CentralMenuFirst extends JetView {
                 {
                     height: 20,
                 },
+                ShowSaveSettings,
                 {
                     height: 10,
                 },

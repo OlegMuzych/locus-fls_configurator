@@ -341,7 +341,7 @@ export default class FullemptysubviewOne extends JetView {
             }
         });
 
-        $$("auto_calibration_set_1_one").attachEvent("onChange", (newValue, oldValue, config)=>{
+        this.$$("auto_calibration_set_1_one").attachEvent("onChange", (newValue, oldValue, config)=>{
             if(newValue == "45000000"){
                 this.app.callEvent("app:fullemptysubview:one:fullTankDefault", [false]);
                 webix.message({

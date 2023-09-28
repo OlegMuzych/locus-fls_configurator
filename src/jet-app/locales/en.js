@@ -264,4 +264,7 @@ export default {
     "error_size_table": "Size table calibration error",
     "error_value_table": "Table calibrate not valid error",
     "error_undefined": "Undefined error",
+
+    /* show_save_settings */
+    "save_settings_text_show": "Save settings in sensor"
 };

@@ -143,7 +143,7 @@ export default class EngineeringMenu extends JetView{
         });
 
         this.on(this.app, "app:settings:setToLls", () => {
-            this.saveSettingNotification.showWindow();
+            // this.saveSettingNotification.showWindow();
         });
         if(configFile.theme == 'light'){
             // webix.html.addCss( $$("rows_left_1").getNode(), "style_body");
@@ -160,7 +160,7 @@ export default class EngineeringMenu extends JetView{
     listenerCommandErrorOne = (status)=> {
         switch (status) {
             case 0x00: {
-                this.saveSettingNotification.showWindow();
+                // this.saveSettingNotification.showWindow();
                 this.app.callEvent('app:settings:setToLls', []);
                 break;
             }
@@ -180,7 +180,7 @@ export default class EngineeringMenu extends JetView{
     listenerCommandErrorTwo = (status)=> {
         switch (status) {
             case 0x00: {
-                this.saveSettingNotification.showWindow();
+                // this.saveSettingNotification.showWindow();
                 this.app.callEvent('app:settings:setToLls', []);
                 break;
             }

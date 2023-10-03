@@ -10,7 +10,7 @@ export default class SaveSettingNotificationWindow extends JetView {
             width: 1000,
             height: 40,
             id: "save_settings_windows",
-            css: "window_show_save",
+            css: "window_show_save_test",
             head: {
                 rows: [
                     {

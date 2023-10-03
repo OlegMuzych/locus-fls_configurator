@@ -2948,30 +2948,42 @@ right_menu_fuel_level_error_windows input{
 }
 /*-----------------------------------------------------------------------------*/
 
-.show_save_settings .webix_el_box{
+.show_save_settings .webix_el_box input{
     background-color: #f3f3f3;
     border-radius: 5px;
-    box-shadow: inset 2px 2px 4px #c5c5c5, inset -2px -2px 4px #ffffff;
-    color: #c5c5c5;
+    box-shadow: inset 4px 6px 8px #c5c5c5, inset -2px -2px 4px #ffffff;
+    color: var(--c-color-text-light);
     height: 100%;
-    /*border: 1px solid #fff;*/
+    border: none;
     text-align: center;
     font-size: 24px;
     font-weight: 100;
 }
 
 
-.show_save_settings_dark .webix_el_box{
-    background-color: #212121;
+.show_save_settings_dark .webix_el_box input{
+    background-color: #373737;
     border-radius: 5px;
-    box-shadow: inset 2px 2px 5px #212121, inset -2px -2px 5px #373737;
-    color: #373737;
+    box-shadow: inset 4px 6px 8px #212121, inset -2px -2px 5px #373737;
+    color: var(--c-color-text-dark);
     height: 100%;
-    /*border: 1px solid #373737;*/
+    border: none;
     text-align: center;
     font-size: 24px;
     font-weight: 100;
 }
 
 
+
+/*.window_show_save_test .webix_el_box input{*/
+/*    background-color: #212121;*/
+/*    border-radius: 5px;*/
+/*    box-shadow: inset 2px 2px 5px #212121, inset -2px -2px 5px #373737;*/
+/*    color: #373737;*/
+/*    height: 100%;*/
+/*    !*border: 1px solid #373737;*!*/
+/*    text-align: center;*/
+/*    font-size: 24px;*/
+/*    font-weight: 100;*/
+/*}*/
 

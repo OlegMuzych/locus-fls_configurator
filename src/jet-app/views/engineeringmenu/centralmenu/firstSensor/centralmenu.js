@@ -79,11 +79,11 @@ export default class CentralMenuFirst extends JetView {
             maxWidth: 1420,
             rows: [
                 {
-                    height: 20,
+                    height: 22,
                 },
                 ShowSaveSettings,
                 {
-                    height: 10,
+                    height: 1,
                 },
                 // TwoSensor,
                 {

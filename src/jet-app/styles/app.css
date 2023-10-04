@@ -2716,10 +2716,12 @@ right_menu_fuel_level_error_windows input{
 
 .password_windows_set{
     color: #000;
+
 }
 
 .password_windows_set_dark{
     color: #fff;
+
 }
 
 .password_windows_set .webix_el_box input{
@@ -2728,7 +2730,7 @@ right_menu_fuel_level_error_windows input{
     box-shadow: inset 2px 2px 4px #c5c5c5,
     inset -2px -2px 4px #ffffff;
     color: #000;
-    font-size: 20px;
+    font-size: 30px;
     height: 100%;
     border: 1px solid #fff;
 }
@@ -2737,7 +2739,7 @@ right_menu_fuel_level_error_windows input{
     background-color: var(--c-white-color-background-dark_left_menu);
     border-radius: 5px;
     color: #fff;
-    font-size: 20px;
+    font-size: 30px;
     border: none;
     box-shadow: inset 2px 2px 5px #212121,
     inset -2px -2px 5px #373737;
@@ -2833,7 +2835,7 @@ right_menu_fuel_level_error_windows input{
     color: var(--c-color-text-dark);
 
 }
-/*//////--------------------------------------------------------*/
+/*--------------------------------------------------------*/
 
 .rows_level_right_menu_info_hidden p{
    color: #35a642;
@@ -2856,13 +2858,6 @@ right_menu_fuel_level_error_windows input{
 }
 
 /*--------------------кнопкки переключения датчиков 1/2---------------------------------*/
-
-/*.configuration_two_sensor_button_dark .webix_control.webix_el_segmented{*/
-/*    background: var(--c-white-color-background-dark_left_menu);*/
-/*}*/
-/*.configuration_two_sensor_button .webix_control.webix_el_segmented{*/
-/*    background: var(--c-white-color-background-light_general_windows);*/
-/*}*/
 
 .configuration_two_sensor_button .webix_segment_0{
     background: var(--c-white-color-background-light_general_windows);
@@ -2948,6 +2943,9 @@ right_menu_fuel_level_error_windows input{
 }
 /*-----------------------------------------------------------------------------*/
 
+
+
+/*------------------------Окно сохранения настроек-----------------------------*/
 .show_save_settings .webix_el_box input{
     background-color: #f3f3f3;
     border-radius: 5px;
@@ -2973,17 +2971,15 @@ right_menu_fuel_level_error_windows input{
     font-weight: 100;
 }
 
+/*-----------------------------------------------------------------------------*/
+.rows_password_windows_set{
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    box-shadow: inset 4px 6px 8px #c5c5c5, inset -2px -2px 4px #ffffff;
+}
 
-
-/*.window_show_save_test .webix_el_box input{*/
-/*    background-color: #212121;*/
-/*    border-radius: 5px;*/
-/*    box-shadow: inset 2px 2px 5px #212121, inset -2px -2px 5px #373737;*/
-/*    color: #373737;*/
-/*    height: 100%;*/
-/*    !*border: 1px solid #373737;*!*/
-/*    text-align: center;*/
-/*    font-size: 24px;*/
-/*    font-weight: 100;*/
-/*}*/
-
+.rows_password_windows_set_dark{
+    background-color: #373737;
+    border-radius: 5px;
+    box-shadow: inset 4px 6px 8px #212121, inset -2px -2px 5px #373737;
+}

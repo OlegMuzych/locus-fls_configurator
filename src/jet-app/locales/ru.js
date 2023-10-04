@@ -254,9 +254,9 @@ export default {
 
     /* auto-level.js */
     "level_auto_calculate": "Автоматический расчет уровней",
-    "length_measuring_part": "Длина измерительной части, см",
+    "length_measuring_part": "Длина измерительной части, см.",
     "calculate": "Посчитать",
-    "message_auto_level_alert": "Результаты автоматического расчета увеличивают погрешность измерения ДУТ до 3%",
+    "message_auto_level_alert": "Результаты автоматического расчета увеличивают погрешность измерения ДУТ до ≈3%",
 
     /* errorStatus.js */
     "no_error": "Ошибок нет",

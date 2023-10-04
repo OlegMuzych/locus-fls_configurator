@@ -9,6 +9,7 @@ export default class AutoLevelWindow extends JetView {
         const _ = this.app.getService("locale")._;
 
         let elements = {
+
             rows: [
                 {},
                 {
@@ -17,46 +18,96 @@ export default class AutoLevelWindow extends JetView {
                        {
                            view: "label",
                            label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_("level_auto_calculate")}</p>`,
-                           width: 550,
+                           width: 420,
                            localId: "header_label",
                            css: "windows_password_label",
                        },
                        {}
                    ]
                 },
-                {},
                 {
-                    cols: [
-                        {},
-
-                        {
-                            view: "label",
-                            label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_("length_measuring_part")}</p>`,
-                            width: 550,
-                            localId: "windows_password_label",
-                            css: "windows_password_label",
-                        },
-                        {
-                            view: "text",
-                            width: 100,
-                            height:60,
-                            css: "password_windows_set",
-                            validate: ()=>{return this.passValidFlag},
-                            invalidMessage: _("window_password_invalid_message"),
-                            localId: "lengthLabel",
-                            pattern:{ mask:"###", allow:/[0-9]/g}
-                        },
-                        {}
-                    ]
+                    height: 50,
                 },
-                {},
                 {
-                    view: "template",
-                    localId: "templateMessage",
-                    height:100,
-                    template: `<p style='font-size: 20px; position: relative; top: -26px; font-weight: 100;'>&nbsp;&nbsp;&nbsp;&nbsp;${_('message_auto_level_alert')}</p>`,
-                    // template: '123',
-                    css: "mytemplate"
+                    id: "rows_password_windows_set",
+                    css:"rows_password_windows_set",
+                    height: 100,
+                    rows:[
+                        {
+
+                        },
+                        {
+                            cols: [
+                                {
+
+                                },
+                                {
+                                    view: "label",
+                                    label: `<p style='font-size: 26px; position: relative; top: -26px; font-weight: 100;'>${_("length_measuring_part")}</p>`,
+                                    width: 550,
+                                    localId: "windows_password_label",
+                                    css: "windows_password_label",
+                                },
+                                {
+                                   width: 10,
+                                },
+                                {
+                                    view: "text",
+                                    width: 130,
+                                    height:60,
+                                    css: "password_windows_set",
+                                    validate: ()=>{return this.passValidFlag},
+                                    invalidMessage: _("window_password_invalid_message"),
+                                    localId: "lengthLabel",
+                                    pattern:{ mask:"###", allow:/[0-9]/g}
+                                },
+                                {
+
+                                }
+                            ]
+                        },
+                        {
+
+                        }
+                    ]
+
+                },
+                {
+                    height: 50,
+                },
+                {
+                    rows:[
+                        {
+                            cols:[
+                                {
+
+                                },
+                                {
+                                    view:"button",
+                                    type: "image",
+                                    image:"assets/images/Warning.png",
+                                    css: "set_password_button_icon",
+                                    height:100,
+                                },
+                                {
+                                    width: 10,
+                                },
+                                {
+                                    view: "template",
+                                    localId: "templateMessage",
+                                    height:100,
+                                    width: 510,
+                                    template: `<p style='font-size: 20px; position: relative; font-weight: 100; color: #a6353c;'>&nbsp;&nbsp;&nbsp;&nbsp;${_('message_auto_level_alert')}</p>`,
+                                    css: "mytemplate",
+                                },
+                                {
+
+                                }
+                            ]
+                        }
+                    ]
+
+
                 },
                 {},
                 {
@@ -95,7 +146,7 @@ export default class AutoLevelWindow extends JetView {
             css: "form_win",
             localId: "form",
             width: 850,
-            height: 400,
+            height: 500,
 
         };
 
@@ -103,7 +154,7 @@ export default class AutoLevelWindow extends JetView {
             view: "window",
             position: "center",
             width: 850,
-            height: 400,
+            height: 500,
             id: "window_show_5",
             modal: true,
             css: "window_show_password",
@@ -194,9 +245,8 @@ export default class AutoLevelWindow extends JetView {
             webix.html.addCss($$("window_show_5").getNode(), "window_show_password_dark");
             webix.html.addCss(this.$$("form").getNode(), "form_win_dark");
             webix.html.addCss(this.$$("templateMessage").getNode(), "my_template_dark");
+            webix.html.addCss(this.$$("rows_password_windows_set").getNode(), "rows_password_windows_set_dark");
 
-            // $$("closed_35").define("image", "assets/images/info_black_inverse.svg");
-            // $$("closed_35").refresh();
         }
 
         if (configFile.theme == 'light') {
@@ -208,9 +258,8 @@ export default class AutoLevelWindow extends JetView {
             webix.html.addCss($$("window_show_5").getNode(), "window_show_password");
             webix.html.addCss(this.$$("form").getNode(), "form_win");
             webix.html.addCss(this.$$("templateMessage").getNode(), "my_template");
+            webix.html.addCss(this.$$("rows_password_windows_set").getNode(), "rows_password_windows_set");
 
-            // $$("closed_35").define("image", "assets/images/info_black.svg");
-            // $$("closed_35").refresh();
         }
     }
 }

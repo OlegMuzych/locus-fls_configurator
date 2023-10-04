@@ -253,9 +253,9 @@ export default {
 
     /* auto-level.js */
     "level_auto_calculate": "Automatic calculation of levels",
-    "length_measuring_part": "Length of the measuring part, cm",
+    "length_measuring_part": "Length of the measuring part, cm.",
     "calculate": "Calculate",
-    "message_auto_level_alert": "The results of the automatic calculation increase the measurement error of the LLS to 3%",
+    "message_auto_level_alert": "The results of the automatic calculation increase the measurement error of the LLS to ≈3%",
 
     /* errorStatus.js */
     "no_error": "No error",

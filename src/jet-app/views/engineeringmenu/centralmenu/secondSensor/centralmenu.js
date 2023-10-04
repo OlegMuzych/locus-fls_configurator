@@ -4,6 +4,7 @@ import configFile from "../../../../config-app";
 import GeneralSettings from "./generalsettings";
 import Calibrationsettings from "./calibrationsettings";
 import FiltrationSettings from "./filtaringSettings";
+import ShowSaveSettings from "../firstSensor/showSaveSettings";
 
 // import globalVariable from "../../../global-variable-app";
 
@@ -70,7 +71,11 @@ export default class CentralMenuSecond extends JetView {
             maxWidth: 1420,
             rows: [
                 {
-                    height: 20,
+                    height: 22,
+                },
+                ShowSaveSettings,
+                {
+                    height: 1,
                 },
                 // TwoSensor,
                 {

@@ -124,7 +124,7 @@ export default class CalibrationSubView extends JetView {
                     ]
                 },
                 {
-                    height: 5,
+                    height: 8,
                 },
                 {
                     cols: [
@@ -142,7 +142,7 @@ export default class CalibrationSubView extends JetView {
                     ]
                 },
                 {
-                    height: 5,
+                    height: 8,
                 },
                 {
                     cols: [
@@ -156,11 +156,13 @@ export default class CalibrationSubView extends JetView {
                             height: 50,
                             css: "set_step_drain_button_2"
                         },
-
-                        {}
+                        {
+                        }
                     ]
                 },
-                {}
+                {
+                    height: 18,
+                }
             ]
         };
 
@@ -170,7 +172,10 @@ export default class CalibrationSubView extends JetView {
                 currentLevel,
                 tabBarCalibrate,
                 myMultiview,
-                button_table
+                button_table,
+                {
+                    height: 16,
+                }
             ]
         };
 

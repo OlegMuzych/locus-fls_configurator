@@ -126,7 +126,7 @@ export default class CalibrationsubviewTwo extends JetView {
                     ]
                 },
                 {
-                    height: 5,
+                    height: 8,
                 },
                 {
                     cols: [
@@ -144,7 +144,7 @@ export default class CalibrationsubviewTwo extends JetView {
                     ]
                 },
                 {
-                    height: 5,
+                    height: 8,
                 },
                 {
                     cols: [
@@ -162,7 +162,9 @@ export default class CalibrationsubviewTwo extends JetView {
                         {}
                     ]
                 },
-                {}
+                {
+                    height: 18,
+                }
             ]
         };
 
@@ -172,7 +174,10 @@ export default class CalibrationsubviewTwo extends JetView {
                 currentLevel,
                 tabBarCalibrate,
                 myMultiview,
-                button_table
+                button_table,
+                {
+                    height: 16,
+                }
             ]
         };
 

@@ -1,7 +1,7 @@
 import {JetView} from "webix-jet";
 import configFile from "../../../config-app";
-import llsModel from "../../../models/lls-model";
 import trademark from "../../../../trademark/trademark";
+import {llsModelOne} from "../../../models/lls-test-models";
 
 const llsModel = llsModelOne;
 export default class LeftMenu extends JetView{

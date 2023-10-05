@@ -34,13 +34,14 @@ export default class ShowSaveSettings extends JetView {
 			setTimeout(() => {
 						this.$$("show_save_settings").setValue("");
 					}, 1500);
-		}),
+		});
 
-			webix.message({
-				    text:"<p style='font-size:20px;'>test<p/>",
-				    type:"success",
-				    expire:5000,
-				});
+			// webix.message({
+			// 	    text:"<p style='font-size:20px;'>test<p/>",
+			// 	    type:"success",
+			// 	    expire:5000,
+			// 	}
+			// 	);
 		// });
 
 

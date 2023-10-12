@@ -16,14 +16,14 @@ const createWindow = () => {
     maxWidth: 1300,
     // maxWidth: 13000,
     minWidth: 990,
-    // minHeight: 750,
+    minHeight: 750,
     maxHeight: 1000,
-    // height: 750,
+    height: 750,
     width: 990,
 
     // Для Беларуссии минимальное разрешение под их ПК
-    height: 550,
-    minHeight: 550,
+    // height: 550,
+    // minHeight: 550,
 
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),

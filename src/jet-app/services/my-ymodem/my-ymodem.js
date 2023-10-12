@@ -190,7 +190,7 @@ MyYModem.crc16 = 0x43;  // 67
 MyYModem.abort1 = 0x41; // 65
 MyYModem.abort2 = 0x61; // 97
 
-MyYModem.countError = 3;
+MyYModem.countError = 10;
 
 // 1K blocks does not seem to work
 MyYModem.packet_len = 1024;

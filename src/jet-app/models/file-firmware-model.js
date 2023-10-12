@@ -8,7 +8,7 @@ const Debug = (str) => console.log(dbPre + ": " + str);
 class FileFirmwareModel {
 
     async llsConnect({path, baudRate, llsAdr = 0xFF}) {
-        this._lls = await new Lls({path, baudRate, llsAdr});
+        this._lls = await new Lls({path, baudRate, llsAdr}, window.serialPort);
         Debug(this._lls);
         return this._lls;
     }

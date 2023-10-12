@@ -9,7 +9,7 @@ export default class ShowSaveSettings extends JetView {
 			view: "text",
 			height: 70,
 			css: "show_save_settings",
-			id: "show_save_settings",
+			localId: "show_save_settings",
 			value:"",
 			readonly: true,
 			inputAlign: "center",
@@ -20,21 +20,17 @@ export default class ShowSaveSettings extends JetView {
 				show_save_settings
 			]
 		};
-
-
-
 		return body;
-
 	}
 
 	init() {
 
 		this.on(this.app, "app:settings:setToLls", () => {
-			$$("show_save_settings").setValue("Настройки записаны в датчик");
+			this.$$("show_save_settings").setValue("Настройки записаны в датчик");
 			setTimeout(() => {
 						this.$$("show_save_settings").setValue("");
 					}, 1500);
-		});
+		// });
 
 			// webix.message({
 			// 	    text:"<p style='font-size:20px;'>test<p/>",
@@ -42,15 +38,15 @@ export default class ShowSaveSettings extends JetView {
 			// 	    expire:5000,
 			// 	}
 			// 	);
-		// });
+		});
 
 
 		if (configFile.theme == 'light') {
-			webix.html.addCss($$("show_save_settings").getNode(), "show_save_settings");
+			webix.html.addCss(this.$$("show_save_settings").getNode(), "show_save_settings");
 
 		}
 		if (configFile.theme == 'dark') {
-			webix.html.addCss($$("show_save_settings").getNode(), "show_save_settings_dark");
+			webix.html.addCss(this.$$("show_save_settings").getNode(), "show_save_settings_dark");
 
 		}
 

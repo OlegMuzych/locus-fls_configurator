@@ -81,8 +81,8 @@ export default class CalibrationSubView extends JetView {
             height: 70,
             multiview: true,
             options: [
-                {value: _("tabbar_drain"), id: "fuelDrain"},
-                {value: _("tabbar_fill"), id: "fuelFill"},
+                {value: _("tabbar_drain"), id: "fuelDrainOnce"},
+                {value: _("tabbar_fill"), id: "fuelFillOnce"},
             ]
         };
 
@@ -90,10 +90,10 @@ export default class CalibrationSubView extends JetView {
             view: "multiview",
             cells: [
                 {
-                    id: 'fuelDrain', rows: [FuelDrainView],
+                    id: 'fuelDrainOnce', rows: [FuelDrainView],
                 },
                 {
-                    id: "fuelFill", rows: [FuelFillView],
+                    id: "fuelFillOnce", rows: [FuelFillView],
                 },
 
             ],

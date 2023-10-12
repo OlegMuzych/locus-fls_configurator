@@ -1,7 +1,7 @@
 {
   "name": "Point-Monitoring Configurator Small Screen",
   "productName": "Point-Monitoring Configurator SS",
-  "version": "1.3.2 SS BETA",
+  "version": "1.3.3 SS",
   "description": "Configurator for lls",
   "main": ".webpack/main",
   "trademark": "p-m",

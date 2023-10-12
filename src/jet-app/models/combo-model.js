@@ -1,4 +1,5 @@
 
+
 async function listPort() {
     try {
         // let portList = await SerialPort.list();
@@ -16,4 +17,3 @@ export async function pathOptions(){
     console.log(listPath);
     return listPath;
 }
-

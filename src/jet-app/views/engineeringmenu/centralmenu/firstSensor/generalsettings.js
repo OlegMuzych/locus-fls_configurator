@@ -583,7 +583,7 @@ export default class GeneralSettings extends JetView {
                                     {
                                         width: 50,
                                     },
-                                    {view: "switch", value: 0, id: "switch_temp_compensation_one", width: 68, css:"toggle_style" },
+                                    {view: "switch", value: 0, localId: "switch_temp_compensation_one", width: 68, css:"toggle_style" },
                                     {}
                                 ]
                             },
@@ -1053,7 +1053,7 @@ export default class GeneralSettings extends JetView {
 
         switch (value) {
             case 0x00: {
-                $$('switch_temp_compensation_one').setValue(false);
+                this.$$('switch_temp_compensation_one').setValue(false);
                 this.$$("fuelTypeSwitch").hide();
 
                 this.$$("coefficientK1").hide();
@@ -1061,7 +1061,8 @@ export default class GeneralSettings extends JetView {
                 break;
             }
             case 0x07: {
-                $$('outputParametersOfSensor_one').setValue(true);
+                this.$$('outputParametersOfSensor_one').setValue(true);
+                this.$$('switch_temp_compensation_one').setValue(true);
                 this.$$("fuelTypeSwitch").show();
 
                 this.$$("coefficientK1").show();
@@ -1069,7 +1070,7 @@ export default class GeneralSettings extends JetView {
                 break;
             }
             default: {
-                $$('switch_temp_compensation_one').setValue(true);
+                this.$$('switch_temp_compensation_one').setValue(true);
                 this.$$("fuelTypeSwitch").show();
 
                 this.$$("coefficientK1").hide();

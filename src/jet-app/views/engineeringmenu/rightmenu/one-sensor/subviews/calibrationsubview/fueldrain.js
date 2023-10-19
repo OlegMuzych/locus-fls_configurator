@@ -236,9 +236,9 @@ export default class FuelDrainView extends JetView {
             let firsVolume = Number(this.$$("manual_volume_fuel_1").getValue());
             if(countStep > 0 && countStep <= 30){
                 this.$$('counts_step').setValue(countStep);
-                this.app.callEvent("app:calibrationsubview:countStep", [countStep, firsVolume]);
+                this.app.callEvent("app:calibrationsubview:one:countStep", [countStep, firsVolume]);
                 this.nextShow();
-                this.app.callEvent("app:calibrationSubview:startCalibrate", ['drain']);
+                this.app.callEvent("app:calibrationSubview:one:startCalibrate", ['drain']);
             }else{
                 this.errorShow();
             }
@@ -246,24 +246,24 @@ export default class FuelDrainView extends JetView {
 
         this.$$("closed_calibration_button_window_2").attachEvent("onItemClick", (id, e) => {
             this.startShow();
-            this.app.callEvent("app:calibrationSubview:finishCalibrate", []);
+            this.app.callEvent("app:calibrationSubview:one:finishCalibrate", []);
         });
 
         this.$$("clearTable").attachEvent("onItemClick", (id, e) => {
-            this.app.callEvent("app:calibrationsubview:clearTable", []);
+            this.app.callEvent("app:calibrationsubview:one:clearTable", []);
         });
 
         this.$$("button_add_step_1").attachEvent("onItemClick", (id, e) => {
             let  volumeStep = this.$$('step_liters_1').getValue();
-            this.app.callEvent("app:calibrationsubview:drain:addStep", [Number(volumeStep)]);
+            this.app.callEvent("app:calibrationsubview:one:drain:addStep", [Number(volumeStep)]);
         });
 
         this.$$("button_add_step_2").attachEvent("onItemClick", (id, e) => {
-            this.app.callEvent("app:calibrationsubview:removeRow", []);
+            this.app.callEvent("app:calibrationsubview:one:removeRow", []);
         });
 
         this.$$("closed_calibration_button_window_2").attachEvent("onItemClick", (id, e) => {
-            this.app.callEvent("app:calibrationsubview:finishCalibrate", []);
+            this.app.callEvent("app:calibrationsubview:one:finishCalibrate", []);
         });
 
         if(configFile.theme == 'light'){

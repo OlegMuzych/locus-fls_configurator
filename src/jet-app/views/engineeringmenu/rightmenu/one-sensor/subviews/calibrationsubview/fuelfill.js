@@ -227,9 +227,9 @@ export default class FuelFillView extends JetView {
             let countStep = this.calcCountStep(this.$$("manual_volume_fuel_1").getValue(), this.$$("step_liters_1").getValue());
             if(countStep > 0 && countStep <= 30){
                 this.$$('counts_step').setValue(countStep);
-                this.app.callEvent("app:calibrationsubview:countStep", [countStep, 0]);
+                this.app.callEvent("app:calibrationsubview:one:countStep", [countStep, 0]);
                 this.nextShow();
-                this.app.callEvent("app:calibrationSubview:startCalibrate", ['fill']);
+                this.app.callEvent("app:calibrationSubview:one:startCalibrate", ['fill']);
             }else{
                 this.errorShow();
             }
@@ -237,20 +237,20 @@ export default class FuelFillView extends JetView {
 
         this.$$("closed_calibration_button_window_2").attachEvent("onItemClick", (id, e) => {
             this.startShow();
-            this.app.callEvent("app:calibrationSubview:finishCalibrate", []);
+            this.app.callEvent("app:calibrationSubview:one:finishCalibrate", []);
         });
 
         this.$$("clearTable").attachEvent("onItemClick", (id, e) => {
-            this.app.callEvent("app:calibrationsubview:clearTable", []);
+            this.app.callEvent("app:calibrationsubview:one:clearTable", []);
         });
 
         this.$$("button_add_step_1").attachEvent("onItemClick", (id, e) => {
             let  volumeStep = this.$$('step_liters_1').getValue();
-            this.app.callEvent("app:calibrationsubview:addStep", [Number(volumeStep)]);
+            this.app.callEvent("app:calibrationsubview:one:addStep", [Number(volumeStep)]);
         });
 
         this.$$("button_add_step_2").attachEvent("onItemClick", (id, e) => {
-            this.app.callEvent("app:calibrationsubview:removeRow", []);
+            this.app.callEvent("app:calibrationsubview:one:removeRow", []);
         });
 
         // this.$$("closed_calibration_button_window_2").attachEvent("onItemClick", (id, e) => {

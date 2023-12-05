@@ -31,7 +31,8 @@
 //
 //import './webix/webix.js';
 import './jet-app/assets/libraries/webix/webix.css';
-import './jet-app/assets/libraries/webix/webix.js';
+// import './jet-app/assets/libraries/webix/webix.js';
+import './jet-app/assets/libraries/webix/webix_notrial.js';
 
 
 // import './test/myapp.js';

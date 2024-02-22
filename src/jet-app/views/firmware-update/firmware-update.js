@@ -405,6 +405,7 @@ export default class FirmwareUpdate extends JetView {
                 return fileFirmwareModel.llsClose();
             }
             const serialPortSettings = this.portSettings;
+            console.log(serialPortSettings);
 
             fileFirmwareModel.writeFirmware(path, serialPortSettings, (progress) => {
                 this.$$("bar").setValue(progress);
@@ -418,6 +419,7 @@ export default class FirmwareUpdate extends JetView {
                     this.$$("buttonSetBootMode").enable();
                 }).catch((e) => {
                 webix.message("Failed: " + e);
+                console.log("Write FW failed: " + e);
                 message.showWindow(_("fail_write_file"));
                 this.$$("buttonSetBootMode").enable();
             });

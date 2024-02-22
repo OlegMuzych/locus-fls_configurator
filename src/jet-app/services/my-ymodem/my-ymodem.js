@@ -43,7 +43,11 @@ export default class MyYModem {
             })
         });
         // this.#testStartAction68();
-        setTimeout(()=>{}, 1000);
+        // setTimeout(async ()=>{
+        //
+        // }, 3000);
+        //
+        await new Promise((resolve=> setTimeout(resolve, 3000)));
         return await this.#sendFile();
     }
 
@@ -75,7 +79,7 @@ export default class MyYModem {
 
         let header = new Uint8Array([...name, 0x00, ...fileSize]);
         let resp = 0x00;
-        let data = this.#createSendFrame(header);
+        let data = this.#createSOHFrame(header);
         for(let errorCount = 0; errorCount < MyYModem.countError; errorCount ++){
             resp = await this.#portWrite(data);
             if (resp[0] == MyYModem.ack) {
@@ -92,8 +96,8 @@ export default class MyYModem {
         file = new Uint8Array([...file]);
         while (!end) {
             this.seq ++;
-            let lower = offset * MyYModem.packet_len;
-            let higher = ((offset + 1) * MyYModem.packet_len);
+            let lower = offset * MyYModem.stx_pocket_len;
+            let higher = ((offset + 1) * MyYModem.stx_pocket_len);
             if (higher >= file.length) {
                 higher = file.length;
             }
@@ -118,7 +122,7 @@ export default class MyYModem {
 
     #sendDataFrame(dataFrame) {
         return new Promise(async (resolve, reject) => {
-            let data = this.#createSendFrame(dataFrame);
+            let data = this.#createSTXFrame(dataFrame);
             let resp = 0;
             for(let errorCount = 0; errorCount < MyYModem.countError; errorCount ++){
                 try{
@@ -144,32 +148,48 @@ export default class MyYModem {
                    break;
                }
             }
-            let data = this.#createSendFrame(new Uint8Array([]));
-            let resp = await this.#portWrite(data);
-            if(resp[0] == MyYModem.ack ){
-                resolve("Success, file is write!");
-            }else{
-                reject("Failed, file is not write!" );
-            }
+            resolve("Success, file is write!");
+            // let data = this.#createSOHFrame(new Uint8Array([]));
+            // let resp = await this.#portWrite(data);
+            // if(resp[0] == MyYModem.ack ){
+            //     resolve("Success, file is write!");
+            // }else{
+            //     reject("Failed, file is not write!" );
+            // }
         });
     };
 
 
 
-    #createSendFrame(data) {
-        let bufferNull = createArray(0x1A, MyYModem.packet_len - data.length);
-        let buff = Buffer.concat([data, bufferNull], MyYModem.packet_len);
+    #createSTXFrame(data) {
+        // let bufferNull = createArray(0x1A, MyYModem.stx_pocket_len - data.length);
+        let bufferNull = createArray(0x00, MyYModem.stx_pocket_len - data.length);
+        let buff = Buffer.concat([data, bufferNull], MyYModem.stx_pocket_len);
 
         let seqchr = new Uint8Array([this.seq & 0xFF]);
         let seqchr_neg = new Uint8Array([(-this.seq - 1) & 0xFF]);
         let crc16 = mycrc(buff);
-        let packet = Buffer.concat([(new Uint8Array([MyYModem.packet_mark])), seqchr, seqchr_neg, buff, crc16]);
-        if (packet.length != MyYModem.expected_packet_len) {
+        let packet = Buffer.concat([(new Uint8Array([MyYModem.stx])), seqchr, seqchr_neg, buff, crc16]);
+        if (packet.length != MyYModem.expected_stx_packet_len) {
             throw('Packet length is wrong!');
         }
         return packet;
     }
 
+    #createSOHFrame(data) {
+        // let bufferNull = createArray(0x1A, MyYModem.soh_pocket_len - data.length);
+        let bufferNull = createArray(0x00, MyYModem.soh_pocket_len - data.length);
+        let buff = Buffer.concat([data, bufferNull], MyYModem.soh_pocket_len);
+
+        let seqchr = new Uint8Array([this.seq & 0xFF]);
+        let seqchr_neg = new Uint8Array([(-this.seq - 1) & 0xFF]);
+        let crc16 = mycrc(buff);
+        let packet = Buffer.concat([(new Uint8Array([MyYModem.soh])), seqchr, seqchr_neg, buff, crc16]);
+        if (packet.length != MyYModem.expected_soh_packet_len) {
+            throw('Packet length is wrong!');
+        }
+        return packet;
+    }
     #portWrite(packet) {
         return new Promise((resolve, reject)=>{
             let timer;
@@ -177,10 +197,9 @@ export default class MyYModem {
                 console.log("once data: " +  data);
                 clearTimeout(timer);
                 resolve(data);
-
             });
             this.port.write(packet);
-            // console.log("write data: " +  packet);
+            console.log("write data: " +  packet);
             timer = setTimeout(()=>{reject("Error: timeout receive OnceData")}, 3000);
         });
     };
@@ -197,16 +216,19 @@ MyYModem.eot = 4;
 MyYModem.ack = 6;
 MyYModem.nak = 0x15;
 MyYModem.ca = 0x18;    // 24
-MyYModem.crc16 = 0x43;  // 67
+MyYModem.c = 0x43;  // 67
 MyYModem.abort1 = 0x41; // 65
 MyYModem.abort2 = 0x61; // 97
 
-MyYModem.countError = 3;
+MyYModem.countError = 3; //3
 
 // 1K blocks does not seem to work
-MyYModem.packet_len = 1024;
-MyYModem.expected_packet_len = MyYModem.packet_len + 5;
-MyYModem.packet_mark = MyYModem.stx;
+MyYModem.stx_pocket_len = 1024;//
+MyYModem.soh_pocket_len = 128;//
+MyYModem.expected_stx_packet_len = MyYModem.stx_pocket_len + 5;
+MyYModem.expected_soh_packet_len = MyYModem.soh_pocket_len + 5;
+// MyYModem.packet_mark = MyYModem.stx;
+// MyYModem.packet_mark = MyYModem.soh;
 
 // MyYModem.packet_len = 128;
 // MyYModem.packet_mark = MyYModem.soh;

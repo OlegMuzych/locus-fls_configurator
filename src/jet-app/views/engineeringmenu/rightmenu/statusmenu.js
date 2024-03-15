@@ -126,7 +126,9 @@ export default class StatusMenu extends JetView{
 
     listenerShortData = (shortData)=>{
         // console.log(shortData);
-        $$("window_temp").setValue(shortData.temperature.toString());
+        // $$("window_temp").setValue(shortData.temperature.toString());
+        const temp = getSignedNumber(shortData.temperature);
+        $$("window_temp").setValue(temp.toString());
     }
 
     listenerLongData = (longData)=>{
@@ -251,3 +253,11 @@ function setTermoState(status){
         $$("button_define_4").show();
     }
 };
+
+function getSignedNumber(number){
+    if(number >> 7 && 1){
+        return (~number) + 1;
+    }else{
+        return number;
+    }
+}

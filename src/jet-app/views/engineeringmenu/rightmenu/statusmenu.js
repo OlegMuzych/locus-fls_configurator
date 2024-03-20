@@ -127,8 +127,15 @@ export default class StatusMenu extends JetView{
     listenerShortData = (shortData)=>{
         // console.log(shortData);
         // $$("window_temp").setValue(shortData.temperature.toString());
-        const temp = getSignedNumber(shortData.temperature);
-        $$("window_temp").setValue(temp.toString());
+        // const tempValue = 23;
+        // const temp = getSignedNumber(shortData.temperature);
+        // const temp = getSignedNumber(tempValue);
+        // $$("window_temp").setValue(temp.toString());
+
+        const temp = getSignedNumberString(shortData.temperature);
+        // const temp = tempValue;
+
+        $$("window_temp").setValue(temp);
     }
 
     listenerLongData = (longData)=>{
@@ -153,6 +160,13 @@ export default class StatusMenu extends JetView{
     }
 
     init(){
+        // const tempValue = 0xff;
+        // // const temp = getSignedNumber(shortData.temperature);
+        // const temp = getSignedNumber(tempValue);
+        // // const temp = tempValue;
+        //
+        // $$("window_temp").setValue(temp);
+
         setStatusConnect(false);
         setFuelState(false);
         setCalibrateState(false);
@@ -254,10 +268,14 @@ function setTermoState(status){
     }
 };
 
-function getSignedNumber(number){
+function getSignedNumberString(number){
     if(number >> 7 && 1){
-        return (~number) + 1;
+        // console.log("number:");
+        // console.log(~(number) & 0xff);
+        return `-${~(number) & 0xff}`;
+        // return (~(number + 1));
     }else{
-        return number;
+        return `${~(number) & 0xff}`;
     }
 }
+

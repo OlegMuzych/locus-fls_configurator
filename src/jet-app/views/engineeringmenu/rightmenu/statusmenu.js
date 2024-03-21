@@ -160,11 +160,11 @@ export default class StatusMenu extends JetView{
     }
 
     init(){
-        // const tempValue = 0xff;
-        // // const temp = getSignedNumber(shortData.temperature);
-        // const temp = getSignedNumber(tempValue);
-        // // const temp = tempValue;
-        //
+        // const tempValue = 0x10;
+        // // // const temp = getSignedNumber(shortData.temperature);
+        // const temp = getSignedNumberString(tempValue);
+        // // // const temp = tempValue;
+        // //
         // $$("window_temp").setValue(temp);
 
         setStatusConnect(false);
@@ -275,7 +275,7 @@ function getSignedNumberString(number){
         return `-${~(number) & 0xff}`;
         // return (~(number + 1));
     }else{
-        return `${~(number) & 0xff}`;
+        return `${(number) & 0xff}`;
     }
 }
 

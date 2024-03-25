@@ -125,6 +125,11 @@ export default class llsAction {
         }
     }
 
+    async readTestLog() {
+        let obj = await this._llsProtocol.send(0x70);
+        console.log(obj);
+        return obj;
+    }
 
     // set shortSetting({llsAdr, temperature, level, cnt}){
     //     this._shortSetting.llsAdr = llsAdr;

@@ -285,6 +285,10 @@ export default class llsProtocol {
                 dataBuffer.push(command);
                 break;
             }
+            case 0x70: { //читать log
+                dataBuffer.push(command);
+                break;
+            }
             default:
                 break;
         }
@@ -456,6 +460,24 @@ export default class llsProtocol {
                     readCnt.llsType = dataView.getUint8(3);
                     readCnt.cnt = dataView.getUint32(4, true);
                     readCnt.fuel = dataView.getUint16(8);
+                    return readCnt;
+                    break;
+                }
+                case 0x70: {
+                    let readCnt = {};
+                    readCnt.prefix = dataView.getUint8(0);
+                    readCnt.llsAdr = dataView.getUint8(1);
+                    readCnt.command = dataView.getUint8(2)
+                    readCnt.frequency = dataView.getUint32(3,true);
+                    readCnt.cnt = dataView.getUint16(7, true);
+                    readCnt.voltage = dataView.getUint16(9, true);
+                    readCnt.temp = dataView.getUint8(11);
+                    readCnt.tempMedian = dataView.getUint8(12);
+                    readCnt.level = dataView.getUint16(13, true);
+                    readCnt.levelFilter = dataView.getUint16(15, true);
+                    readCnt.volume = dataView.getUint16(17, true);
+                    readCnt.empty = dataView.getUint32(19, true);
+                    readCnt.full = dataView.getUint32(23, true);
                     return readCnt;
                     break;
                 }

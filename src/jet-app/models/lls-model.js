@@ -2,6 +2,8 @@ import EventEmitter from "events"
 import Lls from "../services/lls/lls";
 import findPort from "../services/lls/findPort";
 
+const developLog = window.log_for_develop;
+
 class MyEmitter extends EventEmitter {
 }
 
@@ -233,7 +235,6 @@ class LlsModel {
             return 'LLS not connect';
         }
     }
-
     setTable(data) {
         return new Promise(async (resolve, reject) => {
             if (this.#statusLls == 'connect') {
@@ -368,6 +369,8 @@ class LlsModel {
         }
     }
 
+
+
     setStatusLlsNoConnect() {
         if(this.#statusLls == "stop"){
             this.#statusLls = "noConnect";
@@ -377,6 +380,19 @@ class LlsModel {
     getLlsConnectSettings() {
         return this._llsConnectSettings;
     }
+
+    async readTestLog() {
+        if (this.#statusLls == 'connect') {
+            let dataObj = await this._lls.action.readTestLog();
+            console.log("Array for test log:");
+            console.log(Object.values(dataObj));
+            log_for_develop.pushData(Object.values(dataObj));
+        } else {
+            return 'LLS not connect';
+        }
+    }
+
+
 
     async #loop() {
         for (; ;) {
@@ -423,6 +439,7 @@ class LlsModel {
                     console.log('Connect to LLS');
                     // await this.getCnt();
                     try {
+                        await this.readTestLog();
                         await this.getCnt();
                         let dataShort = await this._lls.data.getShort();
                         console.log(dataShort);

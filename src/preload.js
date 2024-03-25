@@ -4,6 +4,7 @@ const {crc8, crc16} = require("easy-crc");
 const {writeFile, readFile, access} = require('fs/promises');
 const {writeFileSync, readFileSync} = require('fs');
 const CSV = require('csv-string');
+const {log_for_develop} = require("./log-for-develop");
 // const {method} = require("@vercel/webpack-asset-relocator-loader");
 
 
@@ -105,5 +106,10 @@ contextBridge.exposeInMainWorld('csv-string', {
 
 contextBridge.exposeInMainWorld('Buffer', {
         concat: (list, totalLength) => Buffer.concat(list, totalLength),
+    }
+);
+
+contextBridge.exposeInMainWorld('log_for_develop', {
+        pushData: (arr) => log_for_develop(arr),
     }
 );

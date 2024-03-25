@@ -4,7 +4,8 @@ const {crc8, crc16} = require("easy-crc");
 const {writeFile, readFile, access} = require('fs/promises');
 const {writeFileSync, readFileSync} = require('fs');
 const CSV = require('csv-string');
-const {log_for_develop} = require("./log-for-develop");
+
+const fs = require('fs');
 // const {method} = require("@vercel/webpack-asset-relocator-loader");
 
 
@@ -113,3 +114,18 @@ contextBridge.exposeInMainWorld('log_for_develop', {
         pushData: (arr) => log_for_develop(arr),
     }
 );
+
+
+const log_for_develop = (dataArr)=>{
+    if(dataArr.length > 0){
+        const dataStr = '';
+        dataArr.forEach((item)=>{
+            dataArr.push(item);
+            dataArr.push(',');
+        });
+        fs.appendFile(`log_${(new  Date()).toDateString()}`, dataStr, function (err) {
+            if (err) throw err;
+            console.log('Saved!');
+        });
+    }
+}

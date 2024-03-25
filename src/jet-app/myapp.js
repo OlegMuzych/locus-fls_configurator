@@ -36,6 +36,9 @@ export default class MyApp extends JetApp{
 
 if (!BUILD_AS_MODULE){
 	webix.ready(() => {
+		const developLog = window.log_for_develop;
+		developLog.pushData(Object.values({q:1,r:2, t:5}));
+
 		webix.CustomScroll.init();
 		return new MyApp().render();
 	} );

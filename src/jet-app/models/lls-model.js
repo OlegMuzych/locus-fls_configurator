@@ -386,7 +386,7 @@ class LlsModel {
             let dataObj = await this._lls.action.readTestLog();
             console.log("Array for test log:");
             console.log(Object.values(dataObj));
-            log_for_develop.pushData(Object.values(dataObj));
+            developLog.pushData(Object.values(dataObj));
         } else {
             return 'LLS not connect';
         }

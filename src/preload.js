@@ -118,12 +118,42 @@ contextBridge.exposeInMainWorld('log_for_develop', {
 
 const log_for_develop = (dataArr)=>{
     if(dataArr.length > 0){
-        const dataStr = '';
-        dataArr.forEach((item)=>{
-            dataArr.push(item);
-            dataArr.push(',');
+        // let dataStr = (new Date()).toISOString();
+        let dataStr = (new Date()).toLocaleString();
+        dataStr += ','
+        dataArr.forEach((item, index)=>{
+
+            dataStr = dataStr + item;
+            if(index != dataArr.length -1){
+                dataStr += ',';
+            }else{
+                dataStr += '\n';
+            }
+
         });
-        fs.appendFile(`log_${(new  Date()).toDateString()}`, dataStr, function (err) {
+        console.log(dataStr);
+
+        /*
+         частота
+2 байта - счетчик
+2 байта - вольтаж на adc
+1 знаковый байт - мгновенное значение температуры
+1 знаковый байт - медиана температуры
+2 байта - мгновенное значение уровня
+2 байта - отфильтрованное значение уровня с компенсацией температруты и интерполяцией
+2 байта - объем на основе отфильтрованного уровня
+4 байта - пустой из конфига
+4 байта - полный из конфига
+        * */
+        const fileName = `log_${(new  Date()).toLocaleDateString()}.csv`;
+        const header = "Дата, Время, Счетчик,  вольтаж на adc, мгновенное значение температуры, медиана температуры, мгновенное значение уровня,отфильтрованное значение уровня, объем, пустой, полный\n"
+        if (!fs.existsSync(fileName)) {
+            fs.appendFile(fileName, header.toString(), function (err) {
+                if (err) throw err;
+                console.log('Saved!');
+            });
+        }
+        fs.appendFile(fileName, dataStr, function (err) {
             if (err) throw err;
             console.log('Saved!');
         });

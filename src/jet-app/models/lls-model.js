@@ -383,7 +383,7 @@ class LlsModel {
 
     async readTestLog() {
         if (this.#statusLls == 'connect') {
-            let dataObj = await this._lls.action.readTestLog();
+            let dataObj = await this._lls.actions.readTestLog();
             console.log("Array for test log:");
             console.log(Object.values(dataObj));
             developLog.pushData(Object.values(dataObj));

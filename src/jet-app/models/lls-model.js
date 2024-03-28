@@ -384,9 +384,22 @@ class LlsModel {
     async readTestLog() {
         if (this.#statusLls == 'connect') {
             let dataObj = await this._lls.actions.readTestLog();
+            let dataArr = [];
+            dataArr.push(dataObj.frequency);
+            dataArr.push(dataObj.cnt);
+            dataArr.push(dataObj.voltage);
+            dataArr.push(dataObj.temp);
+            dataArr.push(dataObj.tempMedian);
+            dataArr.push(dataObj.levelFilter);
+            dataArr.push(dataObj.level);
+            dataArr.push(dataObj.volume);
+            dataArr.push(dataObj.empty);
+            dataArr.push(dataObj.full);
+            console.log(dataObj);
+
             console.log("Array for test log:");
-            console.log(Object.values(dataObj));
-            developLog.pushData(Object.values(dataObj));
+            console.log(dataArr);
+            developLog.pushData(dataArr);
         } else {
             return 'LLS not connect';
         }

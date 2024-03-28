@@ -134,7 +134,7 @@ const log_for_develop = (dataArr)=>{
         console.log(dataStr);
 
         /*
-         частота
+4 байта - частота
 2 байта - счетчик
 2 байта - вольтаж на adc
 1 знаковый байт - мгновенное значение температуры
@@ -146,7 +146,7 @@ const log_for_develop = (dataArr)=>{
 4 байта - полный из конфига
         * */
         const fileName = `log_${(new  Date()).toLocaleDateString()}.csv`;
-        const header = "Дата, Время, Счетчик,  вольтаж на adc, мгновенное значение температуры, медиана температуры, мгновенное значение уровня,отфильтрованное значение уровня, объем, пустой, полный\n"
+        const header = "Дата,Время,Частота,Счетчик,Вольтаж_adc,Температурa_Мгнв,Температура_Медиана,Уровень_Филтр,Уровень,Объем,Пустой,Полный\n"
         if (!fs.existsSync(fileName)) {
             fs.appendFile(fileName, header.toString(), function (err) {
                 if (err) throw err;

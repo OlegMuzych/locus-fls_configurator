@@ -471,10 +471,10 @@ export default class llsProtocol {
                     readCnt.frequency = dataView.getUint32(3,true);
                     readCnt.cnt = dataView.getUint16(7, true);
                     readCnt.voltage = dataView.getUint16(9, true);
-                    readCnt.temp = dataView.getUint8(11);
-                    readCnt.tempMedian = dataView.getUint8(12);
-                    readCnt.level = dataView.getUint16(13, true);
-                    readCnt.levelFilter = dataView.getUint16(15, true);
+                    readCnt.temp = dataView.getInt8(11);
+                    readCnt.tempMedian = dataView.getInt8(12);
+                    readCnt.levelFilter = dataView.getUint16(13, true);
+                    readCnt.level = dataView.getUint16(15, true);
                     readCnt.volume = dataView.getUint16(17, true);
                     readCnt.empty = dataView.getUint32(19, true);
                     readCnt.full = dataView.getUint32(23, true);

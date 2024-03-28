@@ -126,7 +126,7 @@ export default class llsAction {
     }
 
     async readTestLog() {
-        let obj = await this._llsProtocol.send(0x70);
+        let obj = await this._llsProtocol.send(0x70,null,900);
         console.log(obj);
         return obj;
     }

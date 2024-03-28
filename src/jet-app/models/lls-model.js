@@ -448,17 +448,17 @@ class LlsModel {
                     }
                 }
                 case 'connect': {
-                    await this.#delay();
+                    await this.#delay(300);
                     console.log('Connect to LLS');
                     // await this.getCnt();
                     try {
                         await this.readTestLog();
-                        await this.getCnt();
-                        let dataShort = await this._lls.data.getShort();
-                        console.log(dataShort);
-                        if (dataShort.llsAdr) {
-                            this._myEmitter.emit('shortData', dataShort);
-                        }
+                        // await this.getCnt();
+                        // let dataShort = await this._lls.data.getShort();
+                        // console.log(dataShort);
+                        // if (dataShort.llsAdr) {
+                        //     this._myEmitter.emit('shortData', dataShort);
+                        // }
                     } catch (e) {
                         console.log(e);
                         if (this.#statusLls != "stop") {

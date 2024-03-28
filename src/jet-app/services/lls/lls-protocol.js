@@ -59,7 +59,7 @@ export default class llsProtocol {
         });
     };
 
-    async send(command, data = null, timeout = 3000) {
+    async send(command, data = null, timeout = 1000) {
         let timerId = null;
         return new Promise(async (resolve, reject) => {
             this.port.pause();
@@ -114,7 +114,7 @@ export default class llsProtocol {
                     this.port.write(dataBuffer);
                 }
             }
-        }, 500);
+        }, 300);
     };
 
     _listenerResponseData() {

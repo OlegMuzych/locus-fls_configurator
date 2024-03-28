@@ -77,7 +77,7 @@ export default class llsData {
 
     async getShort() {
         if(this._llsProtocol.getLengthQueueWrite() == 0){
-            let shortSettingResponse = await this._llsProtocol.send(0x06, null, 2000);
+            let shortSettingResponse = await this._llsProtocol.send(0x06, 1000);
             console.log(shortSettingResponse);
             this.shortSetting = shortSettingResponse;
             console.log(this.shortSetting);
@@ -256,7 +256,7 @@ export default class llsData {
 
     async getCnt(){
         // if(this._llsProtocol.getLengthQueueWrite() == 0){
-            let readCnt = await this._llsProtocol.send(0xF7, null, 2000);
+            let readCnt = await this._llsProtocol.send(0xF7, null, 1200);
             // console.log(shortSettingResponse);
             this.cnt = readCnt;
             console.log(this.cnt);

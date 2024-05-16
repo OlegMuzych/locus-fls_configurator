@@ -1,6 +1,7 @@
 import Lls from "../services/lls/lls";
 import {readFileSync} from "fs";
 import MyYModem from "../services/my-ymodem/my-ymodem";
+import MyYModemEsp32 from "../services/my-ymodem/my-ymodem-esp32";
 
 const dbPre = "FU";
 const Debug = (str) => console.log(dbPre + ": " + str);
@@ -62,7 +63,8 @@ class FileFirmwareModel {
                 throw "firmwarePath is not valid !";
             }
             let file = window.fs.readFileSync(firmwarePath);
-            const ymodem = new MyYModem();
+            // const ymodem = new MyYModem();
+            const ymodem = new MyYModemEsp32();
             ymodem.yTransmit(file, serialPortSettings, progressCallback)
                 .then((resp) => {
                     console.log(resp);

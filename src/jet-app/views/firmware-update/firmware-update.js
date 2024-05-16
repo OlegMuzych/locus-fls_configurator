@@ -247,6 +247,9 @@ export default class FirmwareUpdate extends JetView {
     listenerLongData = (longData) => {
         let strVersion = new TextDecoder().decode(new Uint8Array(longData.softwareVersion));
         this.$$('labelCurrentFirmwareVersion').setValue(`<p>Current firmware version: ${strVersion}</p>`);
+
+        this.typeLls = longData.typeLls;
+        console.log(this.typeLls);
     }
 
     destroy() {
@@ -358,9 +361,12 @@ export default class FirmwareUpdate extends JetView {
                     this.$$("manualBoot").disable(); //что бы не активироваль с EventConnect
                     const {path, baudRate} = resp;
                     this.portSettings = {path, baudRate};
-                    return fileFirmwareModel.llsConnect({path, baudRate});
+                    return fileFirmwareModel.llsConnect({path, baudRate, llsAdr: 0x01});
                 })
                 .then(() => {
+                    if(this.typeLls == 0x03){
+                        console.log("Esp32 detected!");
+                    }
                     this.$$("manualBoot").disable(); //что бы не активироваль с EventConnect
                     return fileFirmwareModel.runBootMode();
                 })
@@ -400,6 +406,7 @@ export default class FirmwareUpdate extends JetView {
                 return fileFirmwareModel.llsClose();
             }
             const serialPortSettings = this.portSettings;
+            console.log(serialPortSettings);
 
             fileFirmwareModel.writeFirmware(path, serialPortSettings, (progress) => {
                 this.$$("bar").setValue(progress);
@@ -413,6 +420,7 @@ export default class FirmwareUpdate extends JetView {
                     this.$$("buttonSetBootMode").enable();
                 }).catch((e) => {
                 webix.message("Failed: " + e);
+                console.log("Write FW failed: " + e);
                 message.showWindow(_("fail_write_file"));
                 this.$$("buttonSetBootMode").enable();
             });

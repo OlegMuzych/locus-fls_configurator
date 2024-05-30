@@ -51,7 +51,7 @@ class FileFirmwareModel {
         return;
     }
 
-    async writeFirmware(firmwarePath, serialPortSettings, progressCB) {
+    async writeFirmware(firmwarePath, serialPortSettings, progressCB, typeLls) {
         return new Promise((resolve, reject)=>{
             let progressCallback = (val) => {
                 // console.log(Math.round(val.current * 100 / val.total) + '%');
@@ -63,8 +63,10 @@ class FileFirmwareModel {
                 throw "firmwarePath is not valid !";
             }
             let file = window.fs.readFileSync(firmwarePath);
-            // const ymodem = new MyYModem();
-            const ymodem = new MyYModemEsp32();
+            let ymodem = new MyYModem();
+            if(typeLls === 0x03){
+                ymodem = new MyYModemEsp32();
+            }
             ymodem.yTransmit(file, serialPortSettings, progressCallback)
                 .then((resp) => {
                     console.log(resp);

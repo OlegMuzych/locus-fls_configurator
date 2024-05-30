@@ -249,7 +249,12 @@ export default class FirmwareUpdate extends JetView {
         this.$$('labelCurrentFirmwareVersion').setValue(`<p>Current firmware version: ${strVersion}</p>`);
 
         this.typeLls = longData.typeLls;
-        console.log(this.typeLls);
+        if(this.typeLls == 0x03){
+            console.log("Esp32 detected!");
+            this.$$("manualBoot").hide();
+        }else{
+            this.$$("manualBoot").show();
+        }
     }
 
     destroy() {
@@ -364,9 +369,6 @@ export default class FirmwareUpdate extends JetView {
                     return fileFirmwareModel.llsConnect({path, baudRate, llsAdr: 0x01});
                 })
                 .then(() => {
-                    if(this.typeLls == 0x03){
-                        console.log("Esp32 detected!");
-                    }
                     this.$$("manualBoot").disable(); //что бы не активироваль с EventConnect
                     return fileFirmwareModel.runBootMode();
                 })
@@ -410,7 +412,7 @@ export default class FirmwareUpdate extends JetView {
 
             fileFirmwareModel.writeFirmware(path, serialPortSettings, (progress) => {
                 this.$$("bar").setValue(progress);
-            })
+            }, this.typeLls)
                 .then(() => {
                     return fileFirmwareModel.llsClose();
                 })

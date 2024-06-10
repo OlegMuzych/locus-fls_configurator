@@ -152,8 +152,8 @@ export default class StatusMenuOne extends JetView{
 
     listenerShortData = (shortData)=>{
         // console.log(shortData);
-        this.$$("window_temp").setValue(shortData.temperature.toString());
-    }
+        const temp = getSignedNumberString(shortData.temperature);
+        this.$$("window_temp").setValue(temp);    }
 
     listenerLongData = (longData)=>{
         if(longData.thermalCompensationType){
@@ -335,3 +335,14 @@ export default class StatusMenuOne extends JetView{
 //         $$("button_define_4_one").show();
 //     }
 // };
+
+function getSignedNumberString(number){
+    if(number >> 7 && 1){
+        // console.log("number:");
+        // console.log(~(number) & 0xff);
+        return `-${~(number) & 0xff}`;
+        // return (~(number + 1));
+    }else{
+        return `${(number) & 0xff}`;
+    }
+}

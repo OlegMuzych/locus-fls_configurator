@@ -291,7 +291,7 @@ export default class FiltrationSettings extends JetView {
                                                         name: "s2",
                                                         minWidth: 120,
                                                         min: 0,
-                                                        max: 7,
+                                                        max: 20,
                                                         css: "slider_1",
                                                         title: webix.template("#value#"),
                                                         id: "slider_filter_2",

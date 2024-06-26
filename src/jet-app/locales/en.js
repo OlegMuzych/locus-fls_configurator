@@ -69,6 +69,7 @@ export default {
 
 
     "serial_number": "SN",
+    "software_version": "Software ver.",
 
     "output_message_type": "Message type",
     "output_message_type_is_level": "Level",

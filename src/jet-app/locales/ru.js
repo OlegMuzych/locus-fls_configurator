@@ -70,6 +70,7 @@ export default {
 
 
     "serial_number": "Серийный номер",
+    "software_version": "Версия ПО",
 
     "output_message_type": "Выходное сообщение",
     "output_message_type_is_level": "Уровень",

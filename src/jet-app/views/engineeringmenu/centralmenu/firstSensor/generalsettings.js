@@ -513,6 +513,25 @@ export default class GeneralSettings extends JetView {
                                 view: "text",
                                 width: 850,
                                 height: 100,
+                                label: `<p>${_("software_version")}</p>`,
+                                labelWidth: 400,
+                                css: "window_type_1",
+                                inputAlign: "center",
+                                readonly: true,
+                                id: "window_type_software_version_one",
+                            },
+                        ]
+                    },
+
+                    {
+                        rows: [
+                            {
+                                height: 20,
+                            },
+                            {
+                                view: "text",
+                                width: 850,
+                                height: 100,
                                 label: `<p>${_("serial_number")}</p>`,
                                 labelWidth: 400,
                                 css: "window_type_1",
@@ -602,6 +621,9 @@ export default class GeneralSettings extends JetView {
     }
 
     listenerLongData = (longData) => {
+        let softwareVersion = sv2ascii(longData.softwareVersion);
+        $$('window_type_software_version_one').setValue(softwareVersion);
+
         let serialNumber = sn2ascii(longData.serialNumber);
         $$('window_type_1_one').setValue(serialNumber);
 
@@ -913,6 +935,7 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss($$("rows_number_2").getNode(), "window_type_2");
             webix.html.addCss($$("central_menu_button_1").getNode(), "style_general_rows");
             webix.html.addCss($$("window_type_1_one").getNode(), "window_type_1");
+            webix.html.addCss($$("window_type_software_version_one").getNode(), "window_type_1");
             webix.html.addCss($$("rows_number_4").getNode(), "window_type_2");
             webix.html.addCss(this.$$("textMinLevel").getNode(), "window_type_2");
             webix.html.addCss(this.$$("textMaxLevel").getNode(), "window_type_2");
@@ -948,6 +971,7 @@ export default class GeneralSettings extends JetView {
             webix.html.addCss($$("rows_number_2").getNode(), "window_type_2_dark");
             webix.html.addCss($$("central_menu_button_1").getNode(), "style_general_rows_dark");
             webix.html.addCss($$("window_type_1_one").getNode(), "window_type_1_dark");
+            webix.html.addCss($$("window_type_software_version_one").getNode(), "window_type_1_dark");
             webix.html.addCss($$("rows_number_4").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("textMinLevel").getNode(), "window_type_2_dark");
             webix.html.addCss(this.$$("textMaxLevel").getNode(), "window_type_2_dark");
@@ -1192,6 +1216,22 @@ export default class GeneralSettings extends JetView {
 }
 
 function sn2ascii(decArray) {
+    let newDecArray = [];
+    for (let i = 0; i < 12; i++) {
+        newDecArray.push(decArray[i]);
+    }
+    let strAscii = String.fromCharCode(...newDecArray);
+    // let num = Number(strAscii);
+    let num = parseInt(strAscii);
+    if(!num){
+        // strAscii = "NA";
+        return "NA";
+    }
+
+    return num.toString();
+}
+
+function sv2ascii(decArray) {
     let newDecArray = [];
     for (let i = 0; i < 8; i++) {
         newDecArray.push(decArray[i]);

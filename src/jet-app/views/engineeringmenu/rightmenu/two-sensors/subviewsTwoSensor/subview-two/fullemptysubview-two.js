@@ -286,6 +286,7 @@ export default class FullemptysubviewTwo extends JetView {
         super.destroy();
         this.llsModel.clearListenerShortData(this.listenerShortData);
         this.llsModel.clearListenerLongData(this.listenerLongData);
+        this.llsModel.clearListenerTable(this.listenerTableData);
     }
 
     listenerShortData = (shortData)=>{
@@ -293,19 +294,42 @@ export default class FullemptysubviewTwo extends JetView {
         this.$$("status_level_fuel").setValue(shortData.level.toString());
     }
 
+    outputParametersOfSensor = 0;
+    minLevel = 0;
+    maxLevel = 0;
+    minLevelFromVolume = 0;
+    maxLevelFromVolume = 0;
     listenerLongData = (longData) => {
         // $$('auto_calibration_set_2').setValue(longData.emptyTank.toString());
         // $$('auto_calibration_set_1').setValue(longData.fullTank.toString());
         this.setEmptyTank(longData.emptyTank.toString());
         this.setFullTank(longData.fullTank.toString());
-        this.setMinBar(longData.minLevel);
-        this.setMaxBar(longData.maxLevel);
+        this.outputParametersOfSensor = longData.outputParametersOfSensor;
+        this.minLevel = longData.minLevel;
+        this.maxLevel = longData.maxLevel;
+        if(longData.outputParametersOfSensor === 0){
+            this.setMinBar(longData.minLevel);
+            this.setMaxBar(longData.maxLevel);
+        }else{
+            this.setMinBar(this.minLevelFromVolume);
+            this.setMaxBar(this.maxLevelFromVolume);
+        }
+    }
+
+    listenerTableData = (tableData)=>{
+        this.minLevelFromVolume = 0;
+        this.maxLevelFromVolume = tableData.volumes[[tableData.countPoint - 1]];
+        if (this.outputParametersOfSensor === 1 && tableData.countPoint >= 2 ){
+            this.setMinBar(0);
+            this.setMaxBar(tableData.volumes[[tableData.countPoint - 1]]);
+        }
     }
 
     init(){
         this.flagCalibrationEdit = false;
         this.llsModel.addListenerShortData(this.listenerShortData);
         this.llsModel.addListenerLongData(this.listenerLongData);
+        this.llsModel.addListenerTable(this.listenerTableData);
 
         $$('auto_calibration_1').attachEvent("onItemClick", (id, e)=>{
             console.log('click');

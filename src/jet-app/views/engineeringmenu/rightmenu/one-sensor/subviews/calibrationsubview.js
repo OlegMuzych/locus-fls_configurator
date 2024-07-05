@@ -187,23 +187,51 @@ export default class CalibrationSubView extends JetView {
         this.$$("progress_bar3").setValue(shortData.level);
     }
 
+    outputParametersOfSensor = 0;
+    minLevel = 0;
+    maxLevel = 0;
+    minLevelFromVolume = 0;
+    maxLevelFromVolume = 0;
     listenerLongData = (longData) => {
-        this.setMinBar(longData.minLevel);
-        this.setMaxBar(longData.maxLevel);
+        this.outputParametersOfSensor = longData.outputParametersOfSensor;
+        this.minLevel = longData.minLevel;
+        this.maxLevel = longData.maxLevel;
+        console.log(longData.outputParametersOfSensor);
+        if(longData.outputParametersOfSensor === 0){
+            this.setMinBar(longData.minLevel);
+            this.setMaxBar(longData.maxLevel);
+        }else{
+            this.setMinBar(this.minLevelFromVolume);
+            this.setMaxBar(this.maxLevelFromVolume);
+        }
+    }
+
+    listenerTableData = (tableData)=>{
+        this.minLevelFromVolume = 0;
+        this.maxLevelFromVolume = tableData.volumes[[tableData.countPoint - 1]];
+        if (this.outputParametersOfSensor === 1 && tableData.countPoint >= 2 ){
+            this.setMinBar(0);
+            this.setMaxBar(tableData.volumes[[tableData.countPoint - 1]]);
+        }
     }
 
     destroy() {
         super.destroy();
         llsModelOne.clearListenerShortData(this.listenerShortData);
         llsModelOne.clearListenerLongData(this.listenerLongData);
+        llsModelOne.clearListenerTable(this.listenerTableData);
     }
 
     init() {
-        this.$$("right_menu_fuel_level").attachEvent("onAfterRender", webix.once(()=>{
-            llsModelOne.addListenerShortData(this.listenerShortData);
-            llsModelOne.addListenerLongData(this.listenerLongData);
-        }));
-        // llsModel.addListenerLongData(this.listenerLongData);
+        // this.$$("right_menu_fuel_level").attachEvent("onAfterRender", webix.once(()=>{
+        //     llsModelOne.addListenerShortData(this.listenerShortData);
+        //     // llsModelOne.addListenerLongData(this.listenerLongData);
+        //     // llsModelOne.addListenerTable(this.listenerTableData);
+        // }));
+        llsModelOne.addListenerShortData(this.listenerShortData);
+
+        llsModelOne.addListenerLongData(this.listenerLongData);
+        llsModelOne.addListenerTable(this.listenerTableData);
         this.on(this.app, "app:calibrationSettings:continueCalibrate", () => {
             this.$$('tabbar').setValue("fuelFill");
         });
@@ -250,14 +278,21 @@ export default class CalibrationSubView extends JetView {
     }
 
     setMaxBar(value){
-        this.$$('progress_bar3').define({maxRange: value});
-        this.setScaleBar(this.$$('progress_bar3').config.minRange, this.$$('progress_bar3').config.maxRange);
-        this.$$('progress_bar3').refresh();
+        if(this.$$("progress_bar3").getNode()){
+            this.$$('progress_bar3').define({maxRange: value});
+            this.setScaleBar(this.$$('progress_bar3').config.minRange, this.$$('progress_bar3').config.maxRange);
+            this.$$('progress_bar3').refresh();
+        }
     }
     setMinBar(value){
-        this.$$('progress_bar3').define({minRange: value});
-        this.setScaleBar(this.$$('progress_bar3').config.minRange, this.$$('progress_bar3').config.maxRange);
-        this.$$('progress_bar3').refresh();
+        if(this.$$("progress_bar3").getNode()){
+            this.$$('progress_bar3').define({minRange: value});
+            this.setScaleBar(this.$$('progress_bar3').config.minRange, this.$$('progress_bar3').config.maxRange);
+            this.$$('progress_bar3').refresh();
+        }
+        // this.$$('progress_bar3').define({minRange: value});
+        // this.setScaleBar(this.$$('progress_bar3').config.minRange, this.$$('progress_bar3').config.maxRange);
+        // this.$$('progress_bar3').refresh();
     }
 
     setScaleBar(minRange,maxRange){

@@ -366,7 +366,7 @@ export default class FullemptysubviewTwo extends JetView {
         });
 
         this.$$("auto_calibration_set_1").attachEvent("onChange", (newValue, oldValue, config)=>{
-            if(newValue == "45000000"){
+            if(newValue == "0"){
                 this.app.callEvent("app:fullemptysubview:fullTankDefault", [false]);
             }else{
                 this.app.callEvent("app:fullemptysubview:fullTankDefault", [true]);
@@ -374,7 +374,7 @@ export default class FullemptysubviewTwo extends JetView {
         });
 
         this.$$("auto_calibration_set_2").attachEvent("onChange", (newValue, oldValue, config)=>{
-            if(newValue == "1000000"){
+            if(newValue == "0"){
                 this.app.callEvent("app:fullemptysubview:emptyTankDefault", [false]);
             }else{
                 this.app.callEvent("app:fullemptysubview:emptyTankDefault", [true]);

@@ -69,14 +69,13 @@ export default class FullEmptySubView extends JetView {
             } else {
                 this.deleteError(ERROR_FULL_EMPTY);
             }
-        }else if(longData.typeLls === 0x31){
+        }else if(longData.typeLls >= 0x02){
             if (longData.emptyTank > longData.fullTank) {
                 this.deleteError(ERROR_FULL_EMPTY);
             } else {
                 this.addError(ERROR_FULL_EMPTY);
             }
         }
-
     }
 
     listenerShortData = (shortData) => {
@@ -100,6 +99,12 @@ export default class FullEmptySubView extends JetView {
         // }
 
         if ((shortData.level == 65532 || shortData.level == 65531) && !this.errorCollections.includes(ERROR_FULL_EMPTY)) { //&& !this.errorCollections.includes(ERROR_FULL_EMPTY) --> Это наша заплатка на случай двойной ошибки
+            this.addError(ERROR_SHORT_CIRCUIT);
+        } else {
+            this.deleteError(ERROR_SHORT_CIRCUIT);
+        }
+
+        if ((shortData.frequency == 0)) { //&& !this.errorCollections.includes(ERROR_FULL_EMPTY) --> Это наша заплатка на случай двойной ошибки
             this.addError(ERROR_SHORT_CIRCUIT);
         } else {
             this.deleteError(ERROR_SHORT_CIRCUIT);

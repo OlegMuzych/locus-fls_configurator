@@ -80,8 +80,8 @@ export default class ResetLlsWindow extends JetView {
             //todo: command resetLls
             const defaultSettings = {
                 llsAdr: 1,
-                emptyTank: 1000000,
-                fullTank: 45000000,
+                emptyTank: 0, //1000000,
+                fullTank: 0, //45000000,
                 autoGetData: 0,
                 periodOfDataIssuance: 10,
                 minLevel: 0,

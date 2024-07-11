@@ -101,6 +101,7 @@ export default class FiltrationSubView extends JetView {
         super.destroy();
         llsModelOne.clearListenerShortData(this.listenerShortData);
         llsModelOne.clearListenerLongData(this.listenerLongData);
+        llsModelOne.clearListenerTable(this.listenerTableData);
     }
 
     listenerShortData = (shortData) => {
@@ -110,18 +111,42 @@ export default class FiltrationSubView extends JetView {
         this.$$("progress_bar2").setValue(level);
     }
 
+    outputParametersOfSensor = 0;
+    minLevel = 0;
+    maxLevel = 0;
+    minLevelFromVolume = 0;
+    maxLevelFromVolume = 0;
     listenerLongData = (longData) => {
-        this.setMinBar(longData.minLevel);
-        this.setMaxBar(longData.maxLevel);
+        // this.setMinBar(longData.minLevel);
+        // this.setMaxBar(longData.maxLevel);
+        this.outputParametersOfSensor = longData.outputParametersOfSensor;
+        this.minLevel = longData.minLevel;
+        this.maxLevel = longData.maxLevel;
+        console.log(longData.outputParametersOfSensor);
+        if(longData.outputParametersOfSensor === 0){
+            this.setMinBar(longData.minLevel);
+            this.setMaxBar(longData.maxLevel);
+        }else{
+            this.setMinBar(this.minLevelFromVolume);
+            this.setMaxBar(this.maxLevelFromVolume);
+        }
     }
 
-
+    listenerTableData = (tableData)=>{
+        this.minLevelFromVolume = 0;
+        this.maxLevelFromVolume = tableData.volumes[[tableData.countPoint - 1]];
+        if (this.outputParametersOfSensor === 1 && tableData.countPoint >= 2 ){
+            this.setMinBar(0);
+            this.setMaxBar(tableData.volumes[[tableData.countPoint - 1]]);
+        }
+    }
 
     init() {
-        this.$$("status_level_fuel").attachEvent("onAfterRender", webix.once(()=>{
+        // this.$$("status_level_fuel").attachEvent("onAfterRender", webix.once(()=>{
             llsModelOne.addListenerShortData(this.listenerShortData);
             llsModelOne.addListenerLongData(this.listenerLongData);
-        }));
+            llsModelOne.addListenerTable(this.listenerTableData);
+        // }));
 
         if (configFile.theme == 'light') {
             webix.html.addCss(this.$$("progress_bar2").getNode(), "progress_bar");

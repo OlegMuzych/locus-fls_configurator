@@ -101,6 +101,10 @@ export default class ServiceMenu extends JetView {
             if (id == 'readSettings') {
                 fileSettingsModel.read().then((settings)=>{
                     llsModelOne.newLongData = {...settings};
+                    llsModelOne.setLongData({
+                        fullTank: settings.fullTank,
+                        emptyTank: settings.emptyTank
+                    }).then();
                     llsModelOne.getLongData().then();
                 });
             }

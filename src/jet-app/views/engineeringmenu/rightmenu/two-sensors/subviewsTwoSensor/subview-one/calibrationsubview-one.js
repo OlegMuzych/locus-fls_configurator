@@ -229,14 +229,15 @@ export default class CalibrationsubviewOne extends JetView {
     }
 
     init() {
-        // this.$$("right_menu_fuel_level").attachEvent("onAfterRender", webix.once(()=>{
-        //     llsModel.addListenerShortData(this.listenerShortData);
-            // llsModel.addListenerLongData(this.listenerLongData);
+        this.$$("right_menu_fuel_level").attachEvent("onAfterRender", webix.once(()=>{
+            llsModel.addListenerShortData(this.listenerShortData);
+            llsModel.addListenerLongData(this.listenerLongData);
             // llsModel.addListenerTable(this.listenerTableData);
-        // }));
-        llsModel.addListenerShortData(this.listenerShortData);
-        llsModel.addListenerLongData(this.listenerLongData);
+        }));
         llsModel.addListenerTable(this.listenerTableData);
+        // llsModel.addListenerShortData(this.listenerShortData);
+        // llsModel.addListenerLongData(this.listenerLongData);
+        // llsModel.addListenerTable(this.listenerTableData);
         // llsModel.addListenerLongData(this.listenerLongData);
         this.on(this.app, "app:calibrationSettings:continueCalibrate", () => {
             this.$$('tabbar').setValue("fuelFill_one");

@@ -105,7 +105,7 @@ export default class ErrorStatusOne extends JetView {
             this.deleteError(ERROR_SHORT_CIRCUIT);
         }
 
-        if ((shortData.frequency == 0)) { //&& !this.errorCollections.includes(ERROR_FULL_EMPTY) --> Это наша заплатка на случай двойной ошибки
+        if ((shortData.frequency <= 30)) { //&& !this.errorCollections.includes(ERROR_FULL_EMPTY) --> Это наша заплатка на случай двойной ошибки
             this.addError(ERROR_SHORT_CIRCUIT);
         } else {
             this.deleteError(ERROR_SHORT_CIRCUIT);

@@ -142,11 +142,13 @@ export default class FiltrationSubView extends JetView {
     }
 
     init() {
-        // this.$$("status_level_fuel").attachEvent("onAfterRender", webix.once(()=>{
+        this.$$("status_level_fuel").attachEvent("onAfterRender", webix.once(()=>{
             llsModelOne.addListenerShortData(this.listenerShortData);
             llsModelOne.addListenerLongData(this.listenerLongData);
-            llsModelOne.addListenerTable(this.listenerTableData);
-        // }));
+            // llsModelOne.addListenerTable(this.listenerTableData);
+        }));
+        llsModelOne.addListenerTable(this.listenerTableData);
+
 
         if (configFile.theme == 'light') {
             webix.html.addCss(this.$$("progress_bar2").getNode(), "progress_bar");

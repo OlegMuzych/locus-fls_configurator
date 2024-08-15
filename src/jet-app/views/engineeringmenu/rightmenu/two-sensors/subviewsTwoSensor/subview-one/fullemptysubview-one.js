@@ -314,6 +314,10 @@ export default class FullemptysubviewOne extends JetView {
             this.setMinBar(this.minLevelFromVolume);
             this.setMaxBar(this.maxLevelFromVolume);
         }
+
+        if(longData.typeLls >= 0x02){
+            this.setAutoCalibrateDisable(true);
+        }
     }
 
     listenerTableData = (tableData)=>{
@@ -522,5 +526,8 @@ export default class FullemptysubviewOne extends JetView {
         let step = (maxRange - minRange)/10;
         this.$$('progress_bar_one').define({scale: {step: step}});
         this.$$('progress_bar_one').refresh();
+    }
+    setAutoCalibrateDisable(flag){
+        this.$$('auto_calibration').define('disabled', flag);
     }
 }

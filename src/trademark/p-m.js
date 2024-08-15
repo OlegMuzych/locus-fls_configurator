@@ -14,5 +14,6 @@ export default {
     "trademark": "ООО Точка мониторинга",
     "developer": "Точка мониторинга",
     "website": "www.point-monitoring.ru",
-    "copyright": "2022",
+    "telegram": "t.me/point_monitoring",
+    "copyright": "2024",
 }

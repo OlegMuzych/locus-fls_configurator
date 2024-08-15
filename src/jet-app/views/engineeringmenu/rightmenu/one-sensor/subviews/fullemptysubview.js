@@ -310,6 +310,9 @@ export default class FullEmptySubView extends JetView {
             this.setMinBar(this.minLevelFromVolume);
             this.setMaxBar(this.maxLevelFromVolume);
         }
+        if(longData.typeLls >= 0x02){
+            this.setAutoCalibrateDisable(true);
+        }
     }
     listenerTableData = (tableData)=>{
         this.minLevelFromVolume = 0;
@@ -453,6 +456,7 @@ export default class FullEmptySubView extends JetView {
             this.windowAutoLevel.showWindow(llsModelOne);
         });
 
+
         if(configFile.theme == 'light'){
             webix.html.addCss( $$("right_menu_setup").getNode(), "right_menu_status");
             webix.html.addCss( $$("right_menu_status_text").getNode(), "right_menu_status_text");
@@ -517,5 +521,9 @@ export default class FullEmptySubView extends JetView {
         let step = (maxRange - minRange)/10;
         this.$$('progress_bar').define({scale: {step: step}});
         this.$$('progress_bar').refresh();
+    }
+
+    setAutoCalibrateDisable(flag){
+        this.$$('auto_calibration').define('disabled', flag);
     }
 }

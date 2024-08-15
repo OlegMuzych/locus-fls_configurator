@@ -12,7 +12,7 @@ export default class WindowAbout extends JetView {
             view: "window",
             position: "center",
             width: 850,
-            height: 500,
+            height: 600,
             id: "window_show_2",
             modal: true,
             css: "window_show",
@@ -36,7 +36,7 @@ export default class WindowAbout extends JetView {
                             {},
                             {
                                 // hidden: false,
-                                height: 400,
+                                height: 500,
                                 rows: [
                                     {},
                                     {
@@ -72,6 +72,14 @@ export default class WindowAbout extends JetView {
                                         height: 80,
                                         css: "language_windows_modal",
                                         localId: "language_windows_modal_6"
+                                    },
+                                    {
+                                        view: "label",
+                                        label: `<p>${_t("telegram")}</p>`,
+                                        width: 700,
+                                        height: 80,
+                                        css: "language_windows_modal",
+                                        localId: "language_windows_modal_7",
                                     },
                                     {
                                         view: "label",

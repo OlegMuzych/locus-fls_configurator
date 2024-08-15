@@ -79,7 +79,7 @@ export default class WindowAbout extends JetView {
                                         width: 700,
                                         height: 80,
                                         css: "language_windows_modal",
-                                        localId: "language_windows_modal_7",
+                                        id: "language_windows_modal_7",
                                     },
                                     {
                                         view: "label",
@@ -118,6 +118,7 @@ export default class WindowAbout extends JetView {
             webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal_dark");
             webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal_dark");
             webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal_dark");
+            webix.html.addCss($$("language_windows_modal_7").getNode(), "language_windows_modal_dark");
             webix.html.addCss(this.$$("language_windows_modal_2").getNode(), "language_windows_modal_dark");
             webix.html.addCss(this.$$("language_windows_modal_6").getNode(), "language_windows_modal_dark");
 
@@ -127,6 +128,7 @@ export default class WindowAbout extends JetView {
             webix.html.addCss($$("language_windows_modal_3").getNode(), "language_windows_modal");
             webix.html.addCss($$("language_windows_modal_4").getNode(), "language_windows_modal");
             webix.html.addCss($$("language_windows_modal_5").getNode(), "language_windows_modal");
+            webix.html.addCss($$("language_windows_modal_7").getNode(), "language_windows_modal");
             webix.html.addCss(this.$$("language_windows_modal_2").getNode(), "language_windows_modal");
             webix.html.addCss(this.$$("language_windows_modal_6").getNode(), "language_windows_modal");
         }

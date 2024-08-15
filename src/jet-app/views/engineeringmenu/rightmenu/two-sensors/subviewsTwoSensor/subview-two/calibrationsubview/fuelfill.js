@@ -169,7 +169,7 @@ export default class FuelFillView extends JetView {
                         {
                             view: "label",
                             // label: _("error_count_step_message"),
-                            label: `<p style='font-weight:300; position: relative; top:-20px;'>${_("error_count_step_message")}</p>`,
+                            label: `<p style='font-weight:300; position: relative; top:-20px; color: red; font-size: 20pt'>${_("error_count_step_message")}</p>`,
                             css: "text_error_count_step",
                             gravity: 6
                         },

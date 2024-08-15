@@ -170,7 +170,7 @@ export default {
     "button_finish_calibration": "Завершить тарировку",
     "button_start_calibration": "Продолжить",
 
-    "error_count_step_message": "Привышено количество шагов",
+    "error_count_step_message": "Превышено количество шагов",
 
     /* windows buttons */
     "button_ok": "Ok",

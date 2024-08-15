@@ -74,10 +74,10 @@ export default class ErrorStatusTwo extends JetView {
                 this.deleteError(ERROR_FULL_EMPTY);
             }
         }else if(longData.typeLls >= 0x02){
-            if (longData.emptyTank > longData.fullTank) {
-                this.deleteError(ERROR_FULL_EMPTY);
-            } else {
+            if (longData.emptyTank < longData.fullTank) {
                 this.addError(ERROR_FULL_EMPTY);
+            } else {
+                this.deleteError(ERROR_FULL_EMPTY);
             }
         }
     }

@@ -261,7 +261,7 @@ export default {
 
     /* errorStatus.js */
     "no_error": "Ошибок нет",
-    "error_full_empty": "Пустой больше полного",
+    "error_full_empty":"Пустой/полный - неверное соотношение",  //"Пустой больше полного",
     "error_short_circuit": "Короткое замыкание",
     "error_size_table": "В таблице тарировки меньше 2 строк",
     "error_value_table": "Некорректная таблица тарировки",

@@ -1825,7 +1825,9 @@ right_menu_fuel_level_error_windows input{
     box-shadow: inset 2px 2px 4px #c5c5c5,
     inset -2px -2px 4px #ffffff;
     color: #000;
-    font-size: 18px;
+    /*font-size: 18px;*/
+    font-size: 25px;
+    font-weight: 500;
     height: 100%;
     border: 1px solid #fff;
 }
@@ -1834,7 +1836,9 @@ right_menu_fuel_level_error_windows input{
     background-color: var(--c-white-color-background-dark_left_menu);
     border-radius: 5px;
     color: #fff;
-    font-size: 18px;
+    /*font-size: 18px;*/
+    font-size: 25px;
+    font-weight: 500;
     border: none;
     box-shadow: inset 2px 2px 5px #212121,
     inset -2px -2px 5px #373737;

@@ -80,8 +80,9 @@ class FindLls {
         try {
             // let portList = await SerialPort.list();
             let portList = await window.serialPort.portList();
+
             // console.log(portList);
-            return portList.map((item) => {
+            return portList.filter(({vendorId})=> {return vendorId != undefined}).map((item) => {
                 return item.path;
             });
         } catch (error) {

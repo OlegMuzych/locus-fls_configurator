@@ -16,7 +16,7 @@ contextBridge.exposeInMainWorld(
     {
         portList: async () => {
             let portList = await SerialPort.list();
-            // console.log(portList);
+            console.log(portList);
             return portList;
         },
         new: (options) => {
